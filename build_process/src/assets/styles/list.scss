@@ -1,0 +1,176 @@
+ion-header {
+    ion-toolbar:not(.menu-toolbar) {
+
+        ion-title,
+        .title-md {
+            text-transform: capitalize;
+            font-size: 17px;
+            text-align: left;
+        }
+    }
+}
+
+.sc-ion-searchbar-ios-h {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    --background: transparent !important;
+
+    .searchbar-input-container.sc-ion-searchbar-ios {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    }
+}
+
+.sc-ion-searchbar-md-h {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+}
+
+.main-list-items {
+    margin: 0;
+    padding: 10px 0;
+    --min-height: 20px;
+    --border-style: none;
+
+    h2 {
+        font-weight: 800;
+        font-size: 16px;
+        color: #111;
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        color: #444;
+    }
+
+    p {
+        font-size: 13px;
+        // color: var(--ion-color-step-400,#999);
+        color: #777;
+    }
+
+    ion-label {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+ion-fab {
+    color: #fff; 
+} 
+
+
+.styleLight {
+    ion-content {
+        --padding-top: var(--ion-padding, 3px) !important;
+    }
+
+    ion-header {
+        ion-toolbar {
+            background: var(--ion-color-toolbar-header);
+
+        &:not(.menu-toolbar) {
+
+            ion-title,
+            .title-md {
+                text-transform: capitalize;
+                font-size: 17px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+    .sc-ion-searchbar-md-h {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .main-list-items {
+        margin: 0;
+        padding: 9px 0px 9px 9px;
+        --padding-start: 0 !important;
+
+        .item-native {
+            padding: 0 !important;
+        }
+    }
+
+    .sc-ion-searchbar-ios-h {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        div {
+            height: 36px;
+            margin: 0 2px;
+            box-shadow: 0px 0px 7px 0 #e8e3e3;
+            --border: 1px solid grey;
+            border-radius: 0px;
+        }
+    }
+
+    .searchbar-search-icon.sc-ion-searchbar-md {
+        top: 14px;
+    }
+
+    .searchbar-input.sc-ion-searchbar-md {
+        box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .12);
+        height: 44px;
+        padding-left: 45px !important;
+    }
+
+    .searchbar-input.sc-ion-searchbar-ios {
+        box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .12);
+        padding-left: 45px !important;
+    }
+
+    .searchbar-search-icon.sc-ion-searchbar-ios {
+        width: 21px;
+        font-weight: bold;
+        margin: 0 !important;
+        padding-left: 6px !important;
+    }
+}
+
+.indexNotComplete {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.cs-list-tool-color {
+    background: #2db3ff;
+    margin-top: 10px;
+    padding: 4px;
+    font-size: 12px;
+    color: var(--ion-color-primary-contrast);
+}
+
+.cs-list-ion-vitual-scroll {
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+}
+
+.cs-list-ion-header {
+    z-index: 0 !important;
+}
+
+ion-virtual-scroll {
+    ion-item {
+        div .item-inner {
+            padding-right: 0px !important;
+        }
+    }
+}
+
+.cs-list-page-info-icon {
+    margin-right: 0px !important;
+    margin-inline-end: 0px !important;
+}

@@ -1,0 +1,538 @@
+
+// yellow = 50% need black
+// blue = 54% need white
+//---------------- 
+@function set-header-color($color) {
+    @if (lightness($color) <= 50) {
+        @return $grey_base_primary;
+    }
+    @else {
+        @return #fff;
+    }
+}
+@function set-icon-color($color) {
+    @if (lightness($color) <= 48) {
+        @return $grey_base_primary;
+    }
+    @else {
+        @return $primary_color;
+    }
+}
+@function selectoption($color) {
+    @if (lightness($color) > 60) {
+        @return $primary_color;
+    }
+    @else {
+        @return #fff;
+    }
+}
+@function opacity_bg($color) {
+    @if (lightness($color) >= 50) {
+        @return lighten($color, 45%);
+        // for light
+    }
+    @else {
+        @return lighten($color, 5%);
+        // for black
+    }
+}
+@function hover_bg($color) {
+    @if (lightness($color) >= 50) {
+        @return lighten($color, 43%);
+        // for light
+    }
+    @else {
+        @return lighten($color, 5%);
+        // for black
+    }
+}
+@function btn_boxshadow_bg($color) {
+    @if (lightness($color) >= 50) {
+        @return #d8d8d8;
+        // for light
+    }
+    @else if(lightness($color) <= 12){
+        @return #000;
+    }
+    @else if(lightness($color) > 12 & lightness($color) < 50){
+        @return #151719;
+    }
+}
+@function disabledfield($color) {
+    @if (lightness($color) >= 50) {
+        @return #eaeaea;
+        // for light
+    }
+    @else {
+        @return #7d7d7d;
+        // for black
+    }
+}
+@function ngx_slider($color) {
+    @if (lightness($color) >= 50) {
+        @return #e8e8e8;
+        // for light
+    }
+    @else {
+        @return #8e8e8e;
+        // for black
+    }
+}
+
+
+////////////////////
+@function submenu_hover_bg($color) {
+    @if (lightness($color) >=50) {
+        @return lighten($color, 40%);
+        // for light
+    }
+
+    @else {
+        @return lighten($color, 5%);
+        // for black
+    }
+}
+
+@function popupmenuclr($color) {
+    @if (lightness($color) >=50) {
+        @return #fff;
+    }
+
+    @else {
+        @return #444444;
+    }
+}
+
+@function leftverticalhover_bg($color) {
+    @if (lightness($color) >= 50) {
+        @return darken($color, 18%);
+        // for light
+    }
+    @else {
+        @return lighten($color, 5%);
+        // for black
+    }
+}
+
+@function leftverticalsubmenu_hover_bg($color) {
+    @if (lightness($color) <= 12) {
+        @return $grey_base_primary;
+        // for light
+    }
+    @else {
+        @return darken($color, 25%);
+        // for black
+    }
+}
+@function top_menu_more_btn($color) {
+    @if (lightness($color) <=12) {
+        @return lighten($color, 15%);
+        // for light
+    }
+    @else {
+        @return darken($color, 15%);
+        // for black
+    }
+}
+
+@function userassignAdd($color){
+    @if (lightness($color)<=12){
+        @return #333;
+    }
+    @else{
+        @return #fff;
+    }
+}
+@function userassignAddbtn($color){
+    @if (lightness($color)<=12){
+        @return #fff;
+    }
+    @else{
+        @return $primary_color;
+    }
+}
+//---------------- 
+
+// Header
+    $product_name_color : $grey_base_primary;
+    $product_name_font_style : normal;
+    $product_name_font_weight : 400;
+    $product_name_font_size : 16px;
+    $header_bg : #fff;
+
+    $header_icon_badge_color : #fff;
+    $header_icon_badge_bg : #e42313;
+
+    $header_icon_color : $grey_base_primary;
+    $header_icon_font_size : 23px;
+
+// In between Body And Header Splitting Divider
+        $header_body_divder : 1px solid #e0e0e0;
+        // $header_body_divder : none;
+
+// page title
+
+    $page_title_color : set-header-color($primary_color);
+    $page_title_font_weight : 400;
+    $page_title_font_size : 20px;
+    $page_title_font_style : normal;
+    $page_title_bg: $primary_color;
+
+    $title_button_label_color:set-header-color($primary_color);//Includes (icon :color , label:color)
+    $title_button_bg:$primary_color;
+    $title_font_size_icon : 23px;
+    
+    $title_button_border_color: set-header-color($primary_color);
+    $title_button_border_width:1px;
+    $title_button_border_style:solid;
+    $title_button_border_radius:2px;
+
+    $title_button_font_style : normal;
+    $title_button_font_weight : 500;
+    $title_button_font_size : 13px;
+
+    $title_button_box_shadow:none;
+
+    // Tab View
+    $page_tab_title_font_style : normal;
+    $page_tab_title_color : $secondary_color;
+    $page_tab_title_border_color : $secondary_color; 
+    $page_tab_title_font_size : 14px;
+    $page_tab_title_font_weight : 400;
+
+// Body
+    $body_bg:#f5f5f5;
+// card
+    $card_bg: #fff;
+    $card_boxshadow:0px 0px 4px 0px rgba(0, 0, 0, 0.031); //(yes or no)
+    $card_border: 1px solid #eeeeee; 
+
+    $card_padding:20px;
+    $card-border-radius:0;
+    // Inside Card 
+        $card_title_color:$grey_base_primary;
+        $card_title_font_style : normal ;
+        $card_title_font_weight : 500;
+        $card_title_font_size : 18px;
+        $card_title_underline_bg:$secondary_color;
+        
+        // $card_title_button_color:'';
+        // $card_title_button_font_size:'';
+
+        // Inputs Property
+            $input_box_title_color:$grey_base_secondary;
+            $input_box_title_font_style : normal;
+            $input_box_title_font_weight : 400;
+            $input_box_title_font_size : 13px;
+
+            $input_box_border_color:#dedede;
+            $input_box_bg: '';
+            $input_box_border_width:1px;
+            $input_box_border_style:solid;
+            $input_box_border_radius:0px;
+
+            $input_box_inner_color:$grey_base_primary; //(label + input inner text)
+            $input_box_inner_font_size:13px; //(label + input inner text)
+            $input_box_inner_font_style : normal;
+            $input_box_inner_font_weight : 400;
+
+
+            // $disable_input_box_bg:#eaeaea;
+            $disable_input_box_border_width:1px;
+            $disable_input_box_border_style:solid;
+            $disable_input_box_bg: disabledfield($card_bg);
+            $disable_input_box_color: $grey_base_primary;
+
+            // Both color are inter related
+            // $toggle_button_active_color:''; 
+            // $formula_field_img_color:'';
+
+            // need to reduce color behind the circle
+
+            // Dependent Pick List
+                $dependent_pick_list_badge_color: #ff7511;
+                $dependent_pick_list_badge_border_width: 1px;
+                $dependent_pick_list_badge_border_style: solid;
+                $dependent_pick_list_badge_border_color: #ffd8bd;
+
+        // View Property
+            $view_title_color:$grey_base_secondary;
+            $view_title_font_style : normal;
+            $view_title_font_weight : 400;
+            $view_title_font_size : 12px;
+
+            $view_label_color:$grey_base_primary;
+            $view_label_font_style : normal;
+            $view_label_font_weight : 500;
+            $view_label_font_size : 13px;
+
+            // $view_label_button_color:''; //(click icon or label)
+            // $view_label_button_border_radius:''; //(click icon or label)
+            // $view_label_button_bg:''; //(click icon or label)
+            // $view_label_button_border_color:'';
+            // $view_label_button_border_width:'';
+            // $view_label_button_border_style:'';
+
+
+            $view_label_hyperlink_color:#3880ff;
+            $view_label_hyperlink_font_style : normal;
+            $view_label_hyperlink_font_weight : 500;
+            $view_label_hyperlink_font_size : 13px;
+
+// Menu
+    // List View
+    $list_parent_heading_icon_color:$primary_color;
+    $list_parent_heading_font_size : 25px;
+    $list_bg :$header_bg ;
+    $list_parent_heading_title_color: $grey_base_secondary;
+    $list_parent_heading_title_font_style : normal;
+    $list_parent_heading_title_font_weight : 400;
+    $list_parent_heading_title_font_size : 19px;
+
+    $list_child_heading_icon_color:$primary_color;
+    $list_child_heading_icon_font_size : 22px;
+
+    $list_child_heading_title_color:$grey_base_secondary;
+    $list_child_heading_title_font_style : normal;
+    $list_child_heading_title_font_weight : 400;
+    $list_child_heading_title_font_size : 16px ;
+    $list_heading_accordion_color:$grey_base_primary;
+
+
+// Grid View
+    $grid_segment_body_bg:$card_bg;
+    $grid_segment_card_bg:$body_bg;
+    $grid_segment_option_hover_bg:#f5f9ff;
+    $grid_segment_option_icon_color:#000;  
+    $grid_segment_option_title_color:$grey_base_secondary;
+    $grid_segment_header_bg:'';
+    $grid_segment_single_menu_icon_bg:'';
+
+// Date indicater
+    $date_picker_bg:$primary_color;
+    $date_picker_color:set-header-color($primary_color);
+// Select option // Global Color for Toggle, Checkbox, radio , formula field icon
+    $select_option_bg:$tertiary_color;
+    $select_option_color:selectoption($tertiary_color);
+
+// Click Action
+// Chip
+    $chip_default_bg:#e0e0e0;
+    $chip_default_color:#000;
+    
+    $chip_button_bg:$primary_color;
+    $chip_button_color:set-header-color($primary_color);
+
+// Filled Button
+    $filled_button_color:set-header-color($primary_color);
+    $filled_button_bg:$primary_color;
+    $filled_button_font_size:22px;
+
+    $filled_button_border_radius:3px;//(round, ovel, square)
+    $filled_button_border_color:transparent!important;
+    $filled_button_border_width:none!important;
+    $filled_button_border_style:none!important;
+
+    $filled_button_box_shadow:2px 2px 10px btn_boxshadow_bg($card_bg);
+    $filled_button_hover_color:$primary_color;
+
+// Stroke Button
+    $stroke_button_color:$grey_base_primary;
+    $stroke_button_font_size:22px;
+
+    $stroke_btn_bg:$primary_color;
+    $stroke_button_background:opacity_bg($stroke_btn_bg);
+    $stroke_button_border_color:$stroke_btn_bg;
+     
+    $stroke_button_border_radius:2px;//(round, ovel, square)
+    $stroke_button_border_width:1px;
+    $stroke_button_border_style:solid;
+
+    $stroke_button_box_shadow:2px 2px 10px btn_boxshadow_bg($card_bg);
+    $stroke_button_hover_color:none;
+
+// Fab
+    $fab_icon_color:set-icon-color($primary_color);
+    $fab_icon_bg:0 0;
+    $fab_icon_size:22px;
+
+// Icon
+    $icon_size: 22px;
+
+    // SlickGrid
+        $slickgrid_pagination_font_style : normal;
+        $slickgrid_pagination_font_weight : 500;
+        $slickgrid_pagination_font_size :14px;
+        $slickgrid_pagination_color:$grey_base_primary;
+        $slickgrid_pagination_disabled:#b8b8b8;
+        $slickgrid_pagination_bg:$card_bg;
+        $slickgrid_pagination_input_bg:$stroke_btn_bg;
+        $slickgrid_lookuptheme_header_bg: $primary_color;
+
+        $slickgrid_column_header_color : $grey_base_primary;
+        $slickgrid_column_header_font_style : normal;
+        $slickgrid_column_header_font_weight : 600;
+        $slickgrid_column_header_font_size : 14px;
+        
+        $slickgrid_inner_icon_color:$tertiary_color;
+        $slickgrid_btn_inner_icon_color:$stroke_button_color;
+
+        $slickgrid_inner_text_color :$grey_base_secondary;
+        $slickgrid_inner_text_font_style : normal;
+        $slickgrid_inner_text_font_weight : 500;
+        $slickgrid_inner_text_font_size : 12px;
+
+        $slickgrid_row_hover_bg :hover_bg($primary_color);
+        // $slickgrid_row_hover_bg :#f4f7fe;
+        $slickgrid_bg:$card_bg;
+        $slickgrid_row_border_top_bg :#f0f0f0;
+        $slickgrid_menu_option: btn_boxshadow_bg($body_bg);
+        
+        $general_shadow: btn_boxshadow_bg($body_bg);
+        $general_line: #dadada;
+        
+        $grid_segment_hover:hover_bg($primary_color);
+        $filter_selected_option_line_color:$primary_color;
+        $slickgrid_preheader_bg:$body_bg;
+        $slickgrid_preheader_color:$grey_base_primary;
+        $slickgrid_preheader_border_color:transparent;
+        $ngx_slider_bg:ngx_slider($card_bg);
+        $header_app_list_bg:$primary_color;
+        $header_app_list_color:#fff;
+        $notify_got_it : $primary_color;
+        $checkbox_tick_stroke:#fff;
+        $slickgrid_right_clk_option_bg:#fff;
+        $status_popover_box_bg : #fff;
+        $calendar_bg: #fff;
+        $status_popup_text_bg:transparent;
+        $status_popup_text_border:1px solid #dedede;
+
+
+/////////////// 
+//General Sub Menu Icons Color
+$submenu_icon_one:#FF7B00;
+$submenu_icon_two:#773B92;
+$submenu_icon_three:#B4009E;
+$submenu_icon_four:#F2CB1D;
+$submenu_icon_five:#4F95DD;
+
+
+//TopHorizontalMenu
+$sub_text_clr:$grey_base_secondary;
+$top_header_menu:darken($primary_color, 20%);
+$top_header_menuitem_hover:darken($top_header_menu, 8%);
+$top_menu_txtbtnclr:$grey_base_secondary;
+$top_menu_subitem_hover_background_clr:$grid_segment_hover;
+$top_menu_subitem_hover_txtclr:$grey_base_primary;
+$top_menu_more_btn:top_menu_more_btn($primary_color);
+
+//TopPopupMenu
+$top_popup_hover_background:$grid_segment_hover;
+$top_popup_arrow_btn:$grey_base_primary;
+$top_popup_heading:$grey_base_secondary;
+$top_popup_hover_heading:$grey_base_primary;
+$top_popup_sub_items:$grey_base_primary;
+
+//LeftAnimationMenu
+
+
+$left_animation_arrow_btn:$list_parent_heading_title_color;
+$left_animation_shield_btn:$list_parent_heading_icon_color;
+$left_animation_menu_header:$list_parent_heading_title_color;
+$left_animation_submenu_item_clr:$list_child_heading_title_color;
+
+//LeftVerticalMenu
+$left_vertical_menu_btn_hover: leftverticalhover_bg($primary_color);
+$left_vertical_submenu_hover_clr : leftverticalsubmenu_hover_bg($primary_color);
+$left_vertical_submenu_clr : $grey_base_secondary;
+$left_vertical_submenu_header :$grey_base_primary;
+
+
+//User Assignment
+$userassignment_add_icon : userassignAdd($primary_color);
+$userassignment_add_btn  :userassignAddbtn($primary_color);
+$userassignment_save_btn_hover : lighten($secondary_color ,40%);
+
+//Attachment and Documentation
+
+$drag_and_drop_bg : $slickgrid_row_hover_bg;
+$action_btns_border : darken($drag_and_drop_bg ,4%);
+$document_add_btn : $select_option_color;   
+
+//document border clr
+$document_border_clr : $slickgrid_row_border_top_bg;
+
+//attachment and document search outline
+$attachment_and_document_search_outline : $slickgrid_row_border_top_bg;
+
+//attachment and document subheadclr
+$attachment_and_document_subheadclr : #fff;
+
+//attachment and document toolbar borderbottom
+$attachment_and_document_toolbar_borderbottom_clr : $slickgrid_row_border_top_bg;
+
+//Drag and drop dashed
+$drag_and_drop_dashed : darken($drag_and_drop_bg ,8%);
+
+//Count Badge
+$document_count_badge_bg : $filled_button_bg;
+$document_count_badge_clr :$filled_button_color;
+
+//action btns and focus
+$document_action_btns : $stroke_button_background;
+$document_action_btns_bg : $primary_color;
+$document_action_btns_clr : $filled_button_color;
+
+//attachment and document title color
+$attachment_and_document_title_clr : $page_title_color;
+
+//Upload Icon clr
+$Upload_icon_clr : #fff;
+
+//document_btn_Clr
+$document_btn_Clr:$title_button_label_color;
+
+//Document Check Box clr
+$document_check_box_clr:$select_option_bg;
+
+
+
+@function inputFocus($color) {
+    @if (lightness($color) >= 50) {
+        @return lighten(darken($primary_color, 12%), 33%);
+        // for light
+    }
+    @else if(lightness($color) <= 12){
+        @return #000;
+        // for dark
+    }
+    @else if(lightness($color) > 12 & lightness($color) < 50){
+        @return #151719;
+        // inbetween 
+    }
+}
+$general_input_focus: inputFocus($body_bg);
+
+$global_add_btn_clr : #000;
+$global_add_btn_bg: #fff;
+$gloabal-popover-border : #ccc;
+$global_add_popover_searchbtn : $fab_icon_color;
+$globalsearch_filter_addbtn_active_bg : $secondary_color;   
+$globalsearch_filter_addbtn_active_clr: $filled_button_color;
+$globalsearch_filter_object_sublabel : #d6d6d6;
+$globalsearch_filter_countbadge_bg :$filled_button_bg;
+$globalsearch_filter_countbadge_clr :$filled_button_color;
+$globalsearch_filter_matselectoption_hover : $slickgrid_row_hover_bg;
+$globalsearch_input_box : $input_box_bg;
+$globalsearch_search_box : $input_box_bg;
+$globalsearch_result_search : $globalsearch_search_box;
+$record_association_view_chip : $primary_color;
+$url_chip_gradient_clr : linear-gradient(to right, rgba(125, 185, 232, 0) 0%, rgba(189, 189, 189, 0.81) 43%, #bdbdbd 53%);
+$url_info_background_clr: lighten($primary_color, 40%);
+//Assignment task
+$assignment_view_bg : $card_bg;
+$assignment_swap_btn_bg : $primary_color;
+$assignment_swap_btn_clr : $select_option_color;
+$assignment_preview_head_bg :  lighten($primary_color, 35%);
+
+$consolidateView_title_bg : #ffd3d3;

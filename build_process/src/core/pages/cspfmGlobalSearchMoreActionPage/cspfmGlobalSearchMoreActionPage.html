@@ -1,0 +1,513 @@
+<mat-toolbar class="cs-mat-pageheadtoolbar" color="primary">
+    <button mat-button slot="start" *ngIf="appUtilityConfig.isMobileResolution">
+        <ion-menu-button></ion-menu-button>
+    </button>
+
+    <div class="cs-mat-toolbartitle">
+        <button mat-icon-button matTooltip="back" matTooltipPosition="above" (click)="backButtonOnclick()"
+            class="cs-mat-pagehead-eachactions cs-mat-icononly">
+            <em class="icon-mat-keyboard_backspace"></em>
+        </button>
+        <span class="cs-mat-pageheadtitle">Global Search View</span>
+    </div>
+    <span class="example-spacer"></span>
+
+    <button mat-mini-fab color="primary" matTooltip="Filter" matTooltipPosition="above" (click)="toggleFilter()"
+        class="cs-mat-pagehead-eachactions cs-mat-icononly">
+        <em [ngClass]="{'icon-mat-filter_list_alt': filterApplied, 'icon-mat-not_filtered_list': !filterApplied}"></em>
+    </button>
+</mat-toolbar>
+
+<mat-progress-bar *ngIf="isLoading" style="margin-top: 5px; margin-bottom: 5px;" mode="indeterminate">
+</mat-progress-bar>
+
+<div class="cs-custom-scroll cs-scroll-body-height">
+    <div class="cs-mat-main-content">
+        <div class="cs-mat-contentmain cs-flex cs-globalsearch-detailview">
+            <mat-card class="cs-mat-parent-slick cs-fullpage-slickgrid cs-global-more-maincontent"
+                [ngClass]="{'cs-width-75': showFilter , 'cs-fullwidth' : !showFilter}">
+                <mat-card-header class="cs-header cs-lpad-4">
+                    <mat-card-title>
+                        Results
+                    </mat-card-title>
+                    <mat-chip class="cs-results-count">{{totalRecords.length}}</mat-chip>
+                </mat-card-header>
+                <div class="cs-hpad-20 cs-globalsearch-moreview">
+                    <mat-form-field [floatLabel]="'always'" class="cs-global-searchbar-head" appearance="none">
+                        <div class="cs-global-searchbar cs-tmar-42">
+                            <span>
+                                <button class="cs-matsearch-btn cs-moreviewsearch-btn">
+                                    <em class="icon-mat-search"></em>
+                                </button>
+                            </span>
+                            <span class="cs-fullwidth">
+                                <input class="cs-mat-search-bar cs-results-searchbar cs-lpad-40" matInput type="text"
+                                    [(ngModel)]="globalSearchValue" [formControl]="globalSearchControl"
+                                    (keydown.enter)="keyPressEnterAction()"(keypress)="keyPressAlphaNumeric()">
+                                <mat-spinner *ngIf="isFetching" matSuffix [diameter]="18"
+                                    class="cs-moreview-searchspinner">
+                                </mat-spinner>
+                            </span>
+
+                            <!-- Clear action -->
+                            <button color="primary" matTooltip="Clear" matTooltipPosition="above"
+                                *ngIf="globalSearchValue != ''" (click)="clearSearchText()"
+                                class="cs-mat-icononly cs-matsearch-closebtn">
+                                <em class="icon-mat-clear"></em>
+                            </button>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="cs-hpad-20 cs-custom-scroll cs-global-more-innercontent">
+                    <!-- No Records -->
+                    <div class="cs-norecords-moreview" *ngIf="totalRecords.length == 0">
+                        <img alt="No Records" src="assets/img/no_record_found.png">
+                    </div>
+                    <div *ngFor="let object of objectsList">
+                        <div>
+                            <p class="cs-search-mat-chip cs-nolmar">{{
+                                globalSearchResultList[object]['objectDisplayName'] }}</p>
+                        </div>
+
+                        <div *ngFor="let data of globalSearchResultList[object]['records']" (click)="onItemClick(data)"
+                            class="cs-flex">
+                            <div class="cs-fullwidth">
+                                <mat-option class="cs-mat-option-sel cs-mat-more-option-sel">
+                                    <div class="cs-width-60p">
+                                        <div *ngFor="let fieldObj of data['fieldObjArray']"
+                                            class="cs-search-right-content cs-more-inner-searchcontents">
+                                            <span class="cs-search-primary-value cs-ts-14 cs-lmar-7">
+                                                <span class="cs-dotted-style"></span>
+                                                <span
+                                                    innerHTML="{{ data['record'][data['primaryFieldKey']] | highlight:this.globalSearchValue }}"></span>
+                                            </span>
+
+                                            <span *ngIf="fieldObj['fieldDisplayName']"
+                                                class="cs-search-item-key cs-ts-14">{{ fieldObj['fieldDisplayName'] }} :
+                                            </span>
+                                            <span *ngIf="fieldObj['fieldDisplayValue']"
+                                                class="cs-search-item-value cs-ts-14"
+                                                innerHTML="{{ fieldObj['fieldDisplayValue'] | highlight:this.globalSearchValue }}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cs-flex-end cs-rpad-3 cs-width-40p">
+                                        <div class="cs-flex cs-fitcontent cs-rmar-32">
+                                            <span>
+                                                <img alt="" src="{{data['createdByUserImg']}}"
+                                                    [matTooltip]="data['createdUsername']" matTooltipPosition="above"
+                                                    onError="this.src='assets/img/user_icon.png'"
+                                                    class="cs-createdmodified-avatar">
+                                            </span>
+                                            <span class="cs-created-section cs-lmar-8">
+                                                <p class="cs-nomargin cs-created-label">Created</p>
+                                                <p class="cs-nomargin cs-created-datetime">{{data['record']['createdon']
+                                                    |
+                                                    date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue
+                                                    }}
+                                                </p>
+                                            </span>
+                                        </div>
+                                        <div class="cs-flex cs-fitcontent">
+                                            <span>
+                                                <img alt="" src="{{data['lastModifiedByUserImg']}}"
+                                                    [matTooltip]="data['lastmodifiedUsername']"
+                                                    matTooltipPosition="above"
+                                                    onError="this.src='assets/img/user_icon.png'"
+                                                    class="cs-createdmodified-avatar">
+                                            </span>
+                                            <span class="cs-created-section cs-lmar-8">
+                                                <p class="cs-nomargin cs-created-label">Last Modified</p>
+                                                <p class="cs-nomargin cs-created-datetime">
+                                                    {{data['record']['lastmodifiedon'] |
+                                                    date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue
+                                                    }}
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </mat-option>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card class="cs-mat-parent-slick cs-fullpage-slickgrid cs-nopadding"
+                [ngClass]="{'cs-width-25': showFilter}" *ngIf="showFilter">
+                <mat-card-header class="cs-header cs-pr">
+                    <mat-card-title>
+                        Filter Details
+                    </mat-card-title>
+                    <button class="cs-mat-icononly cs-filterdetails-closebtn cs-h-30" color="primary" matTooltip="Close"
+                        matTooltipPosition="above" (click)="closeFilterView()">
+                        <em class="icon-mat-clear"></em>
+                    </button>
+                </mat-card-header>
+
+                <div class="cs-inner-filterscroll cs-custom-scroll">
+                    <div class="cs-filter-objectsmar cs-add-objects">
+                        <div class="cs-filter-objects">
+                            <mat-label>Object Name</mat-label>
+                            <mat-chip *ngIf="filterFields['objectName'].length > 0">
+                                {{filterFields['objectName'].length}}</mat-chip>
+                            <button class="cs-add-objectsbtn" color="primary" ng-reflect-disable-ripple="true"
+                                matTooltip="Add" matTooltipPosition="above" (click)="addIconClick($event, 'objectName')"
+                                [mdePopoverTriggerFor]="addIconPopover" mdePopoverTriggerOn="click">
+                                <em class="icon-mat-add cs-cur"></em>
+                            </button>
+                        </div>
+
+                        <div *ngIf="filterFields['objectName'].length > 0" class="cs-pr">
+                            <mat-chip-list #chipList aria-label="Fruit selection" class="cs-filter-chip-list">
+                                <button class="cs-matoption-arrow" (click)="onClickScrollFilterObjectLeft()">
+                                    <em class="icon-mat-keyboard_arrow_left"></em>
+                                </button>
+                                <div #scrollContentFilterObject class="cs-scoll-component cs-objcremofi-width">
+                                    <div class="cs-scoll-container">
+                                        <div class="cs-scroll-content">
+                                            <mat-chip *ngFor="let object of filterFields['objectName']">
+                                                {{object['objectDisplayName']}}
+                                                <button mat-icon-button class="cs-mat-icononly">
+                                                    <em class="icon-mat-clear" matTooltip="Cancel"
+                                                        matTooltipPosition="above"
+                                                        (click)="remove(object, 'objectName')"></em>
+                                                </button>
+                                            </mat-chip>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="cs-matoption-arrow cs-filterdetailes-rightarw"
+                                    (click)="onClickScrollFilterObjectRight()">
+                                    <em class="icon-mat-keyboard_arrow_right"></em>
+                                </button>
+                            </mat-chip-list>
+                        </div>
+
+                        <span class="cs-objectname-label" *ngIf="filterFields['objectName'].length === 0">Add Object
+                            name</span>
+                    </div>
+                    <div class="cs-filter-cal cs-filter-objectsmar">
+                        <mat-label>Created on</mat-label>
+                        <button *ngIf="!filterFields['createdOn']['isBetweenFlag']" class="cs-expand-btn"
+                            matTooltip="between date" matTooltipPosition="above">
+                            <em class="icon-mat-unfold_less cs-lpad-20" (click)="toggleBetweenFields('createdOn')"></em>
+                        </button>
+                        <button *ngIf="filterFields['createdOn']['isBetweenFlag']" matTooltip="exact date"
+                            matTooltipPosition="above">
+                            <em class="icon-mat-exit_to_app" (click)="toggleBetweenFields('createdOn')"></em>
+                        </button>
+                        <div *ngIf="!filterFields['createdOn']['isBetweenFlag']"
+                            class="cs-pr cs-tmar6 cs-mwl-datepicker cs-bpad-2">
+                            <div class="cs-filter-datepicker">
+                                <input class="cs-lpad-40" placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                    matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                    matTooltipPosition="above" type="text" data-input
+                                    [(ngModel)]="filterFields['createdOn']['date']"
+                                    (click)="flatpickrInputElementEvents($event, 'createdOn', 'date')"
+                                    (keyup)="flatpickrInputElementEvents($event, 'createdOn', 'date')">
+                            </div>
+                            <a class="input-button cs-datepicker-calendar-btn" matTooltip="Calendar"
+                                matTooltipPosition="above" data-toggle [(ngModel)]="filterFields['createdOn']['date']"
+                                mwlFlatpickr [monthSelectorType]="'dropdown'" (flatpickrReady)="flatpickrOnReady($event, 'createdOn', 'date')"
+                                (flatpickrOpen)="flatpickrOnOpen($event, 'createdOn', 'date')"
+                                (flatpickrClose)="flatpickrOnClose($event, 'createdOn', 'date')"
+                                (flatpickrChange)="flatpickrOnChange($event, 'createdOn', 'date')" [enableTime]=true>
+                                <em class="icon-mat-date_range"></em>
+                            </a>
+                            <a class="input-button cs-mat-clear cs-datepicker-remove-btn" matTooltip="clear"
+                                matTooltipPosition="above" *ngIf="filterFields['createdOn']['date']">
+                                <em class="icon-mat-clear" (click)="closeClick('createdOn','date')"></em>
+                            </a>
+                        </div>
+
+                        <div *ngIf="filterFields['createdOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%" class="cs-pr cs-seperate-cal-div">
+                                <div class="cs-fullwidth">
+                                    <input placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                        matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                        matTooltipPosition="above" type="text" data-input
+                                        [(ngModel)]="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][0]]"
+                                        (click)="flatpickrInputElementEvents($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])"
+                                        (keyup)="flatpickrInputElementEvents($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])">
+                                    <a class="input-button cs-datepicker-calendar-btn cs-search-cal-btn"
+                                        matTooltip="Calendar" matTooltipPosition="above" data-toggle
+                                        [(ngModel)]="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][0]]"
+                                        mwlFlatpickr [monthSelectorType]="'dropdown'"
+                                        (flatpickrReady)="flatpickrOnReady($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])"
+                                        (flatpickrOpen)="flatpickrOnOpen($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])"
+                                        (flatpickrClose)="flatpickrOnClose($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])"
+                                        (flatpickrChange)="flatpickrOnChange($event, 'createdOn', filterFields['createdOn']['betweenFields'][0])"
+                                        [enableTime]=true>
+                                        <em class="icon-mat-date_range cs-timepicker"></em>
+                                    </a>
+                                    <a class="input-button cs-mat-clear cs-datepicker-remove-btn cs-search-clear-btn cs-cur"
+                                        matTooltip="clear" matTooltipPosition="above"
+                                        *ngIf="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][0]]">
+                                        <em class="icon-mat-clear"
+                                            (click)="closeClick('createdOn',filterFields['createdOn']['betweenFields'][0])"></em>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="filterFields['createdOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%">
+                                <span class="cs-to-label">to</span>
+                                <!-- <em class="icon-mat-arrow_downward"></em> -->
+                            </div>
+                        </div>
+                        <div *ngIf="filterFields['createdOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%" class="cs-pr cs-seperate-cal-div">
+                                <div class="cs-fullwidth">
+                                    <input placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                        matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                        matTooltipPosition="above" type="text" data-input
+                                        [(ngModel)]="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][1]]"
+                                        (click)="flatpickrInputElementEvents($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])"
+                                        (keyup)="flatpickrInputElementEvents($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])">
+                                    <a class="input-button cs-datepicker-calendar-btn cs-search-cal-btn"
+                                        matTooltip="Calendar" matTooltipPosition="above" data-toggle
+                                        [(ngModel)]="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][1]]"
+                                        mwlFlatpickr [monthSelectorType]="'dropdown'"
+                                        (flatpickrReady)="flatpickrOnReady($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])"
+                                        (flatpickrOpen)="flatpickrOnOpen($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])"
+                                        (flatpickrClose)="flatpickrOnClose($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])"
+                                        (flatpickrChange)="flatpickrOnChange($event, 'createdOn', filterFields['createdOn']['betweenFields'][1])"
+                                        [enableTime]=true>
+                                        <em class="icon-mat-date_range cs-timepicker"></em>
+                                    </a>
+                                    <a class="input-button cs-mat-clear cs-datepicker-remove-btn cs-search-clear-btn cs-cur"
+                                        matTooltip="clear" matTooltipPosition="above"
+                                        *ngIf="filterFields['createdOn'][filterFields['createdOn']['betweenFields'][1]]">
+                                        <em class="icon-mat-clear"
+                                            (click)="closeClick('createdOn',filterFields['createdOn']['betweenFields'][1])"></em>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-filter-objectsmar cs-add-objects">
+                        <div class="cs-filter-objects">
+                            <mat-label>Created by</mat-label>
+                            <mat-chip *ngIf="filterFields['createdby'].length > 0">{{filterFields['createdby'].length}}
+                            </mat-chip>
+                            <button class="cs-add-objectsbtn" color="primary" ng-reflect-disable-ripple="true"
+                                matTooltip="Add" matTooltipPosition="above" (click)="addIconClick($event, 'createdby')"
+                                [mdePopoverTriggerFor]="addIconPopover" mdePopoverTriggerOn="click">
+                                <em class="icon-mat-add cs-cur"></em>
+                            </button>
+                        </div>
+                        <div class="cs-align-center cs-pr" *ngIf="filterFields['createdby'].length > 0">
+                            <button class="cs-matoption-arrow" (click)="onClickScrollFilterCreatedByLeft()">
+                                <em class="icon-mat-keyboard_arrow_left"></em>
+                            </button>
+
+                            <div #scrollContentFilterObjectCreatedBy class="cs-scoll-component cs-objcremofi-width">
+                                <div class="cs-scoll-container">
+                                    <div class="cs-scroll-content">
+                                        <div class="cs-pr cs-globalsearch-avatar scroll-items cs-display-inlineblock"
+                                            *ngFor="let object of filterFields['createdby']">
+                                            <img class="cs-filter-avatar" [matTooltip]="object['username']"
+                                                matTooltipPosition="above" mat-card-avatar src="{{object['imgsrc']}}"
+                                                alt="User Avatar" onError="this.src='assets/img/user_icon.png'">
+                                            <button class="cs-display-none cs-selecteduserclear-btn" (click)="remove(object, 'createdby')">
+                                                <em class="icon-mat-clear"></em>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="cs-matoption-arrow cs-filterdetailes-rightarw"
+                                (click)="onClickScrollFilterCreatedByRight()">
+                                <em class="icon-mat-keyboard_arrow_right"></em>
+                            </button>
+                        </div>
+                        <span class="cs-objectname-label" *ngIf="filterFields['createdby'].length === 0">Add created
+                            name</span>
+                    </div>
+                    <div class="cs-filter-cal cs-filter-objectsmar">
+                        <mat-label>Last Modified on</mat-label>
+                        <button *ngIf="!filterFields['lastModifiedOn']['isBetweenFlag']" class="cs-expand-btn"
+                            matTooltip="between date" matTooltipPosition="above">
+                            <em class="icon-mat-unfold_less cs-lpad-20"
+                                (click)="toggleBetweenFields('lastModifiedOn')"></em>
+                        </button>
+                        <button *ngIf="filterFields['lastModifiedOn']['isBetweenFlag']" matTooltip="exact date"
+                            matTooltipPosition="above">
+                            <em class="icon-mat-exit_to_app" (click)="toggleBetweenFields('lastModifiedOn')"></em>
+                        </button>
+                        <div *ngIf="!filterFields['lastModifiedOn']['isBetweenFlag']"
+                            class="cs-pr cs-tmar6 cs-mwl-datepicker">
+                            <div class="cs-filter-datepicker">
+                                <input class="cs-lpad-40" placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                    matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                    matTooltipPosition="above" type="text" data-input
+                                    [(ngModel)]="filterFields['lastModifiedOn']['date']"
+                                    (click)="flatpickrInputElementEvents($event, 'lastModifiedOn', 'date')"
+                                    (keyup)="flatpickrInputElementEvents($event, 'lastModifiedOn', 'date')">
+                            </div>
+                            <a class="input-button cs-datepicker-calendar-btn" matTooltip="Calendar"
+                                matTooltipPosition="above" data-toggle
+                                [(ngModel)]="filterFields['lastModifiedOn']['date']" mwlFlatpickr [monthSelectorType]="'dropdown'"
+                                (flatpickrReady)="flatpickrOnReady($event, 'lastModifiedOn', 'date')"
+                                (flatpickrOpen)="flatpickrOnOpen($event, 'lastModifiedOn', 'date')"
+                                (flatpickrClose)="flatpickrOnClose($event, 'lastModifiedOn', 'date')"
+                                (flatpickrChange)="flatpickrOnChange($event, 'lastModifiedOn', 'date')"
+                                [enableTime]=true>
+                                <em class="icon-mat-date_range"></em>
+                            </a>
+                            <a class="input-button cs-mat-clear cs-datepicker-remove-btn" matTooltip="clear"
+                                matTooltipPosition="above" *ngIf="filterFields['lastModifiedOn']['date']">
+                                <em class="icon-mat-clear" (click)="closeClick('lastModifiedOn','date')"></em>
+                            </a>
+                        </div>
+                        <div *ngIf="filterFields['lastModifiedOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%" class="cs-pr cs-seperate-cal-div">
+                                <div class="cs-fullwidth">
+                                    <input placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                        matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                        matTooltipPosition="above" type="text" data-input
+                                        [(ngModel)]="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][0]]"
+                                        (click)="flatpickrInputElementEvents($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])"
+                                        (keyup)="flatpickrInputElementEvents($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])">
+                                    <a class="input-button cs-datepicker-calendar-btn cs-search-cal-btn"
+                                        matTooltip="Calendar" matTooltipPosition="above" data-toggle
+                                        [(ngModel)]="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][0]]"
+                                        mwlFlatpickr [monthSelectorType]="'dropdown'"
+                                        (flatpickrReady)="flatpickrOnReady($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])"
+                                        (flatpickrOpen)="flatpickrOnOpen($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])"
+                                        (flatpickrClose)="flatpickrOnClose($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])"
+                                        (flatpickrChange)="flatpickrOnChange($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][0])"
+                                        [enableTime]=true>
+                                        <em class="icon-mat-date_range cs-timepicker"></em>
+                                    </a>
+                                    <a class="input-button cs-mat-clear cs-datepicker-remove-btn cs-search-clear-btn cs-cur"
+                                        matTooltip="clear" matTooltipPosition="above"
+                                        *ngIf="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][0]]">
+                                        <em class="icon-mat-clear"
+                                            (click)="closeClick('lastModifiedOn',filterFields['lastModifiedOn']['betweenFields'][0])"></em>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="filterFields['lastModifiedOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%">
+                                <span class="cs-to-label">to</span>
+                                <!-- <em class="icon-mat-arrow_downward"></em> -->
+                            </div>
+                        </div>
+                        <div *ngIf="filterFields['lastModifiedOn']['isBetweenFlag']" class="cs-seperate-cal cs-tmar6">
+                            <div fxLayout="row" fxFlex="100%" class="cs-pr cs-seperate-cal-div">
+                                <div class="cs-fullwidth">
+                                    <input placeholder={{this.appUtilityConfig.userDateTimePickerFormat}}
+                                        matTooltip="{{this.appUtilityConfig.userDateTimePickerFormat}}"
+                                        matTooltipPosition="above" type="text" data-input
+                                        [(ngModel)]="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][1]]"
+                                        (click)="flatpickrInputElementEvents($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])"
+                                        (keyup)="flatpickrInputElementEvents($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])">
+                                    <a class="input-button cs-datepicker-calendar-btn cs-search-cal-btn"
+                                        matTooltip="Calendar" matTooltipPosition="above" data-toggle
+                                        [(ngModel)]="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][1]]"
+                                        mwlFlatpickr [monthSelectorType]="'dropdown'"
+                                        (flatpickrReady)="flatpickrOnReady($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])"
+                                        (flatpickrOpen)="flatpickrOnOpen($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])"
+                                        (flatpickrClose)="flatpickrOnClose($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])"
+                                        (flatpickrChange)="flatpickrOnChange($event, 'lastModifiedOn', filterFields['lastModifiedOn']['betweenFields'][1])"
+                                        [enableTime]=true>
+                                        <em class="icon-mat-date_range cs-timepicker"></em>
+                                    </a>
+                                    <a class="input-button cs-mat-clear cs-datepicker-remove-btn cs-search-clear-btn cs-cur"
+                                        matTooltip="clear" matTooltipPosition="above"
+                                        *ngIf="filterFields['lastModifiedOn'][filterFields['lastModifiedOn']['betweenFields'][1]]">
+                                        <em class="icon-mat-clear"
+                                            (click)="closeClick('lastModifiedOn',filterFields['lastModifiedOn']['betweenFields'][1])"></em>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-filter-objectsmar cs-add-objects">
+                        <div class="cs-filter-objects">
+                            <mat-label>Last modified by</mat-label>
+                            <mat-chip *ngIf="filterFields['lastmodifiedby'].length > 0">
+                                {{filterFields['lastmodifiedby'].length}}</mat-chip>
+                            <button class="cs-add-objectsbtn" color="primary" ng-reflect-disable-ripple="true"
+                                matTooltip="Add" matTooltipPosition="above"
+                                (click)="addIconClick($event, 'lastmodifiedby')" [mdePopoverTriggerFor]="addIconPopover"
+                                mdePopoverTriggerOn="click">
+                                <em class="icon-mat-add cs-cur"></em>
+                            </button>
+                        </div>
+                        <div class="cs-align-center cs-pr" *ngIf="filterFields['lastmodifiedby'].length > 0">
+                            <button class="cs-matoption-arrow" (click)="onClickScrollFilterModifiedByLeft()">
+                                <em class="icon-mat-keyboard_arrow_left"></em>
+                            </button>
+
+                            <div #scrollContentFilterObjectModifiedBy class="cs-scoll-component cs-objcremofi-width">
+                                <div class="cs-scoll-container">
+                                    <div class="cs-scroll-content">
+                                        <div class="cs-pr cs-globalsearch-avatar scroll-items cs-display-inlineblock"
+                                            *ngFor="let object of filterFields['lastmodifiedby']">
+                                            <img class="cs-filter-avatar" [matTooltip]="object['username']"
+                                                matTooltipPosition="above" mat-card-avatar src="{{object['imgsrc']}}"
+                                                alt="User Avatar" onError="this.src='assets/img/user_icon.png'">
+                                            <button class="cs-display-none cs-selecteduserclear-btn" (click)="remove(object, 'lastmodifiedby')">
+                                                <em class="icon-mat-clear"></em>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="cs-matoption-arrow cs-filterdetailes-rightarw"
+                                (click)="onClickScrollFilterModifiedByRight()">
+                                <em class="icon-mat-keyboard_arrow_right"></em>
+                            </button>
+                        </div>
+                        <span class="cs-objectname-label" *ngIf="filterFields['lastmodifiedby'].length === 0">Add last
+                            modified name</span>
+                    </div>
+                </div>
+                <div class="cs-right-window-filterbtns">
+                    <button (click)="clearMessageConfirmAlert()" ng-reflect-color="primary" mat-stroked-button
+                        class="cs-mat-labelonly mat-stroked-button mat-primary">
+                        <span class="cs-mat-btnlabel"> Clear Filter</span>
+                    </button>
+                    <button (click)="applyAction()" ng-reflect-color="primary" mat-flat-button
+                        class="cs-mat-labelonly mat-stroked-button mat-primary">
+                        <span class="cs-mat-btnlabel">Apply Filter</span>
+                    </button>
+                </div>
+
+                <mde-popover #addIconPopover="mdePopover" [mdePopoverOverlapTrigger]="false"
+                    [mdePopoverCloseOnClick]="false">
+                    <div class="cs-filter-addbtn-popup">
+                        <mat-form-field>
+                            <input #autocompleteInput matInput [formControl]="addIconPopoverControl">
+                            <button class="cs-matsearch-btn">
+                                <em class="icon-mat-search"></em>
+                            </button>
+                        </mat-form-field>
+                        <mat-selection-list *ngIf="currentFilterField === 'objectName'" class="cs-custom-scroll">
+                            <mat-list-option *ngFor="let option of filteredResult['objectName']; index as i"
+                                (click)="popOverItemSelection(option)" [value]="option['isChecked']" [selected]="option['isChecked']">
+                                {{option['objectDisplayName']}}
+                            </mat-list-option>
+                        </mat-selection-list>
+
+                        <mat-selection-list *ngIf="currentFilterField === 'createdby'" class="cs-custom-scroll">
+                            <mat-list-option *ngFor="let option of filteredResult['corUsers']; index as i"
+                                (click)="popOverItemSelection(option)" [value]="option['isCreatedByChecked']" [selected]="option['isCreatedByChecked']">
+                                <span>{{option['display_name']}}</span>
+                            </mat-list-option>
+                        </mat-selection-list>
+
+                        <mat-selection-list *ngIf="currentFilterField === 'lastmodifiedby'" class="cs-custom-scroll">
+                            <mat-list-option *ngFor="let option of filteredResult['corUsers']; index as i"
+                                (click)="popOverItemSelection(option)" [value]="option['isLastModifiedByChecked']"[selected]="option['isLastModifiedByChecked']">
+                                <span>{{option['display_name']}}</span>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                </mde-popover>
+            </mat-card>
+        </div>
+    </div>
+</div>

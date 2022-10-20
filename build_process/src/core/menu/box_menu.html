@@ -1,0 +1,50 @@
+<div id="box_menu" class="cs-box-menu">
+  <mat-list class="cs-bx-mul cs-custom-scroll">
+    <ngx-masonry   [options]="masonryOptions" style="width:100%; margin: 0; "[ordered]="true">
+      <div ngxMasonryItem *ngFor="let group of menuService.assignedMenuGroups; index as menucolorindex"
+        class="cs-bx-m-each {{menuClasses[menucolorindex % 9]}}" (click)='group.menuItems.web.length == 1 && openPage(group.menuItems.web[0]);' [ngClass]=" group.menuItems.web.length == 1 ? 'cs-bx-s-m-bar' : ''">
+        <mat-list>
+          <mat-list-item id="{{group.menugroupName+ '_boxmenu'}}"
+            *ngIf="group.menuGroupDisplayName.length > 0 && group.menuItems.web.length > 0"
+            title="{{(group.menuItems.web.length == 1 ? group.menuItems.web[0].title : group.menuGroupDisplayName) | translate}}" [ngClass]=" group.menuItems.web.length == 1 ? 'cs-bx-s-m-ui' : ''">
+            <div class="cs-bx-m-gp-card" *ngIf="group.menuItems.web.length > 1">
+              <div class="cs-bx-m-hico">
+                <button mat-icon-button>
+                  <em class="{{group['icon']}}"></em>
+                </button>
+              </div>
+              <mat-label  class="cs-parentlabel cs-toppopwrdbrk">
+                {{group.menuGroupDisplayName | translate}}</mat-label>
+              </div>
+                <div class="cs-bx-m-s-tem" *ngIf="group.menuItems.web.length == 1">
+                <div class="cs-bx-m-hico" [ngClass]=" group.menuItems.web.length == 1 ? 'cs-bx-m-ex-hico' : ''" >
+                  <button mat-icon-button>
+                    <em  class="{{group.menuItems.web[0].icon}}"
+                      (click)="openPage(group.menuItems.web[0])"></em>
+                  </button>
+                </div>
+                <div class="cs-bx-m-ex-label">
+              <mat-label class="cs-parentlabel cs-toppopwrdbrk cs-truncate"
+                (click)="openPage(group.menuItems.web[0])">
+                {{group.menuItems.web[0].title | translate}}</mat-label>
+              </div>
+              </div>
+           
+          </mat-list-item>
+          <div class="cs-bx-m-sub-m cs-cur cs-custom-scroll" *ngIf="group.menuItems.web.length != 1">
+            <div class="cs-bx-m-subl" id="{{p.menuitemid + '_boxmenu' }}" *ngFor="let p of group.menuItems.web;"
+              title="{{p.title | translate}}" (click)="openPage(p)">
+              <div>
+                <button mat-icon-button>
+                  <em class="{{p.icon}}"></em>
+                </button>
+              </div>
+              <mat-label>{{p.title | translate}}</mat-label>
+            </div>
+          </div>
+        </mat-list>
+      </div>
+    </ngx-masonry>
+  </mat-list>
+</div>
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" main></ion-router-outlet>

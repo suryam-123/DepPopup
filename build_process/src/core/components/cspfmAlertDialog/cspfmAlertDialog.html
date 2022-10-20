@@ -1,0 +1,43 @@
+<div class="cs-mat-alertset cs-mat-custom-theme" *ngIf="type == 'Alert'">
+    <div class="cs-popup-title" *ngIf="title">{{title}}</div>
+    <mat-dialog-content class="cs-error-handling">
+        <h5 mat-dialog-title *ngIf="description">{{description}}</h5>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" *ngIf="buttonInfo && buttonInfo.length > 0">
+        <!-- mat-flat-button --> 
+        <button id= "{{'alert_action_'+buttoninfo['name']}}" *ngFor="let buttoninfo of buttonInfo" (click)="close(buttoninfo)" ng-reflect-color="primary" mat-stroked-button class="cs-mat-labelonly mat-stroked-button mat-primary">
+            <span class="cs-mat-btnlabel">{{buttoninfo['name']}}</span>
+        </button>
+    </mat-dialog-actions>
+</div> 
+
+<iframe *ngIf="type==='Audit'" style="border:1px solid #75d4fa;" [src]="url" width="1000" height="500"  title={{type}}></iframe>
+<iframe *ngIf="type==='Notifications'" style="border:1px solid #75d4fa;" [src]="url"  width="1000" height="500" overflow="hidden"  title={{type}}></iframe>
+
+<div *ngIf="type==='PDF'" style="height: 600px;width: 1090px;overflow: hidden;">
+    <ng2-pdfjs-viewer #pdfViewer [startPrint]="startPrint"></ng2-pdfjs-viewer>
+</div>
+
+<div *ngIf="type==='HTML'" style="height: 600px;width: 1075px;overflow: hidden;">
+    <mat-toolbar class="cs-mat-pageheadtoolbar">
+        <span>Report</span>
+        <span class="example-spacer"></span>
+        <a [href]='url' download style="text-decoration: none">
+            <button id="alert_action_download" mat-mini-fab color="primary" class="cs-mat-pagehead-eachactions cs-mat-icononly">
+                <em class="icon-mat-save_alt cs-editact" title="Download"></em>
+            </button>
+        </a>
+        <button id="alert_action_print" mat-mini-fab color="primary" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="printHTML()">
+            <em class="icon-mat-print cs-editact" title="Print"></em>
+        </button>
+    </mat-toolbar>
+    <div [innerHTML]="innerHTML" style="padding: 0px 10px;height: 535px;overflow-y: scroll"></div>
+</div>
+
+<div class="cs-mat-alertset cs-mat-custom-theme" *ngIf="type==='Browser'">
+    <div style="display: block;margin-left: auto;margin-right: auto;width: 150px;">
+        <img style="max-width: 100%" title="Org Logo" alt="" src="../../../logo/org_logo.png"
+            onerror="this.src='assets/img/chainsys-platform-logo.png'">
+    </div>
+    <h5 class="cs-popup-title" mat-dialog-title *ngIf="title">{{title}}</h5>
+</div>

@@ -1,0 +1,66 @@
+<div id="left_vertical_menu" class="cs-menu2-hide cs-custom-scroll cs-scrolltopVal">
+      <div class="cs-menu-btns"
+            title="{{(menuGroup.menuItems.web.length == 1 ? menuGroup.menuItems.web[0].title : menuGroup.menuGroupDisplayName) | translate}}"
+            [ngClass]="{'cs-menu2-btn-hover': menuGroup['expand']}" (click)='closeMenu($event,menuGroup, i); menuGroup.menuItems.web.length == 1 && openPage(menuGroup.menuItems.web[0]);
+            ' *ngFor="let menuGroup of menuService.assignedMenuGroups;index as i;"
+            id="{{menuGroup.menugroupName + '_left_vertical_menu'}}">
+
+
+            <button class="cs-menu2-btn" *ngIf="menuGroup.menuItems.web.length == 1">
+                  <!-- <em *ngIf="menuGroup.menuItems.web.length > 1" class="cs-ts-26 {{menuGroup.icon}}"></em> -->
+                  <em class="cs-ts-26 {{menuGroup.menuItems.web[0].icon}}"></em>
+
+            </button>
+            <button class="cs-menu2-btn" *ngIf="menuGroup.menuItems.web.length > 1">
+                  <em class="cs-ts-26 {{menuGroup.icon}}"></em>
+                  <!-- <em *ngIf="menuGroup.menuItems.web.length == 1" class="cs-ts-26 {{menuGroup.menuItems.web[0].icon}}" (click)="openPage(menuGroup.menuItems.web[0])"></em> -->
+                  <em class="icon-mat-keyboard_arrow_right cs-left-verti-right"></em>
+
+            </button>
+            <div *ngIf="menuGroup.menuItems.web.length > 1">
+
+                  <div class="cs-menu2-submenu" *ngIf="menuGroup['expand']">
+                        <div>
+                              <h6 title="{{menuGroup.menuGroupDisplayName | translate}}"
+                                    class="cs-menu2-submenu-header">{{menuGroup.menuGroupDisplayName | translate}}
+                              </h6>
+                        </div>
+                        <!-- <div *ngIf="menuGroup.menuItems.web.length == 1" >
+                              <h6 title="{{menuGroup.menuItems.web[0].title | translate}}" class="cs-menu2-submenu-header" (click)="openPage(menuGroup.menuItems.web[0])">{{menuGroup.menuItems.web[0].title | translate}}</h6>
+                        </div> -->
+                        <mat-list class="cs-sub-menu cs-custom-scroll">
+                              <mat-list-item class="cs-menu2-item"
+                                    *ngFor="let menu of menuGroup['menuItems']['web'];index as i"
+                                    id="{{menu.menuitemid}}" (click)="openPage(menu)">
+                                    <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                                          <em class="{{menu['icon']}}"></em>
+                                    </button>
+                                    <mat-label title="{{menu['title'] | translate}}"
+                                          class="cs-menu2-submenu-label cs-toppopwrdbrk">
+                                          {{menu['title'] | translate}}</mat-label>
+                              </mat-list-item>
+                        </mat-list>
+                  </div>
+            </div>
+
+            <!-- <div class="cs-menu2-submenu" *ngIf="menuGroup['expand']">
+                  <h6 title="{{menuGroup.menuGroupDisplayName | translate}}" class="cs-menu2-submenu-header">{{menuGroup.menuGroupDisplayName | translate}}</h6>
+                  <mat-list class="cs-sub-menu cs-custom-scroll">
+                        <mat-list-item class="cs-menu2-item" *ngFor="let menu of menuGroup['menuItems']['web'];index as i" id="{{menu.menuitemid}}" (click)="openPage(menu)">
+                              <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                                    <em class="{{menu['icon']}}"></em>
+                              </button>
+                              <mat-label title="{{menu['title'] | translate}}" class="cs-menu2-submenu-label cs-toppopwrdbrk">{{menu['title'] | translate}}</mat-label>
+                        </mat-list-item>
+                  </mat-list>
+            </div> -->
+            <div *ngIf="menuGroup.menuItems.web.length > 1">
+                  <div *ngIf="menuGroup['expand']" class="cs-menu-arrow"></div>
+            </div>
+
+      </div>
+</div>
+<!-- <div class="cs-click-menu-hide"> -->
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" main>
+</ion-router-outlet>
+<!-- </div> -->

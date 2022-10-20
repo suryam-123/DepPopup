@@ -1,0 +1,33 @@
+<div id="{{dropdownId}}" class="dropdown">
+  <a class="dropdown-toggle" id="{{dropDownToggleId}}" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
+    Actions
+    <span class="caret"></span>
+  </a>
+  <div class="dropdown-menu padding10 cs-status-popover-box">
+
+    <div *ngIf="cspfmEditorType && cspfmEditorType === 'LOOKUP'" class="cs-lookup-jquery-call">
+      <app-cspfmweblookuppage [slickgridRowIdentificationValues]="slickgridRowIdentificationValues"
+        [serviceObject]="info['data']['serviceObject']" [callingFrom]="'slickgrid'"
+        [dataSource]="info['data']['dataSource']" [lookupColumnName]="info['data']['lookupColumnName']"
+        (lookupSelected)="lookupSelected($event)" [lookupInput]="info['data']['lookupInput']"
+        [objectName]="info['data']['objectName']">
+      </app-cspfmweblookuppage>
+    </div>
+
+    <div *ngIf="info && info['actionType'] ==='ASSOCIATION'">
+      <div [attr.data-cs-dropdown]="dripDownAttribute">
+        <mat-chip-list class="cs-recordasso-slick-overflowbox cs-custom-scroll">
+          <mat-chip *ngFor="let chipElement of info['additionalChipArray']" title="{{ chipElement }}">
+            <div class="cs-ra-chip-parent cs-overflowhidden">
+              <div class="cs-ra-chip-mainlabel cs-truncate">
+                {{ chipElement }}
+              </div>
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    
+  </div>
+</div>

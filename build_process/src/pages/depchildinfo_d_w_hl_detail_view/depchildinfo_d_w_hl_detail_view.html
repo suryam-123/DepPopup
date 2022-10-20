@@ -1,0 +1,418 @@
+<div [ngClass]="{'cs-mat-ui cs-mat-custom-theme': isPopUpEnabled}">
+    <mat-toolbar [id]=213011 class="cs-mat-pageheadtoolbar" color="primary">
+        <div class="cs-mat-toolbartitle"><button mat-icon-button="" title="Back" id="ACT_depchildinfo_d_w_hl_detail_view_backnavigation" *ngIf="!isFromMenu && !isPopUpEnabled" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="appUtilityConfig.backButtonOnclick(this, 'DetailView', '/menu/depchildinfo_d_w_hl_detail_view')"><em class="icon-mat-keyboard_backspace"></em></button><span class="cs-mat-pageheadtitle">{{'depchildinfo_d_w_hl_detail_view.Layout.depchildinfo_d_w_hl_detail_view' | translate}}</span></div><span class="example-spacer"></span>
+        <div [hidden]="isSkeletonLoading"><button title="{{'depchildinfo_d_w_hl_detail_view.Action.List_1' | translate}}" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="listButton_7774939_Onclick()" mat-icon-button="" id="depchildinfo_d_w_hl_detail_view_List_1"><em style="" class="icon-mat-list"></em></button><button color="primary" title="{{'depchildinfo_d_w_hl_detail_view.Action.New_1' | translate}}" (click)="addButton_7774938_Onclick()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" mat-icon-button="" id="depchildinfo_d_w_hl_detail_view_New_1"><em style="" class="icon-mat-add"></em></button><button color="primary" title="{{'depchildinfo_d_w_hl_detail_view.Action.Edit_1' | translate}}" slot="end" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="editButton_7774937_Onclick()" mat-icon-button="" id="depchildinfo_d_w_hl_detail_view_Edit_1"><em style="" class="icon-mat-create"></em></button></div><button mat-mini-fab="" color="primary" *ngIf="!isSkeletonLoading && isPopUpEnabled" title="Close" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="appUtilityConfig.backButtonOnclick(this, 'DetailView', '/menu/depchildinfo_d_w_hl_detail_view')"><em class="icon-mat-close"></em></button>
+    </mat-toolbar>
+    <div class="mat-progress-spinner-overlay" *ngIf="isCustomFetchLoading">
+        <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src="assets/img/dataloading.gif" /></div>
+    </div>
+    <div class="cs-custom-scroll cs-scroll-body-height cs-mat-main-content">
+        <div class="cs-mat-contentmain">
+            <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption" *ngIf="isSkeletonLoading">
+                <div fxLayout="row-wrap">
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row-wrap" style="padding-top: 5%">
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <div id="SEC_depchildinfo_d_w_hl_detail_view_PARENT_WEB_BODY_SECTION" class="cs-pr" [hidden]="isSkeletonLoading">
+                <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption cs-tabview-matcard-bs-r">
+                    <div class="cs-matcard-head-mn cs-h-22">
+                        <mat-card-header class="cs-pull-left">
+                            <mat-card-title>Dep_PersonalInfo</mat-card-title>
+                        </mat-card-header>
+                        <div class="cs-pull-right"></div>
+                    </div>
+                    <div [hidden]="expandParentObjectData =='C'">
+                        <div fxLayout="row wrap" class="cs-event-height">
+                            <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$name_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_name_7774906']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                    <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$name_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_name_7774906']}}</div>
+                                </div>
+                            </div>
+                            <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_employeename_7774909']['label'] | translate}}</label>
+                                    <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_employeename_7774909']}}</div>
+                                </div>
+                            </div>
+                            <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$team_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_team_7774908']['label'] | translate}}</label>
+                                    <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$team_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_team_7774908']}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div [hidden]="expandParentObjectData !=='FO'" class="cs-tmar">
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$location_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_location_7774914']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$location_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_location_7774914']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcurrency_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcurrency_7774915']['label'] | translate}} In INR</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcurrency_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcurrency_7774915']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deptimestamp_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deptimestamp_7774917']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deptimestamp_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deptimestamp_7774917']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depdate_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depdate_7774912']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depdate_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depdate_7774912']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depboolean_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depboolean_7774904']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depboolean_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depboolean_7774904']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depnumber_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depnumber_7774898']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depnumber_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depnumber_7774898']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depdecimal_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depdecimal_7774910']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depdecimal_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depdecimal_7774910']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup_7774905']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup_7774905']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774911']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774911']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depformulan_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid cs-mat-formulafield cs-pr" style="">
+                                        <mat-label style="">{{'depchildinfo_d_w_hl_detail_view.Element.depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depformulan.depformulan'| translate}}<img title="square(deppersonalinfo.DepNumber)" style="top: 0px;" src="assets/img/formulafield_icon.png" alt="" /></mat-label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depformulan_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depformulan__f_7774916']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup2_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup2_7774901']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup2_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup2_7774901']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774907']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774907']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depmultiselect_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depmultiselect_7774896']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depmultiselect_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depmultiselect_7774896']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcheckbox_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcheckbox_7774897']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcheckbox_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcheckbox_7774897']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup3_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup3_7774899']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup3_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup3_7774899']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcoruser_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcoruser_7774903']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depcoruser_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcoruser_7774903']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774913']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774913']}}</div>
+                                    </div>
+                                </div>
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup4_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup4_7774902']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$deplookup4_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup4_7774902']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" class="cs-event-height">
+                                <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                                    <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774900']['label'] | translate}}</label>
+                                        <div *ngIf="dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774900']}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-card-footer align="center" class="cs-mat-togglearrowbtn cs-toggleoption_coll_exp cs-cur cs-bmar"><span [hidden]="expandParentObjectData !=='FO'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em class="icon-mat-keyboard_arrow_up"></em></button></span><span [hidden]="expandParentObjectData !=='HO'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em [ngClass]="previousGridState==='FO'?'icon-mat-keyboard_arrow_up':(previousGridState==='C'?'icon-mat-keyboard_arrow_down':'icon-mat-keyboard_arrow_down')"></em></button></span><span [hidden]="expandParentObjectData !=='C'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em class="icon-mat-keyboard_arrow_down"></em></button></span></mat-card-footer>
+                </mat-card>
+            </div>
+            <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption" *ngIf="isSkeletonLoading">
+                <div fxLayout="row-wrap">
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row-wrap" style="padding-top: 5%">
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="25%">
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader [animation]="animation" style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <div id="SEC_depchildinfo_d_w_hl_detail_view_CHILD_WEB_BODY_SECTION" class="cs-pr" [hidden]="isSkeletonLoading">
+                <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption cs-tabview-matcard-bs-r">
+                    <div class="cs-matcard-head-mn cs-h-22">
+                        <mat-card-header class="cs-pull-left">
+                            <mat-card-title>Dep_childInfo</mat-card-title>
+                        </mat-card-header>
+                        <div class="cs-pull-right"></div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcname_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depcname_7774923']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcname_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcname_7774923']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcname1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depcname1_7774932']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcname1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcname1_7774932']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcdate1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depcdate1_7774919']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcdate1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcdate1_7774919']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcnum1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depcnum1_7774931']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcnum1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcnum1_7774931']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depccurrency1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depccurrency1_7774924']['label'] | translate}} In INR</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depccurrency1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depccurrency1_7774924']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depboolean_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depboolean_7774926']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depboolean_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depboolean_7774926']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depnumber_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depnumber_7774929']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depnumber_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depnumber_7774929']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcformula1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid cs-mat-formulafield cs-pr" style="">
+                                <mat-label style="">{{'depchildinfo_d_w_hl_detail_view.Element.depchildinfo_DUMMY$$depcformula1.depcformula1'| translate}}<img title="depchildinfo.DepC Name1.length()" style="top: 0px;" src="assets/img/formulafield_icon.png" alt="" /></mat-label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcformula1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcformula1__f_7774935']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdate_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depdate_7774927']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdate_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depdate_7774927']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup1_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depclookup1_7774920']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup1_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depclookup1_7774920']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depemployee_depclookup1$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774934']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depemployee_depclookup1$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774934']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup2_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depclookup2_7774928']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup2_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depclookup2_7774928']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcoruser_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depcoruser_7774933']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depcoruser_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depcoruser_7774933']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deptimestamp_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_deptimestamp_7774925']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$deptimestamp_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_deptimestamp_7774925']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depemployee_depclookup2$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_7774936']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depemployee_depclookup2$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_7774936']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdecimal_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depdecimal_7774922']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdecimal_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depdecimal_7774922']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup3_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depclookup3_7774918']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup3_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depclookup3_7774918']}}</div>
+                            </div>
+                        </div>
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdropdownn_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depdropdownn_7774921']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depdropdownn_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depdropdownn_7774921']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row wrap" class="cs-event-height">
+                        <div id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup4_div" fxLayout="column" fxFlex="33.333333333333336%" class="entry-form-field-container">
+                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm74408_depclookup4_7774930']['label'] | translate}}</label>
+                                <div *ngIf="dataObject['depchildinfo_DUMMY']" id="FLD_depchildinfo_d_w_hl_detail_view_depchildinfo_DUMMY$$depclookup4_input" class="cs-mat-vg-cont" style="">{{dataObject['depchildinfo_DUMMY'] | cspfm_data_display : gridFieldInfo['pfm74408_depclookup4_7774930']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomActionProcessing">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'></div>
+</div>

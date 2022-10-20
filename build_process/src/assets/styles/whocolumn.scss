@@ -1,0 +1,29 @@
+.cs-whocolumn{
+    div{
+        padding:0 6px;
+    ion-item{
+        --border-color: #fff!important;
+        &:not(:last-of-type){
+        border-bottom:1px solid #d8d8d8;
+        }
+        ion-avatar{
+            width: 36px;
+            height: 36px;
+        }
+        ion-label{
+            p{
+                color:#777;
+            }
+            h3{
+                font-size:14px;
+                margin:4px 0;
+                color: #111;
+                font-weight: 500;
+            }
+            h2{
+                font-size:13px;
+            }
+        }
+    }
+    }
+}

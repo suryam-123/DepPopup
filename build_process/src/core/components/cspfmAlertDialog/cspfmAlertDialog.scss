@@ -1,0 +1,25 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-form-field {
+    display: block;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+.cs-mat-alertset{
+    min-width:200px; 
+    min-height:70px; 
+    padding: 20px;
+    .cs-popup-title{
+        margin: 10px 0px!important;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    button{
+        margin-left: 10px;
+    }
+}

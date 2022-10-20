@@ -1,0 +1,285 @@
+.cs-stw-popup{
+    width: 470px;
+
+    .cs-tmar-15{
+       
+        margin-top: 15px;
+    }
+    
+    .cs-fwidth{
+        width: 100%;
+    }
+    .cs-stw-title{
+        font-size: 14px;
+        padding: 8px 10px 8px 25px;
+        font-weight: 500;
+    }
+    
+    .cs-status-history{
+        height: auto;
+        max-height: 328px;
+         position: relative;
+        background: #fff;
+        .cs-date-line{
+            display: inline-block;
+            height: calc(100% - 80px);
+            width: 1px;
+            background: #ddd;
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            z-index: 0;
+        }
+        .cs-sh-individual-segment{
+            padding: 10px;
+            .cs-sh-date-badge-parent{
+                float: left;
+                width: 42px;
+                display: inline-flex;
+                height: 33px;
+                justify-content: center;
+                padding-top: 5px;
+                .cs-sh-date-badge{
+                    border: 1px solid #ddd !important;
+                    border-radius: 3px;
+                    padding: 5px;
+                    color: #00b7ff;
+                    box-shadow: 0px 3px 1px 0px #ddd;
+                    z-index: 9;
+                    background: #fff;
+                    position: relative;
+                    min-width: 25px;
+                    display: inline-flex;
+                    justify-content: center;
+                
+
+                    &::before{
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        top: -7px;
+                        width: 0;
+                        height: 0;
+                        border-left: 6px solid transparent;
+                        border-right: 6px solid transparent;
+                        border-bottom: 7px solid #ddd;
+                        margin: auto;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+                .cs-sh-date-dot-badge{
+                    z-index: 99;
+                    &::before{
+                        content: '';
+                        border-radius: 100%;
+                        background: #00b7ff;
+                        padding: 5px;
+                        display: inline-block;
+                        width: 2px;
+                        height: 2px;
+                    }
+                }
+            }
+            .cs-sh-content-parent{
+                float: left; 
+                width: calc(100% - 45px);
+                .cs-sh-img-status{
+                    width: 100%;
+                    margin-bottom: 2px;
+                    .cs-sh-brief-date{
+                        float: left;
+                        display: inline-flex;
+                        .cs-toggle-icon{
+                            margin-left: 10px;
+                            cursor: pointer;
+                            position: relative;
+                            .cs-badge-count{
+                                font-size: 11px;
+                                border: 1px solid #ff6060;
+                                border-radius: 100%;
+                                width: 16px;
+                                display: inline-flex;
+                                height: 16px;
+                                align-items: center;
+                                justify-content: center;
+                                position: absolute;
+                                top: -7px;
+                                right: -12px;
+                                z-index: 99;
+                                background: #ff00007a;
+                                color: #fff;
+                            }
+                            em{
+                                font-size: 16px;
+                                border: 1px solid #ddd;
+                                padding: 5px;
+                                border-radius: 100%;
+                                background: #f4faff;
+                                color: #2196f3;
+                            }
+                        }
+                        .cs-sh-action-date{
+                            font-size: 14px;
+                            font-weight: 500;
+                            padding: 3px;
+                            .cs-lsmar{
+                                margin-right: 5px;
+                            }
+                        }
+                        .cs-sh-diff-date{
+                            font-size: 12px;
+                            // font-weight: 500;
+                            color: grey;
+                            padding: 3px;
+                            font-style: italic;
+                        }
+                    }
+                    .cs-sh-action-part{
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        float:right;
+
+                        .cs-status-his-user-img {
+                            float:left;
+                            display: inline-flex;
+                            img {
+                                width: 26px;
+                                height: auto;
+                                border-radius: 50px;
+                            }
+                        }
+                    }
+                }
+
+                .cs-sh-comment{
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: grey;
+                    padding-left: 3px;
+                    width: 98%;
+                    // overflow: hidden!important;
+                    // white-space: nowrap!important;
+                    // text-overflow: ellipsis!important;
+                }
+            }
+            .cs-sh-status{
+                margin-left: 10px;
+                font-size: 12px;
+                font-weight: 500;
+                text-transform: capitalize;
+                border-radius: 50px;
+                padding: 3px 10px 0px 10px;
+                min-width: 80px;
+                display: inline-block;
+                text-align: center;
+                height: 22px;
+                max-width: 155px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                &.cs-sh-status-approved{
+                    color: #00a96b;
+                    border: 1px solid #dceee8;
+                    background: #fbfffe;
+                }
+                &.cs-sh-status-reject{
+                    color: #f15d5d;
+                    border: 1px solid #f7e0de;
+                    background: #fff6f5;
+                }
+                &.cs-sh-status-request{
+                    color: #fe960f;
+                    border: 1px solid #eee4d4;
+                    background: #fefaf4;
+                }
+                &.cs-sh-status-accepted{
+                    color: #1890ff;
+                    border: 1px solid #e9f0f6;
+                    background: #f4faff;
+                }
+            }
+        }
+    }
+    .cs-status-history .cs-sh-individual-segment:first-child{
+        .cs-sh-date-badge-parent{
+            .cs-sh-date-badge{
+                &::before{
+                    content: '';
+                    display: none!important;
+                }
+            }
+        }
+    }
+    .cs-count-badge{
+        font-size: 11px;
+        font-weight: 800;
+        border: 1px solid #ddd;
+        border-radius: 100%;
+        height: 16px;
+        width: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        margin-top: 6px;
+        z-index: 10;
+        background: #fff;
+    }
+    .cs-approvers-img{
+        margin-right: 10px;
+        margin-top: 3px;
+        float: left;
+        img{
+            width: 26px!important;
+            height: auto!important;
+            border-radius: 50px;
+        }
+    }
+    .cs-approver-info{
+        // margin-right: 10px;
+        width: 100%;
+        .cs-approver-info-name{
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 5px;
+            width: 176px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cs-approver-info-date{
+            font-size: 11px;
+            margin-bottom: 5px;
+            color: grey;
+        }
+        .cs-approver-info-comment{
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: gray;
+            font-weight: 500;
+        }
+    }
+    .cs-count-line{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            height: calc(100% - 30px);
+            width: 1px;
+            background: #ddd;
+            top: 10px;
+            left: 7px;
+            z-index: 1;
+        }
+    }
+}
+.cs-norecords-text
+{
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

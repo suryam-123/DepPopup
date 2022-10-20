@@ -1,0 +1,425 @@
+.cs-toggleoption_coll_exp{ 
+    margin: 0!important;
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    button{
+        // border: 1px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        height: 25px;
+        width: 25px;
+        background: $primary_color!important;
+        color: $title_button_label_color;
+        font-size: 18px;
+        &:focus,&:active{
+            border: none!important;
+            background: none!important;
+            outline: none!important;
+        }
+    }
+}
+cspfmformula
+{
+    .cs-mat-view-grid
+    {
+        .cs-mat-vg-cont
+        {
+            min-height: 0px !important;
+            .mat-slide-toggle
+            {
+                height:0px;
+                line-height: 0px;
+                .mat-slide-toggle-bar
+                {
+                    height: 10px;
+                    .mat-slide-toggle-thumb-container
+                    {
+                      
+                        .mat-slide-toggle-thumb
+                        {
+                            height: 15px;
+                            width: 15px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }  
+}
+
+.cs-mat-view-grid{
+
+    // .mat-figure{
+        padding : 10px !important;
+        height  : 100% !important;
+        justify-content: left!important;
+        cs-whocolumn-icon{
+            button{
+               width: 30px;
+                height: 30px;
+                margin-right: 0px;
+            }
+        }
+        label{
+            color: $view_title_color;
+            font-size: $view_title_font_size;
+            display: inline-flex;
+            align-items: center;
+            font-weight: $view_title_font_weight;
+            font-style: $view_title_font_style;
+            // New
+            position: relative;
+            width: auto;
+            cs-whocolumn-icon{
+                button{
+                    top: -16px;
+                    position: absolute;
+                    font-size: 20px;
+                    height: 10px;
+                }
+            }
+        }
+        .cs-mat-vg-cont{
+            font-weight: $view_label_font_weight;
+            font-size: $view_label_font_size;
+            margin-top: 5px;
+            color: $view_label_color;
+            font-style: $view_label_font_style;
+          
+            a{
+                color:$view_label_hyperlink_color!important;
+                font-style: $view_label_hyperlink_font_style;
+                font-weight: $view_label_hyperlink_font_weight;
+                font-size: $view_label_hyperlink_font_size;
+            }
+            .cs-url-chip{	
+                a{	
+                    color: #0950cc !important;	
+                }	
+            }
+        }
+        button{
+            font-size: 24px;
+            color: $grey_base_primary;
+            margin-right: 10px;
+            background: none!important;
+            padding: 0;
+            // &:focus,&:active{
+            //     border: none!important;
+            //     background: none!important;
+            //     outline: none!important;
+            // }
+        }
+        .cs-recordassociation-count {
+            background: $userassignment_add_btn !important;
+            &:focus {
+                background: $userassignment_add_btn !important;
+            }
+        }
+    // }
+    .statusworkflowv1-view.cs-swf-webview-3.view-page-v3 .cs-workflow-view, 
+    .statusworkflowv1.cs-swf-webview-3.view-page-v3 .cs-workflow-view{
+        min-height: 50px;
+    }
+    .cs-mode2 .cs-workflow-view{
+        padding: 12px 10px 10px 10px !important;
+    }
+}
+.cs-action-labelWithIcon
+{
+    display: inline-flex;
+    align-items: center;
+}
+.cs-field-userAssign-Label
+{
+    padding: 10px 0px !important;
+}
+.cs-field-userAssign
+{
+    padding: 10px 0px 10px 0px !important;
+    .cs-cv-user-list-assign
+    {
+        display: inline-block;
+        &:hover
+        {
+            box-shadow: none!important;
+        }
+    }
+.cs-user-assign-field
+{
+    display: inline-flex;
+    .mat-mini-fab:not([class*=mat-elevation-z])
+    {
+     box-shadow: none;
+    }
+    .cs-userinfoblock-header
+    {
+top: 25px !important;
+    }
+    .cs-userassign-more-position
+    {
+     background: inherit !important;
+     box-shadow: none;
+     em {
+       font-size: 20px !important;
+       background: $userassignment_add_btn !important;
+       border-radius: 50%;
+       padding: 5px;
+       color: $userassignment_add_icon;
+       margin-right: inherit;           
+     }
+     &:hover {
+       opacity: 0.6;
+     }
+    }
+}       
+}
+
+.cs-matcard-sub-head{
+    .mat-figure{
+        padding: 0px!important;
+    }
+}
+
+label.cs-required{
+    position: relative;
+    &:before{
+        content: "*";
+        color: #d2504f;
+        position: absolute;
+        right: -8px;
+        top: 1px
+    }
+}
+.cs-ts-24{
+    font-size: 24px;
+}
+.mat-card-header{
+    justify-content: space-between;
+    button{
+        height: 24px;
+        width: 24px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        margin-left: 12px;
+        &:focus,&:active{
+            border: none!important;
+            background: none!important;
+            outline: none!important;
+        }
+    }
+}
+.cs-mat-main-content .cs-mat-contentmain mat-card{
+    .cs-tabview-matcard-bs-r{
+        border: none !important;
+        box-shadow: inherit !important;
+    }
+    .cs-matcard-head-mn{
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .mat-card-header{
+            margin-bottom: 0px!important;
+        }
+    }
+} 
+.cs-header-part{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+// //////////
+.flatpickr-day{
+    display: inline-flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    margin: 1px 5px!important;
+    width:10%!important;
+    flex-basis:10%!important;
+    height: 30px!important;
+}
+
+.flatpickr-current-month{
+    font-size: 100%!important;
+    width: fit-content;
+    top: 2px!important;
+    .flatpickr-monthDropdown-months{
+        font-weight: 500!important;
+        .flatpickr-monthDropdown-month{
+            background-color: $card_bg;
+            color: $grey_base_primary !important;
+            &:hover{
+                background-color: $slickgrid_row_hover_bg;
+            }
+        }
+    }
+}
+
+.flatpickr-prev-month,.flatpickr-next-month{
+    top: 2px!important;
+    padding: 4px 10px!important;
+    height: 26px!important;
+    font-weight: 800!important;
+}
+.flatpickr-next-month{
+    right: 70px!important;
+}
+.flatpickr-time{
+    height: 35px!important;
+}
+.flatpickr-confirm {
+    outline: none !important;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 13px;
+    width: 50px;
+    padding: 3px 0px 3px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $filled_button_bg!important;
+}
+
+
+.cs-noborder{
+    border: transparent!important;
+}
+
+.label-whocolumn
+{
+    .cs-section-btn{
+        height: 20px!important;
+        line-height: 10px !important;
+        .mat-button-wrapper
+        {
+            line-height: 12px !important;
+            em{
+                font-size: 14px;
+            }
+            .cs-mat-btnlabel
+            {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.cs-list-view{
+    padding: 0px!important;
+    .cs-header-name{
+        display: inline-block; 
+        width: 100%; 
+        margin-bottom: 10px;
+        mat-card-header{
+            float: left;
+        }
+        &.cs-slick-title{
+            margin-top: 20px;
+            margin-bottom: 0px;
+            mat-card-header{
+                float: left;
+                margin-left: 20px!important;
+                margin-bottom: 10px!important;
+            }
+            .cs-slick-action-block{
+                float: right;
+                margin-right: 15px;
+                .cs-lsmar{
+                    margin-left: 10px!important;
+                }
+            }
+        }
+    }
+}
+.cs-tabgroup-norec{
+    .cs_no_record_center{
+        top: 20%!important;
+    }
+    // height: calc(100vh - 415px) !important;
+}
+.slick-gridmenu-button{
+    display: none;
+}
+.cs-tw-600{
+    font-weight: 800;
+}
+.cs-title-hover{
+    padding-right: 30px;
+    .popover-icon{
+        display: none;
+        margin: 0px!important;
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        .cs-title-info-clk{
+            padding-bottom: 10px;
+            margin-left: 0px;        
+            em {
+                font-size: 20px;
+                color: $slickgrid_inner_icon_color;
+            }
+        }
+    }
+    &:hover{
+        .popover-icon{
+            display: inline-flex;
+        }   
+    }
+}
+.cs-slickoption-btn{
+    button{
+        span{
+            line-height: 10px;
+        }
+    }
+}
+
+.cs-record-count-badge{
+    width: auto;
+    min-width: 10px;
+    height: auto;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    background-color:$filled_button_bg;
+    color:$filled_button_color;
+    padding: 3px 6px;
+    border-radius: 10px;
+}
+.cs-error-count-badge{
+    cursor: pointer;
+    background-color: $card_bg !important;
+    box-shadow: 0 0 10px $general_shadow;
+    color:$card_title_color !important;  
+    font-size: 14px !important;
+    padding: 0px 6px !important;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid $input_box_border_color;
+    .cs-warn-icon{
+        color:red;
+        font-size: 14px;
+        padding-right: 5px;
+    }
+}
+.cs-no-header-record-count{
+    &:before{
+        border: transparent!important; 
+    }
+    .cs-record-count-badge{
+        margin-top: 5px;
+    }
+}
+.cs-h-22{
+    height: 22px;
+}

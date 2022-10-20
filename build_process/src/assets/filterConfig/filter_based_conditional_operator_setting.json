@@ -1,0 +1,245 @@
+
+{
+    "filterFieldTypeAndOperator": {
+        "TEXT": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "a*",
+                "displayName": "Starts with"
+            },
+            {
+                "symbol": "*z",
+                "displayName": "Ends with"
+            }
+        ],
+        "TEXTAREA": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "a*",
+                "displayName": "Starts with"
+            },
+            {
+                "symbol": "*z",
+                "displayName": "Ends with"
+            }
+        ],
+        "EMAIL": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "a*",
+                "displayName": "Starts with"
+            },
+            {
+                "symbol": "*z",
+                "displayName": "Ends with"
+            }
+        ],
+        "URL": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "a*",
+                "displayName": "Starts with"
+            },
+            {
+                "symbol": "*z",
+                "displayName": "Ends with"
+            }
+        ],
+        "AUTONUMBER": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "a*",
+                "displayName": "Starts with"
+            },
+            {
+                "symbol": "*z",
+                "displayName": "Ends with"
+            }
+        ],
+        "NUMBER": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "<>",
+                "displayName": "Not Equal"
+            },
+            {
+                "symbol": ">",
+                "displayName": "Greater"
+            },
+            {
+                "symbol": "<",
+                "displayName": "Lesser"
+            },
+            {
+                "symbol": ">=",
+                "displayName": "Greater than or Equal to"
+            },
+            {
+                "symbol": "<=",
+                "displayName": "Lesser than or Equal to"
+            }
+        ],
+        "DATE": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "<>",
+                "displayName": "Not Equal"
+            },
+            {
+                "symbol": ">",
+                "displayName": "Greater"
+            },
+            {
+                "symbol": "<",
+                "displayName": "Lesser"
+            },
+            {
+                "symbol": ">=",
+                "displayName": "Greater than or Equal to"
+            },
+            {
+                "symbol": "<=",
+                "displayName": "Lesser than or Equal to"
+            }
+        ],
+        "TIMESTAMP": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "<>",
+                "displayName": "Not Equal"
+            },
+            {
+                "symbol": ">",
+                "displayName": "Greater"
+            },
+            {
+                "symbol": "<",
+                "displayName": "Lesser"
+            },
+            {
+                "symbol": ">=",
+                "displayName": "Greater than or Equal to"
+            },
+            {
+                "symbol": "<=",
+                "displayName": "Lesser than or Equal to"
+            }
+        ],
+        "DECIMAL": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "<>",
+                "displayName": "Not Equal"
+            },
+            {
+                "symbol": ">",
+                "displayName": "Greater"
+            },
+            {
+                "symbol": "<",
+                "displayName": "Lesser"
+            },
+            {
+                "symbol": ">=",
+                "displayName": "Greater than or Equal to"
+            },
+            {
+                "symbol": "<=",
+                "displayName": "Lesser than or Equal to"
+            }
+        ],
+        "CURRENCY": [
+            {
+                "symbol": "",
+                "displayName": ""
+            },
+            {
+                "symbol": "=",
+                "displayName": "Equal"
+            },
+            {
+                "symbol": "<>",
+                "displayName": "Not Equal"
+            },
+            {
+                "symbol": ">",
+                "displayName": "Greater"
+            },
+            {
+                "symbol": "<",
+                "displayName": "Lesser"
+            },
+            {
+                "symbol": ">=",
+                "displayName": "Greater than or Equal to"
+            },
+            {
+                "symbol": "<=",
+                "displayName": "Lesser than or Equal to"
+            }
+        ]
+    }
+}

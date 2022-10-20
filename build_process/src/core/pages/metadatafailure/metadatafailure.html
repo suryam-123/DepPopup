@@ -1,0 +1,32 @@
+<!--
+  Generated template for the MetadatafailurePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-toolbar>
+      <div class="cs-tc" style="font-family: auto;
+      color: rgba(88, 88, 88, 1);">{{ metaConfig.metaPageTitle }}</div>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+<div style="float: none;text-align:center" *ngIf="isSyncFailed">
+  <img alt ="" src="assets/metaimages/{{imgName}}.png" style="height: 50vh;"/>
+</div>
+<div *ngIf="isSyncFailed" class="cs-tc">
+
+  <p style="font-size: 20px; font-family: auto; padding: 5px;
+  color: rgba(88, 88, 88, 1);">{{failureMessage}}</p>
+  <p style="font-size: 15px; color: rgba(180, 179, 179, 1);font-family: auto;">{{failureContent}}</p>
+
+</div>
+<div  *ngIf="forceUpdateAvailable" style="vertical-align:middle; text-align:center">
+  <img alt="" [src]="forceUpdaeImagePath" height="80" onerror="this.src = 'assets/img/chainsys_platform.png';"/>
+</div>
+</ion-content>
+<ion-footer>
+  <div style="text-align:center; margin-top:20px; ">
+      <ion-button style="--background: rgba(254,220,119,1); font-family: auto; color: rgba(69,71,74,1);" (click)="buttonClickAction()">{{actionName}}</ion-button>
+    </div>
+</ion-footer>

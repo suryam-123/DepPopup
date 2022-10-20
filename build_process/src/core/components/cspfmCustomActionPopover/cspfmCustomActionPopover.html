@@ -1,0 +1,65 @@
+<div *ngIf="customActionStatus == 'inprogress' && this['info']"
+    class="cs-recordasso-slick-overflowbox cs-custom-scroll cs-cus-act-inp-dropdown">
+    <div *ngIf="customActionInprogresInfo && customActionInprogresInfo['infoDetails']" class="cs-ca-inp-dd-pbody">
+        <div *ngIf="customActionInprogresInfo['infoDetails']['actionName'] && customActionInprogresInfo['processMode']"
+            class="cs-truncate cs-ca-inp-dd-label">
+            <label>
+                {{customActionInprogresInfo['processMode'] == 'backgroundProcessInprogress' ? 'Your process is running please wait' : ''}}
+            </label>
+        </div>
+        <div fxLayout="row wrap" class="cs-event-height cs-ca-inp-dd-bcontent">
+            <div fxLayout="column" fxFlex="15%" class="cs-ca-inp-dd-bc-left"
+                *ngIf="customActionInprogresInfo['infoDetails']['userName']">
+                <em class="fa fa-spinner fa-pulse fa-3x fa-fw"></em>
+            </div>
+            <div fxLayout="column" fxFlex="85%" class="cs-ca-inp-dd-bc-right"
+                *ngIf="customActionInprogresInfo['infoDetails']['duration']">
+                <div class="cs-mat-view-grid">
+                    <mat-label>Duration</mat-label>
+                    <div class="cs-mat-vg-cont">
+                        {{customActionInprogresInfo['infoDetails']['duration']}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="cs-event-height cs-ca-inp-dd-bcontent">
+            <div fxLayout="column" fxFlex="15%" class="cs-ca-inp-dd-bc-left"
+                *ngIf="customActionInprogresInfo['infoDetails']['userName']">
+                <img class="cs-filter-avatar" [matTooltip]="customActionInprogresInfo['infoDetails']['userName']"
+                    matTooltipPosition="above" mat-card-avatar
+                    src="{{customActionInprogresInfo['infoDetails']['profileImage']}}" alt="User Avatar"
+                    onError="this.src='assets/img/user_icon.png'">
+            </div>
+            <div fxLayout="column" fxFlex="85%" class="cs-ca-inp-dd-bc-right"
+                *ngIf="customActionInprogresInfo['infoDetails']['initiatedDateTime']">
+                <div class="cs-mat-view-grid">
+                    <mat-label>Initiated On</mat-label>
+                    <div class="cs-ca-inp-dd-bc-lbody">
+                        <div class="cs-ca-inp-dd-bc-ltbody"
+                            *ngIf="customActionInprogresInfo['infoDetails']['initiatedDate']">
+                            <em class="icon-mat-date_range"></em>
+                                <div class="cs-ca-ltbody-content cs-truncate">
+                                    {{customActionInprogresInfo['infoDetails']['initiatedDate']}}
+                            </div>
+                        </div>
+                        <div class="  cs-ca-inp-dd-bc-lbbody"
+                            *ngIf="customActionInprogresInfo['infoDetails']['initiatedTime']">
+                            <em class="icon-mat-access_time"></em>
+                            <div class="cs-ca-ltbody-content cs-truncate">
+                                {{customActionInprogresInfo['infoDetails']['initiatedTime']}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="column" class="" *ngIf="customActionInprogresInfo['infoDetails']['completedDateTime']">
+                <div class="cs-mat-view-grid">
+                    <mat-label>Completed On</mat-label>
+                    <div class="cs-mat-vg-cont">
+                        {{customActionInprogresInfo['infoDetails']['completedDateTime']}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

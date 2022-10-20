@@ -1,0 +1,55 @@
+
+export type BooleanField = "BOOLEAN";
+export type NumberField = "NUMBER";
+export type CurrencyField = "CURRENCY";
+export type DecimalField = "DECIMAL";
+export type TimestampField = "TIMESTAMP";
+export type DateField = "DATE";
+export type TextField = 'TEXT';
+export type StringField = 'STRING';
+export type RollupSummaryField = 'ROLLUPSUMMARY';
+export type FormulaField = "FORMULA";
+export type MasterDetailField = "MASTERDETAIL";
+export type LookupField = "LOOKUP";
+export type CommonLookupField = "COMMONLOOKUP";
+export type CheckboxField = "CHECKBOX";
+export type DropdownField = "DROPDOWN";
+export type MultiselectField = "MULTISELECT";
+export type RadioField = "RADIO";
+export type StatusWorkflowField = "STATUSWORKFLOW";
+export type TextAreaField = "TEXTAREA";
+export type UrlField = "URL";
+export type EmailField = "EMAIL";
+export type AutoNumberField = "AUTONUMBER";
+export type ActionField = "ACTION";
+export type PasswordField = "PASSWORD";
+export type RECORDASSOCIATION="RECORDASSOCIATION";
+
+export enum DataFieldType {
+  number = "NUMBER",
+  checkbox = "CHECKBOX",
+  textarea = "TEXTAREA",
+  url = "URL",
+  boolean = "BOOLEAN",
+  currency = "CURRENCY",
+  decimal = "DECIMAL",
+  timestamp = "TIMESTAMP",
+  email = "EMAIL",
+  richtext = "RICHTEXT",
+  radio = "RADIO",
+  dropdown = "DROPDOWN",
+  autonumber = "AUTONUMBER",
+  password = "PASSWORD",
+  text = "TEXT",
+  multiselect = "MULTISELECT",
+  date = "DATE",
+  statusworkflow = "STATUSWORKFLOW",
+  formula = "FORMULA",
+  rollupsummary = "ROLLUPSUMMARY",
+  header = "HEADER",
+  masterdetail = "MASTERDETAIL",
+  lookup = "LOOKUP",
+  commonlookup = "COMMONLOOKUP",
+  action = "ACTION",
+  RECORDASSOCIATION="RECORDASSOCIATION"
+}

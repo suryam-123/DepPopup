@@ -1,0 +1,282 @@
+@import "../../../assets/developerUploads/scss/global_color.scss";
+@import "../../../assets/developerUploads/scss/theme-variable.scss";
+
+
+.cs-cv-user-list-assign {
+  .cs-userassign-click {
+    //overflow: hidden;
+    cursor: pointer;
+    padding:0 10px;
+    text-align: left;
+    width: auto;
+    position: relative;
+    .cs-click-position {
+      float: left;
+      height: 50px;
+      padding-top: 10px;
+      margin-right: 5px;
+    }
+    .cs-tl {
+      text-align: left;
+    }
+    &.cs-user-added {
+      .cs-pu .cs-user-icon-div {
+        box-shadow: none !important;
+        border: solid 1px #eeeeee;
+        color: #000;
+        height: 35px;
+        width: auto;
+        margin: 0px !important;
+        background: #d6dcdc !important;
+        position: relative;
+        z-index: 999;
+        em {
+          font-size: 16px;
+        }
+        &.cs-mat-icononly{
+          width: 35px;
+        }
+      }
+    }
+    .cs-userinfoblock { 
+      // background: $card_bg;
+      // box-shadow: 1px 1px 5px $general_shadow; 
+      position: absolute;
+      z-index: 9999;
+      width: auto;
+      transition: all .4s ease-in-out;
+      float: none;
+      background: #00000030;
+      height: 45px;
+      display: none;
+      align-items: center;
+      border-radius: 50px;
+      margin-top: 5px;
+      padding: 0px;
+      &:empty {
+        display: none;
+      }
+      .cs-ra-assignmentpartmain {
+        height: 100%;
+        display: inline-flex;
+        padding-left: 10px;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        .cs-ra-ua-assignedlist {
+          margin-right: 18px;
+          align-items: center;
+          display: inline-flex;
+          .cs-eachassignedmain {
+            color: #fff;
+            position: relative;
+            border-radius: 500px;
+            padding: 3px;
+            align-items: center;
+            justify-content: center;
+            display: inline-flex;
+            height: 35px;
+            width: 35px;
+            &.cs-assigned-user {
+              background: #5378fb;
+            }
+            &.cs-assigned-usergroup {
+              background: #26a65b;
+            }
+            &.cs-assigned-role {
+              background: #f0ad4e;
+            }
+            &.cs-assigned-responsibility {
+              background: #ff763f;
+            }
+            .cs-assignedcount {
+              position: absolute;
+              margin-left: 5px;
+              display: inline-flex;
+              color: #000;
+              top: 0px;
+              right: -5px;
+              background: white;
+              height: 14px;
+              font-size: 11px;
+              padding: 3px 0px;
+              width: 20px;
+              font-weight: 500;
+              border-radius: 15px;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid #c4c4c4;
+            }
+          }
+        }
+      }
+    }
+    &.cs-user-listview-only {
+      .cs-userinfoblock {
+        margin-left: 0px;
+        height: auto;
+      }
+    }
+    &.hover-active {
+      // overflow: visible;
+      .cs-userinfoblock {
+        margin-left: 0px;
+        width: auto;
+        display: inline-flex!important;
+      }
+    }
+    &.righttoleft {
+     
+      .cs-userinfoblock {
+        right: 55px;
+      }
+      &.hover-active {
+        // overflow: visible;
+        .cs-userinfoblock {
+          margin-left: 0px;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  &.cs-header-userassign {
+    width: unset;
+    .cs-userassign-click {
+      overflow: visible;
+      padding-right: 0px;
+      position: relative;
+      .cs-userinfoblock-header {
+        // background: $card_bg;
+        // box-shadow: 1px 1px 5px $general_shadow;
+        transition: all .4s ease-in-out;
+        background: #00000030;
+        width: auto;
+        height: 45px;
+        display: inline-block;
+        position: absolute;
+        right: -5px;
+        top: 46px;
+        z-index: -1;
+        border-radius: 50px;
+        &:empty {
+          display: none;
+        }
+        .cs-ra-assignmentpartmain {
+          height: 100%;
+          display: inline-flex;
+          padding-left: 10px;
+          align-items: center;
+          justify-content: center;
+          float: left;
+          .cs-ra-ua-assignedlist {
+            margin-right: 18px;
+            align-items: center;
+            display: inline-flex;
+            .cs-eachassignedmain {
+              color: #fff;
+              position: relative;
+              border-radius: 500px;
+              padding: 3px;
+              align-items: center;
+              justify-content: center;
+              display: inline-flex;
+              height: 35px;
+              width: 35px;
+              &.cs-assigned-user {
+                background: #5378fb;
+              }
+              &.cs-assigned-usergroup {
+                background: #26a65b;
+              }
+              &.cs-assigned-role {
+                background: #f0ad4e;
+              }
+              &.cs-assigned-responsibility {
+                background: #ff763f;
+              }
+              .cs-assignedcount {
+                position: absolute;
+                margin-left: 5px;
+                display: inline-flex;
+                color: #000;
+                top: 0px;
+                right: -5px;
+                background: white;
+                height: 14px;
+                font-size: 11px;
+                padding: 3px 0px;
+                width: 20px;
+                font-weight: 500;
+                border-radius: 15px;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #c4c4c4;
+              }
+            }
+          }
+        }
+      }
+      &.hover-active {
+        .cs-userinfoblock-header {
+          // top: 46px;
+          z-index: 9999;
+        }
+      }
+      .cs-mat-pagehead-eachactions {
+        min-width: 36px;
+    width: 36px;
+    display: flex;
+    margin: 0px !important;
+      }
+      .cs-mat-iconandlabelonly,.cs-mat-labelonly{
+        width: auto; //jvi
+      }
+    }
+  }
+  .cs-ua-loader-view{
+    height: 35px;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    // padding-right: 10px;
+    .cs-loader{
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #555;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+  }
+  .cs-custom-width-extra{
+    width: 275px;
+    // display: block;
+  }
+  .cs-userassign-more-position
+  {
+    background: #2196f3 !important;
+    font-size: 16px !important;
+    height: 35px;
+    width: 35px;
+    margin: 0px !important;
+    position: relative;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    em {
+      color: $userassignment_add_icon;          
+    }
+  }
+}

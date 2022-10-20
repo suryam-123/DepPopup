@@ -1,0 +1,115 @@
+<div *ngIf="inputType==='entry' || inputType==='edit' || inputType==='add-entry' || inputType==='slickgrid-popover-edit'" class="cs-url-popover">
+    <div class="cs-url-popover-head">
+        <div class="cs-url-pop-head-label">
+            <label>{{label | translate}}</label>
+            <button class="cs-url-pop-infobtn">
+                <em class="icon-mat-info_outline" (click)="descriptionEnabled = !descriptionEnabled" id="{{actionId}}info"></em>
+            </button>
+        </div>
+        <div class="cs-url-pop-addlist">
+            <button class="cs-recordassociation-addbtn cs-rmar-7">
+                <em class="icon-mat-add" (click)="addUrlRow()" *ngIf="isMultipleUrlField && (inputType==='entry' || inputType==='add-entry')" id="{{actionId}}popover_add"></em>
+            </button>
+            <button title="{{(inputType==='edit' || inputType==='slickgrid-popover-edit') ? 'Update' : 'Add to list'}}" class="cs-url-pop-addlistbtn" (click)="onOkClick('new-entry', 0, $event)" id="{{actionId}}update">
+                <span class="cs-mat-btnlabel"> {{(inputType==='edit' || inputType==='slickgrid-popover-edit') ? 'Update' : 'Add to list'}}</span>
+            </button>
+        </div>
+    </div>
+    <div [hidden]="descriptionEnabled" class="cs-url-pop-infobox">
+        <div class="cs-flex-center">
+            <div class="cs-inf-infolab">
+                <mat-label>Kindly before you entering for valid URL link.</mat-label>
+            </div>
+        </div>
+        <div class="cs-url-pop-closebtn">
+            <button>
+                <em class="icon-mat-close" (click)="descriptionEnabled = !descriptionEnabled"></em>
+            </button>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <div *ngFor="let obj of urlArray; let i = index;">
+            <div class="cs-url-events" *ngIf="inputType!='slickgrid-popover-edit' || (inputType==='slickgrid-popover-edit' && fieldDetails[i]['displayValue']['isEditable'])">
+                <div fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+                    <!-- Display Name -->
+                    <div fxLayout="column" fxFlex="{{flexLayoutValue}}" class="cs-rpad-10 cs-url-event">
+                        <mat-form-field [floatLabel]="'always'" appearance="none">
+                            <mat-label>Display Name</mat-label>
+                            <input matInput [(ngModel)]="obj.displayValue" placeholder="Enter Display Name" id="{{fieldId}}display_name_{{i}}" (change)="fieldChange(i)">
+                        </mat-form-field>
+                        <mat-chip-list>
+                            <mat-error *ngIf="fieldDetails[i]['displayValue']['errorMessage']">
+                                {{fieldDetails[i]['displayValue']['errorMessage']}}</mat-error>
+                        </mat-chip-list>
+                    </div>
+                    <!-- URL Link-->
+                    <div fxLayout="column" fxFlex="{{flexLayoutValue}}" class="cs-url-event">
+                        <mat-form-field [floatLabel]="'always'" appearance="none">
+                            <mat-label>URL Link</mat-label>
+                            <input matInput [(ngModel)]="obj.urlValue" placeholder="Enter URL Link"
+                                id="{{fieldId}}url_link_{{i}}" (change)="fieldChange(i)">
+                        </mat-form-field>
+                        <mat-chip-list>
+                            <mat-error *ngIf="fieldDetails[i]['urlValue']['errorMessage']">
+                                {{fieldDetails[i]['urlValue']['errorMessage']}}</mat-error>
+                        </mat-chip-list>
+                    </div>
+                    <!-- Remove Icon -->
+                    <div fxLayout="column" fxFlex="8%" class="cs-url-pop-closebtn cs-flex-center">
+                        <button [hidden]="urlArray.length==1" *ngIf="inputType !='slickgrid-popover-edit'" (click)="removeRecord($event, i)"
+                            id="{{actionId}}delete_{{i}}">
+                            <em class="icon-mat-delete"></em> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="inputType==='view' || inputType==='slickgrid-view'" class="cs-cspfmurl-dropdown cs-pr">
+    <div id="{{dropdownId}}" class="dropdown">
+        <button *ngIf="enableCloseButton" class="cs-close-btn-cmn">
+            <em class="icon-mat-close" (click)="closePopover(true)" id="{{actionId}}close"></em>
+        </button>
+        <mat-chip-list (mouseleave)="hoverIndex=-1" class="cs-custom-scroll cs-overflow-chiplist">
+            <div *ngFor="let obj of urlArray; let i = index;">
+                <mat-chip *ngIf="!fieldDetails[i]['displayValue']['isEditable']"
+                    class="cs-recordassociation-chip cs-chipwidth cs-url-chip"
+                    matTooltip="{{isTooltipVisible ? obj.displayValue +': '+obj.urlValue : (obj.displayValue).length >= 30 ? obj.displayValue : null}}"
+                    matTooltipPosition="above">
+                    <div (mouseenter)="hoverIndex=i" class="cs-ra-chip-parent cs-overflowhidden">
+                        <div class="cs-ra-chip-mainlabel cs-truncate">
+                            <a class="cs-url-link cs-truncate" id="{{actionId}}chip_link_{{i}}" href="{{obj.urlValue}}" target="_blank">{{obj.displayValue}}</a>
+                        </div>
+                    </div>
+                    <div class="cs-gradient-chip" [hidden]="inputType!='view'">
+                        <button class="cs-display-none" (click)="editRecord(i, true, $event)"
+                            id="{{actionId}}edit_{{i}}">
+                            <em class="icon-mat-edit"></em>
+                        </button>
+                        <button class="cs-display-none" (click)="removeRecord($event, i)" id="{{actionId}}delete_{{i}}">
+                            <em class="icon-mat-clear"></em>
+                        </button>
+                    </div>
+                </mat-chip>
+            </div>
+            <hr>
+            <div *ngFor="let obj of urlArray; let i = index;">
+                <mat-label *ngIf="fieldDetails[i]['displayValue']['isEditable']">Display Name</mat-label>
+                <input matInput [(ngModel)]="obj.displayValue" placeholder="Display Name"
+                    *ngIf="fieldDetails[i]['displayValue']['isEditable']" id="{{fieldId}}display_name_{{i}}">
+                <p *ngIf="fieldDetails[i]['displayValue']['errorMessage']">
+                    {{fieldDetails[i]['displayValue']['errorMessage']}}</p>
+                <hr>
+                <mat-label *ngIf="fieldDetails[i]['urlValue']['isEditable']">URL Link</mat-label>
+                <input matInput [(ngModel)]="obj.urlValue" placeholder="URL Link"
+                    *ngIf="fieldDetails[i]['urlValue']['isEditable']" id="{{fieldId}}url_link_{{i}}">
+                <p *ngIf="fieldDetails[i]['urlValue']['errorMessage']">
+                    {{fieldDetails[i]['urlValue']['errorMessage']}}</p>
+            </div>
+        </mat-chip-list>
+    </div>
+    <span *ngIf="enableButton" class="cs-cspfmurl-clk">
+        <button title="Update" class="" (click)="onOkClick('new-entry', 0, $event)"
+            id="{{actionId}}update">Update</button>
+    </span>
+</div>

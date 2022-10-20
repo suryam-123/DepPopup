@@ -1,0 +1,172 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{lookupTitle | translate}}</ion-title>
+    <ion-buttons slot="end">
+
+    <ion-button *ngIf="!this.appUtilityConfig.isMobile" class="cs-hoveroption" (click)="toggleGridSearchRow()">
+      <ion-icon class="icon-mat-search cs-efilter" slot="icon-only">
+      </ion-icon>
+    </ion-button>
+    <ion-button fill="clear" (click)="closeButtonClick()">
+      <h2>
+        <ion-icon name="close"></ion-icon>
+      </h2>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+</ion-header>
+<ion-content *ngIf="this.appUtilityConfig.isMobile" padding>
+  <ion-searchbar (ionInput)="setFilteredItems($event)" (ionCancel)="onCancel()" [animated]="true"></ion-searchbar>
+  <div *ngIf='items.length <= 0' class="cs-tc" style="margin-top:16%;">
+    <img src='assets/img/no_record_found.png' alt="">
+  </div>
+  <ion-virtual-scroll [items]="items" *ngIf="lookupColumnDetails.length == 1">
+    <ion-item *virtualItem="let item" (click)="itemClick(item)" lines="none" class="main-list-items">
+
+      <ion-label>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'RADIO' || lookupColumnDetails[0]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[0]['mappingDetails'][item[lookupColumnDetails[0].fieldName]]}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[0]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[0].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[0].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[0]['mappingDetails']['fieldName']}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[0]['mappingDetails']['fieldName']}},</ng-template>
+          </ng-container>
+        </h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TEXT' || lookupColumnDetails[0]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[0]['fieldType'] == 'PRIMARY' || lookupColumnDetails[0]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[0]['fieldType'] == 'URL' || lookupColumnDetails[0]['fieldType'] == 'EMAIL' || lookupColumnDetails[0]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[0]['fieldType'] == 'NUMBER' || lookupColumnDetails[0].fieldType == 'BOOLEAN' || lookupColumnDetails[0].fieldType == 'DECIMAL' || lookupColumnDetails[0].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[0].fieldName]}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+
+  <ion-virtual-scroll [items]="items" *ngIf="lookupColumnDetails.length == 2">
+    <ion-item *virtualItem="let item" (click)="itemClick(item)" lines="none" class="main-list-items">
+
+      <ion-label>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'RADIO' || lookupColumnDetails[0]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[0]['mappingDetails'][item[lookupColumnDetails[0].fieldName]]}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[0]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[0].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[0].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[0]['mappingDetails'][columnValues]}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[0]['mappingDetails'][columnValues]}},</ng-template>
+          </ng-container>
+        </h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TEXT' || lookupColumnDetails[0]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[0]['fieldType'] == 'PRIMARY' || lookupColumnDetails[0]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[0]['fieldType'] == 'URL' || lookupColumnDetails[0]['fieldType'] == 'EMAIL' || lookupColumnDetails[0]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[0]['fieldType'] == 'NUMBER' || lookupColumnDetails[0].fieldType == 'BOOLEAN' || lookupColumnDetails[0].fieldType == 'DECIMAL' || lookupColumnDetails[0].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[0].fieldName]}}</h2>
+
+
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[1].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[1].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'RADIO' || lookupColumnDetails[1]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[1]['mappingDetails'][item[lookupColumnDetails[1].fieldName]]}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[1]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[1].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[1].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[1]['mappingDetails'][columnValues]}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[1]['mappingDetails'][columnValues]}},</ng-template>
+          </ng-container>
+        </h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'TEXT' || lookupColumnDetails[1]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[1]['fieldType'] == 'PRIMARY' || lookupColumnDetails[1]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[1]['fieldType'] == 'URL' || lookupColumnDetails[1]['fieldType'] == 'EMAIL' || lookupColumnDetails[0]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[1]['fieldType'] == 'NUMBER' || lookupColumnDetails[1].fieldType == 'BOOLEAN' || lookupColumnDetails[1].fieldType == 'DECIMAL' || lookupColumnDetails[1].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[1].fieldName]}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+
+  <ion-virtual-scroll [items]="items" *ngIf="lookupColumnDetails.length == 3">
+    <ion-item *virtualItem="let item" (click)="itemClick(item)" lines="none" class="main-list-items">
+
+      <ion-label>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[0].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'RADIO' || lookupColumnDetails[0]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[0]['mappingDetails'][item[lookupColumnDetails[0].fieldName]]}}</h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[0]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[0].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[0].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[0]['mappingDetails'][columnValues]}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[0]['mappingDetails'][columnValues]}},</ng-template>
+          </ng-container>
+        </h2>
+        <h2 *ngIf="lookupColumnDetails[0]['fieldType'] == 'TEXT' || lookupColumnDetails[0]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[0]['fieldType'] == 'PRIMARY' || lookupColumnDetails[0]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[0]['fieldType'] == 'URL' || lookupColumnDetails[0]['fieldType'] == 'EMAIL' || lookupColumnDetails[0]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[0]['fieldType'] == 'NUMBER' || lookupColumnDetails[0].fieldType == 'BOOLEAN' || lookupColumnDetails[0].fieldType == 'DECIMAL' || lookupColumnDetails[0].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[0].fieldName]}}</h2>
+
+
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[1].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[1].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'RADIO' || lookupColumnDetails[1]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[1]['mappingDetails'][item[lookupColumnDetails[1].fieldName]]}}</h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[1]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[1].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[1].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[1]['mappingDetails'][columnValues]}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[1]['mappingDetails'][columnValues]}},</ng-template>
+          </ng-container>
+        </h3>
+        <h3 *ngIf="lookupColumnDetails[1]['fieldType'] == 'TEXT' || lookupColumnDetails[1]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[1]['fieldType'] == 'PRIMARY' || lookupColumnDetails[1]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[1]['fieldType'] == 'URL' || lookupColumnDetails[1]['fieldType'] == 'EMAIL' || lookupColumnDetails[0]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[1]['fieldType'] == 'NUMBER' || lookupColumnDetails[1].fieldType == 'BOOLEAN' || lookupColumnDetails[1].fieldType == 'DECIMAL' || lookupColumnDetails[1].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[1].fieldName]}}</h3>
+
+
+        <p *ngIf="lookupColumnDetails[2]['fieldType'] == 'TIMESTAMP'">
+          {{item[lookupColumnDetails[2].fieldName] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}</p>
+        <p *ngIf="lookupColumnDetails[2]['fieldType'] == 'DATE'">
+          {{item[lookupColumnDetails[2].fieldName] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}</p>
+        <p *ngIf="lookupColumnDetails[2]['fieldType'] == 'RADIO' || lookupColumnDetails[2]['fieldType'] == 'DROPDOWN'">
+          {{lookupColumnDetails[2]['mappingDetails'][item[lookupColumnDetails[2].fieldName]]}}</p>
+        <p *ngIf="lookupColumnDetails[2]['fieldType'] == 'CHECKBOX' || lookupColumnDetails[2]['fieldType'] == 'MULTISELECT'">
+          <ng-container *ngFor="let columnValues of item[lookupColumnDetails[2].fieldName];let j = index">
+            <div *ngIf="j == item[lookupColumnDetails[2].fieldName].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content> {{lookupColumnDetails[2]['mappingDetails'][columnValues]}}</ng-template>
+            <ng-template #content>{{lookupColumnDetails[2]['mappingDetails'][columnValues]}},</ng-template>
+          </ng-container>
+        </p>
+        <p *ngIf="lookupColumnDetails[2]['fieldType'] == 'TEXT' || lookupColumnDetails[2]['fieldType'] == 'AUTONUMBER' || lookupColumnDetails[2]['fieldType'] == 'PRIMARY' || lookupColumnDetails[2]['fieldType'] == 'TEXTAREA' || lookupColumnDetails[2]['fieldType'] == 'URL' || lookupColumnDetails[2]['fieldType'] == 'EMAIL' || lookupColumnDetails[2]['fieldType'] == 'MULTILINETEXTBOX' || lookupColumnDetails[2]['fieldType'] == 'NUMBER' || lookupColumnDetails[2].fieldType == 'BOOLEAN' || lookupColumnDetails[2].fieldType == 'DECIMAL' || lookupColumnDetails[2].fieldType == 'CURRENCY'">
+          {{item[lookupColumnDetails[2].fieldName]}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+</ion-content>
+
+<ion-content *ngIf="!this.appUtilityConfig.isMobile" class="ion-padding" class="mobileHide cs-desktop-ion">
+  <div class = "cs-lookup-norecord">
+    <div style="position: absolute;" id="{{gridContainerId}}"
+        class="container-fluid cs-slickgrid" 
+        [ngClass]="{'cs-zindex': !expandFlag}">
+        <angular-slickgrid [ngClass]="{'cs-slick_filter_on': !expandFlag}" gridId="{{gridId}}"
+            [columnDefinitions]="columnDefinitions" [gridOptions]="gridOptions" [dataset]="allItems"
+            (sgOnClick)="onGridItemClick($event)" (onAngularGridCreated)="angularGridReady($event)" 
+            (sgOnCellChange)="onCellChanged($event.detail.eventData, $event.detail.args)">
+        </angular-slickgrid>
+    </div>
+  
+    <div *ngIf="((allItems && allItems.length === 0) || (angularGrid && angularGrid.dataView.getLength() == 0))"
+          class="cs_no_record_center"
+          [ngClass]="{'cs-noimage_pos_add': showFilter}">
+        <img alt="" src='assets/img/no_record_found.png'>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+
+</ion-footer>

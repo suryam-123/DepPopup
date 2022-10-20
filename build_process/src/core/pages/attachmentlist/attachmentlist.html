@@ -1,0 +1,708 @@
+<mat-toolbar class="cs-attchment-toolbar" *ngIf="!appUtilityConfig.isMobileResolution">
+  <div class="cs-attchment-title">
+    <span *ngIf="prominentFieldDetails[0]" class="cs-attachment-head">{{prominentFieldDetails[0]['columnvalue']}}</span>
+    <span  *ngIf="prominentFieldDetails[1]" class="cs-attachment-subhead">{{prominentFieldDetails[1]['columnvalue']}}</span>
+  </div>
+  <span class="example-spacer"></span>
+  <div>
+  <button id="filter_action" *ngIf="selectedSegment == 'Document'" title="Filter" (click)="filterButtonAction()">
+    <em [ngClass]="{'icon-mat-filter_list_alt': isFilterApplied , 'icon-mat-not_filtered_list': !isFilterApplied}"></em>
+  </button>
+  <button id="refresh_action" *ngIf="selectedObj['serviceObjectAttachment'] === 'CouchDB'" title="Refresh"
+    (click)="refreshButtonClick()">
+    <em class="icon-mat-refresh"></em>
+  </button>
+  <button id="close_action" title="Close" (click)="closeButtonClick()" class="cs-attachment-exit">
+    <em class="icon-mat-close"> </em>
+  </button>
+</div>
+</mat-toolbar>
+
+<div class="mat-progress-spinner-overlay" *ngIf="displayLoadingIndicator">
+  <div class="mat-progress-spinner-center">
+      <img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'>
+  </div>
+</div>
+<div class="cs-filter-alert" [hidden]="!isFilterOption" *ngIf="!appUtilityConfig.isMobileResolution">
+  <div class="cs-am-filter-web">
+    <div class="cs-pa cs-am-close">
+      <em class="icon-mat-close" (click)="frequencyCloseButton()"></em>
+    </div>
+    <div>
+      <div *ngFor="let item of frequencyArray; let indexVal= index" (click)="selectedFrequency(indexVal)"
+        class="cs-filter-action">
+        <mat-label [ngClass]="{'freqSelectedItem': selectedFrequencyVal == indexVal,'cs-am-checkalignparent':true}">
+          {{item}}
+          <em class="icon-mat-check cs-am-checkalign" *ngIf="selectedFrequencyVal == indexVal"></em>
+        </mat-label>
+      </div>
+      <div class="cs-am-bline"></div>
+      <div *ngFor="let item of documentTypeArray; let indexVal= index" (click)="multipleDocSelect(indexVal)"
+        class="cs-filter-action">
+        <em [ngClass]="{'icon-mat-list_alt': indexVal===0 , 'icon-mat-file_copy': indexVal===1}"></em>
+        {{item}}
+        <span [ngClass]="{'freqSelectedItem': selectedDocTypeVal == indexVal,'cs-am-singlemultiple-alignmiddle':true}">
+          <em class="icon-mat-check cs-am-checkalign" *ngIf="selectedDocTypeVal == indexVal"></em>
+        </span>
+        <!-- For Multiple Document use cs-am-singlec class insted of cs-am-multic  -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cs-pr cs-attachanddoc-main">
+  <div *ngIf="!appUtilityConfig.isMobileResolution" class="cs-attachment-selandsearch">
+    <div>
+      <mat-select [(ngModel)]="selectedObjDisplayName">
+        <mat-option *ngFor="let item of navParameters" (click)="attachementSelectOption(item)" 
+        [disabled]="!item['isRecordAvailable']"
+          [value]="item.parentDisplayName">
+          {{item.parentDisplayName}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="cs-attchment-search">
+      <input matInput type="search" placeholder="{{searchFieldDisplayName}}" [(ngModel)]="searchText"
+        (input)="getSearchedItems($event.target.value)" (cancel)="onCancel()">
+      <button>
+        <em class="icon-mat-search"></em>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!appUtilityConfig.isMobileResolution" class="cs-fullheight">
+    <mat-tab-group (selectedTabChange)="onTabClick($event)" class="cs-attachment-tabgroup cs-fullheight">
+      <mat-tab label="Attachment" *ngIf="selectedObj['isAttachmentShow']">
+        <ng-template mat-tab-label>
+          <em class="icon-mat-attach_file"></em>
+          Attachment
+        </ng-template>
+           <div fxLayout="row wrap">
+          <div fxLayout="column" fxFlex="100%" class="cs-attchorbowse-file">
+            <input #myInput id="fileSelection" [hidden]="selectedFileName" style="cursor: pointer;" type="file" (change)="imageSelected($event)" (cancel)="cancelImageSelectionAction()">
+            <div class="cs-attchorbowse">
+              <span>
+                <button>
+                  <em class="icon-mat-attach_file"></em>
+                </button>
+              </span>
+              <span class="cs-attchandbrowse-s">
+                <mat-label *ngIf="selectedFileName" [ngClass]="{'cs-attach-s' : selectedFileName}">{{selectedFileName}}
+                </mat-label>
+                <span class="cs-attach-s" *ngIf="!selectedFileName">Drag and Drop Files or </span>
+                <span class="cs-browse-s" *ngIf="!selectedFileName"> Browse file</span>
+              </span>
+            </div>
+            <div class="cs-uplaod-group-action">
+
+            <button mat-button *ngIf="!disableUploadButton" class="cs-attachorbrowseuploadbtn"
+              (click)="uploadButtonPressed()">
+              <mat-label>Upload</mat-label>
+             
+            </button>
+           
+            <button mat-button *ngIf="!disableUploadButton" class="cs-attachorbrowseuploadbtn"
+            (click)="selectedAttachmentFileClearAction()">
+           
+            <mat-label>Cancel</mat-label>
+          </button>
+        </div>
+          </div>
+        </div>
+        <div fxLayout="row wrap" class="cs-attachment-body">
+          <div fxLayout="column" fxFlex="8%">
+            <div>
+              <button *ngIf="selectFlag" class="cs-mat-check" (click)="allSelectAction()">
+              </button>
+              <button *ngIf="!selectFlag" class=" cs-mat-check-active" (click)="allDeSelectAction()">
+                <em class="icon-mat-check"></em>
+              </button>
+            </div>
+          </div>
+          <div fxLayout="column" fxFlex="43%">
+            <div class="cs-attachment-filename">
+              <mat-label>File Name</mat-label>
+              <button title="Sort" (click)="sortingButtonPressed()">
+                <em class="icon-mat-import_export"></em>
+              </button>
+            </div>
+          </div>
+          <div fxLayout="column" fxFlex="10%">
+            <mat-label>File Size</mat-label>
+          </div>
+          <div fxLayout="column" fxFlex="39%">
+            <div class="cs-createoncol">
+              <div>
+                <mat-label>Created On</mat-label>
+              </div>
+              <div *ngIf="!appUtilityConfig.isMobileResolution" class="cs-am-multisel-fab">
+                <button id="close_action" title="Download" (click)="multiselectAttachementdownloadAction()"
+                  class="cs-changeaction-btns">
+                  <em class="icon-mat-file_download"> </em>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate">
+        </mat-progress-bar>
+        <div fxLayout="row wrap" *ngIf="filteredResultList.length===0" class="cs-document-norecords-head">
+          <div fxLayout="column" fxFlex="100%" class="cs-document-norecords-body">
+            <img src='assets/img/no_record_found.png' alt="No Records">
+          </div>
+        </div>
+        <div class="cs-attchment-bodylist cs-custom-scroll"  *ngIf="filteredResultList.length!==0">
+          <div fxLayout="row wrap" class="cs-attachment-body-row"
+            *ngFor="let object of filteredResultList; let indexVal= index">
+            <div fxLayout="column" fxFlex="8%" (dblclick)="multiselectAction()"
+              (click)="multiSelectRadioButton(indexVal)">
+              <div>
+                <button *ngIf="object.isSelected == null || object.isSelected==false" class="cs-mat-check">
+                  <!-- <em class="icon-mat-check cs-mat-check"></em> -->
+                </button>
+                <button *ngIf="object.isSelected==true" class=" cs-mat-check-active">
+                  <em class="icon-mat-check"></em>
+                </button>
+              </div>
+            </div>
+            <div fxLayout="column" fxFlex="43%">
+              <div class="cs-filename-body">
+                <em *ngIf="object['file_extension'] == 'txt' || object['file_extension'] == 'TXT'" 
+                  class="icon-mat-txt cs-formats-img cs-txt-f"></em>
+                <em *ngIf="object['file_extension'] == 'docx' || object['file_extension'] == 'DOCX'"
+                  class="icon-mat-docx cs-formats-img cs-docs-f"></em>
+                <em *ngIf="object['file_extension'] == 'doc' || object['file_extension'] == 'DOC'"
+                  class="icon-mat-doc cs-formats-img cs-docs-f"></em>
+                <em *ngIf="object['file_extension'] == 'pdf' || object['file_extension'] == 'PDF'"
+                  class="icon-mat-pdf cs-formats-img cs-pdf-f"></em>
+                <em *ngIf="object['file_extension'] == 'jpg' || object['file_extension'] == 'JPG'"
+                  class="icon-mat-jpg cs-formats-img cs-png-f"></em>
+                <em *ngIf="object['file_extension'] == 'bmp' || object['file_extension'] == 'BMP'"
+                  class="icon-mat-bmp cs-formats-img cs-png-f"></em>
+                <em *ngIf="object['file_extension'] == 'png' || object['file_extension'] == 'PNG'"
+                  class="icon-mat-png cs-formats-img cs-png-f"></em>
+                <em *ngIf="object['file_extension'] == 'xls' || object['file_extension'] == 'XLS'"
+                  class="icon-mat-xls cs-formats-img cs-xls-f"></em>
+                <em *ngIf="object['file_extension'] == 'xlsx' || object['file_extension'] == 'XLSX'"
+                  class="icon-mat-xlsx cs-formats-img cs-xls-f"></em>
+                <em *ngIf="object['file_extension'] == 'rtf' || object['file_extension'] == 'RTF'"
+                  class="icon-mat-rtf cs-formats-img cs-png-f"></em>
+                <em *ngIf="object['file_extension'] == 'ppt' || object['file_extension'] == 'PPT'"
+                  class="icon-mat-ppt cs-formats-img cs-ppt-f"></em>
+                <em *ngIf="object['file_extension'] == 'pptx' || object['file_extension'] == 'PPTX'"
+                  class="icon-mat-pptx cs-formats-img cs-ppt-f"></em>
+                <em
+                  *ngIf="object['file_extension'] !== 'txt' && object['file_extension'] !== 'TXT' && object['file_extension'] !== 'docx' && object['file_extension'] !== 'DOCX' && object['file_extension'] !== 'doc' && object['file_extension'] !== 'DOC'
+                && object['file_extension'] !== 'pdf' && object['file_extension'] !== 'PDF' && object['file_extension'] !== 'jpg' && object['file_extension'] !== 'JPG' && object['file_extension'] !== 'bmp' && object['file_extension'] !== 'BMP'
+                && object['file_extension'] !== 'png' &&  object['file_extension'] !== 'PNG' && object['file_extension'] !== 'xls' && object['file_extension'] !== 'XLS' && object['file_extension'] !== 'xlsx' && object['file_extension'] !== 'XLSX'
+                && object['file_extension'] !== 'rtf' && object['file_extension'] !== 'RTF' && object['file_extension'] !== 'ppt' && object['file_extension'] !== 'PPT' && object['file_extension'] !== 'pptx' && object['file_extension'] !== 'PPTX'"
+                  class="icon-mat-attach_file  cs-formats-img cs-txt-f"></em>
+                <mat-label>{{object['file_name']}}.{{object['file_extension']}}
+                </mat-label>
+              </div>
+            </div>
+            <div fxLayout="column" fxFlex="10%" class="cs-filesizebody">
+              <mat-label *ngIf="object['file_size'] < 1024">{{object['file_size']}} KB
+              </mat-label>
+              <mat-label *ngIf="object['file_size'] >= 1024">
+                {{(object['file_size'] / 1024).toFixed(2)}} MB</mat-label>
+            </div>
+            <div fxLayout="column" fxFlex="39%">
+              <div class="cs-createon-body">
+                <div class="cs-flex-center">
+                <mat-chip-avatar title="{{object['username']}}">
+                  <img src="{{appUtilityConfig.getUserImageURL(object['lastmodifiedby'])}}" alt="User Avatar" onError="this.src='assets/img/user_icon.png'">
+                </mat-chip-avatar>
+                <mat-label class="">
+                  {{object['createdon'] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}
+                </mat-label>
+              </div>
+                <!-- <button mat-icon-button="" title="download" #lock (mouseover)="lock['isHover'] = true"
+                  (mouseout)="lock['isHover'] = false" (click)="downloadClickAction(indexVal,$event)">
+                  <em class="icon-mat-file_download cs-iconmat-download cs-hmar-7" 
+                    *ngIf="object['status']!=='failed' && object['status']!=='initiated'"></em>
+                </button> -->
+                <div class="cs-rmar-16">
+                  <em title="download" class="icon-mat-file_download cs-iconmat-download cs-blue" style="cursor: pointer;"
+                    (click)="downloadClickAction(indexVal,$event)" *ngIf="object['status'] === 'finished'"></em>
+                  <em title="Override" class="icon-mat-cloud_upload cs-blue" style="cursor: pointer;"
+                    (click)="retryAttachmentUploadAction(indexVal,'Override')" *ngIf="object['status'] === 'finished'"></em>                
+                  <em title="File Upload Failed"
+                    *ngIf="object['status'] != 'initiated' && object['status'] != 'finished' && !object['status_message']"
+                    class="icon-mat-warning cs-iconmat-download cs-red"
+                    (click)="retryAttachmentUploadAction(indexVal, 'File Upload Failed')">
+                  </em>
+                  <em title="Delete"  *ngIf="object['status'] != 'initiated'" class="icon-mat-delete_outline cs-blue" style="cursor: pointer;" (click)="onRemoveAction(indexVal)">
+                  </em>
+                  <em [title]="object['status_message']"
+                    *ngIf="object['status'] != 'initiated' && object['status'] != 'finished' && object['status_message']"
+                    class="icon-mat-warning cs-iconmat-download cs-red"
+                    (click)="retryAttachmentUploadAction(indexVal, 'File Upload Failed')">
+                  </em>
+                  <mat-spinner *ngIf="object['status'] === 'initiated'" [diameter]="20"></mat-spinner>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </mat-tab>
+      <mat-tab label="Document" *ngIf="selectedObj['isDocumentShow']">
+        <ng-template mat-tab-label>
+          <em class="icon-mat-list_alt"></em>
+          Document
+        </ng-template>
+        <div fxLayout="row wrap" class="" *ngIf="documentDataArray.length===0" class="cs-document-norecords-head">
+          <div fxLayout="column" fxFlex="100%" class="cs-document-norecords-body">
+            <img src='assets/img/no_record_found.png' alt="No Records">
+          </div>
+        </div>
+        <div fxLayout="row wrap" class="" *ngFor="let object of documentDataArray; let indexVal= index" #lock
+          (mouseover)="lock['isHover'] = true" (mouseout)="lock['isHover'] = false" class="cs-document-mainbody"
+          [ngClass]="{'cs-extracontent-hidden' : !expandParentObjectData[indexVal] && groupedResultList && groupedResultList[object['objDocumentConfigId']] && groupedResultList[object['objDocumentConfigId']].length > 0}">
+          <div class="cs-fullwidth cs-document-innerbodyhead"
+            [ngClass]="{'cs-border-inherit': (!groupedResultList || !groupedResultList[object['objDocumentConfigId']]) || (groupedResultList && groupedResultList[object['objDocumentConfigId']] && groupedResultList[object['objDocumentConfigId']].length === 0)}">
+            <div fxLayout="inherit" fxFlex="42%" class="cs-align-center">
+              <button class="cs-document-icon">
+                <em *ngIf="object.canUploadMultipleFile == 'N'" class="icon-mat-list_alt"></em>
+                <em *ngIf="object.canUploadMultipleFile != 'N'" class="icon-mat-file_copy"></em>
+              </button>
+              <mat-label *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']]" class="cs-document-schedule">
+                {{object['documentName']}}
+              </mat-label>
+              <span *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']]" class="cs-document-countbadge">
+                {{groupedResultList[object['objDocumentConfigId']].length}}</span>
+              <mat-label *ngIf="!groupedResultList || !groupedResultList[object['objDocumentConfigId']]" class="cs-document-schedule">
+                {{object['documentName']}}</mat-label>
+              <span *ngIf="!groupedResultList || !groupedResultList[object['objDocumentConfigId']]" class="cs-document-countbadge">0
+              </span>
+            </div>
+            <div fxLayout="inherit" fxFlex="16%" class="cs-align-center">
+              <span *ngIf="object['frequency']==='AnyDate'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+              <span *ngIf="object['frequency']==='Daily'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+              <span *ngIf="object['frequency']==='Weekly'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+              <span *ngIf="object['frequency']==='Monthly'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+              <span *ngIf="object['frequency']==='Quaterly'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+              <span *ngIf="object['frequency']==='Yearly'" class="cs-days-badge">
+                {{object['frequency']}}</span>
+            </div>
+            <!-- [ngClass]="{'cs-extracontent-hidden' : !expandParentObjectData[indexVal]" -->
+            <div fxLayout="inherit" fxFlex="42%" class="cs-action-btnshead">
+              <button mat-button class="cs-action-btns" (click)="documentUploadAction(object)">
+                <mat-label>Upload</mat-label>
+              </button>
+              <button mat-button class="cs-action-btns" (click)="multiselectDocumentClickAction(indexVal)">
+                <mat-label>Download</mat-label>
+              </button>
+              <button mat-button *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']] && groupedResultList[object['objDocumentConfigId']].length > 2" class="cs-action-btns" (click)="expandAndCollapseParentObjectData(indexVal)">
+                <mat-label *ngIf="!expandParentObjectData[indexVal]">Expand</mat-label>
+                <mat-label *ngIf="expandParentObjectData[indexVal]">Collapse</mat-label>
+              </button>
+            </div>
+          </div>
+
+          <div
+            *ngIf="expandParentObjectData[indexVal] || (!expandParentObjectData[indexVal] && groupedResultList && groupedResultList[object['objDocumentConfigId']] && groupedResultList[object['objDocumentConfigId']].length > 0)"
+            class="cs-fullwidth">
+            <mat-progress-bar *ngIf="isLoading" mode="indeterminate">
+            </mat-progress-bar>
+            <div *ngIf="!groupedResultList || !groupedResultList[object['objDocumentConfigId']]" class="cs-fullwidth cs-tc">
+              <img src='assets/img/no_record_found.png' class="cs-norecord-width" alt="No Records">
+            </div>
+            <div *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']]" class="cs-fullwidth">
+              <div class="cs-document-innerbodycontent"
+                *ngFor="let innerObj of groupedResultList[object['objDocumentConfigId']]; let indexFordata = index">
+                <ng-carousel #carouselRef="ngCarousel"
+                  *ngIf="expandParentObjectData[indexVal] || (!expandParentObjectData[indexVal] && indexFordata <=1)"
+                  [config]="{'items':innerObj,'autoplayEnabled': false,'dragEnabled': innerObj.length > 1 ? true : false}">
+                  <ng-template ngCarouselSlide let-item>
+                    <div fxLayout="row wrap" class="cs-fullwidth cs-align-center cs-document-innerbodycontentlist">
+                      <div fxLayout="inherit" fxFlex="42%">
+                        <mat-label class="cs-document-date">{{item['file_name']}}
+                        </mat-label>
+                      </div>
+                      <div fxLayout="inherit" fxFlex="16%">
+                        <span *ngIf="item['file_size'] < 1024" class="cs-document-size">
+                          {{item['file_size']}} KB</span>
+                        <span *ngIf="item['file_size'] >= 1024" class="cs-document-size">
+                          {{(item['file_size'] / 1024).toFixed(2)}} MB</span>
+                      </div>
+                      <div fxLayout="inherit" fxFlex="42%" class="cs-document-avatardatetime cs-pr">
+                        <div class="cs-document-avatardatetimeinnerbody">
+                          <mat-chip-avatar title="{{item['username']}}">
+                            <img src="{{appUtilityConfig.getUserImageURL(item['lastmodifiedby'])}}" alt="User Avatar" onError="this.src='assets/img/user_icon.png'">
+                          </mat-chip-avatar>
+                          <mat-label>
+                            {{item['createdon'] | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}
+                          </mat-label>
+                          <div *ngIf="innerObj.length >1" class="cs-document-countslide">
+                            <span>
+                              <em class="icon-mat-keyboard_arrow_left cs-leftarrow"
+                                [ngClass]="{'cs-recordarrowc': innerObj.indexOf(item)+1===1}"
+                                (click)="prevButtonPressed(sliderView, $event,item,innerObj,carouselRef)"
+                                ngCarouselPreventGhostClick>
+                              </em>
+                            </span>
+                            <span>
+                              <mat-label class="cs-current-recordshow">{{innerObj.indexOf(item)+1}}</mat-label>
+                            </span>
+                            <span>
+                              <mat-label class="cs-current-recordshow">/</mat-label>
+                            </span>
+                            <span>
+                              <mat-label class="cs-currenttotalrecords">{{innerObj.length}}</mat-label>
+                            </span>
+                            <span>
+                              <em class="icon-mat-keyboard_arrow_right cs-rightarrow"
+                                [ngClass]="{'cs-recordarrowc': innerObj.length===innerObj.indexOf(item)+1}"
+                                (click)="nextButtonPressed(sliderView, $event,item,innerObj,carouselRef)"
+                                ngCarouselPreventGhostClick></em>
+                            </span>
+                            <em title="Delete"  *ngIf="item['status'] != 'initiated'" class="icon-mat-delete_outline cs-blue" 
+                            style="cursor: pointer;" (click)="onRemoveActionDoc(item)">
+                            </em>  
+                            <span class="cs-document-fileuploadfailed">                                                        
+                              <em [title]="item['status_message']" *ngIf="item['status'] != 'initiated' && item['status'] != 'finished' && item['status_message']" class="icon-mat-warning"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Retry')"></em>
+                                <em  title="File Upload Failed" *ngIf="item['status'] != 'initiated' && item['status'] != 'finished'  && !item['status_message']" class="icon-mat-warning"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Retry')"></em>
+                                <em *ngIf="item['status']==='finished'" title="Override" class="icon-mat-cloud_upload cs-blue"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Override')"></em>                                
+                            </span>
+                             
+                          <mat-spinner *ngIf="item['status'] === 'initiated'" [diameter]="20"></mat-spinner>
+
+                          </div>
+                          <div *ngIf="innerObj.length === 1" class="cs-document-countslide">
+                            <em title="Delete"  *ngIf="item['status'] != 'initiated'"  class="icon-mat-delete_outline cs-blue" 
+                              style="cursor: pointer;" (click)="onRemoveActionDoc(item)">
+                              </em> 
+                            <span  class="cs-document-fileuploadfailed">                               
+                              </span>
+                              <span  class="cs-document-fileuploadfailed">                             
+                              <em [title]="item['status_message']" *ngIf="item['status'] != 'initiated' && item['status'] != 'finished' && item['status_message']" class="icon-mat-warning"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Retry')"></em>
+                                <em title="File Upload Failed" *ngIf="item['status'] != 'initiated' && item['status'] != 'finished' && !item['status_message']" class="icon-mat-warning"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Retry')"></em>
+                                <em *ngIf="item['status']==='finished'" title="Override" class="icon-mat-cloud_upload cs-blue"
+                                (click)="ShowConfirmationAlertForDocOverrideAndRetryAction(object, item, innerObj,'Override')"></em>
+                              </span>
+                            
+                          <mat-spinner *ngIf="item['status'] === 'initiated'" [diameter]="20"></mat-spinner>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-carousel>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+
+
+<ion-fab *ngIf="isMultiselect && appUtilityConfig.isMobileResolution" vertical="bottom" horizontal="end"
+  class="cs-am-multisel-fab">
+  <ion-fab-button>
+    <ion-icon name="create"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button (click)="allSelectAction()">
+      <ion-icon name="code-working"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="allDeSelectAction()">
+      <ion-icon name="code"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="multiselectAttachementdownloadAction()">
+      <ion-icon name="download"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+  <ion-fab-list side="start">
+    <ion-fab-button (click)="multiselectcancelPressed()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
+<!-- Mobile -->
+<ion-header no-border *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button *ngIf="this.selectedObj['serviceObjectAttachment'] === 'PouchDB'" fill="clear"
+        (click)="refreshButtonClick()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" *ngIf="selectedSegment == 'Document'" (click)="filterButtonAction()">
+        <ion-icon name="funnel" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="appUtilityConfig.isMobileResolution" (click)="selectOptionButtonAction()">
+        <ion-icon name="git-network"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" *ngIf="appUtilityConfig.isMobileResolution && selectedSegment == 'Attachment'"
+        (click)="uploadButtonAction()">
+        <ion-icon class="icon-mat-publish"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="closeButtonClick()">
+        <h2>
+          <ion-icon name="close"></ion-icon>
+        </h2>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{parentObject[prominentFieldDetails[0]['columnname']]}}</ion-title>
+    <ion-title>{{parentObject[prominentFieldDetails[1]['columnname']]}}</ion-title>
+  </ion-toolbar>
+  <div class="cs-employee-popup" *ngIf="appUtilityConfig.isMobileResolution && isSelectOption">
+    <div *ngFor="let item of navParameters" (click)="attachementSelectOption(item)">
+      <ion-label>
+        <p class="cs-ts-13 cs-employee-pop-pad cs-darkbalckc cs-cur">{{item.parentDisplayName}}</p>
+      </ion-label>
+    </div>
+  </div>
+  <div class="cs-filter-alert" [hidden]="!isFilterOption">
+    <div [ngClass]="appUtilityConfig.isMobileResolution?'cs-am-filter-mob': 'cs-am-filter-web'">
+      <div class="cs-pa cs-am-close">
+        <ion-icon name="close" (click)="frequencyCloseButton()"></ion-icon>
+      </div>
+      <ion-list>
+        <ion-row *ngFor="let item of frequencyArray; let indexVal= index" (click)="selectedFrequency(indexVal)">
+          <ion-label [ngClass]="{'freqSelectedItem': selectedFrequencyVal == indexVal,'cs-am-checkalignparent':true}"
+            no-margin padding-start>
+            {{item}}
+            <ion-icon class="cs-am-checkalign" *ngIf="selectedFrequencyVal == indexVal" name="checkmark"
+              slot="icon-only">
+            </ion-icon>
+          </ion-label>
+        </ion-row>
+        <div class="cs-am-bline"></div>
+        <ion-row *ngFor="let item of documentTypeArray; let indexVal= index" (click)="multipleDocSelect(indexVal)">
+          <ion-label no-margin padding-start class="cs-am-width">
+            <span class="cs-am-checkalignparentsm">
+              <span
+                [ngClass]="{'freqSelectedItem': selectedDocTypeVal == indexVal,'cs-am-singlemultiple-alignmiddle':true}">
+                <ion-icon name="document" [ngClass]="{'cs-am-singlec' : indexVal===0,'cs-am-multic' : indexVal===1}"
+                  slot="icon-only"></ion-icon>
+                {{item}}
+              </span>
+              <!-- For Multiple Document use cs-am-singlec class insted of cs-am-multic  -->
+              <ion-icon class="cs-am-checkalign" *ngIf="selectedDocTypeVal == indexVal" name="checkmark"
+                slot="icon-only">
+              </ion-icon>
+            </span>
+          </ion-label>
+        </ion-row>
+      </ion-list>
+    </div>
+  </div>
+</ion-header>
+<div *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-searchbar padding-horizontal [(ngModel)]="searchText" (ionInput)="getSearchedItems($event.target.value)"
+    (ionCancel)="onCancel()" [animated]="true" padding-top padding-bottom>
+  </ion-searchbar>
+  <ion-item lines="none" class="cs-am-title-align" padding-horizontal>
+    <ion-text>
+      <ion-label class="cs-am-titletext">{{selectedObjDisplayName}}</ion-label>
+      <ion-label class="cs-am-topdetail">{{ selectedObj['prominentFieldDetails'][0]['columnvalue'] }}</ion-label>
+      <ion-label no-margin class="cs-am-bottomdetail">{{ selectedObj['prominentFieldDetails'][1]['columnvalue'] }}
+      </ion-label>
+    </ion-text>
+  </ion-item>
+  <ion-segment [(ngModel)]="selectedSegment" class="cs-segment-mob">
+    <ion-segment-button value="Attachment" (click)="attachementSelected()" class="cs-segment-btn-mob">
+      <ion-label>Attachment</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Document" (click)="documentSelected()" class="cs-segment-btn-mob">
+      <ion-label>Document</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+<ion-content class="cs-attachment-mob" *ngIf="appUtilityConfig.isMobileResolution">
+  <div *ngIf="selectedSegment == 'Attachment'">
+    <ion-list no-margin class="cs-mobileattachment-scroll">
+      <ion-row *ngFor="let object of filteredResultList; let indexVal= index" class="cs-attachment-item  cs-pr" margin
+        (press)="multiselectAction()" (click)="multiSelectRadioButton(indexVal)"
+        (click)="showAttachmentDownloadedFile(indexVal)">
+        <div class="cs-hide-btn cs-flex-center" *ngIf="isMultiselect">
+          <ion-buttons>
+            <ion-button no-margin *ngIf="object.isSelected == null || object.isSelected==false">
+              <ion-icon class="icon-mat-check cs-mat-check"></ion-icon>
+            </ion-button>
+            <ion-button no-margin *ngIf="object.isSelected==true">
+              <ion-icon class="icon-mat-check cs-mat-check-active"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div>
+        <div class="cs-lmar-10">
+          <div class="cs-head-doc">
+            <span class="cs-display-inlineblock">
+              <ion-label class="cs-ts-14 cs-comp-label">{{object['file_name']}}.{{object['file_extension']}}
+              </ion-label>
+            </span>
+            <span class="cs-lab-divider"></span>
+            <span class="cs-display-inlineblock">
+              <ion-label *ngIf="object['file_size'] < 1024" class="cs-ts-13 cs-light-label cs-lmar-5">
+                {{object['file_size']}} KB</ion-label>
+              <ion-label *ngIf="object['file_size'] >= 1024" class="cs-ts-13 cs-light-label cs-lmar-5">
+                {{(object['file_size'] / 1024).toFixed(2)}} MB</ion-label>
+            </span>
+          </div>
+          <div class="cs-sub-doc">
+            <ion-label class="cs-ts-12 cs-light-label">
+              {{object['createdon'] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}
+            </ion-label>
+            <ion-icon *ngIf="object['status'] != 'initiated' && object['status'] != 'finished' && object['status_message']" class="icon-mat-warning cs-iconmat-download cs-hmar-7"
+              (click)="appUtilityConfig.presentToast(object['status_message'])"></ion-icon>
+              <ion-icon *ngIf="object['status'] != 'initiated' && object['status'] != 'finished'  && !object['status_message']" class="icon-mat-warning cs-iconmat-download cs-hmar-7"
+              (click)="appUtilityConfig.presentToast('File Upload Failed')"></ion-icon>
+          </div>
+        </div>
+        <div class="cs-avatar-set">
+          <ion-avatar class="cs-attchment-avatar" title="{{object['username']}}">
+            <img src="{{appUtilityConfig.getUserImageURL(object['lastmodifiedby'])}}" alt="User Avatar" onError="this.src='assets/img/user_icon.png'">
+          </ion-avatar>
+        </div>
+      </ion-row>
+      <div *ngIf="filteredResultList.length===0" class="cs-tc" margin-top>
+        <img src='assets/img/no_record_found.png' alt="No Records">
+      </div>
+    </ion-list>
+  </div>
+
+  <div *ngIf="selectedSegment == 'Document'">
+    <ion-list no-margin class="cs-mobileattachment-scroll">
+      <ion-item-sliding class="cs-itemsliding-border" *ngFor="let object of documentDataArray; let indexVal= index">
+        <ion-item-options side="end">
+          <ion-item-option class="cs-whitebg" *ngIf="!expandParentObjectData[indexVal]">
+            <div class="cs-item-slide">
+              <ion-buttons>
+                <ion-button (click)="documentUploadAction(object)">
+                  <ion-icon class="icon-mat-publish cs-upload-btn"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+              <ion-buttons
+                *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']] && groupedResultList[object['objDocumentConfigId']].length>0">
+                <ion-button (click)="multiselectDocumentClickAction(indexVal)">
+                  <ion-icon class="icon-mat-file_download cs-download-btn"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item lines="none">
+          <div class="cs-fullwidth cs-display-flex cs-pr cs-no-innerpad">
+            <div class="cs-display-flex">
+              <ion-icon class="icon-mat-library_books cs-description-icon-mobile"></ion-icon>
+              <ion-label class="cs-ts-13 cs-hmar-7 cs-flex-center">{{object['documentName']}}</ion-label>
+              <ion-badge *ngIf="groupedResultList && groupedResultList[object['objDocumentConfigId']]" color="light"
+                class="cs-count-badge-mob">
+                {{groupedResultList[object['objDocumentConfigId']].length}}</ion-badge>
+              <ion-badge *ngIf="!groupedResultList || !groupedResultList[object['objDocumentConfigId']]" color="light"
+                class="cs-count-badge-mob">
+                0
+              </ion-badge>
+            </div>
+            <div style="margin: auto 0px;">
+              <ion-badge *ngIf="object['frequency']==='AnyDate'" color='primary'
+                (click)="expandAndCollapseParentObjectData(indexVal)" class="cs-day-badge cs-daily-badge">
+                {{object['frequency']}}</ion-badge>
+              <ion-badge *ngIf="object['frequency']==='Daily'" (click)="expandAndCollapseParentObjectData(indexVal)"
+                class="cs-day-badge">
+                {{object['frequency']}}</ion-badge>
+              <ion-badge *ngIf="object['frequency']==='Weekly'" (click)="expandAndCollapseParentObjectData(indexVal)"
+                class="cs-day-badge cs-weekly-badge">
+                {{object['frequency']}}</ion-badge>
+              <ion-badge *ngIf="object['frequency']==='Monthly'" (click)="expandAndCollapseParentObjectData(indexVal)"
+                class="cs-day-badge cs-Monthly-badge">
+                {{object['frequency']}}</ion-badge>
+              <ion-badge *ngIf="object['frequency']==='Quaterly'" (click)="expandAndCollapseParentObjectData(indexVal)"
+                class="cs-day-badge cs-quaterly-badge">
+                {{object['frequency']}}</ion-badge>
+              <ion-badge *ngIf="object['frequency']==='Yearly'" (click)="expandAndCollapseParentObjectData(indexVal)"
+                class="cs-day-badge cs-yearly-badge">
+                {{object['frequency']}}</ion-badge>
+            </div>
+          </div>
+        </ion-item>
+        <div class="cs-fullwidth">
+          <ion-list *ngIf="expandParentObjectData[indexVal]" no-margin>
+            <div *ngIf="!groupedResultList || !groupedResultList[object['objDocumentConfigId']]" class="cs-tc cs-mar-c">
+              <img src='assets/img/no_record_found.png' alt="No Records">
+            </div>
+            <ion-row class="cs-attachment-item cs-bordernone cs-attachment-innerlistmob"
+              *ngFor="let innerObj of groupedResultList[object['objDocumentConfigId']]; let indexFordata = index">
+              <ion-slides class="swiper-container" (ionSlideDidChange)="slideChanged()" #sliderView options="{
+              slidesPerView: 1,
+              slidesPerColumn: 1,
+              slidesPerGroup: 1,
+              watchSlidesProgress: true,
+              spaceBetween: 0,
+              virtualTranslate: true,
+            };">
+                <ion-slide pager='true' class="swiper-wrapper"
+                  *ngFor="let slideData of innerObj; let indexValue= index">
+                  <ion-col size="8" class="cs-flex-start">
+                    <div class="cs-display-inlineblock cs-lmar-8">
+                      <ion-icon [ngClass]="{'cs-lightgrayc': indexValue+1===1}"
+                        class="cs-cur icon-mat-keyboard_arrow_left cs-blackc cs-meet-larrow"
+                        (click)="prevButtonPressed(sliderView, $event)"></ion-icon>
+                    </div>
+                    <div class="cs-display-inlineblock cs-lmar-8">
+                      <div class="cs-mar-3">
+                        <span>
+                          <ion-label class="cs-ts-14 cs-comp-label">{{slideData['file_name']}}</ion-label>
+                        </span>
+                        <span class="cs-lab-divider"></span>
+                        <span>
+                          <ion-label *ngIf="slideData['file_size'] < 1024" class="cs-ts-12 cs-light-label cs-lmar-5">
+                            {{slideData['file_size']}} KB</ion-label>
+                          <ion-label *ngIf="slideData['file_size'] >= 1024" class="cs-ts-12 cs-light-label cs-lmar-5">
+                            {{(slideData['file_size'] / 1024).toFixed(2)}} MB</ion-label>
+                        </span>
+                      </div>
+                      <div class="cs-mar-3" float-start>
+                        <ion-label class="cs-ts-13 cs-light-label">
+                          {{slideData['createdon'] | date:appUtilityConfig.userDateFormat:appUtilityConfig.userZoneOffsetValue}}
+                        </ion-label>
+                        <ion-icon *ngIf="slideData['status'] !='initiated' && slideData['status'] !='finished' && slideData['status_message']"
+                          class="icon-mat-warning cs-iconmat-download cs-hmar-7"
+                          (click)="appUtilityConfig.presentToast(slideData['status_message'])"></ion-icon>
+                          <ion-icon *ngIf="slideData['status'] !='initiated' && slideData['status'] !='finished' && !slideData['status_message']"
+                          class="icon-mat-warning cs-iconmat-download cs-hmar-7"
+                          (click)="appUtilityConfig.presentToast('File Upload Failed')"></ion-icon>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col size="4" class="cs-flex-end">
+                    <ion-avatar class="cs-attchment-avatar cs-hmar-5" title="{{slideData['username']}}">
+                      <img src="{{appUtilityConfig.getUserImageURL(slideData['lastmodifiedby'])}}" alt="User Avatar" onError="this.src='assets/img/user_icon.png'" >
+                    </ion-avatar>
+                    <div class="cs-display-inlineblock cs-hmar-5">
+                      <span>
+                        <ion-label class="cs-ts-11">{{indexValue+1}} /</ion-label>
+                      </span>
+                      <span>
+                        <ion-label class="cs-ts-11">{{innerObj.length}}</ion-label>
+                      </span>
+                    </div>
+                    <div class="cs-hmar-5">
+                      <ion-icon [ngClass]="{'cs-lightgrayc': innerObj.length===indexValue+1}"
+                        class="cs-cur icon-mat-keyboard_arrow_right cs-blackc cs-meet-rarrow"
+                        (click)="nextButtonPressed(sliderView, $event)"></ion-icon>
+                    </div>
+                  </ion-col>
+                </ion-slide>
+              </ion-slides>
+            </ion-row>
+          </ion-list>
+        </div>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</ion-content>

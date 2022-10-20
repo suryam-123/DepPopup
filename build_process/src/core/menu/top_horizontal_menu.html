@@ -1,0 +1,89 @@
+<div style="z-index: 99;" id="top_horizontal_menu" class="cs-top-horizontal-menu cs-display-inlineblock cs-fullwidth">
+    <mat-list class="cs-top-menu-list">
+        <mat-list-item class="cs-top-menu-items" *ngFor="let menuGroup of menuService.assignedMenuGroups;index as i;"
+            id="{{menuGroup.menugroupName + '_top_horizontal_menu'}}" (click)='menuGroup.menuItems.web.length == 1 && openPage(menuGroup.menuItems.web[0]); closeMenu($event,menuGroup, i); 
+            '
+            title="{{(menuGroup.menuItems.web.length == 1 ? menuGroup.menuItems.web[0].title : menuGroup.menuGroupDisplayName) | translate}}"
+            
+            [ngClass]="{'cs-menu2-btn-hover': menuGroup['expand']}">
+            <!-- <div *ngIf= "menuGroup.menuItems.web.length > 1"> -->
+            <div class="cs-flex-center" >
+                <button>
+                    <em *ngIf="menuGroup.menuItems.web.length > 1" class="{{menuGroup.icon}}"></em>
+                    <em *ngIf="menuGroup.menuItems.web.length == 1" class="{{menuGroup.menuItems.web[0].icon}}"></em>
+                </button>
+                <mat-label *ngIf="menuGroup.menuItems.web.length >1 " class="cs-top-menu-label">
+                    {{menuGroup.menuGroupDisplayName | translate}}</mat-label>
+                <mat-label *ngIf="menuGroup.menuItems.web.length == 1 " class="cs-top-menu-label">
+                    {{menuGroup.menuItems.web[0].title | translate}}</mat-label>
+                <button>
+                    <em *ngIf="menuGroup.menuItems.web.length != 1" class="icon-mat-arrow_drop_down"></em>
+                </button>
+            </div>
+            <!-- </div> -->
+            <!-- <div (click)="closeMenu($event,menuGroup,i)" class="cs-flex-center">
+                <button>
+                    <em class="{{menuGroup.icon}}"></em>
+                </button>
+                <mat-label class="cs-top-menu-label">{{menuGroup.menuGroupDisplayName | translate}}</mat-label>
+                <button>
+                    <em class="icon-mat-arrow_drop_down"></em>
+                </button>
+            </div> -->
+            <div *ngIf="menuGroup.menuItems.web.length != 1">
+                <div class="cs-top-menu-popup cs-custom-scroll cs-overflow-inherit" *ngIf="menuGroup['expand']">
+                    <mat-list class="cs-top-menu-popup-list">
+                        <mat-list-item *ngFor="let menu of menuGroup['menuItems']['web'];index as i;"
+                            id="{{menu['menuitemid']}}" title="{{menu['title'] | translate}}"
+                            (click)="openPage(menu,$event)" class="cs-top-menu-popup-list-item">
+                            <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                                <em class="{{menu['icon']}}"></em>
+                            </button>
+                            <mat-label>{{menu['title'] | translate}}</mat-label>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </div>
+        </mat-list-item>
+    </mat-list>
+    <div class="cs-top-horizontal-menu-more-btn cs-display-none">
+        <button (click)="openTopHorizontalMenu()">
+            <em class="icon-mat-more_vert"></em>
+        </button>
+    </div>
+    <div *ngIf="menuService.openmoremenu" class="cs-top-horizontal-menu-morebtn">
+        <mat-list>
+            <mat-list-item class="cs-overlapmenu-item" *ngFor="let menuGroup of menuService.popupitems;index as i;" id="{{menuGroup.menugroupName + '_top_horizontal_menu'}}"
+            title="{{(menuGroup.menuItems.web.length == 1 ? menuGroup.menuItems.web[0].title : menuGroup.menuGroupDisplayName) | translate}}"
+             [ngClass]="menuGroup['expand'] == true ? 'cs-menu-item-hover' : 'cs-menu-item-hover-remove'"
+                (mouseover)="submenuitem(i)" (click)='menuGroup.menuItems.web.length == 1 && openPage(menuGroup.menuItems.web[0]); closeMenu($event,menuGroup, i);'>
+                <button>
+                    <em *ngIf="menuGroup.menuItems.web.length > 1" class="{{menuGroup.icon}}"></em>
+                    <em *ngIf="menuGroup.menuItems.web.length == 1" class="{{menuGroup.menuItems.web[0].icon}}"></em>
+                </button>
+                <mat-label *ngIf="menuGroup.menuItems.web.length >1 " class="cs-top-menu-label">
+                    {{menuGroup.menuGroupDisplayName | translate}}</mat-label>
+                <mat-label *ngIf="menuGroup.menuItems.web.length == 1 " class="cs-top-menu-label">
+                    {{menuGroup.menuItems.web[0].title | translate}}</mat-label>
+                    <div *ngIf="menuGroup.menuItems.web.length != 1">
+                <div class="cs-custom-scroll cs-tophorizontal-submenu-more cs-display-none">
+                    <mat-list>
+                        <mat-list-item *ngFor="let menu of menuGroup['menuItems']['web'];index as i;" id="{{menu['menuitemid']}}"  title="{{menu['title'] | translate}}"
+                            (click)="openPage(menu)">
+                            <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                                <em class="{{menu['icon']}}"></em>
+                            </button>
+                            <mat-label>{{menu['title'] | translate}}</mat-label>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+</div>
+
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution"
+    class="cs-click-menu-hide cs-tmar-42 cs-top-horizontal-menu" main>
+</ion-router-outlet>

@@ -1,0 +1,19 @@
+page-languagepage {   
+    .title-fontsize{
+        font-size: 1.2em !important;
+        // vertical-align: middle;
+        color: #78909c;
+        // text-align: center;
+    }
+    
+    .toogle-size{
+        zoom: 0.8;
+    }
+
+    .cs-centerposition {
+        position: sticky;
+        top: 40%;
+        left: 50%;
+        text-align: center;
+    }
+}

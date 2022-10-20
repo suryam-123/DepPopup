@@ -1,0 +1,335 @@
+// .cs-mat-ui{
+//     cs-status-workflow{
+//         .ng-star-inserted{
+//             padding: 0!important;
+//             .cs-workflow-view{
+//                 padding: 0!important;
+//                 min-height: auto;
+//                 border: 0;
+//                 .ng-star-inserted{
+//                     .cs-labelvalue{
+//                         width: 100%;
+//                         color: #878787!important;
+//                         font-size: 12px!important;
+//                     }
+//                     .cs-pull-swright {
+//                         width: 100%;
+//                         height: 31px;
+//                         margin: .5em 0 0 0;
+//                         background: #f6f9ff;
+//                         border: 1px solid #dbe3f5;
+//                         .cs-imgwithtxt{
+//                             width: 31px;
+//                             height: 31px;
+//                             background: #577df4;
+//                             display: inline-flex;
+//                             align-items: center;
+//                             justify-content: center;
+//                             margin: 0!important;
+//                             margin-top: -1px!important;
+//                             img{
+//                                 margin: 0;
+//                                 max-width: 80%;
+//                                 border: 0;
+//                                 border-radius: 0;
+//                             }
+//                         }
+//                         .cs-statusLabel{
+//                             background: none;
+//                             color: #577df4;
+//                             max-width: initial;
+//                             width: calc(100% - 35px);
+//                             padding-left: 5px;
+//                             padding-right: 30px;
+//                             line-height: 20px;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .cs-mat-statusworkflowlookupicon{
+//         position: absolute;
+//         bottom: 0;
+//         right: 0;
+//         color: #757575;
+//     }
+// }
+.cs-mat-ui {
+    .cs-mainpopover-label {
+        font-size: 13px !important;
+        color: #8D8D8D !important;
+        display: block;
+        margin-bottom: 5px !important;
+    }
+
+    .cs-subpopover-label {
+        font-size: 13px !important;
+        color: $grey_base_primary !important;
+        font-weight: 500;
+    }
+
+    .cs-cmt-textbox {
+        border: 1px solid #DEDEDE;
+        border-radius: 2px;
+        color: $grey_base_primary;
+    }
+
+    .cs-cmt-area {
+        font-size: 13px;
+        padding: 8px 0px 0px 8px;
+        resize: vertical;
+        overflow: auto;
+        // height: auto !important;
+    }
+}
+
+.cs-mainpopover-label {
+    font-size: 13px !important;
+    color: #8D8D8D !important;
+    display: block;
+    margin-bottom: 5px !important;
+}
+
+.cs-subpopover-label {
+    font-size: 13px !important;
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.cs-subpopover-label-reject {
+    color: #E76D6E;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.cs-approver-img {
+    display: inline-flex;
+    margin-top: 20px;
+
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+    }
+
+    h2 {
+        margin: 0;
+        margin-top: 8px;
+        font-size: 14px;
+        margin-left: 8px;
+    }
+}
+
+.cs-tmar16 {
+    margin-top: 16px;
+}
+
+.cs-tmar18 {
+    margin-top: 18px;
+}
+
+.cs-tmar20 {
+    margin-top: 20px;
+}
+
+.cs-bpad-15 {
+    padding-bottom: 15px;
+}
+
+.cs-cmt-textbox {
+    border: 1px solid #DEDEDE;
+    border-radius: 2px;
+}
+
+.cs-nomar {
+    margin: 0px;
+}
+
+.cs-status-popover-box {
+    border-radius: 4px;
+  //  box-shadow: 0px 0px 10px #ddd;
+    background: #fff;
+}
+
+.cs-status-popover {
+    height: 318px;
+    width: 400px;
+}
+.cs-status-popup{
+    height: 275px;
+    width: 400px;
+}
+.cs-cmt-area {
+    font-size: 13px;
+    padding: 8px 0px 0px 8px;
+    resize: vertical;
+    overflow: auto !important;
+}
+
+.cs-status-btn-submit {
+    box-shadow: none !important;
+    border: 1px solid transparent !important;
+    width: 104px;
+    margin-top: 16px !important;
+    height: 32px;
+    border-radius: 3px !important;
+    background: #1890FF;
+    color: #fff;
+
+    span {
+        position: relative;
+        top: -2px;
+    }
+}
+
+.cs-status-btn-cancel {
+    box-shadow: none !important;
+    border: 1px solid transparent !important;
+    width: 104px;
+    margin-top: 16px !important;
+    height: 32px;
+    border-radius: 3px !important;
+    margin-right: 12px !important;
+    background: $disable_input_box_bg;
+    span {
+        position: relative;
+        top: -2px;
+    }
+}
+
+//Approve Button
+.cs-status-btn-approve {
+    box-shadow: none !important;
+    border: 1px solid #dedede !important;
+    width: 104px;
+    margin-top: 16px !important;
+    margin-right: 12px !important;
+    height: 32px;
+    border-radius: 3px !important;
+    background: #11AD74;
+    color: #fff;
+
+    span {
+        position: relative;
+        top: -2px;
+    }
+}
+
+//Reject Button
+.cs-status-btn-reject {
+    box-shadow: none !important;
+    border: 1px solid #dedede !important;
+    width: 104px;
+    margin-top: 16px !important;
+    height: 32px;
+    border-radius: 3px !important;
+    background: #EE7069;
+    color: #fff;
+
+    span {
+        position: relative;
+        top: -2px;
+    }
+}
+
+.cs-bmar2 {
+    margin-bottom: 2px !important;
+}
+
+.cs-status-head {
+    align-items: center;
+    display: flex;
+    padding: 0px 5px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 500;
+    position: absolute;
+    top: 3px;
+    max-width: 244px;
+}
+
+//Status-open
+.cs-status-open {
+    border: 1px solid #73BBFD;
+    background: #F0F8FF;
+    color: #3498FF;
+    border-radius: 6px;
+    padding: 0px 10px;
+    height: 25px;
+    // display: flex;
+    // align-items: center;
+    margin-top: 4px;
+    // width: 140px;
+    // justify-content: center;
+    text-transform: capitalize !important;
+    line-height: 20px;
+}
+
+//Status-request
+.cs-status-request {
+    border: 1px solid #EFB466;
+    background: #FEF8F0;
+    color: #FE960F;
+    border-radius: 6px;
+    padding: 0px 10px;
+    height: 25px;
+    // display: flex;
+    // align-items: center;
+    margin-top: 4px;
+    // width: 140px;
+    // justify-content: center;
+    text-transform: capitalize !important;
+    line-height: 20px;
+}
+
+//Status-approved
+.cs-status-approved {
+    border: 1px solid #65C7A3;
+    background: #F9FFFD;
+    color: #00A96B;
+    border-radius: 6px;
+    padding: 0px 10px;
+    height: 25px;
+    // display: flex;
+    // align-items: center;
+    margin-top: 4px;
+    // width: 140px;
+    // justify-content: center;
+    text-transform: capitalize !important;
+    line-height: 20px;
+}
+
+//Status-rejected
+.cs-status-rejected {
+    border: 1px solid #E29893;
+    background: #fff7f7;
+    color: #F15D5D;
+    border-radius: 6px;
+    padding: 0px 10px;
+    height: 25px;
+    // display: flex;
+    // align-items: center;
+    margin-top: 4px;
+    // width: 140px;
+    // justify-content: center;
+    text-transform: capitalize !important;
+    line-height: 20px;
+}
+
+//Disable status popover
+.cs-statuspopover-disable {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.cs-warning-msg{
+    font-size: 14px;
+    color: red;
+    padding-top: 5px;
+}
+.cs-entry-status-update-icon{
+    margin-left: 10px;
+    font-size: 18px;
+    color: $grey_base_primary;
+}

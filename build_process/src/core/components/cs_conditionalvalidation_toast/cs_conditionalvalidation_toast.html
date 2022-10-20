@@ -1,0 +1,22 @@
+
+<div class="cs-cv-toast-p">
+    <!-- Information -->
+    <div class="cs-toast-body cs-info-toast" *ngIf="messageType === 'Information'">
+      <em class="cs-indicater-icon icon-mat-info"></em>
+      <span class="cs-toast-label cs-truncate" title="{{title}}">{{title}}</span>
+    </div>
+    <!-- Warning -->
+    <div class="cs-toast-body cs-warning-toast" *ngIf="messageType === 'Warning'">
+      <em class="cs-indicater-icon icon-mat-warning"></em>
+      <span class="cs-toast-label cs-truncate" title="{{title}}">{{title}}</span>
+    </div>
+    <!-- Error -->
+    <div class="cs-toast-body cs-error-toast" *ngIf="messageType === 'Error'">
+      <em class="cs-indicater-icon icon-mat-error"></em>
+      <span class="cs-toast-label cs-truncate" title="{{title}}">{{title}}</span>
+    </div>
+    <div class="cs-close-toast">
+      <button (click)="closeOnClick()"><em class="icon-mat-close"></em></button>
+    </div>
+</div>
+

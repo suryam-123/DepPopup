@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary" *ngIf="appUtilityObj.isMobile == true">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Settings</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-tabs class="cs-cspfmsetting">
+        <ion-tab-bar slot="top" padding-bottom class="cs-cspfmsetting-tab-bar" style="--color-selected: none !important;">
+            <ion-tab-button (click)="openSettingsPage(0)"  [ngClass]="changestyle[0] == 'cs-cspfmsetting-icon-onClick' ? 'cs-currentTabIndicator' : '' ">
+                <ion-label class="cs-cspfmsetting-label">SETTINGS</ion-label>
+                <ion-icon name="md-settings" class="cs-cspfmsetting-icon" [ngClass]="changestyle[0]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="openThemePage(1)"  [ngClass]="changestyle[1] == 'cs-cspfmsetting-icon-onClick' ? 'cs-currentTabIndicator' : '' ">
+                <ion-label class="cs-cspfmsetting-label">THEME</ion-label>
+                <ion-icon name="md-color-palette" class="cs-cspfmsetting-icon" [ngClass]="changestyle[1]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="openLanguagePage(2)"  [ngClass]="changestyle[2] == 'cs-cspfmsetting-icon-onClick' ? 'cs-currentTabIndicator' : '' ">
+                <ion-label class="cs-cspfmsetting-label">LANGUAGE</ion-label>
+                <ion-icon name="md-globe" class="cs-cspfmsetting-icon" [ngClass]="changestyle[2]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="exitAction(3)"  [ngClass]="changestyle[3] == 'cs-cspfmsetting-icon-onClick' ? 'cs-currentTabIndicator' : '' ">
+                <ion-label class="cs-cspfmsetting-label">EXIT</ion-label>
+                <ion-icon name="md-exit" class="cs-cspfmsetting-icon" [ngClass]="changestyle[3]"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+</ion-content>

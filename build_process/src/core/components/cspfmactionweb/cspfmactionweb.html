@@ -1,0 +1,18 @@
+<ion-buttons>
+  
+  <ion-button *ngFor="let action of actionConfig"  title="{{action['actionName']}}" (click)="actionButtonClick(action)">
+ 
+     <ion-button title="{{action['actionName']}}" *ngIf ="action['actionType']!=='Who column' && action['actionDisplayType']=='Icon'">
+     <ion-icon  class="{{action['actionIcon']}}" color="{{action['actionColor']}}"></ion-icon>
+     </ion-button >
+ 
+     <ion-button title="{{action['actionName']}}" *ngIf ="action['actionType']!=='Who column' && action['actionDisplayType']=='Button'">{{action['actionName']}}</ion-button>
+ 
+     <ion-button title="{{action['actionName']}}"  *ngIf ="action['actionType']!=='Who column' && action['actionDisplayType']=='IconandButton'">
+     <ion-icon class="{{action['actionIcon']}}" color="{{action['actionColor']}}" ></ion-icon>
+     {{action['actionName']}}
+     </ion-button>
+     
+     <!-- <cs-whocolumn-icon *ngIf ="action['actionType']==='Who column'" [setIcon]="" [setIconClass]="" [setInfo]="selectedItem" [setObjectName]="action['objectName']"></cs-whocolumn-icon> -->
+   </ion-button>
+ </ion-buttons>

@@ -1,0 +1,157 @@
+<div *ngIf="inputPageName==='entry' || inputPageName==='lookup_readonly'">
+  <div id="{{formFieldId}}">
+    <mat-label id="url-label" (click)="labelAction()" [attr.data-cs-dropdown]="dripDownAttribute">{{label | translate}}
+      <span *ngIf="isRequired && inputPageName==='entry'" class="cs-mat-required">*</span>
+      <button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button"
+        *ngIf="inputPageName==='entry' && isCloned"
+        (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,cloneConfig['fieldName'],cloneConfig['objectName'])">
+        <span class="cs-mat-btnlabel">Clone</span>
+      </button>
+  </mat-label>
+    <button title="URL" (click)="showEntryPopup()" [attr.data-cs-dropdown]="dripDownAttribute" id="{{actionId}}add"
+      class="cs-recordassociation-addbtn cs-pa "
+      *ngIf="inputPageName==='entry' && (isMultipleUrlField || (!isMultipleUrlField && (!urlData || urlData.length == 0)))">
+      <em class="icon-mat-add"></em>
+    </button>
+    <div class="cs-tmar-14" *ngIf="inputPageName==='entry' && (!urlData || urlData.length == 0)">
+      <mat-chip-list>
+        <span class="cs-lspad cs-choose-msg">Add URL Display Name</span>
+        </mat-chip-list>
+    </div>
+    <div *ngIf="urlData" id="{{id}}" class="cs-tmar-5">
+      <div id="urlData_{{inputPageName}}">
+        <div class="cs-recordassociation-head-span">
+          <mat-chip-list (mouseleave)="hoverIndex=-1" *ngIf="primaryChipInfo"
+            class="cs-overflow-chiplist cs-display-inlineblock cs-overridewidth">
+            <mat-chip (mouseenter)="hoverIndex=i" *ngFor="let obj of primaryChipInfo; let i = index;"
+              class="cs-recordassociation-chip cs-chipwidth cs-url-chip"
+              matTooltip="{{obj.displayValue}}: {{obj.urlValue}}" matTooltipPosition="above">
+              <div class="cs-ra-chip-parent cs-overflowhidden">
+                <div class="cs-ra-chip-mainlabel cs-truncate">
+                  <a class="cs-url-link" id="{{actionId}}chip_{{i}}" href="{{obj.urlValue}}"
+                    target="_blank">{{obj.displayValue}}</a>
+                </div>
+              </div>
+              <div class="cs-gradient-chip" *ngIf="inputPageName==='entry'">
+                <button class="cs-display-none" (click)="editRecord(i, false, $event)" id="{{actionId}}edit_{{i}}"
+                  [attr.data-cs-dropdown]="dripDownAttribute">
+                  <em class="icon-mat-edit"></em>
+                </button>
+                <button class="cs-display-none" (click)="removeRecord(i, false)" id="{{actionId}}delete_{{i}}">
+                  <em class="icon-mat-clear"></em>
+                </button>
+              </div>
+            </mat-chip>
+           </mat-chip-list>
+          <button [matMenuTriggerFor]="urlMoreView" #menuTrigger="matMenuTrigger" class="cs-recordassociation-count"
+            (mouseenter)="hoverIndex=-1" [ngClass]="{'cs-display-none': secondaryChipInfo.length == 0}"
+            [hidden]="secondaryChipInfo.length == 0" id="{{actionId}}additional">
+            <span class="cs-chipmore-btn">+{{secondaryChipInfo.length}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <mat-chip-list class="cs-mat-error">
+      <mat-error *ngIf="isInvalid">
+        {{errorMessage}}
+      </mat-error>
+    </mat-chip-list>
+  </div>
+</div>
+<div [hidden]="inputPageName!='view' && inputPageName!='slickgrid-view'"
+  [ngClass]="{'cs-url-view-only': (inputPageName==='slickgrid-view'), 'cs-mat-view-grid': (inputPageName==='view')}">
+  <label *ngIf="inputPageName==='view'">{{label | translate}}
+  </label>
+  <div class="cs-mat-vg-cont">
+    <div id="urlData_view">
+      <div class="cs-recordassociation-head-span">
+        <mat-chip-list *ngIf="inputPageName==='view'"
+          class="cs-overflow-chiplist cs-display-inlineblock cs-overridewidth">
+          <mat-chip *ngFor="let obj of primaryChipInfo; let i = index;"
+            class="cs-recordassociation-chip cs-chipwidth cs-url-chip"
+            matTooltip="{{obj.displayValue}}: {{obj.urlValue}}" matTooltipPosition="above">
+            <div class="cs-ra-chip-parent cs-overflowhidden">
+              <div class="cs-ra-chip-mainlabel cs-truncate">
+                <a class="cs-url-link" id="{{actionId}}chip_{{i}}"  href="{{obj.urlValue}}" target="_blank">{{obj.displayValue}}</a>
+              </div>
+            </div>
+            <div class="cs-gradient-chip" [hidden]="inputPageName=='view'">
+              <button [attr.indexattr]="i" class="cs-display-none" (click)="editRecord(i, true, $event)"
+              id="{{actionId}}edit_{{i}}" [attr.data-cs-dropdown]="dripDownAttribute">
+                <em class="icon-mat-edit"></em>
+              </button>
+              <button [attr.indexattr]="i" class="cs-display-none" (click)="removeRecord(i, true)"
+              id="{{actionId}}delete_{{i}}">
+                <em class="icon-mat-clear"></em>
+              </button>
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+        <button [matMenuTriggerFor]="urlMoreView" class="cs-recordassociation-count" id="{{actionId}}additional"
+          [ngClass]="{'cs-display-none': secondaryChipInfo.length == 0}"
+          *ngIf="secondaryChipInfo.length && inputPageName==='view'" (click)="zIndexRaised($event)">
+          <span class="cs-chipmore-btn">+{{secondaryChipInfo.length}}</span>
+        </button>
+        <!-- <div *ngIf="secondaryChipInfo.length && inputPageName==='view'" class="cs-recordassociation-count"
+            (click)="isDataPopoverEnabled=!isDataPopoverEnabled" id="{{actionId}}additional">
+            <span class="cs-chipmore-btn">+{{secondaryChipInfo.length}}</span>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="inputPageName==='chiponly'">
+  <div class="cs-mat-vg-cont">
+    <div id="urlData_chiponly">
+    <div class="cs-recordassociation-head-span">
+      <mat-chip-list 
+        class="cs-overflow-chiplist cs-display-inlineblock cs-overridewidth">
+            <mat-chip *ngFor="let obj of primaryChipInfo; let i = index;"
+              class="cs-recordassociation-chip cs-chipwidth cs-url-chip"
+              title="{{obj.displayValue}}: {{obj.urlValue}}" >
+              <div class="cs-ra-chip-parent cs-overflowhidden">
+                <div class="cs-ra-chip-mainlabel cs-truncate">
+                  <a class="cs-url-link" id="{{actionId}}popover_chip_{{i}}" href="{{obj.urlValue}}"
+                    target="_blank">{{obj.displayValue}}</a>
+                </div>
+              </div>
+            </mat-chip>
+      </mat-chip-list>
+      <button [matMenuTriggerFor]="urlMoreView" class="cs-recordassociation-count" id="{{actionId}}additional"
+        [ngClass]="{'cs-display-none': secondaryChipInfo.length == 0}"
+        *ngIf="secondaryChipInfo.length && inputPageName==='chiponly'">
+        <span class="cs-chipmore-btn">+{{secondaryChipInfo.length}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<mat-menu #urlMoreView="matMenu" class="cs-custom-scroll cs-urlMoreView" [hasBackdrop]="true">
+  <div class="cs-overflowchiplist-container cs-insidedd cs-custom-scroll" (click)="$event.stopPropagation()"
+    (keydown)="$event.stopPropagation()" id="urlMoreViewPopover">
+    <mat-chip-list (mouseleave)="hoverIndex=-1" class="cs-overflow-chiplist cs-display-inlineblock">
+      <mat-chip (mouseenter)="hoverIndex=i" *ngFor="let object of secondaryChipInfo; let i = index"
+        class="cs-recordassociation-chip cs-chipwidth cs-url-chip"
+       title="{{object.displayValue}}: {{object.urlValue}}">
+        <div class="cs-ra-chip-parent cs-overflowhidden">
+          <div class="cs-ra-chip-mainlabel cs-truncate">
+            <a class="cs-url-link" id="{{actionId}}chip_{{i}}"
+              href="{{object.urlValue}}" target="_blank">{{object.displayValue}}</a>
+          </div>
+        </div>
+        <div class="cs-gradient-chip" [hidden]="inputPageName!='entry' && inputPageName!='slickgrid-view'">
+          <button [attr.indexattr]="i" class="cs-display-none" (click)="editRecord(i, true, $event)"
+            id="{{actionId}}popover_edit_{{i}}" [attr.data-cs-dropdown]="dripDownAttribute">
+            <em class="icon-mat-edit"></em>
+          </button>
+          <button [attr.indexattr]="i" class="cs-display-none" (click)="removeRecord(i, true)"
+            id="{{actionId}}popover_delete_{{i}}">
+            <em class="icon-mat-clear"></em>
+          </button>
+        </div> 
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</mat-menu>

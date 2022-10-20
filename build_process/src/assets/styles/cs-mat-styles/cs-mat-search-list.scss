@@ -1,0 +1,135 @@
+.cs-mat-filteroption{
+    position:unset!important;
+    display: inline;
+    max-height: 100%;
+    .cs-apply-refresh{
+        text-align: center;
+        margin: 0px 10px 20px 0px;
+        button{
+            outline: none !important;
+            padding: 6px;
+            margin-right: 20px;
+            font-size: 14px;
+            border-radius: 2px;
+            font-weight: 500;
+            &.cs-primary{
+                background:#1890ff;
+                border: 1px solid #1890ff;
+                color: #fff;
+            }
+            &.cs-clear{
+                background: #fff;
+                border: 1px solid #ddd;
+            }
+        }
+
+    }
+    .cs-parent_filter{
+        border-bottom: none!important;
+    }
+    .cs-mat-from-to{
+        padding-top: 3px;
+        figure{
+            display: inline-flex!important;
+            justify-content: space-between;
+            align-items: center;
+            mat-form-field{
+                width: calc(50% - 15px)!important;
+                position: relative;
+                .mat-form-field-suffix{
+                    position: absolute!important;
+                    top: 17px;
+                    right: -3px;
+                }
+            }
+            .cs-mat-from-to-icon{
+                font-size: 18px;
+                font-weight: 800;
+                height: 26px;
+            }
+        }
+        .cs-error-msg{
+            margin-top: 2px;
+            }
+        
+        .cs-mat-cal-label{
+            display: block;
+        }
+        .cs-date-input-container{
+            display: inline-flex;
+            width: 100%;
+            .cs-mwl-datepicker{
+                width: 100%;
+            }
+        }
+    }
+    .cs-num-from-to{
+        figure{
+            display: inline-flex!important;
+            justify-content: space-between;
+            align-items: center;
+            mat-form-field{
+                width: calc(50% - 15px)!important;
+                position: relative;
+                .mat-form-field-suffix{
+                    position: absolute!important;
+                    top: 17px;
+                    right: -3px;
+                }
+            }
+            .cs-mat-from-to-icon{
+                font-size: 18px;
+                font-weight: 800;
+                height: 26px;
+            }
+        }
+        .cs-error-msg{
+            margin-top: 2px;
+            }
+        
+        .cs-mat-cal-label{
+            display: block;
+        }
+        .cs-date-input-container{
+            display: inline-flex;
+            width: 100%;
+            .cs-mwl-datepicker{
+                width: 100%;
+            }
+        }
+    }
+    .cs-label-icon{
+        mat-label{
+            display: inline-flex;
+            margin-top: -2px;
+            align-items: baseline;
+        }
+    }
+    .cs-mat-iconcenter {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        i {
+            margin-bottom: 10px !important;
+        }
+    }
+    .cs-margin-left-to-right{
+        margin-left: 0px!important;
+        margin-right: 15px!important;
+    }
+    .cs-mat-search-icon{
+        position: absolute !important;
+        right: 0px;
+        font-size: 22px;
+    }
+    .cs-mat-clear{
+        position: absolute;
+        right: 1px;
+    }
+}
+.cs-focus-clk{
+    &:focus{
+        border: 1px solid $grey_base_secondary;
+        padding: 0px;
+    }
+}

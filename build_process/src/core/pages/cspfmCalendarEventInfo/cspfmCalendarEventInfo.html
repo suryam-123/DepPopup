@@ -1,0 +1,68 @@
+<ion-header no-border>
+  <div float-end>
+    <ion-buttons slot="end" class="cs-popup-close">
+      <ion-button (click)="closeButtonClick()">
+        <ion-icon class="icon-mat-clear"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-item lines="none" margin-start>
+    <ion-label no-margin="">
+      <h2 class="cs-ts-21 cs-display-block cs-tw-500">{{calendarName}}</h2>
+      <ion-icon [ngClass]="[calendarIcon, 'cs-calevent-icon']" [style.color]="calendarIconColor"></ion-icon>
+      <ion-label class="cs-ts-15 cs-tmar-7 cs-sub-txt">{{dateDispay}}</ion-label>
+    </ion-label>
+  </ion-item>
+  <ion-list margin-start>
+    <ion-item *ngFor="let eventDetail of eventDetails" lines="none" class="cs-detail-list cs-tmar-22">
+      <ion-label no-margin="">
+        <p class="cs-ts-15 cs-sub-txt">{{eventFields['fields'][eventDetail]['label']}}</p>
+        <ion-label class="cs-tmar-7 cs-main-txt">{{dataset | cspfmDataDisplay:eventFields:eventDetail:'display'}}</ion-label>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="isSkeletonLoading">
+    <ion-list no-padding>
+      <ion-item *ngFor="let a of 'skeletonssss'.split('')">
+        <ion-label>
+          <h4>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h4>
+          <h5>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </h5>
+          <h6>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </h6>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <ion-row>
+    <ion-col class="cs-flex-center cs-action-icon">
+      <ion-buttons>
+        <ion-button fill="clear" (click)="mailButtonClick()">
+          <ion-icon class="icon-mat-mail_outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+    <ion-col class="cs-flex-center cs-action-icon">
+      <ion-buttons>
+        <ion-button fill="clear" (click)="messgaeButtonClick()">
+          <ion-icon class="icon-mat-create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+    <ion-col class="cs-flex-center cs-action-icon">
+      <ion-buttons>
+        <ion-button fill="clear" (click)="callButtonClick()">
+          <ion-icon class="icon-mat-delete_outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+</ion-footer> -->

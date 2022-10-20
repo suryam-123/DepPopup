@@ -1,0 +1,370 @@
+<div>
+        <mat-card *ngIf="assignmentConfigJson['whomToAssignMode'] && assignmentConfigJson['whomToAssignMode'].length > 0 " class="cs-morebtn-popup cs-popover-style">
+        
+                <div class="cs-userassignment-popup-toolbar-hd">
+                        <div class="cs-userassignment-popup-toolbar">
+                                <h4>User Assignment</h4>
+                                <button class="cs-userassign-save-btn" id="{{elementId+'_Save'}}" [disabled]="saveActionCliked" (click)="saveAction()">
+                                        <i class="icon-mat-save"></i>
+                                </button>
+                        </div>
+                </div>
+            
+                <div class="cs-userassign-userprofile" *ngIf="selectedObject && assignmentConfigJson['prominentFieldInfo'] && assignmentConfigJson['prominentFieldInfo'].length>0">
+                  
+                        <div *ngFor="let fieldElement of assignmentConfigJson['prominentFieldInfo']" >
+                                <h6 *ngIf="fieldElement['fieldType']=='TEXT'">{{selectedObject | cspfm_data_display :
+                                       fieldElement}}</h6>
+                                <label *ngIf="fieldElement['fieldType']=='URL'" class="cs-userassign-userprofile-landmark"> 
+                                        {{(selectedObject | cspfm_data_display : fieldElement)['display']}} 
+                                </label>
+                                <label  *ngIf="fieldElement['fieldType']!='TEXT' && fieldElement['fieldType']!='URL'" class="cs-userassign-userprofile-landmark">      {{selectedObject | cspfm_data_display :
+                                        fieldElement}}
+                                </label>
+                               
+                        </div>
+                </div>
+            
+
+                <div style="margin-top: -5px;">
+                        <tabs (currentTabChange)="tabChangeMethod($event)"  class="cs-userassignment-tabs">
+                                <tab id="{{elementId+'_All'}}"  class="cs-tab-back-none" tabTitle="All" *ngIf="userAssignmentConfigTypeList && userAssignmentConfigTypeList.length>1">
+                                        <!-- Selected User -->
+                                        <div class="cs-custom-scroll cs-all-card cs-display-block" id="selectedAll">
+                                                <div class="cs-hpad-16" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('User')>-1 && userAssignmentDataList['User'] && userAssignmentDataList['User'].length>0" >
+                                                        <div class="cs-all-header">
+                                                                <div class="cs-display-inlineblock">
+                                                                        <label class="cs-all-head-label">User</label>
+                                                                </div>
+                                                                <div class="cs-user-morebtn">
+                                                                        <button id="{{elementId+'_More_User'}}"  (click)="showMoreUserContent()">
+                                                                                <i class="icon-mat-expand_more"></i>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                        <div class="cs-custom-scroll cs-all-accordian-height" *ngIf="showUserIcon">
+                                                                <ng-container *ngFor="let items of userAssignmentDataList['User']">
+                                                                <div class="cs-user-img" *ngIf="items['isActive']">
+                                                                        <img title="{{masterMapping['User'][items['user_id']]}}" [src]="masterMapping['User'][items['user_id'] +'UserImage']" alt="userImage" onerror="this.src='assets/img/user_icon.png'">
+                                                                </div>
+                                                        </ng-container>
+                                                               
+                                                        </div>
+                                                </div>
+                                                <div class="cs-hpad-16 cs-bmar-16" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Group')>-1&&userAssignmentDataList['Group'] && userAssignmentDataList['Group'].length>0" >
+                                                        <div class="cs-all-header">
+                                                                <div class="cs-display-inlineblock">
+                                                                        <label class="cs-all-head-label">Group</label>
+
+                                                                </div>
+                                                                <div class="cs-user-morebtn">
+                                                                        <button id="{{elementId+'_More_Group'}}" (click)="showMoregroupContent()">
+                                                                                <i class="icon-mat-expand_more"></i>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                        <div class="cs-custom-scroll cs-all-accordian-height" *ngIf="showGroupContent">
+                                                                <mat-chip-list>
+                                                                        <ng-container  *ngFor="let items of userAssignmentDataList['Group']">
+                                                                        <mat-chip class="cs-group-chip cs-chip-allign" *ngIf="items['isActive']">
+                                                                               {{masterMapping['Group'][items['user_group_id']]}}</mat-chip>
+                                                                        </ng-container>
+                                                                    
+                                                                </mat-chip-list>
+                                                        </div>
+                                                </div>
+                                                <div class="cs-hpad-16" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Role')>-1&&userAssignmentDataList['Role'] && userAssignmentDataList['Role'].length>0" >
+                                                        <div class="cs-all-header">
+                                                                <div class="cs-display-inlineblock">
+                                                                        <label class="cs-all-head-label">Role</label>
+
+                                                                </div>
+                                                                <div class="cs-user-morebtn">
+                                                                        <button id="{{elementId+'_More_Role'}}" (click)="showMoreroleContent()">
+                                                                                <i class="icon-mat-expand_more"></i>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                        <div class="cs-custom-scroll cs-all-accordian-height" *ngIf="showRoleContent">
+                                                                <mat-chip-list >
+                                                                        <ng-container *ngFor="let items of userAssignmentDataList['Role']">
+                                                                        <mat-chip class="cs-role-chip cs-chip-allign" *ngIf="items['isActive']">
+                                                                                {{masterMapping['Role'][items['role_id']]}}</mat-chip>
+                                                                        </ng-container>
+                                                                
+                                                                </mat-chip-list>
+                                                        </div>
+                                                </div>
+                                                <div class="cs-hpad-16" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Responsibilities')>-1&&userAssignmentDataList['Responsibilities'] && userAssignmentDataList['Responsibilities'].length>0" >
+                                                        <div class="cs-all-header">
+                                                                <div class="cs-display-inlineblock">
+                                                                        <label class="cs-all-head-label">Responsibility</label>
+
+                                                                </div>
+                                                                <div class="cs-user-morebtn">
+                                                                        <button id="{{elementId+'_More_Response'}}" (click)="showMoreResponseContent()">
+                                                                                <i class="icon-mat-expand_more"></i>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                        <div class="cs-custom-scroll cs-all-accordian-height" *ngIf="showResponseContent">
+                                                                <mat-chip-list >
+                                                                        <ng-container *ngFor="let items of userAssignmentDataList['Responsibilities']">
+                                                                        <mat-chip class="cs-role-chip cs-chip-allign" *ngIf="items['isActive']">
+                                                                                {{masterMapping['Responsibilities'][items['responsibility_id']]}}</mat-chip>
+                                                                        </ng-container>
+                                                                
+                                                                </mat-chip-list>
+                                                        </div>
+                                                </div>
+                                                <div *ngIf="(!userAssignmentDataList['Responsibilities'] || userAssignmentDataList['Responsibilities']&&userAssignmentDataList['Responsibilities'].length==0) &&
+                                                 (!userAssignmentDataList['User'] || userAssignmentDataList['User']&&
+                                                 userAssignmentDataList['User'].length==0) && 
+                                                 (!userAssignmentDataList['Role'] || userAssignmentDataList['Role']&&userAssignmentDataList['Role'].length==0) && (!userAssignmentDataList['Group'] || userAssignmentDataList['Group']&&userAssignmentDataList['Group'].length==0) ">
+                                                        <img class="cs-ua-nr cs-ua-nr-all" src="assets/img/no_record_found.png" alt="">
+                                                </div>
+                                               
+                                        </div>
+                                </tab>
+
+                                <tab id="{{elementId+'_User'}}"  class="cs-tab-back-none" tabTitle="User" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('User')>-1" >
+                                        <div class="cs-ua-search-block">
+                                                <mat-form-field class="cs-search-field" [floatLabel]="'always'" appearance="none">
+                                                        <div class="cs-userassign-search-txt">
+                                                                <input autocomplete="off" (click)="searchEnter($event,'User')" (keyup)="searchListOne($event,'User','user_id')" [(ngModel)]='searchKey' matInput class="cs-userassign-search-input">
+                                                        </div>
+                                                        <div class="cs-userassign-search-button">
+                                                                <button id="{{elementId+'_User_Add'}}" (click)="searchEnter($event,'User')" class="cs-userassign-search-btn">
+                                                                        <em class="icon-mat-search"></em>
+                                                                </button>
+                                                        </div>
+                                                </mat-form-field>
+                                        </div>
+                                        <!-- User Avatar List -->
+                                        <div class="cs-userassign-avatar-list cs-custom-scroll cs-hpad-16 cs-display-block" id="selectedUser"> 
+                                                <span class="cs-ua-initial-loader cs-mar-top" *ngIf="isDataLoading"></span>  
+                                                <ng-container *ngIf=" !isDataLoading&&userAssignmentDataList['User'] && userAssignmentDataList['User'].length>0">
+                                                        <div class="cs-userassign-avatar-list-item"  *ngFor="let items of userAssignmentDataList['User']">
+                                                                <ng-container *ngIf="items['isActive']">
+                                                                        <img   [src]="masterMapping['User'][items['user_id'] +'UserImage']" class="cs-userassign-avatar-list-img" title="{{masterMapping['User'][items['user_id']]}}" onerror="this.src='assets/img/user_icon.png'"  alt="userImage">
+                                                                        <button *ngIf="items['manual']" id="{{elementId+'_User_Remove'}}"  (click)="removeItem($event,items,'User','user_id')" class="cs-user-clr cs-display-none" title="Remove">
+                                                                                <em class="icon-mat-clear"></em> 
+                                                                        </button>
+                                                                </ng-container>
+                                                        </div>
+                                                </ng-container>
+                                                <ng-container *ngIf="!isDataLoading && (!userAssignmentDataList['User'] || (userAssignmentDataList['User'] && userAssignmentDataList['User'].length==0))">
+                                                        <img class="cs-ua-nr" src="assets/img/no_record_found.png" alt="">
+                                                </ng-container>
+
+                                                
+                                        </div>
+                                        <!-- User Records List -->
+                                        <div class="cs-userassign-sel-user cs-display-none" id="selectUser">
+                                                <mat-card class="cs-userassign-sel-user-card cs-custom-scroll">
+                                                        <mat-list class="cs-userassign-sel-user-list">
+                                                                <ng-container *ngIf="!popupDataLoading && corUserDataList && corUserDataList.length>0">
+                                                                <mat-list-item class="cs-userassign-sel-user-item" *ngFor="let item of corUserDataList | UserAssignSearchFilter: searchKey : 'User'" (click)="itemClickAction($event,item,'User','user_id')">
+                                                                        <div class="cs-ua-user-list">
+                                                                                <img  alt="" [src]="item['UserImage']"  onerror="this.src='assets/img/user_icon.png'">
+                                                                                <label>{{item['username']}}</label>
+                                                                        </div>
+                                                                        <!-- <em *ngIf="item['isSelected']" class="icon-mat-check cs-ua-selectunselect"></em> -->
+                                                                </mat-list-item>
+                                                        </ng-container>
+                                                        <div *ngIf="!popupDataLoading &&corUserDataList && corUserDataList.length==0">
+                                                                <img class="cs-ua-group-selcard-no-img" src="assets/img/no_record_found.png" alt=""> 
+                                                       </div> 
+                                                                <div class="cs-ua-loading" *ngIf="popupDataLoading">
+                                                                        <img class="cs-ua-loading-img" alt="" src='assets/img/dataloading.gif'>
+                                                                </div>
+                                                        </mat-list>
+                                                </mat-card>
+                                        </div>
+                                </tab>
+
+                                <tab id="{{elementId+'_Group'}}"  class="cs-tab-back-none cs-userassign-group" tabTitle="Group" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Group')>-1">
+                                        <div class="cs-ua-search-block">
+                                                <mat-form-field class="cs-search-field" [floatLabel]="'always'" appearance="none">
+                                                        <div class="cs-userassign-search-txt">
+                                                                <input matInput autocomplete="off"  (click)="searchEnter($event,'Group')" (keyup)="searchListOne($event,'Group','user_group_id')" [(ngModel)]='searchKey' class="cs-userassign-search-input">
+                                                        </div>
+                                                        <div class="cs-userassign-search-button">
+                                                                <button  id="{{elementId+'_Group_Add'}}" (click)="searchEnter($event,'Group')"  class="cs-userassign-search-btn">
+                                                                        <em class="icon-mat-search"></em>
+                                                                </button>
+                                                        </div>
+                                                </mat-form-field>
+                                        </div>
+                                        <!-- selected Team -->
+                                        <div class="cs-userassign-seleted-chip cs-userassign-group cs-custom-scroll cs-display-block" id="selectedGroup">
+                                                <mat-chip-list #chiplist>
+                                                        <ng-container *ngIf="!isDataLoading && userAssignmentDataList['Group'] && userAssignmentDataList['Group'].length>0">
+                                                                        <ng-container  *ngFor="let item of userAssignmentDataList['Group']">
+                                                                                <mat-chip class="cs-group-chip cs-rmve-item"  *ngIf="item['isActive']"> 
+                                                                                        {{masterMapping['Group'][item['user_group_id']]}}
+                                                                                        <button *ngIf="item['manual']" id="{{elementId+'_Group_Remove'}}"  class="cs-display-none" (click)="removeItem($event,item,'Group','user_group_id')" title="Remove">
+                                                                                                <em class="icon-mat-clear"></em>
+                                                                                        </button>
+                                                                                </mat-chip>
+                                                                        </ng-container>
+                                                        </ng-container>
+                                                        <ng-container *ngIf="!isDataLoading && (!userAssignmentDataList['Group'] ||( userAssignmentDataList['Group'] && userAssignmentDataList['Group'].length==0))">
+                                                                <img class="cs-ua-nr" src="assets/img/no_record_found.png" alt="">
+                                                        </ng-container>
+                                                </mat-chip-list>
+                                        </div>
+                                        <!-- Select team -->
+
+                                        <div class="cs-userassign-group-sel cs-display-none" id="selectGroup">
+                                                <mat-card class="cs-userassign-group-selcard cs-custom-scroll">
+                                                        <mat-form-field [floatLabel]="'always'" appearance="none"
+                                                                class="cs-userassign-group-formfield">
+                                                                <mat-chip-list #chiplist>
+                                                                        <ng-container *ngIf="!popupDataLoading && userGroupList && userGroupList.length>0">
+                                                                        <mat-chip *ngFor="let item of userGroupList | UserAssignSearchFilter: searchKey : 'Group'" (click)="itemClickAction($event,item,'Group','user_group_id')" class="cs-userassign-group-chip cs-group-hover">
+                                                                                <div class="cs-ua-chip-option">
+                                                                                        <em class="cs-ua-g-icon icon-mat-group cs-grp-icon-bg"></em>
+                                                                                        <label class="cs-truncate cs-userassing-teamlabel">{{item['display_name']}}</label>
+                                                                                </div>
+                                                                                <em *ngIf="item['isSelected']" class="icon-mat-check cs-ua-selectunselect"></em>
+                                                                        </mat-chip>
+                                                                       </ng-container>
+                                                                </mat-chip-list>
+                                                        </mat-form-field>
+                                                        <div *ngIf="!popupDataLoading && userGroupList && userGroupList.length==0">                                
+                                                                <img class="cs-ua-group-selcard-no-img" src="assets/img/no_record_found.png" alt="">
+                                                        </div>
+                                                        <div class="cs-ua-loading" *ngIf="popupDataLoading">
+                                                                <img class="cs-ua-loading-img" alt="" src='assets/img/dataloading.gif'>
+                                                        </div>
+                                                </mat-card>
+                                        </div>
+                                </tab>
+
+                                <tab  id="{{elementId+'_Role'}}" class="cs-tab-back-none cs-userassign-group" tabTitle="Role" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Role')>-1">
+                                        <div class="cs-ua-search-block">
+                                                <mat-form-field class="cs-search-field" [floatLabel]="'always'" appearance="none">
+                                                        <div class="cs-userassign-search-txt">
+                                                                <input (click)="searchEnter($event,'Role')" autocomplete="off"  (keyup)="searchListOne($event,'Role','role_id')" [(ngModel)]='searchKey' matInput class="cs-userassign-search-input">
+                                                        </div>
+                                                        <div class="cs-userassign-search-button">
+                                                                <button  id="{{elementId+'_Role_Add'}}" (click)="searchEnter($event,'Role')" class="cs-userassign-search-btn">
+                                                                        <em class="icon-mat-search"></em>
+                                                                </button>
+                                                        </div>
+                                                </mat-form-field>
+                                        </div>
+                                        <!-- Selected Role -->
+                                        <div class="cs-userassign-seleted-chip cs-userassign-role cs-custom-scroll cs-display-block" id="selectedRole">
+                                                <mat-chip-list #chiplist>
+                                                        <ng-container *ngIf="!isDataLoading && userAssignmentDataList['Role'] && userAssignmentDataList['Role'].length>0">
+                                                        <ng-container *ngFor="let items of userAssignmentDataList['Role']">
+                                                        <mat-chip class="cs-role-chip cs-rmve-item" *ngIf="items['isActive']"> {{masterMapping['Role'][items['role_id']]}}
+                                                                <button *ngIf="items['manual']" id="{{elementId+'_Role_Remove'}}"  class="cs-display-none"  (click)="removeItem($event,items,'Role','role_id')" title="Remove">
+                                                                        <em class="icon-mat-clear"></em>
+                                                                </button>
+                                                        </mat-chip>
+                                                </ng-container>
+                                                        </ng-container>
+                                                        <ng-container *ngIf="!isDataLoading && (!userAssignmentDataList['Role'] || ( userAssignmentDataList['Role'] && userAssignmentDataList['Role'].length==0))">
+                                                                <img class="cs-ua-nr" src="assets/img/no_record_found.png" alt="">
+                                                        </ng-container>
+                                                </mat-chip-list>
+                                        </div>
+                                        <!-- Select Role -->
+                                        <div class="cs-userassign-group-sel cs-display-none" id="selectRole">
+                                                <mat-card class="cs-userassign-group-selcard cs-custom-scroll">
+                                                        <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-userassign-group-formfield">
+                                                                <mat-chip-list #chiplist>
+                                                                        <ng-container *ngIf="!popupDataLoading && corRoleDataList && corRoleDataList.length>0">
+                                                                        <mat-chip  *ngFor="let item of corRoleDataList  | UserAssignSearchFilter: searchKey : 'Role'" (click)="itemClickAction($event,item,'Role','role_id')" class="cs-userassign-group-chip cs-group-hover">
+                                                                                <div class="cs-ua-chip-option">
+                                                                                        <em class="cs-ua-g-icon icon-mat-assignment_ind cs-role-icon-bg"></em>
+                                                                                        <label class="cs-truncate cs-userassing-teamlabel">{{item['role_name']}}</label>
+                                                                                </div>
+                                                                                <em *ngIf="item['isSelected']" class="icon-mat-check cs-ua-selectunselect"></em>
+                                                                        </mat-chip>
+                                                                </ng-container>
+                                                                </mat-chip-list>
+                                                        </mat-form-field>
+                                                        <div *ngIf="!popupDataLoading && corRoleDataList && corRoleDataList.length==0">                                
+                                                                <img class="cs-ua-group-selcard-no-img" src="assets/img/no_record_found.png" alt="">
+                                                        </div>
+                                                        <div class="cs-ua-loading" *ngIf="popupDataLoading">
+                                                                <img class="cs-ua-loading-img" alt="" src='assets/img/dataloading.gif'>
+                                                        </div>
+                                                </mat-card>
+                                        </div>
+
+                                </tab>
+                                
+                                <tab id="{{elementId+'_Response'}}"  class="cs-tab-back-none cs-userassign-group" tabTitle="Responsibility" *ngIf="userAssignmentConfigTypeList&& userAssignmentConfigTypeList.indexOf('Responsibilities')>-1">
+                                        <div class="cs-ua-search-block">
+                                                <mat-form-field class="cs-search-field" [floatLabel]="'always'"
+                                                        appearance="none">
+                                                        <div class="cs-userassign-search-txt">
+                                                                <input (click)="searchEnter($event,'Response')" autocomplete="off"  (keyup)="searchListOne($event,'Responsibilities','responsiblity_id')" [(ngModel)]='searchKey' matInput class="cs-userassign-search-input">
+                                                        </div>
+                                                        <div class="cs-userassign-search-button">
+                                                                <button id="{{elementId+'_Response_Add'}}" (click)="searchEnter($event,'Response')" class="cs-userassign-search-btn">
+                                                                        <em class="icon-mat-search"></em>
+                                                                </button>
+                                                        </div>
+                                                </mat-form-field>
+                                        </div>
+                                        <!-- Selected Response -->
+                                        <div class="cs-userassign-seleted-chip cs-userassign-response cs-custom-scroll cs-display-block" id="selectedResponse">
+                                                
+                                                <span class="cs-ua-initial-loader cs-mar-top" *ngIf="isDataLoading"></span>
+                                                <mat-chip-list #chiplist>
+                                                        <ng-container *ngIf="!isDataLoading && userAssignmentDataList['Responsibilities'] && userAssignmentDataList['Responsibilities'].length>0">
+                                                        <ng-container *ngFor="let items of userAssignmentDataList['Responsibilities']">
+                                                        <mat-chip class="cs-role-chip cs-rmve-item" *ngIf="items['isActive']"> {{masterMapping['Responsibilities'][items['responsibility_id']]}}
+                                                                <button *ngIf="items['manual']" id="{{elementId+'_Response_Remove'}}" class="cs-display-none"  (click)="removeItem($event,items,'Responsibilities','responsibility_id')" title="Remove">
+                                                                        <em class="icon-mat-clear"></em>
+                                                                </button>
+                                                        </mat-chip>
+                                                </ng-container >
+                                                         </ng-container >
+                                                        <ng-container *ngIf="!isDataLoading && (!userAssignmentDataList['Responsibilities'] || ( userAssignmentDataList['Responsibilities'] && userAssignmentDataList['Responsibilities'].length==0))">
+                                                                <img class="cs-ua-nr" src="assets/img/no_record_found.png" alt="">
+                                                        </ng-container>
+
+                                               
+                                                </mat-chip-list>
+                                        </div>
+                                        <!-- Select Response -->
+                                        <div class="cs-userassign-group-sel cs-display-none" id="selectResponse">
+                                           
+                                                <mat-card class="cs-userassign-group-selcard cs-custom-scroll">
+                                                        <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-userassign-group-formfield">
+                                                                <mat-chip-list #chiplist>
+                                                                        <ng-container *ngIf="!popupDataLoading && corResponseList && corResponseList.length>0">
+                                                                        <mat-chip  *ngFor="let item of corResponseList  | UserAssignSearchFilter: searchKey : 'Responsibility'" (click)="itemClickAction($event,item,'Responsibilities','responsibility_id')"
+                                                                                class="cs-userassign-group-chip cs-group-hover">
+                                                                                <div class="cs-ua-chip-option">
+                                                                                        <em class="cs-ua-g-icon icon-mat-shield cs-role-icon-bg"></em>
+                                                                                        <label class="cs-truncate cs-userassing-teamlabel">{{item['responsibility_name']}}</label>
+                                                                                </div>
+                                                                                <em *ngIf="item['isSelected']" class="icon-mat-check cs-ua-selectunselect"></em>
+                                                                        </mat-chip>
+                                                                </ng-container>
+                                                                </mat-chip-list>
+                                                        </mat-form-field>
+                                                        <div *ngIf="!popupDataLoading && corResponseList && corResponseList.length==0">                                
+                                                                <img class="cs-ua-group-selcard-no-img" src="assets/img/no_record_found.png" alt="">
+                                                        </div>
+                                                        <div class="cs-ua-loading" *ngIf="popupDataLoading">
+                                                                <img class="cs-ua-loading-img" alt="" src='assets/img/dataloading.gif'>
+                                                        </div>
+                                                </mat-card>
+                                        </div>
+                                </tab>
+                        </tabs>
+                </div>
+        </mat-card>
+        <mat-card *ngIf="!(assignmentConfigJson['whomToAssignMode'] && assignmentConfigJson['whomToAssignMode'].length > 0)">
+                No Assignment
+        </mat-card>
+</div>

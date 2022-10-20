@@ -1,0 +1,88 @@
+<div class="cs-dataclone-content-parent">
+    <mat-toolbar color="primary" class="cs-lookuptheme">
+        <mat-label>Data Cloned Mapping Info</mat-label>
+        <span class="example-spacer"></span>
+        <button color="primary" id="cspfm_webcommon_lookup_filter_icon"
+            [attr.data-cs-dropdown]="dripDownAttribute" title="Toggle Filter Row" class="cs-mat-icononly cs-filter-option">
+            <em
+                [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em>
+        </button>
+        <button [disabled]="isDisableManualclose" id="cspfm_webcommon_lookup_close_btn" mat-icon-button
+            class="cs-mat-icononly cs-mat-noshadow" title="Close" (click)="closeButtonClick()">
+            <em class="icon-mat-close"></em>
+        </button>
+    </mat-toolbar>
+    <div id="cs-dropdown-dataclone" class="cs-clone-check-opad cs-dropdown cs-custom-scroll cs-dropdown-anchor-right">
+        <div class="cs-clone-acc-hpad cs-clone-check-hover">
+            <mat-checkbox class="clearfix cs-clone-check" (change)="getStats()" [(ngModel)]="Same" name='Same'>
+                Same Object
+            </mat-checkbox>
+        </div>
+        <div class="cs-clone-acc-hpad cs-clone-check-hover">
+            <mat-checkbox class="clearfix cs-clone-check" (change)="getStats()" [(ngModel)]="Different"
+                name='Different'>
+                Different Object
+            </mat-checkbox>
+        </div>
+    </div>
+    <mat-dialog-content class="cs-mat-popup-sizeset">
+            <div class="clearfix cs-mat-slick-hw">
+                <div class='cs-clone-inline cs-clone-content'>
+                    <span class='cs-clone-inline-f cs-clone-secondary-color'>Source</span>
+                    <span class='cs-clone-inline-f cs-ts-18 cs-clone-secondary-color '>
+                        <em class='icon-mat-trending_neutral'></em>
+                    </span>
+                    <span class='cs-clone-inline-f cs-clone-secondary-color'>Destination</span>
+                </div>
+                <div class=" cs-clone-acc cs-custom-scroll">
+                    <div *ngFor="let item of checkedResult;let i = index;">
+                        <div class="cs-all-content">
+                            <div class="cs-clone-inline cs-clone-acc-hpad cs-cur accordion"
+                                (click)="toggleAccordian(item.id)">
+                                <div class='cs-clone-inline cs-clone-fpoint'>
+                                    <div class=' cs-clone-valign'>
+                                        <span class="cs-clone-secondary-color">{{item.source}}</span>
+                                    </div>
+                                    <div class='cs-ts-18 '><span>
+                                            <span
+                                                class="cs-clone-obj-status cs-clone-secondary-color {{item.style}}">{{item.cloneStatus}}</span></span>
+                                    </div>
+                                    <div class='cs-clone-valign'>
+                                        <span class="cs-clone-secondary-color">{{item.target}}</span>
+                                    </div>
+                                </div>
+                                <span class='cs-clone-arrow'>
+                                    <i class="cs-ts-21" [ngClass]="{'icon-mat-keyboard_arrow_down': !item.isActive, 'icon-mat-keyboard_arrow_up':item.isActive}"></i>
+                                </span>
+                            </div>
+                            <div *ngIf="item.isActive">
+                                <div class='cs-clone-inline cs-clone-acc-body' *ngFor="let field of item.fieldProperties"
+                                    [ngClass]="item.target === objectName && field.destinationFieldName === fieldName ? 'cs-clone-acc-body-hover' : ''">
+                                    <div class='cs-clone-inline-f'>
+                                        <span class="cs-clone-grey-secondary-color">{{field.sourceFieldName}}</span>
+                                    </div>
+                                    <div class='cs-ts-18 cs-clone-inline-f '>
+                                        <span class="cs-clone-grey-secondary-color">
+                                            <em class="icon-mat-trending_neutral"></em>
+                                        </span>
+                                    </div>
+                                    <div class='cs-clone-inline-f'>
+                                        <span class="cs-clone-grey-secondary-color">{{field.destinationFieldName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <mat-chip-list>
+                            <ng-container>
+                                <mat-chip class="cs-role-chip cs-chip-allign" *ngIf="items['isActive']">
+                                </mat-chip>
+                            </ng-container>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+    
+    </mat-dialog-content>
+    </div>

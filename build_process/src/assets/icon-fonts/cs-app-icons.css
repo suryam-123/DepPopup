@@ -1,0 +1,6151 @@
+/*!
+ */
+
+ @font-face {
+	font-family: FontAwesome;
+	src: url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.eot?v=4.5.0);
+	src: url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.eot?#iefix&v=4.5.0) format('embedded-opentype'), url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.woff2?v=4.5.0) format('woff2'), url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.woff?v=4.5.0) format('woff'), url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.ttf?v=4.5.0) format('truetype'), url(../fonts/iconfonts/library/fontawesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular) format('svg');
+	font-weight: 400;
+	font-style: normal
+}
+
+.fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.fa-lg {
+	font-size: 1.33333333em;
+	line-height: .75em;
+	vertical-align: -15%
+}
+
+.fa-2x {
+	font-size: 2em
+}
+
+.fa-3x {
+	font-size: 3em
+}
+
+.fa-4x {
+	font-size: 4em
+}
+
+.fa-5x {
+	font-size: 5em
+}
+
+.fa-fw {
+	width: 1.28571429em;
+	text-align: center
+}
+
+.fa-ul {
+	padding-left: 0;
+	margin-left: 2.14285714em;
+	list-style-type: none
+}
+
+.fa-ul>li {
+	position: relative
+}
+
+.fa-li {
+	position: absolute;
+	left: -2.14285714em;
+	width: 2.14285714em;
+	top: .14285714em;
+	text-align: center
+}
+
+.fa-li.fa-lg {
+	left: -1.85714286em
+}
+
+.fa-border {
+	padding: .2em .25em .15em;
+	border: .08em solid #eee;
+	border-radius: .1em
+}
+
+.fa-pull-left {
+	float: left
+}
+
+.fa-pull-right {
+	float: right
+}
+
+.fa.fa-pull-left {
+	margin-right: .3em
+}
+
+.fa.fa-pull-right {
+	margin-left: .3em
+}
+
+.pull-right {
+	float: right
+}
+
+.pull-left {
+	float: left
+}
+
+.fa.pull-left {
+	margin-right: .3em
+}
+
+.fa.pull-right {
+	margin-left: .3em
+}
+
+.fa-spin {
+	-webkit-animation: fa-spin 2s infinite linear;
+	animation: fa-spin 2s infinite linear
+}
+
+.fa-pulse {
+	-webkit-animation: fa-spin 1s infinite steps(8);
+	animation: fa-spin 1s infinite steps(8)
+}
+
+@-webkit-keyframes fa-spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg)
+	}
+}
+
+@keyframes fa-spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg)
+	}
+}
+
+.fa-rotate-90 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg)
+}
+
+.fa-rotate-180 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg)
+}
+
+.fa-rotate-270 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	-webkit-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg)
+}
+
+.fa-flip-horizontal {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+	-webkit-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1)
+}
+
+.fa-flip-vertical {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+	-webkit-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1)
+}
+
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-rotate-90 {
+	filter: none
+}
+
+.fa-stack {
+	position: relative;
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	vertical-align: middle
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center
+}
+
+.fa-stack-1x {
+	line-height: inherit
+}
+
+.fa-stack-2x {
+	font-size: 2em
+}
+
+.fa-inverse {
+	color: #fff
+}
+
+.fa-glass:before {
+	content: "\f000"
+}
+
+.fa-music:before {
+	content: "\f001"
+}
+
+.fa-search:before {
+	content: "\f002"
+}
+
+.fa-envelope-o:before {
+	content: "\f003"
+}
+
+.fa-heart:before {
+	content: "\f004"
+}
+
+.fa-star:before {
+	content: "\f005"
+}
+
+.fa-star-o:before {
+	content: "\f006"
+}
+
+.fa-user:before {
+	content: "\f007"
+}
+
+.fa-film:before {
+	content: "\f008"
+}
+
+.fa-th-large:before {
+	content: "\f009"
+}
+
+.fa-th:before {
+	content: "\f00a"
+}
+
+.fa-th-list:before {
+	content: "\f00b"
+}
+
+.fa-check:before {
+	content: "\f00c"
+}
+
+.fa-close:before,
+.fa-remove:before,
+.fa-times:before {
+	content: "\f00d"
+}
+
+.fa-search-plus:before {
+	content: "\f00e"
+}
+
+.fa-search-minus:before {
+	content: "\f010"
+}
+
+.fa-power-off:before {
+	content: "\f011"
+}
+
+.fa-signal:before {
+	content: "\f012"
+}
+
+.fa-cog:before,
+.fa-gear:before {
+	content: "\f013"
+}
+
+.fa-trash-o:before {
+	content: "\f014"
+}
+
+.fa-home:before {
+	content: "\f015"
+}
+
+.fa-file-o:before {
+	content: "\f016"
+}
+
+.fa-clock-o:before {
+	content: "\f017"
+}
+
+.fa-road:before {
+	content: "\f018"
+}
+
+.fa-download:before {
+	content: "\f019"
+}
+
+.fa-arrow-circle-o-down:before {
+	content: "\f01a"
+}
+
+.fa-arrow-circle-o-up:before {
+	content: "\f01b"
+}
+
+.fa-inbox:before {
+	content: "\f01c"
+}
+
+.fa-play-circle-o:before {
+	content: "\f01d"
+}
+
+.fa-repeat:before,
+.fa-rotate-right:before {
+	content: "\f01e"
+}
+
+.fa-refresh:before {
+	content: "\f021"
+}
+
+.fa-list-alt:before {
+	content: "\f022"
+}
+
+.fa-lock:before {
+	content: "\f023"
+}
+
+.fa-flag:before {
+	content: "\f024"
+}
+
+.fa-headphones:before {
+	content: "\f025"
+}
+
+.fa-volume-off:before {
+	content: "\f026"
+}
+
+.fa-volume-down:before {
+	content: "\f027"
+}
+
+.fa-volume-up:before {
+	content: "\f028"
+}
+
+.fa-qrcode:before {
+	content: "\f029"
+}
+
+.fa-barcode:before {
+	content: "\f02a"
+}
+
+.fa-tag:before {
+	content: "\f02b"
+}
+
+.fa-tags:before {
+	content: "\f02c"
+}
+
+.fa-book:before {
+	content: "\f02d"
+}
+
+.fa-bookmark:before {
+	content: "\f02e"
+}
+
+.fa-print:before {
+	content: "\f02f"
+}
+
+.fa-camera:before {
+	content: "\f030"
+}
+
+.fa-font:before {
+	content: "\f031"
+}
+
+.fa-bold:before {
+	content: "\f032"
+}
+
+.fa-italic:before {
+	content: "\f033"
+}
+
+.fa-text-height:before {
+	content: "\f034"
+}
+
+.fa-text-width:before {
+	content: "\f035"
+}
+
+.fa-align-left:before {
+	content: "\f036"
+}
+
+.fa-align-center:before {
+	content: "\f037"
+}
+
+.fa-align-right:before {
+	content: "\f038"
+}
+
+.fa-align-justify:before {
+	content: "\f039"
+}
+
+.fa-list:before {
+	content: "\f03a"
+}
+
+.fa-dedent:before,
+.fa-outdent:before {
+	content: "\f03b"
+}
+
+.fa-indent:before {
+	content: "\f03c"
+}
+
+.fa-video-camera:before {
+	content: "\f03d"
+}
+
+.fa-image:before,
+.fa-photo:before,
+.fa-picture-o:before {
+	content: "\f03e"
+}
+
+.fa-pencil:before {
+	content: "\f040"
+}
+
+.fa-map-marker:before {
+	content: "\f041"
+}
+
+.fa-adjust:before {
+	content: "\f042"
+}
+
+.fa-tint:before {
+	content: "\f043"
+}
+
+.fa-edit:before,
+.fa-pencil-square-o:before {
+	content: "\f044"
+}
+
+.fa-share-square-o:before {
+	content: "\f045"
+}
+
+.fa-check-square-o:before {
+	content: "\f046"
+}
+
+.fa-arrows:before {
+	content: "\f047"
+}
+
+.fa-step-backward:before {
+	content: "\f048"
+}
+
+.fa-fast-backward:before {
+	content: "\f049"
+}
+
+.fa-backward:before {
+	content: "\f04a"
+}
+
+.fa-play:before {
+	content: "\f04b"
+}
+
+.fa-pause:before {
+	content: "\f04c"
+}
+
+.fa-stop:before {
+	content: "\f04d"
+}
+
+.fa-forward:before {
+	content: "\f04e"
+}
+
+.fa-fast-forward:before {
+	content: "\f050"
+}
+
+.fa-step-forward:before {
+	content: "\f051"
+}
+
+.fa-eject:before {
+	content: "\f052"
+}
+
+.fa-chevron-left:before {
+	content: "\f053"
+}
+
+.fa-chevron-right:before {
+	content: "\f054"
+}
+
+.fa-plus-circle:before {
+	content: "\f055"
+}
+
+.fa-minus-circle:before {
+	content: "\f056"
+}
+
+.fa-times-circle:before {
+	content: "\f057"
+}
+
+.fa-check-circle:before {
+	content: "\f058"
+}
+
+.fa-question-circle:before {
+	content: "\f059"
+}
+
+.fa-info-circle:before {
+	content: "\f05a"
+}
+
+.fa-crosshairs:before {
+	content: "\f05b"
+}
+
+.fa-times-circle-o:before {
+	content: "\f05c"
+}
+
+.fa-check-circle-o:before {
+	content: "\f05d"
+}
+
+.fa-ban:before {
+	content: "\f05e"
+}
+
+.fa-arrow-left:before {
+	content: "\f060"
+}
+
+.fa-arrow-right:before {
+	content: "\f061"
+}
+
+.fa-arrow-up:before {
+	content: "\f062"
+}
+
+.fa-arrow-down:before {
+	content: "\f063"
+}
+
+.fa-mail-forward:before,
+.fa-share:before {
+	content: "\f064"
+}
+
+.fa-expand:before {
+	content: "\f065"
+}
+
+.fa-compress:before {
+	content: "\f066"
+}
+
+.fa-plus:before {
+	content: "\f067"
+}
+
+.fa-minus:before {
+	content: "\f068"
+}
+
+.fa-asterisk:before {
+	content: "\f069"
+}
+
+.fa-exclamation-circle:before {
+	content: "\f06a"
+}
+
+.fa-gift:before {
+	content: "\f06b"
+}
+
+.fa-leaf:before {
+	content: "\f06c"
+}
+
+.fa-fire:before {
+	content: "\f06d"
+}
+
+.fa-eye:before {
+	content: "\f06e"
+}
+
+.fa-eye-slash:before {
+	content: "\f070"
+}
+
+.fa-exclamation-triangle:before,
+.fa-warning:before {
+	content: "\f071"
+}
+
+.fa-plane:before {
+	content: "\f072"
+}
+
+.fa-calendar:before {
+	content: "\f073"
+}
+
+.fa-random:before {
+	content: "\f074"
+}
+
+.fa-comment:before {
+	content: "\f075"
+}
+
+.fa-magnet:before {
+	content: "\f076"
+}
+
+.fa-chevron-up:before {
+	content: "\f077"
+}
+
+.fa-chevron-down:before {
+	content: "\f078"
+}
+
+.fa-retweet:before {
+	content: "\f079"
+}
+
+.fa-shopping-cart:before {
+	content: "\f07a"
+}
+
+.fa-folder:before {
+	content: "\f07b"
+}
+
+.fa-folder-open:before {
+	content: "\f07c"
+}
+
+.fa-arrows-v:before {
+	content: "\f07d"
+}
+
+.fa-arrows-h:before {
+	content: "\f07e"
+}
+
+.fa-bar-chart-o:before,
+.fa-bar-chart:before {
+	content: "\f080"
+}
+
+.fa-twitter-square:before {
+	content: "\f081"
+}
+
+.fa-facebook-square:before {
+	content: "\f082"
+}
+
+.fa-camera-retro:before {
+	content: "\f083"
+}
+
+.fa-key:before {
+	content: "\f084"
+}
+
+.fa-cogs:before,
+.fa-gears:before {
+	content: "\f085"
+}
+
+.fa-comments:before {
+	content: "\f086"
+}
+
+.fa-thumbs-o-up:before {
+	content: "\f087"
+}
+
+.fa-thumbs-o-down:before {
+	content: "\f088"
+}
+
+.fa-star-half:before {
+	content: "\f089"
+}
+
+.fa-heart-o:before {
+	content: "\f08a"
+}
+
+.fa-sign-out:before {
+	content: "\f08b"
+}
+
+.fa-linkedin-square:before {
+	content: "\f08c"
+}
+
+.fa-thumb-tack:before {
+	content: "\f08d"
+}
+
+.fa-external-link:before {
+	content: "\f08e"
+}
+
+.fa-sign-in:before {
+	content: "\f090"
+}
+
+.fa-trophy:before {
+	content: "\f091"
+}
+
+.fa-github-square:before {
+	content: "\f092"
+}
+
+.fa-upload:before {
+	content: "\f093"
+}
+
+.fa-lemon-o:before {
+	content: "\f094"
+}
+
+.fa-phone:before {
+	content: "\f095"
+}
+
+.fa-square-o:before {
+	content: "\f096"
+}
+
+.fa-bookmark-o:before {
+	content: "\f097"
+}
+
+.fa-phone-square:before {
+	content: "\f098"
+}
+
+.fa-twitter:before {
+	content: "\f099"
+}
+
+.fa-facebook-f:before,
+.fa-facebook:before {
+	content: "\f09a"
+}
+
+.fa-github:before {
+	content: "\f09b"
+}
+
+.fa-unlock:before {
+	content: "\f09c"
+}
+
+.fa-credit-card:before {
+	content: "\f09d"
+}
+
+.fa-feed:before,
+.fa-rss:before {
+	content: "\f09e"
+}
+
+.fa-hdd-o:before {
+	content: "\f0a0"
+}
+
+.fa-bullhorn:before {
+	content: "\f0a1"
+}
+
+.fa-bell:before {
+	content: "\f0f3"
+}
+
+.fa-certificate:before {
+	content: "\f0a3"
+}
+
+.fa-hand-o-right:before {
+	content: "\f0a4"
+}
+
+.fa-hand-o-left:before {
+	content: "\f0a5"
+}
+
+.fa-hand-o-up:before {
+	content: "\f0a6"
+}
+
+.fa-hand-o-down:before {
+	content: "\f0a7"
+}
+
+.fa-arrow-circle-left:before {
+	content: "\f0a8"
+}
+
+.fa-arrow-circle-right:before {
+	content: "\f0a9"
+}
+
+.fa-arrow-circle-up:before {
+	content: "\f0aa"
+}
+
+.fa-arrow-circle-down:before {
+	content: "\f0ab"
+}
+
+.fa-globe:before {
+	content: "\f0ac"
+}
+
+.fa-wrench:before {
+	content: "\f0ad"
+}
+
+.fa-tasks:before {
+	content: "\f0ae"
+}
+
+.fa-filter:before {
+	content: "\f0b0"
+}
+
+.fa-briefcase:before {
+	content: "\f0b1"
+}
+
+.fa-arrows-alt:before {
+	content: "\f0b2"
+}
+
+.fa-group:before,
+.fa-users:before {
+	content: "\f0c0"
+}
+
+.fa-chain:before,
+.fa-link:before {
+	content: "\f0c1"
+}
+
+.fa-cloud:before {
+	content: "\f0c2"
+}
+
+.fa-flask:before {
+	content: "\f0c3"
+}
+
+.fa-cut:before,
+.fa-scissors:before {
+	content: "\f0c4"
+}
+
+.fa-copy:before,
+.fa-files-o:before {
+	content: "\f0c5"
+}
+
+.fa-paperclip:before {
+	content: "\f0c6"
+}
+
+.fa-floppy-o:before,
+.fa-save:before {
+	content: "\f0c7"
+}
+
+.fa-square:before {
+	content: "\f0c8"
+}
+
+.fa-bars:before,
+.fa-navicon:before,
+.fa-reorder:before {
+	content: "\f0c9"
+}
+
+.fa-list-ul:before {
+	content: "\f0ca"
+}
+
+.fa-list-ol:before {
+	content: "\f0cb"
+}
+
+.fa-strikethrough:before {
+	content: "\f0cc"
+}
+
+.fa-underline:before {
+	content: "\f0cd"
+}
+
+.fa-table:before {
+	content: "\f0ce"
+}
+
+.fa-magic:before {
+	content: "\f0d0"
+}
+
+.fa-truck:before {
+	content: "\f0d1"
+}
+
+.fa-pinterest:before {
+	content: "\f0d2"
+}
+
+.fa-pinterest-square:before {
+	content: "\f0d3"
+}
+
+.fa-google-plus-square:before {
+	content: "\f0d4"
+}
+
+.fa-google-plus:before {
+	content: "\f0d5"
+}
+
+.fa-money:before {
+	content: "\f0d6"
+}
+
+.fa-caret-down:before {
+	content: "\f0d7"
+}
+
+.fa-caret-up:before {
+	content: "\f0d8"
+}
+
+.fa-caret-left:before {
+	content: "\f0d9"
+}
+
+.fa-caret-right:before {
+	content: "\f0da"
+}
+
+.fa-columns:before {
+	content: "\f0db"
+}
+
+.fa-sort:before,
+.fa-unsorted:before {
+	content: "\f0dc"
+}
+
+.fa-sort-desc:before,
+.fa-sort-down:before {
+	content: "\f0dd"
+}
+
+.fa-sort-asc:before,
+.fa-sort-up:before {
+	content: "\f0de"
+}
+
+.fa-envelope:before {
+	content: "\f0e0"
+}
+
+.fa-linkedin:before {
+	content: "\f0e1"
+}
+
+.fa-rotate-left:before,
+.fa-undo:before {
+	content: "\f0e2"
+}
+
+.fa-gavel:before,
+.fa-legal:before {
+	content: "\f0e3"
+}
+
+.fa-dashboard:before,
+.fa-tachometer:before {
+	content: "\f0e4"
+}
+
+.fa-comment-o:before {
+	content: "\f0e5"
+}
+
+.fa-comments-o:before {
+	content: "\f0e6"
+}
+
+.fa-bolt:before,
+.fa-flash:before {
+	content: "\f0e7"
+}
+
+.fa-sitemap:before {
+	content: "\f0e8"
+}
+
+.fa-umbrella:before {
+	content: "\f0e9"
+}
+
+.fa-clipboard:before,
+.fa-paste:before {
+	content: "\f0ea"
+}
+
+.fa-lightbulb-o:before {
+	content: "\f0eb"
+}
+
+.fa-exchange:before {
+	content: "\f0ec"
+}
+
+.fa-cloud-download:before {
+	content: "\f0ed"
+}
+
+.fa-cloud-upload:before {
+	content: "\f0ee"
+}
+
+.fa-user-md:before {
+	content: "\f0f0"
+}
+
+.fa-stethoscope:before {
+	content: "\f0f1"
+}
+
+.fa-suitcase:before {
+	content: "\f0f2"
+}
+
+.fa-bell-o:before {
+	content: "\f0a2"
+}
+
+.fa-coffee:before {
+	content: "\f0f4"
+}
+
+.fa-cutlery:before {
+	content: "\f0f5"
+}
+
+.fa-file-text-o:before {
+	content: "\f0f6"
+}
+
+.fa-building-o:before {
+	content: "\f0f7"
+}
+
+.fa-hospital-o:before {
+	content: "\f0f8"
+}
+
+.fa-ambulance:before {
+	content: "\f0f9"
+}
+
+.fa-medkit:before {
+	content: "\f0fa"
+}
+
+.fa-fighter-jet:before {
+	content: "\f0fb"
+}
+
+.fa-beer:before {
+	content: "\f0fc"
+}
+
+.fa-h-square:before {
+	content: "\f0fd"
+}
+
+.fa-plus-square:before {
+	content: "\f0fe"
+}
+
+.fa-angle-double-left:before {
+	content: "\f100"
+}
+
+.fa-angle-double-right:before {
+	content: "\f101"
+}
+
+.fa-angle-double-up:before {
+	content: "\f102"
+}
+
+.fa-angle-double-down:before {
+	content: "\f103"
+}
+
+.fa-angle-left:before {
+	content: "\f104"
+}
+
+.fa-angle-right:before {
+	content: "\f105"
+}
+
+.fa-angle-up:before {
+	content: "\f106"
+}
+
+.fa-angle-down:before {
+	content: "\f107"
+}
+
+.fa-desktop:before {
+	content: "\f108"
+}
+
+.fa-laptop:before {
+	content: "\f109"
+}
+
+.fa-tablet:before {
+	content: "\f10a"
+}
+
+.fa-mobile-phone:before,
+.fa-mobile:before {
+	content: "\f10b"
+}
+
+.fa-circle-o:before {
+	content: "\f10c"
+}
+
+.fa-quote-left:before {
+	content: "\f10d"
+}
+
+.fa-quote-right:before {
+	content: "\f10e"
+}
+
+.fa-spinner:before {
+	content: "\f110"
+}
+
+.fa-circle:before {
+	content: "\f111"
+}
+
+.fa-mail-reply:before,
+.fa-reply:before {
+	content: "\f112"
+}
+
+.fa-github-alt:before {
+	content: "\f113"
+}
+
+.fa-folder-o:before {
+	content: "\f114"
+}
+
+.fa-folder-open-o:before {
+	content: "\f115"
+}
+
+.fa-smile-o:before {
+	content: "\f118"
+}
+
+.fa-frown-o:before {
+	content: "\f119"
+}
+
+.fa-meh-o:before {
+	content: "\f11a"
+}
+
+.fa-gamepad:before {
+	content: "\f11b"
+}
+
+.fa-keyboard-o:before {
+	content: "\f11c"
+}
+
+.fa-flag-o:before {
+	content: "\f11d"
+}
+
+.fa-flag-checkered:before {
+	content: "\f11e"
+}
+
+.fa-terminal:before {
+	content: "\f120"
+}
+
+.fa-code:before {
+	content: "\f121"
+}
+
+.fa-mail-reply-all:before,
+.fa-reply-all:before {
+	content: "\f122"
+}
+
+.fa-star-half-empty:before,
+.fa-star-half-full:before,
+.fa-star-half-o:before {
+	content: "\f123"
+}
+
+.fa-location-arrow:before {
+	content: "\f124"
+}
+
+.fa-crop:before {
+	content: "\f125"
+}
+
+.fa-code-fork:before {
+	content: "\f126"
+}
+
+.fa-chain-broken:before,
+.fa-unlink:before {
+	content: "\f127"
+}
+
+.fa-question:before {
+	content: "\f128"
+}
+
+.fa-info:before {
+	content: "\f129"
+}
+
+.fa-exclamation:before {
+	content: "\f12a"
+}
+
+.fa-superscript:before {
+	content: "\f12b"
+}
+
+.fa-subscript:before {
+	content: "\f12c"
+}
+
+.fa-eraser:before {
+	content: "\f12d"
+}
+
+.fa-puzzle-piece:before {
+	content: "\f12e"
+}
+
+.fa-microphone:before {
+	content: "\f130"
+}
+
+.fa-microphone-slash:before {
+	content: "\f131"
+}
+
+.fa-shield:before {
+	content: "\f132"
+}
+
+.fa-calendar-o:before {
+	content: "\f133"
+}
+
+.fa-fire-extinguisher:before {
+	content: "\f134"
+}
+
+.fa-rocket:before {
+	content: "\f135"
+}
+
+.fa-maxcdn:before {
+	content: "\f136"
+}
+
+.fa-chevron-circle-left:before {
+	content: "\f137"
+}
+
+.fa-chevron-circle-right:before {
+	content: "\f138"
+}
+
+.fa-chevron-circle-up:before {
+	content: "\f139"
+}
+
+.fa-chevron-circle-down:before {
+	content: "\f13a"
+}
+
+.fa-html5:before {
+	content: "\f13b"
+}
+
+.fa-css3:before {
+	content: "\f13c"
+}
+
+.fa-anchor:before {
+	content: "\f13d"
+}
+
+.fa-unlock-alt:before {
+	content: "\f13e"
+}
+
+.fa-bullseye:before {
+	content: "\f140"
+}
+
+.fa-ellipsis-h:before {
+	content: "\f141"
+}
+
+.fa-ellipsis-v:before {
+	content: "\f142"
+}
+
+.fa-rss-square:before {
+	content: "\f143"
+}
+
+.fa-play-circle:before {
+	content: "\f144"
+}
+
+.fa-ticket:before {
+	content: "\f145"
+}
+
+.fa-minus-square:before {
+	content: "\f146"
+}
+
+.fa-minus-square-o:before {
+	content: "\f147"
+}
+
+.fa-level-up:before {
+	content: "\f148"
+}
+
+.fa-level-down:before {
+	content: "\f149"
+}
+
+.fa-check-square:before {
+	content: "\f14a"
+}
+
+.fa-pencil-square:before {
+	content: "\f14b"
+}
+
+.fa-external-link-square:before {
+	content: "\f14c"
+}
+
+.fa-share-square:before {
+	content: "\f14d"
+}
+
+.fa-compass:before {
+	content: "\f14e"
+}
+
+.fa-caret-square-o-down:before,
+.fa-toggle-down:before {
+	content: "\f150"
+}
+
+.fa-caret-square-o-up:before,
+.fa-toggle-up:before {
+	content: "\f151"
+}
+
+.fa-caret-square-o-right:before,
+.fa-toggle-right:before {
+	content: "\f152"
+}
+
+.fa-eur:before,
+.fa-euro:before {
+	content: "\f153"
+}
+
+.fa-gbp:before {
+	content: "\f154"
+}
+
+.fa-dollar:before,
+.fa-usd:before {
+	content: "\f155"
+}
+
+.fa-inr:before,
+.fa-rupee:before {
+	content: "\f156"
+}
+
+.fa-cny:before,
+.fa-jpy:before,
+.fa-rmb:before,
+.fa-yen:before {
+	content: "\f157"
+}
+
+.fa-rouble:before,
+.fa-rub:before,
+.fa-ruble:before {
+	content: "\f158"
+}
+
+.fa-krw:before,
+.fa-won:before {
+	content: "\f159"
+}
+
+.fa-bitcoin:before,
+.fa-btc:before {
+	content: "\f15a"
+}
+
+.fa-file:before {
+	content: "\f15b"
+}
+
+.fa-file-text:before {
+	content: "\f15c"
+}
+
+.fa-sort-alpha-asc:before {
+	content: "\f15d"
+}
+
+.fa-sort-alpha-desc:before {
+	content: "\f15e"
+}
+
+.fa-sort-amount-asc:before {
+	content: "\f160"
+}
+
+.fa-sort-amount-desc:before {
+	content: "\f161"
+}
+
+.fa-sort-numeric-asc:before {
+	content: "\f162"
+}
+
+.fa-sort-numeric-desc:before {
+	content: "\f163"
+}
+
+.fa-thumbs-up:before {
+	content: "\f164"
+}
+
+.fa-thumbs-down:before {
+	content: "\f165"
+}
+
+.fa-youtube-square:before {
+	content: "\f166"
+}
+
+.fa-youtube:before {
+	content: "\f167"
+}
+
+.fa-xing:before {
+	content: "\f168"
+}
+
+.fa-xing-square:before {
+	content: "\f169"
+}
+
+.fa-youtube-play:before {
+	content: "\f16a"
+}
+
+.fa-dropbox:before {
+	content: "\f16b"
+}
+
+.fa-stack-overflow:before {
+	content: "\f16c"
+}
+
+.fa-instagram:before {
+	content: "\f16d"
+}
+
+.fa-flickr:before {
+	content: "\f16e"
+}
+
+.fa-adn:before {
+	content: "\f170"
+}
+
+.fa-bitbucket:before {
+	content: "\f171"
+}
+
+.fa-bitbucket-square:before {
+	content: "\f172"
+}
+
+.fa-tumblr:before {
+	content: "\f173"
+}
+
+.fa-tumblr-square:before {
+	content: "\f174"
+}
+
+.fa-long-arrow-down:before {
+	content: "\f175"
+}
+
+.fa-long-arrow-up:before {
+	content: "\f176"
+}
+
+.fa-long-arrow-left:before {
+	content: "\f177"
+}
+
+.fa-long-arrow-right:before {
+	content: "\f178"
+}
+
+.fa-apple:before {
+	content: "\f179"
+}
+
+.fa-windows:before {
+	content: "\f17a"
+}
+
+.fa-android:before {
+	content: "\f17b"
+}
+
+.fa-linux:before {
+	content: "\f17c"
+}
+
+.fa-dribbble:before {
+	content: "\f17d"
+}
+
+.fa-skype:before {
+	content: "\f17e"
+}
+
+.fa-foursquare:before {
+	content: "\f180"
+}
+
+.fa-trello:before {
+	content: "\f181"
+}
+
+.fa-female:before {
+	content: "\f182"
+}
+
+.fa-male:before {
+	content: "\f183"
+}
+
+.fa-gittip:before,
+.fa-gratipay:before {
+	content: "\f184"
+}
+
+.fa-sun-o:before {
+	content: "\f185"
+}
+
+.fa-moon-o:before {
+	content: "\f186"
+}
+
+.fa-archive:before {
+	content: "\f187"
+}
+
+.fa-bug:before {
+	content: "\f188"
+}
+
+.fa-vk:before {
+	content: "\f189"
+}
+
+.fa-weibo:before {
+	content: "\f18a"
+}
+
+.fa-renren:before {
+	content: "\f18b"
+}
+
+.fa-pagelines:before {
+	content: "\f18c"
+}
+
+.fa-stack-exchange:before {
+	content: "\f18d"
+}
+
+.fa-arrow-circle-o-right:before {
+	content: "\f18e"
+}
+
+.fa-arrow-circle-o-left:before {
+	content: "\f190"
+}
+
+.fa-caret-square-o-left:before,
+.fa-toggle-left:before {
+	content: "\f191"
+}
+
+.fa-dot-circle-o:before {
+	content: "\f192"
+}
+
+.fa-wheelchair:before {
+	content: "\f193"
+}
+
+.fa-vimeo-square:before {
+	content: "\f194"
+}
+
+.fa-try:before,
+.fa-turkish-lira:before {
+	content: "\f195"
+}
+
+.fa-plus-square-o:before {
+	content: "\f196"
+}
+
+.fa-space-shuttle:before {
+	content: "\f197"
+}
+
+.fa-slack:before {
+	content: "\f198"
+}
+
+.fa-envelope-square:before {
+	content: "\f199"
+}
+
+.fa-wordpress:before {
+	content: "\f19a"
+}
+
+.fa-openid:before {
+	content: "\f19b"
+}
+
+.fa-bank:before,
+.fa-institution:before,
+.fa-university:before {
+	content: "\f19c"
+}
+
+.fa-graduation-cap:before,
+.fa-mortar-board:before {
+	content: "\f19d"
+}
+
+.fa-yahoo:before {
+	content: "\f19e"
+}
+
+.fa-google:before {
+	content: "\f1a0"
+}
+
+.fa-reddit:before {
+	content: "\f1a1"
+}
+
+.fa-reddit-square:before {
+	content: "\f1a2"
+}
+
+.fa-stumbleupon-circle:before {
+	content: "\f1a3"
+}
+
+.fa-stumbleupon:before {
+	content: "\f1a4"
+}
+
+.fa-delicious:before {
+	content: "\f1a5"
+}
+
+.fa-digg:before {
+	content: "\f1a6"
+}
+
+.fa-pied-piper:before {
+	content: "\f1a7"
+}
+
+.fa-pied-piper-alt:before {
+	content: "\f1a8"
+}
+
+.fa-drupal:before {
+	content: "\f1a9"
+}
+
+.fa-joomla:before {
+	content: "\f1aa"
+}
+
+.fa-language:before {
+	content: "\f1ab"
+}
+
+.fa-fax:before {
+	content: "\f1ac"
+}
+
+.fa-building:before {
+	content: "\f1ad"
+}
+
+.fa-child:before {
+	content: "\f1ae"
+}
+
+.fa-paw:before {
+	content: "\f1b0"
+}
+
+.fa-spoon:before {
+	content: "\f1b1"
+}
+
+.fa-cube:before {
+	content: "\f1b2"
+}
+
+.fa-cubes:before {
+	content: "\f1b3"
+}
+
+.fa-behance:before {
+	content: "\f1b4"
+}
+
+.fa-behance-square:before {
+	content: "\f1b5"
+}
+
+.fa-steam:before {
+	content: "\f1b6"
+}
+
+.fa-steam-square:before {
+	content: "\f1b7"
+}
+
+.fa-recycle:before {
+	content: "\f1b8"
+}
+
+.fa-automobile:before,
+.fa-car:before {
+	content: "\f1b9"
+}
+
+.fa-cab:before,
+.fa-taxi:before {
+	content: "\f1ba"
+}
+
+.fa-tree:before {
+	content: "\f1bb"
+}
+
+.fa-spotify:before {
+	content: "\f1bc"
+}
+
+.fa-deviantart:before {
+	content: "\f1bd"
+}
+
+.fa-soundcloud:before {
+	content: "\f1be"
+}
+
+.fa-database:before {
+	content: "\f1c0"
+}
+
+.fa-file-pdf-o:before {
+	content: "\f1c1"
+}
+
+.fa-file-word-o:before {
+	content: "\f1c2"
+}
+
+.fa-file-excel-o:before {
+	content: "\f1c3"
+}
+
+.fa-file-powerpoint-o:before {
+	content: "\f1c4"
+}
+
+.fa-file-image-o:before,
+.fa-file-photo-o:before,
+.fa-file-picture-o:before {
+	content: "\f1c5"
+}
+
+.fa-file-archive-o:before,
+.fa-file-zip-o:before {
+	content: "\f1c6"
+}
+
+.fa-file-audio-o:before,
+.fa-file-sound-o:before {
+	content: "\f1c7"
+}
+
+.fa-file-movie-o:before,
+.fa-file-video-o:before {
+	content: "\f1c8"
+}
+
+.fa-file-code-o:before {
+	content: "\f1c9"
+}
+
+.fa-vine:before {
+	content: "\f1ca"
+}
+
+.fa-codepen:before {
+	content: "\f1cb"
+}
+
+.fa-jsfiddle:before {
+	content: "\f1cc"
+}
+
+.fa-life-bouy:before,
+.fa-life-buoy:before,
+.fa-life-ring:before,
+.fa-life-saver:before,
+.fa-support:before {
+	content: "\f1cd"
+}
+
+.fa-circle-o-notch:before {
+	content: "\f1ce"
+}
+
+.fa-ra:before,
+.fa-rebel:before {
+	content: "\f1d0"
+}
+
+.fa-empire:before,
+.fa-ge:before {
+	content: "\f1d1"
+}
+
+.fa-git-square:before {
+	content: "\f1d2"
+}
+
+.fa-git:before {
+	content: "\f1d3"
+}
+
+.fa-hacker-news:before,
+.fa-y-combinator-square:before,
+.fa-yc-square:before {
+	content: "\f1d4"
+}
+
+.fa-tencent-weibo:before {
+	content: "\f1d5"
+}
+
+.fa-qq:before {
+	content: "\f1d6"
+}
+
+.fa-wechat:before,
+.fa-weixin:before {
+	content: "\f1d7"
+}
+
+.fa-paper-plane:before,
+.fa-send:before {
+	content: "\f1d8"
+}
+
+.fa-paper-plane-o:before,
+.fa-send-o:before {
+	content: "\f1d9"
+}
+
+.fa-history:before {
+	content: "\f1da"
+}
+
+.fa-circle-thin:before {
+	content: "\f1db"
+}
+
+.fa-header:before {
+	content: "\f1dc"
+}
+
+.fa-paragraph:before {
+	content: "\f1dd"
+}
+
+.fa-sliders:before {
+	content: "\f1de"
+}
+
+.fa-share-alt:before {
+	content: "\f1e0"
+}
+
+.fa-share-alt-square:before {
+	content: "\f1e1"
+}
+
+.fa-bomb:before {
+	content: "\f1e2"
+}
+
+.fa-futbol-o:before,
+.fa-soccer-ball-o:before {
+	content: "\f1e3"
+}
+
+.fa-tty:before {
+	content: "\f1e4"
+}
+
+.fa-binoculars:before {
+	content: "\f1e5"
+}
+
+.fa-plug:before {
+	content: "\f1e6"
+}
+
+.fa-slideshare:before {
+	content: "\f1e7"
+}
+
+.fa-twitch:before {
+	content: "\f1e8"
+}
+
+.fa-yelp:before {
+	content: "\f1e9"
+}
+
+.fa-newspaper-o:before {
+	content: "\f1ea"
+}
+
+.fa-wifi:before {
+	content: "\f1eb"
+}
+
+.fa-calculator:before {
+	content: "\f1ec"
+}
+
+.fa-paypal:before {
+	content: "\f1ed"
+}
+
+.fa-google-wallet:before {
+	content: "\f1ee"
+}
+
+.fa-cc-visa:before {
+	content: "\f1f0"
+}
+
+.fa-cc-mastercard:before {
+	content: "\f1f1"
+}
+
+.fa-cc-discover:before {
+	content: "\f1f2"
+}
+
+.fa-cc-amex:before {
+	content: "\f1f3"
+}
+
+.fa-cc-paypal:before {
+	content: "\f1f4"
+}
+
+.fa-cc-stripe:before {
+	content: "\f1f5"
+}
+
+.fa-bell-slash:before {
+	content: "\f1f6"
+}
+
+.fa-bell-slash-o:before {
+	content: "\f1f7"
+}
+
+.fa-trash:before {
+	content: "\f1f8"
+}
+
+.fa-copyright:before {
+	content: "\f1f9"
+}
+
+.fa-at:before {
+	content: "\f1fa"
+}
+
+.fa-eyedropper:before {
+	content: "\f1fb"
+}
+
+.fa-paint-brush:before {
+	content: "\f1fc"
+}
+
+.fa-birthday-cake:before {
+	content: "\f1fd"
+}
+
+.fa-area-chart:before {
+	content: "\f1fe"
+}
+
+.fa-pie-chart:before {
+	content: "\f200"
+}
+
+.fa-line-chart:before {
+	content: "\f201"
+}
+
+.fa-lastfm:before {
+	content: "\f202"
+}
+
+.fa-lastfm-square:before {
+	content: "\f203"
+}
+
+.fa-toggle-off:before {
+	content: "\f204"
+}
+
+.fa-toggle-on:before {
+	content: "\f205"
+}
+
+.fa-bicycle:before {
+	content: "\f206"
+}
+
+.fa-bus:before {
+	content: "\f207"
+}
+
+.fa-ioxhost:before {
+	content: "\f208"
+}
+
+.fa-angellist:before {
+	content: "\f209"
+}
+
+.fa-cc:before {
+	content: "\f20a"
+}
+
+.fa-ils:before,
+.fa-shekel:before,
+.fa-sheqel:before {
+	content: "\f20b"
+}
+
+.fa-meanpath:before {
+	content: "\f20c"
+}
+
+.fa-buysellads:before {
+	content: "\f20d"
+}
+
+.fa-connectdevelop:before {
+	content: "\f20e"
+}
+
+.fa-dashcube:before {
+	content: "\f210"
+}
+
+.fa-forumbee:before {
+	content: "\f211"
+}
+
+.fa-leanpub:before {
+	content: "\f212"
+}
+
+.fa-sellsy:before {
+	content: "\f213"
+}
+
+.fa-shirtsinbulk:before {
+	content: "\f214"
+}
+
+.fa-simplybuilt:before {
+	content: "\f215"
+}
+
+.fa-skyatlas:before {
+	content: "\f216"
+}
+
+.fa-cart-plus:before {
+	content: "\f217"
+}
+
+.fa-cart-arrow-down:before {
+	content: "\f218"
+}
+
+.fa-diamond:before {
+	content: "\f219"
+}
+
+.fa-ship:before {
+	content: "\f21a"
+}
+
+.fa-user-secret:before {
+	content: "\f21b"
+}
+
+.fa-motorcycle:before {
+	content: "\f21c"
+}
+
+.fa-street-view:before {
+	content: "\f21d"
+}
+
+.fa-heartbeat:before {
+	content: "\f21e"
+}
+
+.fa-venus:before {
+	content: "\f221"
+}
+
+.fa-mars:before {
+	content: "\f222"
+}
+
+.fa-mercury:before {
+	content: "\f223"
+}
+
+.fa-intersex:before,
+.fa-transgender:before {
+	content: "\f224"
+}
+
+.fa-transgender-alt:before {
+	content: "\f225"
+}
+
+.fa-venus-double:before {
+	content: "\f226"
+}
+
+.fa-mars-double:before {
+	content: "\f227"
+}
+
+.fa-venus-mars:before {
+	content: "\f228"
+}
+
+.fa-mars-stroke:before {
+	content: "\f229"
+}
+
+.fa-mars-stroke-v:before {
+	content: "\f22a"
+}
+
+.fa-mars-stroke-h:before {
+	content: "\f22b"
+}
+
+.fa-neuter:before {
+	content: "\f22c"
+}
+
+.fa-genderless:before {
+	content: "\f22d"
+}
+
+.fa-facebook-official:before {
+	content: "\f230"
+}
+
+.fa-pinterest-p:before {
+	content: "\f231"
+}
+
+.fa-whatsapp:before {
+	content: "\f232"
+}
+
+.fa-server:before {
+	content: "\f233"
+}
+
+.fa-user-plus:before {
+	content: "\f234"
+}
+
+.fa-user-times:before {
+	content: "\f235"
+}
+
+.fa-bed:before,
+.fa-hotel:before {
+	content: "\f236"
+}
+
+.fa-viacoin:before {
+	content: "\f237"
+}
+
+.fa-train:before {
+	content: "\f238"
+}
+
+.fa-subway:before {
+	content: "\f239"
+}
+
+.fa-medium:before {
+	content: "\f23a"
+}
+
+.fa-y-combinator:before,
+.fa-yc:before {
+	content: "\f23b"
+}
+
+.fa-optin-monster:before {
+	content: "\f23c"
+}
+
+.fa-opencart:before {
+	content: "\f23d"
+}
+
+.fa-expeditedssl:before {
+	content: "\f23e"
+}
+
+.fa-battery-4:before,
+.fa-battery-full:before {
+	content: "\f240"
+}
+
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
+	content: "\f241"
+}
+
+.fa-battery-2:before,
+.fa-battery-half:before {
+	content: "\f242"
+}
+
+.fa-battery-1:before,
+.fa-battery-quarter:before {
+	content: "\f243"
+}
+
+.fa-battery-0:before,
+.fa-battery-empty:before {
+	content: "\f244"
+}
+
+.fa-mouse-pointer:before {
+	content: "\f245"
+}
+
+.fa-i-cursor:before {
+	content: "\f246"
+}
+
+.fa-object-group:before {
+	content: "\f247"
+}
+
+.fa-object-ungroup:before {
+	content: "\f248"
+}
+
+.fa-sticky-note:before {
+	content: "\f249"
+}
+
+.fa-sticky-note-o:before {
+	content: "\f24a"
+}
+
+.fa-cc-jcb:before {
+	content: "\f24b"
+}
+
+.fa-cc-diners-club:before {
+	content: "\f24c"
+}
+
+.fa-clone:before {
+	content: "\f24d"
+}
+
+.fa-balance-scale:before {
+	content: "\f24e"
+}
+
+.fa-hourglass-o:before {
+	content: "\f250"
+}
+
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
+	content: "\f251"
+}
+
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
+	content: "\f252"
+}
+
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
+	content: "\f253"
+}
+
+.fa-hourglass:before {
+	content: "\f254"
+}
+
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
+	content: "\f255"
+}
+
+.fa-hand-paper-o:before,
+.fa-hand-stop-o:before {
+	content: "\f256"
+}
+
+.fa-hand-scissors-o:before {
+	content: "\f257"
+}
+
+.fa-hand-lizard-o:before {
+	content: "\f258"
+}
+
+.fa-hand-spock-o:before {
+	content: "\f259"
+}
+
+.fa-hand-pointer-o:before {
+	content: "\f25a"
+}
+
+.fa-hand-peace-o:before {
+	content: "\f25b"
+}
+
+.fa-trademark:before {
+	content: "\f25c"
+}
+
+.fa-registered:before {
+	content: "\f25d"
+}
+
+.fa-creative-commons:before {
+	content: "\f25e"
+}
+
+.fa-gg:before {
+	content: "\f260"
+}
+
+.fa-gg-circle:before {
+	content: "\f261"
+}
+
+.fa-tripadvisor:before {
+	content: "\f262"
+}
+
+.fa-odnoklassniki:before {
+	content: "\f263"
+}
+
+.fa-odnoklassniki-square:before {
+	content: "\f264"
+}
+
+.fa-get-pocket:before {
+	content: "\f265"
+}
+
+.fa-wikipedia-w:before {
+	content: "\f266"
+}
+
+.fa-safari:before {
+	content: "\f267"
+}
+
+.fa-chrome:before {
+	content: "\f268"
+}
+
+.fa-firefox:before {
+	content: "\f269"
+}
+
+.fa-opera:before {
+	content: "\f26a"
+}
+
+.fa-internet-explorer:before {
+	content: "\f26b"
+}
+
+.fa-television:before,
+.fa-tv:before {
+	content: "\f26c"
+}
+
+.fa-contao:before {
+	content: "\f26d"
+}
+
+.fa-500px:before {
+	content: "\f26e"
+}
+
+.fa-amazon:before {
+	content: "\f270"
+}
+
+.fa-calendar-plus-o:before {
+	content: "\f271"
+}
+
+.fa-calendar-minus-o:before {
+	content: "\f272"
+}
+
+.fa-calendar-times-o:before {
+	content: "\f273"
+}
+
+.fa-calendar-check-o:before {
+	content: "\f274"
+}
+
+.fa-industry:before {
+	content: "\f275"
+}
+
+.fa-map-pin:before {
+	content: "\f276"
+}
+
+.fa-map-signs:before {
+	content: "\f277"
+}
+
+.fa-map-o:before {
+	content: "\f278"
+}
+
+.fa-map:before {
+	content: "\f279"
+}
+
+.fa-commenting:before {
+	content: "\f27a"
+}
+
+.fa-commenting-o:before {
+	content: "\f27b"
+}
+
+.fa-houzz:before {
+	content: "\f27c"
+}
+
+.fa-vimeo:before {
+	content: "\f27d"
+}
+
+.fa-black-tie:before {
+	content: "\f27e"
+}
+
+.fa-fonticons:before {
+	content: "\f280"
+}
+
+.fa-reddit-alien:before {
+	content: "\f281"
+}
+
+.fa-edge:before {
+	content: "\f282"
+}
+
+.fa-credit-card-alt:before {
+	content: "\f283"
+}
+
+.fa-codiepie:before {
+	content: "\f284"
+}
+
+.fa-modx:before {
+	content: "\f285"
+}
+
+.fa-fort-awesome:before {
+	content: "\f286"
+}
+
+.fa-usb:before {
+	content: "\f287"
+}
+
+.fa-product-hunt:before {
+	content: "\f288"
+}
+
+.fa-mixcloud:before {
+	content: "\f289"
+}
+
+.fa-scribd:before {
+	content: "\f28a"
+}
+
+.fa-pause-circle:before {
+	content: "\f28b"
+}
+
+.fa-pause-circle-o:before {
+	content: "\f28c"
+}
+
+.fa-stop-circle:before {
+	content: "\f28d"
+}
+
+.fa-stop-circle-o:before {
+	content: "\f28e"
+}
+
+.fa-shopping-bag:before {
+	content: "\f290"
+}
+
+.fa-shopping-basket:before {
+	content: "\f291"
+}
+
+.fa-hashtag:before {
+	content: "\f292"
+}
+
+.fa-bluetooth:before {
+	content: "\f293"
+}
+
+.fa-bluetooth-b:before {
+	content: "\f294"
+}
+
+.fa-percent:before {
+	content: "\f295"
+}
+
+@font-face {
+	font-family: cs-icons;
+	src: url(../fonts/iconfonts/workflow/wf-icons.eot?wy8za);
+	src: url(../fonts/iconfonts/workflow/wf-icons.eot?wy8za#iefix) format('embedded-opentype'), url(../fonts/iconfonts/workflow/wf-icons.ttf?wy8za) format('truetype'), url(../fonts/iconfonts/workflow/wf-icons.woff?wy8za) format('woff'), url(../fonts/iconfonts/workflow/wf-icons.woff2?wy8za) format('woff2'), url(../fonts/iconfonts/workflow/wf-icons.svg?wy8za#cs-icons) format('svg');
+	font-weight: 400;
+	font-style: normal
+}
+
+.icon-cs-wf-alert,
+.icon-cs-wf-approval,
+.icon-cs-wf-assign,
+.icon-cs-wf-data-extract,
+.icon-cs-wf-data-flow,
+.icon-cs-wf-data-object,
+.icon-cs-wf-do-while-loop,
+.icon-cs-wf-email-notification,
+.icon-cs-wf-execute,
+.icon-cs-wf-exit,
+.icon-cs-wf-for-each-loop,
+.icon-cs-wf-if-else-condition,
+.icon-cs-wf-list,
+.icon-cs-wf-parallelize,
+.icon-cs-wf-parameters,
+.icon-cs-wf-push-notification,
+.icon-cs-wf-push-notification-web,
+.icon-cs-wf-receive,
+.icon-cs-wf-save,
+.icon-cs-wf-search,
+.icon-cs-wf-spring-intergration,
+.icon-cs-wf-sub-process,
+.icon-cs-wf-terminate,
+.icon-cs-wf-timer-task,
+.icon-cs-wf-user-confirmation,
+.icon-cs-wf-variables,
+.icon-cs-wf-while-loop {
+	font-family: cs-icons!important;
+	speak: none;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.icon-cs-wf-alert:before {
+	content: "\ab001"
+}
+
+.icon-cs-wf-approval:before {
+	content: "\ab002"
+}
+
+.icon-cs-wf-assign:before {
+	content: "\ab003"
+}
+
+.icon-cs-wf-data-flow:before {
+	content: "\ab004"
+}
+
+.icon-cs-wf-do-while-loop:before {
+	content: "\ab005"
+}
+
+.icon-cs-wf-email-notification:before {
+	content: "\ab006"
+}
+
+.icon-cs-wf-execute:before {
+	content: "\ab007"
+}
+
+.icon-cs-wf-for-each-loop:before {
+	content: "\ab008"
+}
+
+.icon-cs-wf-if-else-condition:before {
+	content: "\ab009"
+}
+
+.icon-cs-wf-list:before {
+	content: "\ab010"
+}
+
+.icon-cs-wf-parallelize:before {
+	content: "\ab011"
+}
+
+.icon-cs-wf-parameters:before {
+	content: "\ab012"
+}
+
+.icon-cs-wf-push-notification:before {
+	content: "\ab013"
+}
+
+.icon-cs-wf-receive:before {
+	content: "\ab014"
+}
+
+.icon-cs-wf-save:before {
+	content: "\ab015"
+}
+
+.icon-cs-wf-search:before {
+	content: "\ab016"
+}
+
+.icon-cs-wf-spring-intergration:before {
+	content: "\ab017"
+}
+
+.icon-cs-wf-sub-process:before {
+	content: "\ab018"
+}
+
+.icon-cs-wf-terminate:before {
+	content: "\ab019"
+}
+
+.icon-cs-wf-user-confirmation:before {
+	content: "\ab020"
+}
+
+.icon-cs-wf-variables:before {
+	content: "\ab021"
+}
+
+.icon-cs-wf-while-loop:before {
+	content: "\ab022"
+}
+
+.icon-cs-wf-exit:before {
+	content: "\ab023"
+}
+
+.icon-cs-wf-data-object:before {
+	content: "\ab024"
+}
+
+.icon-cs-wf-data-extract:before {
+	content: "\ab025"
+}
+
+.icon-cs-wf-timer-task:before {
+	content: "\ab026"
+}
+
+.icon-cs-wf-push-notification-web:before {
+	content: "\ab027"
+}
+
+@font-face {
+	font-family: cs-icons;
+	src: url(menu/menu.eot?hil6vc);
+	src: url(menu/menu.eot?hil6vc#iefix) format('embedded-opentype'), url(menu/menu.ttf?hil6vc) format('truetype'), url(menu/menu.woff?hil6vc) format('woff'), url(menu/menu.svg?hil6vc#cs-icons) format('svg');
+	font-weight: 400;
+	font-style: normal
+}
+
+.icon-cs-app,
+.icon-cs-appiot,
+.icon-cs-application,
+.icon-cs-applied-patch,
+.icon-cs-appm,
+.icon-cs-apps,
+.icon-cs-archive-purge-o,
+.icon-cs-archive-purge-workbench-o,
+.icon-cs-assign-application,
+.icon-cs-assign-dashboard,
+.icon-cs-assign-menu-groups-to-role,
+.icon-cs-assign-menu-groups-to-user,
+.icon-cs-assign-menus-to-menu-group,
+.icon-cs-assign-object,
+.icon-cs-assign-privileges,
+.icon-cs-assign-responsibilities-to-roles,
+.icon-cs-assign-responsibilities-to-user,
+.icon-cs-assign-users-to-user-group,
+.icon-cs-assignment-objects,
+.icon-cs-authorization,
+.icon-cs-chart-creation,
+.icon-cs-connections,
+.icon-cs-controllers,
+.icon-cs-create-migration-flow,
+.icon-cs-customer,
+.icon-cs-dashboard,
+.icon-cs-data-extract-adapter,
+.icon-cs-data-extract-template,
+.icon-cs-data-flow,
+.icon-cs-data-flow-workbench,
+.icon-cs-data-object,
+.icon-cs-datalake-creation,
+.icon-cs-datalist-creation,
+.icon-cs-dataobject-workbench,
+.icon-cs-dataset-delete-status,
+.icon-cs-dataset-template,
+.icon-cs-dataset-template-convert,
+.icon-cs-definition,
+.icon-cs-domain,
+.icon-cs-email-template,
+.icon-cs-excel-export-status,
+.icon-cs-exit,
+.icon-cs-export-m-excel,
+.icon-cs-extract-template,
+.icon-cs-fusion-apps,
+.icon-cs-k-means-cluster-o,
+.icon-cs-keyword-pattern-0,
+.icon-cs-layout,
+.icon-cs-loader-adapter,
+.icon-cs-loader-template,
+.icon-cs-loader-workbench,
+.icon-cs-menu,
+.icon-cs-menu-group,
+.icon-cs-migrate,
+.icon-cs-migration-flow-workbench,
+.icon-cs-migration-workbench,
+.icon-cs-mobile,
+.icon-cs-mobile-device,
+.icon-cs-my-dashboard,
+.icon-cs-my-m-object,
+.icon-cs-notification-new,
+.icon-cs-object,
+.icon-cs-object-mailer,
+.icon-cs-object-privileges,
+.icon-cs-object-sharing,
+.icon-cs-object1,
+.icon-cs-oracle-ebs,
+.icon-cs-org,
+.icon-cs-organization,
+.icon-cs-organization-profile,
+.icon-cs-patch,
+.icon-cs-portation,
+.icon-cs-predictive-analytics,
+.icon-cs-predictive-dashboard,
+.icon-cs-predictive-view,
+.icon-cs-prevalidation-api,
+.icon-cs-process-status,
+.icon-cs-publisher,
+.icon-cs-publisher-workbench,
+.icon-cs-record-sharing,
+.icon-cs-reprocess,
+.icon-cs-request,
+.icon-cs-responsibilities,
+.icon-cs-role,
+.icon-cs-salesforce,
+.icon-cs-sample-data-download,
+.icon-cs-sample-data-upload,
+.icon-cs-sap,
+.icon-cs-scheduled-job-list,
+.icon-cs-scheduler,
+.icon-cs-sprint,
+.icon-cs-sql-extract,
+.icon-cs-success,
+.icon-cs-success-records,
+.icon-cs-transaction-search,
+.icon-cs-transfer-ownership,
+.icon-cs-transformation-api,
+.icon-cs-translator-workbench,
+.icon-cs-user,
+.icon-cs-user-dashboard-assignment,
+.icon-cs-user-group,
+.icon-cs-user-hierarchy,
+.icon-cs-user-management,
+.icon-cs-user-session-control-panel,
+.icon-cs-view-template,
+.icon-cs-view-template-convert,
+.icon-cs-widgets,
+.icon-cs-workflow,
+.icon-cs-workflow-workbench {
+	font-family: cs-icons!important;
+	speak: none;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.icon-cs-oracle-ebs:before {
+	content: "\aa001"
+}
+
+.icon-cs-sample-data-download:before {
+	content: "\aa002"
+}
+
+.icon-cs-sample-data-upload:before {
+	content: "\aa003"
+}
+
+.icon-cs-success-records:before {
+	content: "\aa004"
+}
+
+.icon-cs-success:before {
+	content: "\aa005"
+}
+
+.icon-cs-authorization:before {
+	content: "\aa006"
+}
+
+.icon-cs-connections:before {
+	content: "\aa007"
+}
+
+.icon-cs-definition:before {
+	content: "\aa008"
+}
+
+.icon-cs-fusion-apps:before {
+	content: "\aa009"
+}
+
+.icon-cs-salesforce:before {
+	content: "\aa010"
+}
+
+.icon-cs-sap:before {
+	content: "\aa011"
+}
+
+.icon-cs-scheduler:before {
+	content: "\aa012"
+}
+
+.icon-cs-user-group:before {
+	content: "\aa013"
+}
+
+.icon-cs-user-hierarchy:before {
+	content: "\aa014"
+}
+
+.icon-cs-user-management:before {
+	content: "\aa015"
+}
+
+.icon-cs-user:before {
+	content: "\aa016"
+}
+
+.icon-cs-widgets:before {
+	content: "\aa017"
+}
+
+.icon-cs-loader-template:before {
+	content: "\aa018"
+}
+
+.icon-cs-extract-template:before {
+	content: "\aa019"
+}
+
+.icon-cs-loader-workbench:before {
+	content: "\aa020"
+}
+
+.icon-cs-transformation-api:before {
+	content: "\aa021"
+}
+
+.icon-cs-prevalidation-api:before {
+	content: "\aa022"
+}
+
+.icon-cs-data-object:before {
+	content: "\aa023"
+}
+
+.icon-cs-data-extract-template:before {
+	content: "\aa024"
+}
+
+.icon-cs-data-extract-adapter:before {
+	content: "\aa025"
+}
+
+.icon-cs-sql-extract:before {
+	content: "\aa026"
+}
+
+.icon-cs-data-flow:before {
+	content: "\aa027"
+}
+
+.icon-cs-data-flow-workbench:before {
+	content: "\aa028"
+}
+
+.icon-cs-workflow:before {
+	content: "\aa029"
+}
+
+.icon-cs-workflow-workbench:before {
+	content: "\aa030"
+}
+
+.icon-cs-loader-adapter:before {
+	content: "\aa031"
+}
+
+.icon-cs-organization:before {
+	content: "\aa032"
+}
+
+.icon-cs-organization-profile:before {
+	content: "\aa033"
+}
+
+.icon-cs-application:before {
+	content: "\aa034"
+}
+
+.icon-cs-object:before {
+	content: "\aa035"
+}
+
+.icon-cs-assignment-objects:before {
+	content: "\aa036"
+}
+
+.icon-cs-object-privileges:before {
+	content: "\aa037"
+}
+
+.icon-cs-assign-privileges:before {
+	content: "\aa038"
+}
+
+.icon-cs-assign-object:before {
+	content: "\aa039"
+}
+
+.icon-cs-assign-application:before {
+	content: "\aa040"
+}
+
+.icon-cs-role:before {
+	content: "\aa041"
+}
+
+.icon-cs-responsibilities:before {
+	content: "\aa042"
+}
+
+.icon-cs-assign-responsibilities-to-roles:before {
+	content: "\aa043"
+}
+
+.icon-cs-menu:before {
+	content: "\aa044"
+}
+
+.icon-cs-assign-menus-to-menu-group:before {
+	content: "\aa046"
+}
+
+.icon-cs-assign-menu-groups-to-user:before {
+	content: "\aa047"
+}
+
+.icon-cs-assign-menu-groups-to-role:before {
+	content: "\aa048"
+}
+
+.icon-cs-record-sharing:before {
+	content: "\aa049"
+}
+
+.icon-cs-exit:before {
+	content: "\aa050"
+}
+
+.icon-cs-object-sharing:before {
+	content: "\aa051"
+}
+
+.icon-cs-assign-responsibilities-to-user:before {
+	content: "\aa052"
+}
+
+.icon-cs-reprocess:before {
+	content: "\aa053"
+}
+
+.icon-cs-email-template:before {
+	content: "\aa054"
+}
+
+.icon-cs-assign-users-to-user-group:before {
+	content: "\aa055"
+}
+
+.icon-cs-transfer-ownership:before {
+	content: "\aa056"
+}
+
+.icon-cs-publisher:before {
+	content: "\aa057"
+}
+
+.icon-cs-scheduled-job-list:before {
+	content: "\aa058"
+}
+
+.icon-cs-mobile-device:before {
+	content: "\aa060"
+}
+
+.icon-cs-transaction-search:before {
+	content: "\aa061"
+}
+
+.icon-cs-user-session-control-panel:before {
+	content: "\aa062"
+}
+
+.icon-cs-portation:before {
+	content: "\aa063"
+}
+
+.icon-cs-sprint:before {
+	content: "\aa064"
+}
+
+.icon-cs-chart-creation:before {
+	content: "\aa065"
+}
+
+.icon-cs-datalake-creation:before {
+	content: "\aa066"
+}
+
+.icon-cs-datalist-creation:before {
+	content: "\aa067"
+}
+
+.icon-cs-dashboard:before {
+	content: "\aa068"
+}
+
+.icon-cs-assign-dashboard:before {
+	content: "\aa069"
+}
+
+.icon-cs-patch:before {
+	content: "\aa070"
+}
+
+.icon-cs-applied-patch:before {
+	content: "\aa071"
+}
+
+.icon-cs-migrate:before {
+	content: "\aa072"
+}
+
+.icon-cs-create-migration-flow:before {
+	content: "\aa073"
+}
+
+.icon-cs-migration-workbench:before {
+	content: "\aa074"
+}
+
+.icon-cs-object1:before {
+	content: "\aa075"
+}
+
+.icon-cs-layout:before {
+	content: "\aa076"
+}
+
+.icon-cs-app:before {
+	content: "\aa077"
+}
+
+.icon-cs-user-dashboard-assignment:before {
+	content: "\aa078"
+}
+
+.icon-cs-dataobject-workbench:before {
+	content: "\aa079"
+}
+
+.icon-cs-export-m-excel:before {
+	content: "\aa080"
+}
+
+.icon-cs-my-m-object:before {
+	content: "\aa081"
+}
+
+.icon-cs-migration-flow-workbench:before {
+	content: "\aa082"
+}
+
+.icon-cs-apps:before {
+	content: "\aa083"
+}
+
+.icon-cs-customer:before {
+	content: "\aa084"
+}
+
+.icon-cs-notification-new:before {
+	content: "\aa085"
+}
+
+.icon-cs-org:before {
+	content: "\aa086"
+}
+
+.icon-cs-request:before {
+	content: "\aa087"
+}
+
+.icon-cs-predictive-analytics:before {
+	content: "\aa088"
+}
+
+.icon-cs-predictive-dashboard:before {
+	content: "\aa089"
+}
+
+.icon-cs-predictive-view:before {
+	content: "\aa090"
+}
+
+.icon-cs-dataset-template:before {
+	content: "\aa091"
+}
+
+.icon-cs-view-template:before {
+	content: "\aa092"
+}
+
+.icon-cs-object-mailer:before {
+	content: "\aa093"
+}
+
+.icon-cs-process-status:before {
+	content: "\aa094"
+}
+
+.icon-cs-excel-export-status:before {
+	content: "\aa095"
+}
+
+.icon-cs-dataset-delete-status:before {
+	content: "\aa096"
+}
+
+.icon-cs-dataset-template-convert:before {
+	content: "\aa097"
+}
+
+.icon-cs-view-template-convert:before {
+	content: "\aa098"
+}
+
+.icon-cs-publisher-workbench:before {
+	content: "\aa099"
+}
+
+.icon-cs-my-dashboard:before {
+	content: "\aa100"
+}
+
+.icon-cs-translator-workbench:before {
+	content: "\aa101"
+}
+
+.icon-cs-appiot:before {
+	content: "\aa102"
+}
+
+.icon-cs-domain:before {
+	content: "\aa103"
+}
+
+.icon-cs-controllers:before {
+	content: "\aa104"
+}
+
+.icon-cs-k-means-cluster-o:before {
+	content: "\aa105"
+}
+
+.icon-cs-keyword-pattern-0:before {
+	content: "\aa106"
+}
+
+.icon-cs-archive-purge-o:before {
+	content: "\aa107"
+}
+
+.icon-cs-archive-purge-workbench-o:before {
+	content: "\aa108"
+}
+
+.icon-cs-appm:before {
+	content: "\aa109"
+}
+
+@font-face {
+	font-family: cs-icons;
+	src: url(custom/common-buttons.eot?bvruic);
+	src: url(custom/common-buttons.eot?bvruic#iefix) format('embedded-opentype'), url(custom/common-buttons.ttf?bvruic) format('truetype'), url(custom/common-buttons.woff?bvruic) format('woff'), url(custom/common-buttons.woff2?bvruic) format('woff2'), url(custom/common-buttons.svg?bvruic#cs-icons) format('svg');
+	font-weight: 400;
+	font-style: normal
+}
+
+.icon-cs-action-additional-info,
+.icon-cs-action-only,
+.icon-cs-action-primary-info,
+.icon-cs-add-dependence,
+.icon-cs-add-expression,
+.icon-cs-add-form,
+.icon-cs-add-view,
+.icon-cs-additional-info,
+.icon-cs-adhoc-dnb,
+.icon-cs-adjust,
+.icon-cs-advance-filter,
+.icon-cs-advanced-profiling,
+.icon-cs-align-right,
+.icon-cs-all,
+.icon-cs-all-are-approval,
+.icon-cs-all-download,
+.icon-cs-all-upload,
+.icon-cs-allactive,
+.icon-cs-anchor,
+.icon-cs-android,
+.icon-cs-angle-double-down,
+.icon-cs-angle-double-left,
+.icon-cs-angle-double-right,
+.icon-cs-angle-double-up,
+.icon-cs-angle-left,
+.icon-cs-angle-right,
+.icon-cs-angle-right-o,
+.icon-cs-any-one-approval,
+.icon-cs-apple,
+.icon-cs-application-logs,
+.icon-cs-approval,
+.icon-cs-archive-purge,
+.icon-cs-archive-purge-workbench,
+.icon-cs-arrow-circle-o-down,
+.icon-cs-arrow-circle-o-up,
+.icon-cs-assertion-activity,
+.icon-cs-assign,
+.icon-cs-assign-dashboard-o,
+.icon-cs-assignment,
+.icon-cs-assignment-activity,
+.icon-cs-assignment-approve,
+.icon-cs-assignment-definition,
+.icon-cs-assignment-definition-assignment1,
+.icon-cs-assignment-scheduler,
+.icon-cs-attachment,
+.icon-cs-auto-fill,
+.icon-cs-automerge-results,
+.icon-cs-available,
+.icon-cs-bars,
+.icon-cs-battery-three-quarters,
+.icon-cs-bell,
+.icon-cs-bell-o,
+.icon-cs-bold,
+.icon-cs-bottom,
+.icon-cs-bottomalign,
+.icon-cs-bre-configuration,
+.icon-cs-bre-control-center,
+.icon-cs-bulk-data-view,
+.icon-cs-bulk-update,
+.icon-cs-business-user,
+.icon-cs-business-user-completed,
+.icon-cs-business-user-inprocess,
+.icon-cs-calendar,
+.icon-cs-calendar-time,
+.icon-cs-camera,
+.icon-cs-cancel,
+.icon-cs-caret-down,
+.icon-cs-caret-right,
+.icon-cs-caret-square-o-down,
+.icon-cs-centeralign,
+.icon-cs-chart-creation-o,
+.icon-cs-chart-legend,
+.icon-cs-chart-view,
+.icon-cs-check-square-o,
+.icon-cs-checkin,
+.icon-cs-checkout,
+.icon-cs-chevron-circle-down,
+.icon-cs-chevron-circle-up,
+.icon-cs-circle,
+.icon-cs-circle-thin,
+.icon-cs-city,
+.icon-cs-classes,
+.icon-cs-clear,
+.icon-cs-clearuser-filter-o,
+.icon-cs-clock-o,
+.icon-cs-cloud-upload,
+.icon-cs-code,
+.icon-cs-collapse,
+.icon-cs-column-heatmap,
+.icon-cs-comment,
+.icon-cs-comment-square,
+.icon-cs-compile,
+.icon-cs-completed-with-error,
+.icon-cs-completed-with-error-o,
+.icon-cs-completed-with-warning,
+.icon-cs-completed-with-warning-o,
+.icon-cs-completed-with-warninganderror,
+.icon-cs-completed-with-warninganderror-o,
+.icon-cs-concurrent,
+.icon-cs-condition-activity,
+.icon-cs-confirm,
+.icon-cs-consolidation-rule-group-matching,
+.icon-cs-constant,
+.icon-cs-criteria-failed,
+.icon-cs-cross-reference,
+.icon-cs-cs-data-quality,
+.icon-cs-csv-export,
+.icon-cs-cube,
+.icon-cs-cubes,
+.icon-cs-da-rule-assignment,
+.icon-cs-dashboard-o,
+.icon-cs-data-cleansing-rule,
+.icon-cs-data-correction,
+.icon-cs-data-correction-grid,
+.icon-cs-data-enrichment,
+.icon-cs-data-enrichment-grid,
+.icon-cs-data-maintenance,
+.icon-cs-data-marting,
+.icon-cs-data-marting-o,
+.icon-cs-data-provider,
+.icon-cs-data-quality,
+.icon-cs-data-set,
+.icon-cs-data-visualization-form,
+.icon-cs-data-visualization-rule,
+.icon-cs-database,
+.icon-cs-dataextract,
+.icon-cs-datalake-creation-o,
+.icon-cs-datalist-creation-o,
+.icon-cs-dataloader,
+.icon-cs-dataobject,
+.icon-cs-dataobject-notification,
+.icon-cs-dataset-delete-status-o,
+.icon-cs-dataset-search,
+.icon-cs-dataset-sync,
+.icon-cs-dataset-template-convert-o,
+.icon-cs-dataset-template-o,
+.icon-cs-de-publish,
+.icon-cs-deblock,
+.icon-cs-debug-and-checkout,
+.icon-cs-debug-and-compile,
+.icon-cs-debug-and-execute,
+.icon-cs-debug-and-save,
+.icon-cs-default-objects,
+.icon-cs-default-user-activity-assignment,
+.icon-cs-default-value,
+.icon-cs-delete,
+.icon-cs-desktop,
+.icon-cs-details,
+.icon-cs-device,
+.icon-cs-device-group,
+.icon-cs-display-name,
+.icon-cs-division,
+.icon-cs-dnp-assignment,
+.icon-cs-dnp-creation,
+.icon-cs-dnp-mapping,
+.icon-cs-document,
+.icon-cs-document-set,
+.icon-cs-document-set-assigment,
+.icon-cs-donutchart,
+.icon-cs-dot-circle-o,
+.icon-cs-double-down-fill,
+.icon-cs-double-up-fill,
+.icon-cs-down-arrow,
+.icon-cs-download,
+.icon-cs-duplicate,
+.icon-cs-edit,
+.icon-cs-edit-expression,
+.icon-cs-edit-form,
+.icon-cs-element-action-defined,
+.icon-cs-element-action-undefined,
+.icon-cs-element-count,
+.icon-cs-ellipsis-h,
+.icon-cs-ellipsis-v,
+.icon-cs-email-notification,
+.icon-cs-end-date,
+.icon-cs-enter-value,
+.icon-cs-envelope-o,
+.icon-cs-er-diagram,
+.icon-cs-error-log,
+.icon-cs-event-info,
+.icon-cs-excel-export-status-o,
+.icon-cs-exchange,
+.icon-cs-excute-o,
+.icon-cs-execute,
+.icon-cs-execution-history,
+.icon-cs-execution-summary,
+.icon-cs-expand,
+.icon-cs-expand-o,
+.icon-cs-export,
+.icon-cs-export-data,
+.icon-cs-export-excel,
+.icon-cs-export-profiling-rules,
+.icon-cs-expression,
+.icon-cs-expression-edit,
+.icon-cs-failed,
+.icon-cs-failed-o,
+.icon-cs-favourite,
+.icon-cs-fax,
+.icon-cs-fetch-mode,
+.icon-cs-field-primary-info,
+.icon-cs-field-primary-info2,
+.icon-cs-field-type-list,
+.icon-cs-file,
+.icon-cs-file-excel-o,
+.icon-cs-file-image-o,
+.icon-cs-file-pdf-o,
+.icon-cs-file-powerpoint-o,
+.icon-cs-file-text-o,
+.icon-cs-file-word,
+.icon-cs-file-zip-o,
+.icon-cs-files-o,
+.icon-cs-fill-color,
+.icon-cs-filter-o,
+.icon-cs-folder,
+.icon-cs-folder-open,
+.icon-cs-font,
+.icon-cs-for-approval,
+.icon-cs-form-list,
+.icon-cs-formula,
+.icon-cs-full-screen-preview,
+.icon-cs-gears,
+.icon-cs-geo-location,
+.icon-cs-globe,
+.icon-cs-grid-view,
+.icon-cs-group,
+.icon-cs-group-o,
+.icon-cs-hand-o-up,
+.icon-cs-hand-paper-o,
+.icon-cs-handler-info,
+.icon-cs-hdd-o,
+.icon-cs-heatmap,
+.icon-cs-help-text,
+.icon-cs-hidden,
+.icon-cs-hide,
+.icon-cs-hierarchy-approval,
+.icon-cs-highlight,
+.icon-cs-history,
+.icon-cs-history-o,
+.icon-cs-home,
+.icon-cs-home-o,
+.icon-cs-home-page,
+.icon-cs-hourglass,
+.icon-cs-hourglass-end,
+.icon-cs-hourglass-start,
+.icon-cs-import,
+.icon-cs-import-data,
+.icon-cs-import-profile-rules,
+.icon-cs-individual,
+.icon-cs-info,
+.icon-cs-info-circle,
+.icon-cs-information,
+.icon-cs-information-expression,
+.icon-cs-input-parameters,
+.icon-cs-interface,
+.icon-cs-invite,
+.icon-cs-italic,
+.icon-cs-iteration-activity,
+.icon-cs-joiner,
+.icon-cs-justifyalign,
+.icon-cs-k-means-cluster,
+.icon-cs-keyword-pattern,
+.icon-cs-kpi-list,
+.icon-cs-layout-assignment,
+.icon-cs-layout-o,
+.icon-cs-leftalign,
+.icon-cs-licenses-details,
+.icon-cs-lightbulb,
+.icon-cs-link,
+.icon-cs-list,
+.icon-cs-loader-atrbt-reset,
+.icon-cs-loader-notification,
+.icon-cs-loading-data,
+.icon-cs-loading-data-o,
+.icon-cs-log-in,
+.icon-cs-log-report,
+.icon-cs-logout,
+.icon-cs-logs-export,
+.icon-cs-logs-import,
+.icon-cs-long-arrow-right,
+.icon-cs-mail-after,
+.icon-cs-mail-before,
+.icon-cs-mail-o,
+.icon-cs-mail-once,
+.icon-cs-mail-recurring,
+.icon-cs-many,
+.icon-cs-mapper,
+.icon-cs-master-details,
+.icon-cs-memory,
+.icon-cs-menu-group,
+.icon-cs-middlealign,
+.icon-cs-minus,
+.icon-cs-mobile,
+.icon-cs-mobile-grid,
+.icon-cs-mobile-list,
+.icon-cs-monitor,
+.icon-cs-more-action,
+.icon-cs-more-action-o,
+.icon-cs-more-actions,
+.icon-cs-move,
+.icon-cs-multiple,
+.icon-cs-my-object,
+.icon-cs-myactive,
+.icon-cs-name,
+.icon-cs-new,
+.icon-cs-new-window,
+.icon-cs-next,
+.icon-cs-no-documents,
+.icon-cs-no-match,
+.icon-cs-no-notification,
+.icon-cs-node,
+.icon-cs-node-o,
+.icon-cs-normalizer,
+.icon-cs-not-null,
+.icon-cs-notification,
+.icon-cs-notification-o,
+.icon-cs-notification-setting,
+.icon-cs-null,
+.icon-cs-numeric,
+.icon-cs-object-creation,
+.icon-cs-object-group,
+.icon-cs-object-group-assignment,
+.icon-cs-object-group1,
+.icon-cs-object-list,
+.icon-cs-object-mailer-o,
+.icon-cs-object-order,
+.icon-cs-object-primary-info,
+.icon-cs-object-swap,
+.icon-cs-offline-settings,
+.icon-cs-one-to-many,
+.icon-cs-only-one,
+.icon-cs-only-you-to-approval,
+.icon-cs-out-log,
+.icon-cs-over-view,
+.icon-cs-overview,
+.icon-cs-parallel,
+.icon-cs-parse,
+.icon-cs-partially-reprocess,
+.icon-cs-password-key,
+.icon-cs-pause,
+.icon-cs-pdf-export,
+.icon-cs-pencil-square-o,
+.icon-cs-pending-approval,
+.icon-cs-pending-confirmation,
+.icon-cs-performance-tiles-style1,
+.icon-cs-performance-tiles-style2,
+.icon-cs-performance-tiles-style3,
+.icon-cs-phone,
+.icon-cs-picture-o,
+.icon-cs-pie-chart,
+.icon-cs-place,
+.icon-cs-platform,
+.icon-cs-play,
+.icon-cs-play-view,
+.icon-cs-png-export,
+.icon-cs-port,
+.icon-cs-post-concurrent,
+.icon-cs-post-load-reconciliation,
+.icon-cs-postal,
+.icon-cs-power-off,
+.icon-cs-pre-load-reconciliation,
+.icon-cs-predecessor,
+.icon-cs-predecessor-successor,
+.icon-cs-predictive-analytics-o,
+.icon-cs-predictive-dashboard-o,
+.icon-cs-predictive-view--search,
+.icon-cs-predictive-view-o,
+.icon-cs-preview,
+.icon-cs-previous,
+.icon-cs-print,
+.icon-cs-process,
+.icon-cs-processflow-notification,
+.icon-cs-profiling,
+.icon-cs-profiling-project-assessment,
+.icon-cs-profiling-summary,
+.icon-cs-project-completed,
+.icon-cs-project-incompleted,
+.icon-cs-property-panel,
+.icon-cs-publish,
+.icon-cs-push-notification,
+.icon-cs-push-notification2,
+.icon-cs-random,
+.icon-cs-re-validate,
+.icon-cs-recently-completed,
+.icon-cs-record-count,
+.icon-cs-redo,
+.icon-cs-refresh,
+.icon-cs-reject,
+.icon-cs-reject-o,
+.icon-cs-remove-dashboard,
+.icon-cs-repeat,
+.icon-cs-report-assingment,
+.icon-cs-reprocess-in-activation,
+.icon-cs-request-payload,
+.icon-cs-reset,
+.icon-cs-response-payload,
+.icon-cs-responsibility,
+.icon-cs-restricted,
+.icon-cs-review,
+.icon-cs-rightalign,
+.icon-cs-rotate-right,
+.icon-cs-router,
+.icon-cs-row-heatmap,
+.icon-cs-save,
+.icon-cs-save-and-schedule,
+.icon-cs-schedular-notification,
+.icon-cs-screenshot,
+.icon-cs-search,
+.icon-cs-search-plus,
+.icon-cs-serial,
+.icon-cs-server,
+.icon-cs-server-list,
+.icon-cs-set-predecessor,
+.icon-cs-settings,
+.icon-cs-share,
+.icon-cs-shift-layout,
+.icon-cs-show,
+.icon-cs-single,
+.icon-cs-single-device,
+.icon-cs-skip,
+.icon-cs-sort,
+.icon-cs-sort-alpha-asc,
+.icon-cs-sort-alpha-desc,
+.icon-cs-sort-amount-desc,
+.icon-cs-spinner,
+.icon-cs-sql-report-creation,
+.icon-cs-square-o,
+.icon-cs-stack-exchange,
+.icon-cs-star,
+.icon-cs-start-date,
+.icon-cs-step-forward,
+.icon-cs-stop,
+.icon-cs-stop-project,
+.icon-cs-stop-view,
+.icon-cs-stopped,
+.icon-cs-stopped-o,
+.icon-cs-strikethrough,
+.icon-cs-string,
+.icon-cs-succeed,
+.icon-cs-succeed-o,
+.icon-cs-summary,
+.icon-cs-sync,
+.icon-cs-table,
+.icon-cs-table-view,
+.icon-cs-table-width,
+.icon-cs-tablet,
+.icon-cs-tags,
+.icon-cs-task-o,
+.icon-cs-tasks,
+.icon-cs-technical,
+.icon-cs-technical-profiling,
+.icon-cs-tencent-weibo,
+.icon-cs-terminate,
+.icon-cs-text-width,
+.icon-cs-th-large,
+.icon-cs-threads,
+.icon-cs-time-zone,
+.icon-cs-top,
+.icon-cs-topalign,
+.icon-cs-total-record,
+.icon-cs-tower,
+.icon-cs-transform,
+.icon-cs-transforming,
+.icon-cs-transforming-o,
+.icon-cs-translate,
+.icon-cs-tree-minus,
+.icon-cs-tree-plus,
+.icon-cs-tree-view,
+.icon-cs-tv,
+.icon-cs-underline,
+.icon-cs-unique,
+.icon-cs-up-arrow,
+.icon-cs-upload,
+.icon-cs-user-approval,
+.icon-cs-user-approval-o,
+.icon-cs-user-assignment,
+.icon-cs-user-confirmation,
+.icon-cs-user-confirmation-o,
+.icon-cs-user-filter,
+.icon-cs-user-home-page-assignment,
+.icon-cs-user-o,
+.icon-cs-user-plus,
+.icon-cs-user-profile,
+.icon-cs-user-profiling-rights,
+.icon-cs-validating,
+.icon-cs-validating-o,
+.icon-cs-verification-activity,
+.icon-cs-view-list,
+.icon-cs-view-search,
+.icon-cs-view-template-convert-o,
+.icon-cs-view-template-o,
+.icon-cs-visible,
+.icon-cs-vm-summary,
+.icon-cs-waiting-progress,
+.icon-cs-warning,
+.icon-cs-wave-chart,
+.icon-cs-wechat,
+.icon-cs-workflow-web-service,
+.icon-cs-youtube,
+.icon-cs-zero-to-many,
+.icon-cs-zero-to-one,
+.icon-pm-add-formula {
+	font-family: cs-icons!important;
+	speak: none;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.icon-cs-import:before {
+	content: "\ac001"
+}
+
+.icon-cs-terminate:before {
+	content: "\ac002"
+}
+
+.icon-cs-stop:before {
+	content: "\ac003"
+}
+
+.icon-cs-share:before {
+	content: "\ac004"
+}
+
+.icon-cs-save:before {
+	content: "\ac005"
+}
+
+.icon-cs-reset:before {
+	content: "\ac006"
+}
+
+.icon-cs-refresh:before {
+	content: "\ac007"
+}
+
+.icon-cs-previous:before {
+	content: "\ac008"
+}
+
+.icon-cs-next:before {
+	content: "\ac009"
+}
+
+.icon-cs-new:before {
+	content: "\ac010"
+}
+
+.icon-cs-more-actions:before {
+	content: "\ac011"
+}
+
+.icon-cs-list:before {
+	content: "\ac012"
+}
+
+.icon-cs-export:before {
+	content: "\ac013"
+}
+
+.icon-cs-execute:before {
+	content: "\ac014"
+}
+
+.icon-cs-delete:before {
+	content: "\ac015"
+}
+
+.icon-cs-checkout:before {
+	content: "\ac016"
+}
+
+.icon-cs-checkin:before {
+	content: "\ac017"
+}
+
+.icon-cs-zero-to-many:before {
+	content: "\ac018"
+}
+
+.icon-cs-one-to-many:before {
+	content: "\ac019"
+}
+
+.icon-cs-zero-to-one:before {
+	content: "\ac020"
+}
+
+.icon-cs-only-one:before {
+	content: "\ac021"
+}
+
+.icon-cs-compile:before {
+	content: "\ac022"
+}
+
+.icon-cs-record-count:before {
+	content: "\ac023"
+}
+
+.icon-cs-total-record:before {
+	content: "\ac024"
+}
+
+.icon-cs-myactive:before {
+	content: "\ac025"
+}
+
+.icon-cs-allactive:before {
+	content: "\ac026"
+}
+
+.icon-cs-pending-approval:before {
+	content: "\ac027"
+}
+
+.icon-cs-pending-confirmation:before {
+	content: "\ac028"
+}
+
+.icon-cs-recently-completed:before {
+	content: "\ac029"
+}
+
+.icon-cs-available:before {
+	content: "\ac030"
+}
+
+.icon-cs-more-action:before {
+	content: "\ac031"
+}
+
+.icon-cs-data-marting:before {
+	content: "\ac032"
+}
+
+.icon-cs-transforming:before {
+	content: "\ac033"
+}
+
+.icon-cs-validating:before {
+	content: "\ac034"
+}
+
+.icon-cs-loading-data:before {
+	content: "\ac035"
+}
+
+.icon-cs-user-confirmation:before {
+	content: "\ac036"
+}
+
+.icon-cs-user-approval:before {
+	content: "\ac037"
+}
+
+.icon-cs-succeed:before {
+	content: "\ac038"
+}
+
+.icon-cs-failed:before {
+	content: "\ac039"
+}
+
+.icon-cs-completed-with-warning:before {
+	content: "\ac040"
+}
+
+.icon-cs-completed-with-error:before {
+	content: "\ac041"
+}
+
+.icon-cs-completed-with-warninganderror:before {
+	content: "\ac042"
+}
+
+.icon-cs-stopped:before {
+	content: "\ac043"
+}
+
+.icon-cs-calendar:before {
+	content: "\ac044"
+}
+
+.icon-cs-history:before {
+	content: "\ac045"
+}
+
+.icon-cs-more-action-o:before {
+	content: "\ac046"
+}
+
+.icon-cs-data-marting-o:before {
+	content: "\ac047"
+}
+
+.icon-cs-transforming-o:before {
+	content: "\ac048"
+}
+
+.icon-cs-validating-o:before {
+	content: "\ac049"
+}
+
+.icon-cs-loading-data-o:before {
+	content: "\ac050"
+}
+
+.icon-cs-user-confirmation-o:before {
+	content: "\ac051"
+}
+
+.icon-cs-user-approval-o:before {
+	content: "\ac052"
+}
+
+.icon-cs-succeed-o:before {
+	content: "\ac053"
+}
+
+.icon-cs-failed-o:before {
+	content: "\ac054"
+}
+
+.icon-cs-completed-with-warning-o:before {
+	content: "\ac055"
+}
+
+.icon-cs-completed-with-error-o:before {
+	content: "\ac056"
+}
+
+.icon-cs-completed-with-warninganderror-o:before {
+	content: "\ac057"
+}
+
+.icon-cs-stopped-o:before {
+	content: "\ac058"
+}
+
+.icon-cs-move:before {
+	content: "\ac059"
+}
+
+.icon-cs-history-o:before {
+	content: "\ac060"
+}
+
+.icon-cs-approval:before {
+	content: "\ac061"
+}
+
+.icon-cs-reject:before {
+	content: "\ac062"
+}
+
+.icon-cs-confirm:before {
+	content: "\ac063"
+}
+
+.icon-cs-reject-o:before {
+	content: "\ac064"
+}
+
+.icon-cs-only-you-to-approval:before {
+	content: "\ac065"
+}
+
+.icon-cs-any-one-approval:before {
+	content: "\ac066"
+}
+
+.icon-cs-hierarchy-approval:before {
+	content: "\ac067"
+}
+
+.icon-cs-all-are-approval:before {
+	content: "\ac068"
+}
+
+.icon-cs-pause:before {
+	content: "\ac069"
+}
+
+.icon-cs-user-o:before {
+	content: "\ac070"
+}
+
+.icon-cs-information:before {
+	content: "\ac071"
+}
+
+.icon-cs-re-validate:before {
+	content: "\ac072"
+}
+
+.icon-cs-data-enrichment:before {
+	content: "\ac073"
+}
+
+.icon-cs-data-correction:before {
+	content: "\ac074"
+}
+
+.icon-cs-upload:before {
+	content: "\ac075"
+}
+
+.icon-cs-all-upload:before {
+	content: "\ac076"
+}
+
+.icon-cs-all-download:before {
+	content: "\ac077"
+}
+
+.icon-cs-download:before {
+	content: "\ac078"
+}
+
+.icon-cs-donutchart:before {
+	content: "\ac079"
+}
+
+.icon-cs-wave-chart:before {
+	content: "\ac080"
+}
+
+.icon-cs-document:before {
+	content: "\ac081"
+}
+
+.icon-cs-cancel:before {
+	content: "\ac082"
+}
+
+.icon-cs-skip:before {
+	content: "\ac083"
+}
+
+.icon-cs-bottomalign:before {
+	content: "\ac084"
+}
+
+.icon-cs-topalign:before {
+	content: "\ac085"
+}
+
+.icon-cs-centeralign:before {
+	content: "\ac086"
+}
+
+.icon-cs-justifyalign:before {
+	content: "\ac087"
+}
+
+.icon-cs-leftalign:before {
+	content: "\ac088"
+}
+
+.icon-cs-rightalign:before {
+	content: "\ac089"
+}
+
+.icon-cs-middlealign:before {
+	content: "\ac090"
+}
+
+.icon-cs-up-arrow:before {
+	content: "\ac091"
+}
+
+.icon-cs-down-arrow:before {
+	content: "\ac092"
+}
+
+.icon-cs-edit:before {
+	content: "\ac093"
+}
+
+.icon-cs-filter-o:before {
+	content: "\ac094"
+}
+
+.icon-cs-search:before {
+	content: "\ac095"
+}
+
+.icon-cs-angle-left:before {
+	content: "\ac096"
+}
+
+.icon-cs-angle-right:before {
+	content: "\ac097"
+}
+
+.icon-cs-info:before {
+	content: "\ac098"
+}
+
+.icon-cs-angle-double-left:before {
+	content: "\ac099"
+}
+
+.icon-cs-angle-double-right:before {
+	content: "\ac100"
+}
+
+.icon-cs-settings:before {
+	content: "\ac101"
+}
+
+.icon-cs-file-text-o:before {
+	content: "\ac102"
+}
+
+.icon-cs-sort-alpha-asc:before {
+	content: "\ac103"
+}
+
+.icon-cs-sort-alpha-desc:before {
+	content: "\ac104"
+}
+
+.icon-cs-logout:before {
+	content: "\ac105"
+}
+
+.icon-cs-notification:before {
+	content: "\ac106"
+}
+
+.icon-cs-interface:before {
+	content: "\ac107"
+}
+
+.icon-cs-concurrent:before {
+	content: "\ac108"
+}
+
+.icon-cs-post-concurrent:before {
+	content: "\ac109"
+}
+
+.icon-cs-user-profile:before {
+	content: "\ac110"
+}
+
+.icon-cs-add-form:before {
+	content: "\ac111"
+}
+
+.icon-cs-edit-form:before {
+	content: "\ac112"
+}
+
+.icon-cs-tree-plus:before {
+	content: "\ac113"
+}
+
+.icon-cs-tree-minus:before {
+	content: "\ac114"
+}
+
+.icon-cs-start-date:before {
+	content: "\ac115"
+}
+
+.icon-cs-end-date:before {
+	content: "\ac116"
+}
+
+.icon-cs-log-report:before {
+	content: "\ac117"
+}
+
+.icon-cs-database:before {
+	content: "\ac118"
+}
+
+.icon-cs-redo:before {
+	content: "\ac119"
+}
+
+.icon-cs-parse:before {
+	content: "\ac120"
+}
+
+.icon-cs-numeric:before {
+	content: "\ac121"
+}
+
+.icon-cs-data-set:before {
+	content: "\ac122"
+}
+
+.icon-cs-chart-creation-o:before {
+	content: "\ac123"
+}
+
+.icon-cs-fetch-mode:before {
+	content: "\ac124"
+}
+
+.icon-cs-name:before {
+	content: "\ac125"
+}
+
+.icon-cs-display-name:before {
+	content: "\ac126"
+}
+
+.icon-cs-collapse:before {
+	content: "\ac127"
+}
+
+.icon-cs-expand:before {
+	content: "\ac128"
+}
+
+.icon-cs-dashboard-o:before {
+	content: "\ac129"
+}
+
+.icon-cs-assign-dashboard-o:before {
+	content: "\ac130"
+}
+
+.icon-cs-datalake-creation-o:before {
+	content: "\ac131"
+}
+
+.icon-cs-datalist-creation-o:before {
+	content: "\ac132"
+}
+
+.icon-cs-spinner:before {
+	content: "\ac133"
+}
+
+.icon-cs-formula:before {
+	content: "\ac134"
+}
+
+.icon-pm-add-formula:before {
+	content: "\ac135"
+}
+
+.icon-cs-assign:before {
+	content: "\ac136"
+}
+
+.icon-cs-sync:before {
+	content: "\ac137"
+}
+
+.icon-cs-save-and-schedule:before {
+	content: "\ac138"
+}
+
+.icon-cs-show:before {
+	content: "\ac139"
+}
+
+.icon-cs-hide:before {
+	content: "\ac140"
+}
+
+.icon-cs-restricted:before {
+	content: "\ac141"
+}
+
+.icon-cs-caret-down:before {
+	content: "\ac142"
+}
+
+.icon-cs-ellipsis-h:before {
+	content: "\ac143"
+}
+
+.icon-cs-pie-chart:before {
+	content: "\ac144"
+}
+
+.icon-cs-file-excel-o:before {
+	content: "\ac145"
+}
+
+.icon-cs-file-zip-o:before {
+	content: "\ac146"
+}
+
+.icon-cs-file-powerpoint-o:before {
+	content: "\ac147"
+}
+
+.icon-cs-attachment:before {
+	content: "\ac148"
+}
+
+.icon-cs-circle:before {
+	content: "\ac149"
+}
+
+.icon-cs-clock-o:before {
+	content: "\ac150"
+}
+
+.icon-cs-hourglass:before {
+	content: "\ac151"
+}
+
+.icon-cs-pencil-square-o:before {
+	content: "\ac152"
+}
+
+.icon-cs-caret-right:before {
+	content: "\ac153"
+}
+
+.icon-cs-adjust:before {
+	content: "\ac154"
+}
+
+.icon-cs-info-circle:before {
+	content: "\ac155"
+}
+
+.icon-cs-check-square-o:before {
+	content: "\ac156"
+}
+
+.icon-cs-sort:before {
+	content: "\ac157"
+}
+
+.icon-cs-sort-amount-desc:before {
+	content: "\ac158"
+}
+
+.icon-cs-angle-double-up:before {
+	content: "\ac159"
+}
+
+.icon-cs-warning:before {
+	content: "\ac160"
+}
+
+.icon-cs-long-arrow-right:before {
+	content: "\ac161"
+}
+
+.icon-cs-files-o:before {
+	content: "\ac162"
+}
+
+.icon-cs-hand-o-up:before {
+	content: "\ac163"
+}
+
+.icon-cs-file-image-o:before {
+	content: "\ac164"
+}
+
+.icon-cs-th-large:before {
+	content: "\ac165"
+}
+
+.icon-cs-object-group:before {
+	content: "\ac166"
+}
+
+.icon-cs-star:before {
+	content: "\ac167"
+}
+
+.icon-cs-angle-right-o:before {
+	content: "\ac168"
+}
+
+.icon-cs-globe:before {
+	content: "\ac169"
+}
+
+.icon-cs-folder-open:before {
+	content: "\ac170"
+}
+
+.icon-cs-stack-exchange:before {
+	content: "\ac171"
+}
+
+.icon-cs-performance-tiles-style1:before {
+	content: "\ac172"
+}
+
+.icon-cs-performance-tiles-style2:before {
+	content: "\ac173"
+}
+
+.icon-cs-performance-tiles-style3:before {
+	content: "\ac174"
+}
+
+.icon-cs-hourglass-end:before {
+	content: "\ac175"
+}
+
+.icon-cs-hourglass-start:before {
+	content: "\ac176"
+}
+
+.icon-cs-file-pdf-o:before {
+	content: "\ac177"
+}
+
+.icon-cs-file-word:before {
+	content: "\ac178"
+}
+
+.icon-cs-ellipsis-v:before {
+	content: "\ac179"
+}
+
+.icon-cs-execution-history:before {
+	content: "\ac180"
+}
+
+.icon-cs-stop-project:before {
+	content: "\ac181"
+}
+
+.icon-cs-bre-control-center:before {
+	content: "\ac182"
+}
+
+.icon-cs-logs-export:before {
+	content: "\ac183"
+}
+
+.icon-cs-data-cleansing-rule:before {
+	content: "\ac184"
+}
+
+.icon-cs-data-visualization-form:before {
+	content: "\ac185"
+}
+
+.icon-cs-data-visualization-rule:before {
+	content: "\ac186"
+}
+
+.icon-cs-da-rule-assignment:before {
+	content: "\ac187"
+}
+
+.icon-cs-input-parameters:before {
+	content: "\ac188"
+}
+
+.icon-cs-bre-configuration:before {
+	content: "\ac189"
+}
+
+.icon-cs-project-completed:before {
+	content: "\ac190"
+}
+
+.icon-cs-project-incompleted:before {
+	content: "\ac191"
+}
+
+.icon-cs-export-profiling-rules:before {
+	content: "\ac192"
+}
+
+.icon-cs-import-profile-rules:before {
+	content: "\ac193"
+}
+
+.icon-cs-export-data:before {
+	content: "\ac194"
+}
+
+.icon-cs-bulk-data-view:before {
+	content: "\ac195"
+}
+
+.icon-cs-profiling-summary:before {
+	content: "\ac196"
+}
+
+.icon-cs-technical-profiling:before {
+	content: "\ac197"
+}
+
+.icon-cs-advanced-profiling:before {
+	content: "\ac198"
+}
+
+.icon-cs-dnp-mapping:before {
+	content: "\ac199"
+}
+
+.icon-cs-data-maintenance:before {
+	content: "\ac200"
+}
+
+.icon-cs-bulk-update:before {
+	content: "\ac201"
+}
+
+.icon-cs-sql-report-creation:before {
+	content: "\ac202"
+}
+
+.icon-cs-import-data:before {
+	content: "\ac203"
+}
+
+.icon-cs-profiling:before {
+	content: "\ac204"
+}
+
+.icon-cs-technical:before {
+	content: "\ac205"
+}
+
+.icon-cs-report-assingment:before {
+	content: "\ac206"
+}
+
+.icon-cs-dnp-creation:before {
+	content: "\ac207"
+}
+
+.icon-cs-dnp-assignment:before {
+	content: "\ac208"
+}
+
+.icon-cs-favourite:before {
+	content: "\ac209"
+}
+
+.icon-cs-profiling-project-assessment:before {
+	content: "\ac210"
+}
+
+.icon-cs-logs-import:before {
+	content: "\ac211"
+}
+
+.icon-cs-debug-and-save:before {
+	content: "\ac212"
+}
+
+.icon-cs-debug-and-execute:before {
+	content: "\ac213"
+}
+
+.icon-cs-debug-and-compile:before {
+	content: "\ac214"
+}
+
+.icon-cs-debug-and-checkout:before {
+	content: "\ac215"
+}
+
+.icon-cs-deblock:before {
+	content: "\ac216"
+}
+
+.icon-cs-partially-reprocess:before {
+	content: "\ac217"
+}
+
+.icon-cs-reprocess-in-activation:before {
+	content: "\ac218"
+}
+
+.icon-cs-out-log:before {
+	content: "\ac219"
+}
+
+.icon-cs-error-log:before {
+	content: "\ac220"
+}
+
+.icon-cs-automerge-results:before {
+	content: "\ac221"
+}
+
+.icon-cs-no-match:before {
+	content: "\ac222"
+}
+
+.icon-cs-consolidation-rule-group-matching:before {
+	content: "\ac223"
+}
+
+.icon-cs-object-group1:before {
+	content: "\ac224"
+}
+
+.icon-cs-user-profiling-rights:before {
+	content: "\ac225"
+}
+
+.icon-cs-invite:before {
+	content: "\ac226"
+}
+
+.icon-cs-review:before {
+	content: "\ac227"
+}
+
+.icon-cs-adhoc-dnb:before {
+	content: "\ac228"
+}
+
+.icon-cs-workflow-web-service:before {
+	content: "\ac229"
+}
+
+.icon-cs-document-set:before {
+	content: "\ac230"
+}
+
+.icon-cs-object-swap:before {
+	content: "\ac231"
+}
+
+.icon-cs-object-order:before {
+	content: "\ac232"
+}
+
+.icon-cs-object-group-assignment:before {
+	content: "\ac233"
+}
+
+.icon-cs-user-home-page-assignment:before {
+	content: "\ac234"
+}
+
+.icon-cs-default-user-activity-assignment:before {
+	content: "\ac235"
+}
+
+.icon-cs-assignment:before {
+	content: "\ac236"
+}
+
+.icon-cs-assignment-definition-assignment1:before {
+	content: "\ac237"
+}
+
+.icon-cs-assignment-approve:before {
+	content: "\ac238"
+}
+
+.icon-cs-assignment-definition:before {
+	content: "\ac239"
+}
+
+.icon-cs-assignment-scheduler:before {
+	content: "\ac240"
+}
+
+.icon-cs-document-set-assigment:before {
+	content: "\ac241"
+}
+
+.icon-cs-publish:before {
+	content: "\ac242"
+}
+
+.icon-cs-de-publish:before {
+	content: "\ac243"
+}
+
+.icon-cs-expand-o:before {
+	content: "\ac244"
+}
+
+.icon-cs-notification-o:before {
+	content: "\ac246"
+}
+
+.icon-cs-mail-o:before {
+	content: "\ac247"
+}
+
+.icon-cs-android:before {
+	content: "\ac248"
+}
+
+.icon-cs-apple:before {
+	content: "\ac249"
+}
+
+.icon-cs-anchor:before {
+	content: "\ac250"
+}
+
+.icon-cs-angle-double-down:before {
+	content: "\ac251"
+}
+
+.icon-cs-arrow-circle-o-down:before {
+	content: "\ac252"
+}
+
+.icon-cs-arrow-circle-o-up:before {
+	content: "\ac253"
+}
+
+.icon-cs-bars:before {
+	content: "\ac254"
+}
+
+.icon-cs-battery-three-quarters:before {
+	content: "\ac255"
+}
+
+.icon-cs-bell-o:before {
+	content: "\ac256"
+}
+
+.icon-cs-bell:before {
+	content: "\ac257"
+}
+
+.icon-cs-camera:before {
+	content: "\ac258"
+}
+
+.icon-cs-caret-square-o-down:before {
+	content: "\ac259"
+}
+
+.icon-cs-bold:before {
+	content: "\ac260"
+}
+
+.icon-cs-chevron-circle-down:before {
+	content: "\ac261"
+}
+
+.icon-cs-chevron-circle-up:before {
+	content: "\ac262"
+}
+
+.icon-cs-circle-thin:before {
+	content: "\ac263"
+}
+
+.icon-cs-comment:before {
+	content: "\ac264"
+}
+
+.icon-cs-cube:before {
+	content: "\ac265"
+}
+
+.icon-cs-cubes:before {
+	content: "\ac266"
+}
+
+.icon-cs-desktop:before {
+	content: "\ac267"
+}
+
+.icon-cs-dot-circle-o:before {
+	content: "\ac268"
+}
+
+.icon-cs-envelope-o:before {
+	content: "\ac269"
+}
+
+.icon-cs-exchange:before {
+	content: "\ac270"
+}
+
+.icon-cs-export-excel:before {
+	content: "\ac271"
+}
+
+.icon-cs-file:before {
+	content: "\ac272"
+}
+
+.icon-cs-folder:before {
+	content: "\ac273"
+}
+
+.icon-cs-font:before {
+	content: "\ac274"
+}
+
+.icon-cs-gears:before {
+	content: "\ac275"
+}
+
+.icon-cs-group:before {
+	content: "\ac276"
+}
+
+.icon-cs-hand-paper-o:before {
+	content: "\ac277"
+}
+
+.icon-cs-hdd-o:before {
+	content: "\ac278"
+}
+
+.icon-cs-home:before {
+	content: "\ac279"
+}
+
+.icon-cs-italic:before {
+	content: "\ac280"
+}
+
+.icon-cs-minus:before {
+	content: "\ac281"
+}
+
+.icon-cs-mobile:before {
+	content: "\ac282"
+}
+
+.icon-cs-my-object:before {
+	content: "\ac283"
+}
+
+.icon-cs-picture-o:before {
+	content: "\ac284"
+}
+
+.icon-cs-play:before {
+	content: "\ac285"
+}
+
+.icon-cs-power-off:before {
+	content: "\ac286"
+}
+
+.icon-cs-print:before {
+	content: "\ac287"
+}
+
+.icon-cs-random:before {
+	content: "\ac288"
+}
+
+.icon-cs-repeat:before {
+	content: "\ac289"
+}
+
+.icon-cs-rotate-right:before {
+	content: "\ac290"
+}
+
+.icon-cs-search-plus:before {
+	content: "\ac291"
+}
+
+.icon-cs-square-o:before {
+	content: "\ac292"
+}
+
+.icon-cs-step-forward:before {
+	content: "\ac293"
+}
+
+.icon-cs-strikethrough:before {
+	content: "\ac294"
+}
+
+.icon-cs-table:before {
+	content: "\ac295"
+}
+
+.icon-cs-tablet:before {
+	content: "\ac296"
+}
+
+.icon-cs-tasks:before {
+	content: "\ac297"
+}
+
+.icon-cs-tags:before {
+	content: "\ac298"
+}
+
+.icon-cs-tencent-weibo:before {
+	content: "\ac299"
+}
+
+.icon-cs-text-width:before {
+	content: "\ac300"
+}
+
+.icon-cs-tv:before {
+	content: "\ac301"
+}
+
+.icon-cs-underline:before {
+	content: "\ac302"
+}
+
+.icon-cs-user-plus:before {
+	content: "\ac303"
+}
+
+.icon-cs-wechat:before {
+	content: "\ac304"
+}
+
+.icon-cs-youtube:before {
+	content: "\ac305"
+}
+
+.icon-cs-link:before {
+	content: "\ac306"
+}
+
+.icon-cs-execution-summary:before {
+	content: "\ac307"
+}
+
+.icon-cs-lightbulb:before {
+	content: "\ac308"
+}
+
+.icon-cs-loader-atrbt-reset:before {
+	content: "\ac309"
+}
+
+.icon-cs-many:before {
+	content: "\ac310"
+}
+
+.icon-cs-notification-setting:before {
+	content: "\ac311"
+}
+
+.icon-cs-preview:before {
+	content: "\ac312"
+}
+
+.icon-cs-summary:before {
+	content: "\ac313"
+}
+
+.icon-cs-dataobject-notification:before {
+	content: "\ac314"
+}
+
+.icon-cs-loader-notification:before {
+	content: "\ac315"
+}
+
+.icon-cs-processflow-notification:before {
+	content: "\ac316"
+}
+
+.icon-cs-schedular-notification:before {
+	content: "\ac317"
+}
+
+.icon-cs-password-key:before {
+	content: "\ac318"
+}
+
+.icon-cs-align-right:before {
+	content: "\ac319"
+}
+
+.icon-cs-fax:before {
+	content: "\ac320"
+}
+
+.icon-cs-port:before {
+	content: "\ac321"
+}
+
+.icon-cs-postal:before {
+	content: "\ac322"
+}
+
+.icon-cs-phone:before {
+	content: "\ac323"
+}
+
+.icon-cs-time-zone:before {
+	content: "\ac324"
+}
+
+.icon-cs-place:before {
+	content: "\ac325"
+}
+
+.icon-cs-city:before {
+	content: "\ac326"
+}
+
+.icon-cs-node:before {
+	content: "\ac327"
+}
+
+.icon-cs-division:before {
+	content: "\ac328"
+}
+
+.icon-cs-cloud-upload:before {
+	content: "\ac329"
+}
+
+.icon-cs-shift-layout:before {
+	content: "\ac330"
+}
+
+.icon-cs-device:before {
+	content: "\ac331"
+}
+
+.icon-cs-form-list:before {
+	content: "\ac332"
+}
+
+.icon-cs-for-approval:before {
+	content: "\ac333"
+}
+
+.icon-cs-criteria-failed:before {
+	content: "\ac334"
+}
+
+.icon-cs-waiting-progress:before {
+	content: "\ac335"
+}
+
+.icon-cs-dataset-delete-status-o:before {
+	content: "\ac336"
+}
+
+.icon-cs-dataset-template-convert-o:before {
+	content: "\ac337"
+}
+
+.icon-cs-dataset-template-o:before {
+	content: "\ac338"
+}
+
+.icon-cs-excel-export-status-o:before {
+	content: "\ac339"
+}
+
+.icon-cs-object-mailer-o:before {
+	content: "\ac340"
+}
+
+.icon-cs-predictive-analytics-o:before {
+	content: "\ac341"
+}
+
+.icon-cs-predictive-dashboard-o:before {
+	content: "\ac342"
+}
+
+.icon-cs-predictive-view-o:before {
+	content: "\ac343"
+}
+
+.icon-cs-view-template-convert-o:before {
+	content: "\ac344"
+}
+
+.icon-cs-view-template-o:before {
+	content: "\ac345"
+}
+
+.icon-cs-clearuser-filter-o:before {
+	content: "\ac346"
+}
+
+.icon-cs-grid-view:before {
+	content: "\ac347"
+}
+
+.icon-cs-tree-view:before {
+	content: "\ac348"
+}
+
+.icon-cs-view-search:before {
+	content: "\ac349"
+}
+
+.icon-cs-predictive-view--search:before {
+	content: "\ac350"
+}
+
+.icon-cs-dataset-search:before {
+	content: "\ac351"
+}
+
+.icon-cs-comment-square:before {
+	content: "\ac352"
+}
+
+.icon-cs-dataset-sync:before {
+	content: "\ac353"
+}
+
+.icon-cs-response-payload:before {
+	content: "\ac354"
+}
+
+.icon-cs-request-payload:before {
+	content: "\ac355"
+}
+
+.icon-cs-chart-view:before {
+	content: "\ac356"
+}
+
+.icon-cs-table-view:before {
+	content: "\ac357"
+}
+
+.icon-cs-chart-legend:before {
+	content: "\ac358"
+}
+
+.icon-cs-excute-o:before {
+	content: "\ac359"
+}
+
+.icon-cs-screenshot:before {
+	content: "\ac360"
+}
+
+.icon-cs-remove-dashboard:before {
+	content: "\ac361"
+}
+
+.icon-cs-transform:before {
+	content: "\ac362"
+}
+
+.icon-cs-full-screen-preview:before {
+	content: "\ac363"
+}
+
+.icon-cs-pdf-export:before {
+	content: "\ac364"
+}
+
+.icon-cs-png-export:before {
+	content: "\ac365"
+}
+
+.icon-cs-csv-export:before {
+	content: "\ac366"
+}
+
+.icon-cs-advance-filter:before {
+	content: "\ac367"
+}
+
+.icon-cs-business-user:before {
+	content: "\ac368"
+}
+
+.icon-cs-business-user-inprocess:before {
+	content: "\ac369"
+}
+
+.icon-cs-business-user-completed:before {
+	content: "\ac370"
+}
+
+.icon-cs-data-quality:before {
+	content: "\ac371"
+}
+
+.icon-cs-data-correction-grid:before {
+	content: "\ac372"
+}
+
+.icon-cs-data-enrichment-grid:before {
+	content: "\ac373"
+}
+
+.icon-cs-pre-load-reconciliation:before {
+	content: "\ac374"
+}
+
+.icon-cs-post-load-reconciliation:before {
+	content: "\ac375"
+}
+
+.icon-cs-cross-reference:before {
+	content: "\ac376"
+}
+
+.icon-cs-double-down-fill:before {
+	content: "\ac377"
+}
+
+.icon-cs-double-up-fill:before {
+	content: "\ac378"
+}
+
+.icon-cs-assignment-activity:before {
+	content: "\ac379"
+}
+
+.icon-cs-verification-activity:before {
+	content: "\ac380"
+}
+
+.icon-cs-assertion-activity:before {
+	content: "\ac381"
+}
+
+.icon-cs-iteration-activity:before {
+	content: "\ac382"
+}
+
+.icon-cs-condition-activity:before {
+	content: "\ac383"
+}
+
+.icon-cs-element-count:before {
+	content: "\ac384"
+}
+
+.icon-cs-element-action-defined:before {
+	content: "\ac385"
+}
+
+.icon-cs-element-action-undefined:before {
+	content: "\ac386"
+}
+
+.icon-cs-expression:before {
+	content: "\ac387"
+}
+
+.icon-cs-add-expression:before {
+	content: "\ac388"
+}
+
+.icon-cs-edit-expression:before {
+	content: "\ac389"
+}
+
+.icon-cs-information-expression:before {
+	content: "\ac390"
+}
+
+.icon-cs-duplicate:before {
+	content: "\ac391"
+}
+
+.icon-cs-highlight:before {
+	content: "\ac392"
+}
+
+.icon-cs-new-window:before {
+	content: "\ac393"
+}
+
+.icon-cs-fill-color:before {
+	content: "\ac394"
+}
+
+.icon-cs-clear:before {
+	content: "\ac395"
+}
+
+.icon-cs-tower:before {
+	content: "\ac396"
+}
+
+.icon-cs-add-dependence:before {
+	content: "\ac397"
+}
+
+.icon-cs-calendar-time:before {
+	content: "\ac398"
+}
+
+.icon-cs-top:before {
+	content: "\ac399"
+}
+
+.icon-cs-bottom:before {
+	content: "\ac400"
+}
+
+.icon-cs-set-predecessor:before {
+	content: "\ac401"
+}
+
+.icon-cs-predecessor:before {
+	content: "\ac402"
+}
+
+.icon-cs-predecessor-successor:before {
+	content: "\ac403"
+}
+
+.icon-cs-table-width:before {
+	content: "\ac404"
+}
+
+.icon-cs-mail-before:before {
+	content: "\ac405"
+}
+
+.icon-cs-mail-after:before {
+	content: "\ac406"
+}
+
+.icon-cs-mail-once:before {
+	content: "\ac407"
+}
+
+.icon-cs-mail-recurring:before {
+	content: "\ac408"
+}
+
+.icon-cs-action-only:before {
+	content: "\ac409"
+}
+
+.icon-cs-enter-value:before {
+	content: "\ac410"
+}
+
+.icon-cs-default-value:before {
+	content: "\ac411"
+}
+
+.icon-cs-hidden:before {
+	content: "\ac412"
+}
+
+.icon-cs-visible:before {
+	content: "\ac413"
+}
+
+.icon-cs-object-creation:before {
+	content: "\ac414"
+}
+
+.icon-cs-application-logs:before {
+	content: "\ac415"
+}
+
+.icon-cs-no-notification:before {
+	content: "\ac416"
+}
+
+.icon-cs-heatmap:before {
+	content: "\ac417"
+}
+
+.icon-cs-column-heatmap:before {
+	content: "\ac418"
+}
+
+.icon-cs-row-heatmap:before {
+	content: "\ac419"
+}
+
+.icon-cs-mobile-list:before {
+	content: "\ac420"
+}
+
+.icon-cs-mobile-grid:before {
+	content: "\ac421"
+}
+
+.icon-cs-overview:before {
+	content: "\ac422"
+}
+
+.icon-cs-code:before {
+	content: "\ac423"
+}
+
+.icon-cs-user-filter:before {
+	content: "\ac424"
+}
+
+.icon-cs-licenses-details:before {
+	content: "\ac425"
+}
+
+.icon-cs-menu-group:before {
+	content: "\ac426"
+}
+
+.icon-cs-layout-assignment:before {
+	content: "\ac427"
+}
+
+.icon-cs-geo-location:before {
+	content: "\ac428"
+}
+
+.icon-cs-push-notification:before {
+	content: "\ac429"
+}
+
+.icon-cs-offline-settings:before {
+	content: "\ac430"
+}
+
+.icon-cs-user-assignment:before {
+	content: "\ac431"
+}
+
+.icon-cs-layout-o:before {
+	content: "\ac432"
+}
+
+.icon-cs-task-o:before {
+	content: "\ac433"
+}
+
+.icon-cs-individual:before {
+	content: "\ac434"
+}
+
+.icon-cs-all:before {
+	content: "\ac435"
+}
+
+.icon-cs-group-o:before {
+	content: "\ac436"
+}
+
+.icon-cs-responsibility:before {
+	content: "\ac437"
+}
+
+.icon-cs-null:before {
+	content: "\ac438"
+}
+
+.icon-cs-not-null:before {
+	content: "\ac439"
+}
+
+.icon-cs-constant:before {
+	content: "\ac440"
+}
+
+.icon-cs-string:before {
+	content: "\ac441"
+}
+
+.icon-cs-unique:before {
+	content: "\ac442"
+}
+
+.icon-cs-dataextract:before {
+	content: "\ac443"
+}
+
+.icon-cs-dataloader:before {
+	content: "\ac444"
+}
+
+.icon-cs-joiner:before {
+	content: "\ac445"
+}
+
+.icon-cs-normalizer:before {
+	content: "\ac446"
+}
+
+.icon-cs-mapper:before {
+	content: "\ac447"
+}
+
+.icon-cs-parallel:before {
+	content: "\ac448"
+}
+
+.icon-cs-platform:before {
+	content: "\ac449"
+}
+
+.icon-cs-process:before {
+	content: "\ac450"
+}
+
+.icon-cs-serial:before {
+	content: "\ac451"
+}
+
+.icon-cs-dataobject:before {
+	content: "\ac452"
+}
+
+.icon-cs-router:before {
+	content: "\ac453"
+}
+
+.icon-cs-master-details:before {
+	content: "\ac454"
+}
+
+.icon-cs-default-objects:before {
+	content: "\ac455"
+}
+
+.icon-cs-translate:before {
+	content: "\ac456"
+}
+
+.icon-cs-auto-fill:before {
+	content: "\ac457"
+}
+
+.icon-cs-email-notification:before {
+	content: "\ac458"
+}
+
+.icon-cs-push-notification2:before {
+	content: "\ac459"
+}
+
+.icon-cs-action-additional-info:before {
+	content: "\ac460"
+}
+
+.icon-cs-action-primary-info:before {
+	content: "\ac461"
+}
+
+.icon-cs-help-text:before {
+	content: "\ac462"
+}
+
+.icon-cs-object-primary-info:before {
+	content: "\ac463"
+}
+
+.icon-cs-handler-info:before {
+	content: "\ac464"
+}
+
+.icon-cs-field-primary-info:before {
+	content: "\ac465"
+}
+
+.icon-cs-data-provider:before {
+	content: "\ac466"
+}
+
+.icon-cs-field-primary-info2:before {
+	content: "\ac467"
+}
+
+.icon-cs-additional-info:before {
+	content: "\ac468"
+}
+
+.icon-cs-event-info:before {
+	content: "\ac469"
+}
+
+.icon-cs-kpi-list:before {
+	content: "\ac470"
+}
+
+.icon-cs-log-in:before {
+	content: "\ac471"
+}
+
+.icon-cs-expression-edit:before {
+	content: "\ac472"
+}
+
+.icon-cs-field-type-list:before {
+	content: "\ac473"
+}
+
+.icon-cs-object-list:before {
+	content: "\ac474"
+}
+
+.icon-cs-property-panel:before {
+	content: "\ac475"
+}
+
+.icon-cs-k-means-cluster:before {
+	content: "\ac476"
+}
+
+.icon-cs-er-diagram:before {
+	content: "\ac477"
+}
+
+.icon-cs-node-o:before {
+	content: "\ac478"
+}
+
+.icon-cs-single:before {
+	content: "\ac479"
+}
+
+.icon-cs-multiple:before {
+	content: "\ac480"
+}
+
+.icon-cs-home-o:before {
+	content: "\ac481"
+}
+
+.icon-cs-server:before {
+	content: "\ac482"
+}
+
+.icon-cs-server-list:before {
+	content: "\ac483"
+}
+
+.icon-cs-add-view:before {
+	content: "\ac484"
+}
+
+.icon-cs-play-view:before {
+	content: "\ac485"
+}
+
+.icon-cs-view-list:before {
+	content: "\ac486"
+}
+
+.icon-cs-stop-view:before {
+	content: "\ac487"
+}
+
+.icon-cs-device-group:before {
+	content: "\ac488"
+}
+
+.icon-cs-single-device:before {
+	content: "\ac489"
+}
+
+.icon-cs-keyword-pattern:before {
+	content: "\ac490"
+}
+
+.icon-cs-no-documents:before {
+	content: "\ac491"
+}
+
+.icon-cs-archive-purge:before {
+	content: "\ac492"
+}
+
+.icon-cs-archive-purge-workbench:before {
+	content: "\ac493"
+}
+
+.icon-cs-home-page:before {
+	content: "\ac494"
+}
+
+.icon-cs-monitor:before {
+	content: "\ac495"
+}
+
+.icon-cs-over-view:before {
+	content: "\ac496"
+}
+
+.icon-cs-memory:before {
+	content: "\ac497"
+}
+
+.icon-cs-details:before {
+	content: "\ac498"
+}
+
+.icon-cs-vm-summary:before {
+	content: "\ac499"
+}
+
+.icon-cs-threads:before {
+	content: "\ac500"
+}
+
+.icon-cs-classes:before {
+	content: "\ac501"
+}
+
+@font-face {
+	font-family: cs-icons-2;
+	src: url(custom/common-buttons-2.eot?bvruic);
+	src: url(custom/common-buttons-2.eot?bvruic#iefix) format('embedded-opentype'), url(custom/common-buttons-2.ttf?bvruic) format('truetype'), url(custom/common-buttons-2.woff?bvruic) format('woff'), url(custom/common-buttons-2.woff2?bvruic) format('woff2'), url(custom/common-buttons-2.svg?bvruic#cs-icons) format('svg');
+	font-weight: 400;
+	font-style: normal
+}
+
+.icon-cs-align-middle-bottom-highlight,
+.icon-cs-align-middle-top-highlight,
+.icon-cs-all-s,
+.icon-cs-android-s,
+.icon-cs-apple-s,
+.icon-cs-column-o,
+.icon-cs-csv-refresh,
+.icon-cs-dependent-assignment,
+.icon-cs-desktop-s,
+.icon-cs-development-template-assets-s,
+.icon-cs-dimensions,
+.icon-cs-file-match,
+.icon-cs-globe-s,
+.icon-cs-group-s,
+.icon-cs-horizontal-o,
+.icon-cs-images-import,
+.icon-cs-individual-s,
+.icon-cs-kiosk,
+.icon-cs-language-configure,
+.icon-cs-make-header,
+.icon-cs-master-deatails-s,
+.icon-cs-mobile-s,
+.icon-cs-object-assignment-s,
+.icon-cs-object-s,
+.icon-cs-reference-assignment,
+.icon-cs-responsibility-s,
+.icon-cs-save-and--plus,
+.icon-cs-search-s,
+.icon-cs-select-to-execute,
+.icon-cs-text-size,
+.icon-cs-unmapped,
+.icon-cs-valignm-s,
+.icon-cs-vertical-o,
+.icon-cs-x-axis,
+.icon-cs-y-axis,
+.icon-cs-y-axis-2 {
+	font-family: cs-icons-2!important;
+	speak: none;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.icon-cs-dependent-assignment:before {
+	content: "\ad502"
+}
+
+.icon-cs-reference-assignment:before {
+	content: "\ad503"
+}
+
+.icon-cs-csv-refresh:before {
+	content: "\ad504"
+}
+
+.icon-cs-object-assignment-s:before {
+	content: "\ad505"
+}
+
+.icon-cs-development-template-assets-s:before {
+	content: "\ad506"
+}
+
+.icon-cs-desktop-s:before {
+	content: "\ad507"
+}
+
+.icon-cs-mobile-s:before {
+	content: "\ad508"
+}
+
+.icon-cs-responsibility-s:before {
+	content: "\ad509"
+}
+
+.icon-cs-individual-s:before {
+	content: "\ad510"
+}
+
+.icon-cs-group-s:before {
+	content: "\ad511"
+}
+
+.icon-cs-all-s:before {
+	content: "\ad512"
+}
+
+.icon-cs-apple-s:before {
+	content: "\ad513"
+}
+
+.icon-cs-android-s:before {
+	content: "\ad514"
+}
+
+.icon-cs-globe-s:before {
+	content: "\ad515"
+}
+
+.icon-cs-object-s:before {
+	content: "\ad516"
+}
+
+.icon-cs-search-s:before {
+	content: "\ad517"
+}
+
+.icon-cs-master-deatails-s:before {
+	content: "\ad518"
+}
+
+.icon-cs-valignm-s:before {
+	content: "\ad519"
+}
+
+.icon-cs-save-and--plus:before {
+	content: "\ad520"
+}
+
+.icon-cs-dimensions:before {
+	content: "\ad521"
+}
+
+.icon-cs-text-size:before {
+	content: "\ad522"
+}
+
+.icon-cs-select-to-execute:before {
+	content: "\ad523"
+}
+
+.icon-cs-y-axis:before {
+	content: "\ad524"
+}
+
+.icon-cs-y-axis-2:before {
+	content: "\ad525"
+}
+
+.icon-cs-x-axis:before {
+	content: "\ad526"
+}
+
+.icon-cs-kiosk:before {
+	content: "\ad527"
+}
+
+.icon-cs-images-import:before {
+	content: "\ad528"
+}
+
+.icon-cs-file-match:before {
+	content: "\ad529"
+}
+
+.icon-cs-column-o:before {
+	content: "\ad530"
+}
+
+.icon-cs-horizontal-o:before {
+	content: "\ad531"
+}
+
+.icon-cs-vertical-o:before {
+	content: "\ad532"
+}
+
+.icon-cs-make-header:before {
+	content: "\ad533"
+}
+
+.icon-cs-language-configure:before {
+	content: "\ad534"
+}
+
+.icon-cs-unmapped:before {
+	content: "\ad535"
+}
+
+.icon-cs-align-middle-top-highlight:before {
+	content: "\ad536"
+}
+
+.icon-cs-align-middle-bottom-highlight:before {
+	content: "\ad537"
+}

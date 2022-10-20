@@ -1,0 +1,337 @@
+// @import '~@angular/material/theming';
+// @import "../src/cs-theme-variable.scss";
+
+// @include mat-core();
+
+// $cs-mat-primary: mat-palette($mat-blue);
+// $cs-mat-accent:  mat-palette($mat-blue);
+// $cs-mat-warn:  mat-palette($mat-red);
+
+// $cs-mat-theme: mat-light-theme($cs-mat-primary, $cs-mat-accent, $cs-mat-warn);
+
+// @include angular-material-theme($cs-mat-theme);
+
+// .blueTheme {
+//     $blue-primary: mat-palette($mat-blue);
+//     $blue-accent: mat-palette($mat-blue);
+//     $blue-theme: mat-light-theme($blue-primary, $blue-accent);
+//     @include angular-material-theme($blue-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #2196f3;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .lightBlueTheme {
+//     $lightblue-primary: mat-palette($mat-light-blue);
+//     $lightblue-accent: mat-palette($mat-light-blue);
+//     $lightblue-theme: mat-light-theme($lightblue-primary, $lightblue-accent);
+//     @include angular-material-theme($lightblue-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #03a9f3;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .cyanTheme {
+//     $cyan-primary: mat-palette($mat-cyan);
+//     $cyan-accent: mat-palette($mat-cyan);
+//     $cyan-theme: mat-light-theme($cyan-primary, $cyan-accent);
+//     @include angular-material-theme($cyan-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #00bcd5;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .indigoTheme {
+//     $indigo-primary: mat-palette($mat-indigo);
+//     $indigo-accent: mat-palette($mat-indigo);
+//     $indigo-theme: mat-light-theme($indigo-primary, $indigo-accent);
+//     @include angular-material-theme($indigo-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #3f51b5;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .deepPurpleTheme {
+//     $deepPurple-primary: mat-palette($mat-deep-purple);
+//     $deepPurple-accent: mat-palette($mat-deep-purple);
+//     $deepPurple-theme: mat-light-theme($deepPurple-primary, $deepPurple-accent);
+//     @include angular-material-theme($deepPurple-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #673bb7;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .purpleTheme {
+//     $purple-primary: mat-palette($mat-purple);
+//     $purple-accent: mat-palette($mat-purple);
+//     $purple-theme: mat-light-theme($purple-primary, $purple-accent);
+//     @include angular-material-theme($purple-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #9c28af;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .pinkTheme {
+//     $pink-primary: mat-palette($mat-pink);
+//     $pink-accent: mat-palette($mat-pink);
+//     $pink-theme: mat-light-theme($pink-primary, $pink-accent);
+//     @include angular-material-theme($pink-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #ea1e63;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .redTheme {
+//     $red-primary: mat-palette($mat-red);
+//     $red-accent: mat-palette($mat-red);
+//     $red-theme: mat-light-theme($red-primary, $red-accent);
+//     @include angular-material-theme($red-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #f44236;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .tealTheme {
+//     $teal-primary: mat-palette($mat-teal);
+//     $teal-accent: mat-palette($mat-teal);
+//     $teal-theme: mat-light-theme($teal-primary, $teal-accent);
+//     @include angular-material-theme($teal-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #009788;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .greenTheme {
+//     $green-primary: mat-palette($mat-green);
+//     $green-accent: mat-palette($mat-green);
+//     $green-theme: mat-light-theme($green-primary, $green-accent);
+//     @include angular-material-theme($green-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #4caf52;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .lightGreenTheme {
+//     $lightGreen-primary: mat-palette($mat-light-green);
+//     $lightGreen-accent: mat-palette($mat-light-green);
+//     $lightGreen-theme: mat-light-theme($lightGreen-primary, $lightGreen-accent);
+//     @include angular-material-theme($lightGreen-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #8bc24a;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .amberTheme {
+//     $amber-primary: mat-palette($mat-amber);
+//     $amber-accent: mat-palette($mat-amber);
+//     $amber-theme: mat-light-theme($amber-primary, $amber-accent);
+//     @include angular-material-theme($amber-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #fec107;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .orangeTheme {
+//     $orange-primary: mat-palette($mat-orange);
+//     $orange-accent: mat-palette($mat-orange);
+//     $orange-theme: mat-light-theme($orange-primary, $orange-accent);
+//     @include angular-material-theme($orange-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #ff9700;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .deepOrangeTheme {
+//     $deepOrange-primary: mat-palette($mat-deep-orange);
+//     $deepOrange-accent: mat-palette($mat-deep-orange);
+//     $deepOrange-theme: mat-light-theme($deepOrange-primary, $deepOrange-accent);
+//     @include angular-material-theme($deepOrange-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #fe5722;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .brownTheme {
+//     $brown-primary: mat-palette($mat-brown);
+//     $brown-accent: mat-palette($mat-brown);
+//     $brown-theme: mat-light-theme($brown-primary, $brown-accent);
+//     @include angular-material-theme($brown-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #795549;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .greyTheme {
+//     $grey-primary: mat-palette($mat-grey);
+//     $grey-accent: mat-palette($mat-grey);
+//     $grey-theme: mat-light-theme($grey-primary, $grey-accent);
+//     @include angular-material-theme($grey-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #9e9e9e;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .blueGreyTheme {
+//     $blueGrey-primary: mat-palette($mat-blue-grey);
+//     $blueGrey-accent: mat-palette($mat-blue-grey);
+//     $blueGrey-theme: mat-light-theme($blueGrey-primary, $blueGrey-accent);
+//     @include angular-material-theme($blueGrey-theme);
+//     .cs-mat-main-content{
+//         .cs-mat-contentmain{
+//             mat-card{
+//                 .mat-card-header-text{
+//                     .mat-card-title{
+//                         &:before{
+//                             border-color: #607d8b;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

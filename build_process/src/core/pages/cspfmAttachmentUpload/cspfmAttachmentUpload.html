@@ -1,0 +1,81 @@
+<ion-header no-border *ngIf="!appUtilityConfig.isMobileResolution">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="closeButtonClick()">
+        <h2>
+          <ion-icon name="close"></ion-icon>
+        </h2>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Attachment Upload</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-vertical class="cs-am-attdoc" *ngIf="!appUtilityConfig.isMobileResolution">
+  <ion-item  lines="none">
+    <ion-input type="file" multiple="false" (change)="imageSelected($event)"></ion-input>
+  </ion-item>
+
+  <ion-item  lines="none">
+    <ion-button round outline *ngIf="appUtilityConfig.isMobileResolution" (click)="previewButtonPressed()">Preview</ion-button>
+    <ion-button round outline [disabled]="disableUploadButton" (click)="uploadButtonPressed()">Upload</ion-button>
+    <ion-button round outline *ngIf="appUtilityConfig.isMobileResolution" (click)="cancelButtonPressed()">Cancel</ion-button>
+  </ion-item>
+  </ion-content>
+
+<div *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="closeButtonClick()">
+        <h2>
+          <ion-icon name="close"></ion-icon>
+        </h2>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Attachment Upload</ion-title>
+  </ion-toolbar>
+  <div>
+    <div class="ion-text-center cs-upload-border cs-pr cs-fullheight" margin>
+      <ion-input type="file" name="upload" multiple="false" class="cs-upload-noopacity cs-fullheight cs-fullwidth"
+        (change)="imageSelected($event)">
+      </ion-input>
+      <ion-buttons>
+        <ion-button class="cs-upload-btn">
+          <ion-icon class="icon-mat-cloud_upload cs-upload-btn-icon"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h6 class="cs-ts-15" no-margin>Upload your files</h6>
+      <span class="cs-display-inlineblock cs-tmar-5">
+        <p class="cs-ts-13" no-margin></p>
+      </span>
+      <span class="cs-tmar-5 cs-display-inlineblock">
+        <p class="cs-browse-c" no-margin> Browse</p>
+      </span>
+    </div>
+    <ion-row *ngIf="fileToWrite" class="cs-doc-row" margin>
+      <ion-col size="8">
+        <h6 class="cs-mar-txt cs-ts-14" no-margin>{{selectedFileName}}</h6>
+        <div>
+          <span class="cs-display-inlineblock">
+            <p class="cs-subtxt-c cs-mar-txt" no-margin>
+              {{selectedFileUploadDate | date:appUtilityConfig.userDateTimeFormat:appUtilityConfig.userZoneOffsetValue}}
+            </p>
+          </span>
+          <span class="cs-display-inlineblock cs-sep-doc"></span>
+          <span class="cs-display-inlineblock">
+            <p class="cs-subtxt-c" no-margin>{{selectedFileSize}}</p>
+          </span>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="cs-flex-end">
+        <ion-buttons>
+          <ion-button class="cs-del-btn" (click)="cancelButtonPressed()">
+            <ion-icon class="icon-mat-delete cs-del-icon"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <ion-button expand="block" class="cs-upload-btn-exp" margin-top (click)="uploadButtonPressed()" margin>Upload
+    </ion-button>
+  </div>
+</div>

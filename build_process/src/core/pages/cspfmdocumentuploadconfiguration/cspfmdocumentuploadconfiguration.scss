@@ -1,0 +1,345 @@
+ion-select {
+  max-width: 100%;
+}
+
+.cs-padding {
+  padding: 10px;
+}
+
+.cs-pr {
+  position: relative;
+}
+
+.cs-display-inlineblock {
+  display: inline-block;
+}
+
+.cs-matadd-icon {
+  background: dodgerblue;
+  padding: 5px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.cs-ts-13 {
+  font-size: 13px !important;
+}
+
+.cs-ts-11 {
+  font-size: 11px !important;
+}
+
+.cs-ts-14 {
+  font-size: 14px !important;
+  width: 55px;
+}
+
+.cs-tw-bold {
+  font-weight: bold;
+}
+
+.cs-sel-downicon {
+  font-size: 14px;
+  color: #333;
+}
+
+.cs-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cs-flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cs-dashed-style-mob {
+  border: 1px solid lightblue;
+  border-style: dashed;
+  // padding: 5px;
+  // padding: 2px 6px;
+  margin: 10px;
+  padding: 12px;
+  background: #ebf7eb;
+}
+
+.cs-dashed-style {
+  border: 1px solid lightblue;
+  border-style: dashed;
+  padding: 2px 6px;
+  background: #fff;
+}
+
+.cs-lmar-7 {
+  margin-left: 7px !important;
+}
+
+.cs-segment-hover {
+  &.segment-button-checked:hover {
+    background: var(--ion-color-primary, #3880ff) !important;
+    background: var(--background-checked);
+    color: var(--color-checked);
+  }
+}
+
+.cs-mainsegment-btn {
+  width: 200px;
+  margin: 16px auto;
+
+  .cs-innersegment-btn {
+    min-height: 30px;
+    width: 150px;
+    border: 1px solid lightblue;
+    --border-width: 0px;
+
+    --indicator-color-checked: 0;
+
+    .segment-button-indicator {
+      display: none;
+    }
+
+    ion-label {
+      padding-top: 2px;
+    }
+  }
+}
+
+.cs-segment-label {
+  position: relative;
+  top: 2px;
+}
+
+.cs-description-icon {
+  border-radius: 50%;
+  background: #e5eff3;
+  color: #333;
+  padding: 5px;
+  font-size: 18px;
+}
+
+.cs-day-badge {
+  padding: 3px 15px;
+  border-radius: 2px !important;
+  width: 78px;
+}
+
+.cs-hmar-7 {
+  margin: 0px 7px;
+}
+
+.cs-select-badge {
+  background: #fff;
+  color: #333;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 3px 8px;
+}
+
+.cs-select-badge-meeting {
+  background: #fff;
+  color: #333;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 3px 6px;
+}
+
+.cs-uploadsize-badge {
+  background: #f0f8fb;
+  color: #333;
+  border: 1px solid #e7f6fb;
+  border-radius: 10px;
+  padding: 3px 6px; 
+}
+
+.cs-mar-10 { 
+  margin: 10px !important;
+}
+
+
+.cs-vpad-8 {
+  padding: 8px 0px;
+}
+
+.cs-ts-18 {
+  font-size: 18px !important;
+}
+
+.cs-bpad-8 {
+  padding-bottom: 8px;
+}
+
+.cs-tw-400 {
+  font-weight: 500;
+}
+
+.cs-tw-500 {
+  font-weight: 500;
+}
+
+.cs-tw-200 {
+  font-weight: 200;
+}
+
+.cs-year-c {
+  color: #0e86fb;
+}
+
+.cs-year-position {
+  position: relative;
+  top: -3px;
+}
+
+.cs-day-badge-upload {
+  padding: 3px 15px;
+  border-radius: 2px !important;
+  width: 71px;
+  margin-left: 4px;
+
+}
+
+.cs-cancel-btn {
+  --background: #f1f1f1;
+  --border-radius: 3px;
+  width: 115px;
+  height: 35px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid lightgray;
+}
+
+.cs-upload-btn {
+  --border-radius: 3px;
+  width: 115px;
+  height: 35px;
+  font-size: 14px;
+}
+
+.cs-del-mob {
+  border: 1px solid lightgray;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.cs-lmar-4m {
+  margin-left: -4px;
+}
+
+.cs-bmar-3 {
+  margin-bottom: 3px;
+}
+
+.cs-attachment-innerlist {
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0px;
+}
+
+.cs-choose-btn-mob {
+  margin: 0;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 1px 8px 3px;
+
+  &:hover {
+    background: #447BFE;
+    color: #fff;
+  }
+}
+
+.cs-upload-txt-mob {
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+}
+
+.cs-choose-btn {
+  margin: 0;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 1px 9px 4px;
+
+  &:hover {
+    background: #447BFE;
+    color: #fff;
+  }
+}
+
+.cs-upload-txt {
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+}
+
+.cs-ion-select-p-mob {
+  position: relative;
+  top: -5px;
+}
+
+.cs-vmar-5 {
+  margin: 0px 5px;
+}
+
+.cs-hmar-2 {
+  margin: 2px 0px;
+}
+
+.cs-yearadd-icon {
+  position: absolute;
+  right: 5px;
+  bottom: 13px;
+}
+
+//daily
+.cs-daily-badge {
+  background: #8171F4;
+}
+
+//Monthly
+.cs-Monthly-badge {
+  background: #05C877;
+}
+
+//yearly
+.cs-yearly-badge {
+  background: #F7AF2E;
+}
+
+//quaterly
+.cs-quaterly-badge {
+  background: #F87848;
+}
+
+//weekly
+.cs-weekly-badge {
+  background: #2194E9;
+}
+.cs-current-width{
+  width:100%;
+}
+
+.cs-current-upload-m {
+  bottom: 21px;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.cs-pa {
+  position: absolute;
+}
+.cs-whitec {
+  color: #ffffff;
+  padding: 2px;
+}
+.cs-ts-10 {
+  font-size: 11px;
+}
+.cs-badge-success, .cs-label-success {
+  background-color: #26a65b;
+}

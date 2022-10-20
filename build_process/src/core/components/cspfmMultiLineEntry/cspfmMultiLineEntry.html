@@ -1,0 +1,170 @@
+ <div class="cs-custom-scroll cs-mat-main-content">
+    <div class="cs-mat-contentmain cs-list-page">
+        <div id="cs-dropdown-{{layoutId}}" class="cs-dropdown cs-custom-scroll"></div>
+        <div class="cs-tmar20 cs-list-view-all" *ngFor="let childObjectName of childObjects;">
+            <mat-card class="cs-mat-parent-slick cs-tab-slickgrid clearfix"
+                [id]="'SEC_organizationmaster_d_w_hl_list_Employee Detail_WEB_LIST_SECTION'">
+                <div *ngIf="childObjectsInfo[childObjects.indexOf(childObjectName)]; let childObject"
+                    [id]="">
+                    <div class="cs-list-view"
+                        [ngClass]="sectionObjectDetails[childObject['objectName']]['isExpanded']==='E' ? 'cs-mat-onlyfor-default-slick-hight' : 'cs-mat-onlyfor-default-slick-hight-alt'">
+                        <mat-progress-bar
+                            *ngIf="childObject['isLoading']"
+                            mode="indeterminate"></mat-progress-bar>
+                        <div class="cs-header-name cs-slick-title cs-pr">
+                            <mat-card-header class="cs-slickoption-btn">
+                                <button title="Menu" mat-icon-button="" class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                    id="cspfm_employeedetail_slickgrid_menubtn"
+                                    (click)="slickgridUtils.toggleGridMenu($event,childObject['angularGridInstance'], sectionObjectDetails, childObject['objectName'], childObject['matrixAngularGridInstance'])">
+                                    <em class="icon-mat-dehaze cs-tw-600"></em>
+                                </button>
+                                <mat-card-title>
+                                    {{childObject['displayName']}}
+                                    <div *ngIf="childObject['errorRecords']">
+                                    <span class="cs-record-count-badge cs-error-count-badge" *ngIf="childObject['errorRecords'].length > 0" (click)="errorCountClick(childObject['errorRecords'], childObject['displayName'])">
+                                        <em class="icon-mat-warning cs-warn-icon"></em>{{childObject['errorRecords'].length}}
+                                    </span>
+                                    </div>
+                                </mat-card-title>
+                            </mat-card-header>
+                            <div class="cs-slick-action-block">
+                                <div class="clearfix cs-ta-end">
+                                    <button id="organizationmaster_d_w_hl_list_New_1"
+                                        class="cs-lsmar cs-mat-icononly cs-nomargin" color="primary" mat-icon-button=""
+                                        ng-reflect-disable-ripple="true"
+                                        title="Multiple"
+                                        *ngIf="cspfmLayoutConfig['layoutConfiguration'][layoutId]['multiLineResultLookupConfiguration'][childObject['objectName']]"
+                                        (click)="showLookupForMultiLineEntry(childObject['objectName'])">
+                                        <em class="icon-mat-playlist_add cs-cur"></em>
+                                    </button>
+                                    <button id="organizationmaster_d_w_hl_list_New_1"
+                                        class="cs-lsmar cs-mat-icononly cs-nomargin" color="primary" mat-icon-button=""
+                                        ng-reflect-disable-ripple="true"
+                                        title="Single"
+                                        (click)="navigateToEntryPage(childObject)">
+                                        <em class="icon-mat-add cs-cur"></em>
+                                    </button>
+                                    <!-- For development only -->
+                                    <!-- <button [title]="childObject?.angularGridInstance?.slickGrid?.cspfmSlickGridMode==='Edit' ? 'Toggle to read only':'Toggle to editable'" color="primary" mat-flat-button=""
+                                        class="cs-mat-labelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar"
+                                        (click)="changeLineMode(childObject,childObject?.angularGridInstance?.slickGrid?.cspfmSlickGridMode==='Edit'?'View':'Edit')">
+                                        <span class="cs-mat-btnlabel">{{childObject?.angularGridInstance?.slickGrid?.cspfmSlickGridMode==='Edit' ? 'Read only': 'Editable'}}</span>
+                                    </button> -->
+                                    <button title="Toggle Grid" class="cs-mat-icononly cs-nomargin cs-lsmar cs-togle-btn-hide"
+                                        color="primary" mat-icon-button ng-reflect-disable-ripple="true"
+                                        (click)="headerLineUtils.toggleGrid(childObject['objectName'],this)">
+                                        <em *ngIf="sectionObjectDetails[childObject['objectName']]['isExpanded']==='C'"
+                                            class="icon-mat-keyboard_arrow_down"></em>
+                                        <em *ngIf="sectionObjectDetails[childObject['objectName']]['isExpanded']==='E'"
+                                            class="icon-mat-keyboard_arrow_up"></em>
+                                    </button>
+                                    <button *ngIf="sectionObjectDetails[childObject['objectName']]['isExpanded']==='E'" color="primary" mat-icon-button="" ng-reflect-disable-ripple="true" title="viewAll" class="cs-lsmar cs-mat-icononly cs-nomargin cs-full-view-btn" (click)="viewAll($event,childObject['angularGridInstance'])">
+                                        <em  [ngClass]="fullView? 'icon-mat-fullscreen_exit' : 'icon-mat-fullscreen'">
+                                        </em>
+                                    </button>
+                                </div>
+                                <div class="cs-tmar cs-bmar clearfix cs-pull-right">
+                                    <span class="cs-custome-pagination cs-lsmar"
+                                        *ngIf="childObject && childObject['gridObj'] && childObject['gridObj']['cspfm_grid_custom_data'] && childObject['gridObj']['cspfm_grid_custom_data']['isPaginationEnabled'] && childObject['slickgridChildDocsArray'] && childObject['slickgridChildDocsArray'].length > 0 && objectRelationshipMapping[childObject['objectName']] == 'one_to_many' && sectionObjectDetails[childObject['objectName']]['isExpanded']==='E' && paginationConfigInfo[childObject['objectName']]['paginationPosition']=='TOP'">
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo[childObject['objectName']]['itemPerPage']=='true' && (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Full' || sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Batch' || (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                            <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                            <mat-select class="cs-ts-14"
+                                                (selectionChange)="slickgridUtils.selectionChange($event, childObject['angularGridInstance'])"
+                                                [value]="childObject['angularGridInstance'] && childObject['angularGridInstance'].paginationService && childObject['angularGridInstance'].paginationService.itemsPerPage"
+                                                [(ngModel)]="childObject['gridOptionInfo']['pagination']['pageSize']"
+                                                (click)="appUtilityConfig.take_position($event,childObject['isLoading'])">
+                                                <mat-option class="cs-ts-14"
+                                                    *ngFor="let itemPerPage of childObject['gridOptionInfo']['pagination']['pageSizes']"
+                                                    [value]="itemPerPage">{{itemPerPage}}</mat-option>
+                                            </mat-select>
+                                        </div>
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo[childObject['objectName']]['currentPageWithRecord']=='true' && (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Full' || sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Batch' || (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{childObject['angularGridInstance'] &&
+                                                childObject['angularGridInstance'].paginationService &&
+                                                childObject['angularGridInstance'].paginationService.dataFrom}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14 cs-grey">
+                                                - {{childObject['angularGridInstance'] &&
+                                                childObject['angularGridInstance'].paginationService &&
+                                                childObject['angularGridInstance'].paginationService.dataTo}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                <span> of </span>{{childObject['angularGridInstance'] &&
+                                                childObject['angularGridInstance'].paginationService &&
+                                                childObject['angularGridInstance'].paginationService.totalItems}}
+                                            </mat-label>
+                                        </div>
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo[childObject['objectName']]['numberOfPages']=='true' && (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Full' || sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Batch' || (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{childObject['angularGridInstance'] &&
+                                                childObject['angularGridInstance'].paginationService &&
+                                                childObject['angularGridInstance'].paginationService.pageNumber}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                / {{childObject['angularGridInstance'] &&
+                                                childObject['angularGridInstance'].paginationService &&
+                                                childObject['angularGridInstance'].paginationService.pageCount}}<span>
+                                                    page </span>
+                                            </mat-label>
+                                        </div>
+                                        <button class="cs-mat-icononly cs-nomargin"
+                                            *ngIf="paginationConfigInfo[childObject['objectName']]['itemPerPage']=='true' && (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Full' || sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Batch' || (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'OnClickBatch' && dataSource === 'JsonDB'))"
+                                            color="primary" mat-icon-button ng-reflect-disable-ripple="true"
+                                            title="Previous"
+                                            [ngClass]="{'cs-button-disabled': childObject['angularGridInstance'] && childObject['angularGridInstance'].paginationService&& childObject['angularGridInstance'].paginationService.pageNumber == 1}"
+                                            (click)="slickgridUtils.navigationChange('prev', childObject['angularGridInstance'] )">
+                                            <em class="icon-mat-navigate_before"></em>
+                                        </button>
+                                        <button class="cs-mat-icononly cs-nomargin"
+                                            *ngIf="paginationConfigInfo[childObject['objectName']]['itemPerPage']=='true' && (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Full' || sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'Batch' || (sectionObjectDetails[childObject['objectName']]['dataFetchMode'] === 'OnClickBatch' && dataSource === 'JsonDB'))"
+                                            color="primary" mat-icon-button ng-reflect-disable-ripple="true"
+                                            title="Next"
+                                            [ngClass]="{'cs-button-disabled': childObject['angularGridInstance'] && childObject['angularGridInstance'].paginationService&& childObject['angularGridInstance'].paginationService.pageNumber == childObject['angularGridInstance'].paginationService.pageCount}"
+                                            (click)="slickgridUtils.navigationChange('next', childObject['angularGridInstance'])">
+                                            <em class="icon-mat-navigate_next"></em>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [hidden]="sectionObjectDetails[childObject['objectName']]['isExpanded']!='E'" class="cs-pr"
+                        [ngClass]="{'cs-custheight_norec':((childObject['slickgridChildDocsArray'] && childObject['slickgridChildDocsArray'].length === 0) || (childObject['angularGridInstance'] && childObject['angularGridInstance'].dataView.getLength() == 0))}">
+                        <div
+                            id="{{gridContainerId+childObject['objectName']}}"
+                            class="clearfix cs-mat-slickgrid cs-multi-slickgrid cs-slick-tab-height cs-pr cs-tabgroup-norec cs-pagination-on"
+                            *ngIf="childObject"
+                            [ngClass]="{'cs-mouse-pointer-enable': sectionObjectDetails[childObject['objectName']]['isRowClickDisabled'],'cs-slickgrid-pagination': childObject['gridOptionInfo']['enablePagination']}">
+                            <div class="cs_no_record_center_s"
+                                *ngIf="((childObject['slickgridChildDocsArray'] && childObject['slickgridChildDocsArray'].length === 0)  || (childObject['angularGridInstance'] && childObject['angularGridInstance'].dataView.getLength() == 0))">
+                                <img *ngIf="!childObject['isLoading']" alt=""
+                                    src="assets/img/no_record_found.png" /><img *ngIf="childObject['isLoading']"
+                                    class="cs-loading-gif" alt="" src="assets/img/dataloading.gif" />
+                            </div>
+                            <angular-slickgrid gridId="{{gridId+childObject['objectName']}}"
+                                [columnDefinitions]="columnDefinitions[childObject['objectName']]"
+                                [gridOptions]="childObject['gridOptionInfo']"
+                                (onAngularGridCreated)="angularGridReady($event,childObject)"
+                                [dataset]="childObject['slickgridChildDocsArray']"
+                                (sgOnClick)="onGridItemClick($event,childObject['objectName'],childObject['angularGridInstance'])"
+                                (sgOnValidationError)="slickgridUtils.onCellValidation($event.detail.eventData, $event.detail.args)">
+                            </angular-slickgrid>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <!-- 08Jun2022#sudalaiyandi.a  -->
+    <div>
+        <cs_conditionalvalidation_consolidate *ngIf="showConsolidatePopup" [messageType]="'Consolidate'" [fieldConsolidateMessage]='failureReason' (skipValidation)="updateValidation($event,this)" [actionConsolidateMessage]="this.consolidateErrorData['validationFailureJson']" (showValidationField)="showValidationField($event)" >
+        </cs_conditionalvalidation_consolidate>
+    </div>
+    <!-- <div *ngIf="consolidateErrorData['showConsolidatePopup']">
+        <cs_conditionalvalidation_consolidate [actionConsolidateMessage]="this.consolidateErrorData['validationFailureJson']" [viewMode]="this.consolidateErrorData['viewMode']" (showValidationField)="showValidationField($event)" ></cs_conditionalvalidation_consolidate>
+    </div> -->
+</div>

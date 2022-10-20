@@ -1,0 +1,93 @@
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Icon' && moreActionDisplayType != 'fabOption' && isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute"  color="primary"
+mat-icon-button   title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-icononly cs-nomargin"
+    (click)="moreActionPopupShow()">  
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+</button>
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Button' && moreActionDisplayType != 'fabOption' && isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute" color="primary"
+mat-stroked-button  title="{{moreActionInfo['actionDisplayName']}}"class="cs-mat-pagehead-eachactions cs-mat-labelonly"
+    (click)="moreActionPopupShow()">
+    <!-- <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em> -->
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+   
+<!-- <button mat-stroked-button="" title="{{'moreaction_NorEntry1_WEB_Grid.Action.Save_1' | translate}}" style="undefined" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions mat-flat-button" (click)="saveButtonOnclick()" id="moreaction_NorEntry1_WEB_Grid_Save_1">
+    <em style="undefined" class="icon-mat-save"></em>
+    <span style="undefined" class="cs-mat-btnlabel">Save</span>
+</button> -->
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='IconandButton' && moreActionDisplayType != 'fabOption' && isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute" color="primary"
+ mat-stroked-button title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" 
+    (click)="moreActionPopupShow()">
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+
+<!-- ============================ -->
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Icon' && moreActionDisplayType != 'fabOption' && !isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute"
+mat-icon-button   title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-icononly" color="primary" 
+    ng-reflect-disable-ripple="true" (click)="moreActionPopupShow()">
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+</button>
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Button' && moreActionDisplayType != 'fabOption' && !isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute"
+mat-flat-button title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-labelonly" color="primary"
+    ng-reflect-disable-ripple="true" (click)="moreActionPopupShow()">
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='IconandButton' && moreActionDisplayType != 'fabOption' && !isPageHeader" [attr.stopdropdownclose]="isInlineTypeEnable" [attr.data-cs-dropdown]="dripDownAttribute"
+mat-flat-button title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-iconandlabelonly cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn" color="primary"
+    ng-reflect-disable-ripple="true" (click)="moreActionPopupShow()">
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+
+<!-- ============================ -->
+
+ <button  [id]="buttonElementId" *ngIf="actionDisplayType==='Icon' && moreActionDisplayType === 'fabOption' && isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute" mat-mini-fab color="primary"
+    title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-pagehead-eachactions cs-mat-icononly"
+    (click)="fabClickMatMenu($event,moreActionItems.length)">
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+</button> 
+
+<button  [id]="buttonElementId" *ngIf="actionDisplayType==='Button' && moreActionDisplayType === 'fabOption' && isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute" mat-mini-fab color="primary"
+title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-pagehead-eachactions cs-mat-icononly"
+(click)="fabClickMatMenu($event,moreActionItems.length)">
+<span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+
+</button> 
+
+<button  [id]="buttonElementId" *ngIf="actionDisplayType==='IconandButton' && moreActionDisplayType === 'fabOption' && isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute"  color="primary"
+mat-stroked-button title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions"
+(click)="fabClickMatMenu($event,moreActionItems.length)">
+<em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+<span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+
+</button> 
+
+
+<!-- ============================ -->
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Icon' &&moreActionDisplayType === 'fabOption' && !isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute" 
+mat-icon-button   title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-icononly" color="primary" 
+     ng-reflect-disable-ripple="true"
+    (click)="fabClickMatMenu($event,moreActionItems.length)">
+    <em [id]="iconElementId"  class="{{moreActionInfo['actionIcon']}}"></em>
+</button>
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='Button'&& moreActionDisplayType === 'fabOption' && !isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute" 
+mat-flat-button title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-labelonly" color="primary" 
+ ng-reflect-disable-ripple="true"
+    (click)="fabClickMatMenu($event,moreActionItems.length)">
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+
+<button [id]="buttonElementId" *ngIf="actionDisplayType==='IconandButton' &&  moreActionDisplayType === 'fabOption' && !isPageHeader" [attr.isfab]="fabOptionEnable" [attr.data-cs-dropdown]="dripDownAttribute" 
+    title="{{moreActionInfo['actionDisplayName']}}" class="cs-mat-labelonly" color="primary" 
+    mat-icon-button ng-reflect-disable-ripple="true"
+    (click)="fabClickMatMenu($event,moreActionItems.length)">
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{moreActionInfo['actionDisplayName']}}</span>
+</button>
+

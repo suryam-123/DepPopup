@@ -1,0 +1,89 @@
+<button [id]="buttonElementId"  [attr.data-cs-dropdown]="dripDownAttribute"   [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='section' && layoutActionJson['actionDisplayType']=='IconandButton'" mat-stroked-button
+    color="primary" class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn"
+    (click)="handleMailActionClick($event)">
+    <em  [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+
+<button [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute"  [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='title' && layoutActionJson['actionDisplayType']=='IconandButton'" mat-stroked-button class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+
+<button mat-flat-button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId"  [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='sectionHeader' &&  layoutActionJson['actionDisplayType']=='IconandButton'"
+    color="primary"
+    class="cs-mat-iconandlabelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn"
+    (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+
+
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    class="cs-mat-pagehead-eachactions cs-mat-icononly"
+    *ngIf="viewArea =='section' && layoutActionJson['actionDisplayType']=='Icon'" mat-icon-button color="primary"
+    (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+
+</button>
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    class="cs-mat-pagehead-eachactions cs-mat-icononly"
+    *ngIf="viewArea =='title' && layoutActionJson['actionDisplayType']=='Icon'" mat-icon-button color="primary"
+    (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+
+</button>
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    class="cs-mat-pagehead-eachactions cs-mat-icononly"
+    *ngIf="viewArea =='sectionHeader' &&  layoutActionJson['actionDisplayType']=='Icon'" mat-icon-button color="primary"
+    (click)="handleMailActionClick($event)">
+    <em  [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+
+</button>
+
+
+
+
+
+
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='section' && layoutActionJson['actionDisplayType']=='Button'" mat-stroked-button color="primary"
+    class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn" (click)="handleMailActionClick($event)">
+
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='title' && layoutActionJson['actionDisplayType']=='Button'" mat-stroked-button
+    class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" (click)="handleMailActionClick($event)">
+
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='sectionHeader' &&  layoutActionJson['actionDisplayType']=='Button'" mat-stroked-button
+    color="primary"
+    class="cs-mat-iconandlabelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn"
+    (click)="handleMailActionClick($event)">
+
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+
+
+
+
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='sectionElementAction' && layoutActionJson['actionDisplayType']=='IconandButton'"
+    mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn"
+    (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+    <span [id]="labelElementId" class="cs-mat-btnlabel"> {{layoutActionJson['actionLabel']}} </span>
+</button>
+
+<button [attr.data-cs-dropdown]="dripDownAttribute" [id]="buttonElementId" [title]="layoutActionJson['actionLabel']"
+    *ngIf="viewArea =='sectionFieldAction' && layoutActionJson['actionDisplayType']=='IconandButton'" mat-stroked-button
+    color="primary" class="cs-mat-iconandlabelonly cs-section-btn" (click)="handleMailActionClick($event)">
+    <em [id]="iconElementId" [class]="layoutActionJson['actionIconCss']"></em>
+    <span [id]="labelElementId"> {{layoutActionJson['actionLabel']}} </span>
+</button>

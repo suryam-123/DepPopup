@@ -1,0 +1,95 @@
+<button mat-icon-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" *ngIf="!iconName && !iconClass && 
+  actionDisplayType&&actionDisplayType=='Icon'" (click)="iconClick($event)">
+  <em   [id]="iconElementId"  class="icon-mat-info_outline"></em>
+</button>
+
+<button mat-icon-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" *ngIf="iconName && actionDisplayType && 
+  actionDisplayType=='Icon' || 
+(iconName && iconClass&&actionDisplayType && actionDisplayType=='Icon')" (click)="iconClick($event)">
+  <em   [id]="iconElementId"  class="{{iconName}}"></em>
+</button>
+
+<button mat-icon-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" *ngIf=" iconClass && !iconName && actionDisplayType && actionDisplayType=='Icon'" (click)="iconClick($event)">
+  <em   [id]="iconElementId"  class="{{iconClass}}"></em>
+</button>
+<span    *ngIf="viewArea =='title'">
+  <button mat-stroked-button  [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" *ngIf="!iconName && !iconClass && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+    <em   [id]="iconElementId"  class="icon-mat-info_outline"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+  <button mat-stroked-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" *ngIf="iconName && actionDisplayType && actionDisplayType=='IconandButton' || (iconName && iconClass && actionDisplayType && actionDisplayType=='IconandButton')" (click)="iconClick($event)">
+    <em   [id]="iconElementId"  class="{{iconName}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+
+  <button mat-stroked-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions" *ngIf=" iconClass && !iconName && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+    <em   [id]="iconElementId"  class="{{iconClass}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+  <button mat-stroked-button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-labelonly cs-mat-pagehead-eachactions" *ngIf="actionDisplayType&&actionDisplayType==='Button'" (click)="iconClick($event)">
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+</span>
+
+<span  *ngIf="viewArea =='section'">
+  <span    *ngIf="actionType == 'ElementAction'">
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn" *ngIf="!iconName && !iconClass && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="icon-mat-info_outline"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn" *ngIf="iconName && actionDisplayType && actionDisplayType=='IconandButton' || (iconName && iconClass && actionDisplayType && actionDisplayType=='IconandButton')" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="{{iconName}}"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-btnorbtntxtwithlabel cs-section-btn" *ngIf=" iconClass && !iconName && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="{{iconClass}}"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-labelonly cs-btnorbtntxtwithlabel cs-section-btn" *ngIf="actionDisplayType&&actionDisplayType==='Button'" (click)="iconClick($event)">
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+  </span>
+  <span   *ngIf="actionType == 'FieldtAction'">
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-section-btn" *ngIf="!iconName && !iconClass && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="icon-mat-info_outline"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-section-btn" *ngIf="iconName && actionDisplayType && actionDisplayType=='IconandButton' || (iconName && iconClass && actionDisplayType && actionDisplayType=='IconandButton')" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="{{iconName}}"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-iconandlabelonly cs-section-btn" *ngIf=" iconClass && !iconName && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+      <em   [id]="iconElementId"  class="{{iconClass}}"></em>
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+
+    <button    [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" mat-stroked-button color="primary" class="cs-mat-labelonly cs-section-btn" *ngIf="actionDisplayType&&actionDisplayType==='Button'" (click)="iconClick($event)">
+      <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+    </button>
+  </span>
+
+</span>
+
+<span  *ngIf="viewArea =='sectionHeader'">
+
+  <button mat-flat-button [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn" color="primary" *ngIf="!iconName && !iconClass && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+    <em   [id]="iconElementId"  class="icon-mat-info_outline"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+
+  <button    mat-flat-button [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn" color="primary" *ngIf="iconName && actionDisplayType && actionDisplayType=='IconandButton' || (iconName && iconClass && actionDisplayType && actionDisplayType=='IconandButton')" (click)="iconClick($event)">
+    <em   [id]="iconElementId"  class="{{iconName}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+
+  <button    mat-flat-button [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-iconandlabelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn" color="primary" *ngIf=" iconClass && !iconName && actionDisplayType && actionDisplayType=='IconandButton'" (click)="iconClick($event)">
+    <em   [id]="iconElementId"   class="{{iconClass}}"></em>
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+  <button    mat-flat-button [id]="buttonElementId" [attr.data-cs-dropdown]="dripDownAttribute" class="cs-mat-labelonly cs-nomargin cs-mat-labelonly-slickoption cs-lsmar cs-whoiconandlabelbtn" color="primary" *ngIf="actionDisplayType&&actionDisplayType==='Button'" (click)="iconClick($event)">
+    <span  [id]="labelElementId" class="cs-mat-btnlabel">{{actionLabel}}</span>
+  </button>
+
+</span>

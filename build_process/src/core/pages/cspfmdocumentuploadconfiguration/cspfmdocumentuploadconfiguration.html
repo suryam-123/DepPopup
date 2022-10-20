@@ -1,0 +1,399 @@
+<mat-card class="cs-document-upload" *ngIf="!appUtilityConfig.isMobileResolution">
+  <div class="cs-document-upload-head">
+    <div class="cs-document-upload-head1">
+      <button class="cs-document-upload-notesbtn">
+        <em class="icon-mat-description"></em>
+      </button>
+      <mat-label>{{documentInfo['documentName']}}</mat-label>
+      <mat-chip *ngIf="!retryUpload" class="cs-head-count-badge">{{displayFileName.length}}</mat-chip>
+      <mat-chip *ngIf="retryUpload" class="cs-head-count-badge">{{showUploadedFiles.length}}</mat-chip>
+    </div>
+    <div class="cs-document-upload-head2">
+      <mat-chip *ngIf="documentInfo['frequency']==='AnyDate'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+      <mat-chip *ngIf="documentInfo['frequency']==='Daily'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+      <mat-chip *ngIf="documentInfo['frequency']==='Weekly'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+      <mat-chip *ngIf="documentInfo['frequency']==='Monthly'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+      <mat-chip *ngIf="documentInfo['frequency']==='Quaterly'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+      <mat-chip *ngIf="documentInfo['frequency']==='Yearly'" class="cs-days-badge">
+        {{documentInfo['frequency']}}</mat-chip>
+    </div>
+    <div class="cs-document-upload-head3">
+      <span class="example-spacer "></span>
+      <!-- <button (click)="closeButtonClick()" class="cs-document-cancelbtn">
+        <span>Cancel</span>
+      </button> -->
+      <button (click)="uploadAction()" class="cs-document-uploadbtn">
+        <span>Upload</span>
+      </button>
+      <button id="action_backnavigation" (click)="closeButtonClick()" class="cs-document-closebtn">
+        <em class="icon-mat-close"></em>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="!appUtilityConfig.isMobileResolution">
+    <div *ngIf="!retryUpload" fxLayout="row wrap" class="cs-document-upload-dashed-head">
+      <div fxLayout="column" fxFlex="100%">
+        <div class="cs-document-upload-dashed-body cs-lpad-16">
+          <div fxLayout="row" fxFlex="90%" class="cs-attch-fileformat">
+            <div class="cs-rpad-26">
+              <span>
+                <mat-label class="cs-document-upload-dashed-body-nameformat">File Name Format</mat-label>
+              </span>
+              <span class="cs-lmar-7">
+                <mat-label class="cs-ts-14 cs-tw-400 cs-year-c">{{fileFormat}}</mat-label>
+              </span>
+            </div>
+            <div class="cs-year-align">
+              <div *ngFor="let formatObj of formatOptionArray" class="cs-display-inlineblock">
+                <div *ngIf="formatObj['isDateFormat']" class="cs-display-inlineblock">
+                  <span>
+                  </span>
+                  <span class="cs-display-inlineblock">
+                    <mat-select floatlLabel="never" class="cs-ts-14 cs-document-upload-yearl"
+                      *ngIf="formatObj['displayName'] === 'DD'" placeholder="{{formatObj['displayName']}}"
+                      [(ngModel)]="formatObj['value']" panelClass="cs-custom-scroll"
+                      (click)="daysAlertMsgShown(formatObj)" (selectionChange)="daysCalcalculation($event,formatObj)">
+                      <ng-container *ngFor="let day of totalsDays">
+                        <mat-option *ngIf="formatObj['displayName'] === 'DD' && day < 10 && day > 0" [value]="day">
+                          0{{day}}
+                        </mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'DD' && day >= 10" [value]="day">{{day}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                    <mat-select floatlLabel="never" class="cs-ts-14 cs-document-upload-yearl"
+                      *ngIf="formatObj['displayName'] === 'MM'" placeholder="{{formatObj['displayName']}}"
+                      (click)="daysAlertMsgShown(formatObj)" [(ngModel)]="formatObj['value']"
+                      panelClass="cs-custom-scroll" (selectionChange)="daysCalcalculation($event,formatObj)">
+                      <ng-container *ngFor="let month of totalMonths">
+                        <mat-option *ngIf="formatObj['displayName'] === 'MM' && month < 10  && month > 0"
+                          [value]="month">
+                          0{{month}}
+                        </mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'MM' && month >= 10" [value]="month">{{month}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                    <mat-select class="cs-ts-14 cs-document-seperator"
+                      *ngIf="formatObj['displayName'] === 'MON' || formatObj['displayName'] === 'MONTH'"
+                      (click)="daysAlertMsgShown(formatObj)" placeholder="{{formatObj['displayName']}}"
+                      [(ngModel)]="formatObj['value']" panelClass="cs-custom-scroll"
+                      (selectionChange)="daysCalcalculation($event,formatObj)">
+                      <ng-container *ngFor="let month of monthsInString">
+                        <mat-option *ngIf="formatObj['displayName'] === 'MONTH'" [value]="month">{{month}}</mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'MON'" [value]="month">{{month.substring(0,3)}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                    <mat-select floatlLabel="never" class="cs-ts-14 cs-document-upload-yearl"
+                      *ngIf="formatObj['displayName'] === 'YY' || formatObj['displayName'] === 'YYYY'"
+                      placeholder="{{formatObj['displayName']}}" [(ngModel)]="formatObj['value']"
+                      panelClass="cs-custom-scroll" (selectionChange)="daysCalcalculation($event,formatObj)">
+                      <ng-container *ngFor="let year of totalYears">
+                        <mat-option *ngIf="formatObj['displayName'] === 'YY' && year < 10 && year >= 0" [value]="year">
+                          0{{year}}</mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'YY' && year >= 10" [value]="year">{{year}}
+                        </mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'YYYY' && year < 10 && year >= 0" [value]="year">
+                          200{{year}}
+                        </mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'YYYY' && year >= 10 && year < 100"
+                          [value]="year">
+                          20{{year}}
+                        </mat-option>
+                        <mat-option *ngIf="formatObj['displayName'] === 'YYYY' && year === 100" [value]="year">2{{year}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </span>
+                </div>
+                <div *ngIf="!formatObj['isDateFormat']" class="cs-display-inlineblock">
+                  <div class="cs-display-inlineblock cs-tw-bold">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                  </div>
+                  <div *ngIf="!formatObj['isStaticContent']" class="cs-display-inlineblock cs-tw-bold cs-vmar-5">
+                    <span></span>
+                    <span>
+                      <mat-select floatlLabel="never" class="cs-ts-14" no-padding (click)="daysAlertMsgShown(formatObj)"
+                        placeholder="{{formatObj['displayName']}}" [(ngModel)]="formatObj['value']">
+                        <mat-option *ngFor="let options of formatObj['displayOption']" [value]="options">
+                          {{options}}
+                        </mat-option>
+                      </mat-select>
+                    </span>
+                  </div>
+                  <div *ngIf="formatObj['isStaticContent']" class="cs-display-inlineblock cs-tw-bold">
+                    <span>
+                      <mat-label>{{formatObj['value']}}</mat-label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxFlex="10%" style="align-items:center;justify-content:flex-end;">
+            <button>
+              <em class="icon-mat-add" (click)="addDateToDisplayFileName()"></em>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="cs-document-upload-recordlist cs-custom-scroll"
+    *ngIf="!appUtilityConfig.isMobileResolution && !retryUpload">
+    <div class="cs-document-upload-records" *ngFor="let displayname of displayFileName let i= index">
+      <div class="cs-ad-display">
+        <div class="cs-document-upload-recordlist-date">
+          <div class="cs-pr cs-current-width">
+            <div class="cs-current-upload-m cs-pa cs-badge-success cs-whitec cs-ts-10"
+              *ngIf="displayname.current == true">
+              <span *ngIf="documentInfo['frequency']==='AnyDate' || documentInfo['frequency']==='Daily'">
+                Today
+              </span>
+              <span *ngIf="documentInfo['frequency']==='Weekly'">
+                This Week
+              </span>
+              <span *ngIf="documentInfo['frequency']==='Monthly'">
+                This Month
+              </span>
+              <span *ngIf="documentInfo['frequency']==='Quaterly'">
+                This Quater
+              </span>
+              <span *ngIf="documentInfo['frequency']==='Yearly'">
+                This Year
+              </span>
+            </div>
+            <mat-label class="">{{displayname['date']}}</mat-label>
+          </div>
+        </div>
+        <div class="cs-document-upload-recordlist-fileformat">
+          <mat-label>
+            <div *ngIf="displayname['recordCount'] > 0  && !canUploadMultipleFile"> Completed</div>
+            <div *ngIf="displayname['recordCount'] === documentInfo['fileCount']  && canUploadMultipleFile">Completed
+            </div>
+            <div *ngIf="canUploadMultipleFile">{{displayname['recordCount'] }} / {{documentInfo['fileCount'] }}</div>
+            <div *ngIf="!canUploadMultipleFile">{{displayname['recordCount'] }} / 1 </div>
+            <div *ngIf="uploadedFiles[displayname['date']]">
+              <ng-container *ngFor="let selectedFiles of uploadedFiles[displayname['date']].dataArray ;let j = index">
+                <div
+                  *ngIf="j == uploadedFiles[displayname['date']].dataArray.length - 1;then last_content else content">
+                </div>
+                <ng-template #last_content> {{selectedFiles['fileName']}}</ng-template>
+                <ng-template #content>{{selectedFiles['fileName']}},</ng-template>
+              </ng-container>
+            </div>
+          </mat-label>
+        </div>
+        <div class="cs-document-upload-recordlist-size">
+          <mat-label>
+            <div *ngIf="uploadedFiles[displayname['date']]">
+              <ng-container *ngFor="let selectedFiles of uploadedFiles[displayname['date']].dataArray ;let j = index">
+                <div
+                  *ngIf="j == uploadedFiles[displayname['date']].dataArray.length - 1;then last_content else content">
+                </div>
+                <ng-template #last_content>{{uploadedFiles[displayname['date']].dataSize}}</ng-template>
+                <ng-template #content></ng-template>
+              </ng-container>
+            </div>
+          </mat-label>
+        </div>
+      </div>
+      <div class="cs-ad-action">
+        <div class="cs-document-upload-recordlist-selectfile">
+          <mat-chip *ngIf="!canUploadMultipleFile">Select Files
+            <input type="file" name="upload" (change)="fileUploadAction($event, i)">
+          </mat-chip>
+          <mat-chip *ngIf="canUploadMultipleFile">Select Files
+            <input type="file" name="upload" multiple (change)="fileUploadAction($event, i)">
+          </mat-chip>
+        </div>
+        <div class="cs-document-upload-recordlist-del">
+          <button>
+            <em class="icon-mat-close" title="Clear" (click)="deleteTheFileNameRow(i)"></em>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-document-upload-recordlist cs-custom-scroll"
+    *ngIf="!appUtilityConfig.isMobileResolution && retryUpload">
+    <div class="cs-document-upload-records" *ngFor="let displayname of showUploadedFiles let i= index">
+      <div class="cs-ad-display">
+        <div class="cs-document-upload-recordlist-date">
+          <mat-label class="">{{displayname['file_name']}}</mat-label>
+        </div>
+        <div class="cs-document-upload-recordlist-size">
+          <mat-chip *ngIf="displayname['file_size'] < 1024" class="cs-document-size">
+            {{displayname['file_size']}} KB</mat-chip>
+          <mat-chip *ngIf="displayname['file_size'] >= 1024" class="cs-document-size">
+            {{(displayname['file_size'] / 1024).toFixed(2)}} MB</mat-chip>
+          <!-- <mat-label>
+            <div *ngIf="uploadedFiles[displayname['date']]">
+              <ng-container *ngFor="let selectedFiles of uploadedFiles[displayname['date']].dataArray ;let j = index">
+                <div *ngIf="j == uploadedFiles[displayname['date']].dataArray.length - 1;then last_content else content">
+                </div>
+                <ng-template #last_content>{{uploadedFiles[displayname['date']].dataSize}}</ng-template>
+                <ng-template #content></ng-template>
+              </ng-container>
+            </div>
+          </mat-label> -->
+        </div>
+        <div class="cs-document-upload-recordlist-fileformat">
+          <mat-label>
+            <div *ngIf="displayname['status'] !== 'finished' && displayname['status'] !== 'initiated' ">Failed</div>
+            <div *ngIf="displayname['status'] === 'initiated'">Initiated</div>
+            <div *ngIf="displayname['status'] === 'open'&& !displayname['uploadedInfo']">NO File Uploaded</div>
+            <div *ngIf="displayname['status'] === 'finished'">Success</div>
+          </mat-label>
+          <mat-label *ngIf="displayname['uploadedInfo']">
+            {{displayname['uploadedInfo']["fileName"]}}.{{displayname['uploadedInfo']["fileExtension"]}}
+          </mat-label>
+        </div>
+        <div class="cs-document-upload-recordlist-size">
+          <div *ngIf="displayname['uploadedInfo']">
+            <mat-chip *ngIf="displayname['uploadedInfo']['filesizeVal'] < 1024" class="cs-document-size">
+              {{displayname['uploadedInfo']['filesizeVal']}} KB</mat-chip>
+            <mat-chip *ngIf="displayname['uploadedInfo']['filesizeVal'] >= 1024" class="cs-document-size">
+              {{(displayname['uploadedInfo']['filesizeVal'] / 1024).toFixed(2)}} MB</mat-chip>
+          </div>
+        </div>
+      </div>
+      <div class="cs-ad-action">
+        <div class="cs-document-upload-recordlist-selectfile">
+          <mat-chip>
+            Select Files <input type="file" name="upload" (change)="fileUploadRetryAction($event, i)">
+          </mat-chip>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<!-- Mobile -->
+<ion-header no-border *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="closeButtonClick()">
+        <h2>
+          <ion-icon name="close"></ion-icon>
+        </h2>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{documentInfo['frequency']}} {{fileTypeTitle}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<div *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-item lines="none" margin-top class="cs-lmar-4m">
+    <ion-icon class="icon-mat-description cs-description-icon"></ion-icon>
+    <p class="cs-ts-14 cs-hmar-7 cs-tw-500">{{documentInfo['documentName']}}</p>
+    <ion-badge *ngIf="documentInfo['frequency']==='AnyDate'" color='primary' class="cs-day-badge-upload">
+      {{documentInfo['frequency']}}</ion-badge>
+    <ion-badge *ngIf="documentInfo['frequency']==='Daily'" class="cs-day-badge-upload cs-daily-badge">
+      {{documentInfo['frequency']}}</ion-badge>
+    <ion-badge *ngIf="documentInfo['frequency']==='Weekly'" class="cs-day-badge-upload cs-weekly-badge">
+      {{documentInfo['frequency']}}</ion-badge>
+    <ion-badge *ngIf="documentInfo['frequency']==='Monthly'" class="cs-day-badge-upload cs-Monthly-badge">
+      {{documentInfo['frequency']}}</ion-badge>
+    <ion-badge *ngIf="documentInfo['frequency']==='Quaterly'" class="cs-day-badge-upload cs-quaterly-badge">
+      {{documentInfo['frequency']}}</ion-badge>
+    <ion-badge *ngIf="documentInfo['frequency']==='Yearly'" class="cs-day-badge-upload cs-yearly-badge">
+      {{documentInfo['frequency']}}</ion-badge>
+  </ion-item>
+  <div class="cs-dashed-style-mob cs-pr">
+    <div class="cs-bmar-3">
+      <span>
+        <ion-label class="cs-ts-14 cs-tw-400">File Name Format</ion-label>
+      </span>
+      <span>
+        <ion-label class="cs-ts-14 cs-tw-400 cs-year-c cs-lmar-7">{{fileFormat}}</ion-label>
+      </span>
+    </div>
+    <div class="cs-display-inlineblock">
+      <div *ngFor="let formatObj of formatOptionArray" class="cs-display-inlineblock">
+        <div *ngIf="formatObj['isDateFormat']" class="cs-display-inlineblock cs-tw-bold">
+          <span>
+          </span>
+          <span class="cs-display-inlineblock">
+            <!-- Below line is commented for ionic version 6 upgrade -->
+            <!-- <ion-datetime placeholder="{{formatObj['displayName']}}" no-padding
+              class="cs-sel-downicon cs-display-inlineblock" value="{{formatObj['displayName']}}"
+              displayFormat="{{formatObj['displayName']}}" pickerFormat="{{formatObj['displayName']}}"
+              [(ngModel)]="formatObj['value']"></ion-datetime> -->
+            <ion-icon class="icon-mat-arrow_drop_down cs-display-inlineblock cs-ts-18"></ion-icon>
+          </span>
+        </div>
+        <div *ngIf="!formatObj['isDateFormat']" class="cs-display-inlineblock cs-tw-bold cs-ion-select-p-mob">
+          <span>
+          </span>
+          <span>
+            <ion-select class="cs-dark-select cs-ts-14" no-padding placeholder="{{formatObj['displayName']}}"
+              interface="popover" [(ngModel)]="formatObj['value']">
+              <ion-select-option *ngFor="let options of formatObj['displayOption']">{{options}}
+              </ion-select-option>
+            </ion-select>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="cs-display-inlineblock cs-yearadd-icon" float-end>
+      <ion-icon class="icon-mat-add cs-matadd-icon" (click)="addDateToDisplayFileName()"></ion-icon>
+    </div>
+  </div>
+</div>
+<ion-content *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-list *ngFor="let displayname of displayFileName let i= index" class="cs-mar-10" padding-bottom>
+    <ion-row class="cs-attachment-innerlist">
+      <ion-col size="3" class="cs-flex-start" no-padding>
+        <ion-label class="cs-ts-13 cs-tw-500">{{displayname['date']}}</ion-label>
+      </ion-col>
+      <ion-col size="2" class="cs-flex-start" no-padding>
+        <ion-badge class="cs-uploadsize-badge cs-tw-500">
+          <ng-container *ngFor="let selectedFiles of uploadedFiles[displayname['date']] ;let j = index">
+            <div *ngIf="j == uploadedFiles[displayname['date']].length - 1;then last_content else content">
+            </div>
+            <ng-template #last_content>{{selectedFiles['selectedFileSize']}}</ng-template>
+            <ng-template #content></ng-template>
+          </ng-container>
+        </ion-badge>
+      </ion-col>
+      <ion-col size="3" class="cs-flex-center" no-padding>
+        <div class="cs-choose-btn-mob" no-padding margin>
+          <ion-label class="cs-upload-txt-mob" padding-end>Select Files</ion-label>
+          <ion-input type="file" name="upload" multiple="{{canUploadMultipleFile}}" class="cs-no-opacity-mob"
+            (change)="fileUploadAction($event, i)"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2" class="cs-flex-center" no-padding>
+        <span *ngIf="documentInfo['fileCount'] > 0">
+          <ion-label class="cs-ts-11">{{displayname['recordCount']}} /</ion-label>
+        </span>
+        <span *ngIf="documentInfo['fileCount'] > 0">
+          <ion-label class="cs-ts-11">{{documentInfo['fileCount']}}</ion-label>
+        </span>
+      </ion-col>
+      <ion-col size="2" class="cs-flex-end" no-padding>
+        <ion-icon class="icon-mat-delete_outline cs-del-mob" (click)="deleteTheFileNameRow(i)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-toolbar>
+    <div class="ion-text-center" margin-top>
+      <ion-button class="cs-cancel-btn" (click)="closeButtonClick()">Cancel</ion-button>
+      <ion-button class="cs-upload-btn" margin-start (click)="uploadAction()">Upload</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

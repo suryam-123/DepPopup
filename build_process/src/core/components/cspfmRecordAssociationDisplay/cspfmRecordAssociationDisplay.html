@@ -1,0 +1,499 @@
+<div [ngClass]="{'cs-mat-ui cs-mat-custom-theme cs-recordass-pop-h': isFromList}">
+    <mat-toolbar color="primary" class="cs-mat-pageheadtoolbar" *ngIf="isFromList">
+        <div class="cs-mat-toolbartitle">
+            <span class="cs-mat-pageheadtitle">{{ associationConfiguration['fieldDisplayName'] | translate }}</span>
+        </div>
+        <span class="example-spacer"></span>
+        <button id ="{{actionId}}_close" mat-mini-fab color="primary" title="Close"
+            class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="closeButtonClick()">
+            <em class="icon-mat-close"></em>
+        </button>
+    </mat-toolbar>
+    <div [ngClass]="{'cs-mat-main-content cs-custom-scroll cs-recordass-pop-b' : isFromList}">
+        <div [ngClass]="{'cs-mat-contentmain' : isFromList}">
+            <div id="cs-dropdown-{{associationConfiguration['layoutId']}}_rec" class="cs-dropdown cs-custom-scroll"></div>
+            <mat-card class="cs-recordassociation-listview">
+                <div *ngIf="associationConfiguration['style'] == 'SingleWithMultiple'">
+                    <div class="cs-mat-view-grid">
+                        <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                        <div class="cs-recordassociation-head-span"
+                            *ngIf="dataObject && dataObject[associationConfiguration['associationFieldName']] && associationConfiguration['gridFieldInfo'] 
+                            && (associationConfiguration['gridFieldInfo']['fieldType'] !== 'RECORDASSOCIATION' 
+                            || (associationConfiguration['gridFieldInfo']['fieldName'] === '' && associationConfiguration['gridFieldInfo']['fieldType'] === 'RECORDASSOCIATION')) 
+                            ? makeAssociationObjects() : true "
+                            id="{{ associationConfiguration['associationFieldName'] }}_{{ associationConfiguration['objectId'] }}_{{ associationConfiguration['layoutId'] }}_div">
+                            <div class="cs-display-none"
+                                *ngIf="dataObject && dataObject[associationConfiguration['associationFieldName']]
+                                && ( associationConfiguration['gridFieldInfo']['fieldName'] !== '' || associationConfiguration['gridFieldInfo']['fieldType'] === 'RECORDASSOCIATION' )
+                                && !primaryChipArray[associationConfiguration['associationFieldName']] && !secondaryChipArray[associationConfiguration['associationFieldName']] ? 
+                                handleMultipleRecordsChipStyle(associationConfiguration['associationObjectInfo'][associationConfiguration['gridFieldInfo']['fieldName']], 
+                                dataObject[associationConfiguration['associationFieldName']], associationConfiguration['layoutId'], associationConfiguration['objectId']) : true">
+                            </div>
+                            <mat-chip-list
+                                *ngIf="dataObject && dataObject[associationConfiguration['associationFieldName']] 
+                                        && ((primaryChipArray[associationConfiguration['associationFieldName']] 
+                                        && primaryChipArray[associationConfiguration['associationFieldName']].length > 0) 
+                                        || (secondaryChipArray[associationConfiguration['associationFieldName']] 
+                                        && secondaryChipArray[associationConfiguration['associationFieldName']].length > 0))"
+                                class="cs-overflow-chiplist cs-display-inlineblock cs-overflow-chip">
+                                <mat-chip
+                                    *ngFor="let object of primaryChipArray[associationConfiguration['associationFieldName']]; let index = index"
+                                    class="cs-recordassociation-chip cs-chipwidth"
+                                    matTooltip="{{object[associationConfiguration['associationObjectInfo'][associationConfiguration['associationFieldName']]['resultColumn'][0]]}}"
+                                    matTooltipPosition="above">
+                                    <div id ="{{actionId}}_chip_{{index}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                                        <div id ="{{actionId}}_chip_{{index}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                                            {{object[associationConfiguration['associationObjectInfo'][associationConfiguration['associationFieldName']]['resultColumn'][0]]}}
+                                        </div>
+                                    </div>
+                                </mat-chip>
+                            </mat-chip-list>
+
+                            <button id ="{{actionId}}_more" [matMenuTriggerFor]="associationMoreView" class="cs-recordassociation-count"
+                                [ngClass]="{'cs-display-none': !secondaryChipArray[associationConfiguration['associationFieldName']] 
+                                        || secondaryChipArray[associationConfiguration['associationFieldName']].length == 0}"
+                                *ngIf="secondaryChipArray[associationConfiguration['associationFieldName']] 
+                                        && secondaryChipArray[associationConfiguration['associationFieldName']].length > 0">
+                                <span class="cs-chipmore-btn">
+                                    +{{ secondaryChipArray[associationConfiguration['associationFieldName']].length }}
+                                </span>
+                            </button>
+                            <mat-menu #associationMoreView="matMenu" class="cs-custom-scroll" [hasBackdrop]="true">
+                                <div class="cs-overflowchiplist-container cs-insidedd cs-custom-scroll">
+                                    <mat-chip-list class="cs-overflow-chiplist cs-display-inlineblock ">
+                                        <mat-chip
+                                            *ngFor="let object of secondaryChipArray[associationConfiguration['associationFieldName']]; let index = index"
+                                            class="cs-recordassociation-chip cs-chipwidth"
+                                            matTooltip="{{object[associationConfiguration['associationObjectInfo'][associationConfiguration['associationFieldName']]['resultColumn'][0]]}}"
+                                            matTooltipPosition="above">
+                                            <div id ="{{actionId}}_popover_chip_{{index}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                                                <div id ="{{actionId}}_popover_chip_{{index}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                                                    {{object[associationConfiguration['associationObjectInfo'][associationConfiguration['associationFieldName']]['resultColumn'][0]]}}
+                                                </div>
+                                            </div>
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </div>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="associationConfiguration['style'] == 'SingleFromMultipleWithSingle'">
+                    <div class="cs-mat-view-grid">
+                        <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                        <mat-chip-list class="cs-overflow-chiplist cs-display-inlineblock cs-overflow-viewchiplist">
+                            <mat-chip
+                                *ngFor="let item of dataObject | cspfm_data_display : associationConfiguration['gridFieldInfo'] ; let index = index"
+                                class="cs-recordassociation-chip cs-singleobj-viewchip"
+                                matTooltip="{{item[associationConfiguration['associationObjectInfo'][associationConfiguration['gridFieldInfo']['fieldName']]['resultColumn'][0]]}}"
+                                matTooltipPosition="above">
+                                <div id ="{{actionId}}_chip_{{index}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                                    <div id ="{{actionId}}_chip_{{index}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                                        <span class="cs-singleobj-viewlabelhead">{{
+                                            associationConfiguration['associationObjectInfo'][associationConfiguration['gridFieldInfo']['fieldName']]['objectName']}}:</span>
+                                        <span class="cs-singleobj-viewlabelsub">{{
+                                            item[associationConfiguration['associationObjectInfo'][associationConfiguration['gridFieldInfo']['fieldName']]['resultColumn'][0]]}}</span>
+                                    </div>
+                                </div>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+
+                <!-- <mat-dialog-content class="cs-mat-popup-sizeset"> -->
+                <div [ngClass]="{'cs-lookup-norecord cs-mat-parent-slick': isFromList}">
+                    <div id="{{gridContainerId}}" [ngClass]="{'clearfix cs-mat-slickgrid': isFromList}">
+
+                        <!-- Slickgrid style -->
+                        <div *ngIf="associationConfiguration['style'] == 'SingleFromMultipleWithMultipleList' || associationConfiguration['style'] == 'MultipleFromMultipleWithMultipleList' 
+                            || associationConfiguration['style'] == 'MultipleFromMultipleWithSingleList'">
+                            <div class="cs-mat-view-grid">
+                                <span *ngIf="!isFromList" class="cs-recordassociation-head-span">
+                                    <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                                </span>
+                                <div class="cs-recordassociation-box cs-mat-parent-slick cs-pr">
+                                    <div class="cs-norecords-found-alt" *ngIf="!associationObjectInfo[associationConfiguration['fieldName']] 
+                                        || associationObjectInfo[associationConfiguration['fieldName']].length == 0">
+                                        <mat-label>Object And Value is Empty</mat-label>
+                                    </div>
+                                    <div *ngIf="associationObjectInfo[associationConfiguration['fieldName']] 
+                                        && associationObjectInfo[associationConfiguration['fieldName']].length > 0">
+                                        <div *ngFor="let object of associationObjectInfo[associationConfiguration['fieldName']]"
+                                            [ngClass]="{'cs-recordassociation-seperator-line' : associationObjectInfo[associationConfiguration['fieldName']].length > 1 }">
+                                            <div class="cs-list-view">
+                                                <div class="cs-header-name cs-slick-title cs-pr">
+                                                    <mat-card-header class="cs-slickoption-btn">
+                                                        <button id ="{{actionId}}_{{object['objectId']}}_menu" title="Menu" mat-icon-button
+                                                            class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                                            (click)="toggleGridMenu($event,object)">
+                                                            <em class="icon-cs-bars cs-tw-600"></em>
+                                                        </button>
+                                                        <mat-card-title class="cs-recordass-slickhead-title">
+                                                            {{object['displayName']}}
+                                                            <span class="cs-recordassociation-count-badge"
+                                                                *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                                                object['recordsArray'].length }}</span>
+                                                        </mat-card-title>
+                                                    </mat-card-header>
+
+                                                    <div class="cs-mat-slickgrid cs-pull-right">
+                                                        <span class="cs-custome-pagination" *ngIf="object && object['recordsArray'] 
+                                                                        && object['recordsArray'].length > 0">
+
+                                                            <div class="cs-rmar-15">
+                                                                <mat-label class="cs-ts-14">Items per page :
+                                                                </mat-label>
+                                                                <mat-select id ="{{actionId}}_{{object['objectId']}}_selection" class="cs-ts-14"
+                                                                    (selectionChange)="selectionChange($event, object)"
+                                                                    [value]="object['angularGridInstance'] && object['angularGridInstance'].paginationService && object['angularGridInstance'].paginationService.itemsPerPage"
+                                                                    [(ngModel)]="object['gridOptionInfo']['pagination']['pageSize']"
+                                                                    (click)="take_position($event)">
+                                                                    <mat-option class="cs-ts-14"
+                                                                        *ngFor="let itemPerPage of object['gridOptionInfo']['pagination']['pageSizes']"
+                                                                        [value]="itemPerPage" id ="{{actionId}}_{{object['objectId']}}_{{itemPerPage}}_itemPerPage">
+                                                                        {{itemPerPage}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </div>
+
+                                                            <div class="cs-rmar-15">
+                                                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                                    {{object['angularGridInstance'] &&
+                                                                    object['angularGridInstance'].paginationService &&
+                                                                    object['angularGridInstance'].paginationService.dataFrom}}
+                                                                    - </mat-label>
+                                                                <mat-label class="cs-ts-14 cs-grey">
+                                                                    {{object['angularGridInstance'] &&
+                                                                    object['angularGridInstance'].paginationService &&
+                                                                    object['angularGridInstance'].paginationService.dataTo}}
+                                                                </mat-label>
+                                                                <mat-label class="cs-ts-14">
+                                                                    <span> of </span>
+                                                                    {{object['angularGridInstance'] &&
+                                                                    object['angularGridInstance'].paginationService &&
+                                                                    object['angularGridInstance'].paginationService.totalItems}}
+                                                                </mat-label>
+                                                            </div>
+
+                                                            <div class="cs-rmar-15">
+                                                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                                    {{object['angularGridInstance'] &&
+                                                                    object['angularGridInstance'].paginationService &&
+                                                                    object['angularGridInstance'].paginationService.pageNumber}}
+                                                                    / </mat-label>
+                                                                <mat-label class="cs-ts-14">
+                                                                    {{object['angularGridInstance'] &&
+                                                                    object['angularGridInstance'].paginationService &&
+                                                                    object['angularGridInstance'].paginationService.pageCount}}<span>
+                                                                        page </span></mat-label>
+                                                            </div>
+
+                                                            <button id ="{{actionId}}_{{object['objectId']}}_previous" class="cs-mat-icononly cs-nomargin" color="primary"
+                                                                mat-icon-button ng-reflect-disable-ripple="true"
+                                                                title="Previous"
+                                                                [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                                && object['angularGridInstance'].paginationService.pageNumber == 1}"
+                                                                (click)="navigationChange('prev', object)">
+                                                                <em class="icon-mat-navigate_before"></em>
+                                                            </button>
+                                                            <button id ="{{actionId}}_{{object['objectId']}}_next" class="cs-mat-icononly cs-nomargin" color="primary"
+                                                                mat-icon-button ng-reflect-disable-ripple="true"
+                                                                title="Next"
+                                                                [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                                && object['angularGridInstance'].paginationService.pageNumber == object['angularGridInstance'].paginationService.pageCount}"
+                                                                (click)="navigationChange('next', object)">
+                                                                <em class="icon-mat-navigate_next"></em>
+                                                            </button>
+                                                        </span>
+                                                        <button id ="{{actionId}}_{{object['objectId']}}_search" title="Search" color="primary"
+                                                            class="cs-mat-icononly cs-filter-option cs-pull-right"
+                                                            (click)="toggleGridSearchRow(object)">
+                                                            <em
+                                                                [ngClass]="{'icon-mat-filter_list_alt': object['additionalInfo']['gridSearchRowToggle'], 'icon-mat-not_filtered_list': !object['additionalInfo']['gridSearchRowToggle']}"></em>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="{{gridContainerId+associationConfiguration['layoutId'] +'_'+ layoutName+'_'+objectRootPath+ '_'+object['fieldName']}}"                                                
+                                                class="clearfix cs-mat-slickgrid cs-multi-slickgrid cs-pr cs-tabgroup-norec"
+                                                [ngClass]="{'cs-slickgrid-pagination': object['gridOptionInfo']['enablePagination']}">
+
+                                                <div *ngIf="((object['recordsArray'] && object['recordsArray'].length === 0)  || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))"
+                                                    class="cs_no_record_center_s">
+                                                    <img *ngIf="!object['isLoading']" alt=""
+                                                        src='assets/img/no_record_found.png'>
+                                                    <img *ngIf="object['isLoading']" class="cs-loading-gif" alt=""
+                                                        src='assets/img/dataloading.gif'>
+                                                </div>
+
+                                                <angular-slickgrid
+                                                    gridId="{{gridId+associationConfiguration['layoutId'] +'_'+ layoutName+'_'+objectRootPath+ '_'+object['fieldName']}}"
+                                                    [columnDefinitions]="associationConfiguration['columnDefinitions'][object['fieldName']]"
+                                                    [gridOptions]="object['gridOptionInfo']"
+                                                    (onAngularGridCreated)="angularGridReady($event,object)"
+                                                    [dataset]="object['recordsArray']"
+                                                    [ngClass]="{'cs-colum_border_line':((object['recordsArray'] && object['recordsArray'].length === 0) || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))}">
+                                                </angular-slickgrid>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab style -->
+                        <div *ngIf="associationConfiguration['style'] == 'MultipleFromMultipleWithMultipleTab' || associationConfiguration['style'] == 'MultipleFromMultipleWithSingleTab'"
+                            class=" cs-fullwidth cs-event-height cs-mat-parent-slick cs-tab-slickgrid">
+                            <div class="cs-mat-view-grid">
+                                <span *ngIf="!isFromList" class="cs-recordassociation-head-span">
+                                    <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                                </span>
+                                <div class="cs-recordassociation-box clearfix cs-pr">
+                                    <div class="cs-norecords-found-alt" *ngIf="!associationObjectInfo[associationConfiguration['fieldName']] 
+                                        || associationObjectInfo[associationConfiguration['fieldName']].length == 0">
+                                        <mat-label>Object And Value is Empty</mat-label>
+                                    </div>
+                                    <div *ngIf="associationObjectInfo[associationConfiguration['fieldName']] 
+                                        && associationObjectInfo[associationConfiguration['fieldName']].length > 0">
+                                        <tabs (currentTabChange)="tabChangeMethod($event)" class="cs-mat-new-tab-group">
+                                            <tab *ngFor="let object of associationObjectInfo[associationConfiguration['fieldName']]; let index = index"
+                                                tabTitle="{{object['displayName']}}">
+                                                <div class="cs-list-view">
+                                                    <div class="cs-header-name cs-slick-title cs-pr">
+                                                        <mat-card-header class="cs-slickoption-btn">
+                                                            <button id ="{{actionId}}_{{object['objectId']}}_menu" mat-icon-button
+                                                                class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                                                (click)="toggleGridMenu($event,object)">
+                                                                <em class="icon-cs-bars cs-tw-600"></em>
+                                                            </button>
+                                                            <mat-card-title class="cs-recordass-slickhead-title">
+                                                                <span class="cs-recordassociation-count-badge"
+                                                                    *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                                                    object['recordsArray'].length }}</span>
+                                                            </mat-card-title>
+                                                        </mat-card-header>
+
+                                                        <div class="cs-mat-slickgrid cs-pull-right">
+                                                            <span class="cs-custome-pagination" *ngIf="object && object['recordsArray'] 
+                                                            && object['recordsArray'].length > 0"
+                                                                style="display: inline-flex; align-items: center; z-index: 99;">
+
+                                                                <div class="cs-rmar-15">
+                                                                    <mat-label class="cs-ts-14">Items per page :
+                                                                    </mat-label>
+                                                                    <mat-select class="cs-ts-14" id ="{{actionId}}_{{object['objectId']}}_selection"
+                                                                        (selectionChange)="selectionChange($event, object)"
+                                                                        [value]="object['angularGridInstance'] && object['angularGridInstance'].paginationService && object['angularGridInstance'].paginationService.itemsPerPage"
+                                                                        [(ngModel)]="object['gridOptionInfo']['pagination']['pageSize']"
+                                                                        (click)="take_position($event)">
+                                                                        <mat-option class="cs-ts-14"
+                                                                            *ngFor="let itemPerPage of object['gridOptionInfo']['pagination']['pageSizes']"
+                                                                            [value]="itemPerPage" id ="{{actionId}}_{{object['objectId']}}_{{itemPerPage}}_itemPerPage">
+                                                                            {{itemPerPage}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </div>
+
+                                                                <div class="cs-rmar-15">
+                                                                    <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                                        {{object['angularGridInstance'] &&
+                                                                        object['angularGridInstance'].paginationService
+                                                                        &&
+                                                                        object['angularGridInstance'].paginationService.dataFrom}}
+                                                                        - </mat-label>
+                                                                    <mat-label class="cs-ts-14 cs-grey">
+                                                                        {{object['angularGridInstance'] &&
+                                                                        object['angularGridInstance'].paginationService
+                                                                        &&
+                                                                        object['angularGridInstance'].paginationService.dataTo}}
+                                                                    </mat-label>
+                                                                    <mat-label class="cs-ts-14">
+                                                                        <span> of </span>
+                                                                        {{object['angularGridInstance'] &&
+                                                                        object['angularGridInstance'].paginationService
+                                                                        &&
+                                                                        object['angularGridInstance'].paginationService.totalItems}}
+                                                                    </mat-label>
+                                                                </div>
+
+                                                                <div class="cs-rmar-15">
+                                                                    <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                                        {{object['angularGridInstance'] &&
+                                                                        object['angularGridInstance'].paginationService
+                                                                        &&
+                                                                        object['angularGridInstance'].paginationService.pageNumber}}
+                                                                        / </mat-label>
+                                                                    <mat-label class="cs-ts-14">
+                                                                        {{object['angularGridInstance'] &&
+                                                                        object['angularGridInstance'].paginationService
+                                                                        &&
+                                                                        object['angularGridInstance'].paginationService.pageCount}}<span>
+                                                                            page </span></mat-label>
+                                                                </div>
+
+                                                                <button id ="{{actionId}}_{{object['objectId']}}_previous"class="cs-mat-icononly cs-nomargin"
+                                                                    color="primary" mat-icon-button
+                                                                    ng-reflect-disable-ripple="true" title="Previous"
+                                                                    [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                    && object['angularGridInstance'].paginationService.pageNumber == 1}"
+                                                                    (click)="navigationChange('prev', object)">
+                                                                    <em class="icon-mat-navigate_before"></em>
+                                                                </button>
+                                                                <button id ="{{actionId}}_{{object['objectId']}}_next" class="cs-mat-icononly cs-nomargin"
+                                                                    color="primary" mat-icon-button
+                                                                    ng-reflect-disable-ripple="true" title="Next"
+                                                                    [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                    && object['angularGridInstance'].paginationService.pageNumber == object['angularGridInstance'].paginationService.pageCount}"
+                                                                    (click)="navigationChange('next', object)">
+                                                                    <em class="icon-mat-navigate_next"></em>
+                                                                </button>
+                                                            </span>
+                                                            <button id ="{{actionId}}_{{object['objectId']}}_search" title="Search" color="primary"
+                                                                class="cs-mat-icononly cs-filter-option cs-pull-right"
+                                                                (click)="toggleGridSearchRow(object)">
+                                                                <em
+                                                                    [ngClass]="{'icon-mat-filter_list_alt': object['additionalInfo']['gridSearchRowToggle'], 'icon-mat-not_filtered_list': !object['additionalInfo']['gridSearchRowToggle']}"></em>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="cs_no_record_center"
+                                                    *ngIf="((object['childDocsArray'] && object['childDocsArray'].length === 0)  || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))">
+                                                    <img alt="" src='assets/img/no_record_found.png'>
+                                                </div>
+
+                                                <div id="{{gridContainerId+associationConfiguration['layoutId'] +'_'+ layoutName+'_'+objectRootPath+ '_'+object['fieldName']}}"                                                
+                                                    class="clearfix cs-mat-slickgrid cs-slick-tab-height cs-pr cs-tabgroup-norec"
+                                                    [ngClass]="{'cs-slickgrid-pagination': object['gridOptionInfo']['enablePagination']}">
+
+                                                    <angular-slickgrid
+                                                        gridId="{{gridId+associationConfiguration['layoutId'] +'_'+ layoutName+'_'+objectRootPath+ '_'+object['fieldName']}}"
+                                                        [columnDefinitions]="associationConfiguration['columnDefinitions'][object['fieldName']]"
+                                                        [gridOptions]="object['gridOptionInfo']"
+                                                        (onAngularGridCreated)="angularGridReady($event,object)"
+                                                        [dataset]="object['recordsArray']"
+                                                        [ngClass]="{'cs-colum_border_line':((object['recordsArray'] && object['recordsArray'].length === 0) || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))}">
+                                                    </angular-slickgrid>
+                                                </div>
+                                            </tab>
+                                        </tabs>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- Chip model -->
+                        <div
+                            *ngIf="associationConfiguration['style'] == 'SingleFromMultipleWithMultipleChip' || associationConfiguration['style'] == 'MultipleFromMultipleWithMultipleChip' || associationConfiguration['style'] == 'MultipleFromMultipleWithSingleChip'">
+                            <div class="cs-mat-view-grid">
+                                <span *ngIf="!isFromList" class="cs-recordassociation-head-span">
+                                    <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                                </span>
+                                <div class="cs-recordassociation-box cs-mat-parent-slick cs-pr">
+                                    <div class="cs-norecords-found-alt" *ngIf="!associationObjectInfo[associationConfiguration['fieldName']] 
+                                        || associationObjectInfo[associationConfiguration['fieldName']].length == 0">
+                                        <mat-label>Object And Value is Empty</mat-label>
+                                    </div>
+                                    <div *ngIf="associationObjectInfo[associationConfiguration['fieldName']] 
+                                        && associationObjectInfo[associationConfiguration['fieldName']].length > 0">
+                                        <div *ngFor="let object of associationObjectInfo[associationConfiguration['fieldName']]"
+                                            [ngClass]="{'cs-recordassociation-seperator-line' : associationObjectInfo[associationConfiguration['fieldName']].length > 1 }">
+                                            <div class="cs-list-view"
+                                                *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">
+                                                <div class="cs-header-name cs-slick-title cs-pr cs-tmar-14">
+                                                    <mat-card-header class="cs-slickoption-btn">
+                                                        <mat-card-title
+                                                            class="cs-recordass-slickhead-title cs-recordassociation-chiplisttitle">
+                                                            {{object['displayName']}}
+                                                            <span class="cs-recordassociation-count-badge"
+                                                                *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">
+                                                                {{ object['recordsArray'].length }}</span>
+                                                        </mat-card-title>
+                                                    </mat-card-header>
+                                                </div>
+                                            </div>
+
+                                            <mat-chip-list class="cs-overflow-chiplist cs-lmar-20"
+                                                [ngClass]="{'cs-multi-ra-chip': associationConfiguration['style'] == 'MultipleFromMultipleWithSingleChip'}">
+                                                <mat-chip *ngFor="let item of object['recordsArray']; let i = index"
+                                                    class="cs-recordassociation-chip">
+                                                    <div id ="{{actionId}}_chip_{{i}}_div" *ngIf="associationConfiguration['style'] == 'MultipleFromMultipleWithSingleChip'"
+                                                        class="cs-ra-chip-parent">
+                                                        <div
+                                                            *ngFor="let resultColumn of object['resultColumn']; let index=index">
+                                                            <div id ="{{actionId}}_chip_{{index}}_value" [ngClass]="{'cs-ra-chip-mainlabel': index == 0, 'cs-ra-chip-sublabel': index != 0}"
+                                                                *ngIf="associationConfiguration['columnDefinitions'][object['fieldName']][index]">
+                                                                {{item | cspfm_data_display:
+                                                                associationConfiguration['columnDefinitions'][object['fieldName']][index]['params']['fieldInfo']}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        *ngIf="associationConfiguration['style'] != 'MultipleFromMultipleWithSingleChip'" id ="{{actionId}}_chip_{{i}}_value">
+                                                        {{ item[object['resultColumn'][0]] }}
+                                                    </div>
+                                                </mat-chip>
+                                            </mat-chip-list>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Waterfall model -->
+                        <div *ngIf="associationConfiguration['style'] == 'MultipleFromMultipleWithMultipleWaterfall'">
+                            <div class="cs-mat-view-grid">
+                                <span *ngIf="!isFromList" class="cs-recordassociation-head-span">
+                                    <mat-label> {{ associationConfiguration['fieldDisplayName'] | translate }} </mat-label>
+                                </span>
+    
+                                <div class="cs-mat-parent-slick cs-pr">
+                                    <div class="cs-norecords-found cs-recordassociation-box" *ngIf="!associationObjectInfo[associationConfiguration['fieldName']] 
+                                        || associationObjectInfo[associationConfiguration['fieldName']].length == 0">
+                                        <mat-label>Object And Value is Empty</mat-label>
+                                    </div>
+                                    <div *ngIf="associationObjectInfo[associationConfiguration['fieldName']] 
+                                        && associationObjectInfo[associationConfiguration['fieldName']].length > 0" class="cs-wfm-container">
+                                        <ngx-masonry (layoutComplete) = "refreshWaterfallModelData()" [options]="masonryOptions" style="width:100%; margin: 0;" [ordered]="true">
+                                            <div ngxMasonryItem style="width:30%;"
+                                                *ngFor="let object of associationObjectInfo[associationConfiguration['fieldName']]; index as menucolorindex"
+                                                class="cs-bx-m-each {{wf_header_color[menucolorindex % 9]}}"
+                                                [ngClass]="object && object['recordsArray'] && object['recordsArray'].length == 1 ? 'cs-bx-s-m-bar' : ''">
+                                                <div class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid">
+                                                    <div
+                                                        class="cs-list-view cs-wfm-header  {{wf_header_color[(menucolorindex + 1) % wf_header_color.length]}}">
+                                                        <div class="cs-header-name cs-pr">
+                                                            <mat-card-header>
+                                                                <mat-card-title> {{object['displayName']}}
+                                                                    <span class="cs-record-count-badge"
+                                                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                                                        object['recordsArray'].length }}</span>
+                                                                </mat-card-title>
+                                                            </mat-card-header>
+                                                        </div>
+                                                    </div>
+                                                    <mat-chip-list class="cs-overflow-chiplist cs-lmar-20 cs-wfm-body">
+                                                        <mat-chip
+                                                            *ngFor="let item of object['recordsArray']; let i = index"
+                                                            class="cs-recordassociation-chip">
+                                                            <div id="{{actionId}}_chip_{{i}}_value">
+                                                                {{ item[object['resultColumn'][0]] }}
+                                                            </div>
+                                                        </mat-chip>
+                                                    </mat-chip-list>
+                                                </div>
+                                            </div>
+                                        </ngx-masonry>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </mat-dialog-content> -->
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="cs-list-popup">
+  <mat-list-item>
+    <div>
+      <h3 matLine class="cs-list-popup-header">{{title}}</h3>
+      <h2 matLine class="cs-list-popup-subheader">{{name}}</h2>
+    </div>
+  </mat-list-item>
+  
+  <mat-list *ngIf="values.length == 0">
+  
+    <mat-list-item *ngFor="let value of 'is'.split('')">
+  
+      <ngx-skeleton-loader count="1" appearance="circle" matListAvatar></ngx-skeleton-loader>
+  
+      <ngx-skeleton-loader matLine count="1" [theme]="{
+          width: '150px',
+          'border-radius': '0',
+          height: '20px',
+          'margin-bottom': '10px'
+        }" style="color: #808080!important;font-size: 14px;"></ngx-skeleton-loader>
+      <ngx-skeleton-loader matLine count="1" [theme]="{
+          width: '150px',
+          'border-radius': '0',
+          height: '20px',
+          'margin-bottom': '10px'
+        }" style="color: #808080!important;font-size: 14px;"></ngx-skeleton-loader>
+      <ngx-skeleton-loader matLine count="1" [theme]="{
+          width: '150px',
+          'border-radius': '0',
+          height: '20px',
+          'margin-bottom': '10px'
+        }" style="color: #808080!important;font-size: 14px;"></ngx-skeleton-loader>
+      <!-- <h3 matLine style="color: #070101!important;font-size: 16px;padding-top: -2px">{{value['label2']}}</h3>
+        <h2 matLine style="color: #070101!important;font-size: 12px;padding-top: -2px">{{value['label3']}}</h2> -->
+  
+    </mat-list-item>
+  
+  </mat-list>
+  <mat-list *ngIf="values.length > 0" class="cs-no-pad cs-listpopup-height">
+  
+    <mat-list-item *ngFor="let value of values">
+  
+      <img matListAvatar src="{{value.icon}}" alt="" onerror="this.src='assets/img/user_icon.png';">
+  
+      <p matLine>{{value['label1']}}</p>
+      <h3 matLine>{{value['label2']}}</h3>
+      <h2 matLine>{{value['label3']}}</h2>
+
+    </mat-list-item>
+  </mat-list>
+  <mat-list-item class="cs-morebutton" *ngIf="auditType==='Simple'">
+    <button (click)="auditFieldTracking()" title="Field Tracking" ng-reflect-color="primary" mat-flat-button class="cs-mat-labelonly mat-stroked-button mat-primary">
+      <span class="cs-mat-btnlabel"> More</span>
+    </button>
+  </mat-list-item>
+</div>

@@ -1,0 +1,875 @@
+ <div id="cs-dropdown-{{config['layoutId']}}_rec" class="cs-dropdown cs-custom-scroll"></div>
+<div *ngIf="config['style'] == 'SingleWithMultiple'" fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%">
+        <div class="cs-pr cs-show-recordassociation-addbtn">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][config['associationFieldName']] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']  && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+            </button>
+            <button id ="{{actionId}}_add" title="Add" (click)="chooseAssociationRecords(config['associationFieldName'],config['objectId'])"
+                class="cs-recordassociation-addbtn cs-lpad-10 cs-display-none">
+                <em class="icon-mat-add"></em>
+            </button>
+            <div class="cs-tmar-14"
+                *ngIf="!dataObject[config['associationFieldName']] || dataObject[config['associationFieldName']].length == 0">                
+                <mat-chip-list>
+                    <span class="cs-lspad cs-choose-msg ">
+                        Add {{ config['associationObjectInfo'][config['associationFieldName']]['objectDisplayName']
+                    }}
+                    </span>
+                </mat-chip-list>
+            </div>
+            <div id="{{config['associationFieldName']}}_{{ config['objectId'] }}_{{ config['layoutId'] }}_div"
+                class="cs-recordassociation-head-span cs-tmar-5"  *ngIf="dataObject[config['associationFieldName']]" >
+                <div class="cs-display-none"
+                    *ngIf="dataObject && dataObject[config['associationFieldName']] && dataObject[config['associationFieldName']].length > 0 
+                    && ((!primaryChipArray[config['associationFieldName']] && !secondaryChipArray[config['associationFieldName']]) 
+                        || (primaryChipArray[config['associationFieldName']].length == 0 && secondaryChipArray[config['associationFieldName']].length == 0)) ? 
+                        handleMultipleRecordsChipStyle(config['associationObjectInfo'][config['associationFieldName']], dataObject[config['associationFieldName']], config['layoutId'], config['objectId']) : true">
+                </div>
+                <mat-chip-list *ngIf="dataObject && dataObject[config['associationFieldName']] && ((primaryChipArray[config['associationFieldName']] 
+                    && primaryChipArray[config['associationFieldName']].length > 0) || (secondaryChipArray[config['associationFieldName']] 
+                    && secondaryChipArray[config['associationFieldName']].length > 0))"
+                    class="cs-overflow-chiplist cs-display-inlineblock cs-overflow-chip">
+                    <mat-chip *ngFor="let object of primaryChipArray[config['associationFieldName']]; let index = index"
+                        class="cs-recordassociation-chip cs-chipwidth"
+                        matTooltip="{{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}"
+                        matTooltipPosition="above">
+                        <div id ="{{actionId}}_chip_{{index}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                            <div id ="{{actionId}}_chip_{{index}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                                {{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}
+                            </div>
+                        </div>
+
+                        <div id ="{{actionId}}_chip_{{index}}_clear_div" class="cs-gradient-chip">
+                            <button id ="{{actionId}}_chip_{{index}}_clear" class="cs-display-none " (click)="deleteItem(index, object)">
+                                <em class="icon-mat-clear"></em>
+                            </button>
+                        </div>
+                    </mat-chip>
+                </mat-chip-list>               
+
+                <button id ="{{actionId}}_more" [matMenuTriggerFor]="associationMoreView" class="cs-recordassociation-count"
+                    [ngClass]="{'cs-display-none': !secondaryChipArray[config['associationFieldName']] || secondaryChipArray[config['associationFieldName']].length == 0}"
+                    *ngIf="secondaryChipArray[config['associationFieldName']] && secondaryChipArray[config['associationFieldName']].length > 0">
+                    <span class="cs-chipmore-btn">+{{secondaryChipArray[config['associationFieldName']].length }}</span>
+                </button>
+                <mat-menu #associationMoreView="matMenu" class="cs-custom-scroll" [hasBackdrop]="true">
+                    <div class="cs-overflowchiplist-container cs-insidedd cs-custom-scroll "
+                        (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                        <mat-chip-list class="cs-overflow-chiplist cs-display-inlineblock ">
+                            <mat-chip
+                                *ngFor="let object of secondaryChipArray[config['associationFieldName']]; let index = index"
+                                class="cs-recordassociation-chip cs-chipwidth"
+                                matTooltip="{{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}"
+                                matTooltipPosition="above">
+                                <div id ="{{actionId}}_popover_chip_{{index}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                                    <div id ="{{actionId}}_popover_chip_{{index}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                                        {{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}
+                                    </div>
+                                </div>
+                                <div id ="{{actionId}}_popover_chip_{{index}}_clear_div" class="cs-gradient-chip">
+                                    <button id ="{{actionId}}_popover_chip_{{index}}_clear" [attr.indexattr]="index" (click)="deleteItem(index, object)"
+                                        class="cs-display-none closeClick">
+                                        <em class="icon-mat-clear"></em>
+                                    </button>
+                                </div>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'SingleFromMultipleWithSingleStyle1'" fxLayout="row wrap"
+    class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="50%">       
+        <mat-form-field [floatLabel]="'always'" appearance="none">
+            <mat-label matBadgeOverlap="false">
+                Associate Objects
+            </mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object Name" [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateSingleObjectSelectionChange($event.value)" class="cs-associateobj-sel">
+                <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                    [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                    {{metaMapping.title}}
+                </mat-option>
+            </mat-select>
+            <mat-chip-list  class="cs-mat-error"></mat-chip-list>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxFlex="50%" class="entry-form-field-container">
+        <div class="cs-pr cs-show-recordassociation-addbtn">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][config['associationFieldName']] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']  && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+            </button>
+            <button id ="{{actionId}}_add" title="Add" *ngIf="!dataObject[config['associationFieldName']] || dataObject[config['associationFieldName']].length === 0"
+                (click)="config['associationFieldName'] != '' ? chooseAssociationRecords(config['associationFieldName'],config['objectId']) : ''"
+                class="cs-recordassociation-addbtn  cs-lpad-10 cs-display-none"
+                [ngClass]="{'cs-userassignadd-btn-opacity':!dataObject[config['fieldName']]}">
+                <em class="icon-mat-add"></em>
+            </button>
+            <div class="cs-tmar-9"
+                *ngIf="!dataObject[config['associationFieldName']] || dataObject[config['associationFieldName']].length == 0">
+                <mat-chip-list>
+                    <span class="cs-lspad cs-choose-msg">Add Value</span>
+                </mat-chip-list>
+            </div>
+<div *ngIf="dataObject && dataObject[config['associationFieldName']] && dataObject[config['associationFieldName']].length > 0"
+    class="cs-tmar-5">  
+    <mat-chip-list class="cs-overflow-chip cs-display-inlineblock  cs-overflow-chiplist" >
+        <mat-chip class="cs-recordassociation-chip"
+            *ngFor="let object of dataObject[config['associationFieldName']]; let i = index"
+            matTooltip="{{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}"
+            matTooltipPosition="above">
+            <div id ="{{actionId}}_chip_{{i}}_div"class="cs-ra-chip-parent cs-overflowhidden">
+                <div id ="{{actionId}}_chip_{{i}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                    {{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}
+                </div>
+            </div>
+            <div id ="{{actionId}}_chip_{{i}}_clear_div" class="cs-gradient-chip">
+                <button id ="{{actionId}}_chip_{{i}}_clear" class="cs-display-none" (click)="deleteItem(i, object)">
+                    <em class="icon-mat-clear"></em>
+                </button>
+            </div>
+        </mat-chip>
+    </mat-chip-list>
+</div>
+    <mat-chip-list class="cs-mat-error"></mat-chip-list>        
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'SingleFromMultipleWithSingleStyle2'" fxLayout="row wrap"
+    class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%">
+        <div class="cs-pr cs-show-recordassociation-addbtn">
+            <div class="cs-align-center">
+                <div class="cs-SingleFromMultipleWithSingle-sel-chip-label">
+                    <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+                </div>
+                <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][config['associationFieldName']] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig'] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                    <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                </button>
+                <mat-select id ="{{actionId}}_selection" placeholder="Select Object" [(ngModel)]="dataObject[config['fieldName']]"
+                    class="cs-SingleFromMultipleWithSingle-sel-chip"
+                    (selectionChange)="associateSingleObjectSelectionChange($event.value)">
+                    <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                        [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                        {{metaMapping.title}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <mat-chip-list *ngIf="dataObject && dataObject[config['fieldName']] && dataObject[config['associationFieldName']] 
+            && dataObject[config['associationFieldName']].length > 0"
+                class="cs-SingleFromMultipleWithSingle-selected-chip cs-overflow-chiplist">
+                <mat-chip class="cs-recordassociation-chip"
+                    *ngFor="let object of dataObject[config['associationFieldName']]; let i = index"
+                    matTooltip="{{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}"
+                    matTooltipPosition="above">
+                    <div id ="{{actionId}}_chip_{{i}}_div" class="cs-ra-chip-parent cs-overflowhidden">
+                        <div id ="{{actionId}}_chip_{{i}}_value" class="cs-ra-chip-mainlabel cs-truncate">
+                            {{object[config['associationObjectInfo'][config['associationFieldName']]['resultColumn'][0]]}}
+                        </div>
+                    </div>
+                    <div id ="{{actionId}}_chip_{{i}}_clear_div" class="cs-gradient-chip">
+                        <button id ="{{actionId}}_chip_{{i}}_clear" class="cs-display-none" (click)="deleteItem(i, object)">
+                            <em class="icon-mat-clear"></em>
+                        </button>
+                    </div>
+                </mat-chip>
+            </mat-chip-list>
+            <div class="cs-tmar-9"
+                *ngIf="!dataObject[config['associationFieldName']] || dataObject[config['associationFieldName']].length == 0">
+                <mat-label>Add Value
+                    <button title="Add" id ="{{actionId}}_add"
+                        (click)="config['associationFieldName'] != '' ? chooseAssociationRecords(config['associationFieldName'],config['objectId']) : ''"
+                        class="cs-recordassociation-addbtn cs-lpad-10 cs-display-none"
+                        [ngClass]="{'cs-userassignadd-btn-opacity' : !dataObject[config['fieldName']]}">
+                        <em class="icon-mat-add"></em>
+                    </button>
+                </mat-label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'SingleFromMultipleWithMultipleChip'" fxLayout="row wrap"
+    class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateSingleObjectSelectionChange($event.value)"
+                class="cs-recordassociation-sel-chip cs-float-right">
+                <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                    [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                    {{metaMapping.title}}
+                </mat-option>
+            </mat-select>
+        </span>
+        <div class="cs-recordassociation-box cs-mat-parent-slick">
+            <div class="cs-norecords-found" *ngIf="config['associationFieldName'] == ''">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <div class="cs-list-view">
+                <div class="cs-header-name cs-slick-title cs-pr cs-show-recordassociation-addbtn cs-tmar-14"
+                    *ngIf="config['associationFieldName'] != ''">
+                    <mat-card-header class="cs-slickoption-btn">
+                        <mat-card-title class="cs-recordass-slickhead-title cs-recordassociation-chiplisttitle">
+                            {{config['associationObjectInfo'][config['associationFieldName']]['objectDisplayName']}}
+                            <span class="cs-recordassociation-count-badge"
+                                *ngIf="dataObject[config['associationFieldName']] && dataObject[config['associationFieldName']].length > 0">{{
+                                dataObject[config['associationFieldName']].length }}
+                            </span>
+                            <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][config['associationFieldName']] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig'] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                            </button>
+                            <button title="Add" id ="{{actionId}}_add"
+                                (click)="chooseAssociationRecords(config['associationFieldName'],config['objectId'])"
+                                class="cs-recordassociation-addbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none">
+                                <em class="icon-mat-add"></em>
+                            </button>
+                            <button id ="{{actionId}}_clearAll"
+                                class="cs-recordassociation-delbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none"
+                                *ngIf="dataObject[config['associationFieldName']] && dataObject[config['associationFieldName']].length > 0"
+                                title="Delete" (click)="deleteAllItems()">
+                                <em class="icon-mat-delete_outline"></em>
+                            </button>
+                        </mat-card-title>
+                    </mat-card-header>
+                </div>
+            </div>
+            <div>
+                <mat-chip-list *ngIf="dataObject && dataObject[config['associationFieldName']]"
+                    class="cs-overflow-chiplist cs-lmar-20 cs-rmar-20 ">
+                    <mat-chip *ngFor="let object of dataObject[config['associationFieldName']]; let i = index"
+                        class="cs-recordassociation-chip">
+                        {{object[config['associationObjectInfo'][this.config['associationFieldName']]['resultColumn'][0]]}}
+                        <div id ="{{actionId}}_chip_{{i}}_clear_div" class="cs-gradient-chip">
+                            <button id ="{{actionId}}_chip_{{i}}_clear" class="cs-display-none" (click)="deleteItem(i, object)">
+                                <em class="icon-mat-clear"></em>
+                            </button>
+                        </div>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'SingleFromMultipleWithMultipleList'" fxLayout="row wrap"
+    class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" class="cs-recordassociation-sel-chip cs-float-right"
+                [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateSingleObjectSelectionChange($event.value)">
+                <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                    [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                    {{metaMapping.title}}
+                </mat-option>
+            </mat-select>
+        </span>
+        <div class="cs-recordassociation-box cs-mat-parent-slick">
+            <div class="cs-norecords-found" *ngIf="checkObjectSelectedStatus(config['associationMetaMapping'])">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <div *ngIf="config['associationFieldName']">
+                <div *ngFor="let object of associationObjectsConfiguration[config['fieldName']]">
+                    <div class="cs-list-view">
+                        <div class="cs-header-name cs-slick-title cs-pr cs-show-recordassociation-addbtn">
+                            <mat-card-header class="cs-slickoption-btn">
+                                <button id ="{{actionId}}_{{object['objectName']}}_menu" title="Menu" mat-icon-button class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                    *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                    (click)="toggleGridMenu($event,object)">
+                                    <em class="icon-cs-bars cs-tw-600"></em>
+                                </button>
+                                <mat-card-title class="cs-recordass-slickhead-title">
+                                    {{object['displayName']}}
+                                    <span class="cs-recordassociation-count-badge"
+                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                        object['recordsArray'].length }}
+                                    </span>
+                                    <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][config['associationFieldName']] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig'] && config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                        <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][config['associationFieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                                    </button>
+                                    <button title="Add" id ="{{actionId}}_{{object['objectName']}}_add"
+                                        (click)="chooseAssociationRecords(config['associationFieldName'],config['objectId'])"
+                                        class="cs-recordassociation-addbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none">
+                                        <em class="icon-mat-add"></em>
+                                    </button>
+
+                                    <button id ="{{actionId}}_{{object['objectName']}}_clearAll"
+                                        class="cs-recordassociation-delbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none"
+                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                        title="Delete" (click)="deleteAllItems(object)">
+                                        <em class="icon-mat-delete_outline"></em>
+                                    </button>
+                                </mat-card-title>
+                            </mat-card-header>
+
+                            <div class="cs-mat-slickgrid cs-pull-right" *ngIf="object && object['recordsArray'] 
+                                && object['recordsArray'].length > 0">
+                                <span class="cs-custome-pagination"
+                                    *ngIf="object && object['recordsArray'] && object['recordsArray'].length > 0">
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                        <mat-select id ="{{actionId}}_{{object['objectName']}}_slickGrid_selection" class="cs-ts-14" (selectionChange)="selectionChange($event, object)"
+                                            [value]="object['angularGridInstance'] && object['angularGridInstance'].paginationService && object['angularGridInstance'].paginationService.itemsPerPage"
+                                            [(ngModel)]="object['gridOptionInfo']['pagination']['pageSize']"
+                                            (click)="take_position($event)">
+                                            <mat-option class="cs-ts-14"
+                                                *ngFor="let itemPerPage of object['gridOptionInfo']['pagination']['pageSizes']"
+                                                [value]="itemPerPage" id ="{{actionId}}_{{object['objectName']}}_{{itemPerPage}}_itemPerPage">
+                                                {{itemPerPage}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.dataFrom}}
+                                            - </mat-label>
+                                        <mat-label class="cs-ts-14 cs-grey">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.dataTo}}
+                                        </mat-label>
+                                        <mat-label class="cs-ts-14">
+                                            <span> of </span>
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.totalItems}}
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.pageNumber}}
+                                            / </mat-label>
+                                        <mat-label class="cs-ts-14">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.pageCount}}<span>
+                                                page </span></mat-label>
+                                    </div>
+
+                                    <button id ="{{actionId}}_{{object['objectName']}}_previous" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                        ng-reflect-disable-ripple="true" title="Previous"
+                                        [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                        && object['angularGridInstance'].paginationService.pageNumber == 1}"
+                                        (click)="navigationChange('prev', object)" *ngIf="object && object['recordsArray'] 
+                                            && object['recordsArray'].length > 0">
+                                        <em class="icon-mat-navigate_before"></em>
+                                    </button>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_next" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                        ng-reflect-disable-ripple="true" title="Next"
+                                        [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                        && object['angularGridInstance'].paginationService.pageNumber == object['angularGridInstance'].paginationService.pageCount}"
+                                        (click)="navigationChange('next', object)" *ngIf="object && object['recordsArray'] 
+                                            && object['recordsArray'].length > 0">
+                                        <em class="icon-mat-navigate_next"></em>
+                                    </button>
+                                </span>
+                                <button id ="{{actionId}}_{{object['objectName']}}_search" title="Search" color="primary" (click)="toggleGridSearchRow(object)"
+                                    class="cs-mat-icononly cs-filter-option cs-pull-right">
+                                    <em
+                                        [ngClass]="{'icon-mat-filter_list_alt': object['additionalInfo']['gridSearchRowToggle'], 'icon-mat-not_filtered_list': !object['additionalInfo']['gridSearchRowToggle']}"></em>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="{{gridContainerId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                        class="clearfix cs-mat-slickgrid cs-multi-slickgrid cs-pr cs-tabgroup-norec"
+                        [ngClass]="{'cs-slickgrid-pagination': object['gridOptionInfo']['enablePagination']}"
+                        *ngIf="object && object['recordsArray'] && object['recordsArray'].length > 0">
+
+                        <div *ngIf="((object['recordsArray'] && object['recordsArray'].length === 0)  || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))"
+                            class="cs_no_record_center_s">
+                            <img *ngIf="!object['isLoading']" alt="" src='assets/img/no_record_found.png'>
+                            <img *ngIf="object['isLoading']" class="cs-loading-gif" alt=""
+                                src='assets/img/dataloading.gif'>
+                        </div>
+
+                        <angular-slickgrid
+                            gridId="{{gridId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                            [columnDefinitions]="object['columnDefinitions']" [gridOptions]="object['gridOptionInfo']"
+                            (onAngularGridCreated)="angularGridReady($event,object)"
+                            [dataset]="dataObject[object['fieldName']]"
+                            [ngClass]="{'cs-colum_border_line':((object['recordsArray'] && object['recordsArray'].length === 0) || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))}">
+                        </angular-slickgrid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="config['style'] == 'MultipleFromMultipleWithMultipleList' || config['style'] == 'MultipleFromMultipleWithSingleList'"
+    fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" class="cs-recordassociation-sel-chip"
+                [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateMultiObjectSelectionChange($event.value)" multiple>
+                <mat-option *ngFor="let objMapping of associationObjectsConfiguration[this.config['fieldName']]"
+                    [value]="objMapping['objectName']" id ="{{actionId}}_{{objMapping['objectName']}}">
+                    {{objMapping['displayName']}}
+                </mat-option>
+            </mat-select>
+        </span>
+        <div class="cs-recordassociation-box cs-mat-parent-slick">
+            <div class="cs-norecords-found" *ngIf="checkObjectSelectedStatus(config['associationMetaMapping'])">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <div *ngIf="associationObjectsConfiguration[config['fieldName']]">
+                <div *ngFor="let object of associationObjectsConfiguration[config['fieldName']]"
+                    [ngClass]="{'cs-ra-sl-pinpoint cs-recordassociation-seperator-line' : object['isSelected'] && borderEnabled[config['fieldName']], 'cs-ra-sl-pinpoint': !object['isSelected'] || !borderEnabled[config['fieldName']] }">
+                    <div class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid" *ngIf="object['isSelected']">
+                        <div class="cs-header-name cs-slick-title cs-pr cs-show-recordassociation-addbtn">
+                            <mat-card-header class="cs-slickoption-btn">
+                                <button id ="{{actionId}}_{{object['objectName']}}_menu" title="Menu" mat-icon-button class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                    *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                    (click)="toggleGridMenu($event,object)">
+                                    <em class="icon-cs-bars cs-tw-600"></em>
+                                </button>
+                                <mat-card-title class="cs-recordass-slickhead-title">
+                                    {{object['displayName']}}
+                                    <span class="cs-recordassociation-count-badge"
+                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                        object['recordsArray'].length }}
+                                    </span>
+                                    <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][object['fieldName']] && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']  && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                        <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                                    </button>
+                                    <button title="Add" id ="{{actionId}}_{{object['objectName']}}_add"
+                                        (click)="chooseAssociationRecords(object['fieldName'],config['objectId'])"
+                                        class="cs-recordassociation-addbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none">
+                                        <em class="icon-mat-add"></em>
+                                    </button>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_clearAll"
+                                        class="cs-recordassociation-delbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none"
+                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                        title="Delete" (click)="deleteAllItems(object)">
+                                        <em class="icon-mat-delete_outline"></em>
+                                    </button>
+                                </mat-card-title>
+                            </mat-card-header>
+
+                            <div class="cs-mat-slickgrid cs-pull-right" *ngIf="object && object['recordsArray'] 
+                                && object['recordsArray'].length > 0">
+                                <span class="cs-custome-pagination">
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                        <mat-select id ="{{actionId}}_{{object['objectName']}}_slickGrid_selection" class="cs-ts-14" (selectionChange)="selectionChange($event, object)"
+                                            [value]="object['angularGridInstance'] && object['angularGridInstance'].paginationService && object['angularGridInstance'].paginationService.itemsPerPage"
+                                            [(ngModel)]="object['gridOptionInfo']['pagination']['pageSize']"
+                                            (click)="take_position($event)">
+                                            <mat-option class="cs-ts-14"
+                                                *ngFor="let itemPerPage of object['gridOptionInfo']['pagination']['pageSizes']"
+                                                [value]="itemPerPage" id ="{{actionId}}_{{object['objectName']}}_{{itemPerPage}}_itemPerPage">
+                                                {{itemPerPage}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.dataFrom}}
+                                            - </mat-label>
+                                        <mat-label class="cs-ts-14 cs-grey">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.dataTo}}
+                                        </mat-label>
+                                        <mat-label class="cs-ts-14">
+                                            <span> of </span>
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.totalItems}}
+                                        </mat-label>
+                                    </div>
+
+                                    <div class="cs-rmar-15">
+                                        <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.pageNumber}}
+                                            / </mat-label>
+                                        <mat-label class="cs-ts-14">
+                                            {{object['angularGridInstance'] &&
+                                            object['angularGridInstance'].paginationService &&
+                                            object['angularGridInstance'].paginationService.pageCount}}<span>
+                                                page </span></mat-label>
+                                    </div>
+
+                                    <button id ="{{actionId}}_{{object['objectName']}}_previous" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                        ng-reflect-disable-ripple="true" title="Previous"
+                                        [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                && object['angularGridInstance'].paginationService.pageNumber == 1}"
+                                        (click)="navigationChange('prev', object)">
+                                        <em class="icon-mat-navigate_before"></em>
+                                    </button>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_next" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                        ng-reflect-disable-ripple="true" title="Next"
+                                        [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                && object['angularGridInstance'].paginationService.pageNumber == object['angularGridInstance'].paginationService.pageCount}"
+                                        (click)="navigationChange('next', object)">
+                                        <em class="icon-mat-navigate_next"></em>
+                                    </button>
+                                </span>
+                                <button id ="{{actionId}}_{{object['objectName']}}_search" title="Search" color="primary"
+                                    class="cs-mat-icononly cs-filter-option cs-pull-right"
+                                    (click)="toggleGridSearchRow(object)">
+                                    <em
+                                        [ngClass]="{'icon-mat-filter_list_alt': object['additionalInfo']['gridSearchRowToggle'], 'icon-mat-not_filtered_list': !object['additionalInfo']['gridSearchRowToggle']}"></em>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="object && object['isSelected'] && object['recordsArray'] && object['recordsArray'].length > 0"
+                        id="{{gridContainerId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                        class="clearfix cs-mat-slickgrid cs-multi-slickgrid cs-pr cs-tabgroup-norec"
+                        [ngClass]="{'cs-slickgrid-pagination': object['gridOptionInfo']['enablePagination']}">
+
+                        <div *ngIf="((object['recordsArray'] && object['recordsArray'].length === 0)  || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))"
+                            class="cs_no_record_center_s">
+                            <img *ngIf="!object['isLoading']" alt="" src='assets/img/no_record_found.png'>
+                            <img *ngIf="object['isLoading']" class="cs-loading-gif" alt=""
+                                src='assets/img/dataloading.gif'>
+                        </div>
+
+                        <angular-slickgrid
+                            gridId="{{gridId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                            [columnDefinitions]="object['columnDefinitions']" [gridOptions]="object['gridOptionInfo']"
+                            (onAngularGridCreated)="angularGridReady($event,object)" [dataset]="object['recordsArray']"
+                            [ngClass]="{'cs-colum_border_line':((object['recordsArray'] && object['recordsArray'].length === 0) || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))}">
+                        </angular-slickgrid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Waterfall Model -->
+<div *ngIf="config['style'] == 'MultipleFromMultipleWithMultipleWaterfall'"
+    fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" class="cs-recordassociation-sel-chip"
+                [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateMultiObjectSelectionChange($event.value)" multiple>
+                <mat-option *ngFor="let objMapping of associationObjectsConfiguration[this.config['fieldName']]"
+                    [value]="objMapping['objectName']" id ="{{actionId}}_{{objMapping['objectName']}}">
+                    {{objMapping['displayName']}}
+                </mat-option>
+            </mat-select>
+        </span>
+
+        <div class="cs-mat-parent-slick">
+            <div class="cs-norecords-found cs-recordassociation-box" *ngIf="checkObjectSelectedStatus(config['associationMetaMapping'])">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <div *ngIf="associationObjectsConfiguration[config['fieldName']]" class="cs-wfm-container">
+                <ngx-masonry (layoutComplete) = "refreshWaterfallModelData()" [options]="masonryOptions" style="width:100%; margin: 0; "[ordered]="true">
+                    <div ngxMasonryItem style="width:30%;" *ngFor="let object of associationObjectsConfiguration[config['fieldName']]; index as menucolorindex"
+                    [ngClass]="{'cs-bx-m-each {{wf_header_color[menucolorindex % 9]}}': object && object['isSelected'], 'cs-bx-s-m-bar': object && object['recordsArray'] && object['recordsArray'].length == 1}">
+                      <div class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid" *ngIf="object['isSelected']">
+                          <div class="cs-list-view cs-wfm-header  {{wf_header_color[(menucolorindex + 1) % wf_header_color.length]}}">
+                            <div class="cs-header-name cs-pr">
+                                <mat-card-header>
+                                    <mat-card-title> {{object['displayName']}}
+                                        <span class="cs-record-count-badge"
+                                            *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                            object['recordsArray'].length }}
+                                        </span>
+                                        <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][object['fieldName']] && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']  && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                            <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                                        </button>
+                                    </mat-card-title>
+                                </mat-card-header>
+                                <div class="cs-wfm-action-clk">
+                                    <button *ngIf="object['isSelected']" title="Add"
+                                        (click)="chooseAssociationRecords(object['fieldName'],config['objectId'])"
+                                        id="action_requestheader_salesperson_search" class="cs-mat-icononly cs-wfm-action">
+                                        <em class="icon-mat-add"></em>
+                                    </button>
+                                    <button *ngIf="object['recordsArray'] && object['recordsArray'].length > 0" title="Delete" 
+                                        id="action_requestheader_salesperson_clearAll"
+                                        (click)="deleteAllItems(object)" class="cs-mat-icononly cs-wfm-action">
+                                        <em class="icon-mat-delete_outline"></em>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-chip-list class="cs-overflow-chiplist cs-multi-ra-chip cs-lmar-20 cs-rmar-20 cs-wfm-body">
+                            <mat-chip *ngFor="let dataObj of object['recordsArray']; let i = index"
+                                class="cs-recordassociation-chip">
+                                <div class="cs-ra-chip-parent" *ngIf="object['tableColumnInfo'][1]">
+                                    <div class="cs-ra-chip-mainlabel">{{dataObj | cspfm_data_display:
+                                        object['tableColumnInfo'][1]}}</div>
+                                </div>
+                                <div id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear_div"class="cs-gradient-chip">
+                                    <button id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear"class="cs-display-none" (click)="deleteItem(i, object)">
+                                        <em class="icon-mat-clear"></em>
+                                    </button>
+                                </div>
+                            </mat-chip>
+                        </mat-chip-list>
+                      </div>
+                    </div>
+                </ngx-masonry>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'MultipleFromMultipleWithMultipleTab' || config['style'] == 'MultipleFromMultipleWithSingleTab'"
+    class="cs-mat-parent-slick cs-tab-slickgrid" fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" class="cs-recordassociation-sel-chip cs-float-right"
+                [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateMultiObjectSelectionChange($event.value)" multiple>
+                <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                    [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                    {{metaMapping.title}}
+                </mat-option>
+            </mat-select>
+        </span>
+        <div class="cs-recordassociation-box clearfix">
+            <div class="cs-norecords-found" *ngIf="checkObjectSelectedStatus(config['associationMetaMapping'])">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <tabs (currentTabChange)="tabChangeMethod($event)" class="cs-mat-new-tab-group">
+                <tab *ngFor="let object of associationObjectsConfiguration[config['fieldName']]; let index = index"
+                    tabTitle="{{object['displayName']}}">
+                    <div>
+                        <div class="cs-list-view">
+                            <div class="cs-header-name cs-slick-title cs-pr cs-show-recordassociation-addbtn">
+                                <mat-card-header class="cs-slickoption-btn">
+                                    <button id ="{{actionId}}_{{object['objectName']}}_menu" title="Menu" mat-icon-button class="cs-mat-icononly cs-ts-22 cs-rmar"
+                                        (click)="toggleGridMenu($event,object)">
+                                        <em class="icon-cs-bars cs-tw-600"></em>
+                                    </button>
+                                    <mat-card-title class="cs-recordass-slickhead-title">
+                                        {{object['displayName']}}
+                                        <span class="cs-recordassociation-count-badge"
+                                            *ngIf="object['recordsArray'] && object['recordsArray'].length > 0">{{
+                                            object['recordsArray'].length }}
+                                        </span>
+                                        <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][object['fieldName']] && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']  && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                            <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                                        </button>
+                                        <button id ="{{actionId}}_{{object['objectName']}}_add" title="Add" *ngIf="object['isSelected']"
+                                            (click)="chooseAssociationRecords(object['fieldName'],config['objectId'])"
+                                            class="cs-recordassociation-addbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none">
+                                            <em class="icon-mat-add"></em>
+                                        </button>
+                                        <button id ="{{actionId}}_{{object['objectName']}}_clearAll"
+                                            class="cs-recordassociation-delbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none"
+                                            *ngIf="object['isSelected'] && object['recordsArray'] && object['recordsArray'].length > 0"
+                                            title="Delete" (click)="deleteAllItems(object)">
+                                            <em class="icon-mat-delete_outline"></em>
+                                        </button>
+                                    </mat-card-title>
+                                </mat-card-header>
+
+                                <div class="cs-mat-slickgrid cs-pull-right">
+                                    <span class="cs-custome-pagination"
+                                        *ngIf="object && object['recordsArray'] && object['recordsArray'].length > 0">
+                                        <div class="cs-rmar-15">
+                                            <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                            <mat-select id ="{{actionId}}_{{object['objectName']}}_slickGrid_selection" class="cs-ts-14"
+                                                (selectionChange)="selectionChange($event, object)"
+                                                [value]="object['angularGridInstance'] && object['angularGridInstance'].paginationService && object['angularGridInstance'].paginationService.itemsPerPage"
+                                                [(ngModel)]="object['gridOptionInfo']['pagination']['pageSize']"
+                                                (click)="take_position($event)">
+                                                <mat-option class="cs-ts-14"
+                                                    *ngFor="let itemPerPage of object['gridOptionInfo']['pagination']['pageSizes']"
+                                                    [value]="itemPerPage" id ="{{actionId}}_{{object['objectName']}}_{{itemPerPage}}_itemPerPage">
+                                                    {{itemPerPage}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+
+                                        <div class="cs-rmar-15">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{object['angularGridInstance'] &&
+                                                object['angularGridInstance'].paginationService &&
+                                                object['angularGridInstance'].paginationService.dataFrom}}
+                                                - </mat-label>
+                                            <mat-label class="cs-ts-14 cs-grey">
+                                                {{object['angularGridInstance'] &&
+                                                object['angularGridInstance'].paginationService &&
+                                                object['angularGridInstance'].paginationService.dataTo}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                <span> of </span>
+                                                {{object['angularGridInstance'] &&
+                                                object['angularGridInstance'].paginationService &&
+                                                object['angularGridInstance'].paginationService.totalItems}}
+                                            </mat-label>
+                                        </div>
+
+                                        <div class="cs-rmar-15">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{object['angularGridInstance'] &&
+                                                object['angularGridInstance'].paginationService &&
+                                                object['angularGridInstance'].paginationService.pageNumber}}
+                                                / </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                {{object['angularGridInstance'] &&
+                                                object['angularGridInstance'].paginationService &&
+                                                object['angularGridInstance'].paginationService.pageCount}}<span>
+                                                    page </span></mat-label>
+                                        </div>
+
+                                        <button id ="{{actionId}}_{{object['objectName']}}_previous" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Previous"
+                                            [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                && object['angularGridInstance'].paginationService.pageNumber == 1}"
+                                            (click)="navigationChange('prev', object)">
+                                            <em class="icon-mat-navigate_before"></em>
+                                        </button>
+                                        <button id ="{{actionId}}_{{object['objectName']}}_next" class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Next"
+                                            [ngClass]="{'cs-button-disabled': object['angularGridInstance'] && object['angularGridInstance'].paginationService 
+                                                                && object['angularGridInstance'].paginationService.pageNumber == object['angularGridInstance'].paginationService.pageCount}"
+                                            (click)="navigationChange('next', object)">
+                                            <em class="icon-mat-navigate_next"></em>
+                                        </button>
+                                    </span>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_search" title="Search" color="primary"
+                                        class="cs-mat-icononly cs-filter-option cs-pull-right"
+                                        (click)="toggleGridSearchRow(object)">
+                                        <em
+                                            [ngClass]="{'icon-mat-filter_list_alt': object['additionalInfo']['gridSearchRowToggle'], 'icon-mat-not_filtered_list': !object['additionalInfo']['gridSearchRowToggle']}"></em>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="object['isSelected']"
+                        id="{{gridContainerId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                        class="clearfix cs-mat-slickgrid cs-slick-tab-height cs-pr cs-tabgroup-norec"
+                        [ngClass]="{'cs-slickgrid-pagination': object['gridOptionInfo']['enablePagination']}">
+
+                        <angular-slickgrid
+                            gridId="{{gridId+'_'+config['layoutId']+'_'+layoutName+'_'+objectRootPath+'_'+config['fieldName']+'_'+object['objectName']}}"
+                            [columnDefinitions]="object['columnDefinitions']" [gridOptions]="object['gridOptionInfo']"
+                            (onAngularGridCreated)="angularGridReady($event,object)" [dataset]="object['recordsArray']"
+                            [ngClass]="{'cs-colum_border_line':((object['recordsArray'] && object['recordsArray'].length === 0) || (object['angularGridInstance'] && object['angularGridInstance'].dataView.getLength() == 0))}">
+                        </angular-slickgrid>
+                    </div>
+                </tab>
+            </tabs>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="config['style'] == 'MultipleFromMultipleWithMultipleChip' || config['style'] == 'MultipleFromMultipleWithSingleChip'"
+    fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+    <div fxLayout="column" fxFlex="100%" class="cs-bpad-20">
+        <span class="cs-recordassociation-head-span">
+            <mat-label>{{config['fieldDisplayName'] | translate}}</mat-label>
+            <mat-select id ="{{actionId}}_selection" placeholder="Select Object" class="cs-recordassociation-sel-chip"
+                [(ngModel)]="dataObject[config['fieldName']]"
+                (selectionChange)="associateMultiObjectSelectionChange($event.value)" multiple>
+                <mat-option *ngFor="let metaMapping of config['associationMetaMapping']"
+                    [value]="metaMapping['objectName']" id ="{{actionId}}_{{metaMapping['objectName']}}">
+                    {{metaMapping.title}}
+                </mat-option>
+            </mat-select>
+        </span>
+        <div class="cs-recordassociation-box cs-mat-parent-slick">
+            <div class="cs-norecords-found" *ngIf="checkObjectSelectedStatus(config['associationMetaMapping'])">
+                <mat-label>Object And Value is Empty</mat-label>
+            </div>
+            <div *ngFor="let object of associationObjectsConfiguration[config['fieldName']];"
+                [ngClass]="{'cs-ra-sl-pinpoint cs-recordassociation-seperator-line' : object['isSelected'] && borderEnabled[config['fieldName']], 'cs-ra-sl-pinpoint': !object['isSelected'] || !borderEnabled[config['fieldName']] }">
+                <div *ngIf="object['isSelected']" class="cs-recordassociation-chipsection">
+                    <div class="cs-list-view">
+                        <div class="cs-header-name cs-slick-title cs-pr cs-show-recordassociation-addbtn">
+                            <mat-card-header class="cs-slickoption-btn">
+                                <mat-card-title class="cs-recordass-slickhead-title cs-recordassociation-chiplisttitle">
+                                    {{object['displayName']}}
+                                    <span *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                        class="cs-recordassociation-count-badge">{{ object['recordsArray'].length
+                                        }}
+                                    </span>
+                                    <button mat-icon-button="" class="cs-infobtn" *ngIf="config['associationObjectInfo'][object['fieldName']] && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']  && config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']">
+                                        <em class="icon-mat-info_outline" title="{{config['associationObjectInfo'][object['fieldName']]['criteriaConfig']['criteriaQueryConfig']['queryString']}}"></em>
+                                    </button>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_add" *ngIf="object['isSelected']" title="Search"
+                                        (click)="chooseAssociationRecords(object['fieldName'],config['objectId'])"
+                                        class="cs-recordassociation-addbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none">
+                                        <em class="icon-mat-add"></em>
+                                    </button>
+                                    <button id ="{{actionId}}_{{object['objectName']}}_clearAll"
+                                        class="cs-recordassociation-delbtn cs-userassignadd-btn-hide cs-lpad-10 cs-display-none"
+                                        *ngIf="object['recordsArray'] && object['recordsArray'].length > 0"
+                                        title="Delete" (click)="deleteAllItems(object)">
+                                        <em class="icon-mat-delete_outline"></em>
+                                    </button>
+                                </mat-card-title>
+                            </mat-card-header>
+                        </div>
+                    </div>
+                    <div>
+                        <mat-chip-list *ngIf="config['style'] == 'MultipleFromMultipleWithMultipleChip'"
+                            class="cs-overflow-chiplist cs-multi-ra-chip cs-lmar-20 cs-rmar-20">
+                            <mat-chip *ngFor="let dataObj of object['recordsArray']; let i = index"
+                                class="cs-recordassociation-chip">
+                                <div class="cs-ra-chip-parent" *ngIf="object['tableColumnInfo'][1]">
+                                    <div class="cs-ra-chip-mainlabel">{{dataObj | cspfm_data_display:
+                                        object['tableColumnInfo'][1]}}</div>
+                                </div>
+                                <div id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear_div"class="cs-gradient-chip">
+                                    <button id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear"class="cs-display-none" (click)="deleteItem(i, object)">
+                                        <em class="icon-mat-clear"></em>
+                                    </button>
+                                </div>
+                            </mat-chip>
+                        </mat-chip-list>
+
+                        <mat-chip-list *ngIf="config['style'] == 'MultipleFromMultipleWithSingleChip'"
+                            class="cs-overflow-chiplist cs-multi-ra-chip cs-lmar-20 cs-rmar-20">
+                            <mat-chip *ngFor="let dataObj of object['recordsArray']; let i = index"
+                                class="cs-recordassociation-chip">
+                                <div class="cs-ra-chip-parent">
+                                    <div class="cs-ra-chip-mainlabel" *ngIf="object['tableColumnInfo'][1]">{{dataObj |
+                                        cspfm_data_display: object['tableColumnInfo'][1]}}</div>
+                                    <div class="cs-ra-chip-sublabel" *ngIf="object['tableColumnInfo'][2]">{{dataObj |
+                                        cspfm_data_display: object['tableColumnInfo'][2]}}</div>
+                                </div>
+                                <div id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear_div" class="cs-gradient-chip">
+                                    <button id ="{{actionId}}_chip_{{object['objectName']}}_{{i}}_clear" class="cs-display-none" (click)="deleteItem(i, object)">
+                                        <em class="icon-mat-clear"></em>
+                                    </button>
+                                </div>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

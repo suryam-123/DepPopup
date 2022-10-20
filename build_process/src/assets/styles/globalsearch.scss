@@ -1,0 +1,727 @@
+.cs-global-searchbar-head{
+    width: 100%;
+    .cs-global-searchbar{
+        display: inline-flex;
+        width: 100%;
+        position: relative;
+        .cs-global-search-contentspecifier{
+            display: inline-flex;
+            align-items: center;
+            position: absolute;
+            right: 4px;
+            span{
+                width: max-content;
+                color: $input_box_inner_color;
+                font-size: 13px;
+                &:first-child{
+                    font-weight: bolder;
+                    padding-right: 4px;
+                }
+            }
+        }
+    }
+}
+.cs-mat-more-option-sel{
+    .mat-option-text{
+        display: flex;
+    }
+    &.mat-selected{
+        background: inherit !important;
+    }
+}
+.cs-mat-option-sel{
+    justify-content: center;
+    min-height: 15px !important;
+    line-height: 16px !important;
+    padding: 0px !important;
+    margin-top: 2px;
+    height: inherit !important;
+    &:hover{
+        background: $slickgrid_row_hover_bg !important;
+    }
+    &:first-child{
+        margin-top: 8px;
+    }
+
+        .cs-search-primary-value{
+            font-size: 13px;
+            color: darken($grey_base_secondary,2%);
+            margin:0px;
+            margin-right: 4px;
+            font-style: italic;
+            overflow: hidden;
+            margin-left: 24px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            visibility: hidden;
+
+        }
+        .cs-search-right-content:first-child{
+            .cs-search-primary-value{
+                visibility: visible;
+            }
+
+        }
+        .cs-search-item-value1{
+            font-size: 13px;
+            color: $grey_base_secondary;
+            margin: 0px;
+            margin-left: 4px;
+        }
+        .cs-search-item-key{
+            font-size: 13px;
+            color: $grey_base_secondary;
+            margin: 0px;
+            margin-left: 12px;
+        }
+        .cs-search-item-value{
+            margin: 0px;
+            font-size: 13px;
+            color: $grey_base_primary;
+            margin-left: 4px;
+        }
+    }
+
+.cs-search-out-field{
+    position: absolute;
+    width: fit-content;
+    right: 16px;
+    top: 16px;
+    font-size: 13px;
+}
+.cs-search-mat-chip{
+    margin-top: 18px;
+    color: darken($secondary_color,4%) !important;
+    background: lighten($primary-color,40%);
+    min-height: 21px;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    width: fit-content;
+    margin-left: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.cs-lmar-10{
+    margin-left: 10px;
+}
+.cs-dotted-style{
+    height: 4px;
+    width: 4px;
+    background-color: #878787;
+    border-radius: 50%;
+    margin: 0px 6px 2px 0px;
+    display: inline-block;
+}
+.cs-matsearch-btn{
+    font-size: 20px;
+    color: $grey_base_secondary;
+    background: $globalsearch_search_box !important;
+    height: 31px;
+    position: absolute;
+    top: -1px;
+    border-radius: 5px;
+    em{
+        position: relative;
+        top: 2px; 
+        margin-left: 8px;
+        color: darken($grey_base_secondary,10%);
+    }
+}
+
+.cs-search-left-content{
+    position: absolute;
+    width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 4px;
+}
+.cs-lmar-80{
+    margin-left: 80px;
+}
+.cs-search-right-content{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.cs-fullwidth{
+    width: 100%;
+}
+// .cs-global-searchbar input.cs-mat-search-bar {
+//     border: none !important;
+// }
+
+
+.cs-search-spinner {
+    position: absolute !important;
+    right: 10px;
+    top: 6px;
+}
+.cs-objectname-label{
+    color: $globalsearch_filter_object_sublabel;
+    font-size: 13px;
+}
+.cs-filter-cal{
+    mat-label{
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin-right: 10px;
+    }
+    button{
+        float: right;
+        background: inherit;
+        padding: 0;
+        height: 20px;
+        em{
+            font-size: 16px;
+            color: $secondary_color;
+        }
+    }
+}
+.cs-filter-objects{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    mat-label{
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin-right: 10px;
+    }
+    mat-chip{
+        background-color:$globalsearch_filter_countbadge_bg !important;
+        color:$globalsearch_filter_countbadge_clr !important;
+        padding: 1px 10px;
+        border-radius: 10px;
+        font-size: 13px;
+        margin-right: 10px;
+        min-height: 17px;
+    }
+    button{
+        background: $global_add_btn_bg;
+        border: 1px solid #E1E1E1;
+        padding: 0;
+        border-radius: 50%;
+        line-height: 10px;
+        em{
+            font-size: 18px;
+            color: $global_add_btn_clr;
+            font-weight: 500;
+        }
+        &:hover{
+            background-color: $globalsearch_filter_addbtn_active_bg !important;
+            border: inherit !important;
+            padding: 1px;
+            em{
+                color: $globalsearch_filter_addbtn_active_clr; 
+            }
+        }
+        &:active{
+            background-color: $globalsearch_filter_addbtn_active_bg !important;
+            border: inherit !important;
+            em{
+                color: $globalsearch_filter_addbtn_active_clr; 
+            }
+        }
+    }
+}
+.cs-filter-datepicker{
+    input{
+        color: $input_box_inner_color;
+        background: $globalsearch_input_box !important;
+        width: 100%;
+        border: $input_box_border_width $input_box_border_style $input_box_border_color;
+        border-radius: 0;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        height: 29px;
+        padding-left: 5px!important;
+    }
+    .cs-search-cal-icon{
+        position: absolute;
+        right: 7px;
+        top: 5px;
+        font-size: 18px;
+        em{
+            color: $fab_icon_color !important;
+        }
+    }
+    .cs-search-clear-icon{
+        position: absolute;
+        right: 30px;
+        top: 5px;
+        font-size: 18px;
+        em{
+            color: $fab_icon_color !important;
+        }
+    }
+}
+.cs-rpad-20{
+    padding-right: 20px;
+}
+.cs-filter-btns{
+    padding: 16px 16px 16px 0px;
+    float: right;
+}
+
+.cs-bmar-21{
+    margin-bottom: 21px;
+}
+.cs-lpad-20{
+    padding-left: 20px;
+}
+.cs-tmar-16{
+    margin-top: 16px;
+}
+.cs-filter-addbtn-popup{
+    background: $card_bg;
+    box-shadow: 1px 1px 5px $general_shadow !important;
+    border-radius: 4px;
+    min-width: 235px;
+    max-width: 290px;
+    mat-form-field{
+        width: 100%;
+        position: relative;
+        height: 37px;
+        .mat-form-field-infix{
+            border-top: inherit;
+            padding: 0px;
+            height: 37px;
+            input{
+                // border-radius: 10px !important;
+                height: 37px;
+                font-size: 14px;
+                padding-left: 16px;
+                color: $input_box_inner_color;
+                caret-color :$grey_base_primary !important;
+                border-bottom: 1px solid #ccc;
+            }
+            button{
+                position: absolute;
+                right: 0px !important;
+                top: 2px;
+                color: $global_add_popover_searchbtn;
+                font-size: 19px;
+                background: inherit !important;
+            }
+        }
+        .mat-form-field-underline{
+            background-color: #ccc !important;
+            height: inherit !important;
+        }
+        &.mat-focused{
+            .mat-form-field-ripple{
+                height: inherit !important;
+                background-color: inherit !important;
+            }
+        }
+    }
+    mat-selection-list{
+        padding: 0;
+        min-height: 100px;
+        max-height: 272px;
+        overflow: auto;
+        padding-top: 6px;
+        background: $card_bg;
+        mat-list-option{
+            height: 38px !important;
+            font-size: 14px !important;
+            font-weight: 500;
+            color: $grey_base_primary !important;
+            &:hover{
+                background-color: $globalsearch_filter_matselectoption_hover !important;
+                color: $secondary_color;
+            }
+        }
+    } 
+}
+.cs-mat-custom-theme{
+    .cs-filter-chip-list{
+        mat-chip{
+            min-height: 24px !important;
+            font-size: 12px !important;
+            button{
+                position: relative;
+                font-size: 16px !important;
+                right: -9px;
+                color: $secondary_color;
+            }
+        }
+    }
+}
+.cs-filter-tab{
+    box-shadow: 1px 1px 5px $general_shadow !important;
+    background: $card_bg!important;
+    color: $grey_base_primary!important;
+}
+.cs-matoption-arrow{
+    background: inherit;
+    font-size: 20px;
+    padding: 0;
+    color: $fab_icon_color;
+}
+.cs-seperate-cal{
+    .cs-seperate-cal-div{
+        input{
+            color: $input_box_inner_color;
+            background: $globalsearch_input_box !important;
+            width: 100%;
+            border:$input_box_border_width $input_box_border_style $input_box_border_color;
+            border-radius: 0;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 500;
+            height: 28px;
+            padding-left: 5px!important;
+        }
+        .cs-search-cal-btn{
+            position: absolute !important;
+            color: $fab_icon_color !important;
+            top: 5px !important;
+            right: 4px !important;
+        }
+        .cs-search-clear-btn{
+            position: absolute !important;
+            color: $fab_icon_color !important;
+            top: 5px !important;
+            right: 22px !important;
+        }
+    }
+}
+.cs-filter-avatar{
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 6px;
+}
+.cs-align-center{
+    display: flex;
+    align-items: center;
+}
+.cs-frwdarw-center{
+    align-items: center;
+    justify-content: center;
+    em{
+        color: $fab_icon_color;
+    }
+}
+.cs-filter-norecords{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 165px;
+        height: 165px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+.cs-globalsearch-morebtn{
+    border-top: 1px solid $gloabal-popover-border;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    button{
+        margin:12px 16px !important;
+    }
+}
+
+.cs-selecteduserclear-btn{
+    background: inherit;
+    position: absolute;
+    right: -6px;
+    top: -4px;
+    em{
+        font-size: 13px;
+        color: #fff;
+        background: #D95350;
+        border-radius: 50%;
+        padding: 1px;
+    }
+}
+
+
+.cs-expand-btn{
+    transform: rotate(90deg);
+    padding: 0;
+    em{
+        font-size: 21px !important;
+        padding: 0;
+    }
+}
+.cs-globalsearch-avatar{
+    &:hover{
+        .cs-selecteduserclear-btn{
+            display: inline !important;
+        }
+    }
+}
+.cs-globalsearchcontent-seperator{
+    border-bottom: 1px solid #ccc;
+}
+.cs-globalsearch-autopanel{
+    box-shadow: 1px 1px 5px $general_shadow !important;
+    position: relative;
+    top: -1px;
+    border-radius: 0 0 8px 8px;
+    overflow: inherit !important;
+    max-height: inherit !important;
+}
+.cs-nofocus{
+    // &.mat-focused .mat-form-field-underline {
+    //     border-bottom: 1px solid #ccc;
+    // }
+}
+.cs-width-60p{
+    width: 60%
+}
+.cs-width-40p{
+    width: 40%
+}
+.cs-created-section{
+    .cs-created-label{
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin-bottom: 2px !important;
+    }
+    .cs-created-datetime{
+        font-size: 13px;
+        font-weight: 500;
+        font-style: italic;
+        color: $grey_base_primary;
+    }
+}
+.cs-lmar-8{
+    margin-left: 8px;
+}
+.cs-fitcontent{
+    height: fit-content;
+}
+.cs-rmar-32{
+    margin-right: 32px;
+}
+.cs-hpad-20{
+    padding: 0 20px;
+}
+.cs-mat-ui{
+    .cs-mat-main-content{
+        .cs-mat-contentmain{
+            .cs-globalsearch-moreview{
+                mat-form-field{
+                    margin-bottom: 0px;
+                    .mat-form-field-wrapper{
+                        padding-bottom: 0px !important;
+                    }
+                }
+            }
+        }
+    }  
+    .cs-globalsearch-detailview{
+        input{
+            border-radius: 0px;
+            margin-left: 0;
+            width: 100%;
+            border: $input_box_border_width $input_box_border_style $input_box_border_color;
+        }
+    }
+    .cs-global-searchbar{
+        .cs-global-search-input{//nish
+            border-radius: 5px !important;
+            padding-left: 40px !important;
+            padding-right: 120px;
+            background: $globalsearch_search_box !important;
+        }
+    }
+    .cs-mat-search-bar{
+
+        border-radius: 0px;
+        font-size: $input_box_inner_font_size;
+        font-style: $input_box_inner_font_style;
+        color: $input_box_inner_color;
+        height: 31px;
+        padding-left: 5px !important;
+        background: $globalsearch_search_box !important;
+        margin-left: 36px;
+        font-weight: bold;
+        width: 100%;
+    }
+    .cs-results-searchbar{
+        background: $globalsearch_result_search !important;
+        padding-left: 40px !important; 
+        color: $input_box_inner_color !important;
+    }
+}
+.cs-tmar-42{
+    margin-top: 42px;
+}
+.cs-lpad-4{
+    padding-left: 4px;
+}
+.cs-nolmar{
+    margin-left: 0px !important;
+}
+.cs-more-inner-searchcontents{
+    margin: 2px 0px 18px 0px;
+}
+.cs-global-more-maincontent{
+    height: calc(100vh - 159px);
+    padding: 0 !important;
+    .cs-global-more-innercontent{
+        height: calc(100vh - 260px);
+        overflow-y: scroll;
+        background: $card_bg;
+    }
+}
+.cs-createdmodified-avatar{
+    width: 30px;
+    height: 30px;
+    margin-top: 1px;
+    border-radius: 50%;
+}
+.cs-width-75{
+    width: 75%;
+}
+.cs-width-25{
+    width: 25%;
+}
+.cs-right-window-filterbtns{
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.cs-bpad-2{
+    padding-bottom: 2px;
+}
+.cs-filter-objectsmar{
+    margin: 10px  16px;
+}
+.cs-nopadding{
+    padding: 0px !important; 
+} 
+
+
+.cs-flex-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.cs-rpad-3{
+    padding-right: 3px;
+}
+.cs-tpad-18{
+    padding-top: 18px;
+}
+.cs-results-count{
+    padding: 1px 10px !important;
+    border-radius: 10px !important;
+    font-size: 13px;
+    margin-right: 10px;
+    min-height: 17px !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 17px !important;
+    margin-top: 3px;
+    margin-left: 7px;
+}
+.cs-filterdetails-closebtn{
+    position: absolute;
+    right: 30px;
+}
+.cs-h-30{
+    height: 30px !important;
+}
+.cs-matsearch-closebtn{
+    position: absolute;
+    right: 2px;
+}
+.cs-global-main-searchbar{
+    border-radius: 5px !important;
+    border: $input_box_border_width $input_box_border_style $input_box_border_color;
+}
+.cs-add-objectsbtn{
+    visibility: hidden;
+}
+.cs-add-objects{
+    cursor: pointer;
+    &:hover{
+        .cs-add-objectsbtn{
+            visibility: visible;
+        }
+    }
+}
+.cs-moreviewsearch-btn{
+    background: $globalsearch_result_search !important;
+}
+
+.cs-norecords-moreview{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cs-moreview-searchspinner{
+    position: absolute !important;
+    right: 40px;
+    top: 6px;
+    circle{
+        stroke: $fab_icon_color;
+    }
+}
+.cs-globalsearchspinner{
+    position: absolute !important;
+    right: 95px;
+    top: 6px;
+    circle{
+        stroke: $fab_icon_color;
+    }
+}
+.cs-inner-filterscroll{
+    height: calc(100vh - 293px) !important;
+    overflow: auto;
+}
+.cs-bmar-8{
+    margin-bottom: 8px;
+}
+.cs-to-label{
+    font-size: 13px;
+    color: $fab_icon_color;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.cs-filterdetailes-rightarw{
+    position: absolute;
+    right: 0px;
+}
+
+//Scroll component
+
+.cs-scoll-component {
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+  .cs-scoll-container {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    .cs-scroll-content {
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+  }
+}
+.cs-objcremofi-width{
+    width: calc(100% - 40px);
+}
+
+.cs-innercontent-scroll{
+    max-height: 273px;
+    overflow: auto;
+}

@@ -1,0 +1,545 @@
+<ng-template #configStyle1>
+      <div *ngIf="appUtilityConfig.isMobileResolution"
+            class="cs-swf cs-swf-block modal  approjectclosemodel mobileview">
+
+            <div class="modal-content cs-status-popover-box">
+                  <div (click)="closePopUp()" class="modal-header">
+                        <span class="close">&times;</span>
+                        <h4> {{displayName | translate}}</h4>
+                  </div>
+                  <div class="swf-con-main">
+                        <ion-item lines="none" class="swg-cmt-se">
+                              <ion-label position="stacked">Comments</ion-label>
+                              <ion-textarea rows="4" name="entryComments" [(ngModel)]="entryComments"
+                                    class="swf-txtarea"></ion-textarea>
+                        </ion-item>
+                        <ion-item lines="none" class="swg-app-rej-btn">
+                              <div class="cs-rightbtn">
+                                    <ion-button class="swf-approve" (click)="approveRejectClickAction('Approve')"
+                                          fill="clear">
+                                          <ion-icon ios="ios-checkmark" md="md-checkmark" name="create"></ion-icon>
+                                          <span class="swf-app-tex">Approve</span>
+                                    </ion-button>
+                                    <ion-button class="swf-reject" (click)="approveRejectClickAction('Reject')"
+                                          fill="clear">
+                                          <ion-icon ios="ios-close" md="md-close" name="create"></ion-icon>
+                                          <span class="swf-rej-tex">Reject</span>
+                                    </ion-button>
+                              </div>
+                        </ion-item>
+                  </div>
+            </div>
+      </div>
+
+      <div *ngIf="!appUtilityConfig.isMobileResolution" class="cs-swf cs-swf-block modal  approjectclosemodel webview">
+
+            <div class="modal-content">
+                  <div (click)="closePopUp()" class="modal-header">
+                        <span class="close">&times;</span>
+                        <h4> {{displayName | translate}}</h4>
+                  </div>
+                  <div class="swf-con-main">
+                        <mat-list-item class="swg-cmt-se">
+                              <mat-label>Comments</mat-label>
+                              <textarea rows="4" name="entryComments" [(ngModel)]="entryComments"
+                                    class="swf-txtarea"></textarea>
+                        </mat-list-item>
+                        <mat-list-item class="swg-app-rej-btn">
+                              <div class="cs-rightbtn">
+                                    <button mat-raised-button class="swf-approve"
+                                          (click)="approveRejectClickAction('Approve')">
+                                          <button mat-icon-button>
+                                                <em class="icon-mat-approval cs-green"></em>
+                                                <span class="swf-app-tex">Approve</span>
+                                          </button>
+                                    </button>
+                                    <button mat-raised-button class="swf-reject"
+                                          (click)="approveRejectClickAction('Reject')">
+                                          <button mat-icon-button>
+                                                <em class="icon-mat-clear cs-red"></em>
+                                                <span>Reject</span>
+                                          </button>
+                                    </button>
+                                                                  </div>
+                        </mat-list-item>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="configStyle=='1' && popUpType !=='entry' && popUpType !=='slickgrid'">
+      <ng-container *ngTemplateOutlet="configStyle1"></ng-container>
+</div>
+
+<ng-template #configStyle2>
+
+      <div class="cs-swf cs-swf-block modal approjectclosemodel swf-layouttwo  "
+            *ngIf="!appUtilityConfig.isMobileResolution">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <span class="close" (click)="closePopUp()">&times;</span>
+                        <h4>{{displayName | translate}}</h4>
+                  </div>
+                  <mat-list-item class="swf-input-txt">
+                        <mat-label>Comments</mat-label>
+                        <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="2" class="swf-txtarea"></textarea>
+                  </mat-list-item>
+                  <mat-list-item class="swf-btn-txt">
+                        <div class="cs-rightbtn">
+                              <div class="" id="{{'action_'+objectname+'_'+fieldName+'_approve'}}" (click)="approveRejectClickAction('Approve')">
+                                    <button mat-icon-button>
+
+                                          <em class="icon-mat-approval"></em>
+                                    </button>
+
+                                    <button mat-raised-button class="cs-green">Approve</button>
+                              </div>
+                              <div id="{{'action_'+objectname+'_'+fieldName+'_reject'}}" class="" (click)="approveRejectClickAction('Reject')">
+                                    <button mat-icon-button>
+
+                                          <em class="icon-mat-clear"></em>
+
+                                    </button>
+
+                                    <button mat-raised-button class="cs-red">Reject</button>
+                              </div>
+                        </div>
+                  </mat-list-item>
+            </div>
+      </div>
+
+
+      <div class="cs-swf cs-swf-block modal approjectclosemodel swf-layouttwo swf-designtwo-mobileview v2-web-view-approve-Reject-Start"
+            *ngIf="appUtilityConfig.isMobileResolution">
+            <div class="modal-content">
+                  <ion-item lines="none" class="swf-btn-txt">
+                        <h4>{{displayName | translate}}</h4>
+                        <div [id]="approvRejectPopupId" class="cs-rightbtn">
+                              <div class="" (click)="showCommentViewHideApproveRejectView('Approve')">
+                                    <ion-icon ios="ios-checkmark" md="md-checkmark" name="create"
+                                          class="swf-icon cs-swf-app"></ion-icon>
+                                    <ion-button class="cs-green" fill="clear">Approve</ion-button>
+                              </div>
+                              <div class="">
+                                    <ion-icon ios="ios-close" md="md-close"
+                                          (click)="showCommentViewHideApproveRejectView('Reject')" name="create"
+                                          class="swf-icon cs-swf-rej"></ion-icon>
+                                    <ion-button class=" cs-red" fill="clear">Reject</ion-button>
+                              </div>
+                        </div>
+                  </ion-item>
+                  <ion-item lines="none" fill="clear" class="user-active-div" [id]="dynaIdCmt" style="display:none">
+                        <div class="swf-user-selected">
+                              <div class="swf-userselected">
+                                    <div class="" style="margin-top: 12px; ">
+                                          <ion-icon *ngIf="actionType=='Approve'" ios="ios-checkmark" md="md-checkmark"
+                                                name="create" class="swf-icon cs-swf-app"></ion-icon>
+                                          <ion-icon *ngIf="actionType=='Reject'" ios="ios-close" md="md-close"
+                                                name="create" class="swf-icon cs-swf-rej"></ion-icon>
+                                          <ion-button class="cs-green" fill="clear">{{actionType}}</ion-button>
+                                    </div>
+                              </div>
+                              <div class="cs-user-cmt swf-input-txt">
+                                    <ion-label position="stacked">Comments</ion-label>
+                                    <ion-textarea rows="2" class="swf-txtarea"></ion-textarea>
+                              </div>
+                              <div class="cs-user-ok">
+                                    <span (click)="approveRejectClickAction()" class="user-click-btn">OK</span>
+                              </div>
+                        </div>
+                  </ion-item>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="configStyle=='2' && popUpType !=='entry' && popUpType !=='slickgrid'">
+      <ng-container *ngTemplateOutlet="configStyle2"></ng-container>
+</div>
+
+<ng-template #configStyle3>
+
+      <div *ngIf="appUtilityConfig.isMobileResolution"
+            class="cs-swf cs-swf-block modal approjectclosemodel swf-layouttwo swf-designtwo-mobileview mobileview-v3">
+
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>{{displayName | translate}}</h4>
+                  </div>
+                  <div [id]="approvRejectPopupId">
+                        <div *ngIf="popUpType=='slickgrid'" class="cs-statususer-profile">
+                              <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                    class="primary-display-field">
+                                    {{slickgridRowIdentificationValues[0]}}</h4>
+                              <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                    class="secondary-display-field">
+                                    {{slickgridRowIdentificationValues[1]}}</h6>
+                        </div>
+                        <div>
+                              <h4 style="font-size: medium;" *ngIf="processingData['lockedUser']">
+                                    {{processingData['lockedUser']}}</h4>
+                              <h2 style="font-size: small;" *ngIf="processingData['lockedDate']">
+                                    {{processingData['lockedDate']}}</h2>
+                        </div>
+                        <ion-item lines="none" class="swf-btn-txt">
+                              <div class="cs-rightbtn-v3">
+                                    <div class="" (click)="showCommentViewHideApproveRejectView('Approve')">
+                                          <ion-icon ios="ios-checkmark" md="md-checkmark" name="create"
+                                                class="swf-icon cs-swf-app"></ion-icon>
+                                          <ion-button class="cs-green" fill="clear">Approve</ion-button>
+                                    </div>
+                                    <div class="" (click)="showCommentViewHideApproveRejectView('Reject')">
+                                          <ion-icon ios="ios-close" md="md-close" name="create"
+                                                class="swf-icon cs-swf-rej"></ion-icon>
+                                          <ion-button class=" cs-red" fill="clear">Reject</ion-button>
+                                    </div>
+                              </div>
+                        </ion-item>
+                        <ion-item lines="none">
+                              <div class="mobile-v3-btn-cancel">
+                                    <ion-button class="cs-swf-btn cs-swf-cancel" fill="clear" (click)="closePopUp()">
+                                          Cancel</ion-button>
+                              </div>
+                        </ion-item>
+                  </div>
+                  <div class="" [id]="dynaIdCmt" style="display:none">
+                        <ion-item lines="none" fill="clear" class="user-active-div">
+                              <div class="swf-user-selected">
+                                    <div class="swf-userselected">
+                                          <div class="" style="margin-top: 12px; ">
+                                                <ion-icon *ngIf="actionType=='Approve'" ios="ios-checkmark"
+                                                      md="md-checkmark" name="create" class="swf-icon cs-swf-app">
+                                                </ion-icon>
+                                                <ion-icon *ngIf="actionType=='Reject'" ios="ios-close" md="md-close"
+                                                      name="create" class="swf-icon cs-swf-rej"></ion-icon>
+                                                <ion-button class="cs-green" fill="clear">{{actionType}}</ion-button>
+                                          </div>
+                                    </div>
+                                    <div class="cs-user-cmt swf-input-txt">
+                                          <ion-label position="stacked">Comments</ion-label>
+                                          <ion-textarea rows="2" class="swf-txtarea"></ion-textarea>
+                                    </div>
+                              </div>
+                        </ion-item>
+
+                        <ion-item lines="none">
+                              <div class="mobile-v3-btn-cancel">
+                                    <ion-button class="cs-swf-btn cs-swf-cancel" fill="clear"
+                                          (click)="approveRejectClickAction()">okay</ion-button>
+                              </div>
+                        </ion-item>
+                  </div>
+            </div>
+
+      </div>
+
+      <div *ngIf="!appUtilityConfig.isMobileResolution" class="cs-swf cs-swf-block modal  approjectclosemodel webview"
+            class="cs-status-workflow">
+
+            <div>
+                  <div class="cs-status-subdiv">
+                        <div *ngIf="popUpType=='slickgrid'" class="cs-statususer-profile">
+                              <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                    class="primary-display-field">
+                                    {{slickgridRowIdentificationValues[0]}}</h4>
+                              <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                    class="secondary-display-field">
+                                    {{slickgridRowIdentificationValues[1]}}</h6>
+                        </div>
+                        <div class="cs-tmar18">
+                              <label class="cs-mainpopover-label">Status</label>
+                              <mat-label class="cs-subpopover-label"
+                                    *ngIf="selectedStatus && selectedStatus['statusLabel']">
+                                    {{selectedStatus['statusLabel']}}</mat-label>
+                        </div>
+                        <div class="cs-tmar16">
+                              <mat-list-item>
+                                    <mat-label class="cs-mainpopover-label cs-bmar2">Comments</mat-label>
+                                     <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="4" name="entryComments"
+                                          class="cs-cmt-textbox cs-nomar cs-cmt-area" placeholder="Write comments ..."
+                                          [(ngModel)]="entryComments"></textarea>
+                              </mat-list-item>
+                        </div>
+                        <div class="cs-approver-img">
+                              <img matListAvatar src="{{processingData['lockedUserImg']}}"
+                                    onerror="this.src='assets/img/user_icon.png';" alt="user-icon"
+                                    title="{{processingData['lockedUser']}}">
+                              <h2 *ngIf="processingData['lockedDate']">
+                                    {{processingData['lockedDate']}}</h2>
+                        </div>
+                        <div>
+                              <mat-list-item>
+                                    <mat-error *ngIf="entryComments == '' && validationNeed && !isCommentsFieldFilled">Please Enter Comments</mat-error> 
+                                    <div class="cs-floatright cs-bpad-10">
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_approve'}}" mat-raised-button (click)="approveRejectClickAction('Approve')"
+                                                class="cs-status-btn-approve">Approve
+                                          </button>
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_reject'}}" mat-raised-button (click)="approveRejectClickAction('Reject')"
+                                                class="cs-status-btn-reject">Reject
+                                          </button>
+                                    </div>
+                              </mat-list-item>
+                                          </div>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="configStyle=='3' && popUpType !=='entry' && popUpType !=='slickgrid'">
+      <ng-container *ngTemplateOutlet="configStyle3"></ng-container>
+</div>
+
+<ng-template #configStyleMobile>
+      <div [id]="entryPopUpId" class="cs-swf cs-swf-block modal mobileview">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <span class="close" (click)="closePopUp()">&times;</span>
+                        <h4>{{displayName | translate}}</h4>
+                  </div>
+                  <ion-list>
+                        <ion-radio-group [(ngModel)]="defaultOptionValue">
+                              <ion-item *ngFor="let user of selectedItems" lines="none" class="sef-btm">
+                                    <ion-label>{{user['statusLabel']}}</ion-label>
+                                    <ion-radio slot="start" value="{{user['statusValue']}}"></ion-radio>
+                              </ion-item>
+                        </ion-radio-group>
+                  </ion-list>
+                  <ion-item lines="none">
+                        <ion-label position="stacked">Comments</ion-label>
+                        <ion-textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="4" name="entryActionComments" [(ngModel)]="entryComments"
+                              class="swf-txtarea"></ion-textarea>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                        <div class="cs-right">
+                              <ion-button id="{{'action_'+objectname+'_'+fieldName+'_cancelbutton'}}" class="cs-swf-btn" (click)="entryClickActions('cancel')" fill="clear">Cancel
+                              </ion-button>
+                              <ion-button id="{{'action_'+objectname+'_'+fieldName+'_okbutton'}}" class="cs-swf-btn" (click)="entryClickActions('confirm')" fill="clear">OK
+                              </ion-button>
+                        </div>
+                  </ion-item>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="appUtilityConfig.isMobileResolution && popUpType =='entry'">
+      <ng-container *ngTemplateOutlet="configStyleMobile"></ng-container>
+</div>
+
+
+<ng-template #configStyleWeb>
+      <div [id]="entryPopUpId">
+            <div class="cs-mat-custom-theme ">
+
+                  <div class="cs-status-subdiv">
+                        <div *ngIf="popUpType=='slickgrid'" class="cs-statususer-profile">
+                              <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                    class="primary-display-field">
+                                    {{slickgridRowIdentificationValues[0]}}</h4>
+                              <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                    class="secondary-display-field">
+                                    {{slickgridRowIdentificationValues[1]}}</h6>
+                        </div>
+                        <div class="cs-tmar16" *ngIf="selectedObject['id']">
+                              <label class="cs-mainpopover-label">Status</label>
+                              <label class="cs-subpopover-label">{{previousStatus['statusLabel']}}</label>
+                        </div>
+                        <div class="cs-tmar16">
+                              <label *ngIf="selectedObject['id'] && selectedItems && selectedItems.length>0" class="cs-mainpopover-label"  style="display: inline;">Change to</label>
+                              <button *ngIf="selectedStatus['statusValue']!==previousStatus['statusValue']" style="    margin-left: 10px;" (click)="clearStatus()">Reset</button>
+                              <label *ngIf="!selectedObject['id']" class="cs-mainpopover-label">Status</label>
+                              <mat-select  *ngIf="selectedItems && selectedItems.length>0" actionView="status" [(ngModel)]="defaultOptionValue" class="cs-status-matselect cs-tsmar" (selectionChange)="onSelectionChange($event.value)">
+                                    <mat-option id="{{'action_'+objectname+'_'+fieldName+'_'+user['statusValue']}}" *ngFor="let user of selectedItems" [value]="user['statusValue']">
+                                          {{user['statusLabel']}}
+                                    </mat-option>
+                              </mat-select>
+                        </div>
+                        <div class="cs-tmar16">
+                              <mat-list-item>
+                                    <mat-label class="cs-mainpopover-label cs-bmar2" style="display: inline;">Comments
+                                          <span *ngIf="validationNeed" class="cs-mat-required" style="color: red;">*</span>
+                                          
+                                          <mat-label class="cs-validation-comments"  *ngIf="entryComments == '' && validationNeed && !isCommentsFieldFilled">Please Enter Comments</mat-label >
+                                    </mat-label>
+                                    <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" matInput [(ngModel)]="entryComments" placeholder="Write comments ..."
+                                          class="cs-cmt-textbox cs-nomar cs-cmt-area"></textarea>
+                              </mat-list-item>
+                        </div>
+                        <div>
+                              <mat-list-item>
+                                    <div class="cs-floatright cs-bpad-15 cs-tpad-12">
+                                          <!-- <button mat-raised-button (click)="entryClickActions('cancel')"
+                                                class="cs-status-btn-cancel">Cancel</button>
+                                          <button mat-raised-button (click)="entryClickActions('confirm')"
+                                                class="cs-status-btn-submit">Submit</button> -->
+                                            
+                                            
+                                                <button id="{{'action_'+objectname+'_'+fieldName+'_cancelbutton'}}" (click)="entryClickActions('cancel')" ng-reflect-color="primary" mat-stroked-button
+                                                class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                                <span class="cs-mat-btnlabel">Cancel</span>
+                                          </button>
+                    
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_okbutton'}}" *ngIf="callingFrom == 'internal'" (click)="entryClickActions('confirm')" ng-reflect-color="primary" mat-flat-button
+                                          class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                          <span class="cs-mat-btnlabel">Ok</span>
+                                    </button>
+                                    <button id="{{'action_'+objectname+'_'+fieldName+'_submitbutton'}}" *ngIf="callingFrom != 'internal'" (click)="entryClickActions('confirm')" ng-reflect-color="primary" mat-flat-button
+                                    class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                    <span class="cs-mat-btnlabel">Submit</span>
+                              </button>
+                        </div>
+                              </mat-list-item>
+                        </div>
+
+                  </div>
+
+
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="!appUtilityConfig.isMobileResolution && popUpType =='entry'" class="cs-status-workflow cs-status-popup">
+      <ng-container *ngTemplateOutlet="configStyleWeb"></ng-container>
+</div>
+
+<ng-template #nonApprover>
+      <div [id]="entryPopUpId">
+            <div>
+
+                  <div class="cs-status-subdiv">
+                        <div *ngIf="popUpType=='slickgrid'" class="cs-statususer-profile">
+                              <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                    class="primary-display-field">
+                                    {{slickgridRowIdentificationValues[0]}}</h4>
+                              <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                    class="secondary-display-field">
+                                    {{slickgridRowIdentificationValues[1]}}</h6>
+                        </div>
+                        <div>
+                              <div class="cs-tmar18">
+                                    <label class="cs-mainpopover-label">Status</label>
+                                    <mat-label class="cs-subpopover-label"
+                                          *ngIf="selectedStatus && selectedStatus['statusLabel']">
+                                          {{selectedStatus['statusLabel']}}</mat-label>
+                              </div>
+                              <div class="cs-tmar18">
+                                    <label class="cs-mainpopover-label">Note</label>
+                                    <mat-label
+                                          [ngClass]="(processingData['executionInfoDetail'] && processingData['executionInfoDetail']['workflowApproveStatusObject'] 
+                                    && processingData['executionInfoDetail']['workflowApproveStatusObject']['approvalExecutionStatus'] &&
+                                    processingData['executionInfoDetail']['workflowApproveStatusObject']['approvalExecutionStatus'])==='ERROR'?'cs-subpopover-label-reject':'cs-subpopover-label'"
+                                          *ngIf="processingData['approveActionMessage']">
+                                          {{processingData['approveActionMessage']}}</mat-label>
+                              </div>
+                        </div>
+                        <div class="cs-approver-img">
+                              <img matListAvatar src="{{processingData['lockedUserImg']}}"
+                                    onerror="this.src='assets/img/user_icon.png';" alt="user-icon"
+                                    title="{{processingData['lockedUser']}}">
+                              <h2 *ngIf="processingData['lockedDate']">
+                                    {{processingData['lockedDate']}}</h2>
+                        </div>
+                  </div>
+
+
+            </div>
+      </div>
+</ng-template>
+
+<ng-template #anotherProcess>
+      <div [id]="entryPopUpId">
+            <div>
+
+                  <div class="cs-status-subdiv">
+                        <div *ngIf="popUpType=='slickgrid'">
+                              <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                    class="primary-display-field">
+                                    {{slickgridRowIdentificationValues[0]}}</h4>
+                              <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                    class="secondary-display-field">
+                                    {{slickgridRowIdentificationValues[1]}}</h6>
+                        </div>
+                        <div>
+                              <div
+                                    style="align-items: center; display: flex; padding: 0px 5px; text-align: center; font-weight: 800;">
+                                    <img alt="" src="assets/img/workflow-img.png"
+                                          class="cs-status-img-initiated cs-status-img"
+                                          style="width: 20px; height: 20px; display: flex;">
+                                    <mat-label *ngIf="selectedStatus && selectedStatus['statusLabel']"
+                                          style="padding-left:5px;">
+                                          {{selectedStatus['statusLabel']}}</mat-label>
+                              </div>
+                              <br>
+                              <mat-label>
+                                    Another process initiated against the choosen data</mat-label>
+                        </div>
+
+                  </div>
+
+
+            </div>
+      </div>
+</ng-template>
+<ng-template #dataFetching>
+      <div>
+            <div [id]="entryPopUpId">
+                  <div>
+
+
+                        <div class="cs-status-subdiv">
+                              <div *ngIf="popUpType=='slickgrid'" class="cs-statususer-profile">
+                                    <h4 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]"
+                                          class="primary-display-field">
+                                          {{slickgridRowIdentificationValues[0]}}</h4>
+                                    <h6 *ngIf="slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]"
+                                          class="secondary-display-field">
+                                          {{slickgridRowIdentificationValues[1]}}</h6>
+                              </div>
+                              <ngx-skeleton-loader matLine count="1" [theme]="{
+                                          'width': '120px',
+                                          'border-radius': '0',
+                                          'height': '15px',
+                                          'margin-bottom': '10px',
+                                          'margin-top': '10px'
+                                        }" style="color: #808080!important;font-size: 14px;">
+                              </ngx-skeleton-loader>
+                              <ngx-skeleton-loader matLine count="1" [theme]="{
+                                    'width': '260px',
+                                    'border-radius': '0',
+                                    'height': '15px',
+                                    'margin-bottom': '10px'
+                                  }" style="color: #808080!important;font-size: 14px;">
+                              </ngx-skeleton-loader>
+                              <ngx-skeleton-loader matLine count="1" [theme]="{
+                                    'width': '360px',
+                                    'border-radius': '0',
+                                    'height': '15px',
+                                    'margin-bottom': '10px'
+                                  }" style="color: #808080!important;font-size: 14px;">
+                              </ngx-skeleton-loader>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="popUpType=='slickgrid'" class="cs-status-workflow cs-slickgrid-popoverbg cs-status-popover">
+      <div [id]="entryPopUpId">
+            <div *ngIf="isDataFetching == true">
+                  <ng-container *ngTemplateOutlet="dataFetching"></ng-container>
+            </div>
+            <div *ngIf="!selectedObject['systemAttributes'] && isDataFetching == false">
+                  <ng-container *ngTemplateOutlet="configStyleWeb"></ng-container>
+            </div>
+            <div
+                  *ngIf="selectedObject['systemAttributes'] && processingData['approverType'] === 'approver'  && isDataFetching == false && processingData['allowApproveAction']">
+                  <ng-container *ngTemplateOutlet="configStyle3">
+                  </ng-container>
+            </div>
+            <div
+                  *ngIf="selectedObject['systemAttributes'] && processingData['approverType'] === 'approver'  && isDataFetching == false && !processingData['allowApproveAction']">
+                  <ng-container *ngTemplateOutlet="nonApprover"></ng-container>
+            </div>
+            <div
+                  *ngIf="selectedObject['systemAttributes'] && selectedObject['systemAttributes']['fieldId'] === fieldIdValue && processingData['approverType'] !== 'approver' && isDataFetching == false">
+                  <ng-container *ngTemplateOutlet="nonApprover"></ng-container>
+            </div>
+            <div
+                  *ngIf="selectedObject['systemAttributes'] && selectedObject['systemAttributes']['fieldId'] !== fieldIdValue && processingData['approverType'] !== 'approver' && isDataFetching == false">
+                  <ng-container *ngTemplateOutlet="anotherProcess"></ng-container>
+            </div>
+      </div>
+</div>

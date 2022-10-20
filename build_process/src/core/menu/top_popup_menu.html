@@ -1,0 +1,50 @@
+<div id="top_popup_menu" class="cs-menu-web-scroll-hide cs-custom-scroll">
+  <div>
+    <mat-list>
+      <mat-list-item class="cs-menu-item"
+        title="{{(menuGroup.menuItems.web.length == 1 ? menuGroup.menuItems.web[0].title : menuGroup.menuGroupDisplayName) | translate}}"
+         (click)='closeMenu($event,menuGroup, i); menuGroup.menuItems.web.length == 1 && openPage(menuGroup.menuItems.web[0]);
+        '
+        *ngFor="let menuGroup of menuService.assignedMenuGroups; index as i"
+        [ngClass]="menuGroup['expand'] == true ? 'cs-menu-item-hover' : 'cs-menu-item-hover-remove'"
+        id="{{menuGroup.menugroupName + '_top_horizontal_menu'}}">
+        <div class="cs-top-popup-m-head">
+          <button
+            class="cs-menubtn-lightblue cs-menu-clrchange {{menuButtonBackgroundColor[i%menuButtonBackgroundColor.length]}}">
+            <em *ngIf="menuGroup.menuItems.web.length > 1" class="cs-ts-26 {{menuGroup.icon}}"></em>
+            <em *ngIf="menuGroup.menuItems.web.length == 1" class="cs-ts-26 {{menuGroup.menuItems.web[0].icon}}"></em>
+          </button>
+          <mat-label *ngIf="menuGroup.menuItems.web.length > 1 " class="cs-toppopwrdbrk">
+            {{menuGroup.menuGroupDisplayName | translate}}</mat-label>
+          <mat-label *ngIf="menuGroup.menuItems.web.length == 1 " class="cs-toppopwrdbrk">
+            {{menuGroup.menuItems.web[0].title | translate}}</mat-label>
+          <button class="cs-btn-arrow-hide cs-ts-25" id="{{menuGroup.menugroupName + '_arrow'}}"
+            *ngIf="menuGroup.menuItems.web.length != 1">
+            <em class="icon-mat-keyboard_arrow_right"></em>
+          </button>
+        </div>
+        <!-- <button class="cs-menubtn-lightblue cs-menu-clrchange {{menuButtonBackgroundColor[i%menuButtonBackgroundColor.length]}}">
+          <em class="{{menuGroup.icon}}"></em></button>
+        <mat-label class="cs-menu-item-label cs-toppopwrdbrk"> {{menuGroup.menuGroupDisplayName | translate}}</mat-label>
+        <button class="cs-btn-arrow-hide cs-ts-25" id="{{menuGroup.menugroupName + '_arrow'}}"
+          [ngClass]="menuGroup['expand'] == true ? 'cs-click-brnshow' : 'cs-click-brnhide'">
+          <em class="icon-mat-keyboard_arrow_right"></em>
+        </button> -->
+        <div [hidden]="!menuGroup['expand']" class="cs-menu-sidebar cs-custom-scroll" id="sideMenuBar"
+          *ngIf="menuGroup.menuItems.web.length != 1">
+          <mat-list>
+            <mat-list-item title="{{menu['title'] | translate}}" class="cs-menu-sidebar-label"
+              *ngFor="let menu of menuGroup['menuItems']['web']; index as i" (click)="openPage(menu)"
+              id="{{menu['menuitemid']}}">
+              <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                <em class="{{menu['icon']}}"></em>
+              </button>
+              <mat-label class="cs-menu-side-label">{{menu['title'] | translate}}</mat-label>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" main></ion-router-outlet>

@@ -1,0 +1,80 @@
+<ion-content class="ion-padding cs-updated-setting-page">
+  <ion-row *ngFor="let lan of lanList" class="cs-web-contents-align">
+    <ion-col size="12" sizeMd="4" sizeLg="5" sizeXl="5">
+      <ion-card class="cs-updated-setting-page-card">
+        <ion-item lines="none" (click)='setLanguage(lan.code)'>
+          <ion-label class="cs-updated-setting-page-cardlabel">{{lan.displayName}}</ion-label>
+          <ion-toggle [checked]="selectedLanguageCode == lan.code" slot="end" color="primary" (ionChange)="toggleChange($event, lan.code)"></ion-toggle>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>
+
+<lib-ionic-pullup *ngIf="appUtilityObj.isMobileResolution" (onExpand)="footerExpanded()" (onCollapse)="footerCollapsed()" [(state)]="footerState"
+  [toolbarTopMargin]="400" [minBottomVisible]="10">
+
+  <ion-toolbar class="toolbar" (click)="toggleFooter()" #ionDragFooter>
+    <div class="handle">
+      <div class="bar"></div>
+    </div>
+  </ion-toolbar>
+  <ion-content>
+        <ion-row padding-bottom class="cs-cspfmsetting-tab-bar">
+            <ion-tab-button (click)="openSettingsPage(0)">
+                <ion-label class="cs-cspfmsetting-label">About Us</ion-label>
+                <ion-icon class=" icon-mat-group" [ngClass]="changestyles[0]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="openSettingsPage(1)">
+                <ion-label class="cs-cspfmsetting-label">Contact Us</ion-label>
+                <ion-icon class="icon-mat-person" [ngClass]="changestyles[1]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="openSettingsPage(2)">
+                <ion-label class="cs-cspfmsetting-label">Feedback</ion-label>
+                <ion-icon class="icon-mat-email" [ngClass]="changestyles[2]"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button (click)="openSettingsPage(3)">
+                <ion-label class="cs-cspfmsetting-label">Share</ion-label>
+                <ion-icon class="icon-mat-share" [ngClass]="changestyles[3]"></ion-icon>
+            </ion-tab-button>
+        </ion-row>
+    <!-- <ion-row padding-bottom>
+      <ion-col class="cs-ta-c">
+        <img alt="" src="./assets/img/appstoreimg.png" (click)="goToAppStoreAction()">
+      </ion-col>
+      <ion-col>
+        <img alt="" src="./assets/img/googleplaystoreimg.png" (click)="goToPlayStoreAction()">
+      </ion-col>
+    </ion-row> -->
+    <div style="display: block;"></div>
+  </ion-content>
+</lib-ionic-pullup>
+
+<ion-toolbar *ngIf="!appUtilityObj.isMobileResolution" slot="bottom" style="--background: var(--ion-color-popupblue);">
+  <ion-row color="primary">
+      <ion-col class="cs-web-setting-toolbar" (click)="fotterSettingPage(0)">
+          <ion-icon class="cs-pullup-icon-color icon-mat-group" margin-start></ion-icon>
+          <ion-label class="cs-cspfmsetting-label cs-ts-14 ion-padding-start">About Us</ion-label>
+      </ion-col>
+      <ion-col class="cs-web-setting-toolbar" (click)="fotterSettingPage(1)">
+          <ion-icon class="cs-pullup-icon-color icon-mat-person"></ion-icon>
+          <ion-label class="cs-cspfmsetting-label cs-ts-14 ion-padding-start">Contact Us</ion-label>
+      </ion-col>
+      <ion-col class="cs-web-setting-toolbar" (click)="fotterSettingPage(2)">
+          <ion-icon class="cs-pullup-icon-color icon-mat-email"></ion-icon>
+          <ion-label class="cs-cspfmsetting-label cs-ts-14 ion-padding-start">Feedback</ion-label>
+      </ion-col>
+      <ion-col class="cs-web-setting-toolbar"(click)="fotterSettingPage(3)">
+          <ion-icon class="cs-pullup-icon-color icon-mat-share"></ion-icon>
+          <ion-label class="cs-cspfmsetting-label cs-ts-14 ion-padding-start">Share</ion-label>
+      </ion-col>
+      <ion-col class="cs-web-footer-logo-set">
+          <img alt="" src="./assets/img/appstoreimg.png" (click)="goToAppStoreAction()">
+      </ion-col>
+      <ion-col class="cs-web-footer-logo-set">
+          <img alt="" src="./assets/img/googleplaystoreimg.png" (click)="goToPlayStoreAction()">
+      </ion-col>
+  </ion-row>
+</ion-toolbar>

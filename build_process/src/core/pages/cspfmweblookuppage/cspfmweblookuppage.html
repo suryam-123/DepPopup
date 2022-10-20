@@ -1,0 +1,297 @@
+<div class="cs-mat-ui cs-mat-custom-theme">
+    <mat-toolbar color="primary" class="cs-lookuptheme cs-mat-pageheadtoolbar">
+        <div class="cs-mat-toolbartitle"
+            [title]="slickgridRowIdentificationValues && slickgridRowIdentificationValues[0] ? ((slickgridRowIdentificationValues && slickgridRowIdentificationValues[0]) + ((slickgridRowIdentificationValues && slickgridRowIdentificationValues[1]) ? (' - ' + (slickgridRowIdentificationValues && slickgridRowIdentificationValues[1])) : '')) :''">
+            <span class="cs-mat-pageheadtitle">
+                {{lookupTitle | translate}}
+            </span>
+        </div>
+
+        <span class="example-spacer"></span>
+
+        <button color="primary" id="cspfm_weblookup_done_btn" *ngIf="lookupInput['multiSelectionEnabled']" title="Done"
+            (click)="submitSelectedRecords()" class="cs-mat-icononly cs-filter-option cs-mat-pagehead-eachactions">
+            <em class="icon-mat-done"></em>
+        </button>
+
+        <button *ngIf="lookupInput['isSearchFilterEnabled']" id="ACT_institute_d_w_search_list_filter_1" mat-mini-fab
+            color="primary" title="Filter" (click)="filterAction()" class="cs-mat-pagehead-eachactions cs-mat-icononly">
+            <em class="icon-mat-search"> </em>
+        </button>
+
+        <!-- <button color="primary" id="cspfm_webcommon_lookup_filter_icon" *ngIf="!this.appUtilityConfig.isMobile"
+            title="Toggle Filter Row" (click)="toggleGridSearchRow()" class="cs-mat-icononly cs-filter-option">
+            <em
+                [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em>
+        </button> -->
+
+
+        <button [disabled]="isDisableManualclose" id="cspfm_webcommon_lookup_close_btn" mat-icon-button
+            class="cs-mat-icononly cs-mat-noshadow cs-mat-pagehead-eachactions" title="Close"
+            (click)="closeButtonClick()">
+            <em class="icon-mat-close"></em>
+        </button>
+
+    </mat-toolbar>
+
+    <mat-dialog-content class="cs-mat-popup-sizeset cs-advFilter-criteria-content"
+        *ngIf="!this.appUtilityConfig.isMobile">
+        <div id="cs-dropdown-{{layoutId}}" class="cs-dropdown cs-custom-scroll"></div>
+        <div class="mat-progress-spinner-overlay" *ngIf="additionalDataFetching">
+            <div class="mat-progress-spinner-center">
+                <img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'>
+            </div>
+        </div>
+
+
+        <div class="cs-custom-scroll cs-dialog-scroll-body-height">
+            <div class="cs-lookup-norecord cs-mat-parent-slick cs-mat-main-content">
+                <div class="cs-mat-contentmain">
+                    <mat-progress-bar *ngIf="isLoading" mode="indeterminate">
+                    </mat-progress-bar>
+                    <div *ngIf="lookupInput['isSearchFilterEnabled']">
+                        <cspfmWebFilter *ngIf="filterSectionDetail && filterSectionDetail['filterPanelExpanded']"
+                            [filterSectionDetail]="filterSectionDetail" [columnPerRow]="3"
+                            (onFilterChange)="onFilterChange($event)">
+                        </cspfmWebFilter>
+                    </div>
+                    <mat-card class="cs-mat-filteroption cs-mat-form-field cs-showFilterheight cs-adv-filter-criteria"
+                        *ngIf="!isLoading && (criteriaDisplayFields.length > 0 || (lookupInput['isSearchFilterEnabled'] && !filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterAppliedFields'].length > 0))">
+                        <div padding="" class="cs-org-filter-form ">
+                            <div class="cs-adv-cri-filter-body">
+                                <div class="cs-org-filter-lform">
+                                    <div *ngIf="criteriaDisplayFields.length>0"
+                                        class="cs-adv-filter-criteria">
+                                        <div *ngFor="let appliedFilterField of criteriaDisplayFields"
+                                            class="cs-display-inlineblock">
+                                            <div class="cs-org-filter-form-field">
+                                                <div class="cs-pr">
+                                                    <mat-label class="cs-org-filter-form-label">
+                                                        {{appliedFilterField['fieldDisplayName'] | translate}}
+                                                    </mat-label>
+                                                </div>
+                                                <div>
+                                                    <div class="cs-fullwidth">
+                                                        <div class="cs-org-filter-form-subl">
+                                                            <p id="one" class="cs-org-filter-form-sublabel">
+                                                                {{appliedFilterField['value']}}</p>
+                                                            <img src="assets/img/formulafield_icon.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="lookupInput['isSearchFilterEnabled'] && !filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterAppliedFields'].length > 0">
+                                        <div *ngFor="let appliedFilterField of filterSectionDetail['filterAppliedFields']"
+                                            class="cs-org-filter-form-field">
+                                            <div class="cs-pr">
+                                                <mat-label class="cs-org-filter-form-label setWidth"
+                                                    (click)="listServiceUtils.setWidth()">
+                                                    {{appliedFilterField['displayInfo']['label'] | translate}}</mat-label>
+                                            </div>
+                                            <div class="cs-ref cs-mat-custom-theme">
+                                                <div class="cs-fullwidth">
+                                                    <div class="cs-org-filter-form-subl cs-org-filter-form-seperationlabel">
+                                                        <p id="one" class="getWidth cs-org-filter-form-sublabel">
+                                                            {{appliedFilterField['displayInfo']['value']|
+                                                    translate}}</p>
+                                                    </div>
+                                                    <div class="cs-org-filter-form-subr"><button mat-icon-button=""
+                                                            class="cs-mat-icononly cs-mat-clear"
+                                                            id="{{'action_clear2_' + appliedFilterField['displayInfo']['label']}}"
+                                                            (click)="clearFilterAppliedField(appliedFilterField['key'])"><em
+                                                                class="icon-mat-clear cs-mat-madclear"></em></button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cs-apply-refresh"
+                                    *ngIf="lookupInput['isSearchFilterEnabled'] && !filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterAppliedFields'].length > 0">
+                                    <!-- // cs-org-filter-formR -->
+                                    <button id="action_clear3" (click)="clearMessageConfirmAlert()"
+                                        ng-reflect-color="primary" mat-stroked-button=""
+                                        class="cs-mat-labelonly mat-stroked-button mat-primary"><span
+                                            class="cs-mat-btnlabel">Clear
+                                            Filter</span></button></div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <div id="SEC_institute_d_w_search_list_listsection">
+                        <mat-card id="pfm_slickgrid_custpagination"
+                            class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid">
+                            <div class="cs-header-name cs-slick-title cs-pr">
+                                <mat-card-header class="cs-slickoption-btn">
+                                    <mat-card-title>
+                                        {{lookupTitle | translate}}
+                                    </mat-card-title>
+                                </mat-card-header>
+                                <div class="cs-pull-right">
+                                    <!-- Pagination UI - Top - Default pagination with all info -->
+                                    <span class="cs-custome-pagination" *ngIf="paginationConfigInfo && paginationConfigInfo['paginationPosition'] === 'TOP'
+                                        && gridObj && gridObj['cspfm_grid_custom_data'] && gridObj['cspfm_grid_custom_data']['isPaginationEnabled']
+                                        && allItems && allItems.length > 0">
+
+                                        <!-- Items per page -->
+                                        <div class="cs-rmar-15">
+                                            <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                            <mat-select class="cs-ts-14"
+                                                (selectionChange)="slickgridUtils.selectionChange($event, angularGrid)"
+                                                [value]="angularGrid && angularGrid.paginationService && angularGrid.paginationService.itemsPerPage"
+                                                [(ngModel)]="gridOptions['pagination']['pageSize']"
+                                                (click)="appUtilityConfig.take_position($event,isLoading)">
+                                                <mat-option class="cs-ts-14"
+                                                    *ngFor="let itemPerPage of gridOptions['pagination']['pageSizes']"
+                                                    [value]="itemPerPage">
+                                                    {{itemPerPage}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+
+                                        <!-- Records count info -->
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo['currentPageWithRecord'] === 'true'">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.dataFrom}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14 cs-grey">
+                                                -
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.dataTo}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14"><span> of </span>
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.totalItems}}
+                                            </mat-label>
+                                        </div>
+
+                                        <!-- Page count info -->
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo['numberOfPages'] === 'true'">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.pageNumber}}
+                                                / </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.pageCount}}<span>
+                                                    page </span></mat-label>
+                                        </div>
+
+                                        <!-- Next/Previous click -->
+                                        <button class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Previous" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService
+                                    && angularGrid.paginationService.pageNumber == 1}"
+                                            (click)="slickgridUtils.navigationChange('prev', angularGrid)">
+                                            <em class="icon-mat-navigate_before"></em>
+                                        </button>
+                                        <button class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Next"
+                                            [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber == angularGrid.paginationService.pageCount}"
+                                            (click)="slickgridUtils.navigationChange('next', angularGrid)">
+                                            <em class="icon-mat-navigate_next"></em>
+                                        </button>
+                                    </span>
+
+                                    <button color="primary" id="cspfm_webcommon_lookup_filter_icon"
+                                        *ngIf="!this.appUtilityConfig.isMobile" title="Toggle Filter Row"
+                                        (click)="toggleGridSearchRow()"
+                                        class="cs-mat-icononly cs-filter-option cs-pull-right">
+                                        <em
+                                            [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="{{gridContainerId}}" *ngIf="viewReady"
+                                class="clearfix cs-mat-slickgrid cs-slickfull-height cs-filter-beside-pagination cs_hightfix_by_script cs-fullslick-rowheight cs-mouse-pointer-enable"
+                                [ngClass]="paginationConfigInfo && paginationConfigInfo['paginationPosition'] === 'BOTTOM' ? 'cs-adv-cri-bottom-slickheight' : 'cs-adv-cri-slickheight'">
+                                <angular-slickgrid gridId="{{gridId}}" [columnDefinitions]="columnDefinitions"
+                                    [gridOptions]="gridOptions" [dataset]="allItems"
+                                    (sgOnClick)="onGridItemClick($event)"
+                                    (onAngularGridCreated)="angularGridReady($event)"
+                                    (sgOnCellChange)="onCellChanged($event.detail.eventData, $event.detail.args)">
+                                </angular-slickgrid>
+                                <div class="cs-pull-right cs-mat-slickgrid cs-bottom-pagination-action"
+                                    *ngIf="paginationConfigInfo && paginationConfigInfo['paginationPosition'] === 'BOTTOM'">
+                                    <!-- Pagination UI - Bottom -->
+                                    <span class="cs-custome-pagination" *ngIf="gridObj && gridObj['cspfm_grid_custom_data'] && gridObj['cspfm_grid_custom_data']['isPaginationEnabled']
+                                        && allItems && allItems.length > 0">
+
+                                        <!-- Items per page -->
+                                        <div class="cs-rmar-15">
+                                            <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                            <mat-select class="cs-ts-14"
+                                                (selectionChange)="slickgridUtils.selectionChange($event, angularGrid)"
+                                                [value]="angularGrid && angularGrid.paginationService && angularGrid.paginationService.itemsPerPage"
+                                                [(ngModel)]="gridOptions['pagination']['pageSize']"
+                                                (click)="appUtilityConfig.take_position($event,isLoading)">
+                                                <mat-option class="cs-ts-14"
+                                                    *ngFor="let itemPerPage of gridOptions['pagination']['pageSizes']"
+                                                    [value]="itemPerPage">
+                                                    {{itemPerPage}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+
+                                        <!-- Records count info -->
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo['currentPageWithRecord'] === 'true'">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.dataFrom}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14 cs-grey">
+                                                -
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.dataTo}}
+                                            </mat-label>
+                                            <mat-label class="cs-ts-14"><span> of </span>
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.totalItems}}
+                                            </mat-label>
+                                        </div>
+
+                                        <!-- Page count info -->
+                                        <div class="cs-rmar-15"
+                                            *ngIf="paginationConfigInfo['numberOfPages'] === 'true'">
+                                            <mat-label class="cs-ts-14 cs-grey cs-tw-600">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.pageNumber}}
+                                                / </mat-label>
+                                            <mat-label class="cs-ts-14">
+                                                {{angularGrid && angularGrid.paginationService &&
+                                            angularGrid.paginationService.pageCount}}<span>
+                                                    page </span></mat-label>
+                                        </div>
+
+                                        <!-- Next/Previous click -->
+                                        <button class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Previous" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService
+                                    && angularGrid.paginationService.pageNumber == 1}"
+                                            (click)="slickgridUtils.navigationChange('prev', angularGrid)">
+                                            <em class="icon-mat-navigate_before"></em>
+                                        </button>
+                                        <button class="cs-mat-icononly cs-nomargin" color="primary" mat-icon-button
+                                            ng-reflect-disable-ripple="true" title="Next"
+                                            [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber == angularGrid.paginationService.pageCount}"
+                                            (click)="slickgridUtils.navigationChange('next', angularGrid)">
+                                            <em class="icon-mat-navigate_next"></em>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div *ngIf="((allItems && allItems.length === 0) || (angularGrid && angularGrid.dataView.getLength() == 0))"
+                                class="cs_no_record_center_min_rec" [ngClass]="{'cs-noimage_pos_add': showFilter}">
+                                <img *ngIf="!isLoading" alt="" src='assets/img/no_record_found.png'>
+                                <img *ngIf="isLoading" class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" *ngIf="apputilityObject.isMobileResolution">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class=" homepage-content ">
+  <img class="home-logo-bg-image" src="assets/img/logo-bg-image.png" alt="logo-bg-image">
+  <div class="homepage-logo">
+  <ion-header class="ion-no-border">
+      <h6 *ngIf="apputilityObject.isMobileResolution && currentObject !== undefined" padding-start>{{currentObject[0]['appDisplayName']}}</h6>
+  </ion-header>
+<div>
+  <div class="homepage-image">
+  <img alt=""  onError="this.src='assets/img/chainsys-platform-logo.png';"
+    src="{{appIcon}}">
+  </div>
+  <div class="ion-text-center homepage-ver">
+      <ion-label slot="fixed" *ngIf="apputilityObject.isMobileResolution && currentObject !== undefined" >V {{currentObject[0]['versionNumber']}}</ion-label>
+      <ion-label slot="fixed" *ngIf="!apputilityObject.isMobileResolution">V {{currentObject[0]['versionNumber']}}</ion-label>
+    </div>
+  </div>
+</div>
+</ion-content>

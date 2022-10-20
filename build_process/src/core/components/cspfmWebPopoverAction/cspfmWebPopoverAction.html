@@ -1,0 +1,64 @@
+<div class="cs-custom-scroll cs-email-popover">
+  <div *ngIf="layoutActionJson && layoutActionJson['mailComposeOptions'].length>1">
+
+    <!-- icon and label alternate -->
+    <div class="cs-mail-option-imgandlabelalt" *ngIf="styleNumber == 3">
+      <div *ngFor="let composeOption of layoutActionJson['mailComposeOptions']"
+        (click)="handleMailActionClick(composeOption)">
+        <div class="cs-diffmail-select" *ngIf="composeOption === 'Gmail'" id="{{elementId + composeOption}}">
+          <div class="cs-diffmail-select-content">
+            <img src="assets/img/gmail.png" alt="">
+          </div>
+          <div class="cs-diffmail-select-label">
+            <mat-label>{{composeOption}}</mat-label>
+          </div>
+        </div>
+        <div class="cs-diffmail-select" *ngIf="composeOption === 'OutLook'" id="{{elementId + composeOption}}">
+          <div class="cs-diffmail-select-content">
+            <img src="assets/img/microsoftoutlook.png" alt="">
+          </div>
+          <div class="cs-diffmail-select-label">
+            <mat-label>{{composeOption}}</mat-label>
+          </div>
+        </div>
+        <div class="cs-diffmail-select" *ngIf="composeOption === 'DefaultComposer'" id="{{elementId + composeOption}}">
+          <div class="cs-diffmail-select-content">
+            <img src="assets/img/localnetwork.png" alt="">
+          </div>
+          <div class="cs-diffmail-select-label">
+            <mat-label>{{composeOption}}</mat-label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- label alternate -->
+    <div class="cs-mail-option-labelonlyalt" *ngIf="styleNumber == 2">
+      <div class="cs-diffmail-select cs-diffmail-select-labelonly" (click)="handleMailActionClick(composeOption)"
+        *ngFor="let composeOption of layoutActionJson['mailComposeOptions']" id="{{elementId + composeOption}}">
+        <div class="cs-diffmail-select-label cs-labelonly">
+          <mat-label>{{composeOption}}</mat-label>
+        </div>
+      </div>
+    </div>
+
+    <!-- icon and label -->
+    <div class="cs-mail-option-imgandlabel" *ngIf="styleNumber == 1">
+      <div class="cs-diffmail-select" *ngFor="let composeOption of layoutActionJson['mailComposeOptions']"
+        (click)="handleMailActionClick(composeOption)" id="{{elementId + composeOption}}">
+        <div class="cs-diffmail-select-content" *ngIf="composeOption === 'Gmail'">
+          <img src="assets/img/gmail.png" alt="">
+        </div>
+        <div class="cs-diffmail-select-content" *ngIf="composeOption === 'DefaultComposer'">
+          <img src="assets/img/localnetwork.png" alt="">
+        </div>
+        <div class="cs-diffmail-select-content" *ngIf="composeOption === 'OutLook'">
+          <img src="assets/img/microsoftoutlook.png" alt="">
+        </div>
+        <div class="cs-diffmail-select-label">
+          <mat-label>{{composeOption}}</mat-label>
+        </div>
+      </div>
+    </div>
+
+  </div>

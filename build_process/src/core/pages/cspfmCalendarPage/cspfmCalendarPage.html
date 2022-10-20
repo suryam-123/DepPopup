@@ -1,0 +1,172 @@
+<div class="cs-calendar-bg">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate">
+  </mat-progress-bar>
+  <div id="cs-dropdown-custom-123" class="cs-dropdown cs-cal-morecontent-w"></div>
+  <div>
+    <div fxLayout="row wrap" class="cs-cal-overflow cs-custom-scroll">
+      <div fxLayout="column" fxFlex="27%" class="cs-left-cal-card">
+        <mat-card id="cs-left-month-cal">
+          <div fxLayout="row wrap" class="cs-cal-whitebg cs-tpad-4 cs-spacebtw-flex">
+            <div fxLayout="column" class="cs-calendar-col1">
+              <button matTooltip="Previous" matTooltipPosition="above" matTooltipClass="calender-tooltip" mat-icon-button mwlCalendarPreviousView [view]=CalendarView.Month [(viewDate)]="selectedviewDate"
+                (viewDateChange)="closeOpenMonthViewDay()" (click)="nextPrevMonthAction1()" class="cs-lmar-3" id="ACT_calendar_ref_prev">
+                <em class="icon-mat-keyboard_arrow_left cs-calendar-down-icon"></em>
+              </button>
+            </div>
+            <div fxLayout="column" class="cs-calendar-col1 cs-calendar-col2">
+              <h6 class="cs-display-block cs-slice-month">
+                {{ selectedviewDate | calendarDate:(smallcalendarview + 'ViewTitle'):locale }}</h6>
+            </div>
+            <div fxLayout="column" class="cs-calendar-sel-opt">
+              <button matTooltip="Next" matTooltipPosition="above" matTooltipClass="calender-tooltip" mat-icon-button mwlCalendarNextView [view]=CalendarView.Month [(viewDate)]="selectedviewDate"
+                (viewDateChange)="closeOpenMonthViewDay()" (click)="nextPrevMonthAction1()" class="cs-rmar-3" id="ACT_calendar_ref_next">
+                <em class="icon-mat-keyboard_arrow_right cs-calendar-down-icon"></em>
+              </button>
+            </div>
+          </div>
+          <div [ngSwitch]="smallcalendarview" class="cs-calendar-left-view">
+            <mwl-calendar-month-view id="ref_calendar" (dayClicked)="dayClickedVal($event.sourceEvent, $event.day)" *ngSwitchCase="CalendarView.Month"
+              [locale]="locale" [viewDate]="selectedviewDate" [events]="monthEvent" [refresh]="refresh"
+              [activeDayIsOpen]="activeDayIsOpen">
+            </mwl-calendar-month-view>
+          </div>
+        </mat-card>
+
+        <mat-card>
+          <div class="cs-ion-cal-listheader" id="cs-ion-cal-listheader">My Calendar
+            <span>
+              <em matTooltip="Collapse"  matTooltipPosition="above" matTooltipClass="calender-tooltip" *ngIf="showContent" class="icon-mat-keyboard_arrow_up cs-calendar-down-icon cs-tmar-7"
+                (click)="showHideButton()" id="ACT_calendar_showhide_uparrow"></em>
+              <em matTooltip="Expand"  matTooltipPosition="above" matTooltipClass="calender-tooltip" *ngIf="!showContent" class="icon-mat-keyboard_arrow_down cs-calendar-down-icon cs-tmar-7"
+                (click)="showHideButton()" id="ACT_calendar_showhide_downarrow"></em>
+            </span>
+          </div>
+          <div *ngIf="showContent">
+            <div class="cs-pr cs-hpad-16">
+              <input matInput class="cs-mycal-inputbox" id="cs-mycal-inputbox" type="search" placeholder="Search"
+                [(ngModel)]="searchText" (input)="getSearchedItems($event.target.value)" (cancel)="onCancel()">
+              <span matTooltip="Search" matTooltipPosition="above" matTooltipClass="calender-tooltip-2" mat-icon-button class="cs-calendarsearch-btn">
+                <em class="icon-mat-search"></em>
+              </span>
+            </div>
+            <mat-card-content class="cs-bmar0">
+              <section class="cs-mycal-section-lineheight cs-hpad-16 cs-selandunsel">
+                <input matTooltip="Select/ Unselect All" matTooltipPosition="right" type="checkbox" [(ngModel)]="masterSelected" (change)="checkUncheckAll()" class='cs-cur' id="ACT_calendar_selectunselectall">Select/ Unselect All
+              </section>
+            </mat-card-content>
+            <mat-card-content class="cs-mycal-section cs-custom-scroll">
+              <section class="cs-mycal-section-lineheight cs-hpad-16" *ngFor="let eventVal of filteredLoadEvents;let i= index">
+                <!-- <mat-checkbox color="red" class="cs-margin-left-to-right cs-birth-check" type="checkbox"
+                          (click)="showHideEvents(i)" [(ngModel)]="eventVal.isSelected">
+                        </mat-checkbox> -->
+                <input matTooltip='{{eventVal.displayName | translate}}' matTooltipPosition="right" type="checkbox" [checked]="eventVal.isSelected" [(ngModel)]="eventVal.isSelected"
+                class='cs-cur' (click)="showHideEvents(i)" id="{{'ACT_calendar_event_' + i}}">
+                {{eventVal.displayName | translate}}
+              </section>
+            </mat-card-content>
+          </div>
+        </mat-card>
+
+      </div>
+      <div fxLayout="column" fxLayout="column" fxFlex="72%" class="cs-right-cal cs-tmar-12" id="rightcalheight"
+        [ngStyle]="{'height': calHeight +'px'}">
+        <div fxLayout="row wrap" class="cs-cal-spliter cs-right-cal-headpad cs-spacebtw-flex" id="calendarMonthHeader">
+          <div fxLayout="row" fxFlex="33.3%" class="cs-calendar-col1">
+            <em matTooltip="Previous" matTooltipPosition="above" matTooltipClass="calender-tooltip" class="icon-mat-keyboard_arrow_left cs-cal-month-shift cs-display-inlineblock cs-cur"
+              mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"
+              (click)="nextPrevMonthAction()" id="ACT_calendar_main_prev"></em>
+            <em matTooltip="Next" matTooltipPosition="above" matTooltipClass="calender-tooltip" class="icon-mat-keyboard_arrow_right cs-cal-month-shift cs-display-inlineblock cs-cur"
+              mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"
+              (click)="nextPrevMonthAction()" id="ACT_calendar_main_next"></em>
+            <h6 class="cs-tw-500 cs-ts-21 cs-cal-contentheader">
+              {{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h6>
+          </div>
+
+          <div fxLayout="row" fxFlex="33.3%" class="cs-cal-create-btn">
+            <button matTooltip="Create Event" matTooltipPosition="above" matTooltipClass="calender-tooltip-2" mat-stoke-button mwlCalendarToday (click)="createNewEvent($event)" id="ACT_calendar_create">
+              <em class="icon-mat-add"></em>
+              <mat-label>Create Event</mat-label>
+            </button>
+          </div>
+
+          <div fxLayout="row" fxFlex="33.3%" class="cs-calendar-sel-opt">
+            <button matTooltip="Today" matTooltipPosition="above" matTooltipClass="calender-tooltip-2" mat-stoke-button class="cs-calendar-button cs-ts-14" mwlCalendarToday [(viewDate)]="viewDate"
+              (click)="selectedDateAction()" id="ACT_calendar_today">Today</button>
+            <button  [matMenuTriggerFor]="calendarView" mat-stoke-button class="cs-month-btn cs-ts-14" (click)="showyearContent()" id="ACT_calendar_modechange">
+              <label matTooltip="Day" matTooltipPosition="above" *ngIf="this.view === CalendarView.Day">Day</label>
+              <label matTooltip="Week" matTooltipPosition="above" *ngIf="this.view === CalendarView.Week">Week</label>
+              <label matTooltip="Month" matTooltipPosition="above" *ngIf="this.view === CalendarView.Month">Month</label>
+              <em class="icon-mat-keyboard_arrow_down cs-month-btndownar"></em>
+            </button>
+            <mat-menu #calendarView="matMenu" [hasBackdrop]="true">
+              <div class="cs-caleve-show" *ngIf="yearContent">
+                <mat-list>
+                  <div fxLayout="row wrap" class="cs-cur cs-yearhover cs-pad-10" (click)="setView(CalendarView.Day)"
+                    [class.active]="view === CalendarView.Day" id="ACT_calendar_modechange_day">
+                    <label class="cs-yearlabel cs-cur">Day</label>
+                  </div>
+                  <div fxLayout="row wrap" class="cs-cur cs-yearhover cs-pad-10" (click)="setView(CalendarView.Week)"
+                    [class.active]="view === CalendarView.Week" id="ACT_calendar_modechange_week">
+                    <label class="cs-yearlabel cs-cur">Week</label>
+                  </div>
+                  <div fxLayout="row wrap" class="cs-cur cs-yearhover cs-pad-10" (click)="setView(CalendarView.Month)"
+                    [class.active]="view === CalendarView.Month" id="ACT_calendar_modechange_month">
+                    <label class="cs-yearlabel cs-cur">Month</label>
+                  </div>
+                </mat-list>
+              </div>
+            </mat-menu>
+          </div>
+        </div>
+        <div [ngSwitch]="view">
+          <mwl-calendar-month-view class="cs-calendar-monthview" *ngSwitchCase="CalendarView.Month"
+            [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+            [cellTemplate]="customCellTemplate" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)" [locale]="locale">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view class="cs-overflowauto cs-custom-scroll cs-calendar-weekview"
+            *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+            (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+            (hourSegmentClicked)="handlingClickOnDayCell($event.date, $event)"
+            (columnHeaderClicked)="columnHeaderClicked($event)" (dayHeaderClicked)="dayHeaderClicked($event)"
+            (click)="weekDayClick($event)" [locale]="locale">
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view class="cs-overflowauto cs-custom-scroll cs-calendar-dayview"
+            *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+            (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+            (hourSegmentClicked)="handlingClickOnDayCell($event.date, $event)" (dayHeaderClicked)="dayHeaderClicked($event)"
+            [locale]="locale">
+          </mwl-calendar-day-view>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <div class="cal-cell-top" id="{{'ACT_calendar_month_create' + day.date}}"(click)="handlingClickOnMonthCell(day,$event)">
+      <div class="cs-cal-card-head" *ngIf="day.events.length != 0">
+        <div id="{{'ACT_calendar_month_event' + day.date}}" mwlCalendarTooltip="true" [tooltipPlacement]="'top'" [tooltipEvent]="day.events[0]"
+          [tooltipTemplate]="cellTooltipTemplate" class="cs-cal-card cs-cursor-pointer"
+          [style.background-color]="day.events[0].color.primary"
+          (click)="detailActionPressed(day.events[0],day.date,$event)">
+          <em class={{day.events[0].meta.calendarIcon}}></em>
+          <label> {{day.events[0].title}} </label>
+        </div>
+      </div>
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+      <div (click)="moreButtonPressed(day,$event)" *ngIf="day.events.length>1"
+        class="cs-hmar-5 cs-cursor-pointer cs-more-btn" id="{{'ACT_calendar_more_popup_' + day.date}}">
+        {{day.events.length - 1}} more</div>
+    </div>
+  </ng-template>
+
+  <ng-template #cellTooltipTemplate let-event="event">
+    <div class="cal-tooltip" [ngClass]="'cal-tooltip-top'">
+      <div class="cal-tooltip-arrow"></div>
+      <div class="cal-tooltip-inner">
+        {{ event.title }}
+      </div>
+    </div>
+  </ng-template>
+</div>

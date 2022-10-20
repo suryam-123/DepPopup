@@ -1,0 +1,289 @@
+.cs-empassign-btn {
+    background: $card_bg;
+    color: $grey_base_secondary;
+    border: 1px solid $attachment_and_document_search_outline;
+    border-radius: 5px;
+    padding: 0px 9px;
+    margin: 0 4px;
+    line-height: 21px;
+    font-size: 13px;
+    width: fit-content;
+    min-width: 65px;
+    &:hover:enabled {
+      background-color: $document_action_btns_bg;
+      color: $document_action_btns_clr;
+      border: 1px solid transparent;
+      .cs-objectassign-val {
+        color: $document_action_btns_clr;
+        font-weight: 500;
+        padding-top: 2px;
+      }
+    }
+    &:hover:disabled {
+        cursor: not-allowed;
+    }
+}
+ .cs-empassign-btn-active{
+    background-color: $document_action_btns_bg;
+    color: $document_action_btns_clr;
+ }
+ .cs-objectassign-val{
+     color: $grey_base_primary;
+     font-weight: 500;	
+     padding-top: 2px;
+ }
+ .cs-objectassign-val-active{
+    color: $document_action_btns_clr;
+}
+
+.cs-sel-record-l{
+    font-size: 13px;
+    color: $grey_base_secondary;
+    margin-right: 7px;
+    font-family: cursive;
+}
+.cs-sel-val{
+    border: 1px solid $attachment_and_document_search_outline;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 7px;
+    background: $card_bg;
+    color: $grey_base_primary;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    .cs-object-assigned{
+        background: #32BF6E;
+        border-radius: 50%;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        font-size: 14px;
+        top: -7px;
+        right: -8px;
+        color: #fff;
+    }
+    .cs-object-checked{
+        font-size: 12px;
+        position: absolute;
+        left: 2px;
+        top: 2px;
+    }
+    .cs-object-unassigned{
+        background: #D3524C;
+        border-radius: 50%;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        font-size: 14px;
+        top: -7px;
+        right: -8px;
+        color: #fff;
+    }
+}
+.cs-outof-l{
+    font-size: 14px; 
+    color: $grey_base_secondary;
+    margin-right: 7px;
+}
+.cs-outof-val{
+    color: $grey_base_primary;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.cs-assignment-swapbtn{
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    z-index: 99;
+    button{
+        background: $assignment_swap_btn_bg;
+        border-radius: 50%;
+        z-index: 99;
+        padding: 5px;
+        em{
+            font-size: 18px;
+            font-weight: 500;
+            color: $assignment_swap_btn_clr;
+        }
+    }
+}
+.cs-assignment-vieweditbtn{
+    background: initial;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: $fab_icon_color;
+    padding: 3px 0px 0px;
+}
+.cs-assignment-main-label{
+    color: $grey_base_secondary;
+    font-size: 12px;
+    padding-bottom: 7px;
+}
+.cs-assignment-sub-label{
+    color: $grey_base_primary;
+    font-size: 14px;
+    font-weight: 500;
+}
+.cs-fullheight{
+    height: 100%;
+}
+.cs-assignment-preview{
+    margin: 18px 20px;
+    max-width: fit-content;
+    padding: 4px 11px 20px 17px !important;
+    border-radius: 4px !important;
+    background-color: $assignment_view_bg !important;
+    .cs-assignment-preview-detail{
+        display: inline-flex;
+        width: 100%;
+        .cs-assignment-preview-detailchild{
+            padding: 0px 50px 26px 5px;
+        }
+    }
+}
+.cs-display-noneimp{
+    display: none !important;
+}
+.cs-blockimp{
+    display: block !important;
+}
+
+.cs-assignment-select{
+    max-width: calc(100% - 555px);
+    padding: 0px 10px 0px 19px;
+    .mat-form-field-infix{
+        padding: 0 !important;
+        border-top: 0;
+        mat-select{
+            border-radius: 15px;
+            padding-left: 10px !important;
+            .mat-select-arrow-wrapper{
+                padding-right: 5px;
+            }
+        }
+    }
+}
+.cs-assignment-recordsel-badge{
+    // margin-top: 3px;
+    margin-left: 10px;
+}
+.cs-assignmentdashboard-details{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+
+    .cs-dashboard-details-head{
+        display: flex;
+        align-items: center;
+        mat-label{
+            font-size: 15px;
+            color: $grey_base_primary !important;
+            font-weight: 800;
+        }
+        span{
+            background-color: $document_count_badge_bg;
+            color: $document_count_badge_clr;
+            padding: 2px 5px;
+            border-radius: 10px;
+            margin-left: 7px;
+            font-size: 13px;
+        }
+    }
+    input{
+        width: 350px;
+        border-radius: 15px !important;
+        position: relative;
+        padding-left: 12px !important;
+    }
+    button{
+        position: absolute;
+        right: 4px;
+        background: inherit;
+        font-size: 18px;
+        top: 5px;
+        color: $secondary_color;
+    }
+}
+.cs-dashboard-detail-view{
+    margin: 22px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    flex-wrap: wrap;
+    mat-card{
+        padding: 0px !important;
+        width: fit-content;
+        border-radius: 6px !important;
+        display: inline-block;
+        background-color: $assignment_view_bg !important;
+    }
+    .cs-dashboard-detail-view-head{
+        padding: 5px 0px 7px 8px;
+        border-radius: 6px 6px 0px 0px;
+        background: $assignment_preview_head_bg;
+        mat-label{
+            color: $grey_base_primary !important;
+            font-weight: 500;
+            padding-left: 7px;
+            font-size: 14px;
+        }
+    }
+    .cs-detailview-check{
+        padding: 19px;
+        .cs-vpad{
+            padding: 0 24px;
+        }
+        .cs-assigned-valclr{
+            color: $grey_base_primary;
+        }
+    }
+    .cs-detailview-separator{
+        display: inline-block;
+        height: 33px;
+        width: 1px;
+        background: #ccc;
+        vertical-align: top;
+        margin-top: 8px;
+    }
+}
+
+.cs-assignment-tabs{
+    margin-top: 20px !important;
+}
+.cs-onevsmany-maincard{
+    height: calc(100vh - 159px);
+    overflow: auto;
+}
+.cs-multicardhide{
+    &.cs-mat-parent-slick .cs-mat-slickgrid angular-slickgrid{
+        background: inherit;
+    }
+}
+.cs-ts-22{
+    font-size: 22px;
+}
+.cs-max-width-42{
+    max-width: 42% !important;
+}
+.cs-max-width-58{
+    max-width: 58% !important;
+}
+.cs-lapd-5{
+    padding-left: 5px;
+}
+.cs-slickoption-assignmentbtn{	
+    position: absolute;	
+    top: 44px;	
+    left: 19px;	
+}	
+.cs-lineheight-14{	
+    line-height: 14px;	
+}	
+.cs-bpad-1{	
+    padding-bottom: 1px;	
+}

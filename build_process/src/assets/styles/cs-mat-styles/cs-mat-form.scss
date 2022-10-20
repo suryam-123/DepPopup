@@ -1,0 +1,2076 @@
+.cs-mat-ui {
+
+    input,
+    textarea,
+    mat-select {
+        border: $input_box_border_width $input_box_border_style $input_box_border_color;
+        border-radius: $input_box_border_radius;
+        font-size: $input_box_inner_font_size;
+        font-style: $input_box_inner_font_style;
+        font-weight: $input_box_inner_font_weight;
+        color: $input_box_inner_color;
+        height: 31px;
+        padding-left: 5px !important;
+        background: $input_box_bg !important;
+        box-sizing: inherit;
+    }
+
+    input {
+        padding-right: 23px; 
+        &[disabled="true"] {
+            color: #878787;
+        }
+    }
+
+    mat-select {
+        line-height: 31px;
+    }
+
+    textarea {
+        height: auto;
+    }
+
+    .mat-checkbox,
+    .mat-radio-button {
+        display: inline-flex;
+        font-size: 13px;
+        margin-bottom: 5px;
+        margin-right: 15px;
+    }
+    .mat-radio-button
+    {
+        &:first-child {
+            margin-top: 5px;
+        } 
+    }
+    .mat-checkbox {
+        .mat-checkbox-inner-container {
+            margin-right: 5px;
+        }
+    }
+
+    mat-radio-group {
+        display: block !important;
+    }
+
+    .mat-form-field-label {
+        transform: translateY(-1.52375em) scale(1) !important;
+        overflow: inherit;
+        width: fit-content !important;
+        pointer-events: all;
+        .mat-form-field-required-marker {
+            color: #d12827;
+            position: relative;
+            top: 5px;
+            right: 0px;
+            z-index: 0;
+        }
+    }
+
+    .cs-mat-required {
+        color: #d12827;
+        position: relative;
+        top: 0px;
+        right: -3px;
+        z-index: 0;
+        font-size: 14px;
+    }
+    .cs-labelwithactionicon{
+        .mat-form-field-label{
+            position: initial;
+            .cs-mat-icononly{
+                margin-left: 10px!important;
+            }
+        }
+    }
+
+    mat-label {
+        color: $grid_segment_option_title_color !important;
+        font-size: 13px;
+        text-transform: capitalize;
+        .mat-badge-content
+        {
+           
+            bottom: 0px !important;
+        }
+       .cs-tmar-left
+       {
+           margin-left: 5px;
+       }
+       button{
+           
+          height: 10px !important;
+       }
+       .cs-btn-list
+       {
+        em{
+            font-size: 20px;
+        }
+       }
+       
+       .cs-labelwithicon-btn{
+        height: 20px!important;
+        line-height: 10px !important;
+        .mat-button-wrapper
+        {
+            line-height: 12px !important;
+            em{
+                font-size: 14px;
+            }
+            .cs-mat-btnlabel
+            {
+                font-size: 12px;
+            }
+        }
+    }
+    }
+    .cs-mat-label-depent
+    {
+    margin-bottom: 7px;
+    }
+    .cs-validation-comments{
+        color: red!important;
+        margin-left: 5px;
+        font-size: 13px;
+    }
+
+    .cs-mat-formulafield {
+        label,mat-label {
+            img {
+                width: 20px;
+                height: 20px;
+                margin: -3px 0px -5px 6px;
+                padding: 2px;
+                border: 1px solid #dcdfe2;
+                background: #f5f5f5;
+                border-radius: 50%;
+            }
+        }
+        .cs-mat-vg-cont {
+            padding-right: 30px;
+        }
+    }
+    [fxlayout~="row"]{
+        // &[fxlayout~="wrap"]{
+        //     // padding-bottom: 40px;
+        // }
+        [fxlayout~="column"]{
+            // [fxlayout~="row"]{
+            //     margin-bottom: 0px !important;
+            // }
+            padding-bottom: 10px!important;
+            align-self: flex-end;
+            [fxlayout~="column"]{
+               padding-bottom: 0px!important;
+            }
+            .cs-right-expand-btn {
+                float: right;
+                height: 18px;
+
+                button {
+                    height: 18px !important;
+                    width: 18px !important;
+                    float: right;
+                    padding: 0;
+
+                    em {
+                        font-size: 18px !important;
+                    }
+                }
+            }
+        }
+        align-items: flex-end;
+        // margin-bottom: 10px; 
+        .cs-num-from-to, .cs-mat-from-to {
+            .cs-mat-iconcenter{
+                position: relative;
+                .cs-mat-from-to-icon{
+                    position: absolute;
+                    bottom: 40px;
+                }
+            }
+        }
+        .cs-matlabel-div{
+            color: $grid_segment_option_title_color !important;
+            font-size: 13px;
+            text-transform: capitalize;
+            padding-bottom: 5px;
+        }
+        .mat-form-field-infix{
+            border-top: 0px;
+        }
+        .cs-date-input-container{
+            .cs-mat-select-p{
+                height: 0px;
+            }
+            // .cs-mwl-datepicker{
+            //     // padding-top: 2px;
+            // }
+        }
+        // .cs-mat-from-to{
+        //     padding-bottom: 0px!important;
+        // }
+    }
+    app-cspfmcalendarpage {
+        .cs-calendar-bg {
+            [fxlayout~="row"] {
+                [fxlayout~="column"] {
+                    // padding-bottom: 20px!important;
+                    align-self: auto;
+                }
+            }
+        }
+    }
+    .cs-mat-main-content {
+        .cs-mat-contentmain {
+            .cs-mat-filteroption {
+                .cs-org-filter-form {
+                    .cs-apply-refresh {
+                        .cs-mat-madclear-btn {
+                            background: #1890FF !important;
+                            border-radius: 5px !important;
+                            padding: 5px 12px !important;
+                            height: 34px !important;
+                            color: #fff !important;
+
+                            .cs-mat-madclear-label {
+                                font-size: 15px !important;
+                                font-weight: 500 !important;
+                            }
+                        }
+                    }
+
+                    .cs-mat-labelset {
+                        .mat-form-field-infix {
+                            border-top: inherit !important;
+                        }
+                        &.cs-mat-selectwithdate {
+                            width: 20px;
+                        }
+
+                        .cs-matselectfield {
+                            width: 20px;
+                            position: relative;
+                            top: -6px;
+                            left: -3px;
+                            padding-left: 0px !important;
+                            border: none;
+                            background: transparent !important;
+                            .mat-select-value {
+                                max-width: inherit !important;
+                            }
+                            .mat-select-trigger{
+                                width: auto;
+                            }
+
+                        }
+
+                        .cs-matselect-operator {
+                            .mat-select-value {
+                                position: relative;
+                                left: 4px;
+
+                                .mat-select-value-text {
+                                    font-size: 15px !important;
+                                }
+                            }
+
+                            .mat-select-arrow-wrapper {
+                                padding-right: 4px;
+
+                                .mat-select-arrow {
+                                    opacity: 0;
+                                    margin-right: 6px !important;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                &.cs-mat-form-field {
+                    padding: 12px 12px 0px 12px !important;
+
+                    .cs-org-filter-form {
+                        width: 100%;
+                        position: relative;
+
+                        .cs-org-filter-lform {
+                            display: inline-block;
+                            width: 90%;
+                        }
+                    }
+
+                    .cs-org-filter-formR {
+                        // width: 10%;
+                        display: inline-block;
+                        padding-right: 16px;
+                        width: 10%;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(0%, -65%);
+                        margin: 0 !important;
+
+                        button {
+                            position: relative;
+                            right: -10px;
+                        }
+                    }
+                }
+            }
+
+            form {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+            }
+
+            .mat-form-field {
+                margin-bottom: 0px;
+                width: 100%;
+                .ql-container{
+                    margin-bottom: 0px;
+                }
+                .mat-form-field-wrapper {
+                    padding-bottom: 0px;
+
+                    .mat-form-field-flex {
+                        .mat-form-field-infix {
+                            padding: 0.5em 0 0 0;
+                            cs-whocolumn-icon{
+                                .mat-icon-button{
+                                    // position: absolute;
+                                    // right: inherit;
+                                    // top: -13px;
+                                    // bottom: inherit;
+                                    color: $grey_base_primary;
+                                    // font-size: 20px;
+                                    font-size: 16px;
+                                    height: 24px;
+                                    line-height: 20px;
+                                }
+                                .mat-stroked-button{
+                                    position: absolute !important;
+                                    top: -5px;
+                                }
+                            }
+
+                            button {
+                                border-radius: unset;
+                                background: transparent;
+                                box-shadow: none;
+                            }
+
+                            textarea {
+                                min-height: 60px;
+                            }
+                        }
+                    }
+                }
+
+                &.cs-mat-searchandlookupmodel {
+                    .cs-mat-cal-label {
+                        position: relative;
+                        top: -3px;
+                    }
+
+                    .cs-mat-cal-sel {
+                        width: 20px;
+                        border: none;
+                        line-height: 30px;
+                    }
+
+                    .cs-mat-cal-input {
+                        width: calc(100% - 20px);
+                    }
+
+                    input {
+                        padding-right: 30px;
+
+                        &.cs-input-number {
+                            padding-right: 0px !important;
+                        }
+                    }
+
+                    .cs-mat-icononly {
+                        position: absolute;
+                        right: 0;
+                        bottom: 35px !important;
+                        font-size: 20px !important;
+
+                        .icon-mat-clear {
+                            font-size: $icon_size;
+                            // position: relative;
+                            // top: 2px;
+                            // right: -6px;
+                        }
+                    }
+
+                    .mat-datepicker-toggle {
+                        button {
+                            position: absolute;
+                            right: 0;
+                            bottom: -7px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .mat-form-field-label-wrapper {
+                    overflow: inherit;
+                }
+            }
+
+            .cs-mwl-datepicker {
+                padding-top: 0px;
+                padding-bottom: 0px;
+                input {
+                    width: 100%;
+                    background: transparent;
+                    padding-right: 50px !important;
+                }
+
+                // a {
+                //     position: absolute;
+                //     top: 7px;
+                //     background: none !important;
+                //     color: $fab_icon_color !important;
+                //     em {
+                //         font-size: 16px;
+                //     }
+                // }
+                .cs-datepicker-remove-btn {
+                    position: absolute;
+                    right: 26px;
+                    top: 7px;
+                    background: none !important;
+                    color: $fab_icon_color !important;
+                    em {
+                        font-size: 16px;
+                    }
+                }
+
+                .cs-datepicker-calendar-btn {
+                    position: absolute;
+                    right: 5px;
+                    top: 6px;
+                    background: none !important;
+                    color: $fab_icon_color !important;
+
+                    em {
+                        font-size: 16px;
+                    }
+                }
+            }
+.cs-mat-error
+{
+    .mat-chip-list-wrapper{
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: unset;
+        position: absolute;
+        top: 0;
+        // align-self: flex-end;
+        // justify-content: flex-end;
+        // align-items: flex-start;
+    }
+}
+            mat-chip-list {
+                display: block;
+                line-height: 30px;
+                border: none;
+                font-size: 11px;
+                // text-indent: 5px;
+                color: #666666;
+                margin-top: 5px;
+                text-indent: initial !important;
+                outline: none;
+                min-height: 30px;
+                position: relative;
+              
+                .cs-b-icons-right{
+                    display: inline-flex;
+                    // align-items: flex-start;
+                    // justify-content: flex-start;
+                    // justify-self: flex-start;
+                    // float: right;
+
+                    // // width: 25%;	
+                    // // display: flex;	
+                    // // align-items: center;	
+                    // justify-content: flex-end;	
+                    // position: absolute;	
+                    // top: 0px;	
+                    // right: 3px;
+                    .cs-icon-margin{
+                        margin-bottom: 2px;
+                    }
+                    .cs-b-icon{
+                        margin-left: 3px;
+                        cursor: pointer;
+                        em{
+                            font-size: 14px;
+                            &.cs-key-icon{
+                                color: $userassignment_add_btn;
+                                border-radius: 25px;
+                                padding: 4px;                             
+                                &:hover{
+                                    color: $userassignment_add_btn;
+                                    background: $userassignment_add_icon;
+                                    box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 3px -1px;
+                                }                          
+                            }
+                        }
+                    }
+                }
+                .cs-lspad{
+                    padding-left: 5px;
+                }
+                .cs-choose-msg
+                {
+                  line-height: 15px;
+                  display: -webkit-box;
+                 -webkit-line-clamp: 2;
+                 -webkit-box-orient: vertical;
+                  overflow: hidden;
+                }
+                .cs-choose-line
+                {
+                    line-height: 15px;
+                }
+                .mat-error{
+                    word-break: break-word;
+                    width: 100%;
+                    line-height: 15px;
+                    margin-bottom: 15px;
+                    padding-top: 5px;
+                    display: -webkit-box;	
+                    -webkit-line-clamp: 2;	
+                    overflow: hidden;	
+                    text-overflow: ellipsis;	
+                    -webkit-box-orient: vertical;	
+                    margin-left: 4px;	
+                    // position: absolute;	
+                    // top: 0px;
+                    height: fit-content;
+                }
+                mat-chip {
+                    min-height: 24px !important;
+                    font-size: 12px !important;
+                    &.cs-singleobj-viewchip{ //record Association view chip
+                        .cs-singleobj-viewlabelsub{  
+                            font-weight: 500;
+                            margin-left: 5px;
+                        }
+                    }
+                    &.checked {
+                        color: #fff;
+
+                        &:focus::after {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.cs-mat-errorcontentactive {
+            form {
+                .mat-form-field {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+
+        .cs-mat-iconwithlabel {
+            border: 1px solid #deebff;
+            font-size: 12px;
+            padding: 2px 15px 2px 15px;
+            display: inline-flex;
+            align-items: center;
+            line-height: 24px;
+            color: #5f5f5f;
+            background: #f2f7ff !important;
+            font-weight: 500;
+
+            i {
+                font-size: 18px;
+                padding-right: 5px;
+            }
+        }
+    }
+    .cs-url-popover{
+        width: 470px;
+        background: $card_bg;
+        .cs-url-popover-head{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 16px 4px 16px;
+        }
+        .cs-url-pop-head-label{
+            display: flex;
+            align-items: center;
+            label{
+                font-size: 17px;
+                font-weight: 800;
+                color: $grey_base_primary;
+            }
+        }
+        .cs-url-pop-infobtn{
+            background: inherit;
+            margin-top: 2px;
+            em{
+                font-size: 18px;
+                margin-left: 5px;
+                color: $slickgrid_inner_icon_color;
+            }
+        }
+        .cs-url-pop-addlist{
+            display: flex;
+            align-items: center;
+            .cs-url-pop-addlistbtn{
+                background-color: $filled_button_bg;
+                color: $filled_button_color;
+                padding: 6px 8px;
+                border-radius: 3px;
+            }
+        }
+        .mat-dialog-content{
+            margin: 0 0;
+            padding: 0 0;
+        }
+    }
+    .cs-url-pop-infobox{
+        background:$url_info_background_clr;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 6px 16px 0px 16px;
+        border-radius: 0px;
+        padding: 4px 1px 6px 9px;
+    }
+    .cs-url-pop-closebtn{
+        button{
+            background: inherit;
+            width: 31px;
+            padding-top: 4px;
+            em{
+                font-size: 16px;
+                color: $fab_icon_color;
+            }
+        }
+    }
+    .cs-url-pop-inf-infobtn{
+        background: inherit;
+        font-size: 18px;
+        padding: 0;
+        margin-right: 10px;
+        color: #1891ff;
+        display: flex !important;
+        align-items: center;
+    }
+    .cs-url-events{
+        border-bottom: 1px solid #dedede;
+        padding: 10px 16px 1px 16px;
+        margin-top: 6px; 
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+    .cs-url-link{
+        color: #0950cc !important;
+        text-decoration-color:#0950cc;
+        position: relative;
+        top: -1px;
+    }
+    .cs-url-chip{
+        min-width: 75px;
+        text-align: center;
+        max-width: 197px;
+        color: #0950cc !important;
+    .cs-ra-chip-parent{
+            width: 100%;
+        }
+    }
+    .cs-url-chip.cs-recordassociation-chip:hover{
+        .cs-gradient-chip {
+            padding-left: 1px;
+        }
+    }
+    .cs-inf-infolab{
+        mat-label{
+            font-size: 11px !important;
+            color: $grey_base_primary !important;
+        }
+    }
+    .cs-rpad-10{
+        padding-right: 10px;
+    }
+    .cs-rmar-7{
+        margin-right: 7px;
+    }
+    .cs-chip-bpad{
+        padding-bottom:12px    
+    }
+    // .cs-select-pad{
+    //     // padding-bottom: 20px;
+    // }
+    .cs-readonly {
+        padding-bottom: 0px;
+    }
+    .cs-lookup-bpad{
+        // padding-bottom: 20px;
+        .mat-form-field-wrapper{
+            padding-bottom: 0px!important;
+        }
+        .mat-form-field-infix {
+            border-top: 0px !important;
+        }
+    }
+    .cs-unique_field{
+        display: inline-flex;
+        height: 22px;
+        width: 22px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 500px;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover{
+            color: $userassignment_add_btn;
+            background: $userassignment_add_icon;
+            box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 3px -1px;
+        }
+    }
+    // .cs-assigment-bmar {
+    //     [fxlayout~="row"] {
+    //       margin-bottom: 0px !important;
+    //     }
+    //   }
+}
+.cs-tmar-5
+{
+margin-top: 5px;
+}
+.cs-tmar6 {
+    margin-top: 6px;
+}
+
+.cs-tmar10 {
+    margin-top: 10px;
+}
+
+.cs-tmar-neg1 {
+    margin-top: -1px;
+}
+.cs-tmar12 { 
+    margin-top: 12px;  
+}
+.cs-tmar7
+{
+    margin-top: 7px;
+}
+
+.cs-event-height {
+    min-height: 52px;
+    height: fit-content;
+
+    .mat-form-field-prefix {
+        height: 20px
+    }
+}
+// .cs-ass-mat-height {
+//     height: 465px;
+//     .cs-mat-parent-slick
+//     {
+//         .cs-mat-slickgrid
+//         {
+//             angular-slickgrid
+//             {
+//                 background: inherit;
+//             }
+//         }
+//     }
+//   }
+
+.checked {
+    background-color: $primary_color !important;
+    color: white;
+}
+.mat-form-field {
+    .mat-form-field-wrapper {
+        padding-bottom: 0px;
+
+        .mat-form-field-flex {
+            .mat-form-field-infix {
+                input.mat-input-element {
+                    box-sizing: inherit;
+                }
+            }
+        }
+    }
+}
+.entry-form-field-container {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .cs-lspad-md {
+        padding-left: 16px !important;
+    }
+
+    .cs-mat-madfield {
+        .mat-form-field-wrapper {
+            .mat-form-field-outline {
+                color: #22A8F0 !important;
+            }
+
+            .mat-form-field-outline-thick {
+                color: #22A8F0 !important;
+            }
+
+            .mat-form-field-infix {
+                padding-top: 0px !important;
+
+                .mat-form-field-label-wrapper {
+                    .mat-form-field-label {
+                        position: relative;
+                        top: 10px;
+                        background: #fff;
+                        width: fit-content;
+                        padding: 0px 5px;
+                        font-weight: 500;
+                    }
+                }
+
+                .cs-mat-madinput {
+                    padding-top: 0px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    position: relative;
+                    top: -1px;
+                    left: -4px;
+                    height: 21px;
+                    color: #2196f3 !important;
+
+                    &::after {
+                        content: attr(data-value) ' ';
+                        visibility: hidden;
+                        white-space: pre-wrap;
+                    }
+                }
+
+                .cs-mat-madclear {
+                    background: #DA5350;
+                    color: #fff;
+                    border-radius: 50%;
+                    font-size: 12px !important;
+                    padding: 1px;
+                    position: relative;
+                    top: 4px;
+                    right: 0px;
+                    // position: relative;
+                    // top: 2px;
+                    // right: -6px;
+                }
+            }
+        }
+    }
+    .cs-monthly-fee_material{	
+        .cs-mat-formulafield{	
+            .cs-mat-view-grid{	
+                padding: 10px 0px !important;	
+            }
+        }	
+    }
+}
+
+
+.cs-currenct-entry{
+    .cs-currency-symbol {
+        color: $grey_base_primary;
+        font-size: 12px;
+        padding-right: 2px;
+    }
+    display: inline-flex;
+    align-items: baseline;
+    border: $input_box_border_width $input_box_border_style $input_box_border_color;
+    border-radius: $input_box_border_radius;
+    font-size: $input_box_inner_font_size;
+    font-style: $input_box_inner_font_style;
+    font-weight: $input_box_inner_font_weight;
+    color: $input_box_inner_color;
+    height: 31px;
+    background: $input_box_bg!important;
+    padding-left: 5px !important;
+    width: 100%;
+    &:focus-within{
+        outline: transparent !important;
+        border: none!important;
+        box-shadow: 3px 4px 8px 1px $general_input_focus;
+        border-radius: 8px;
+    }
+    input{
+        border: transparent;
+        border-radius: 8px;
+        padding-left: 2px!important;
+        &:focus{
+            outline: transparent!important;
+            border: transparent!important;
+            box-shadow: none!important;
+            border-radius: 8px!important;
+            margin-top: 0px;
+        }
+    }
+}
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.cs-pr {
+    position: relative !important;
+}
+
+.cs-tpad-20 {
+    padding-top: 20px;
+}
+
+.cs-tpad {
+    padding-top: 10px;
+}
+
+.cs-tmar {
+    margin-top: 10px;
+}
+
+
+.cs-hpad {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cs-timepicker {
+    background: none !important;
+    color: $fab_icon_color;
+}
+
+.cs-statuspopover {
+    --width: 420px;
+    --min-height: 200px !important;
+    --max-height: 750px !important;
+    // --height: 320px !important;
+}
+
+.cs-status-workflow {
+    .cs-status-toolbar {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #dedede;
+        padding-bottom: 1px;
+
+        h4 {
+            margin-left: 20px;
+            font-size: 18px !important;
+        }
+
+        span {
+            position: absolute;
+            right: 14px;
+            font-size: 23px;
+            top: 12px;
+            padding-bottom: 2px;
+        }
+    }
+
+    .cs-status-subdiv {
+        padding: 20px;
+
+        .example-radio-button {
+            display: block !important;
+            margin: 0px 0px 19px 0px;
+
+            .mat-radio-label-content {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+
+        mat-list-item {
+            textarea {
+                height: 80px;
+                margin-top: 5px;
+                width: 100%;
+            }
+
+            .cs-floatright {
+                float: right;
+
+                &.cs-bpad-10 {
+                    padding-bottom: 10px;
+                }
+
+                .cs-btn-cancel {
+                    box-shadow: none;
+                    border: 1px solid #dedede;
+                    width: 104px;
+                    margin-top: 24px;
+                    height: 32px;
+                    border-radius: 2px;
+                    margin-right: 12px;
+
+                    span {
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+
+                .cs-btn-ok {
+                    box-shadow: none;
+                    border: 1px solid #dedede;
+                    width: 104px;
+                    margin-top: 24px;
+                    height: 32px;
+                    border-radius: 2px;
+                    background: #1890FF;
+                    color: #fff;
+
+                    span {
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+
+                .cs-btn-reject {
+                    box-shadow: none;
+                    border: 1px solid #dedede;
+                    width: 104px;
+                    margin-top: 24px;
+                    height: 32px;
+                    border-radius: 2px;
+                    background: #EE7069;
+                    color: #fff;
+
+                    span {
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+
+                .cs-btn-approve {
+                    box-shadow: none;
+                    border: 1px solid #dedede;
+                    width: 104px;
+                    margin-top: 24px;
+                    height: 32px;
+                    border-radius: 2px;
+                    background: #11AD74;
+                    color: #fff;
+                    margin-right: 12px;
+
+                    span {
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+            }
+        }
+
+        .cs-statususer-profile {
+            h4 {
+                font-size: 15px;
+                color: $grey_base_primary;
+                font-weight: 500;
+                margin: 0px;
+            }
+
+            h6 {
+                font-size: 13px;
+                color: #666666;
+                margin-top: 5px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.cs-status-workflow-field {
+    position: relative;
+    padding-bottom:0px;
+    
+    mat-label {
+        height: 18px;
+        display: block;
+    }
+
+    .cs-tmar-4 {
+        margin-top: 4px;
+    }
+
+    .cs-status-img {
+        width: 30px;
+        top: 31px;
+        // left: 1px;
+        position: absolute;
+        height: 31px;
+        padding: 6px;
+    }
+
+    .cs-statusimg-wth-hstry {
+        top: 24px !important;
+    }
+
+    //Open
+    .cs-status-img-open {
+        background: #577DF4 !important;
+    }
+
+    //initiated
+    .cs-status-img-initiated {
+        background: #1890FF !important;
+    }
+
+    //waiting
+    .cs-status-img-waiting {
+        background: #EF9C1E !important;
+
+    }
+
+    //approved
+    .cs-status-img-approved {
+        background: #11AD74 !important;
+
+    }
+
+    //Open
+    .cs-status-open {
+        color: #6881DF !important;
+        background: #F6F9FF !important;
+        border: 1px solid #DBE3F5 !important;
+        font-size: 13px;
+        padding-left: 45px !important;
+    }
+
+    //initiated
+    .cs-status-initiated {
+        color: #1890FF !important;
+        background: #F5F9FD !important;
+        border: 1px solid #DBE3F5 !important;
+        font-size: 13px;
+        padding-left: 45px !important;
+    }
+
+    //waiting
+    .cs-status-waiting {
+        color: #EC9106 !important;
+        background: #FFFCF8 !important;
+        border: 1px solid #EFE4D6 !important;
+        font-size: 13px;
+        padding-left: 45px !important;
+    }
+
+    //approved
+    .cs-status-approved {
+        color: #00A96B;
+        background: #F9FFFD;
+        border: 1px solid #DBEDE7 !important;
+        font-size: 13px;
+        padding-left: 45px !important;
+    }
+
+    button {
+        position: absolute;
+        top: 30px;
+        right: 3px;
+        font-size: 20px;
+        color: #767777 !important;
+    }
+}
+
+
+.cs-display-inlineblock {
+    display: inline-block;
+}
+
+.cs-mat-searchandlookupmodel {
+    .cs-mat-cal-label {
+        position: relative;
+        top: -6px;
+    }
+
+    // mat-error{
+    //     font-size: 75%;
+    //     padding-top: 5px;
+    // }
+    .cs-mat-cal-sel {
+        width: 20px;
+        position: relative;
+        top: 2px !important;
+        left: -2px;
+        padding-left: 0px !important;
+        border: none;
+        background: transparent !important;
+        // height: 28px;
+    }
+
+    .cs-mat-cal-input {
+        width: calc(100% - 20px);
+    }
+
+    .cs-error-msg {
+        font-size: 11px;
+        position: absolute;
+        padding-top: 5px;
+    }
+
+   // .cs-mwl-datepicker {
+        .cs-matselect-operator {
+            .mat-select-value {
+                position: relative;
+                left: 4px;
+                max-width: inherit !important;
+
+                .mat-select-value-text {
+                    font-size: 15px;
+                }
+            }
+
+            .mat-select-arrow-wrapper {
+                padding-right: 4px;
+
+                .mat-select-arrow {
+                    opacity: 0;
+                    margin-right: 6px !important;
+                }
+            }
+
+        }
+   // }
+}
+
+.cs-block-override {
+    display: block !important;
+}
+
+.cs-status-matselect {
+    border: $status_popup_text_border !important;
+    padding: 8px;
+    border-radius: 2px !important;
+    line-height: inherit !important;
+
+    .mat-select-value-text {
+        font-size: 13px;
+        text-transform: capitalize;
+        font-weight: 800;
+    }
+
+    .mat-select-arrow {
+        color: #666666;
+    }
+}
+
+.cs-workflow-apply {
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px #ddd;
+}
+
+.cs-rollup-field {
+    margin-left: 7px;
+    margin-top: -2px;
+    padding: 2px;
+    border: 1px solid #dcdfe2;
+    background: #f5f5f5;
+    border-radius: 50%;
+    color: #4BA3DE;
+    font-size: 15px;
+}
+
+// .cs-subvalue-field {
+//     position: absolute;
+//     margin-top: 8px;
+// }
+
+.cs-org-filter-form-field {
+    border: 2px solid $filter_selected_option_line_color;
+    border-radius: 10px;
+    margin: 0px 6px;
+    min-height: 29px;
+    padding-bottom: 4px;
+    display: inline-block;
+    margin-bottom: 16px;
+    .cs-fullwidth{
+        display: flex;
+    }
+}
+
+.cs-org-filter-form-label {
+position: absolute;
+top: -10px;
+margin: 0px 12px;
+padding: 0px 4px;
+background: $card_bg;
+color: $grid_segment_option_title_color !important;
+font-size: 13px;
+text-transform: capitalize;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+.cs-org-filter-form-seperationlabel {
+width: calc(100% - 30px);
+}
+
+.cs-org-filter-form-subl {
+position: relative;
+top: 2px;
+}
+
+.cs-org-filter-form-sublabel {
+    font-size: 14px;
+    color: $grey_base_primary !important;
+    margin: 0;
+    margin-left: 9px;
+    min-width: 65px;
+    font-weight: 500;
+    padding-right: 16px;
+}
+
+.cs-mat-custom-theme {
+    .cs-org-filter-form-subr {
+        width: 33px;
+        position: relative;
+        height: 23px;
+
+        button {
+            position: absolute;
+            top: -1px;
+            font-size: 14px !important;
+            color: #fff;
+            right: 0px;
+
+            em {
+                background: #D95350;
+                border-radius: 50%;
+                padding: 1px;
+            }
+        }
+    }
+}
+
+textarea,mat-select,input{
+    &:focus{
+        outline: transparent!important;
+        border: none!important;
+        box-shadow: 3px 4px 8px 0px  $general_input_focus;
+        border-radius: 8px !important;
+        &.mat-input-element:user-invalid{
+            box-shadow: 3px 4px 8px 0px $general_input_focus ;
+        }
+    }
+}
+.slick-large-editor-text{
+    textarea,mat-select,input{
+        &:focus{
+            outline: transparent!important;
+            box-shadow: none!important;
+            border-radius: 0px !important;
+        }
+    } 
+}
+.flatpickr-calendar,quill-editor{
+    textarea,mat-select,input{
+        &:focus{
+            outline: transparent!important;
+            border: none!important;
+            box-shadow: none!important;
+            border-radius: 0px!important;
+        }
+    }
+}
+.cs-readonly{
+    textarea,mat-select,input{
+        background: $disable_input_box_bg !important;
+        border: $disable_input_box_border_width $disable_input_box_border_style $disable_input_box_bg!important;
+        &:focus{
+            outline: transparent!important;
+            border: none!important;
+            box-shadow: none!important;
+            border-radius: 0px!important;
+        }
+    }
+    section{
+        opacity: 0.5;
+        mat-checkbox{
+            &.mat-checkbox-checked{
+                .mat-checkbox-background{
+                    background: darken($disable_input_box_bg, 30%)!important;
+                }
+            }
+        }
+    }
+    mat-radio-group{
+        opacity: 0.5;
+        .mat-radio-checked{
+            .mat-radio-inner-circle{
+                background: darken($disable_input_box_bg, 30%)!important;
+            }
+            .mat-radio-outer-circle{
+                border-color: darken($disable_input_box_bg, 30%)!important;
+            }
+        }
+    }
+    .mat-select-arrow{
+        color: darken($disable_input_box_bg, 30%)!important;
+    }
+    button,a{
+        em{
+            color: darken($disable_input_box_bg, 30%)!important;
+        }
+    }
+    mat-slide-toggle{
+        opacity: 0.85;
+        .mat-slide-toggle-thumb{
+            background-color: darken($disable_input_box_bg, 30%) !important;
+        }
+        .mat-slide-toggle-bar{
+            background-color: transparent;
+            z-index: 0;
+            &::after { 
+                content:"";
+                display: block;
+                background-color: darken($disable_input_box_bg, 30%) !important;
+                opacity: .4;
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: -1;
+                border-radius: 20px;
+            }
+        }
+    }
+
+}
+
+.cs-button-disabled {
+    pointer-events: none;
+    box-shadow: none!important;
+    opacity: 0.65;
+    &:hover{
+        box-shadow: none!important;
+    }
+}
+
+.cs-fullwidth {
+    width: 100%;
+}
+.cs-infobtn{
+    // position: unset !important;
+    // right: inherit !important;
+    // top: -7px !important;
+    // bottom: inherit !important;
+    color: $grey_base_primary;
+    line-height: 20px!important;
+    height: 20px!important;
+    width: 30px!important;
+    font-size: 16px;
+
+}
+.cs-badge-hiddenshow{
+    .mat-form-field-wrapper{
+        .mat-form-field-flex{
+            .mat-form-field-infix{
+                .mat-form-field-label-wrapper{
+                    label{
+                        pointer-events: all;
+                    }
+                }
+            }
+        }
+    }
+}
+.cs-neg-lmar{
+    margin-left: -20px;
+}
+
+quill-editor{
+    .ql-container{
+        .ql-editor{
+            color: $input_box_inner_color;
+        }
+    }
+}
+mat-pseudo-checkbox{
+    border: 2px solid $grey_base_secondary !important;
+    border-radius: 0px !important;
+    &.mat-pseudo-checkbox-checked{
+        border-color: transparent !important;
+    }
+}
+.mat-input-element::placeholder{
+    color: rgb(117, 117, 117);
+ }
+ .mat-option:hover{
+     background: $slickgrid_row_hover_bg !important;
+ }
+ .mat-select-panel{
+     box-shadow: 1px 1px 5px $general_shadow !important;
+ }
+
+//WaterFall Model
+.cs-wfm-container {
+    .cs-bx-m-each {
+      border: $card_border;
+      border-radius: 10px;
+      display: inline-block;
+      margin: 10px;
+      .cs-wfm-header {
+        padding: 0;
+        justify-content: start;
+        height: 36px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        mat-card-header{
+          margin: 0px!important;
+          padding: 9px 0px 0px 15px;
+          mat-card-title {
+              font-size: 16px!important;
+              &:before{
+                  content: '';
+                  width: 0px;
+                  bottom: 0px;
+                  border: unset!important;
+              }
+          .cs-record-count-badge {
+                padding: 1px 8px;
+              }
+          }
+        }
+        .cs-wfm-action-clk{
+          float: right;
+          padding: 8px 5px;  
+          display: none;
+          .cs-wfm-action{
+             // border: $card_border;
+            height: 20px;
+            width: 20px;
+            min-width: unset!important;
+            padding: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            background: $card_bg;
+            font-size: 18px!important;
+            color: $grey_base_secondary;
+            margin: 0px 5px!important;
+            cursor: pointer;
+          }
+        }
+        color: $grid_segment_option_title_color!important;
+        background-color: $grid_segment_header_bg!important;
+        &.cs-wf-c-one {
+          background-color: #f5f9ff;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #84c2e9;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #84c2e9;
+            border-color: #68b6ea;
+          }
+        }
+        &.cs-wf-c-two {
+          background-color: #fff6f1;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #efb596;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #efb596;
+            border-color: #deab8f;
+          }
+        }
+        &.cs-wf-c-three {
+          background-color: #f5fef3;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #bee0b7;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #bee0b7;
+            border-color: #aadaa0;
+          }
+        }
+        &.cs-wf-c-four {
+          background-color: #f5f5ff;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #9499ed;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #9499ed;
+            border-color: #979aca;
+          }
+        }
+        &.cs-wf-c-five {
+          background-color: #fef5f5;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #ef9394;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #ef9394;
+            border-color: #e07677;
+          }
+        }
+        &.cs-wf-c-six {
+          background-color: #fff5fa;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #f297c3;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #f297c3;
+            border-color: #cca0b5;
+          }
+        }
+        &.cs-wf-c-seven {
+          background-color: #fef5ec;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #fbc691;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #fbc691;
+            border-color: #efbf8f;
+          }
+        }
+        &.cs-wf-c-eight {
+          background-color: #fff5cb;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #fae591;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #fae591;
+            border-color: #f3d560;
+          }
+        }
+        &.cs-wf-c-nine {
+          background-color: #fef9f3;
+                .cs-header-name {
+                    .mat-card-header .mat-card-header-text .mat-card-title {
+                        color: #d9c8b6;
+                    }
+                }
+          .cs-bx-m-hico {
+            background-color: #d9c8b6;
+            border-color: #c7b5a2;
+          }
+        }
+      }
+      .cs-wfm-body {
+        padding: 10px;
+        margin-top: 0px!important;
+        background: $input_box_bg;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      &:hover{
+          .cs-wfm-action-clk{
+              display: block;
+          }
+      }
+    }
+  }
+  .cs-multi-ra-chip{
+    height: fit-content;
+    margin-bottom: 10px;
+    .mat-standard-chip{ 
+        height: fit-content;
+        border-radius: 50px;
+        padding: 5px 16px;
+        .cs-ra-chip-parent{
+            text-align: center;
+            .cs-ra-chip-mainlabel{
+                font-size: 12px;
+                font-weight: 800;
+                line-height: normal;
+            }
+            .cs-ra-chip-sublabel{
+                padding-top: 2px;
+                font-size: 12px;
+                line-height: normal;
+                font-weight: 500;
+                color: $grey_base_secondary;
+            }
+        }
+        // button{
+        //     position: absolute;
+        //     right: 10px;
+        //     padding: 0px;
+        //     em{
+        //         right: unset!important;   
+        //     }
+        // }
+        // &:hover{
+        //     padding-right: 35px;
+        // }
+    }
+}
+
+
+
+
+
+.cs-recordassociation-listbox{
+    width: 75%;
+    max-width: inherit !important;
+    height: 75%;
+    overflow: auto;
+    mat-dialog-container{
+        border-radius: 0px;
+    }
+}
+
+
+.cs-recordass-pop-h{
+    height: 100%;
+    .cs-recordass-pop-b{
+        height: calc(100% - 50px);
+        background: $body_bg;
+        mat-card.cs-recordassociation-listview{
+            background-color: $card_bg;
+            .cs-recordassociation-box{
+                background-color: $card_bg !important;
+            }
+        }
+    }
+    .cs-mat-view-grid{
+        padding: 0px 1px 0px 0px !important;
+        .cs-recordassociation-box{
+            margin-top: 0px;
+            .cs-list-view{
+                mat-card-header{
+                    margin-bottom: 0px !important;
+                }
+            }
+            mat-chip-list{
+                margin-left: 14px;
+                margin-top: 1px;
+                .mat-chip-list-wrapper{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+ .cs-slickgeid-mat-chip-listhead{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+ .cs-slickgeid-mat-chip-list{
+    display: inherit;
+    margin-top: inherit !important;
+    .cs-slickgeid-mat-chip{
+        max-width: 100%;
+        min-height: 24px !important;
+        font-size: 12px !important;
+        transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+        display: inline-flex;
+        padding: 7px 12px;
+        border-radius: 16px;
+        align-items: center;
+        cursor: default;
+        height: 1px;
+        background-color: $chip_default_bg!important;
+        color: $chip_default_color!important;
+        font-weight: 500;
+        .cs-singleobj-viewlabelhead{
+            color: $record_association_view_chip !important;
+        }
+    }
+    &.cs-slick-flex-chip{
+        display: flex !important;
+    }
+}
+// clone action page
+.cs-dataclone-content-parent {
+    height: 100%;
+
+    .cs-clone-secondary-color {
+        color: $tertiary_color;
+    }
+
+    .cs-clone-grey-secondary-color {
+        color: $grey_base_secondary;
+    }
+    .cs-clone-center-pad{
+        padding-left: 20px;
+    }
+    .cs-clone-check-opad {
+        padding: 10px 0;
+
+        .cs-clone-check-hover {
+            &:hover {
+                background-color: $slickgrid_row_hover_bg;
+            }
+        }
+
+        .cs-clone-check {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+    .cs-clone-acc-hpad {
+        padding: 5px 20px;
+    }
+
+    .cs_no_record_center {
+        top: 25%;
+    }
+
+    .example-spacer {
+        flex: 1 1 auto;
+    }
+
+    .cs-mat-noshadow {
+        box-shadow: none;
+    }
+
+    .cs-mat-popup-sizeset {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: relative;
+        max-height: calc(100% - 64px);
+
+        .cs-mat-slick-hw {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 4px);
+
+            .cs-clone-inline {
+                display: inline-flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .cs-clone-inline-f{
+                    flex-direction: row;
+                }
+                .cs-clone-inline-f:nth-child(1){
+                    flex: 40%;
+                }
+                .cs-clone-inline-f:nth-child(2){
+                    flex: 13%;
+                    text-align: center;
+                }
+                .cs-clone-inline-f:nth-child(3){
+                    flex: 54%;
+                    text-align: center;
+                }
+
+                &.cs-clone-content {
+
+                    padding: 10px 20px 5px;
+                    /* border-bottom: black 1px solid; */
+                    box-shadow: 0px 2px 1px $general_shadow;
+                    font-size: 15px;
+                    font-style: italic;
+                    font-weight: 500;
+                    width: 100%;
+                }
+            }
+
+            .cs-clone-acc {
+                font-weight: 500;
+                height: calc(100% - 40px);
+                margin-top: 2px;
+
+                .cs-all-content {
+                    .cs-clone-inline {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        flex-direction: row;
+                        width: 100%;
+
+                        .cs-clone-valign span {
+                            vertical-align: middle;
+                            vertical-align: -webkit-baseline-middle;
+                        }
+
+                        &.accordion {
+                            .cs-clone-inline {
+                                div{
+                                    display: inline-flex;
+                                    align-items: center;
+                                }
+                                div:nth-child(1) {
+                                    flex: 36%;
+                                }
+
+                                div:nth-child(2) {
+                                    flex: 78%;
+                                    justify-content: center;
+                                }
+
+                                div:nth-child(3) {
+                                    flex: 40%;
+                                    justify-content: flex-start;
+                                }
+
+                                .cs-clone-obj-status {
+                                    font-size: 10px;
+                                    padding: 3px 10px;
+                                    border-radius: 16px;
+
+                                    &.cs-same {
+                                        color: #0eb684;
+                                        background-color: #f7fffc;
+                                        border: 1px solid #e8f5f0;
+                                    }
+
+                                    &.cs-diff {
+                                        color: #f9a034;
+                                        background-color: #fffbf7;
+                                        border: 1px solid #f5efe9;
+                                    }
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    .accordion {
+                        width: 100%;
+                        font-size: 17px;
+                        transition: 0.4s;
+
+                        .cs-clone-inline {
+                            width: 100%;
+                        }
+                    }
+
+                    .accordion .cs-clone-arrow {
+
+                        color: #777;
+                        float: right;
+                        margin-left: 25px;
+                        transition: 0.2s all;
+
+                    }
+
+                    .accordion.active .cs-clone-arrow {
+                        transform: rotate(180deg);
+                        transition: 0.2s all;
+                    }
+
+                    .panel {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.2s ease-out;
+                    }
+
+                    .accordion .cs-clone-fpoint {
+                        pointer-events: none;
+                    }
+
+                    .cs-clone-acc-body {
+                        font-size: 13px;
+                        padding: 3px 20px 3px;
+
+                        &:hover {
+                            background: $slickgrid_row_hover_bg;
+                        }
+
+                        &.cs-clone-acc-body-hover {
+                            background-color: darken($slickgrid_row_hover_bg, 10%);
+                            &:hover {
+                                background: $slickgrid_row_hover_bg;
+                            }
+                        }
+
+                        .cs-clone-inline-f{
+                            flex-direction: row;
+                        }
+                        .cs-clone-inline-f:nth-child(1){
+                            flex: 33%;
+                        }
+                        .cs-clone-inline-f:nth-child(2){
+                            flex: 78%;
+                            text-align: center;
+                        }
+                        .cs-clone-inline-f:nth-child(3){
+                            flex: 54%;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// .cs-cloading{
+//     width: 80px !important;
+//     height: 80px !important;
+// }
+.cs-userassign-overlay{
+    z-index: 1002;
+}
+.cs-bmar0{
+    margin-bottom: 0px !important;
+}
+// mat-dialog-content{
+//     .cs-mat-form-field{
+//         padding: 12px 12px 0px 12px !important;
+//         .cs-org-filter-form{
+//             width: 100%;
+//             position: relative;
+//             .cs-org-filter-lform{
+//                 display: inline-block;
+//                 width: 90%;
+//             }
+//             .cs-org-filter-formR{
+//                 display: inline-block;
+//                 padding-right: 16px;
+//                 width: 10%;
+//                 position: absolute;
+//                 top: 50%;
+//                 transform: translate(0%, -65%);
+//                 margin: 0 !important;
+//                 button{
+//                     position: relative;
+//                     right: 0px;
+//                 }
+//             }
+//         }
+//     }
+//     .cs_no_record_center_min_rec{
+//         left: 50%;
+//         transform: translate(-50%, 0);
+//         position: absolute;
+//         top: 42%;
+//         z-index: 1;
+//     }   
+// }

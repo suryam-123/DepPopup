@@ -1,0 +1,130 @@
+//cspfmsetting-styles
+.cs-cspfmsetting-icon {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 20px;
+  margin: 0;
+}
+.cs-cspfmsetting-icon-onClick {
+  color: #fff;
+  background: var(--ion-color-primary);
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 20px;
+  margin: 0;
+}
+.cs-footer-icon-color-change{
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 20px;
+    margin: 0;
+  }
+  .cs-footer-icon-color-change-onClick{
+    color: #fff;
+    background: var(--ion-color-primary);
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 20px;
+    margin: 0;
+  }
+  .cs-cspfmsetting {
+    .cs-cspfmsetting-tab-bar {
+      margin-top: 10px;
+      .cs-cspfmsetting-label {
+        margin: 0;
+        padding-top: 7px;
+        font-size: 11px;
+      }
+      .cs-cspfmsetting-icon {
+        border: 1px solid lightgray;
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 20px;
+        margin: 0;
+      }
+      .cs-cspfmsetting-icon-onClick {
+        color: #fff;
+        background: var(--ion-color-primary);
+        border: 1px solid lightgray;
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+  }
+  //
+  .cs-updated-setting-page {
+    .cs-updated-setting-page-card {
+      margin: 5px 0px 5px 0px;
+      .cs-updated-setting-page-cardicon {
+        font-size: 20px;
+        color: var(--ion-color-primary);
+        margin: 0px 7px 0px 0px;
+      }
+      .cs-updated-setting-page-cardlabel {
+        font-size: 14px;
+        padding-top: 2px;
+      }
+    }
+  }
+  .cs-web-setting-toolbar {
+    display: flex;
+    align-items: center;
+  }
+  .cs-web-contents-align{
+      display: flex;
+      justify-content: center;
+  }
+  .cs-web-footer-logo-set{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+  }
+  
+  lib-ionic-pullup {
+    ion-content {
+      --background: var(--ion-color-popupblue);
+    }
+  }
+  
+  .toolbar {
+    height: 30px;
+    // CSS4 rule needed to style ionic toolbar component
+    --background: var(--ion-color-popupblue);
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  .tab {
+    // css style of the custom tab component
+    background: var(--ion-color-popupblue);
+  }
+  
+  .handle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+  
+    .bar {
+      width: 32px;
+      height: 3px;
+      background-color: var(--ion-color-primary-shade);
+      border-radius: 5px;
+    }
+  }
+  .cs-currentTabIndicator {
+    border-bottom: 2px;
+    border-style: solid;
+    border-left: 0px;
+    border: 2px 0px;
+    border-color: var(--ion-color-primary);
+    border-right: 0px;
+    border-top: 0px;
+    margin-bottom: 0px;
+  }
+  

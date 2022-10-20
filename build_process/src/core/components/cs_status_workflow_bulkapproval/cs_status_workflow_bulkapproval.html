@@ -1,0 +1,139 @@
+<ng-template #configStyleSingle>
+      <div [id]="singlePopUpId" [attr.data-cs-dropdown]="dropDownAttribute" class="cs-status-workflow cs-bulk-status-workflow">
+            <div class="cs-status-workflow-initiatenote">
+                  <div class="cs-status-subdiv clearfix">
+                        <div class="clearfix" *ngIf="commentRequired">
+                              <mat-list-item>
+                                    <mat-label class="cs-mainpopover-label cs-bmar2">
+                                          Initiate Notes
+                                          <span *ngIf="commentValidation" class="cs-mat-required">*</span>
+                                    </mat-label>
+                                    <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="4"
+                                          name="entryComments" class="cs-cmt-textbox cs-nomar cs-cmt-area"
+                                          placeholder="Write comments ..." [(ngModel)]="entryComments"></textarea>
+                              </mat-list-item>
+                        </div>
+                        <div class="clearfix cs-tmar">
+                              <mat-list-item>
+                                    <div *ngIf="entryValidationNeed">Please enter comments</div>
+                                    <div class="cs-floatright">
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_submitbutton'}}"
+                                                *ngIf="callingFrom == 'internal'"
+                                                (click)="singleClickAction('submit')" ng-reflect-color="primary"
+                                                mat-flat-button
+                                                class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                                <span class="cs-mat-btnlabel">Submit</span>
+                                          </button>
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_cancelbutton'}}"
+                                                *ngIf="callingFrom == 'internal'"
+                                                (click)="singleClickAction('cancel')" ng-reflect-color="primary"
+                                                mat-stroked-button
+                                                class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                                <span class="cs-mat-btnlabel">Cancel</span>
+                                          </button>
+                                    </div>
+                              </mat-list-item>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="!appUtilityConfig.isMobileResolution && displayType =='Single'" class="cs-sw-parent-block">
+      <ng-container *ngTemplateOutlet="configStyleSingle"></ng-container>
+</div>
+
+<!-- Approval -->
+<ng-template #configStyleApproval>
+      <div [id]="approvalPopupId" class="cs-status-workflow cs-bulk-status-workflow">
+            <div [attr.data-cs-dropdown]="dropDownAttribute" class="cs-status-workflow-approval">
+                  <div class="cs-status-subdiv">
+                        <div class="clearfix cs-bmar" *ngIf="commentRequired">
+                              <mat-list-item>
+                                    <mat-label class="cs-mainpopover-label cs-bmar2">
+                                          Notes
+                                          <span *ngIf="commentValidation" class="cs-mat-required">*</span>
+                                    </mat-label>
+                                    <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="4"
+                                          name="entryComments" class="cs-cmt-textbox cs-nomar cs-cmt-area"
+                                          placeholder="Write comments ..." [(ngModel)]="entryComments"></textarea>
+                              </mat-list-item>
+                        </div>
+                        <div class="clearfix">
+                              <mat-list-item [disableRipple]="true">
+                                    <div *ngIf="entryValidationNeed">Please enter comments</div>
+                                    <div class="cs-button-display">
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_approve'}}" [disableRipple]="true" mat-raised-button (click)="approveRejectClickAction('Approve')" class="cs-status-btn-approve">
+                                                {{approvedButtonName}}
+                                          </button>
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_reject'}}" [disableRipple]="true" mat-raised-button (click)="approveRejectClickAction('Reject')" class="cs-status-btn-reject">
+                                                {{rejectedButtonName}}
+                                          </button>
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_cancelbutton'}}" [disableRipple]="true" mat-raised-button (click)="approveRejectClickAction('cancel')" class="cs-status-btn-cancel">
+                                                Cancel
+                                          </button>
+                                    </div>
+                              </mat-list-item>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="!appUtilityConfig.isMobileResolution && displayType =='Approval'" class="cs-sw-parent-block">
+      <ng-container *ngTemplateOutlet="configStyleApproval"></ng-container>
+</div>
+<!-- Approval -->
+
+<!-- Workflow Status -->
+<ng-template #configStyleMultiple>
+      <div [id]="multiplePopupId" class="cs-status-workflow cs-bulk-status-workflow">
+            <div class="cs-bulk-status-workflow-selection">
+                  <div class="cs-status-subdiv clearfix">
+                        <div class="clearfix">
+                              <span class="cs-sw-select-states-label">Choose Status</span>
+                              <mat-select class="cs-status-matselect" *ngIf="selectedItems.length > 0"
+                                    [(ngModel)]="selectedStatusObject"
+                                    (selectionChange)="onSelectionChange($event.value)">
+                                    <mat-option id="{{'action_'+objectname+'_'+fieldName+'_'+user['statusValue']}}"
+                                          *ngFor="let user of selectedItems" [value]="user['statusValue']">
+                                          {{user['statusLabel']}}
+                                    </mat-option>
+                              </mat-select>
+                        </div>
+                        <div class="cs-sw-comment-part" *ngIf="commentRequired">
+                              <mat-list-item>
+                                    <mat-label class="cs-mainpopover-label cs-bmar2">Notes
+                                          <span *ngIf="commentValidation" class="cs-mat-required">*</span>
+                                    </mat-label>
+                                    <textarea id="{{'action_'+objectname+'_'+fieldName+'_comments'}}" rows="4"
+                                          name="entryComments" class="cs-cmt-textbox cs-nomar cs-cmt-area"
+                                          placeholder="Write comments ..." [(ngModel)]="entryComments"></textarea>
+                              </mat-list-item>
+                        </div>
+                        <div class="cs-tmar clearfix">
+                              <mat-list-item>
+                                    <div class="cs-bmar clearfix cs-error-label" *ngIf="statusValidation">{{statusValidationMessage}}</div>
+                                    <div *ngIf="entryValidationNeed">Please enter comments</div>
+                                    <div class="cs-floatright">
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_submitbutton'}}"
+                                                *ngIf="callingFrom == 'internal'" (click)="multipleClickAction('submit')"
+                                                ng-reflect-color="primary" mat-flat-button
+                                                class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                                <span class="cs-mat-btnlabel">Submit</span>
+                                          </button>
+                                          <button id="{{'action_'+objectname+'_'+fieldName+'_cancelbutton'}}"
+                                                *ngIf="callingFrom == 'internal'" (click)="multipleClickAction('cancel')"
+                                                ng-reflect-color="primary" mat-stroked-button
+                                                class="cs-mat-labelonly mat-stroked-button mat-primary">
+                                                <span class="cs-mat-btnlabel">Cancel</span>
+                                          </button>
+                                    </div>
+                              </mat-list-item>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</ng-template>
+<div *ngIf="!appUtilityConfig.isMobileResolution && displayType =='Multiple'" class="cs-sw-parent-block">
+      <ng-container *ngTemplateOutlet="configStyleMultiple"></ng-container>
+</div>
+<!-- Workflow Status -->

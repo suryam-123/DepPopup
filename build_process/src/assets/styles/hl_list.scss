@@ -1,0 +1,429 @@
+.cs-list-preview.hl-header-text {
+    &.header-ios {
+        padding-top: 25px;
+    }
+
+    background: #fff;
+
+    .list-md {
+        padding: 0;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.card-content-ios {
+    .hl-card-content-count {
+        padding-right: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// .header-list-sh-content{
+//     --padding-top:0;
+// }
+.cs-list-preview-btdrawer .hl-card-content {
+    ion-card {
+        border: 1px solid #d7d8da;
+        box-shadow: none;
+        border-radius: 6px;
+    }
+
+    .hl-card-content-item {
+        position: relative;
+
+        .hl-card-content {
+            max-height: 58px;
+            text-overflow: initial;
+            white-space: inherit;
+            padding: 5px 70px 5px 0;
+        }
+
+        ion-label {
+            font-size: 16px;
+        }
+
+        span {
+            background: #d7d8da;
+            font-size: 13px;
+
+            padding: 1px 8px;
+            border-radius: 14px;
+            color: #000;
+        }
+
+        .hl-card-content-count {
+            position: absolute;
+            right: 5px;
+            width: 54px;
+        }
+
+        .hl-card-content-onendmany-info {
+            position: absolute;
+            right: 46px;
+            width: 54px;
+
+            &.sc-ion-label-ios-h {
+                right: 54px;
+            }
+
+            span {
+                font-size: 13px;
+                padding: 2px 9px;
+                border-radius: 14px;
+            }
+        }
+
+        .hl-one-one {
+            background: #fff2e7;
+            color: #ee8e32;
+        }
+
+        .hl-one-many {
+            background: #edf7ff;
+            color: #0b78d7;
+        }
+    }
+}
+
+// .hl-list-hd-item {
+//     background: #fff;
+// }
+
+// .scrollHeight {
+//     --padding-top: 0;
+
+//     ion-list {
+//         --padding-top: 0;
+//     }
+
+//     .hl-scroll-list-text {
+//         ion-col[padding-bottom] {
+//             padding-bottom: var(--ion-padding, 5px) !important;
+//         }
+
+//         &.ion-header-content-docked {
+//             height: calc(50% - 55px) !important;
+//         }
+
+//         &.ion-header-content-docked.list-ios {
+//             height: calc(50% - 55px) !important;
+//         }
+
+//         &.ion-header-content-closed {
+//             height: calc(100% - 2px) !important;
+//         }
+
+//         &.list-md {
+//             border-bottom: none;
+//             // margin-bottom:24px!important;
+//             height: 100%;
+//             overflow-y: scroll;
+//         }
+//     }
+// }
+
+ion-bottom-drawer {
+    .h1-detail-content-view {
+        &.scroll-height-btm-small {
+            overflow-y: scroll;
+            height: 44vh;
+        }
+
+        &.scroll-height-btm-big {
+            overflow-y: scroll;
+            height: 70vh;
+        }
+    }
+    .cs-adj-hight{
+        height : calc(100vh - 28%)!important;
+    }
+    .cs-scroll-height-dockerstate-detailpage{
+        height : calc(100vh - 55%)!important;
+    }
+
+}
+
+.hl-scroll-list-text {
+    ion-col {
+        ion-item {
+            .sc-ion-label-ios-h {
+                font-size: 16px !important;
+            }
+
+            .sc-ion-label-md-h {
+                font-size: 16px !important;
+            }
+        }
+    }
+}
+
+// quill-view-html {
+//     .ql-editor {
+//         overflow: inherit !important;
+
+//         .ql-size-huge {
+//             line-height: 1.42;
+//         }
+
+//         .ql-size-large {
+//             line-height: 1.42;
+//         }
+//     }
+// }
+
+// .cs-divider {
+//     height: 40px;
+//     --background: #f4f5f8;
+//     border: none;
+
+//     ion-grid {
+//         ion-icon {
+//             width: 25px !important;
+//             height: 25px !important;
+//             // padding: 6px;
+//             background: var(--ion-color-primary);
+//             border-radius: 50%;
+//             color: #fff !important;
+//             font-size: 26px;
+//             visibility: visible;
+
+//             &.ion-color {
+//                 --ion-color-base: var(--ion-color-dark-contrast) !important;
+//             }
+//         }
+//     }
+// }
+
+.styleLight {
+    ion-header {
+        ion-toolbar {
+            background: var(--ion-color-toolbar-header);
+        }
+    }
+
+    .hl-card-content {
+        --ion-color-light: #fff;
+
+        ion-card {
+            margin: 16px;
+        }
+    }
+
+    .hl-card-content-item {
+        .hl-card-content {
+            color: var(--ion-color-primary);
+        }
+    }
+
+    .cs-list-preview.hl-header-text {
+        padding-top: 17px;
+        margin-top: 14px;
+        width: calc(100% - 32px);
+        margin-right: 16px;
+        margin-left: 16px;
+        background: var(--ion-color-primary);
+
+        h5 {
+            padding: 0;
+            color: #ffffff;
+        }
+
+        ion-list {
+            p {
+                background: var(--ion-color-primary);
+                padding: 0;
+                font-size: 14px;
+                color: #f5eeee;
+            }
+        }
+    }
+
+    .hl-header-text.header-md {
+        margin-top: 2px;
+    }
+
+    .scrollHeight {
+        --padding-top: 0;
+        border-bottom: 1px solid #d7d8da;
+
+        ion-list {
+            border-right: 1px solid #d7d8da;
+            border-left: 1px solid #d7d8da;
+            padding: 0;
+            margin-bottom: 4px;
+            overflow-y: scroll;
+        }
+    }
+
+    //  background: none;
+    ion-bottom-drawer {
+        background: var(--ion-color-light);
+        //  background: none;
+        // .icon-mat-file_upload{
+        //         position: absolute;
+        //         top: -13px;
+        //     }
+    }
+
+
+    .hl-scroll-list-text {
+        border-bottom: none;
+
+        .sc-ion-label-ios-s>p,
+        .sc-ion-label-md-h>p,
+        .sc-ion-label-md-s>p {
+            font-weight: 500;
+            color: var(--ion-color-primary);
+
+            ion-img {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    //     @media screen and (min-width: 320px) and (max-width: 768px) and (max-height: 600px) {
+    //         .styleLight {
+    //             .header-listpreview-content {
+    //                 .ion-header-content-docked.list-ios {
+    //                     height: calc(100% - 278px) !important;
+    //                 }
+    //             }
+
+    //             .detail-view-scroll-content {
+    //                 .ion-header-content-docked.list-ios {
+    //                     height: calc(100% - 264px) !important;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     @media screen and (min-width: 600px) and (max-width: 1024px) and (min-height: 1000px) {
+    //         .styleLight {
+    //             .scrollHeight {
+    //                 .hl-scroll-list-text {
+    //                     &.ion-header-content-docked.list-md {
+    //                         height: calc(100% - 494px) !important;
+    //                     }
+
+    //                     &.ion-header-content-docked.list-ios {
+    //                         height: calc(100% - 494px) !important;
+    //                     }
+    //                 }
+    //             }
+
+    //             .header-listpreview-content {
+    //                 .ion-header-content-docked.list-ios {
+    //                     height: calc(100% - 278px) !important;
+    //                 }
+
+    //                 .ion-header-content-docked.list-md {
+    //                     height: calc(100% - 278px) !important;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     @media screen and (min-width: 1024px) and (max-width: 1400px) and (min-height: 1000px) {
+    //         .scrollHeight {
+    //             .hl-scroll-list-text {
+    //                 &.ion-header-content-docked.list-md {
+    //                     height: calc(100% - 302px) !important;
+    //                 }
+
+    //                 &.ion-header-content-docked.list-ios {
+    //                     height: calc(100% - 494px) !important;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    .cs-divider {
+        width: calc(100% - 32px) !important;
+        margin-right: 16px;
+        margin-left: 16px;
+        --background: none;
+        border-top: 1px solid #d7d8da;
+        // border-bottom: 1px solid #d7d8da;
+        // border-left: 1px solid #d7d8da;
+        // border-right: 1px solid #d7d8da;
+        position: fixed;
+        top: 50%;
+        z-index: 99;
+        transition: 0.2s all;
+
+        ion-grid {
+            display: flex;
+            justify-content: center;
+
+            ion-icon {
+                width: 25px !important;
+                height: 25px !important;
+                // padding: 6px;
+                font-size: 26px !important;
+                color: var(--ion-color-primary) !important;
+                background: #fff;
+                border-radius: 54%;
+                box-shadow: 1px 3px 11px -4px grey;
+                margin-top: -13px;
+
+                &.ion-color {
+                    --ion-color-base: var(--ion-color-primary) !important;
+                }
+            }
+        }
+
+        &.top {
+            top: 125px;
+            transition: 0.2s all;
+        }
+
+        &.bottom {
+            top: calc(100% - 20px);
+            transition: 0.2s all;
+        }
+    }
+
+    cs-status-workflow {
+        ion-list {
+            border-left: 0px !important;
+            border-right: 0px !important;
+            overflow-y: inherit !important;
+        }
+    }
+}
+
+.cs-list-preview-btdrawer {
+    .cs-btdrawer-icon-handle {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0px;
+        z-index: 9; 
+        width: calc(100% - 32px) !important;
+        margin-left: 16px;
+        border: 0.5px solid #d7d8da;
+    } 
+
+    .cs-btdrawer-icon {
+        position: absolute;
+        top: -14px;
+        left: 46%;
+        border: 1px solid lightgray;
+        --ion-color-base: var(--ion-color-primary) !important;
+        width: 25px !important;
+        height: 25px !important;
+        font-size: 25px !important;
+        color: var(--ion-color-primary) !important;
+        background: #fff;
+        border-radius: 54%;
+        box-shadow: 1px 3px 11px -4px grey;
+        text-align: center !important;
+    }
+}

@@ -1,0 +1,174 @@
+.themeSetInput {
+    ion-item {
+    --highlight-color-focused: var(--ion-color-primary, #3880ff);
+    --highlight-color-valid: var(--ion-color-primary, #3880ff);
+    --highlight-color-invalid: var(--ion-color-primary, #3880ff);
+  }
+}
+
+.themeSettingsRecCol {
+  ion-card.sc-ion-card-md-h {
+    width: 140px;
+  }
+
+  .themeSettingsRecColRow1 {
+    div.colorYelw {
+      width: 42px;
+      height: 38px;
+      border-radius: 8px;
+      background: #dabc56;
+    }
+
+    div.colorBlu {
+      width: 42px;
+      height: 38px;
+      border-radius: 8px;
+      background: #3880ff;
+    }
+
+    div.colorRed {
+      width: 42px;
+      height: 38px;
+      border-radius: 8px;
+      background: #f44336;
+    }
+  }
+
+  .themeSettingsRecColRow2 {
+    div.colorTeal {
+      width: 42px;
+      height: 38px;
+      border-radius: 8px;
+      background: #009688;
+    }
+
+    div.colorInd {
+      width: 42px;
+      height: 38px;
+      border-radius: 8px;
+      background: #5070e9;
+    }
+  }
+}
+
+.cs-ts-14 {
+  font-size: 14px !important;
+}
+
+.cs-theme-divider {
+  position: relative;
+  top: 10px;
+  left: 41%;
+  width: 50px;
+  background: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.cs-theme-set-web {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 20px 0px 6px 0px;
+
+  .cs-yellow-color-theme {
+    border-radius: 50%;
+    background: #dabc56;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 40px 0px 0px;
+  }
+
+  .cs-red-color-theme {
+    border-radius: 50%;
+    background: #f44336;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 47px 0px 32px;
+  }
+
+  .cs-teal-color-theme {
+    border-radius: 50%;
+    background: #009688;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 32px 0px 38px;
+  }
+
+  .cs-blue-color-theme {
+    border-radius: 50%;
+    background: #3880ff;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 0px 0px 39px;
+  }
+}
+
+.cs-theme-set {
+  margin: 0;
+  padding: 20px 0px 6px 0px;
+
+  .cs-yellow-color-theme {
+    border-radius: 50%;
+    background: #dabc56;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 40px 0px 0px;
+  }
+
+  .cs-red-color-theme {
+    border-radius: 50%;
+    background: #f44336;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 47px 0px 32px;
+  }
+
+  .cs-teal-color-theme {
+    border-radius: 50%;
+    background: #009688;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 32px 0px 38px;
+  }
+
+  .cs-blue-color-theme {
+    border-radius: 50%;
+    background: #3880ff;
+    max-width: 25px !important;
+    height: 25px;
+    margin: 0px 0px 0px 39px;
+  }
+}
+
+.cs-updated-setting-page-card {
+  margin: 5px 0px 5px 0px;
+
+  .cs-updated-setting-page-cardicon {
+    font-size: 20px;
+    color: var(--ion-color-primary);
+    margin: 0px 7px 0px 0px;
+  }
+
+  .cs-updated-setting-page-cardlabel {
+    font-size: 14px;
+    padding-top: 2px;
+  }
+}
+
+.cs-appytheme-block {
+  --background: var(--ion-color-primary-tint);
+  color: var(--ion-color-primary);
+  font-size: 11px;
+  margin-bottom: 11px;
+}
+
+.cs-pullup-icon-color {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 20px;
+  margin: 0;
+  color: #5a5353 !important;
+  background: lightgray !important;
+}

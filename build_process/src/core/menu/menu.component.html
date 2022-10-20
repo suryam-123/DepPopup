@@ -1,0 +1,360 @@
+<ion-split-pane *ngIf="appUtilityConfig.isMobileResolution">
+  <ion-menu class="cs-bg-whitemenu">
+    <ion-header no-border>
+      <ion-toolbar color="primary" class="menu-toolbar">
+        <ion-avatar slot="start" margin class="cs-tool-avatar">
+          <img alt="" src="{{appUtilityConfig.profilePicSrc}}" onerror="this.src='assets/img/user_icon.png'">
+        </ion-avatar>
+        <ion-label class="cs-tool-label">
+          <h2 no-margin no-padding>{{loggedUserDetail['username']}}</h2>
+          <p no-margin no-padding>{{loggedUserDetail['email_id']}}</p>
+        </ion-label>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="menu-content">
+      <ion-list *ngFor="let group of menuService.assignedMenuGroups" no-padding class="menu-content-list">
+        <ion-list-header
+          [ngClass]="group['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+          color="light" *ngIf="group.menuGroupDisplayName.length && group.menuItems.mobile.length > 0"
+          (click)="closeMenu($event,group)">
+          <ion-icon *ngIf="group['icon']" class="{{group['icon']}}"></ion-icon>
+          <ion-title title="{{group.menuGroupDisplayName | translate}}" class="cs_title_width">
+            {{group.menuGroupDisplayName | translate}}</ion-title>
+          <ion-icon *ngIf="group['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+          <ion-icon *ngIf="!group['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+        </ion-list-header>
+        <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of group.menuItems.mobile;">
+          <ion-list
+            [ngClass]="group['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="this.activeMenuGroups.indexOf(group.menuGroupId)>-1 && group['expand']" menuClose
+            (click)="openPage(p)">
+            <ion-item title="{{p.title | translate}}" class="menu-content-item" ion-item slot="start" expand="full"
+              lines="none" style="cursor: pointer;">
+              <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}"></ion-icon>
+              {{p.title | translate}}
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- Calendar Menu -->
+      <ion-list class="menu-content-list"
+        *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isCalendarEnable">
+        <ion-list-header
+          [ngClass]="calendarGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+          color="light" (click)="closeMenu($event,calendarGroupObj)">
+          <ion-icon class="icon-mat-calendar_today"></ion-icon>
+          <ion-title title="Calendar">Calendar</ion-title>
+          <ion-icon *ngIf="calendarGroupObj['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+          <ion-icon *ngIf="!calendarGroupObj['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+        </ion-list-header>
+        <ion-menu-toggle class="menu-list-item" auto-hide="false"
+          *ngFor="let p of calendarGroupObj['menuItems']['mobile'];">
+          <ion-list
+            [ngClass]="calendarGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="calendarGroupObj['expand']">
+            <ion-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full"
+              menuClose (click)="openPage(p)" lines="none" style="cursor: pointer;">
+              <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></ion-icon>
+              {{p.title | translate}}
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- Map Menu -->
+      <ion-list class="menu-content-list"
+        *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isMapEnable">
+        <ion-list-header
+          [ngClass]="mapGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+          color="light" (click)="closeMenu($event,mapGroupObj)">
+          <ion-icon class="icon-mat-language"></ion-icon>
+          <ion-title title="Map">Map</ion-title>
+          <ion-icon *ngIf="mapGroupObj['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+          <ion-icon *ngIf="!mapGroupObj['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+        </ion-list-header>
+        <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of mapGroupObj['menuItems']['mobile'];">
+          <ion-list
+            [ngClass]="mapGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="mapGroupObj['expand']">
+            <ion-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full"
+              menuClose (click)="openPage(p)" lines="none" style="cursor: pointer;">
+              <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></ion-icon>
+              {{p.title | translate}}
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- Setting and exit menu creation -->
+      <ion-list class="menu-content-list">
+        <ion-list-header
+          [ngClass]="defaultGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+          color="light" (click)="closeMenu($event,defaultGroupObj)">
+          <ion-icon class="icon-mat-settings"></ion-icon>
+          <ion-title title="Settings">Settings</ion-title>
+          <ion-icon *ngIf="defaultGroupObj['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+          <ion-icon *ngIf="!defaultGroupObj['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+        </ion-list-header>
+        <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of defaultGroupObj['menuItems'];">
+          <ion-list
+            [ngClass]="defaultGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="defaultGroupObj['expand']">
+            <ion-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full"
+              menuClose (click)="openPage(p)" lines="none" style="cursor: pointer;">
+              <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></ion-icon>
+              {{p.title | translate}}
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-split-pane>
+
+<!-- <ion-menu
+  *ngIf="!appUtilityConfig.isEmbeddingEnabled && !appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == false"
+  class="cs-bg-whitemenu">
+ 
+   <ion-content class="menu-content"> -->
+<!-- <ion-list *ngFor="let group of menuService.assignedMenuGroups" no-padding class="menu-content-list">
+      <ion-list-header
+        [ngClass]="group['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" *ngIf="group.menuGroupDisplayName.length && group.menuItems.web.length > 0" (click)="closeMenu($event,group)">
+        <ion-icon *ngIf="group['icon']" class="{{group['icon']}}"></ion-icon>
+        <ion-title title="{{group.menuGroupDisplayName | translate}}" class="cs_title_width">{{group.menuGroupDisplayName | translate}}</ion-title>
+        <ion-icon *ngIf="group['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+        <ion-icon *ngIf="!group['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+      </ion-list-header>
+      <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of group.menuItems.web;">
+        <ion-list
+          [ngClass]="group['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+          *ngIf="this.activeMenuGroups.indexOf(group.menuGroupId)>-1 && group['expand']" menuClose
+          (click)="openPage(p)">
+          <ion-item title="{{p.title | translate}}" class="menu-content-item" ion-item slot="start" expand="full" lines="none" style="cursor: pointer;">
+            <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}"></ion-icon>
+            {{p.title | translate}}
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+    </ion-list> -->
+
+<!-- Calendar Menu -->
+<!-- <ion-list class="menu-content-list" *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isCalendarEnable">
+      <ion-list-header
+        [ngClass]="calendarGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" (click)="closeMenu($event,calendarGroupObj)">
+        <ion-icon class="icon-mat-calendar_today"></ion-icon>
+        <ion-title title="Calendar">Calendar</ion-title>
+        <ion-icon *ngIf="calendarGroupObj['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+        <ion-icon *ngIf="!calendarGroupObj['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+      </ion-list-header>
+      <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of calendarGroupObj['menuItems']['web'];">
+        <ion-list
+          [ngClass]="calendarGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+          *ngIf="calendarGroupObj['expand']">
+          <ion-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full" menuClose (click)="openPage(p)"
+            lines="none" style="cursor: pointer;">
+            <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></ion-icon>
+            {{p.title | translate}}
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+    </ion-list> -->
+
+<!-- Map Menu -->
+<!-- <ion-list class="menu-content-list"
+      *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isMapEnable">
+      <ion-list-header [ngClass]="mapGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+      color="light" (click)="closeMenu($event,mapGroupObj)">
+      <ion-icon class="icon-mat-language"></ion-icon>
+        <ion-title title="Map">Map</ion-title>
+      <ion-icon *ngIf="mapGroupObj['expand']" class="icon-mat-keyboard_arrow_up"></ion-icon>
+      <ion-icon *ngIf="!mapGroupObj['expand']" class="icon-mat-keyboard_arrow_down"></ion-icon>
+      </ion-list-header>
+      <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of mapGroupObj['menuItems']['web'];">
+        <ion-list [ngClass]="mapGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+        *ngIf="mapGroupObj['expand']">
+          <ion-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full" menuClose (click)="openPage(p)"
+            lines="none" style="cursor: pointer;">
+            <ion-icon slot="start" class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></ion-icon>
+            {{p.title | translate}}
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+    </ion-list> -->
+
+
+<!-- </ion-content>
+</ion-menu> -->
+<!-- <div
+  *ngIf="!appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == true  && appConfig.configuration.isGridMenuEnabled == true"
+  id="cs-box-menu" class="cs-box-menu">
+  <ion-list class="cs-bx-mul">
+    <div *ngFor="let group of menuService.assignedMenuGroups; index as menucolorindex"
+      class="cs-bx-m-each {{menuClasses[menucolorindex]}}">
+      <ion-list>
+        <ion-list-header *ngIf="group.menuGroupDisplayName.length > 0 && group.menuItems.web.length > 0">
+          <div class="cs-bx-m-hico">
+            <ion-icon *ngIf="group['icon']" class="{{group['icon']}}"></ion-icon>
+          </div>
+          <ion-label title="{{group.menuGroupDisplayName | translate}}">{{group.menuGroupDisplayName | translate}}</ion-label>
+        </ion-list-header>
+        <div class="cs-bx-m-sub-m cs-cur">
+          <div class="cs-bx-m-subl" *ngFor="let p of group.menuItems.web;" (click)="openPage(p)">
+            <div>
+              <ion-icon class="{{p.icon}}"></ion-icon>
+            </div>
+            <ion-label title="{{p.title | translate}}">{{p.title | translate}}</ion-label>
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </ion-list>
+</div> -->
+
+
+<ion-menu
+  *ngIf="!appUtilityConfig.isEmbeddingEnabled && !appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == false"
+  class="cs-bg-whitemenu">
+
+  <ion-content class="menu-content">
+    <mat-list *ngFor="let group of menuService.assignedMenuGroups" id="menu_component">
+      <mat-list-item
+        [ngClass]="group['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" *ngIf="group.menuGroupDisplayName.length && group.menuItems.web.length > 0"
+        (click)='group.menuItems.web.length == 1 && openPage(group.menuItems.web[0]); closeMenu($event,group);'
+        title="{{group.menuItems.web.length == 1 ? group.menuItems.web[0].title : group.menuGroupDisplayName | translate}}">
+        <!-- <mat-icon style="color: hsl(207, 94%, 49%)!important;font-size: 24px" *ngIf="group['icon']" class="{{group['icon']}}"></mat-icon> -->
+        <button mat-icon-button *ngIf="group['icon']" class="cs-mat-icononly cs-parenticon" color="primary">
+          <em *ngIf="group.menuItems.web.length > 1" class="{{group['icon']}}"></em>
+          <em *ngIf="group.menuItems.web.length == 1" class="{{group.menuItems.web[0].icon}}"></em>
+        </button>
+        <mat-label *ngIf="group.menuItems.web.length > 1" class="cs-parentlabel">
+          {{group.menuGroupDisplayName | translate}}</mat-label>
+        <mat-label *ngIf="group.menuItems.web.length == 1" class="cs-parentlabel cs-toppopwrdbrk">
+          {{group.menuItems.web[0].title | translate}}</mat-label>
+        <span class="right-align"></span>
+        <!-- <mat-icon *ngIf="group['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_up"></mat-icon>
+        <mat-icon *ngIf="!group['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_down"></mat-icon> -->
+        <button title="Collapse" mat-icon-button *ngIf="group['expand']" class="cs-mat-icononly" color="primary">
+          <em *ngIf="group.menuItems.web.length > 1" class="icon-mat-keyboard_arrow_up"></em>
+        </button>
+        <button title="Expand" mat-icon-button *ngIf="!group['expand']" class="cs-mat-icononly" color="primary">
+          <em *ngIf="group.menuItems.web.length > 1" class="icon-mat-keyboard_arrow_down"></em>
+        </button>
+      </mat-list-item>
+      <div *ngIf="group.menuItems.web.length != 1">
+
+        <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of group.menuItems.web;">
+          <mat-list
+            [ngClass]="group['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="this.activeMenuGroups.indexOf(group.menuGroupId)>-1 && group['expand']" menuClose
+            (click)="openPage(p)">
+            <mat-list-item title="{{p.title | translate}}" expand="full" lines="none"
+              style="cursor: pointer;">
+              <!-- <mat-icon slot="start" style="color: hsl(207, 94%, 49%)!important;font-size: 22px" class="sidemenu-fontsize {{p.icon}}"></mat-icon> -->
+              <button slot="start" title="{{p.title | translate}}" mat-icon-button class="cs-mat-icononly"
+                color="primary">
+                <em class="sidemenu-fontsize {{p.icon}}"></em>
+              </button>
+              {{p.title | translate}}
+            </mat-list-item>
+          </mat-list>
+        </ion-menu-toggle>
+      </div>
+    </mat-list>
+
+    <!-- Calendar Menu -->
+    <mat-list class="menu-content-list"
+      *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isCalendarEnable">
+      <mat-list-item
+        [ngClass]="calendarGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" (click)="closeMenu($event,calendarGroupObj)">
+        <mat-icon style="color: hsl(207, 94%, 49%)!important;font-size: 24px" class="icon-mat-calendar_today">
+        </mat-icon>
+        <mat-label class="cs-parentlabel" title="Calendar">Calendar</mat-label>
+        <span class="right-align"></span>
+        <mat-icon *ngIf="calendarGroupObj['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_up">
+        </mat-icon>
+        <mat-icon *ngIf="!calendarGroupObj['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_down">
+        </mat-icon>
+      </mat-list-item>
+      <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of calendarGroupObj['menuItems']['web'];">
+        <mat-list
+          [ngClass]="calendarGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+          *ngIf="calendarGroupObj['expand']">
+          <mat-list-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full"
+            menuClose (click)="openPage(p)" lines="none" style="cursor: pointer;margin-left: 15px">
+            <mat-icon slot="start" style="color: hsl(207, 94%, 49%)!important;font-size: 22px"
+              class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></mat-icon>
+            {{p.title | translate}}
+          </mat-list-item>
+        </mat-list>
+      </ion-menu-toggle>
+    </mat-list>
+
+    <!-- Map Menu -->
+    <mat-list class="menu-content-list"
+      *ngIf="isRequiredToShowComponent && appConfig.configuration.defaultMenu.isMapEnable">
+      <mat-list-item
+        [ngClass]="mapGroupObj['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" (click)="closeMenu($event,mapGroupObj)">
+        <mat-icon style="color: hsl(207, 94%, 49%)!important;font-size: 24px" class="icon-mat-language"></mat-icon>
+        <mat-label class="cs-parentlabel" title="Map">Map</mat-label>
+        <span class="right-align"></span>
+        <mat-icon *ngIf="mapGroupObj['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_up"></mat-icon>
+        <mat-icon *ngIf="!mapGroupObj['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_down">
+        </mat-icon>
+      </mat-list-item>
+      <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of mapGroupObj['menuItems']['web'];">
+        <mat-list
+          [ngClass]="mapGroupObj['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+          *ngIf="mapGroupObj['expand']">
+          <mat-list-item title="{{p.title | translate}}" ion-item class="menu-content-item" slot="start" expand="full"
+            menuClose (click)="openPage(p)" lines="none" style="cursor: pointer;margin-left: 15px">
+            <mat-icon slot="start" style="color: hsl(207, 94%, 49%)!important;font-size: 22px"
+              class="sidemenu-fontsize {{p.icon}}" class="icon-mat-home"></mat-icon>
+            {{p.title | translate}}
+          </mat-list-item>
+        </mat-list>
+      </ion-menu-toggle>
+    </mat-list>
+
+
+  </ion-content>
+</ion-menu>
+<div
+  *ngIf="!appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == true  && appConfig.configuration.isGridMenuEnabled == true"
+  id="cs-box-menu" class="cs-box-menu">
+  <mat-list class="cs-bx-mul">
+    <div *ngFor="let group of menuService.assignedMenuGroups; index as menucolorindex"
+      class="cs-bx-m-each {{menuClasses[menucolorindex]}}">
+      <mat-list>
+        <mat-list-item *ngIf="group.menuGroupDisplayName.length > 0 && group.menuItems.web.length > 0">
+          <div class="cs-bx-m-hico">
+            <button mat-icon-button>
+              <em *ngIf="group['icon']" class="{{group['icon']}}"></em>
+            </button>
+          </div>
+          <mat-label title="{{group.menuGroupDisplayName | translate}}">{{group.menuGroupDisplayName | translate}}
+          </mat-label>
+        </mat-list-item>
+        <div class="cs-bx-m-sub-m cs-cur cs-custom-scroll">
+          <div class="cs-bx-m-subl" *ngFor="let p of group.menuItems.web;" (click)="openPage(p)">
+            <div>
+              <button mat-icon-button>
+                <em class="{{p.icon}}"></em>
+              </button>
+            </div>
+            <mat-label title="{{p.title | translate}}">{{p.title | translate}}</mat-label>
+          </div>
+        </div>
+      </mat-list>
+    </div>
+  </mat-list>
+</div>
+
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" main></ion-router-outlet>

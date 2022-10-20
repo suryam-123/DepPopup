@@ -1,0 +1,173 @@
+<!-- rrrr1 -->
+<!-- <div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'radioWithIcon'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll">
+        <div *ngIf="actionDisplayType ==='Icon'">
+            <div *ngIf="isGoSelectActionEnabled">
+                <mat-radio-group class="cs-bmar">
+                    <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index" (click)="itemClick(actionItem)" [value]="i"><em class="{{actionItem['actionIcon']}}"></em>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div *ngIf="!isGoSelectActionEnabled">
+                <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem)">
+                    <em class="{{actionItem['actionIcon']}}"></em>
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="actionDisplayType ==='IconandButton'">
+            <div *ngIf="isGoSelectActionEnabled">
+                <mat-radio-group class="cs-bmar">
+                    <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index" (click)="itemClick(actionItem)" [value]="i"><em class="{{actionItem['actionIcon']}}"></em>
+                        <span>{{actionItem['actionLabel']}}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div *ngIf="!isGoSelectActionEnabled">
+                <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem)">
+                    <em class="{{actionItem['actionIcon']}}"></em>
+                    <span>{{actionItem['actionLabel']}}</span>
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="actionDisplayType ==='Button'">
+            <div *ngIf="isGoSelectActionEnabled">
+                <mat-radio-group class="cs-bmar">
+                    <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index" (click)="itemClick(actionItem)" [value]="i">
+                        <span>{{actionItem['actionLabel']}}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div *ngIf="!isGoSelectActionEnabled">
+                <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem)">
+                    <span>{{actionItem['actionLabel']}}</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="cs-select-go-button-parent">
+            <button title="Go" *ngIf="isGoSelectActionEnabled" color="primary" mat-flat-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction()">
+                <span class="cs-mat-btnlabel">Go</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'radioWithIcon' && actionDisplayType ==='Icon'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll">
+        <div>
+            <div *ngIf="isGoSelectActionEnabled">
+                <mat-radio-group class="cs-bmar">
+                    <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index" (click)="itemClick(actionItem)" [value]="i"><em class="{{actionItem['actionIcon']}}"></em>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div *ngIf="!isGoSelectActionEnabled">
+                <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem)">
+                    <em class="{{actionItem['actionIcon']}}"></em>
+                </button>
+            </div>
+        </div>
+        <div class="cs-select-go-button-parent">
+            <button title="Go" *ngIf="isGoSelectActionEnabled" color="primary" mat-flat-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction()">
+                <span class="cs-mat-btnlabel">Go</span>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'labelWithIcon'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll 11">
+        <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem,$event)">
+            <em class="{{actionItem['actionIcon']}}"></em>
+            <span>{{actionItem['actionLabel']}}</span>
+        </button>
+    </div>
+</div>
+
+<div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'labelOnly'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll 22">
+        <button *ngFor="let actionItem of moreActionItems let i= index" mat-menu-item title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem,$event)">
+            <span>{{actionItem['actionLabel']}}</span>
+        </button>
+    </div>
+</div>
+
+<div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'radioWithIcon'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll 11">
+        <mat-radio-group class="cs-bmar">
+            <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index" title="{{actionItem['actionLabel']}}"(click)="itemClick(actionItem,$event)" [value]="i"><em class="{{actionItem['actionIcon']}}"></em>
+                <span>{{actionItem['actionLabel']}}</span>
+            </mat-radio-button>
+        </mat-radio-group>
+        <div class="cs-select-go-button-parent">
+            <button title="{{selectAndGoValue}}" color="primary" mat-flat-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction($event)">
+                <span class="cs-mat-btnlabel">{{selectAndGoValue}}</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="cs-mat-popup-sizeset" *ngIf="moreActionDisplayType === 'radioOnly'">
+    <div class="cs-matmenu-popup cs-mat-custom-theme cs-custom-scroll 22">
+        <mat-radio-group class="cs-bmar">
+            <mat-radio-button *ngFor="let actionItem of moreActionItems let i= index"title="{{actionItem['actionLabel']}}" (click)="itemClick(actionItem,$event)" [value]="i">
+                <span>{{actionItem['actionLabel']}}</span>
+            </mat-radio-button>
+        </mat-radio-group>
+        <div class="cs-select-go-button-parent">
+            <button title="{{selectAndGoValue}}" color="primary" mat-flat-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction($event)">
+                <span class="cs-mat-btnlabel">{{selectAndGoValue}}</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="cs-matmenu-popup-select-go" *ngIf="moreActionDisplayType === 'inlineSelect'">
+    <div class="cs-select-go-dd" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+        <mat-form-field class="cs-matmenu-popup-select" appearance="fill">
+            <mat-select disableRipple placeholder="Select Actions" (selectionChange)="selectOptionWithIcon($event)">
+                <mat-option *ngFor="let option of moreActionItems" title="{{option['actionLabel']}}" [value]="option">
+                    {{option.actionLabel}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button title="{{selectAndGoValue}}" color="primary" mat-stroked-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction($event)">
+            <span class="cs-mat-btnlabel">{{selectAndGoValue}}</span>
+        </button>
+    </div>
+</div>
+
+<div class="cs-matmenu-popup-select-go" *ngIf="moreActionDisplayType === 'inlineIconSelect'">
+    <div class="cs-select-go-dd" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+        <mat-form-field class="cs-matmenu-popup-select" appearance="fill">
+            <mat-select disableRipple placeholder="Select Actions" (selectionChange)="selectOptionWithIcon($event)">
+                <mat-select-trigger>
+                    <div class="cs-mat-select-trigger">
+                        <em [ngClass]="tempIcon"></em>
+                        <span>{{tempValue}}</span>
+                    </div>
+                </mat-select-trigger>
+                <mat-option *ngFor="let option of moreActionItems" title="{{option['actionLabel']}}" [value]="option">
+                    <em [ngClass]="option.actionIcon"></em>
+                    {{option.actionLabel}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button title="{{selectAndGoValue}}" color="primary" mat-stroked-button class="cs-mat-labelonly cs-select-go-button" (click)="goAction($event)">
+            <span class="cs-mat-btnlabel">{{selectAndGoValue}}</span>
+        </button>
+    </div>
+</div>
+
+<div class="cs-fab-button-group-slick" *ngIf="moreActionDisplayType === 'fabOption'">
+    <div class="cs-close-fab" (click)="selectGoDropdownClose()"><em class="icon-mat-close"></em></div>
+    <div class="cs-fab-list">
+        <button *ngFor="let actionItem of moreActionItems; let i= index" title="{{actionItem['actionLabel']}}" (click)="fabItemClickAction(actionItem,$event)">
+            <em class="{{actionItem['actionIcon']}}"></em></button>
+    </div>
+</div>

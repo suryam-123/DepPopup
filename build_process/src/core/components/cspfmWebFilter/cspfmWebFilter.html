@@ -1,0 +1,774 @@
+<div class="cs-custom-scroll cs-mat-ui cs-mat-custom-theme">
+    <div class="cs-mat-main-content">
+        <div class="cs-mat-contentmain">
+            <div id="SEC_cspfm_webcommon_lookup_filter_search">
+                <mat-card style="max-height: 172px" id="SEC_cspfm_webcommon_lookup_filter"
+                    class="cs-search-filter cs-custom-scroll cs-parent_filter cs-mat-filteroption"
+                    [hidden]="!filterSectionDetail['filterPanelExpanded']">
+                    <div padding="" class="cs-org-filter-form">
+                        <div fxLayout="row wrap" class="cs-advsearch-form-parent cs-event-height">
+                            <div fxLayout="column" [fxFlex]="flexColumnNormalField" class="cs-hpad"
+                                *ngFor="let fieldKey of objectKeys(filterSectionDetail['filterFields'])" [ngClass]="{'cs-num-from-to':(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='NUMBER' 
+                                                    || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='DECIMAL' || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='CURRENCY'
+                                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' && (filterSectionDetail['filterFields'][fieldKey]['formulaType']==='NUMBER' || filterSectionDetail['filterFields'][fieldKey]['formulaType']==='CURRENCY')) 
+                                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' && (filterSectionDetail['filterFields'][fieldKey]['rollupType']==='NUMBER' || filterSectionDetail['filterFields'][fieldKey]['rollupType']==='CURRENCY'))) 
+                                                    && filterSectionDetail['filterFields'][fieldKey]['betweenflag']==='Y',
+                                                    'cs-mat-from-to':(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='DATE' 
+                                                    || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='TIMESTAMP' 
+                                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' 
+                                                    && (filterSectionDetail['filterFields'][fieldKey]['formulaType']==='DATE' 
+                                                    || filterSectionDetail['filterFields'][fieldKey]['formulaType']==='TIMESTAMP'))
+                                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' 
+                                                    && (filterSectionDetail['filterFields'][fieldKey]['rollupType']==='DATE' 
+                                                    || filterSectionDetail['filterFields'][fieldKey]['rollupType']==='TIMESTAMP'))),
+                                                    'cs-select-pad':filterSectionDetail['filterFields'][fieldKey]['fieldType']==='BOOLEAN',
+                                                    'cs-mat-formulafield':filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA'
+                                                                        }"
+                                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_div'}}">
+                
+                                <ng-container
+                                    *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='TEXT' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='URL' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='TEXTAREA' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='EMAIL' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='AUTONUMBER' 
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType']==='TEXT')
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='TEXT')"
+                                    [ngTemplateOutlet]="textField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                                <ng-container
+                                    *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='NUMBER' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='DECIMAL' 
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType']==='NUMBER')
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='NUMBER'))"
+                                    [ngTemplateOutlet]="numberField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                                <ng-container
+                                    *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='CURRENCY'
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType']==='CURRENCY')
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='CURRENCY'))"
+                                    [ngTemplateOutlet]="currencyField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                
+                
+                                <ng-container
+                                    *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='DATE' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='TIMESTAMP' 
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' 
+                                                        && (filterSectionDetail['filterFields'][fieldKey]['rollupType']==='DATE' || filterSectionDetail['filterFields'][fieldKey]['rollupType']==='TIMESTAMP'))
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' 
+                                                        && (filterSectionDetail['filterFields'][fieldKey]['formulaType']==='DATE' || filterSectionDetail['filterFields'][fieldKey]['formulaType']==='TIMESTAMP')))"
+                                    [ngTemplateOutlet]="dateField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                                <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='CHECKBOX' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='MULTISELECT' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='DROPDOWN' 
+                                                        || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='RADIO'"
+                                    [ngTemplateOutlet]="multiSelectField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                                <ng-container
+                                    *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='BOOLEAN'
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType']==='BOOLEAN')
+                                                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='BOOLEAN')"
+                                    [ngTemplateOutlet]="booleanField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                                <ng-container
+                                    *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='LOOKUP' || filterSectionDetail['filterFields'][fieldKey]['fieldType']==='MASTERDETAIL'"
+                                    [ngTemplateOutlet]="lookupField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+                                </ng-container>
+                
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+                <div *ngIf="filterSectionDetail['filterPanelExpanded']" class="cs-applyClear-button cs-apply-refresh">
+                    <button id="ACT_cspfm_webcommon_lookup_filter_clear1" (click)="clearAction()" ng-reflect-color="primary"
+                        mat-stroked-button class="cs-mat-labelonly mat-stroked-button mat-primary">
+                        <span class="cs-mat-btnlabel"> Clear Filter</span>
+                    </button>
+                    <button id="ACT_cspfm_webcommon_lookup_filter_apply1" (click)="applyAction()" ng-reflect-color="primary"
+                        mat-flat-button class="cs-mat-labelonly mat-stroked-button mat-primary">
+                        <span class="cs-mat-btnlabel"> Apply Filter</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #matLabel let-fieldKey="fieldKey" let-betweenKey="betweenKey">
+    <mat-label>
+        {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+        translate}} {{betweenKey?betweenKey:''}}
+        <img *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA'"
+            title="{{filterSectionDetail['filterFields'][fieldKey]['expression']}}"
+            src="assets/img/formulafield_icon.png" alt="" />
+        <span title="{{filterSectionDetail['filterFields'][fieldKey]['expression']}}"
+            *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY'">
+            <em class="icon-mat-rollup_field cs-rollup-field"></em>
+        </span>
+        <span *ngIf="filterSectionDetail['filterFields'][fieldKey]['isRequired']" class="cs-mat-required">*</span>
+
+        <!-- For UI perfection purpose -->
+        <!-- <button *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='LOOKUP'" mat-icon-button="" class="cs-infobtn">
+            <em class="icon-mat-info_outline" title="For development purpose"></em>
+        </button> -->
+    <div
+        *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='NUMBER' 
+        || filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='DECIMAL' || filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='CURRENCY'
+        || filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='DATE' || filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='TIMESTAMP'
+        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='FORMULA' 
+        && (filterSectionDetail['filterFields'][fieldKey]['formulaType'] ==='NUMBER' || filterSectionDetail['filterFields'][fieldKey]['formulaType'] ==='CURRENCY'
+        || filterSectionDetail['filterFields'][fieldKey]['formulaType'] ==='DATE' || filterSectionDetail['filterFields'][fieldKey]['formulaType'] ==='TIMESTAMP'))
+        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] ==='ROLLUPSUMMARY'
+        && (filterSectionDetail['filterFields'][fieldKey]['rollupType'] ==='NUMBER' || filterSectionDetail['filterFields'][fieldKey]['rollupType'] ==='CURRENCY'
+        || filterSectionDetail['filterFields'][fieldKey]['rollupType'] ==='DATE' || filterSectionDetail['filterFields'][fieldKey]['rollupType'] ==='TIMESTAMP')))" class="cs-right-expand-btn">
+        <button *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] != 'Y'" class="cs-expand-btn"
+             matTooltip="between" matTooltipPosition="above">
+            <em class="icon-mat-unfold_less cs-lpad-20 globalSearchignoreField"
+                (click)="toggleBetweenFields(fieldKey)"></em>
+        </button>
+        <button *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] == 'Y'" matTooltip="exact"
+            matTooltipPosition="above">
+            <em class="icon-mat-exit_to_app globalSearchignoreField" (click)="toggleBetweenFields(fieldKey)"></em>
+        </button>
+    </div>
+</mat-label>
+
+</ng-template>
+
+<ng-template #textField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset">
+        <input
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+            matInput class="cs-lspad" type="text" (change)="valueChange(fieldKey,$event)"
+            [placeholder]="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='URL' ? 'https://www.example.com': ''"
+            [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']" />
+        <mat-select matPrefix class="cs-matselectfield"
+            [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']}"
+            [(value)]="filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']"
+            (click)="listFilterUtils.operatorStyleFromLastElement()">
+            <mat-option
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_operator'+ item['symbol']}}"
+                *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA'?filterSectionDetail['filterFields'][fieldKey]['formulaType']:(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' ? filterSectionDetail['filterFields'][fieldKey]['rollupType'] : filterSectionDetail['filterFields'][fieldKey]['fieldType'])]"
+                [value]="item['symbol']" [title]="item['displayName']">
+                {{item['symbol']}}
+            </mat-option>
+        </mat-select>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && !filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] |
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </mat-form-field>
+</ng-template>
+
+<ng-template #numberField let-fieldKey="fieldKey">
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] != 'Y'"
+        [ngTemplateOutlet]="singleNumberField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] == 'Y'"
+        [ngTemplateOutlet]="betweenNumberField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+</ng-template>
+
+<ng-template #singleNumberField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset">
+        <input
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+            matInput class="cs-lspad" type="number" placeholder="0" (change)="valueChange(fieldKey,$event)"
+            [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']" inputmode="numeric"
+            (keydown)="appUtilityObject.restrictNonNumbers($event)" (paste)="appUtilityObject.pasteCallback($event)" />
+        <mat-select matPrefix class="cs-matselectfield"
+            [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']}"
+            [(value)]="filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']"
+            (click)="listFilterUtils.operatorStyleFromLastElement()">
+            <mat-option
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_operator'+ item['symbol']}}"
+                *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA'?filterSectionDetail['filterFields'][fieldKey]['formulaType']:(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' ? filterSectionDetail['filterFields'][fieldKey]['rollupType'] : filterSectionDetail['filterFields'][fieldKey]['fieldType'])]"
+                [value]="item['symbol']" [title]="item['displayName']">
+                {{item['symbol']}}
+            </mat-option>
+        </mat-select>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && (filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === '' || filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === null || filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === undefined)">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] |
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </mat-form-field>
+</ng-template>
+
+<ng-template #betweenNumberField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <div fxLayout="row" fxFlex="100%">
+        <div fxLayout="column" fxFlex="45%"
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_0_div'}}">
+            <mat-form-field [floatLabel]="'always'" class="cs-mat-searchandlookupmodel" appearance="none">
+                <ng-container *ngTemplateOutlet="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='CURRENCY' 
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' 
+                    && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='CURRENCY') 
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' 
+                    && filterSectionDetail['filterFields'][fieldKey]['rollupType']==='CURRENCY') ? betweenCurrencyInput : betweenNumberInput; 
+                    context:{'fieldKey':fieldKey,'betweenKey':'from'}">
+                </ng-container>
+                <mat-chip-list>
+                    <mat-error *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                        && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                        {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] | translate}} should not be
+                        empty
+                    </mat-error>
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="10%" class="cs-mat-iconcenter">
+            <em class="icon-mat-arrow_forward cs-mat-from-to-icon"></em>
+        </div>
+        <div fxLayout="column" fxFlex="45%"
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_1_div'}}">
+            <mat-form-field [floatLabel]="'always'" class="cs-mat-searchandlookupmodel" appearance="none">
+                <ng-container *ngTemplateOutlet="filterSectionDetail['filterFields'][fieldKey]['fieldType']==='CURRENCY' 
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' 
+                    && filterSectionDetail['filterFields'][fieldKey]['formulaType']==='CURRENCY') ? betweenCurrencyInput : betweenNumberInput; 
+                    context:{'fieldKey':fieldKey,'betweenKey':'to'}">
+                </ng-container>
+                <mat-chip-list>
+                    <mat-error *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                        && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                        || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                        {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] | translate}} should not be
+                        empty
+                    </mat-error>
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #betweenNumberInput let-fieldKey="fieldKey" let-betweenKey="betweenKey">
+    <input
+        id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_from_input'}}"
+        matInput type="number" placeholder="0" class="cs-input-number"
+        (change)="valueChange(fieldKey,$event,betweenKey)"
+        [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue'][betweenKey]" inputmode="numeric"
+        (keydown)="appUtilityObject.restrictNonNumbers($event)" (paste)="appUtilityObject.pasteCallback($event)" />
+</ng-template>
+
+<ng-template #currencyField let-fieldKey="fieldKey">
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] != 'Y'"
+        [ngTemplateOutlet]="singleCurrencyField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] == 'Y'"
+        [ngTemplateOutlet]="betweenNumberField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+</ng-template>
+
+<ng-template #singleCurrencyField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset">
+        <div class="cs-currenct-entry">
+            <span matPrefix class="cs-currency-symbol">{{filterSectionDetail['filterFields'][fieldKey]['displayInfo'] &&
+                filterSectionDetail['filterFields'][fieldKey]['displayInfo']['currency'] &&
+                filterSectionDetail['filterFields'][fieldKey]['displayInfo']['currency']['currencyCode'] || '?'
+                }}</span>
+            <input
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+                matInput class="cs-lspad" type="number" placeholder="0" (change)="valueChange(fieldKey,$event)"
+                [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']" inputmode="numeric"
+                (keydown)="appUtilityObject.restrictNonNumbers($event)"
+                (paste)="appUtilityObject.pasteCallback($event)" />
+        </div>
+        <mat-select matPrefix class="cs-matselectfield"
+            [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']}"
+            [(value)]="filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']"
+            (click)="listFilterUtils.operatorStyleFromLastElement()">
+            <mat-option
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_operator'+ item['symbol']}}"
+                *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA'?filterSectionDetail['filterFields'][fieldKey]['formulaType']:(filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' ? filterSectionDetail['filterFields'][fieldKey]['rollupType'] : filterSectionDetail['filterFields'][fieldKey]['fieldType'])]"
+                [value]="item['symbol']" [title]="item['displayName']">
+                {{item['symbol']}}
+            </mat-option>
+        </mat-select>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && (filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === '' || filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === null || filterSectionDetail['filterFields'][fieldKey]['fieldValue'] === undefined)">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] |
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </mat-form-field>
+</ng-template>
+
+<ng-template #betweenCurrencyInput let-fieldKey="fieldKey" let-betweenKey="betweenKey">
+    <div class="cs-currenct-entry">
+        <span matPrefix class="cs-currency-symbol">{{filterSectionDetail['filterFields'][fieldKey]['displayInfo'] &&
+            filterSectionDetail['filterFields'][fieldKey]['displayInfo']['currency'] &&
+            filterSectionDetail['filterFields'][fieldKey]['displayInfo']['currency']['currencyCode'] || '?' }}</span>
+        <ng-container [ngTemplateOutlet]="betweenNumberInput"
+            [ngTemplateOutletContext]="{'fieldKey':fieldKey,'betweenKey':betweenKey}">
+        </ng-container>
+    </div>
+</ng-template>
+
+<ng-template #dateField let-fieldKey="fieldKey">
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] != 'Y'"
+        [ngTemplateOutlet]="singleDateField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <ng-container *ngIf="filterSectionDetail['filterFields'][fieldKey]['betweenflag'] == 'Y'"
+        [ngTemplateOutlet]="betweenDateField" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+</ng-template>
+
+<ng-template #singleDateField let-fieldKey="fieldKey">
+        <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+        </ng-container>
+        <div class="cs-date-input-container">
+
+            <mat-form-field class="cs-mat-searchandlookupmodel cs-mat-labelset cs-mat-selectwithdate " appearance="none">
+
+                <div class="cs-mat-select-p">
+                    <mat-select matPrefix class="cs-matselectfield cs-mat-cal-sel"
+                        [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']}"
+                        [(value)]="filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']"
+                        (click)="listFilterUtils.operatorStyleFromLastElement()">
+                        <mat-option
+                            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_operator'+ item['symbol']}}"
+                            *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields'][fieldKey]['fieldType']==='FORMULA' ? filterSectionDetail['filterFields'][fieldKey]['formulaType'] : (filterSectionDetail['filterFields'][fieldKey]['fieldType']==='ROLLUPSUMMARY' ? filterSectionDetail['filterFields'][fieldKey]['rollupType'] : filterSectionDetail['filterFields'][fieldKey]['fieldType'])]"
+                            [value]="item['symbol']" [title]="item['displayName']">
+                            {{item['symbol']}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="cs-mat-searchandlookupmodel" appearance="none">
+
+                <div class="cs-pr cs-mwl-datepicker">
+                    <input placeholder="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP' 
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                    appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                    appUtilityObject.userDatePickerFormat}}" title="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP' 
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                        appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                        appUtilityObject.userDatePickerFormat}}"
+                        id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+                        type="text" data-input
+                        (click)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey])"
+                        (keyup)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey])"
+                        (focus)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey])"
+                        (change)="valueChange(fieldKey,$event)"
+                        [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']" />
+                    <button class="input-button cs-mat-clear cs-datepicker-remove-btn cs-focus-clk" title="clear"
+                        *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue']"
+                        (click)="closeClick(filterSectionDetail['filterFields'][fieldKey],'')" tabindex="0">
+                        <em class="icon-mat-clear"></em>
+                    </button>
+                    <a class="input-button cs-datepicker-calendar-btn" title="Calendar" mwlFlatpickr data-toggle
+                        [enableTime]="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ? true: false"
+                        [monthSelectorType]="'dropdown'"
+                        (flatpickrReady)="flatpickrOnReady(filterSectionDetail['filterFields'][fieldKey],$event)"
+                        (flatpickrOpen)="flatpickrOnOpen(filterSectionDetail['filterFields'][fieldKey],$event)"
+                        (flatpickrClose)="flatpickrOnClose(filterSectionDetail['filterFields'][fieldKey],$event)"
+                        (flatpickrChange)="flatpickrOnChange(filterSectionDetail['filterFields'][fieldKey],$event)">
+                        <em class="icon-mat-date_range"></em>
+                    </a>
+
+                    <mat-chip-list>
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) && filterSectionDetail['filterApplyButtonPressed'] 
+                        && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']) 
+                        && !filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']
+                        | translate}} should not be empty
+                        </mat-error>
+
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) && filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                        && appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']) 
+                        && !filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']
+                        | translate}} should not be empty
+                        </mat-error>
+
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) && !this.appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']) 
+                            && filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                            Please enter correct format of
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']
+                        | translate}} - {{appUtilityObject.userDatePickerFormat}}
+                        </mat-error>
+
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) && !this.appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']) 
+                            && filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                            Please enter correct format of
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']
+                        | translate}} -
+                            {{appUtilityObject.userDateTimePickerFormatForPlaceholder}}
+                        </mat-error>
+                    </mat-chip-list>
+                </div>
+            </mat-form-field>
+        </div>
+
+</ng-template>
+
+<ng-template #betweenDateField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <div fxLayout="row" fxFlex="100%">
+        <div fxLayout="column" fxFlex="45%"
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_0_div'}}">
+            <mat-form-field class="cs-mat-searchandlookupmodel" appearance="none">
+                <div class="cs-pr cs-mwl-datepicker">
+                    <input placeholder="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                        || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                        appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                        appUtilityObject.userDatePickerFormat}}" title="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP' 
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                            appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                            appUtilityObject.userDatePickerFormat}}"
+                        id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_from_input'}}"
+                        type="text" data-input
+                        (click)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'from')"
+                        (keyup)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'from')"
+                        (focus)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'from')"
+                        (change)="valueChange(fieldKey,$event,'from')"
+                        [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from']" />
+                    <button class="input-button cs-mat-clear cs-datepicker-remove-btn cs-focus-clk" title="clear"
+                        *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from']"
+                        (click)="closeClick(filterSectionDetail['filterFields'][fieldKey],'from')" tabindex="0">
+                        <em class="icon-mat-clear"></em>
+                    </button>
+                    <a class="input-button cs-datepicker-calendar-btn" title="Calendar" data-toggle mwlFlatpickr
+                        [monthSelectorType]="'dropdown'"
+                        [enableTime]="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ? true: false"
+                        (flatpickrReady)="flatpickrOnReady(filterSectionDetail['filterFields'][fieldKey],$event, 'from')"
+                        (flatpickrOpen)="flatpickrOnOpen(filterSectionDetail['filterFields'][fieldKey],$event, 'from')"
+                        (flatpickrClose)="flatpickrOnClose(filterSectionDetail['filterFields'][fieldKey],$event,'from')"
+                        (flatpickrChange)="flatpickrOnChange(filterSectionDetail['filterFields'][fieldKey],$event,'from')">
+                        <em class="icon-mat-date_range"></em>
+                    </a>
+                    <mat-chip-list>
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) 
+                            && filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                            && this.appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from']) 
+                            && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                            Please choose
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                            translate}}
+                        </mat-error>
+                        <mat-error *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) 
+                            && filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                            && this.appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from']) 
+                            && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                            || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                            Please choose
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                            translate}}
+                        </mat-error>
+
+                        <mat-error
+                            *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) 
+                                && !this.appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'])">
+                            Please enter correct format of
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                            translate}} - {{appUtilityObject.userDatePickerFormat}}
+                        </mat-error>
+                        <mat-error
+                            *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) 
+                                && !this.appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'])">
+                            Please enter correct format of
+                            {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                            translate}} -
+                            {{appUtilityObject.userDateTimePickerFormatForPlaceholder}}
+                        </mat-error>
+                    </mat-chip-list>
+                </div>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="10%" class="cs-mat-iconcenter">
+            <em class="icon-mat-arrow_forward cs-mat-from-to-icon"></em>
+        </div>
+        <div fxLayout="column" fxFlex="45%"
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_1_div'}}">
+                <mat-form-field class="cs-mat-searchandlookupmodel" appearance="none">
+                    <div class="cs-pr cs-mwl-datepicker">
+                        <input placeholder="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                            || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                            appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                            appUtilityObject.userDatePickerFormat}}" title="{{(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ?
+                                appUtilityObject.userDateTimePickerFormatForPlaceholder :
+                                appUtilityObject.userDatePickerFormat}}"
+                            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_from_input'}}"
+                            type="text" data-input
+                            (click)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'to')"
+                            (keyup)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'to')"
+                            (focus)="flatpickrInputElementEvents($event, filterSectionDetail['filterFields'][fieldKey], 'to')"
+                            (change)="valueChange(fieldKey,$event,'to')"
+                            [value]="filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to']" />
+                        <button class="input-button cs-mat-clear cs-datepicker-remove-btn cs-focus-clk" title="clear"
+                            *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to']"
+                            (click)="closeClick(filterSectionDetail['filterFields'][fieldKey],'to')" tabindex="0">
+                            <em class="icon-mat-clear"></em>
+                        </button>
+                        <a class="input-button cs-datepicker-calendar-btn" title="Calendar" data-toggle mwlFlatpickr
+                            [monthSelectorType]="'dropdown'"
+                            [enableTime]="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                                || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) ? true: false"
+                            (flatpickrReady)="flatpickrOnReady(filterSectionDetail['filterFields'][fieldKey],$event, 'to')"
+                            (flatpickrOpen)="flatpickrOnOpen(filterSectionDetail['filterFields'][fieldKey],$event, 'to')"
+                            (flatpickrClose)="flatpickrOnClose(filterSectionDetail['filterFields'][fieldKey],$event,'to')"
+                            (flatpickrChange)="flatpickrOnChange(filterSectionDetail['filterFields'][fieldKey],$event,'to')">
+                            <em class="icon-mat-date_range"></em>
+                        </a>
+
+                        <mat-chip-list>
+                            <mat-error
+                                *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) 
+                                    && filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                                    && this.appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to']) 
+                                    && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                                Please choose
+                                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                                translate}}
+                            </mat-error>
+
+                            <mat-error
+                                *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) 
+                                    && filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] 
+                                    && this.appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to']) 
+                                    && (filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === '' 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === null 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['from'] === undefined 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === '' 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === null 
+                                    || filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'] === undefined)">
+                                Please choose
+                                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                                translate}}
+                            </mat-error>
+
+                            <mat-error
+                                *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'DATE'
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'DATE')
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'DATE')) 
+                                    && !this.appUtilityObject.dateValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'])">
+                                Please enter correct format of
+                                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                                translate}} - {{appUtilityObject.userDatePickerFormat}}
+                            </mat-error>
+
+                            <mat-error
+                                *ngIf="(filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'TIMESTAMP'
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'FORMULA' && filterSectionDetail['filterFields'][fieldKey]['formulaType'] === 'TIMESTAMP')
+                                    || (filterSectionDetail['filterFields'][fieldKey]['fieldType'] === 'ROLLUPSUMMARY' && filterSectionDetail['filterFields'][fieldKey]['rollupType'] === 'TIMESTAMP')) 
+                                    && !this.appUtilityObject.datetimeValidation(filterSectionDetail['filterFields'][fieldKey]['fieldValue']['to'])">
+                                Please enter correct format of
+                                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                                translate}} -
+                                {{appUtilityObject.userDateTimePickerFormatForPlaceholder}}
+                            </mat-error>
+                        </mat-chip-list>
+                    </div>
+                </mat-form-field>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #multiSelectField let-fieldKey="fieldKey">
+    <div class="cs-select-pad">
+        <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+        </ng-container>
+        <mat-chip-list *ngIf="filterSectionDetail['filterFields'][fieldKey]['displayInfo']['input'].length < 10">
+            <mat-chip
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input_'+item['label'] | translate}}"
+                *ngFor="let item of filterSectionDetail['filterFields'][fieldKey]['displayInfo']['input']"
+                [ngClass]="{'checked': item['isChecked']}"
+                (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields'][fieldKey])">
+                {{ item['label'] | translate }}</mat-chip>
+        </mat-chip-list>
+        <mat-chip-list #chipList
+            *ngIf="filterSectionDetail['filterFields'][fieldKey]['displayInfo']['input'].length >= 10">
+            <input
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+                style="width: 100%" [matAutocomplete]="autoComplete" [matChipInputFor]="chipList" />
+            <mat-chip
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input_'+item['label'] | translate}}"
+                *ngFor="let item of filterSectionDetail['filterFields'][fieldKey]['displayInfo']['selected']"
+                [selectable]="selectable" [removable]="removable">
+                {{item['label'] | translate}}
+                <button mat-icon-button class="cs-mat-icononly"
+                    (click)="listServiceUtils.removeSelectedItem(item['label'],filterSectionDetail['filterFields'][fieldKey])"
+                    *ngIf="removable">
+                    <em class="icon-mat-close"> </em>
+                </button>
+            </mat-chip>
+        </mat-chip-list>
+        <mat-autocomplete #autoComplete>
+            <mat-option
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input_'+item['label'] | translate}}"
+                *ngFor="let item of filterSectionDetail['filterFields'][fieldKey]['displayInfo']['input']">
+                <div (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields'][fieldKey])"
+                    (click)="$event.stopPropagation()">
+                    <mat-checkbox [checked]="item.isChecked"
+                        (change)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields'][fieldKey])"
+                        (click)="$event.stopPropagation()">
+                        {{ item['label'] | translate }}
+                    </mat-checkbox>
+                </div>
+            </mat-option>
+        </mat-autocomplete>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && filterSectionDetail['filterFields'][fieldKey]['fieldValue'].length === 0">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </div>
+</ng-template>
+
+<ng-template #booleanField let-fieldKey="fieldKey">
+    <div>
+        <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+        </ng-container>
+        <section class="example-section">
+            <mat-checkbox
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_0_input'}}"
+                class="cs-margin-left-to-right" (change)="valueChange(fieldKey,$event, undefined, 0)"
+                [checked]="filterSectionDetail['filterFields'][fieldKey]['fieldValue'][0]">
+                true
+            </mat-checkbox>
+            <mat-checkbox
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_1_input'}}"
+                class="cs-margin-left-to-right" (change)="valueChange(fieldKey,$event, undefined, 1)"
+                [checked]="filterSectionDetail['filterFields'][fieldKey]['fieldValue'][1]">
+                false
+            </mat-checkbox>
+        </section>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && (!filterSectionDetail['filterFields'][fieldKey]['fieldValue'] || filterSectionDetail['filterFields'][fieldKey]['fieldValue'].length === 0 || (!filterSectionDetail['filterFields'][fieldKey]['fieldValue'][0] && !filterSectionDetail['filterFields'][fieldKey]['fieldValue'][1]))">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName']|
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </div>
+</ng-template>
+
+<ng-template #lookupField let-fieldKey="fieldKey">
+    <ng-container [ngTemplateOutlet]="matLabel" [ngTemplateOutletContext]="{'fieldKey':fieldKey}">
+    </ng-container>
+    <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-searchandlookupmodel cs-mat-labelset">
+        <input
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+            matInput type="text" *ngIf="!filterSectionDetail['filterFields'][fieldKey]['fieldValue']"
+            (dblclick)="showLookup($event, fieldKey)" (keydown.enter)="showLookup($event, fieldKey)"
+            (change)="valueChange(fieldKey,$event)"
+            [value]="filterSectionDetail['filterFields'][fieldKey]['displayInfo']['label']" />
+        <input
+            id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_input'}}"
+            matInput type="text" *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue']"
+            (dblclick)="showLookup($event, fieldKey)" (keydown.enter)="showLookup($event, fieldKey)"
+            (change)="valueChange(fieldKey,$event)"
+            [value]="filterSectionDetail['filterFields'][fieldKey]['displayInfo']['label']" />
+        <button
+            id="{{'ACT_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_search'}}"
+            type="button" class="cs-mat-search-icon cs-mat-icononly"
+            *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue'] == null || filterSectionDetail['filterFields'][fieldKey]['fieldValue'] == ''"
+            (click)="showLookup($event, fieldKey)" mat-icon-button>
+            <em class="icon-mat-search"></em>
+        </button>
+        <button
+            id="{{'ACT_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_clear'}}"
+            type="button" class="cs-mat-icononly cs-mat-clear"
+            *ngIf="filterSectionDetail['filterFields'][fieldKey]['fieldValue'] != null && filterSectionDetail['filterFields'][fieldKey]['fieldValue'] != ''"
+            (click)="lookupClearAction(fieldKey)" mat-icon-button>
+            <em class="icon-mat-clear"></em>
+        </button>
+        <mat-select matPrefix class="cs-matselectfield"
+            [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']}"
+            [(value)]="filterSectionDetail['filterFields'][fieldKey]['conditionalOperator']"
+            (click)="listFilterUtils.operatorStyleFromLastElement()">
+            <mat-option
+                id="{{'FLD_cspfm_webcommon_lookup_filter_'+filterSectionDetail['filterFields'][fieldKey]['rootPath']+'$$'+filterSectionDetail['filterFields'][fieldKey]['fieldName']+'_operator'+ item['symbol']}}"
+                *ngFor="let item of filterFieldTypeAndOperator['TEXT']" [value]="item['symbol']"
+                [title]="item['displayName']">
+                {{item['symbol']}}
+            </mat-option>
+        </mat-select>
+        <mat-chip-list>
+            <mat-error
+                *ngIf="filterSectionDetail['filterApplyButtonPressed'] && filterSectionDetail['filterFields'][fieldKey]['isRequired'] && !filterSectionDetail['filterFields'][fieldKey]['fieldValue']">
+                {{filterSectionDetail['filterFields'][fieldKey]['fieldDisplayName'] |
+                translate}} should not be empty
+            </mat-error>
+        </mat-chip-list>
+    </mat-form-field>
+</ng-template>

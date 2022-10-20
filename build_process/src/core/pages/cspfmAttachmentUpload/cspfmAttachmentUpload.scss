@@ -1,0 +1,144 @@
+ion-select {
+  max-width: 100%;
+}
+
+.cs-padding {
+  padding: 10px;
+}
+
+.cs-upload-border {
+  border: 1px solid #C6D3F2;
+  border-style: dashed;
+  padding: 28px;
+}
+
+.cs-upload-btn {
+  margin: 0px auto 13px !important;
+}
+
+.cs-upload-btn-icon {
+  font-size: 41px;
+  color: #376FFD;
+}
+
+.cs-ts-14 {
+  font-size: 14px !important;
+}
+
+.cs-display-inlineblock {
+  display: inline-block;
+}
+
+.cs-flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cs-tmar-5 {
+  margin-top: 5px;
+}
+
+.cs-browse-c {
+  font-size: 13px;
+  color: #9CB8FE;
+}
+
+.cs-upload-btn-exp {
+  --border-radius: 0px;
+  font-size: 11px;
+}
+
+.cs-del-icon {
+  border-radius: 50%;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #edf2fd;
+  color: #666666;
+}
+
+.cs-del-btn {
+  font-size: 12px;
+  margin: 0px auto;
+}
+
+.cs-sep-doc {
+  width: 1px;
+  background: #999999;
+  height: 7px;
+  display: inline-block;
+  margin: 0px 9px 1px;
+}
+
+.cs-subtxt-c {
+  color: #999999;
+  font-size: 13px;
+}
+
+.cs-mar-txt {
+  margin: 3px 0px 2px 4px;
+}
+
+.cs-ts-13 {
+  font-size: 13px;
+}
+
+.cs-ts-11 {
+  font-size: 11px;
+}
+
+.cs-doc-row {
+  background: #F9FBFF;
+  border: 1px solid #E4EAF8;
+  border-radius: 4px;
+}
+
+.cs-choose-file-btn {
+  background: #22a7f0;
+  width: 150px;
+
+  ion-input[type="file"] {
+    background: #22a7f0;
+    color: #22a7f0;
+    width: 134px;
+    z-index: 99999;
+    position: absolute;
+    padding: 10px;
+    opacity: 0;
+    right: 10px;
+  }
+
+  .cs-choose-text {
+    color: #fff;
+    position: absolute;
+    z-index: 99;
+    width: 135px;
+    background: #22a7f0;
+    padding: 10px;
+    right: 10px;
+  }
+}
+
+.cs-upload-txt {
+  width: 100%;
+  color: #fff;
+  text-align: end;
+  font-size: 14px;
+}
+
+.cs-choose-btn {
+  --background: #447BFE;
+  --min-height: 20px;
+}
+
+.cs-fullheight {
+  height: 100%;
+}
+
+.cs-pr {
+  position: relative;
+}
+
+.cs-fullwidth {
+  width: 100%;
+}

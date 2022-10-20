@@ -1,0 +1,359 @@
+
+// // yellow = 50% need black
+// // blue = 54% need white
+// //---------------- 
+// @function set-header-color($color) {
+//     @if (lightness($color) <= 50) {
+//         @return $grey_base_primary;
+//     }
+//     @else {
+//         @return #fff;
+//     }
+// }
+// @function set-icon-color($color) {
+//     @if (lightness($color) <= 48) {
+//         @return $grey_base_primary;
+//     }
+//     @else {
+//         @return $primary_color;
+//     }
+// }
+// @function selectoption($color) {
+//     @if (lightness($color) > 60) {
+//         @return $primary_color;
+//     }
+//     @else {
+//         @return #fff;
+//     }
+// }
+// @function opacity_bg($color) {
+//     @if (lightness($color) >= 50) {
+//         @return lighten($color, 45%);
+//         // for light
+//     }
+//     @else {
+//         @return lighten($color, 5%);
+//         // for black
+//     }
+// }
+// @function hover_bg($color) {
+//     @if (lightness($color) >= 50) {
+//         @return lighten($color, 43%);
+//         // for light
+//     }
+//     @else {
+//         @return lighten($color, 5%);
+//         // for black
+//     }
+// }
+// @function btn_boxshadow_bg($color) {
+//     @if (lightness($color) >= 50) {
+//         @return #d8d8d8;
+//         // for light
+//     }
+//     @else if(lightness($color) <= 12){
+//         @return #000;
+//     }
+//     @else if(lightness($color) > 12 & lightness($color) < 50){
+//         @return #151719;
+//     }
+// }
+// @function disabledfield($color) {
+//     @if (lightness($color) >= 50) {
+//         @return #eaeaea;
+//         // for light
+//     }
+//     @else {
+//         @return #7d7d7d;
+//         // for black
+//     }
+// }
+// @function ngx_slider($color) {
+//     @if (lightness($color) >= 50) {
+//         @return #e8e8e8;
+//         // for light
+//     }
+//     @else {
+//         @return #8e8e8e;
+//         // for black
+//     }
+// }
+// //---------------- 
+
+// // Header
+//     $product_name_color : $grey_base_primary;
+//     $product_name_font_style : normal;
+//     $product_name_font_weight : 400;
+//     $product_name_font_size : 16px;
+//     $header_bg : #fff;
+
+//     $header_icon_badge_color : #fff;
+//     $header_icon_badge_bg : #e42313;
+    
+//     $header_icon_bg : transparent;
+//     $header_icon_color : $grey_base_primary;
+//     $header_icon_font_size : 23px;
+
+//         // There us no label 
+//         $header_button_color: $tertiary_color; 
+//         $header_button_bg : transparent;
+//         $header_button_font_style : normal;
+//         $header_button_font_weight : 400;
+//         $header_button_font_size : 23px;
+//         // Border
+//         $header_button_border_color:#ddd;
+//         $header_button_border_width:1px;
+//         $header_button_border_style:solid;
+//         $header_button_border_radius:2px;
+//         $header_button_label_weight:500;
+
+//         $header_button_box_shadow:none; 
+//         $header_button_hover_color:none;
+
+// // In between Body And Header Splitting Divider
+//         $header_body_divder : 1px solid #e0e0e0;
+//         // $header_body_divder : none;
+
+// // page title
+
+//     $page_title_color : set-header-color($primary_color);
+//     $page_title_font_weight : 400;
+//     $page_title_font_size : 20px;
+//     $page_title_font_style : normal;
+
+//     $title_button_label_color:set-header-color($primary_color);//Includes (icon :color , label:color)
+//     $title_button_bg:$primary_color;
+//     $title_font_size_icon : 23px;
+    
+//     $title_button_border_color: set-header-color($primary_color);
+//     $title_button_border_width:1px;
+//     $title_button_border_style:solid;
+//     $title_button_border_radius:2px;
+
+//     $title_button_font_style : normal;
+//     $title_button_font_weight : 500;
+//     $title_button_font_size : 13px;
+
+//     $title_button_box_shadow:none;
+
+//     // Tab View
+//     $page_tab_title_font_style : normal;
+//     $page_tab_title_color : $secondary_color;
+//     $page_tab_title_border_color : $secondary_color; 
+//     $page_tab_title_font_size : 14px;
+//     $page_tab_title_font_weight : 400;
+
+// // Body
+//     $body_bg:#f5f5f5;
+// // card
+//     $card_bg: #fff;
+//     $card_boxshadow:0px 0px 4px 0px rgba(0, 0, 0, 0.031); //(yes or no)
+//     $card_border: 1px solid #eeeeee; 
+
+//     $card_padding:20px;
+//     $card-border-radius:0;
+//     // Inside Card 
+//         $card_title_color:$grey_base_primary;
+//         $card_title_font_style : normal ;
+//         $card_title_font_weight : 500;
+//         $card_title_font_size : 18px;
+//         $card_title_underline_bg:$secondary_color;
+        
+//         // $card_title_button_color:'';
+//         // $card_title_button_font_size:'';
+
+//         // Inputs Property
+//             $input_box_title_color:$grey_base_secondary;
+//             $input_box_title_font_style : normal;
+//             $input_box_title_font_weight : 400;
+//             $input_box_title_font_size : 13px;
+
+//             $input_box_border_color:#dedede;
+//             $input_box_bg: '';
+//             $input_box_border_width:1px;
+//             $input_box_border_style:solid;
+//             $input_box_border_radius:0px;
+
+//             $input_box_inner_color:$grey_base_primary; //(label + input inner text)
+//             $input_box_inner_font_size:13px; //(label + input inner text)
+//             $input_box_inner_font_style : normal;
+//             $input_box_inner_font_weight : 400;
+
+//             $input_box_action_icon_color:'' ; //(Search , Close)
+
+//             // $disable_input_box_bg:#eaeaea;
+//             $disable_input_box_border_width:1px;
+//             $disable_input_box_border_style:solid;
+//             $disable_input_box_bg: disabledfield($card_bg);
+//             $disable_input_box_color: $grey_base_primary;
+
+//             // Both color are inter related
+//             // $toggle_button_active_color:''; 
+//             // $formula_field_img_color:'';
+
+//             // need to reduce color behind the circle
+
+//             // Dependent Pick List
+//                 $dependent_pick_list_badge_color: #ff7511;
+//                 $dependent_pick_list_badge_border_width: 1px;
+//                 $dependent_pick_list_badge_border_style: solid;
+//                 $dependent_pick_list_badge_border_color: #ffd8bd;
+
+//         // View Property
+//             $view_title_color:$grey_base_secondary;
+//             $view_title_font_style : normal;
+//             $view_title_font_weight : 400;
+//             $view_title_font_size : 12px;
+
+//             $view_label_color:$grey_base_primary;
+//             $view_label_font_style : normal;
+//             $view_label_font_weight : 500;
+//             $view_label_font_size : 13px;
+
+//             // $view_label_button_color:''; //(click icon or label)
+//             // $view_label_button_border_radius:''; //(click icon or label)
+//             // $view_label_button_bg:''; //(click icon or label)
+//             // $view_label_button_border_color:'';
+//             // $view_label_button_border_width:'';
+//             // $view_label_button_border_style:'';
+
+//             $view_label_button_box_shadow:'';
+//             $view_label_button_hover_color:'';
+
+//             $view_label_hyperlink_color:#3880ff;
+//             $view_label_hyperlink_font_style : normal;
+//             $view_label_hyperlink_font_weight : 500;
+//             $view_label_hyperlink_font_size : 13px;
+
+// // Menu
+//     // List View
+//     $list_parent_heading_icon_color:$primary_color;
+//     $list_parent_heading_font_size : 25px;
+//     $list_bg :$header_bg ;
+//     $list_parent_heading_title_color: $grey_base_secondary;
+//     $list_parent_heading_title_font_style : normal;
+//     $list_parent_heading_title_font_weight : 400;
+//     $list_parent_heading_title_font_size : 19px;
+
+//     $list_child_heading_icon_color:$primary_color;
+//     $list_child_heading_icon_font_style : 22px;
+
+//     $list_child_heading_title_color:$grey_base_secondary;
+//     $list_child_heading_title_font_style : normal;
+//     $list_child_heading_title_font_weight : 400;
+//     $list_child_heading_title_font_size : 16px ;
+//     $list_heading_accordion_color:$grey_base_primary;
+
+//     // need to use
+//     $list_hover_bg:'';
+
+// // Grid View
+//     $grid_segment_body_bg:$card_bg;
+//     $grid_segment_card_bg:$body_bg;
+//     $grid_segment_option_hover_bg:#f5f9ff;
+//     $grid_segment_option_icon_color:#000;  
+//     $grid_segment_option_title_color:$grey_base_secondary;
+//     $grid_segment_header_bg:'';
+
+// // Date indicater
+//     $date_picker_bg:$primary_color;
+//     $date_picker_color:set-header-color($primary_color);
+// // Select option // Global Color for Toggle, Checkbox, radio , formula field icon
+//     $select_option_bg:$tertiary_color;
+//     $select_option_color:selectoption($tertiary_color);
+
+// // Click Action
+// // Chip
+//     $chip_default_bg:#e0e0e0;
+//     $chip_default_color:#000;
+    
+//     $chip_button_bg:$primary_color;
+//     $chip_button_color:set-header-color($primary_color);
+
+// // Filled Button
+//     $filled_button_color:set-header-color($primary_color);
+//     $filled_button_bg:$primary_color;
+//     $filled_button_bg:$primary_color;
+//     $filled_button_font_size:22px;
+
+//     $filled_button_border_radius:3px;//(round, ovel, square)
+//     $filled_button_border_color:transparent!important;
+//     $filled_button_border_width:none!important;
+//     $filled_button_border_style:none!important;
+
+//     $filled_button_box_shadow:2px 2px 10px btn_boxshadow_bg($card_bg);
+//     $filled_button_hover_color:$primary_color;
+
+// // Stroke Button
+//     $stroke_button_color:$grey_base_primary;
+//     $stroke_button_font_size:22px;
+
+//     $stroke_btn_bg:$primary_color;
+//     $stroke_button_background:opacity_bg($stroke_btn_bg);
+//     $stroke_button_border_color:$stroke_btn_bg;
+     
+//     $stroke_button_border_radius:2px;//(round, ovel, square)
+//     $stroke_button_border_width:1px;
+//     $stroke_button_border_style:solid;
+
+//     $stroke_button_box_shadow:2px 2px 10px btn_boxshadow_bg($card_bg);
+//     $stroke_button_hover_color:none;
+
+// // Fab
+//     $fab_icon_color:set-icon-color($primary_color);
+//     $fab_icon_bg:0 0;
+//     $fab_icon_size:22px;
+
+// // Icon
+//     $icon_color:'';
+//     $icon_size: 22px;
+
+//     // SlickGrid
+//         $slickgrid_pagination_font_style : normal;
+//         $slickgrid_pagination_font_weight : 500;
+//         $slickgrid_pagination_font_size :14px;
+//         $slickgrid_pagination_color:$grey_base_primary;
+//         $slickgrid_pagination_disabled:#b8b8b8;
+//         $slickgrid_pagination_bg:$card_bg;
+//         $slickgrid_pagination_input_bg:$stroke_btn_bg;
+//         $slickgrid_lookuptheme_header_bg: $primary_color;
+
+//         $slickgrid_column_header_color : $grey_base_primary;
+//         $slickgrid_column_header_font_style : normal;
+//         $slickgrid_column_header_font_weight : 600;
+//         $slickgrid_column_header_font_size : 14px;
+        
+//         $slickgrid_inner_icon_color:$tertiary_color;
+//         $slickgrid_btn_inner_icon_color:$stroke_button_color;
+
+//         $slickgrid_inner_text_color :$grey_base_secondary;
+//         $slickgrid_inner_text_font_style : normal;
+//         $slickgrid_inner_text_font_weight : 500;
+//         $slickgrid_inner_text_font_size : 12px;
+
+//         $slickgrid_row_hover_bg :hover_bg($primary_color);
+//         // $slickgrid_row_hover_bg :#f4f7fe;
+//         $slickgrid_bg:$card_bg;
+//         $slickgrid_row_border_top_bg :#f0f0f0;
+//         $slickgrid_menu_option: btn_boxshadow_bg($body_bg);
+        
+//         $general_shadow: btn_boxshadow_bg($body_bg);
+//         $general_line: #dadada;
+        
+//         $grid_segment_hover:hover_bg($primary_color);
+//         $grid_segment_title_icon:'';
+//         $grid_segment_title_bg:'';
+//         $filter_selected_option_line_color:$primary_color;
+//         $slickgrid_preheader_bg:$body_bg;
+//         $slickgrid_preheader_color:$grey_base_primary;
+//         $slickgrid_preheader_border_color:$primary_color;
+//         $ngx_slider_bg:ngx_slider($card_bg);
+//         $header_app_list_bg:$primary_color;
+//         $header_app_list_color:#fff;
+//         $notify_got_it : $primary_color;
+//         $checkbox_tick_stroke:#fff;
+//         $slickgrid_right_clk_option_bg:#fff;
+//         $status_popover_box_bg : #fff;
+//         $calendar_bg: #fff;
+//         $status_popup_text_bg:transparent;
+//         $status_popup_text_border:1px solid #dedede;

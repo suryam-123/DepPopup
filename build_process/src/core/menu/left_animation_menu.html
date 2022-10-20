@@ -1,0 +1,56 @@
+<div class="cs-leftanimation-menu-hide cs-custom-scroll" id="left_animation_menu">
+    <div *ngFor="let menuGroup of menuService.assignedMenuGroups;index as i;">
+
+        <div title="{{(menuGroup.menuItems.web.length == 1 ? menuGroup.menuItems.web[0].title : menuGroup.menuGroupDisplayName) | translate}}"
+            class="cs-leftanimation-menu-item" id="{{menuGroup.menugroupName + '_' + 'close_menu'}}"
+            (click)="closeMenu($event,menuGroup,i)">
+            <div class="cs-leftani-item-center">
+                <button class="cs-leftani-arrowbtn" id="{{menuGroup.menugroupName + '_' + menuGroup['expand']}}"
+                    *ngIf="menuGroup.menuItems.web.length > 1">
+                    <em *ngIf="!menuGroup['expand']" class="icon-mat-arrow_right"></em>
+                    <em *ngIf="menuGroup['expand']" class="icon-mat-arrow_drop_down"></em>
+                </button>
+                <button class="cs-leftani-arrowbtn" *ngIf="menuGroup.menuItems.web.length == 1" [ngClass]="menuGroup.menuItems.web.length == 1 && 'cs-leftani-s-m-pad'">
+                    <em class="icon-mat-fiber_manual_record cs-leftani-s-m-dot"></em>
+                </button>
+                <button class="cs-leftani-menubtn" id="{{menuGroup.menugroupName + '_menubtn'}}">
+                    <em *ngIf="menuGroup.menuItems.web.length > 1" class="cs-ts-26 {{menuGroup.icon}}"></em>
+                    <em *ngIf="menuGroup.menuItems.web.length == 1" class="cs-ts-26 {{menuGroup.menuItems.web[0].icon}}"
+                        (click)="openPage(menuGroup.menuItems.web[0])"></em>
+                </button>
+                <label *ngIf="menuGroup.menuItems.web.length >1 "
+                    class="cs-toppopwrdbrk">{{menuGroup.menuGroupDisplayName | translate}}</label>
+                <label *ngIf="menuGroup.menuItems.web.length == 1 " class="cs-toppopwrdbrk"
+                    (click)="openPage(menuGroup.menuItems.web[0])">{{menuGroup.menuItems.web[0].title | translate}}</label>
+            </div>
+        </div>
+
+        <!-- <div title="{{menuGroup.menuGroupDisplayName | translate}}" class="cs-leftanimation-menu-item" id="{{menuGroup.menugroupName + '_' + 'close_menu'}}" (click)="closeMenu($event,menuGroup,i)">
+            <div class="cs-leftani-item-center">
+                <button class="cs-leftani-arrowbtn" id="{{menuGroup.menugroupName + '_' + menuGroup['expand']}}">
+                    <em *ngIf="!menuGroup['expand']" class="icon-mat-arrow_right"></em>
+                    <em *ngIf="menuGroup['expand']" class="icon-mat-arrow_drop_down"></em>
+                </button>
+                <button class="cs-leftani-menubtn" id="{{menuGroup.menugroupName + '_menubtn'}}">
+                    <em class="{{menuGroup.icon}}"></em>
+                </button>
+                <label class="cs-toppopwrdbrk">{{menuGroup.menuGroupDisplayName | translate}}</label>
+            </div>
+        </div>  -->
+        <div *ngIf="menuGroup['expand']" class="cs-leftani-submenu">
+            <ul *ngIf="menuGroup.menuItems.web.length != 1">
+                <li *ngFor="let menu of menuGroup['menuItems']['web'];index as i" id="{{menu['menuitemid']}}"
+                    title="{{menu['title'] | translate}}" (click)="openPage(menu)">
+                    <button class="{{menuButtonColor[i%menuButtonColor.length]}}">
+                        <em class="{{menu['icon']}}"></em>
+                    </button>
+                    <span class="cs-toppopwrdbrk">
+                        {{menu['title'] | translate}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" main>
+</ion-router-outlet>

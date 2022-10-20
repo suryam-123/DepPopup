@@ -1,0 +1,106 @@
+.cs-ts-14 {
+    font-size: 14px !important;
+}
+
+.cs-tw-500 {
+    font-weight: 500;
+}
+
+.cs-event-chip {
+    display: block;
+    color: #fff;
+    border-radius: 3px;
+    height: 25px;
+    position: relative;
+    margin: 4px 16px;
+    width: auto;
+    &:last-child{
+        margin-bottom:15px !important;
+    }
+
+    .cs-chip-label {
+        font-size: 13px;
+        position: absolute;
+        top: 5px;
+    }
+}
+
+.cs-year-label {
+    font-size: 13px;
+    font-weight: 100;
+    color: #C3C3C3;
+    margin: 3px 0px 5px 16px;
+}
+
+.cs-day-head {
+    font-size: 18px;
+    margin: 5px 0px 0px 16px;
+    color: #2D2D2D;
+}
+
+.cs-college-info {
+    position: absolute;
+    left: 6px;
+    top: 5px;
+}
+
+.cs-meet-icon {
+    color: #ffffff;
+    font-size: 18px;
+    position: absolute;
+    top: 2px;
+    left: 15px;
+}
+
+.cs-meet-label {
+    position: absolute;
+    top: 5px;
+    left: 38px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 78%;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.cs-ts-13 {
+    font-size: 13px !important;
+}
+
+.cs-tmar-20 {
+    margin-top: 20px;
+}
+
+.cs-pr {
+    position: relative;
+}
+
+.cs-close-btn {
+    position: absolute;
+    right: 0px;
+}
+
+.cs-list-padding {
+    padding: 3px 0px;
+}
+
+.right-align {
+    flex: 1 1 auto;
+}
+
+.cs-cal-toolbar {
+    height: 25px;
+    background: transparent;
+    padding-right: 0px;
+}
+
+.cs-cal-cross {
+    background: none;
+    margin: 12px 5px 0px !important;
+}
+.cs-cal-listscroll{
+    min-height: 76px;
+    max-height: 178px;
+    overflow-y: auto;
+}

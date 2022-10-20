@@ -1,0 +1,804 @@
+
+<!-- Information -->
+<div class="cs-mat-alertset cs-mat-custom-theme" *ngIf="messageType === 'Information'">
+  <!-- Alert -->
+  <div class="cs-cv-alert-confirmation cs-cv-conf-info" *ngIf="displayType === 'Alert'"> 
+    <div class="cs-cv-type">Information</div>
+    <div class="cs-popup-title" title="{{title}}" *ngIf="title">{{title}}</div>
+    <mat-dialog-content><h5 mat-dialog-title *ngIf="description">{{description}}</h5></mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="{{'alert_action_Cancel'}}" (click)="close('Cancel')" ng-reflect-color="primary" mat-flat-button 
+      class="cs-mat-labelonly mat-stroked-button mat-primary cs-cv-click-conf-alone">
+          <span class="cs-mat-btnlabel">Cancel</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+
+  <!-- Confirmation -->
+  <div class="cs-cv-alert-confirmation cs-cv-conf-info" *ngIf="displayType === 'Confirmation'">
+    <div class="cs-cv-type">Information</div>
+    <div class="cs-popup-title" *ngIf="title">{{title}}</div>
+    <mat-dialog-content><h5 mat-dialog-title *ngIf="description">{{description}}</h5></mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="{{'alert_action_'+button['name']}}"  *ngFor="let button of buttonInfo" (click)="close(button)" 
+      ng-reflect-color="primary" mat-flat-button class="cs-mat-labelonly mat-stroked-button mat-primary cs-cv-click-conf">
+        <span class="cs-mat-btnlabel">{{button['name']}}</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>
+
+<!-- Warning -->
+<div class="cs-mat-alertset cs-mat-custom-theme" *ngIf="messageType === 'Warning'">
+  <!-- Alert -->
+  <div class="cs-cv-alert-confirmation cs-cv-conf-warning" *ngIf="displayType === 'Alert'"> 
+    <div class="cs-cv-type">Warning</div>
+    <div class="cs-popup-title" title="{{title}}" *ngIf="title">{{title}}</div>
+    <mat-dialog-content><h5 mat-dialog-title *ngIf="description">{{description}}</h5></mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="{{'alert_action_Cancel'}}" (click)="close('Cancel')" ng-reflect-color="primary" mat-flat-button 
+      class="cs-mat-labelonly mat-stroked-button mat-primary cs-cv-click-conf-alone">
+          <span class="cs-mat-btnlabel">Cancel</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+
+  <!-- Confirmation -->
+  <div class="cs-cv-alert-confirmation cs-cv-conf-warning" *ngIf="displayType === 'Confirmation'">
+    <div class="cs-cv-type">Warning</div>
+    <div class="cs-popup-title" *ngIf="title">{{title}}</div>
+    <mat-dialog-content><h5 mat-dialog-title *ngIf="description">{{description}}</h5></mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="{{'alert_action_'+button['name']}}"  *ngFor="let button of buttonInfo" (click)="close(button)" 
+      ng-reflect-color="primary" mat-flat-button class="cs-mat-labelonly mat-stroked-button mat-primary cs-cv-click-conf">
+        <span class="cs-mat-btnlabel">{{button['name']}}</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+
+</div>
+
+<!-- Error -->
+<div class="cs-mat-alertset cs-mat-custom-theme" *ngIf="messageType === 'Error'">
+  <!-- *ngIf="displayType === 'Alert'" -->
+  <div class="cs-cv-alert-confirmation cs-cv-conf-error"> 
+    <div class="cs-cv-type">Error</div>
+    <div class="cs-popup-title" *ngIf="title">{{title}}</div>
+    <mat-dialog-content><h5 mat-dialog-title *ngIf="description">{{description}}</h5></mat-dialog-content>
+    <mat-dialog-actions>
+      <button id="{{'alert_action_Cancel'}}" (click)="close('Cancel')" ng-reflect-color="primary" mat-flat-button 
+      class="cs-mat-labelonly mat-stroked-button mat-primary cs-cv-click-conf-alone">
+          <span class="cs-mat-btnlabel">Cancel</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>
+
+
+<!-- Consolidate -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'Consolidate'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{ (messageObject['Information'] != undefined? messageObject['Information'].length : 0) + (messageObject['Warning'] != undefined? messageObject['Warning'].length : 0) + (messageObject['Error'] != undefined? messageObject['Error'].length : 0) }}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <mat-tab-group class="cs-con-mat-tab-group" [disableRipple]="true" *ngIf="showConsolidate">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="cs-cv-label-count">
+          <div class="cs-cv-count" *ngIf="messageObject['Information'] && messageObject['Information'].length > 0 ">{{messageObject['Information'].length}}</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Information'] && messageObject['Information'].length == 0 ">0</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Information'] === undefined">0</div>
+          <div class="cs-cv-label">Information</div> 
+        </div>
+      </ng-template>
+      <div class="cs-cv-norecord" *ngIf="messageObject['Information'] === undefined">
+        <div class="cs-norec-icon"><mat-icon  class="icon-mat-info cs-cv-info-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Information found...</div>
+      </div>
+      <mat-list *ngIf="messageObject['Information'] && messageObject['Information'].length > 0" class="cs-custom-scroll cs-full-height">
+        <mat-list-item class="cs-cv-defa-list cs-cv-info-bg" *ngFor="let message of messageObject['Information']">
+          <div class="cs-cv-display-set" (click)="rowButtonOnclick(message, 'Information')">
+            <mat-icon class="icon-mat-info_outline cs-cv-info-icon cs-cv-icon"></mat-icon>
+            <mat-label class="cs-cv-list-label">{{message.validationMessage}}</mat-label>
+          </div>
+          <button class="cs-cv-click-action cs-cv-info-clk" mat-stroked-button (click)="okButtonOnclick(message, 'Information')">Ok</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="cs-cv-label-count">
+          <div class="cs-cv-count" *ngIf="messageObject['Warning'] && messageObject['Warning'].length > 0 ">{{messageObject['Warning'].length}}</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Warning'] && messageObject['Warning'].length == 0 ">0</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Warning'] === undefined">0</div>
+          <div class="cs-cv-label">Warning</div> 
+        </div>
+      </ng-template>
+      <div class="cs-cv-norecord" *ngIf="messageObject['Warning'] === undefined">
+        <div class="cs-norec-icon"><mat-icon  class="icon-mat-warning cs-cv-warning-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Warning found...</div>
+      </div>
+      <mat-list *ngIf="messageObject['Warning'] && messageObject['Warning'].length > 0" class="cs-custom-scroll cs-full-height">
+        <mat-list-item class="cs-cv-defa-list cs-cv-warn-bg" *ngFor="let message of messageObject['Warning']">
+          <div class="cs-cv-display-set" (click)="rowButtonOnclick(message, 'Warning')">
+            <mat-icon  class="icon-mat-warning cs-cv-warning-icon cs-cv-icon"></mat-icon>
+            <mat-label class="cs-cv-list-label">{{message.validationMessage}}</mat-label>
+          </div>
+          <button class="cs-cv-click-action cs-cv-warning-clk" mat-stroked-button *ngIf="!message['validationPass']" (click)="okButtonOnclick(message, 'Warning')">Ok</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="cs-cv-label-count">
+          <div class="cs-cv-count" *ngIf="messageObject['Error'] && messageObject['Error'].length > 0 ">{{messageObject['Error'].length}}</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Error'] && messageObject['Error'].length == 0 ">0</div>
+          <div class="cs-cv-count" *ngIf="messageObject['Error'] === undefined">0</div>
+          <div class="cs-cv-label">Error</div> 
+        </div>
+      </ng-template>
+      <div class="cs-cv-norecord" *ngIf="messageObject['Error'] === undefined">
+        <div class="cs-norec-icon"><mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Error found...</div>
+      </div>
+      <mat-list *ngIf="messageObject['Error'] && messageObject['Error'].length > 0"  class="cs-custom-scroll cs-full-height">
+        <mat-list-item class="cs-cv-defa-list cs-cv-err-bg" *ngFor="let message of messageObject['Error']">
+        <div class="cs-cv-display-set" (click)="rowButtonOnclick(message, 'Error')">
+          <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+          <mat-label class="cs-cv-list-label">{{message.validationMessage}}</mat-label>
+        </div>
+        </mat-list-item>
+      </mat-list >
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- unique  -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'UniqueError'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{errorCount}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+  </div>
+
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate">
+
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+
+    <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+      <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Unique Error</div>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge>
+    </div>
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+    <mat-list *ngIf="messageObject && messageObject.length > 0" class="cs-custom-scroll cs-full-height">
+      <mat-list-item class="cs-cv-defa-list cs-cv-err-bg" *ngFor="let message of messageObject;"
+        (mouseover)='selectFailureField(message)'>
+        <div class="cs-cv-display-set">
+          <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+          <mat-label class="cs-cv-list-label">{{message.displayName}}</mat-label>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<!-- Composite  -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'CompositeError'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{errorCount}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate"> 
+
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+
+    <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+      <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Composite Error</div>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge>
+    </div>
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+
+    <mat-list *ngIf="messageObject && messageObject.length > 0" class="cs-custom-scroll cs-themeBased-white cs-full-height">
+   
+      <div class="" *ngFor="let message of messageObject;">
+        <div class="cs-compositeError-info">
+          <em class="icon-mat-warning cs-ts-16"></em>
+          <div class="cs-ts-14 cs-marginLeft-10 cs-fontweight-500"> {{message['compositeName']}} </div>
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list">
+          <li class="cs-ts-14" *ngFor="let field of message['fieldName'];" (mouseover)='selectFailureField(field)'>
+            {{field.fieldDisplayName}}</li>
+        </ul>
+      </div>
+    </mat-list>
+
+  </div>
+</div>
+
+<!-- Lookup criteria -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'LookupCriteriaError' || messageType === 'AssociationCriteriaError'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{errorCount}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+  </div>
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate">  
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Clear below errors before save!
+      </div>
+    </div>                                                                      
+        <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+          <div class="cs-fontweight-500 cs-ts-15 cs-Error-color" *ngIf="messageType === 'LookupCriteriaError'">Lookup criteria Error</div> 
+          <div class="cs-fontweight-500 cs-ts-15 cs-Error-color" *ngIf="messageType === 'AssociationCriteriaError'">Association criteria Error</div>  
+          <div class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</div>
+          <div class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject && messageObject.length == 0 ">0</div>
+          <div class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject === undefined">0</div>
+        </div>      
+      <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+        <div class="cs-norec-icon"><mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Error found...</div>
+      </div>
+      <mat-list *ngIf="messageObject && messageObject.length > 0"  class="cs-custom-scroll cs-full-height">
+       
+        <div class="" *ngFor="let message of messageObject;" (click)="rowButtonOnclick(message, 'Error')">
+          <div class="cs-compositeError-info" >
+            <em class="icon-mat-warning cs-ts-16"></em>
+            <div class="cs-ts-14 cs-marginLeft-10 cs-fontweight-500" >Enter value for the below fields</div>
+          </div>
+          <ul class="cs-color-lightgray cs-compositeError-list">
+            <li class="cs-ts-14" *ngFor="let field of message['fields'];" (mouseover) = 'selectFailureField(field)'>
+              {{field.fieldDisplayName}}</li>
+          </ul>
+        </div>
+      </mat-list >   
+  </div>
+</div>
+
+<!-- Couchdb  -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'CouchdbError'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{errorCount}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate">
+   
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+    
+        <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+          <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Input Error</div> 
+          <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+          <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+          <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12" *ngIf="messageObject === undefined">0</ion-badge>
+        </div>
+
+      <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+        <div class="cs-norec-icon"><mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Error found...</div>
+      </div>
+      <mat-list *ngIf="messageObject && messageObject.length > 0"  class="cs-custom-scroll cs-full-height">
+        
+        <div class="" *ngFor="let message of messageObject;" (mouseover) = 'selectFailureField(message)'>
+          <div class="cs-compositeError-info">
+            <em class="icon-mat-warning cs-ts-16"></em>
+            <div class="cs-ts-14 cs-marginLeft-10 cs-fontweight-500" (mouseover) = 'selectFailureField(message)'> {{message.fieldDisplayName}} </div>
+          </div>
+          <ul class="cs-color-lightgray cs-compositeError-list">
+            <li class="cs-ts-14" *ngFor="let field of message['faildReasons'];" (mouseover) = 'selectFailureField(field)'>
+              {{field.fmg}}</li>
+          </ul>
+          </div>
+      </mat-list >
+    
+  </div>
+</div>
+
+<!-- Object -->
+<div class="cs-consolidate-view" *ngIf="messageType === 'parentAndChaildObjectError'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <mat-tab-group class="cs-con-mat-tab-group" [disableRipple]="true" *ngIf="showConsolidate">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="cs-cv-label-count">
+          <div class="cs-cv-count" *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</div>
+          <div class="cs-cv-count" *ngIf="messageObject && messageObject.length == 0 ">0</div>
+          <div class="cs-cv-count" *ngIf="messageObject === undefined">0</div>
+          <div class="cs-cv-label">Error</div> 
+        </div>
+      </ng-template>
+      <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+        <div class="cs-norec-icon"><mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Error found...</div>
+      </div>
+
+      <!-- unique  -->
+      <!-- //cs-changes -->
+      <div  *ngIf="validationtype === 'UniqueError'">
+
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate">
+
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+
+    <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+      <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Unique Error</div>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge>
+    </div>
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+    <mat-list *ngIf="messageObject && messageObject.length > 0" class="cs-custom-scroll cs-full-height">
+      <mat-list-item class="cs-cv-defa-list cs-cv-err-bg" *ngFor="let message of messageObject;"
+        (mouseover)='selectFailureField(message)'>
+        <div class="cs-cv-display-set">
+          <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+          <mat-label class="cs-cv-list-label">{{message.fieldName}}</mat-label>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+
+
+<!-- Composite  -->
+<!-- //CS-CHANGES -->
+<div *ngIf="validationtype === 'CompositeError'">
+
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate"> 
+
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+
+    <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+      <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Composite Error</div>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge>
+    </div>
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+
+    <mat-list *ngIf="messageObject && messageObject.length > 0" class="cs-custom-scroll cs-themeBased-white cs-full-height">
+
+      <div class="" *ngFor="let message of messageObject;">
+        <div class="cs-compositeError-info">
+          <em class="icon-mat-warning cs-ts-16"></em>
+          <div class="cs-ts-14 cs-marginLeft-10 cs-fontweight-500"> {{message['compositeName']}} </div>
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list">
+          <li class="cs-ts-14" *ngFor="let field of message['fieldName'];" (mouseover)='selectFailureField(field)'>
+            {{field.fieldName}}</li>
+        </ul>
+      </div>
+    </mat-list>
+
+  </div>
+</div>
+
+<!-- couchDB  -->
+<!-- //CS-CHANGES -->
+<div *ngIf="validationtype === 'CouchdbError'">
+  
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate"> 
+
+    <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the unique , composite and Input errors, then the record will be saved!
+      </div>
+    </div>
+
+    <div class="cs-bgmcolor-lightred cs-display-center cs-Error-padding">
+      <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Input Error</div>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count cs-marginLeft-10 cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge>
+    </div>
+
+    
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+
+    <mat-list *ngIf="messageObject && messageObject.length > 0" class="cs-custom-scroll cs-themeBased-white cs-full-height">
+      
+
+      <div class="" *ngFor="let message of messageObject;">
+        <div class="cs-compositeError-info">
+          <em class="icon-mat-warning cs-ts-16"></em>
+          <div class="cs-ts-14 cs-marginLeft-10 cs-fontweight-500"> {{message.fieldDisplayName}} </div>
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list">
+          <li class="cs-ts-14" *ngFor="let field of message['faildReasons'];" (mouseover)='selectFailureField(field)'>
+            {{field.fmg}}</li>
+        </ul>
+      </div>
+    </mat-list>
+
+  </div>
+</div>
+
+
+    </mat-tab>
+
+    
+    <mat-tab>
+      <div>
+      <ng-template mat-tab-label>
+        <div class="cs-cv-label-count">
+          <div class="cs-cv-count" *ngIf="successObjectMesg && successObjectMesg.length > 0 ">{{successObjectMesg.length}}</div>
+          <div class="cs-cv-count" *ngIf="successObjectMesg && successObjectMesg.length == 0 ">0</div>
+          <div class="cs-cv-count" *ngIf="successObjectMesg === undefined">0</div>
+          <div class="cs-cv-label">Success</div> 
+        </div>
+      </ng-template>
+      <div class="cs-cv-norecord" *ngIf="successObjectMesg === undefined">
+        <div class="cs-norec-icon"><mat-icon  class="icon-mat-warning cs-cv-warning-icon cs-cv-icon"></mat-icon></div>
+        <div class="cs-norec-text">No Warning found...</div>
+      </div>
+       <!-- //CS-CHANGES CLS CHANGED start-->
+      <mat-list *ngIf="successObjectMesg && successObjectMesg.length > 0" class="cs-custom-scroll cs-full-height cs-consolidate-error ">
+        <mat-list-item class="cs-cv-defa-list" *ngFor="let message of successObjectMesg;"
+          (mouseover)='selectFailureField(message)'>
+          <div class="cs-composite-success cs-error-accordion" (click)="toggleAccordian()">
+            <div class="cs-sucess-msg-parent">
+              <mat-icon class="icon-cs-succeed cs-cv-error-icon cs-cv-icon"></mat-icon>
+              <mat-label class="cs-fontweight-500 cs-cv-list-label">{{message}}</mat-label>
+            </div>
+            <div class="cs-sucess-msg-toggle">
+              <em class="icon-cs-down-arrow cs-toogle-icon"></em>
+            </div>
+          
+          </div>
+          
+          
+        </mat-list-item>
+      </mat-list>
+    </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+
+<!-- Full-view-mode  -->
+<div class="cs-consolidate-view" *ngIf="viewMode === 'fullViewMode'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{messageObject.length}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate"> 
+
+    <!-- <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the Error then the record will be saved!
+      </div>
+    </div> -->
+    <div class="cs-error-section-top cs-display-center cs-Error-padding">
+      <div class="cs-error-name">
+        <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Error</div>
+      <!-- <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length > 0 ">{{messageObject.length}}</ion-badge>
+      <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject && messageObject.length == 0 ">0</ion-badge>
+      <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+        *ngIf="messageObject === undefined">0</ion-badge> -->
+      <!-- <span *ngIf="errorSet['errorRecords'] && errorSet['errorRecords'].length > 1" style="padding: 0 10px;" (click)="previousButtonClick()"><em class="icon-cs-previous"></em></span>
+      <span *ngIf="errorSet['errorRecords'] && errorSet['errorRecords'].length > 1" (click)="nextButtonClick()"><em class="icon-cs-next"></em></span> -->
+      </div>
+      <div class="cs-error-section-wise">
+        <span class="cs-error-section-wise-head">
+          Show Section Wise
+          </span>
+          <mat-checkbox (change)="checkboxClick($event)"></mat-checkbox>
+      </div>
+    </div>
+
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+
+    <div class="cs-custom-scroll cs-themeBased-white cs-full-height" >
+  <div *ngFor="let section of messageObject;" >
+    <mat-list class="cs-error-acc" *ngIf="messageObject && messageObject.length > 0" >
+      <div class="cs-error-section-head cs-error-section-head-bg" (click)="toggleAccordianerr($event)">
+        <div class="cs-error-section-head-left">
+          <span class="cs-error-section-head-name cs-truncate">{{section['sectionName']}}</span>   
+      </div>
+          <span class=" cs-error-section-head-right ">
+        <em class="icon-mat-keyboard_arrow_up cs-error-section-toggle-icon">
+        </em>
+      </span>
+      </div>
+
+      <!-- <div style="text-align: center;" ><span>{{section['sectionName']}}</span>
+        <span *ngIf="section['errorRecords'] && section['errorRecords'].length > 1" style="padding: 0 10px;"><em class="icon-cs-previous"></em></span>
+        <span *ngIf="section['errorRecords'] && section['errorRecords'].length > 1" ><em class="icon-cs-next"></em></span>
+      </div> -->
+
+      <div class="cs-error-section-field-head" style="display:block;" *ngIf="section['validationFailureSet']">
+      <div class="cs-error-section-field"  *ngFor="let fieldSet of section['validationFailureSet'];">
+        <div class="cs-compositeError-info">
+          <!-- <em class="icon-mat-warning cs-ts-16"></em> -->
+          <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['displayName']"> {{fieldSet['displayName']}} </div>
+          <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['fieldDisplayName']"> {{fieldSet['fieldDisplayName']}} </div>
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list" *ngFor="let field of fieldSet['faildReasons'];">
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet)' *ngIf="field['message']">
+            {{field.message}}</li>
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet)' *ngIf="field['fmg']">
+            {{field.fmg}}</li>
+        </ul>
+      </div>
+      </div>
+      
+      <div   style="display:block;" *ngIf="section['errorRecords']">        
+      <div  class="cs-error-section-field-head" *ngIf="section['errorRecords'][IndexObj[section['sectionName']]] as fieldSet">
+        <div class="cs-error-section-field" *ngFor="let fieldname of fieldSet['failureField'];">
+        <div class="cs-compositeError-info">
+          <!-- <em class="icon-mat-warning cs-ts-16"></em> -->
+          
+          <div class="cs-ts-14 cs-fontweight-500" *ngIf="fieldname['displayName']"> {{fieldname['displayName']}} </div>
+          <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldname['fieldDisplayName']"> {{fieldname['fieldDisplayName']}} </div>
+          <!-- </div> -->
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list" *ngFor="let field of fieldname['faildReasons'];">
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet, fieldname)' *ngIf="field['message']">
+            {{field.message}}</li>
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet, fieldname)' *ngIf="field['fmg']">
+            {{field.fmg}}</li>
+        </ul>
+
+        </div>
+        <div class="cs-pre-next-btn-div">
+         
+          <button *ngIf="section['errorRecords'] && section['errorRecords'].length > 1" (click)="previousRecordClickInFullView(section['errorRecords'], section['errorRecords'].indexOf(fieldSet), section['sectionName'])" class="cs-pre-next-btn">
+            Previous</button>
+        <button *ngIf="section['errorRecords'] && section['errorRecords'].length > 1" (click)="nextRecordClickInFullView(section['errorRecords'], section['errorRecords'].indexOf(fieldSet), section['sectionName'])"  class="cs-pre-next-btn">
+          Next
+        </button>
+        </div>
+      </div>
+      </div>
+    </mat-list>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section-view-mode  -->
+<div class="cs-consolidate-view" *ngIf="viewMode === 'sectionViewMode'">
+  <div class="cs-consolidate-view-indicater" (click)="toggleConsolidate()">
+    <div class="cs-consolidate-view-toggle-clk" *ngIf="!showConsolidate">
+      <span class="cs-indicater-icon"><em class="icon-mat-warning"></em></span>
+      <span class="cs-indicater-count">{{messageObject['errorRecords'].length}}</span>
+    </div>
+    <div class="clearfix" *ngIf="showConsolidate">
+      <span class="cs-indicater-arrow"><em class="icon-mat-arrow_forward_ios"></em></span>
+    </div>
+
+  </div>
+  <div class="cs-con-mat-tab-group" *ngIf="showConsolidate"> 
+
+    <!-- <div class="cs-info-colors cs-display-center cs-Error-padding">
+      <em class="icon-mat-error"></em>
+      <div class="cs-marginLeft-10 cs-font-style-italic cs-ts-13">
+        Once you can clear the Error then the record will be saved!
+      </div>
+    </div> -->
+
+    <div class="cs-error-section-top cs-display-center cs-Error-padding">
+      <div class="cs-error-name">
+        <div class="cs-fontweight-500 cs-ts-15 cs-Error-color">Error</div>
+        <!-- <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+          *ngIf="messageObject && messageObject['validationFailureSet'].length > 0 ">{{messageObject['validationFailureSet'].length}}</ion-badge>
+        <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+          *ngIf="messageObject && messageObject['validationFailureSet'].length == 0 ">0</ion-badge>
+        <ion-badge class="cs-cv-count  cs-Error-Count cs-display-center cs-ts-12"
+          *ngIf="messageObject === undefined">0</ion-badge> -->
+        <!-- <span  style="padding: 0 10px;" ><em class="icon-cs-previous"></em></span>
+        <span  ><em class="icon-cs-next"></em></span> -->
+      </div>
+      <div class="cs-error-section-wise">
+        <span class="cs-error-section-wise-head">
+          Show Section Wise
+          </span>
+          <mat-checkbox [checked]="true" (change)="checkboxClick($event)"></mat-checkbox>
+      </div>
+      
+    </div>
+
+    <div class="cs-cv-norecord" *ngIf="messageObject === undefined">
+      <div class="cs-norec-icon">
+        <mat-icon class="icon-mat-warning cs-cv-error-icon cs-cv-icon"></mat-icon>
+      </div>
+      <div class="cs-norec-text">No Error found...</div>
+    </div>
+
+    <mat-list *ngIf="messageObject" class="cs-custom-scroll cs-themeBased-white cs-full-height cs-error-acc cs-err-sectionmode-wise">
+      <div class="cs-error-section-head ">
+        <div class="cs-error-section-head-left">
+          <span class="cs-error-section-head-name cs-truncate">{{messageObject['sectionName']}}</span>
+        </div>
+        
+      <span class="cs-error-section-head-right">
+        <span class="cs-err-sec-wise-nav cs-err-sec-wise-nav-pre" *ngIf="actionConsolidateMessageType.length > 1" (click)="previousButtonClick()" ><em class="icon-mat-keyboard_arrow_left"></em></span>
+      <span  class="cs-err-sec-wise-nav cs-err-sec-wise-nav-next" *ngIf="actionConsolidateMessageType.length > 1" (click)="nextButtonClick()"><em class="icon-mat-keyboard_arrow_right"></em></span>
+      </span>
+      </div>
+      <div *ngIf="messageObject['errorRecords']">
+      <div class="cs-error-section-field-head" *ngIf="messageObject['errorRecords'][i] as message">
+        <div  class="cs-error-section-field" *ngFor="let fieldSet of message['failureField'];">
+        <div class="cs-compositeError-info" >
+          <!-- <em class="icon-mat-warning cs-ts-16"></em> -->
+          <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['displayName']"> {{fieldSet['displayName']}} </div>
+          <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['fieldDisplayName']"> {{fieldSet['fieldDisplayName']}} </div>
+        </div>
+ 
+        <ul class="cs-color-lightgray cs-compositeError-list" *ngFor="let field of fieldSet['faildReasons'];">
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(message, fieldSet)' *ngIf="field['message']">
+            {{field.message}}</li>
+          <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(message, fieldSet)' *ngIf="field['fmg']">
+            {{field.fmg}}</li>
+        </ul>
+        </div>
+        <div class="cs-pre-next-btn-div">
+         <button *ngIf="messageObject['errorRecords'] && messageObject['errorRecords'].length > 1" (click)="previousRecordClick()"  class="cs-pre-next-btn">
+         Previous</button>
+         <button *ngIf="messageObject['errorRecords'] && messageObject['errorRecords'].length > 1" (click)="nextRecordClick()" class="cs-pre-next-btn">
+       Next
+     </button>
+     </div>
+      </div>
+      </div>
+
+      <div *ngIf="messageObject['validationFailureSet']">
+        <div class="cs-error-section-field-head" *ngIf="messageObject['validationFailureSet'] as message">
+          <div  class="cs-error-section-field" *ngFor="let fieldSet of message;">
+          <div class="cs-compositeError-info" >
+            <!-- <em class="icon-mat-warning cs-ts-16"></em> -->
+            <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['displayName']"> {{fieldSet['displayName']}} </div>
+            <div class="cs-ts-14  cs-fontweight-500" *ngIf="fieldSet['fieldDisplayName']"> {{fieldSet['fieldDisplayName']}} </div>
+          </div>
+   
+          <ul class="cs-color-lightgray cs-compositeError-list" *ngFor="let field of fieldSet['faildReasons'];">
+            <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet)' *ngIf="field['message']">
+              {{field.message}}</li>
+            <li class="cs-ts-14 cs-cur"  (mouseover)='multilineEntryFailureField(fieldSet)' *ngIf="field['fmg']">
+              {{field.fmg}}</li>
+          </ul>
+          </div>
+          <div class="cs-pre-next-btn-div">
+           <button *ngIf="messageObject['errorRecords'] && messageObject['errorRecords'].length > 1" (click)="previousRecordClick()"  class="cs-pre-next-btn">
+           Previous</button>
+           <button *ngIf="messageObject['errorRecords'] && messageObject['errorRecords'].length > 1" (click)="nextRecordClick()" class="cs-pre-next-btn">
+         Next
+       </button>
+       </div>
+        </div>
+      </div>
+    </mat-list>
+
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="cs-mat-view-grid" title="{{config['displayFormula']}}">
+    <label *ngIf="config.formulaType === 'CURRENCY'">
+        {{label}} In {{ currencyCode }}
+        <span style="padding-left:5px;"><img mat-card-image src="assets/img/formulafield_icon.png" alt=""
+                class="cs-display-inlineblock"></span>
+    </label>
+    <label *ngIf="config.formulaType !== 'CURRENCY'">
+        {{label}}
+        <span style="padding-left:5px;"><img mat-card-image src="assets/img/formulafield_icon.png" alt=""
+                class="cs-display-inlineblock"></span>
+    </label>
+    <mat-label *ngIf = "formulaDependentFlag" matBadge= "{{dependentNumberCount}}" matBadgeOverlap="false"></mat-label>
+    <label *ngIf="dataSource=='JsonDB' && config.formulaType != 'BOOLEAN'">0</label>
+    <div class="cs-mat-vg-cont cs-opacity_true" *ngIf="dataSource=='CouchDB' || dataSource == 'PouchDB'">
+        <span *ngIf="config.formulaType == 'NUMBER' && config.fileSizeMeasurment == 'MB'">{{formulaResult}} MB</span>
+        <span *ngIf="config.formulaType == 'NUMBER' && !config['fileSizeMeasurment']">{{formulaResult | number:'0.0-'+precision}}</span>
+        <span *ngIf="config.formulaType == 'CURRENCY' && isDisplayPropAvailable">
+            {{formulaResult | currency:config.displayProp.currency.currencyCode:config.displayProp.currency.display:config.displayProp.currency.digitsInfo:config.displayProp.currency.locale }}
+        </span>
+        <span *ngIf="config.formulaType == 'CURRENCY' && !isDisplayPropAvailable">
+            {{formulaResult}}
+        </span>
+        <span *ngIf="config.formulaType == 'TEXT'">{{formulaResult }}</span>
+        <span
+            *ngIf="config.formulaType == 'DATE'">{{formulaResult | date:appUtilityObject.userDateFormat:appUtilityObject.utcOffsetValue}}</span>
+        <span
+            *ngIf="config.formulaType == 'TIMESTAMP'">{{formulaResult | date:appUtilityObject.userDateTimeFormat:appUtilityObject.userZoneOffsetValue}}</span>
+        <span *ngIf="config.formulaType == 'BOOLEAN'">
+            <mat-slide-toggle class="cs-toggle-enable" [disabled]="true" [checked]="formulaResult">
+            </mat-slide-toggle>
+        </span>
+    </div>
+</div> 

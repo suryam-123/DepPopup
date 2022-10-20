@@ -1,0 +1,406 @@
+
+.cs-recordassociation-addbtn {
+  background: inherit;
+  width: 18px;
+  padding: 0px;
+  margin-left: 8px;
+  em {
+    background: $userassignment_add_btn;
+    color: $userassignment_add_icon;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 2px;
+  }
+  &:hover{	
+    opacity: 0.6;	
+  }	
+  &.cs-url-list-addbtn{	
+    height: 25px;	
+    width: 25px;	
+    padding: 0px;	
+    em{	
+      font-size: 15px;	
+      padding: 5px;	
+    }
+  }
+}
+.cs-recordassociation-delbtn {
+  background: inherit;
+  em {
+    background: $userassignment_add_btn;
+    color: $userassignment_add_icon;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 2px;
+  }
+}
+.cs-overflow-chip {
+  height: 30px;
+  overflow: hidden;
+  width: calc(100% - 5px);
+}
+.cs-overflow-chiplist {
+  .cs-recordassociation-chip {
+    min-height: 24px;
+    font-size: 12px;
+    background-color: $chip_default_bg;	
+    color: $chip_default_color;
+    &:hover {
+      .cs-gradient-chip {
+        background-image: $url_chip_gradient_clr;
+        padding-left: 21px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border-radius: 0px 10px 10px 0px;
+        padding-right: 3px;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+      }
+      button {
+        display: block !important;
+        background: inherit;
+        padding: 0;
+        border-radius: 50%;
+        margin-right: inherit;	
+        font-size: inherit;	
+        color: inherit;
+        em {
+          font-size: 14px;
+          background: #d95350;
+          color: #fff;
+          border-radius: 50%;
+          padding: 2px;
+        }
+        &:first-child{	
+          margin-right: 2px;	
+        }
+      }
+    }
+  }
+}
+.cs-overflowchiplist-container {
+  box-shadow: 0px 1px 6px $general_shadow;
+  background: $card_bg;
+  width: 100%;
+  padding: 9px 14px 14px 14px;
+  margin-top: 8px;
+  position: absolute;
+  min-height: 100px;
+  max-height: 250px;
+  overflow: auto;
+  z-index: 99;
+  &.cs-insidedd {
+    position: unset;
+    box-shadow: none;
+    margin-top: 0px;
+    padding: 5px 10px;
+    min-height: 45px;
+  }
+}
+.cs-show-recordassociation-addbtn:hover {
+  .cs-recordassociation-addbtn,
+  .cs-recordassociation-delbtn {
+    display: inline-block !important;
+    padding-left: 0px !important;
+    padding-right: 0px;
+  }
+}
+.cs-mat-main-content .cs-mat-contentmain mat-card mat-card-header .mat-card-header-text .mat-card-title.cs-recordassociation-chiplisttitle{
+  font-size: 15px;
+  font-weight: 500;
+  color: $grey_base_secondary;
+  &:before {
+    border: inherit;
+  }
+  .cs-record-count-badge {
+    padding: 1px 10px;
+    font-size: 12px;
+  }
+}
+.cs-mat-ui {
+  .cs-associateobj-sel {
+    .mat-select-placeholder {
+      color: $input_box_inner_color !important;
+      padding-left: 3px;
+    }
+  }
+  .cs-recordassociation-sel-chip {
+    width: 180px;
+    height: 21px;
+    border-radius: 15px;
+    line-height: 20px;
+    .mat-select-placeholder {
+      color: $input_box_inner_color !important;
+      margin-left: 3px;
+    }
+    .mat-select-value-text {
+      color: $input_box_inner_color !important;
+      margin-left: 4px;
+    }
+    .mat-select-arrow {
+      margin-right: 7px;
+    }
+  }
+  .cs-SingleFromMultipleWithSingle-sel-chip {
+    // position: absolute;
+    width: 150px;
+    border-radius: 15px;
+    height: 21px;
+    line-height: 20px;
+    margin-left: 10px;
+    .mat-select-placeholder {
+      color: $input_box_inner_color !important;
+      margin-left: 2px;
+    }
+    .mat-select-arrow {
+      margin-right: 8px;
+    }
+    .mat-select-value-text {
+      margin-left: 4px;
+    }
+  }
+  .cs-SingleFromMultipleWithSingle-selected-chip {
+    margin-top: 10px !important;
+  }
+}
+.cs-userassignadd-btn-opacity {
+  opacity: 0.6;
+}
+.cs-tmar-10 {
+  margin-top: 10px;
+}
+.cs-SingleFromMultipleWithSingle-sel-chip-label {
+  max-width: calc(100% - 160px);
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-bpad-20 { 
+  padding-bottom: 20px; 
+}
+.cs-recordassociation-box {
+  background: $input_box_bg !important;
+  border: $input_box_border_width $input_box_border_style
+    $input_box_border_color;
+  min-height: 95px;
+  margin-top: 10px;
+  border-radius: 3px;
+  box-shadow: $card_boxshadow;
+  .cs-recordassociation-seperator-line {
+    border-bottom: $input_box_border_width $input_box_border_style
+      $input_box_border_color;
+  }
+  .cs-recordassociation-seperator-line:nth-last-child(1) {
+    border-bottom: none;
+  }
+  angular-slickgrid {
+    background: inherit !important;
+  }
+  mat-chip-list{
+    padding-bottom: 14px;
+  }
+}
+.cs-float-right {
+  float: right;
+}
+.cs-lmar-20 {
+  margin-left: 20px;
+}
+.cs-userassignadd-btn-hide {
+  display: none !important;
+}
+// Hover add btn
+.cs-recordass-slickhead-title {
+  height: 24px;
+}
+.mat-card-header {
+  .cs-recordassociation-addbtn {
+    margin-left: 1px;
+  }
+}
+.cs-recordassociation-head-span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .cs-overridewidth {
+    height: 30px;
+    overflow: hidden;
+    max-width: calc(100% - 25px);
+  }
+}
+
+
+.cs-tmar-14 {
+  margin-top: 14px !important;
+}
+.cs-recordassociation-count-badge {
+  width: auto;
+  min-width: 26px;
+  height: auto;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  background-color: $filled_button_bg;
+  color: $filled_button_color;
+  padding: 1px 6px;
+  text-align: center;
+  border-radius: 10px;
+}
+.cs-recordassociation-chipsection {
+  border-bottom: 1px solid $input_box_border_width $input_box_border_style
+    $input_box_border_color;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.cs-tmar-9 {
+  margin-top: 9px;
+}
+
+.cs-recordassociation-count {
+  background: $userassignment_add_btn !important;
+  border-radius: 50%;
+  color: $userassignment_add_icon !important;
+  font-size: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+.cs-norecords-found {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 95px;
+}
+
+.cs-norecords-found-alt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cs-overflowhidden {
+  overflow: hidden;
+}
+.cs-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-recordasso-slick-overflowbox {
+  padding: 15px;
+  min-height: 50px;
+  max-height: 200px;
+  overflow: auto;
+  min-width: 50px;
+  max-width: 277px;
+  box-shadow: 1px 1px 5px $general_shadow;
+  margin-top: inherit !important;
+}
+
+.cs-cus-act-inp-dropdown {
+  box-shadow: unset;
+  max-width: 270px;
+  width: 270px;
+  max-height: 240px;
+
+  .cs-ca-inp-dd-pbody {
+    display: flex;
+    flex-wrap: wrap;
+
+    .cs-ca-inp-dd-label {
+      width: 100%;
+
+      label, mat-label {
+        font-size: 13px;
+        color: #2d88e7;
+        font-family: sans-serif;
+        font-weight: 300;
+        font-style: normal;
+      }
+    }
+
+    .cs-ca-inp-dd-bcontent {
+      width: 100%;
+
+      .cs-ca-inp-dd-bc-left {
+        align-self: center;
+
+        em {
+          font-size: 22px;
+          color: #2d88e7;
+        }
+      }
+
+      .cs-ca-inp-dd-bc-right {
+        //width:auto;
+        mat-label {
+          color: #878787 !important;
+          font-size: 13px;
+          text-transform: capitalize;
+        }
+        .cs-ca-inp-dd-bc-lbody {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-top: 5px;
+          .cs-ca-inp-dd-bc-ltbody {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 10px;
+            em.icon-mat-date_range {
+              color: #6e71eb;
+            }
+            
+          }
+          .cs-ca-inp-dd-bc-lbbody {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            em.icon-mat-access_time {
+              color: #f5c188 ;
+            }
+          }
+          .cs-ca-ltbody-content {
+            font-weight: 500;
+            font-size: 13px;
+            color: #333333;
+            font-style: normal;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cs-vpad-4 {
+  padding: 0 4px;
+}
+.cs-close-btn-cmn{
+  padding: 0px;
+  display: flex;
+  background: inherit;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  em{
+    font-size: 14px;
+    background: #d95350;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px;
+  }
+}

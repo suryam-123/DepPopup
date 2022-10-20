@@ -1,0 +1,899 @@
+.status_wrk_flow_item{
+    padding-top:0;
+    &.list-ios{
+        margin-bottom:0;
+    }
+    .swf_prev_label{
+        display:flex!important;
+        ion-label{
+            margin-top:0;
+            margin-left:5px;
+            width:100%;
+            font-style:italic;
+        }
+    }
+    ion-button{
+        color:#fff;
+        border-radius:4px;
+        text-transform:capitalize;
+        height: 28px;
+    }
+    .swf_approve{
+        background:#00a651;
+    }
+    .swf_reject{
+        background: #ff4747;  
+        margin: 4px 6px 4px 4px;
+    }
+    .swf_popover_apprej{
+        border-right:1px solid #e4e4e4;
+        border-left:1px solid #e4e4e4;
+        border-bottom:1px solid #e4e4e4;
+        background: #f8f8f8;
+        padding-left:10px;
+        ion-col{
+            width:100px;
+            flex-grow:0;
+        }
+    }
+    ion-item{
+        .swf_close{
+          font-size:15px!important;
+          margin-top: 36px;
+        }
+        .swf_arrow_down{
+            font-size: 21px!important;
+            margin-top: 36px;
+            margin-left:6px;
+            --ion-color-base: #b5b5b5 !important;
+        }
+    }
+}
+.swf_popover{
+    border-right:1px solid #e4e4e4;
+    border-left:1px solid #e4e4e4;
+    border-bottom:1px solid #e4e4e4;
+    background:#fff;
+    // padding: 0px 5px 20px 5px;
+    // display:inline-block;
+    width:100%;
+    text-align:left;
+    &.list-ios{
+        margin-bottom:0;
+    }
+    ion-item{
+        position: relative;
+        // min-width:120px;
+        --background: #fff;
+        --min-height: 28px;
+        --border-radius: 50px;
+        border-radius:50%;
+        display:inline-block;
+        box-shadow: 0px 4px 14px -5px rgba(0, 0, 0, 0.22);
+        margin:7px 5px;
+        ion-icon{
+            position: absolute;
+            right: 9px;
+            top: 5px;
+            margin: 0;
+            font-size: 20px!important;
+        }
+        ion-label{
+            margin:5px 22px 5px 2px;
+        }
+    }
+}
+.cs-ani-alert-org{
+    .swf-popover{
+        padding: 0px 5px 20px 5px;
+    }
+}
+.popover-content{
+    transform:inherit!important;
+}
+.swf_proceed{
+    margin-left: 5px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: #31baf1;
+    color: #fff;
+    padding: -7px;
+    display: flex;
+    font-weight: bold;
+    span{
+      font-size:14px;
+    }
+}
+
+
+ion-list{
+    ion-item{
+        ion-img{
+        border: 1px solid #82C6FF;
+        border-radius: 50%;
+        background-color: #E7F2FF;
+        border-style: dashed;
+        padding: 3px;
+        margin-left: 8px;
+        width:27px;
+        height:27px;
+        }
+    }
+}
+
+// Status Workflow enable design 1 //
+
+.statusworkflowv1{
+    .cs-oldstatusval{
+        color: var(--ion-color-primary,#3880ff);
+    }
+    .swf-m-view-c{
+        background: #f9f9f9;
+        border: 1px solid #3880ff;
+        border-left: 5px solid #3880ff;
+        --padding-start: 10px;
+        .select-text, .swf-c-bg{
+            background: #f4c37d;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: -5px;
+        }
+        ion-label{
+            color: var(--ion-color-step-600,#666) !important;
+        }
+    }
+	cs-status-workflow{
+		width: 100%;
+	}
+}
+
+// View page
+.cs-mode3{
+    display: inline-flex!important;
+    width: 100%!important;
+    .cs-labelvalue{
+        font-size: 22px!important;
+    }
+    .cs-statusLabel{
+        font-size: 14px!important;
+    }
+}
+
+.statusworkflowv1-view, .statusworkflowv1{
+    padding: 5px 10px 10px 0;
+    position: relative;
+    .cs-swf-dropdown-webview{
+        position: absolute;
+        right: 33px;
+        top: 4px;
+        color: #ffffff;
+    }
+    .cs-workflow-view {
+        border-left: 4px solid #6f80ff;
+        box-shadow: 0px 0px 4px #dedede;
+        padding: 20px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        &.active{
+            border: 1px solid #6f80ff;
+            border-left: 4px solid #6f80ff;
+        }
+		&.entry-web-view-v1{
+			.cs-workflow-view{
+				width: 100%;
+			}
+			.cs-down-icon{
+				float: right;
+			}
+		}
+        &.cs-swf-box{
+            border-top: 1px solid rgba(0, 0, 0, 0.12);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            border-right: 1px solid rgba(0, 0, 0, 0.12);
+        }
+    }
+
+	.cs-ts_28{
+        font-size: 28px!important;
+    }
+    .cs-rsmar{
+        margin-right: 5px!important;
+    }
+    .cs_border-bottom{
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #dedede;
+        bottom: 18px;
+        right: 0px; 
+    }
+    .cs_cust_theme{
+        height:0px!important;
+        ion-label{
+            margin-top:0px;
+            font-size: 18px!important;
+        }
+        .swf-select-txt{
+            right: 0px;
+            padding: 5px 25px 5px 15px;
+            font-size: 14px;
+            top:0px;
+        }
+        span{
+            position: absolute;
+            right: 5px;
+            top: 0px;
+            color: #fff;
+        }
+    }
+	&.entry-mobile-view-v1{
+	    width: 100%;
+		.swf-select-txt{
+			background: #f4c37d;
+			color: #000;
+		}
+		.cs-down-icon{
+		    float: right;
+			right: 11px;
+			position: absolute;
+			font-size: 20px;
+		}
+	}
+	&.p-none{
+	    pointer-events: none;
+		.swf-select-txt{
+			pointer-events: none;
+			background: #c5c5c5;
+		}
+	}
+   
+    .swf-select-txt{
+        background: #445779;
+        border-radius: 100px;
+        padding: 5px 20px;
+        font-size: 12px;
+        text-transform: capitalize;
+        color: #fff;
+        right: 30px;
+        float: right;
+        position: absolute;
+        &.reject{
+            background: #d9534f;
+        }
+        &.approve{
+            background: #2bbb66;
+        }
+    }
+    .select-icon{
+        display: none !important;
+    }
+ 
+    &.cs-swf-webview-3{
+        .cs-pull-swleft
+        {
+            float: left;
+        }
+        .cs-pull-swright
+        {
+            float: right;
+        }
+        .swf-select-txt{
+            position: unset;
+        }
+        .cs-imgwithtxt{
+            img{
+            background: #e7f2ff;
+            padding: 2px;
+            border: 2px solid #445779;
+            border-radius: 100%;
+            margin-right: -17px;
+            margin-top: -3px;
+            }
+            }
+        .cs-sef-wv3-main{
+            // display: flex;
+            width: 100%;
+            text-align: right;
+            .cs-swf-wv3-icon {
+                float: right;
+                background: #e7f2ff;
+                padding: 4px;
+                border-radius: 100%;
+                border: 2px solid #445779;
+                margin-top: -5px;
+                margin-right: -15px;
+                z-index: 9;
+            }
+            .cs-workflow-view{
+                padding: 15px;
+                ion-item{
+                    --border-width: 0px !important;
+                }
+            }
+        }
+        .before-icons{
+            &:before{
+                content: "";
+                background: #e7f2ff;
+                padding: 10px;
+                position: absolute;
+                border: 2px solid #445779;
+                border-radius: 100%;
+                height: 10px;
+                width: 10px;
+                margin-left: -35px;
+                margin-top: -8px;
+                background-image: url(/assets/img/workflow-img.png);
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .select-icon{
+                display: none;
+            }
+        }
+        .cs-workflow-view{
+            display: block;
+            padding: 10px;
+            min-height: 60px;
+            padding-top: 20px;
+        }
+        .cs-v3-label{
+            margin-top: -10px;
+        }
+        .cs-swf-last-status{
+            width: 50%;
+            margin-top: -20px;
+            position: absolute;
+            .cs-oldstatusval{
+                color: #6f80ff;
+            }
+        }
+        &.view-page-v3
+        {
+            .cs-workflow-view{
+                min-height: 60px;
+                padding-top: 20px
+            }
+            .cs-pull-swleft
+            {
+                float: left;
+            }
+            .cs-pull-swright
+            {
+                float: right;
+            }
+
+            .cs-imgwithtxt{
+            position: absolute;
+            margin-left: -17px;
+            margin-top: -4px;
+            width: 30px;
+                img{
+                    margin-top: unset;
+                    margin-left: unset;
+                    position: unset;
+                }
+            }
+        }
+    }
+    .swf-process {
+        background: #6f80ff;
+        max-width: 70%;
+        border-top-right-radius: 10px;
+        padding: 2px 10px;
+        font-size: 13px;
+        color: #fff;
+		&.cs-ini-hide{
+			display: none;
+		}
+    }
+    
+}
+.cs-mode2{
+    .cs-workflow-view{
+        padding: 17px 10px!important;
+    }
+    .cs-imgwithtxt{
+        margin-left: -12px!important;
+        margin-top: -2px!important;
+    }
+    .cs-labelvalue{
+        font-size: 18px!important;
+        width: calc(100% - 178px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .cs-statusLabel{
+        font-size: 13px!important;
+        max-width: 168px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.cs-swf{
+    &.cs-swf-block
+    {
+        display: block !important;
+        background: 0 0 !important;
+    }
+    &.modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            border: 1px solid #888;
+            width: 25%;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        &.mobileview{
+            .modal-content {
+                width: 90%;
+                margin: 30% auto;
+            }
+            &.mobile-v3{
+                .modal {
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.4);
+                }
+                .modal-content {
+                    padding: 20px 10px;
+                    width: 94%;
+                    border-top: unset;
+                    margin: 10px 10px 0;
+                    background: #fff;
+                    bottom: 0;
+                    position: absolute;
+                    border-radius: 7px 7px 0px 0px;
+                    .cs-rightbtn{
+                        width: 100%;
+                    }
+                }
+                .cs-rightbtn-v3{
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                    padding-top: 20px;
+                }
+                .modal-header {
+                    margin-left: 10px;
+                }
+            }
+            
+        }
+
+        &.approjectclosemodel{
+            .swf-approve {
+            border: 1px solid #2bbb66;
+            border-radius: 100px;
+            min-height: 35px;
+            color: #2bbb66;
+            margin-right: 15px;
+            ion-icon {
+                background: #2bbb66;
+                border-radius: 100%;
+                padding: 4px;
+                margin-left: -10px;
+                color: #fff;
+                margin-right: 5px;
+            }
+        }
+        .swf-reject{
+            border: 1px solid #d9534f;
+            border-radius: 100px;
+            min-height: 35px;
+            color: #d9534f;
+            ion-icon {
+                background: #d9534f;
+                border-radius: 100%;
+                padding: 4px;
+                margin-left: -10px;
+                color: #fff;
+                margin-right: 5px;
+            }
+        }
+        .cs-rightbtn {
+            margin: 10px auto 10px auto;
+            position: relative;
+        }
+            // Layout 2 design
+        }
+        
+    }
+    .modal-header{
+        border-bottom: 1px solid #dedede;
+        padding: 0 20px;
+        h4{
+            margin-top: 0px;
+            font-size: 18px;
+        }
+    }
+
+    
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: -6px;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .cs-right{
+        float: right;
+        right: 30px;
+        position: absolute;
+        .cs-swf-btn{
+            color: #3880ff;
+        }
+        .item-inner{
+            border-bottom: 0;
+        }
+    }
+    ion-radio {
+        -webkit-margin-end: 15px;
+        margin-inline-end: 15px;
+    }
+    .swf-txtarea{
+        border: 1px solid #dedede;
+    }
+    .label-stacked.sc-ion-label-md-h{
+        margin-bottom: 10px;
+        color: #3880ff;
+    }
+    :host(.item-interactive), :host(.item-lines-full) {
+        --border-width: 0 0 0px 0 !important; 
+        --show-full-highlight: 1;
+        --show-inset-highlight: 0;
+    }
+    :host(.item-interactive.item-has-focus){
+        --highlight-background: #3880ff00;
+    }
+    .item-lines-none.sef-btm {
+        border-bottom: 1px solid #dedede;
+    }
+    &.swf-layouttwo{
+        &.modal {
+            display: none;
+            padding-bottom: 0px;
+            width: 100%;
+            bottom: 0;
+            top: unset;
+            height: unset;
+            border-radius: unset;
+            background: 0 0;
+            .modal-content {
+                background-color: #f5f7f8;
+                margin: 10px;
+                width: 98%;
+                padding: 15px;
+                box-shadow: 2px 2px 9px 2px #adadad;
+                border: 0;
+                border-radius: unset;
+            }
+            .modal-header{
+                padding: unset;
+                border-bottom: 0;
+            }
+            .swf-con-main{
+                display: flex;
+                .swg-cmt-se{
+                    width: 70%;
+                }
+                .swg-app-rej-btn{
+                    width: 29%;
+                }
+            }
+            .cs-rightbtn{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+            }
+            .swf-icon{
+                display: block;
+                text-align: center;
+                margin: auto;
+                position: relative;
+                padding: 10px;
+                border-radius: 100%;
+                font-size: 30px;
+                color: #ffffff;
+            }
+            .cs-swf-app{
+                background: #2bbb66;
+                text-transform: inherit;
+            }
+            .cs-swf-rej{
+                background: #de6764;
+                text-transform: inherit;
+            }
+            .cs-green{
+                color: #2bbb66;
+                text-transform: inherit;
+            }
+            .cs-red{
+                color: #de6764;
+                text-transform: inherit;
+            }
+            .swf-input-txt{
+                width: 70%;
+                display: inline-block;
+                --background: transparent;
+            }
+            .swf-txtarea{
+                background: #fff;
+            }
+            .swf-btn-txt{
+                width: 30%;
+                float: right;
+                --background: #f5f7f8;
+                height: 100%;
+            }
+            .cs-app-rpad{
+                margin-right: 30px;
+            }
+        }
+        &.swf-designtwo-mobileview{
+            .swf-icon{
+                font-size: 15px;
+            }
+            .modal-content{
+                margin: unset;
+                padding: 5px;
+                width: 100%;
+                border-top: 3px solid #4d8dff;
+            }
+            .cs-rightbtn{
+                margin-right: 0px;
+                width: unset;
+                float: right;
+            }
+            .swf-btn-txt {
+                width: 100%;
+                float: unset;
+            }
+            .user-active-div{
+                --background: #f5f7f8;
+                --padding-start: 0;
+                .swf-user-selected{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                }
+                .swf-input-txt{
+                    width: 100%;
+                }
+                .cs-user-ok{
+                    margin-top: 15px;
+                    margin-left: 10px;
+                }
+            }
+            &.mobileview-v3{
+                &.modal {
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.4);
+                }
+                .modal-content {
+                    padding: 20px 10px;
+                    width: 94%;
+                    border-top: unset;
+                    margin: 10px 10px 0;
+                    background: #fff;
+                    bottom: 0;
+                    position: absolute;
+                    border-radius: 7px 7px 0px 0px;
+                    .cs-rightbtn{
+                        width: 100%;
+                    }
+                    .swf-btn-txt{
+                        --background: #ffffff;
+                    }
+                    .mobile-v3-btn-cancel{
+                        width: 100%;
+                        background: #eaeaea;
+                        .cs-swf-cancel{
+                            text-align: center;
+                            width: 100%;
+                            color: #777;
+                            text-transform: inherit;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .cs-rightbtn-v3{
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                    padding-top: 20px;
+                    padding-bottom: 10px;
+                }
+                .modal-header {
+                    margin-left: 10px;
+                }
+                .user-active-div{
+                    --background: #ffffff;
+                }
+            }
+        }
+    }
+    //
+    &.swf-designtwo{
+        &.modal {
+            padding-bottom: 0px;
+            width: 100%;
+            bottom: 0;
+            top: unset;
+            height: unset;
+            border-radius: unset;
+            background: 0 0;
+            padding-top: 0;
+            .modal-content {
+                background-color: #f1f1f1;
+                border: 0px solid #888;
+                width: 100%;
+                border-radius: 0px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.72);
+                margin-top: 20px;
+                .modal-header {
+                    border-bottom: 0px;
+                    h4 {
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .cs-swf-two-design{
+                display: flex;
+                margin-bottom: 5px;
+                margin-top: 5px;             
+                align-items: center;
+                .cs-swf-select{
+                    width: 30%;
+                    position: relative;
+                    ion-item{
+                        // position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        --background: transparent;
+                    }
+                    ion-select {
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                }
+                .cs-swf-cmt{
+                    width: 60%;
+                    ion-item{
+                        --background: transparent;
+                    }
+                    .swf-txtarea{
+                        background: #fff;
+                    }
+                }
+                .cs-swf-ok{
+                    width: 10%;
+                    position: relative;
+                    text-align: center;
+                    top: 12px;
+                    ion-item{
+                        --background: transparent;
+                    }
+                    .cs-swf-btn{
+                        background: #3880ff;
+                        border-radius: 100%;
+                        color: #fff;
+                        font-size: 20px;
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+        // swf-designtwo mobile-v2
+        &.mobile-v2{
+            &.modal{
+                border-top: 3px solid #4b8dff;
+                .cs-swf-select{
+                    width: 100%;
+                    position: unset;                    
+                    margin-bottom: 20px;
+                    padding-left: 15px;
+                    ion-item{
+                        position: unset;
+                        --background: #fff;
+                        padding-top: 10px;
+                        
+                        .swf-select-status {
+                            max-width: 100% !important;
+                            width: 100%;
+                        }
+                    }                    
+                }
+                ion-label{
+                    font-size: 18px !important;
+                    color: #777 !important;
+                }
+                .cs-swf-cmt{
+                    width: 100%;
+                    padding-left: 10px;
+                    .swf-txtarea{
+                        margin-top: 10px;
+                        padding: 5px;
+                    }
+                }
+                .modal-content{
+                    margin-top: 0px;
+                }
+                
+            }
+            .cs-swf-ok-v2{
+                padding: 15px;
+                margin-top: 10px;
+            }
+            .cs-swf-btn-v2-two{
+                padding: 15px 10px 0px 0px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+.cs-ts-12{
+    font-size: 12px; 
+} 
+cs-status-workflow{
+	width: 100%;
+}
+
+.sc-ion-popover-ios{
+    &.popover-content{
+    width: 97% !important;
+    margin: 0 auto;
+    }
+    cs-status-workflow-popover{
+    .cs-swf.modal {
+    position: unset;
+    padding-top: 0;
+    }
+    .modal-header h4 {
+    margin-top: 5px;
+    }
+    .mobileview .modal-content {
+    width: 100% !important;
+    border: 0;
+    margin: auto !important;
+    }
+    .list-ios{
+    margin-bottom: 2px;
+    }
+    .modal-content{
+        position: unset !important;
+        box-shadow: none !important;
+        margin-left: 0px !important;
+        width: 100% !important;
+        margin-top: 0px !important;
+        }
+    }
+}
+// Status Workflow enable design 1 end //

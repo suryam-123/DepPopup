@@ -1,0 +1,72 @@
+.cs-mat-ui{
+    .cs-tool-web{
+        box-shadow: none;
+        --background:$header_bg;
+        background:$header_bg;
+        padding: 5px;
+    }
+    .example-spacer {
+        flex: 1 1 auto;
+    }
+    .menu-content{
+        border-top: $header_body_divder;
+    }
+
+    mat-toolbar{
+        &.cs-mat-pageheadtoolbar{
+            background-color: hsl(212, 76%, 57%);
+            height:50px;
+            .cs-mat-pagehead-eachactions{
+                // color: #fff;
+                min-width: 40px;
+                width: auto;
+                height: 40px;
+                font-size: $page_title_font_size;
+                box-shadow: $title_button_box_shadow;
+                font-weight: $page_title_font_weight;
+                font-style: $page_title_font_style;
+                padding: 0 10px !important;
+                button{
+                    font-size: $title_button_font_size;
+                    font-weight: $title_button_font_weight;
+                    font-style: $title_button_font_style;
+                }
+                span{
+                    line-height: 23px !important;
+                }
+            }
+            cs-whocolumn-icon{
+                &.cs-mat-pagehead-eachactions{
+                    width: 40px;
+                }
+            }
+            .cs-mat-toolbartitle{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .cs-mat-pagehead-eachactions{
+                    opacity: 0;
+                    min-width: 0;
+                    width: 0;
+                    height: 0;
+                    margin:0!important;
+                    transition: 0.2s all;
+                }
+                .cs-mat-pageheadtitle{
+                    // color: #fff;
+                    font-weight: normal;
+                    font-size: $page_title_font_size;
+                }
+                &:hover{
+                    .cs-mat-pagehead-eachactions{
+                        opacity: 1;
+                        width: 40px;
+                        height: 40px;
+                        margin: 0 10px 0 0px!important;
+                        transition: 0.2s all;
+                    }
+                }
+            }            
+        }
+    }
+}

@@ -1,0 +1,1239 @@
+ /**
+ * @author shya2815
+ * @tag 11Apr2022#shya2815
+ * @message User assignment UI issues fixed
+ */
+ 
+// .cdk-overlay-pane{
+  .cs-userassignment-tabs {
+    padding: 0 !important;
+    .tabs__tab-bar {
+      align-self: flex-start !important;
+      border: none !important;
+      border-bottom: 1px solid $grey_base_secondary !important;
+      border-radius: 0px !important;
+      width: 100%;
+      padding-left: 7px;
+      margin-bottom: 12px !important;
+      .tabs__tab {
+        background-color: inherit !important;
+        font-size: 14px;
+        color: $grey_base_secondary !important;
+        font-weight: 500;
+        padding: 4px 15px !important;
+      }
+      .tabs__tab.active {
+        border-bottom: 2px solid $secondary_color !important;
+        color: $secondary_color !important;
+        background-color: inherit !important;
+      }
+    }
+    .cs-tab-back-none {
+      .tabs__panel {
+        background-color: inherit;
+        box-shadow: inherit;
+        padding: inherit !important;
+      }
+      .cs-ua-search-block {
+        padding: 0px 15px !important;
+        margin-bottom: 0px;
+      }
+      .cs-search-field {
+        width: 100%;
+        .mat-form-field-infix {
+          border: none;
+          padding-top: 5px;
+        }
+        .mat-form-field-wrapper {
+          height: 34px;
+        }
+        .mat-form-field-underline {
+          height: inherit !important;
+        }
+        .cs-userassign-search-txt {
+          display: inline-block;
+          width: 100%;
+          // width: calc(100% - 40px);
+          .cs-userassign-search-input {
+            color: #666666;
+            font-size: 15px;
+            padding: 5px 10px;
+            border: 1px solid $general_line;
+            border-radius: 15px;
+            &:focus {
+              border: 1px solid $general_line !important;
+              border-radius: 15px !important;
+            }
+          }
+        }
+        .cs-userassign-search-button {
+          display: inline-block;
+          position: absolute;
+          right: 2px;
+          top: 5px;
+          .cs-userassign-search-btn {
+            position: relative;
+            background: inherit;
+            cursor: default;
+            em {
+              font-size: 24px;
+              color: $fab_icon_color;
+            }
+            .cs-userassign-search-icon {
+              position: absolute;
+              font-size: 20px;
+              top: 2px;
+              right: 10px;
+              color: $fab_icon_color;
+            }
+          }
+        }
+      }
+      .cs-userassign-add {
+        position: relative;
+        background: inherit;
+        em {
+          position: absolute;
+          font-size: 19px;
+          background: $userassignment_add_btn;
+          border-radius: 50%;
+          top: -37px;
+          padding: 3px;
+          margin-left: 9px;
+          color: $userassignment_add_icon;
+          right: -39px;
+        }
+        &:hover {
+          opacity: 0.6;
+        }
+        &:focus {
+          outline: inherit !important;
+        }
+      }
+      .cs-ua-loading {
+        text-align: center;
+        .cs-ua-loading-img {
+          width: 22%;
+          padding-top: 40px;
+      }
+      }
+    }
+    .cs-ua-selectunselect {
+      font-size: 18px;
+      color: $primary_color;
+    }
+    .cs-userassign-sel-user {
+      margin: -2px 18px 16px 18px;
+      .cs-userassign-sel-user-card {
+        min-height: 150px;
+        max-height: 250px;
+        background: $card_bg;
+        // margin: 12px 4px 8px 3px;
+        box-shadow: 0px 0px 10px $general_shadow;
+        padding: 0px;
+        overflow: auto;
+        width: 100%;
+        margin-left: 2px;
+        border-radius: 2px;
+        .cs-userassign-sel-user-list {
+          padding: 0;
+          padding-bottom: 10px;
+          .cs-userassign-sel-user-item {
+            padding-left: 18px;
+            height: 45px !important;
+            cursor: pointer;
+            .cs-ua-user-list {
+              display: inline-flex;
+              align-items: center;
+            }
+            .mat-list-item-content {
+              width: 100%;
+              display: inline-flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 0px 15px 0px 0px;
+              img {
+                width: 30px;
+                height: 30px;
+              }
+              label {
+                padding-left: 10px;
+                font-size: 14px;
+                font-weight: 500;
+                color: $grey_base_primary;
+              }
+            }
+            &:hover {
+              background: $grid_segment_hover;
+            }
+            &:first-child {
+              margin-top: 10px;
+            }
+          }
+          .cs-ua-group-selcard-no-img {
+            
+            width: 130px;
+            height: auto;
+            margin: auto;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 18px;
+          }
+        }
+      }
+    }
+    .cs-mar-top {
+      margin-top: 34px;
+  }
+    .cs-userassign-avatar-list {
+        position: relative;
+        height: 260px; 
+      .cs-userassign-avatar-list-item {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        padding-right: 18px;
+        .cs-userassign-avatar-list-img {
+          width: 34px;
+          height: 34px;
+          margin: 10px 5px;
+        }
+        &:hover {
+          .cs-user-clr {
+            background: inherit;
+            padding: 2px;
+            display: inline !important;
+            position: absolute;
+            top: 6px;
+            em {
+              font-size: 11px;
+              color: #fff;
+              background: #d95350;
+              border-radius: 50%;
+              height: 16px;
+              width: 16px;
+              padding: 2px;
+            }
+          }
+        }
+      }
+    }
+    .cs-userassign-group {
+      .tabs__panel {
+        padding: 10px;
+      }
+      .cs-userassign-group-sel {
+        margin: -2px 18px 16px 18px;
+        .cs-userassign-group-selcard {
+          min-height: 150px;
+          max-height: 250px;
+          background: $card_bg;
+          // margin: 12px 4px 8px 3px;
+          box-shadow: 0px 0px 10px $general_shadow;
+          padding: 0px;
+          overflow: auto;
+          // width: 267px;
+          margin-left: 2px;
+          border-radius: 2px;
+          .cs-userassign-group-formfield {
+            width: 100%;
+            .mat-form-field-wrapper {
+              padding-bottom: inherit !important;
+            }
+            .mat-form-field-infix {
+              padding: 0;
+            }
+            mat-chip-list {
+              .mat-chip-list-wrapper {
+                width: 100%;
+                margin: 0px;
+              }
+            }
+            .cs-userassign-group-chip {
+              background: $card_bg;
+              display: inline-flex;
+              width: 100%;
+              height: 45px;
+              border-radius: 0px !important;
+              align-items: center;
+              cursor: pointer;
+              justify-content: space-between;
+              margin: 0px;
+              .cs-ua-chip-option {
+                display: inline-flex;
+                align-items: center;
+                width: calc(100% - 30px);
+                .cs-ua-g-icon {
+                  background: #cecece;
+                  color: #fff;
+                  border-radius: 500px;
+                  height: 30px;
+                  width: 30px;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 20px;
+                }
+              }
+              .cs-userassing-teamlabel {
+                margin-left: 10px;
+                font-size: 14px;
+                width: calc(100% - 40px);
+              }
+              &.cs-group-hover {
+                &:hover {
+                  background: $grid_segment_hover !important;
+                }
+              }
+              &.mat-standard-chip::after {
+                background: inherit !important;
+              }
+            }
+          }
+          .cs-ua-group-selcard-no-img {//agat
+            
+            width: 130px;
+            height: auto;
+            margin: auto;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+        
+          }
+        }
+      }
+    }
+    .cs-userassign-seleted-chip {
+      overflow: auto;
+      width: 100%;
+      height: 260px;
+      background: $card_bg;
+      padding: 0px 15px;
+      position: relative;
+      .mat-chip-list-wrapper {
+        margin: inherit;
+        // padding: 0 14px 0 16px;
+        margin-top: 0px !important;
+      }
+    }
+  }
+  //   }
+  
+  .cs-ua-nr {
+      display: inline-flex;
+      align-items: center;
+      width: 200px;
+      justify-content: center;
+      height: auto;
+      margin: auto;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 39px;
+  }
+  .cs-ua-nr-all {
+    top: 84px;
+  }
+  .cs-userassignment-popup {
+    height: 485px;
+    width: 310px;
+    background: $card_bg;
+    padding: 0px !important;
+    border-radius: 1px;
+    margin-right: -15px !important;
+    box-shadow: 0px 0px 10px $general_shadow !important;
+    margin-top: 16px;
+    position: relative;
+    .cs-userassignment-popup-toolbar-hd {
+      border-bottom: 1px solid $grey_base_secondary;
+      .cs-userassignment-popup-toolbar {
+        padding: 14px 16px;
+        h4 {
+          font-size: 16px;
+          font-weight: 800;
+          margin: 0;
+          display: inline-block;
+          margin-top: 1px;
+          color: $grey_base_primary;
+        }
+        .cs-userassign-save-btn {
+          background: inherit;
+          float: right;
+          position: relative;
+          color: $grey_base_primary;
+          em {
+            font-size: 20px;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+            &:hover {
+              background: $userassignment_save_btn_hover;
+              padding: 6px;
+              border-radius: 50%;
+              position: relative;
+              right: -13px;
+              color: $secondary_color;
+            }
+            &:focus {
+              outline: inherit !important;
+            }
+          }
+          &:focus {
+            outline: inherit !important;
+          }
+        }
+      }
+    }
+    .cs-userassign-userprofile {
+      padding: 16px;
+      h6 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+        color: $grey_base_primary;
+      }
+      .cs-userassign-userprofile-landmark {
+        display: block;
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin: 4px 0px;
+      }
+      .cs-userassign-userprofile-qualification {
+        display: block;
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin: 4px 0px;
+      }
+    }
+    &:before {
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 7px solid $card_bg;
+      content: "";
+      position: absolute;
+      top: -7px;
+      right: 25px;
+    }
+  }
+  
+  .cs-user-img {
+    display: inline-block;
+    margin: -2px 16px 2px 2px;
+    img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  .cs-nodata-indicater {
+    height: 30px !important;
+    margin-top: 12px !important;
+    transition: none !important;
+   
+  }
+  .cs-loader-text {
+    font-size: 14px;
+    padding: 0px 5px;
+    color: black;
+    min-width: 115px;
+  }
+  .cs-all-header {
+    margin: 11px 0px 10px 4px;
+    .cs-all-head-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: $grey_base_primary;
+    }
+    .cs-user-morebtn {
+      float: right;
+      button {
+        background: inherit;
+        font-size: 22px;
+        padding: 0;
+        position: relative;
+        color: $grey_base_primary;
+        em {
+          position: absolute;
+          top: -13px;
+          right: 0px;
+        }
+        &:focus {
+          outline: inherit !important;
+        }
+      }
+    }
+  }
+  .cs-display-inlineflex
+  {
+    display: inline-flex;
+  }
+  .cs-display-inlineblock {
+    display: inline-block;
+  }
+  .cs-user-chip {
+    margin-bottom: 14px;
+    .mat-chip-list-wrapper {
+      margin: inherit !important;
+    }
+  }
+  
+  .cs-group-chip {
+    padding: 15px !important;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.87) !important;
+    background: #e8f0ff !important;
+    border: 1px solid #d4dff7;
+    margin: 4px 5px 6px 1px !important;
+    cursor: pointer !important;
+    &:after {
+      background: inherit !important;
+    }
+    &.cs-rmve-item {
+      &:hover {
+        button {
+          display: block !important;
+          padding: 0px;
+          em {
+            font-size: 14px;
+            background: #d95350;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px;
+            position: relative;
+            top: 1px;
+            right: -8px;
+          }
+          &:focus {
+            outline: inherit !important;
+          }
+        }
+      }
+    }
+  }
+  .cs-role-chip {
+    padding: 15px !important;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.87) !important;
+    background: #eaf8ea !important;
+    border: 1px solid #deefde;
+    margin: 4px 5px 6px 1px !important;
+    cursor: pointer !important;
+    &:after {
+      background: inherit !important;
+    }
+    &.cs-rmve-item {
+      &:hover {
+        button {
+          display: block !important;
+          padding: 0px;
+          margin-left: 8px;
+          em {
+            font-size: 14px;
+            background: #d95350;
+            color: #fff;
+            border-radius: 50%;
+            height: 18px;
+            width: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+          &:focus {
+            outline: inherit !important;
+          }
+        }
+      }
+    }
+  }
+  .cs-all-card {
+    overflow: auto;
+    width: 100%;
+    height: 278px;
+    background: $card_bg !important;
+    margin-top: -12px;
+    .cs-all-accordian-height
+    {
+      height: 70px;
+      padding-top: 5px;
+      .cs-user-img
+      {
+        padding-right: 5px;
+      }
+      .mat-chip-list-wrapper
+      {
+        margin: 0px;
+      }
+      .cs-group-chip,.cs-role-chip{
+        cursor: default !important;
+      }
+    }
+  }
+  .cs-hpad-16 {
+    padding: 0px 16px;
+  }
+  .cs-chip-allign {
+    margin: 5px !important;
+  }
+  .cs-bmar-16 {
+    margin-bottom: 16px;
+  }
+  .cs-tmar-m8 {
+    margin-top: -8px;
+  }
+  .cs-role-icon-bg {
+    background: #57d4aa;
+  }
+  .cs-grp-icon-bg {
+    background: #529ad1;
+  }
+  .cs-display-block {
+    display: block;
+  }
+  .cs-display-none {
+    display: none;
+  }
+  
+  .cs-all-mat-chip {
+    border: 1px solid lightgray;
+    width: calc(100% - 30%);
+    margin-left: 18px;
+    height: 38px !important;
+    border-radius: 20px !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    cursor: pointer !important;
+    background: #fff !important;
+    button {
+      background: inherit;
+      position: relative;
+      em {
+        font-size: 24px;
+        color: #fff;
+        border-radius: 50%;
+        padding: 5px;
+        position: absolute;
+        top: -16px;
+        left: -10px;
+      }
+    }
+    label {
+      margin-left: 22px;
+      font-size: 14px;
+    }
+    &:hover {
+      background: #ecf2fd !important;
+      color: #000;
+    }
+    &.mat-standard-chip::after {
+      background: inherit !important;
+    }
+  }
+  
+  .cs-no-record-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  .cs-assigneduser-avatar {
+    width: 34px;
+    height: 34px;
+    margin: 10px 13px 10px 0px;
+  }
+  .cs-top-m11 {
+    position: relative;
+    top: -11px;
+  }
+  .cs-mat-view-grid {
+    .cs-assingeduser-more-btn {
+      position: relative;
+      background: inherit !important;
+      em {
+        font-size: 20px !important;
+        background: $userassignment_add_btn !important;
+        border-radius: 50%;
+        // border: 1px solid $grey_base_secondary;
+        position: relative;
+        top: -7px;
+        padding: 5px;
+        color: $userassignment_add_icon;
+        left: 6px;
+        margin-right: inherit;
+      }
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+  
+  .cs-morebtn-popup {
+    height: 485px;
+    // max-width: 450px;
+    min-width: 352px;
+    width: auto;
+    background: $card_bg;
+    padding: 0px !important;
+    border-radius: 1px;
+    margin-right: -15px !important;
+    box-shadow: 0px 0px 10px $general_shadow !important;
+    // margin-top: 16px;
+    .cs-userassignment-popup-toolbar-hd {
+      border-bottom: 1px solid $grey_base_secondary;
+      .cs-userassignment-popup-toolbar {
+        padding: 14px 16px;
+        h4 {
+          font-size: 16px;
+          font-weight: 800;
+          margin: 0;
+          display: inline-block;
+          margin-top: 1px;
+          color: $grey_base_primary;
+        }
+        .cs-userassign-save-btn {
+          background: inherit;
+          float: right;
+          position: relative;
+          color: $grey_base_primary;
+          font-size: 20px;
+          em {
+            font-size: 20px;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+            &:hover {
+              background: $userassignment_save_btn_hover;
+              padding: 6px;
+              border-radius: 50%;
+              position: relative;
+              right: -13px;
+              color: $secondary_color;
+            }
+            &:focus {
+              outline: inherit !important;
+            }
+          }
+          &:focus {
+            outline: inherit !important;
+          }
+        }
+      }
+    }
+    .cs-userassign-userprofile {
+      padding: 16px;
+      max-width: 352px;
+      h6 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+        color: $grey_base_primary;
+      }
+      .cs-userassign-userprofile-landmark {
+        display: block;
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin: 4px 0px;
+      }
+      .cs-userassign-userprofile-qualification {
+        display: block;
+        font-size: 13px;
+        color: $grey_base_secondary;
+        margin: 4px 0px;
+      }
+    }
+    // &:before{
+    //     border-top: 9px solid transparent;
+    //     border-bottom: 9px solid transparent;
+    //     border-right: 9px solid $card_bg;
+    //     content: "";
+    //     position: absolute;
+    //     left: -9px;
+    //     top: 178px;
+    // }
+  }
+  .cs-hide-before-popup-opens {//Agathiyan
+    display: none !important;
+  }
+  .cs-balloon-position {
+    div {
+      text-decoration: underline;
+    }
+  }
+  cspfmBalloonComponent, .cs-balloon-width {
+    .cs-balloon-popup-style {
+      &.cs-morebtn-popup {
+        height: auto;
+        max-width: 0px;
+        // box-shadow: 2px 3px 15px #888 !important;
+        // box-shadow: 2px 3px 15px #888 !important;//test
+        padding: 0px !important;
+        margin-left: -20px !important;
+        // border-radius: 15px;
+        border-radius: 12px;//test
+        position: relative;
+        .cs-balloon-popup-close {
+          position: absolute;
+          top: -13px;
+          right: -13px;
+          color: #bbb;
+          cursor: pointer;
+          padding: 7px;
+          font-size: 18px;
+          opacity: 0.5;
+          &:hover {
+            zoom: 1.3;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+        .cs-tool-web {
+          .cs-tool-web-button {
+            font-size: 25px;
+            width: 25px;
+          }
+
+          .cs-tool-web-p {
+            margin: 15px 5px;
+          }
+
+          button {
+            font-size: 16px !important;
+          }
+
+          .cs-global-searchbar-head {
+            .cs-global-searchbar {
+              .cs-global-search-input {
+                padding-left: 30px !important;
+                padding-right: 88px;
+              }
+
+              button {
+                margin: 0 0px 0 0px !important;
+              }
+            }
+          }
+        }
+
+        .cs-mat-pageheadtoolbar {
+          height: 30px !important;
+
+          cs-whocolumn-icon {
+            button {
+              font-size: 18px;
+              height: 25px;
+              width: 25px;
+            }
+          }
+
+          .cs-mat-toolbartitle {
+            .cs-mat-pageheadtitle {
+              font-size: 16px;
+            }
+          }
+
+          cspfmwebaction {
+            display: inline-flex;
+          }
+
+          .cs-mat-pagehead-eachactions {
+            min-width: 25px;
+            height: 25px;
+            font-size: 16px !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 !important;
+
+            em {
+              font-size: 16px;
+            }
+          }
+        } 
+
+        .cs-scroll-body-height {
+          height: calc(100vh - 99px);
+          max-height: calc(100vh - 150px) !important; 
+          min-height: calc(100vh - 550px) !important;
+            //test
+          background: #fff;
+          border: 1px solid rgba(0,0,0,.2);
+          border-radius: 12px;
+          box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%), 0px 2px 6px 2px rgb(60 64 67 / 15%);
+          &.cs-custom-scroll {
+            &::-webkit-scrollbar-track {
+              // -webkit-box-shadow: inset 0 0 6px rgba(243,243,243,1);//test
+              border-radius: 10px;
+              background-color: initial !important;//test
+          }
+          
+          &::-webkit-scrollbar-thumb {
+              border-radius: 10px;
+              background-color: #dadce0 !important;//test
+              // -webkit-box-shadow: inset 0 0 6px rgba(243,243,243,1);//test
+          }
+          }
+          .cs-mat-main-content {
+            border-radius: 15px;
+          }
+
+          .cs-mat-contentmain {
+            padding: 10px !important;
+
+            .mat-card {
+              padding: 10px !important;
+              // margin-bottom: 0px !important;//test
+              border: none;
+              // border-top: 5px solid #f5f5f5;//test1
+              border-radius: 10px;
+              // border: 1px solid #dadce0;//test1-1
+              // margin-bottom: 5px !important;//test
+              margin-bottom: 8px !important;//test1
+              box-shadow: 0 -1px 1px -1px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 -1px 3px 0 rgb(0 0 0 / 12%) !important;//test1
+
+              &:first-child {
+                // border: none;//test
+              }
+
+              &.cs-parent_filter {
+                margin-bottom: 10px !important;
+              }
+
+              &.cs-mat-filteroption {
+                margin-bottom: 10px !important;
+                // padding: 10px !important;
+              }
+
+              .mat-card {
+                margin-bottom: 0;
+                box-shadow: none !important;
+              }
+
+              .cs-matcard-head-mn {
+                margin-bottom: 0;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+                padding-bottom: 15px;
+
+                &:first-child {
+                  border: none;
+                  padding: 0px;
+                  padding-bottom: 10px;
+                }
+
+                div {
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                }
+
+                .mat-card-header {
+                  margin-left: 5px !important;
+
+                  .mat-card-header-text {
+                    .mat-card-title {
+                      font-size: 14px;
+                    }
+                  }
+                }
+
+                button {
+                  height: 25px;
+                  min-width: 20px;
+                  margin-left: 5px !important;
+                  display: inline-flex;
+                  align-items: center;
+
+                  em {
+                    font-size: 16px;
+                  }
+                }
+              }
+
+              .entry-form-field-container {
+                padding: 0px;
+
+                button {
+                  font-size: 16px;
+                  height: 25px;
+                  min-width: 25px;
+                }
+
+                .cs-mat-view-grid {
+                  label {
+                    padding-right: 5px;
+                  }
+
+                  .cs-rollup-field {
+                    margin-left: 0;
+                  }
+
+                  mat-label, label {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                      width: 20px;
+                      height: 20px;
+                      display: inline-block;
+                      border: 1px solid #dcdfe2;
+                      background: #f5f5f5;
+                      border-radius: 50%;
+                      font-size: 15px;
+                      margin-left: 5px;
+                      padding: 2px;
+                    }
+                  }
+
+                  quill-view-html {
+                    .ql-container {
+                      min-height: 35px;
+
+                      .ql-editor {
+                        padding-left: 0px;
+                        padding-top: 0px;
+                        font-weight: $view_label_font_weight;
+                        font-size: $view_label_font_size;
+                        margin-top: 5px;
+                        color: $view_label_color;
+                        font-style: $view_label_font_style;
+                      }
+                    }
+                  }
+                }
+              }
+
+              .cs-slick-action-block {
+                .mat-button-base {
+                  height: 20px;
+                  min-width: 20px;
+                  margin-left: 5px !important;
+
+                  em {
+                    font-size: 16px;
+                  }
+                }
+              }
+
+              .cs-event-height {
+                margin-bottom: 5px;
+
+                .cs-mat-view-grid {
+                  padding: 5px !important;
+
+                  .cs-mat-vg-cont {
+                    min-height: 25px;
+                  }
+
+                  .mat-button-base {
+                    font-size: 18px !important;
+                    margin: 0 0px 0 5px !important;
+                    height: 25px !important;
+                  }
+                }
+              }
+
+              .mat-card-footer {
+                bottom: -5px;
+
+                button {
+                  width: 15px;
+                  height: 15px;
+
+                  em {
+                    font-size: 14px;
+                  }
+                }
+              }
+
+              .cs-slick-title {
+                margin-top: 5px;
+                width: 100%;
+                .mat-card-header {
+                  margin-left: 10px !important;
+                  margin-bottom: 5px !important;
+                  display: flex;
+                  align-items: center;
+
+                  .mat-button-base {
+                    margin: 3px 7px 0px 0px !important;
+                    padding: 0px !important;
+                    height: 20px;
+                    min-width: 20px;
+
+                    em {
+                      font-size: 13px;
+                    }
+                  }
+                }
+
+                .mat-card-header-text {
+                  .mat-card-title {
+                    font-size: 14px;
+                    &::before {
+                      bottom: -3px;
+                    }
+                    .cs-title-info-clk {
+                      em {
+                         font-size: 16px;
+                      }
+                    }
+                  }
+                }
+
+                .cs-mat-slickgrid {
+                  em {
+                    font-size: 14px !important;
+                  }
+                }
+              }
+              .cs-list-view {
+                .cs-header-name {
+                  .mat-card-header {
+                    margin-left: 0px !important;
+                  }
+
+                  .cs-slick-action-block {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    position: relative;
+                    width: 100%;
+                    margin-right: 0;
+                    // height: 50px;
+                    .cs-ta-end {
+                      position: absolute;
+                      top: -28px;
+                      right: 0;
+                    }
+                    .cs-custome-pagination {
+                      mat-label, .mat-select {
+                        font-size: 13px !important;
+                      }
+                    }
+                  }
+                }
+              }
+              &.cs-mat-parent-slick {
+                &:first-child {
+                  border: none !important;
+                }
+                &.cs-tab-slickgrid-alt {
+                  .cs-slick-action-block {
+                    .cs-pull-right {
+                      display: none;
+                    }
+                  }
+                }
+               
+
+                .gridPane {
+                  .slickgrid-container {
+                    .slick-pane {
+                      &.slick-pane-header {
+                        .slick-header {
+                          // height: 30px !important;
+
+                          .slick-header-columns {
+                            .slick-header-column {
+                              .slick-column-name {
+                                font-size: 13px;
+                              }
+                            }
+                          }
+                        }
+
+                        .slick-preheader-panel {
+                          .ui-droppable.ui-sortable {
+                            margin: 0px;
+                            width: calc(100% - 5px) !important;
+                          }
+                          .slick-placeholder {
+                            font-size: 12px;
+                            font-weight: 400;
+                          }
+                        }
+                      }
+                    }
+
+                    .slick-header-menu {
+                      max-width: 200px;
+                      font-size: 11px;
+                    }
+
+                    .slick-viewport {
+                      .grid-canvas {
+                        .slick-row {
+                          .slick-cell {
+                            display: inline-flex;
+
+                            .cs-slick-user-list-assign {
+                              width: auto !important;
+                            }
+
+                            .cs-slickgeid-mat-chip-list {
+                              height: 25px;
+                            }
+
+                            button {
+                              height: 20px;
+                              display: inline-flex;
+
+                              em {
+                                font-size: 14px;
+                              }
+
+                              .cs-mat-btnlabel {
+                                font-size: 12px;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  }
+  .cs-balloon-config-field {
+    text-decoration: underline;
+    cursor: pointer;
+
+  }
+  .cs-popover-style.cs-morebtn-popup {
+    padding: 0px !important;
+    margin-left: -20px !important;
+  }
+  
+  .cs-remove-left {
+    left: inherit !important;
+  }
+  .cs-remove-right {
+    right: inherit !important;
+    transform: inherit !important;
+  }
+  .cs-btn-width {
+    left: -50px;
+  }
+  .cs-ua-initial-loader{
+      background-image: url(/assets/img/dataloading.gif) !important;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      height: 80px;
+      width: 80px;
+      position: absolute;
+      top: 0px;
+      bottom: 50px;
+      left: 0px;
+      right: 0px;
+      margin: auto;
+  }

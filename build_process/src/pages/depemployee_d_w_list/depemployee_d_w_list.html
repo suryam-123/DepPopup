@@ -1,0 +1,126 @@
+<mat-toolbar [id]=203850 class="cs-mat-pageheadtoolbar" color="primary"><button mat-button="" slot="start" *ngIf="appUtilityConfig.isMobileResolution">
+        <ion-menu-button></ion-menu-button>
+    </button>
+    <div class="cs-mat-toolbartitle"><span class="cs-mat-pageheadtitle">{{'depemployee_d_w_list.Layout.depemployee_d_w_list' | translate}}</span></div><span class="example-spacer"></span><button mat-mini-fab="" color="primary" title="{{'depemployee_d_w_list.Action.Search_1' | translate}}" (click)="filterAction()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" id="depemployee_d_w_list_Search_1"><em style="" class="icon-mat-search"></em></button><button color="primary" title="{{'depemployee_d_w_list.Action.New_1' | translate}}" (click)="addButton_7773871_Onclick()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" mat-icon-button="" id="depemployee_d_w_list_New_1"><em style="" class="icon-mat-add"></em></button>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading || sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['isLoading']" mode="indeterminate"></mat-progress-bar>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomFetchLoading">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src="assets/img/dataloading.gif" /></div>
+</div>
+<div class="cs-custom-scroll cs-scroll-body-height" (scroll)="onScroll($event)">
+    <div class="cs-mat-main-content">
+        <div class="cs-mat-contentmain">
+            <div id="SEC_depemployee_d_w_list_Dep_Employee_WEB_GRID_SECTION">
+                <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption" [hidden]="!filterSectionDetail['filterPanelExpanded']">
+                    <mat-card-header class="cs-header">
+                        <mat-card-title>Dep_Employee Search</mat-card-title>
+                    </mat-card-header>
+                    <div padding="" class="cs-org-filter-form">
+                        <div class="cs-fullwidth cs-event-height" fxLayout="row wrap">
+                            <div id="FLD_depemployee_d_w_list_depemployee_DUMMY$$employeeid_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-mat-from-to cs-mat-formulafield">
+                                <mat-label>{{'depemployee_d_w_list.Element.depemployee_DUMMY$$employeeid.employeeid' | translate}}</mat-label>
+                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_depemployee_d_w_list_depemployee_DUMMY$$employeeid_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71655_employeeid_7773873']['fieldValue']" />
+                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71655_employeeid_7773873']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71655_employeeid_7773873']['conditionalOperator']">
+                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71655_employeeid_7773873']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'depemployee_employeeid_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
+                                    </mat-select>
+                                    <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                                </mat-form-field>
+                            </div>
+                            <div id="FLD_depemployee_d_w_list_depemployee_DUMMY$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-mat-from-to cs-mat-formulafield">
+                                <mat-label>{{'depemployee_d_w_list.Element.depemployee_DUMMY$$employeename.employeename' | translate}}</mat-label>
+                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_depemployee_d_w_list_depemployee_DUMMY$$employeename_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71655_employeename_7773875']['fieldValue']" />
+                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71655_employeename_7773875']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71655_employeename_7773875']['conditionalOperator']">
+                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71655_employeename_7773875']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'depemployee_employeename_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
+                                    </mat-select>
+                                    <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                                </mat-form-field>
+                            </div>
+                            <div id="FLD_depemployee_d_w_list_depemployee_DUMMY$$team_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-chip-bpad">
+                                <mat-label>{{'depemployee_d_w_list.Element.depemployee_DUMMY$$team.team' | translate}}</mat-label>
+                                <div class="cs-tmar7">
+                                    <mat-chip-list *ngIf="filterSectionDetail['filterFields']['pfm71655_team_7773874']['displayInfo']['input'].length < 10">
+                                        <mat-chip id="FLD_depemployee_d_w_list_depemployee_DUMMY$$team_input_{{ item['label'] | translate}}" *ngFor="let item of filterSectionDetail['filterFields']['pfm71655_team_7773874']['displayInfo']['input']" [ngClass]="{'checked': item['isChecked']}" (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71655_team_7773874'])">{{ item.label | translate}}</mat-chip>
+                                    </mat-chip-list>
+                                    <mat-chip-list #chipList *ngIf="filterSectionDetail['filterFields']['pfm71655_team_7773874']['displayInfo']['input'].length >= 10"><input [matAutocomplete]="chip_pfm71655_team" [matChipInputFor]="chipList" />
+                                        <mat-chip *ngFor="let item of filterSectionDetail['filterFields']['pfm71655_team_7773874']['displayInfo']['selected']" [selectable]="selectable" [removable]="removable" id="{{'FLD_depemployee_d_w_list_depemployee_DUMMY$$team_input_' + item}}">{{item['label'] | translate}}<button mat-icon-button class="cs-mat-icononly" (click)="listServiceUtils.removeSelectedItem(item['label'],filterSectionDetail['filterFields']['pfm71655_team_7773874'])" *ngIf="removable"><em class="icon-mat-close"></em></button></mat-chip>
+                                    </mat-chip-list>
+                                    <mat-autocomplete #chip_pfm71655_team="">
+                                        <mat-option *ngFor="let item of filterSectionDetail['filterFields']['pfm71655_team_7773874']['displayInfo']['input']">
+                                            <div (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71655_team_7773874'])">
+                                                <mat-checkbox [checked]="item.isChecked" (change)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71655_team_7773874'])" (click)="$event.stopPropagation()" id="{{'FLD_depemployee_d_w_list_depemployee_DUMMY$$team_input_' + item['label']}}">{{ item['label']| translate}}</mat-checkbox>
+                                            </div>
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </div>
+                                <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="filterSectionDetail['filterPanelExpanded']" class="cs-apply-refresh"><button (click)="clearMessageConfirmAlert()" id="action_clear1" ng-reflect-color="primary" mat-stroked-button="" class="cs-mat-labelonly mat-stroked-button mat-primary"><span class="cs-mat-btnlabel">Clear Filter</span></button><button (click)="applyAction(true)" id="action_apply1" ng-reflect-color="primary" mat-flat-button="" class="cs-mat-labelonly mat-stroked-button mat-primary"><span class="cs-mat-btnlabel">Apply Filter</span></button></div>
+                </mat-card>
+                <mat-card class="cs-mat-filteroption cs-mat-form-field cs-showFilterheight" *ngIf="!filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterAppliedFields'].length > 0">
+                    <div padding="" class="cs-org-filter-form">
+                        <div class="cs-org-filter-lform">
+                            <div>
+                                <div *ngFor="let appliedFilterField of filterSectionDetail['filterAppliedFields']" class="cs-org-filter-form-field">
+                                    <div class="cs-pr">
+                                        <mat-label class="cs-org-filter-form-label setWidth" (click)="listServiceUtils.setWidth()">{{appliedFilterField['displayInfo']['label'] | translate}}</mat-label>
+                                    </div>
+                                    <div class="cs-ref">
+                                        <div class="cs-fullwidth">
+                                            <div class="cs-org-filter-form-subl cs-org-filter-form-seperationlabel">
+                                                <p id="one" class="getWidth cs-org-filter-form-sublabel">{{appliedFilterField['displayInfo']['value']| translate}}</p>
+                                            </div>
+                                            <div class="cs-org-filter-form-subr"><button mat-icon-button="" class="cs-mat-icononly cs-mat-clear" id="{{'action_clear2_' + appliedFilterField['displayInfo']['label']}}" (click)="clearFilterAppliedField(appliedFilterField['key'])"><em class="icon-mat-clear cs-mat-madclear"></em></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs-apply-refresh cs-org-filter-formR"><button id="action_clear3" (click)="clearMessageConfirmAlert()" ng-reflect-color="primary" mat-stroked-button="" class="cs-mat-labelonly mat-stroked-button mat-primary"><span class="cs-mat-btnlabel">Clear Filter</span></button></div>
+                    </div>
+                </mat-card>
+            </div>
+            <mat-card id="SEC_depemployee_d_w_list_Dep_Employee_WEB_LIST_SECTION" class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid">
+                <div class="cs-header-name cs-slick-title cs-pr">
+                    <mat-card-header class="cs-slickoption-btn"><button title="Menu" mat-icon-button="" class="cs-mat-icononly cs-ts-22 cs-rmar" id="cspfm_depemployee_slickgrid_menubtn" (click)="slickgridUtils.toggleGridMenu($event, angularGrid, sectionObjectDetails, __depemployee$tableName, matrixAngularGridInstance)"><em class="icon-mat-dehaze cs-tw-600"></em></button>
+                        <mat-card-title>Dep_Employee List<span class="cs-record-count-badge" *ngIf="paginationConfigInfo['currentPageWithRecord']==='false' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch')">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.totalItems}}</span><span class="cs-record-count-badge" *ngIf="paginationConfigInfo['currentPageWithRecord']==='false' && dataFetchMode === 'OnClickBatch'">{{pagination['total_rows']}}</span></mat-card-title>
+                    </mat-card-header>
+                    <div class="cs-mat-slickgrid cs-pull-right" [hidden]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['currentMode']=='matrix'"><span class="cs-custome-pagination" *ngIf="gridObj && gridObj['cspfm_grid_custom_data'] && gridObj['cspfm_grid_custom_data']['isPaginationEnabled'] && slickgridResultList && slickgridResultList.length > 0 && paginationConfigInfo['paginationPosition']==='TOP'">
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB')) ">
+                                <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                <mat-select class="cs-ts-14" (selectionChange)="slickgridUtils.selectionChange($event, angularGrid)" [value]="angularGrid && angularGrid.paginationService && angularGrid.paginationService.itemsPerPage" [(ngModel)]="gridOptions['pagination']['pageSize']" (click)="appUtilityConfig.take_position($event,isLoading)">
+                                    <mat-option class="cs-ts-14" *ngFor="let itemPerPage of gridOptions['pagination']['pageSizes']" [value]="itemPerPage">{{itemPerPage}}</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['currentPageWithRecord']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.dataFrom}}</mat-label>
+                                <mat-label class="cs-ts-14 cs-grey"> - {{angularGrid && angularGrid.paginationService && angularGrid.paginationService.dataTo}}</mat-label>
+                                <mat-label class="cs-ts-14"><span> of </span>{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.totalItems}}</mat-label>
+                            </div>
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['numberOfPages']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch'  || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber}} / </mat-label>
+                                <mat-label class="cs-ts-14 cs-grey">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageCount}}<span> Page </span></mat-label>
+                            </div><button class="cs-mat-icononly cs-nomargin" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))" color="primary" mat-icon-buttonng-reflect-disable-ripple="true" title="Previous" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber === 1}" (click)="slickgridUtils.navigationChange('prev', angularGrid)"><em class="icon-mat-navigate_before"></em></button><button class="cs-mat-icononly cs-nomargin" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))" id="cspfm_depemployee_slickgrid_custpagination_next" color="primary" mat-icon-button ng-reflect-disable-ripple="true" title="Next" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber === angularGrid.paginationService.pageCount}" (click)="slickgridUtils.navigationChange('next', angularGrid)"><em class="icon-mat-navigate_next"></em></button>
+                        </span><button title="Search" id="cspfm_depemployee_slickgrid_searchbtn" *ngIf="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['currentMode']==='list'" class="cs-mat-icononly cs-filter-option cs-pull-right" color="primary" mat-icon-button="" ng-reflect-disable-ripple="true" (click)="slickgridUtils.toggleGridSearchRow(isLoading, gridSearchRowToggle,gridObj, angularGrid,'SearchList')"><em [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em></button></div>
+                </div>
+                <div *ngIf="dataSource!=='JsonDB' && onlineIndxCreation.isAllSearchIndexCompleted && !fetchMethodCalled">{{fetchDataBycheckRunningIndexStatus()}}</div>
+                <div [hidden]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['currentMode']==='matrix'" id="{{gridContainerId}}" [ngClass]="{'cs-groupbyon': onGroupByEnabledObj.onGroupByEnabled , 'cs-filteron': gridSearchRowToggle, 'cs-groupbyon_filteron': onGroupByEnabledObj.onGroupByEnabled && gridSearchRowToggle,'cs-mouse-pointer-enable':sectionObjectDetails[__depemployee$tableName]['isRowClickDisabled']}" class="clearfix cs-mat-slickgrid cs-slickfull-height cs-filter-beside-pagination cs_hightfix_by_script cs-fullslick-rowheight">
+                    <angular-slickgrid *ngIf="true" [ngClass]="{'cs-slick_filter_on': !expandFlag}" gridId="{{gridId}}" [columnDefinitions]="columnDefinitions[__depemployee$tableName]" [gridOptions]="gridOptions" (sgOnClick)="onGridItemClick($event)" (sgOnCellChange)="slickgridUtils.onCellChanged($event.detail.eventData, $event.detail.args)" (sgOnValidationError)="slickgridUtils.onCellValidation($event.detail.eventData, $event.detail.args)" [dataset]="[]" (onAngularGridCreated)="angularGridReady($event)" (sgOnSelectedRowsChanged)="appUtilityConfig.selectedRows($event.detail.args,this)"></angular-slickgrid>
+                </div>
+                <div *ngIf="sectionObjectDetails[__depemployee$tableName]['isMatrixEnabled']" [hidden]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['currentMode']==='list'" id="{{matrixGridContainerId}}" class="cs-matrix-enabled clearfix cs-mat-slickgrid cs-slickfull-height cs-filter-beside-pagination">
+                    <angular-slickgrid [ngClass]="{'cs-slick_filter_on': !expandFlag}" gridId="{{matrixGridId}}" [columnDefinitions]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['columns']" [gridOptions]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['gridOptions']" [dataset]="sectionObjectDetails[__depemployee$tableName]['matrixConfig']['displayInfo']['dataset']" (onAngularGridCreated)="appUtilityConfig.matrixGridReady($event,this)"></angular-slickgrid>
+                </div>
+                <div *ngIf="((slickgridResultList && slickgridResultList.length === 0) || (angularGrid && angularGrid.dataView.getLength() === 0)) && (onlineIndxCreation.isAllSearchIndexCompleted || dataSource ==='JsonDB')" class="cs_no_record_center" [ngClass]="{'cs-noimage_pos_add': filterSectionDetail['filterPanelExpanded'], cs_no_record_center_min_rec : filterAppliedFieldsArray.length > 0 && !onGroupByEnabledObj.onGroupByEnabled }"><img *ngIf='!isLoading' alt='' src='assets/img/no_record_found.png'> </div>
+                <div class="indexNotComplete" *ngIf="dataSource!=='JsonDB' && !onlineIndxCreation.isAllSearchIndexCompleted">
+                    <mat-label>
+                        <h3>Index process running</h3>
+                    </mat-label>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomActionProcessing">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'></div>
+</div>

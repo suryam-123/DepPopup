@@ -1,0 +1,40 @@
+.homepage-content{
+    .home-logo-bg-image{
+        position:fixed;
+        height: 100vh;
+        object-fit: cover;
+        width: 100%;
+    }
+    .homepage-logo{
+        top: 0px;
+        position: absolute;
+        width: 100%;
+    .homepage-image{
+        margin-top: 26vh;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        img{
+           max-width:300px;
+           max-height: 300px;
+        }
+    
+    }
+    .homepage-ver{
+        margin-top:22px;
+    ion-label{
+        padding: 6.25px 14px 4px 14px;
+        border-radius:100px;
+        border: 1px solid lightgray;
+        box-shadow: 0px 0px 10px #ccccccab;
+    }
+}
+ion-header{
+    h6{
+        color: #8a8a8a;
+        font-size: 20px;
+    
+    }
+}
+}
+}

@@ -1,0 +1,524 @@
+@import "./../../assets/developerUploads/scss/global_color.scss";
+@import "./../../assets/developerUploads/scss/theme-variable.scss";
+
+em{
+    font-size: 25px;
+}
+.cs-box-menu-active.cs-box-menu{
+    top:0;
+    transition: .5s all;
+    z-index: 1 !important;
+}
+
+.cs-box-menu{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    top:-100%;
+    transition: .5s all;
+    .cs-bx-mul{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background: white;
+        padding: 10px;
+    }
+    .cs-bx-s-m-bar {
+        border-radius: 10px !important;
+    }
+    .cs-bx-m-each{
+        width: 250px;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        display: inline-block;
+        --padding-start: 0px;
+        --inner-padding-end: 0px;
+        margin: 10px;
+        cursor: pointer; 
+        mat-list{
+            width: 100%;
+            padding:0;
+            mat-list-item{
+                padding: 0;
+                justify-content: start;
+                height: 38px;
+                background-color:#eeeeee;
+                border-radius: 0px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                .cs-bx-m-hico{
+                    height: 38px;
+                    border: 1px solid #c1c1c1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // background-color: #c1c1c1;
+                    // border-color: #c1c1c1;
+                    width: 38px;
+                    border-radius: 3px;
+                    background-clip: padding-box;
+                    em{
+                        color: #ffffff;
+                        font-size: 20px;
+                    }
+                }
+                mat-label{
+                    width: 78%;
+                    // margin-left: 10px;
+                    // white-space: nowrap;
+                    // overflow: hidden;
+                    // text-overflow: ellipsis;
+                    font-size: 14px;
+                    text-align: left;
+                    text-transform: unset;
+                    word-break: break-all;
+                    font-weight: 500;
+                }
+                .cs-bx-m-gp-card {
+                    display: flex;
+                    align-items: center;
+                    mat-label{
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .cs-bx-m-sub-m{
+                // max-height: 210px;
+                overflow: auto;
+                background: $grid_segment_body_bg;
+                border-radius: 0px;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+            .cs-bx-m-subl{
+                display: flex;
+                align-items: center;
+                // padding: 10px;
+                &:hover{
+                    background: $grid_segment_option_hover_bg;
+                }
+                em{
+                    font-size: 18px;
+                    color: $grid_segment_option_icon_color;
+                }
+                mat-label{
+                    font-size: 13px;
+                    // margin: 0 0 0 10px;
+                    text-align: left;
+                    width: calc(100% - 60px);
+                    text-transform: unset;
+                    word-break: break-all;
+                    // white-space: nowrap;
+                    // overflow: hidden;
+                    // text-overflow: ellipsis;
+                }
+            }
+            .cs-bx-s-m-ui {
+                padding: 0;
+                justify-content: start;
+                height: 127px !important;
+                background: none !important;
+                .cs-bx-m-s-tem{
+                    display: block;
+                    width: 100%;
+                    .cs-bx-m-ex-hico {
+                        width: 100%;
+                        padding: 31px;
+                        border-radius: 0px;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        border: none;
+                        em{
+                            font-size: 30px;
+                        }
+                    }
+                    .cs-bx-m-ex-label {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 10px 0px ; 
+                        background: #ffffff;
+                        border-radius: 0px;
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        mat-label{
+                            width: 100%;
+                            text-align: center;
+                            height: 45px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            white-space: normal;
+                            margin-left: 10px;
+                        }
+                    }
+        }
+            }
+            
+        }
+        &.cs-menu-c-one{
+            mat-list{
+                mat-list-item{
+                    background-color: $grid_segment_option_hover_bg;
+                    .cs-bx-m-hico{
+                        background-color: #84c2e9;
+                        border-color:#68b6ea;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #f2f9fd;
+                    em {
+                        color: #84c2e9;
+                    }
+                }
+                }
+            }
+        }
+        &.cs-menu-c-two{
+            mat-list{
+                mat-list-item{
+                    background-color: #fff6f1;
+                    .cs-bx-m-hico{
+                        background-color: #efb596;
+                        border-color:#deab8f;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fff6f1;
+                    em {
+                        color: #efb596;
+                }
+            }
+        }
+            }
+        }
+        &.cs-menu-c-three{
+            mat-list{
+                mat-list-item{
+                    background-color: #f5fef3;
+                    .cs-bx-m-hico{
+                        background-color: #bee0b7;
+                        border-color:#aadaa0;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #f5fef3;
+                    em {
+                        color: #bee0b7;
+                    }
+                }
+                }
+                
+            }
+        }
+        &.cs-menu-c-four{
+            mat-list{
+                mat-list-item{
+                    background-color: #f5f5ff;
+                    .cs-bx-m-hico{
+                        background-color: #9499ed;
+                        border-color:#979aca;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #f5f5ff;
+                    em {
+                        color: #9499ed;
+                    }
+                }
+                }
+                
+            }
+        }
+        &.cs-menu-c-five{
+            mat-list{
+                mat-list-item{
+                    background-color: #fef5f5;
+                    .cs-bx-m-hico{
+                        background-color: #ef9394;
+                        border-color:#e07677;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fef5f5;
+                    em {
+                        color: #ef9394;
+                    }
+                }
+                }
+            }
+        }
+        &.cs-menu-c-six{
+            mat-list{
+                mat-list-item{
+                    background-color: #fff5fa;
+                    .cs-bx-m-hico{
+                        background-color: #f297c3;
+                        border-color:#cca0b5;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fff5fa;
+                    em {
+                        color: #f297c3;
+                    }
+                }
+                }
+            }
+        }
+        &.cs-menu-c-seven{
+            mat-list{
+                mat-list-item{
+                    background-color: #fef5ec;
+                    .cs-bx-m-hico{
+                        background-color: #fbc691;
+                        border-color:#efbf8f;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fef5ec;
+                    em {
+                        color: #fbc691;
+                    }
+                }
+                }
+            }
+        }
+        &.cs-menu-c-eight{
+            mat-list{
+                mat-list-item{
+                    background-color: #fff5cb;
+                    .cs-bx-m-hico{
+                        background-color: #fae591;
+                        border-color:#f3d560;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fff5cb;
+                    em {
+                        color: #fae591;
+                    }
+                }
+                }
+            }
+        }
+        &.cs-menu-c-nine{
+            mat-list{
+                mat-list-item{
+                    background-color: #fef9f3;
+                    .cs-bx-m-hico{
+                        background-color: #d9c8b6;
+                        border-color:#c7b5a2;
+                    }
+                    .cs-bx-m-hico.cs-bx-m-ex-hico{
+                        background-color: #fef9f3;
+                    em {
+                        color: #d9c8b6;
+                    }
+                }
+                }
+            }
+        }
+    }
+}
+.cs_title_width{
+    width: 200px;
+    &.title-ios{
+        width: 100%!important;
+    }
+}
+   
+.right-align {
+    flex: 1 1 auto;
+}    
+
+.cs-truncate-sidemenu {
+    width: 100%;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+}
+// ------------
+    // ion-icon {
+    //     font-size: 25px;
+    // }
+    // .cs-box-menu-active.cs-box-menu{
+    //     top:0;
+    //     transition: .5s all;
+    // }
+    
+    // .cs-box-menu{
+    //     width: 100%;
+    //     height: 100%;
+    //     position: fixed;
+    //     z-index: 1;
+    //     top:-100%;
+    //     transition: .5s all;
+    //     .cs-bx-mul{
+    //         width: 100%;
+    //         height: 100%;
+    //         text-align: center;
+    //     }
+    //     .cs-bx-m-each{
+    //         width: 250px;
+    //         border: 1px solid #eee;
+    //         border-radius: 3px;
+    //         display: inline-block;
+    //         --padding-start: 0px;
+    //         --inner-padding-end: 0px;
+    //         margin: 10px;
+    //         ion-list{
+    //             width: 100%;
+    //             padding:0;
+    //             ion-list-header{
+    //                 padding: 0;
+    //                 justify-content: start;
+    //                 min-height: 38px;
+    //                 background-color:#eeeeee;
+    //                 .cs-bx-m-hico{
+    //                     width: 38px;
+    //                     height: 38px;
+    //                     border: 1px solid #c1c1c1;
+    //                     border-radius: 3px;
+    //                     display: flex;
+    //                     justify-content: center;
+    //                     align-items: center;
+    //                     background-color: #c1c1c1;
+    //                     border-color: #c1c1c1;
+    //                     ion-icon{
+    //                         color: #ffffff;
+    //                     }
+    //                 }
+    //                 ion-label{
+    //                     width: 78%;
+    //                     margin-left: 10px;
+    //                     white-space: nowrap;
+    //                     overflow: hidden;
+    //                     text-overflow: ellipsis;
+    //                     font-size: 15px;
+    //                     text-align: left;
+    //                 }
+    //             }
+    //             .cs-bx-m-sub-m{
+    //                 height: 210px;
+    //                 overflow: auto;
+    //             }
+    //             .cs-bx-m-subl{
+    //                 display: flex;
+    //                 align-items: center;
+    //                 padding: 10px;
+    //                 ion-icon{
+    //                     font-size: 18px;
+    //                 }
+    //                 ion-label{
+    //                     font-size: 14px;
+    //                     margin: 0 0 0 10px;
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-one{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #f5f9ff;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #84c2e9;
+    //                         border-color:#68b6ea;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-two{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fff6f1;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #efb596;
+    //                         border-color:#deab8f;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-three{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #f5fef3;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #bee0b7;
+    //                         border-color:#aadaa0;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-four{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #f5f5ff;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #9499ed;
+    //                         border-color:#979aca;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-five{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fef5f5;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #ef9394;
+    //                         border-color:#e07677;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-six{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fff5fa;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #f297c3;
+    //                         border-color:#cca0b5;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-seven{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fef5ec;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #fbc691;
+    //                         border-color:#efbf8f;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-eight{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fff5cb;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #fae591;
+    //                         border-color:#f3d560;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &.cs-menu-c-nine{
+    //             ion-list{
+    //                 ion-list-header{
+    //                     background-color: #fef9f3;
+    //                     .cs-bx-m-hico{
+    //                         background-color: #d9c8b6;
+    //                         border-color:#c7b5a2;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // .cs_title_width{
+    //     width: 200px;
+    //     &.title-ios{
+    //         width: 100%!important;
+    //     }
+    // }
+       
+    // .right-align {
+    //     flex: 1 1 auto;
+    // }    
+    
+    

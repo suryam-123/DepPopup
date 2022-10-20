@@ -1,0 +1,211 @@
+<div [ngClass]="!appUtils.isMobileResolution ? selectedThemeClass : ''">
+  <div [ngClass]="appUtils.isEmbeddingEnabled ? 'cs-embedding-call' : ''">
+    <ion-toolbar *ngIf="!appUtils.isMobileResolution && appUtils.isAppSyncCompleted" class="cs-tool-web">
+      <div class="cs-tool-web-content">
+        <div class="cs-tool-web-div1">
+          <div>
+            <ion-buttons *ngIf="!appUtils.isTopHorizonatalMenu" title ="Main Menu" slot="start" class="cs-tool-web-button cs-cur" (click)="triggerMenuEvents()" id="app-menu">
+              <ion-icon name="md-menu"></ion-icon>
+            </ion-buttons>
+
+            <img title ="Org Logo" alt="" src="../../../logo/org_logo.png" onerror="this.src='assets/img/chainsys-platform-logo.png'" class="mar cs-tool-web-img1">
+            <span class="cs-tool-web-span"></span>
+          </div>
+          <!-- Dynamic application name show -->
+          <div class="cs-tool-web-p">
+            <p title ="App Name"  class="ion-no-margin ion-no-padding">{{appUtils.applicationName}}</p>
+          </div>
+        </div>
+        <div class="cs-tool-web-div2" [hidden]="!appConfig.configuration.isGlobalSearchEnabled" *ngIf="appConfig.configuration.globalSearchConfigInfo.length > 0">
+          <ng-container #globalSearch></ng-container>
+        </div>
+        <div class="cs-tool-web-div3 cs-positionrel">
+          <!-- <ion-avatar id="appuserinfo" title ="User Info" slot="start" margin class="cs-tool-web-avatar cs-cur" (click)="userInfoClick($event)">
+            <img alt="" src="{{appUtils.profilePicSrc}}" onError="this.src='assets/img/user_icon.png'">
+          </ion-avatar> -->
+          <mat-icon id="appuserinfo" title="User Info" slot="start" class="ion-margin cs-tool-web-avatar cs-cur"
+            (click)="userInfoClick($event)">
+            <img alt="" src="{{appUtils.profilePicSrc}}" onError="this.src='assets/img/user_icon.png'"
+              [mdePopoverTriggerFor]="avatarPopover" mdePopoverTriggerOn="click">
+          </mat-icon>
+          
+          <div class="cs-tool-switch-icon cs-cur cs-tmar-8 cs-pr">
+              <ion-icon id="appnotification" class="icon-mat-circle_notifications cs-cur" title="Notification" [mdePopoverTriggerFor]="appConnectPopover" mdePopoverTriggerOn="click" (click)="displayNotifications()" 
+                style="font-size: 24px;"></ion-icon>
+              <ion-badge color="danger" *ngIf="appUtils.notifications.length > 0"class="cs-danger-badge">{{appUtils.notifications.length}}</ion-badge>
+          </div>
+
+          <div class="cs-tool-switch-icon cs-cur cs-tmar-8 cs-pr" *ngIf="announcementList.length > 0">
+            <ion-icon title ="Announcement Details" class="cs-meta-valid-blue" color="primary" (click)="AnouncementAction()" name="md-notifications"></ion-icon>
+            <ion-badge color="danger" class="cs-danger-badge">{{announcementList_length}}</ion-badge>
+          </div>
+
+          <mde-popover  #appConnectPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+            <mat-card class="cs-pop-box" >
+              <div style="text-align:center" *ngIf="notificationsForDisplay.length == 0">
+                No new notifications..!
+              </div>
+              <div class="cs-custom-scroll cs-notify-popup-height" *ngIf="notificationsForDisplay.length > 0">
+                <mat-list>
+
+                  <mat-list-item class="cs-notify-count" 
+                  [ngClass]="{'cs-notify-seen': notification.isSeen == 'Y'}" 
+                  *ngFor="let notification of notificationsForDisplay">
+                    <div class="cs-notify-div">
+                      <span class="cs-icon-stage">
+                        <mat-icon matListIcon [class]="notification.icon"></mat-icon>
+                      </span>
+                      <div class="cs-icon-content">
+                        <p class="cs-notify-msg" matLine>  {{notification.processName}} </p>
+                        <p class="cs-notify-msg" matLine>  {{notification.activityName}} </p>
+                        <p class="cs-notify-msg" matLine>  {{notification.message}} </p>
+                        <div class="cs-notify-time" matLine>
+                          {{notification.notificationTime}}
+                          <span (click)="onNotificationClicked(notification)" *ngIf="notification.isSeen == 'N'" class="cs-gotit cs-cur" style="text-decoration: underline;">Got It</span>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+              <br>
+              <div style="text-align:center">
+                <button id="appoldnotification" mat-raised-button color="primary" title="AppConnectTrack" 
+                (click)="showAppConnectNotification()">Show Old Notifications
+                </button>
+              </div>
+            </mat-card>
+          </mde-popover>
+
+          <ion-icon id="appswitcher" title ="Switcher" class="icon-mat-apps cs-tool-switch-icon cs-cur" [mdePopoverTriggerFor]="appPopover" (click)="dismissUserPopover()"
+            mdePopoverTriggerOn="click">></ion-icon>
+          <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+            <mat-card style="max-width: 340px;max-height: 370px;" class="cs-custom-scroll cs-pop-box cs-pop-app-switch-box" >
+              <div fxLayout="row-wrap" class='cs-dotmenu'>
+                <div fxLayout="column" fxFlex="30%" *ngFor='let app of applistArray'(click)="openApplication(app.url, app.appType, app.appId)"  class="devtest  cs-app-detail">
+                  <div *ngIf="app.appType === 'CUSTOM'" >
+                    <span class="cs-inline cs-app-logo">
+                      <img src="{{app.icon}}" alt="" (error)="errorHandler($event,true)" >
+                    </span>
+                  </div>
+                  <div *ngIf="app.appType !== 'CUSTOM'" >
+                    <span class="cs-inline cs-app-logo">
+                      <img src="{{app.icon}}" alt="" (error)="errorHandler($event,false)" >
+                    </span>
+                  </div>
+                  <div class="cs-rpart">
+                    <div class="cs-innerrpart">
+                      <div [ngClass]="{'cs-font-small' :app.title.length >11 && app.title.length <15}" class="cs-app-title cs-truncate">{{app.title}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+
+          </mde-popover>
+
+          <img title ="App Logo" alt="" class="mar cs-tool-web-img1" onError="this.style.display = 'none';" src="{{appIcon}}">
+        </div>
+      </div>
+    </ion-toolbar>
+
+
+    <mde-popover #avatarPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+      <mat-card class="cs-user-info">
+
+        <mat-card-content align="center" class="cs-user-image">
+          <img alt="" src="{{ appUtils.profilePicSrc }}" onerror="this.src='assets/img/user_icon.png'">
+        </mat-card-content>
+
+        <mat-card-title align="center" class="cs-user-name"> {{loggedUserDetail['first_name']}} </mat-card-title>
+        <mat-card-subtitle align="center" class="cs-user-mailid"> {{loggedUserDetail['email_id']}} </mat-card-subtitle>
+
+        <mat-card-content align="center" class="cs-user-position  cs-tc">
+          <p class="cs-user-manage">This account is managed by</p>
+          <img  alt="" src="../../../logo/org_logo.png" onerror="this.src='assets/img/chainsys-platform-logo.png'">
+          <!-- <img alt="" src="assets/img/chainsys_logo.png"> -->
+        </mat-card-content>
+
+        <mat-card-actions align="center" class="cs-user-option">
+          <mat-icon id="appsettings" title="Settings" class="icon-mat-settings cs-user-sel-option-icon cs-cur" (click)="openSettingPage()"></mat-icon>
+          <!-- <span class="cs-option-divider"> | </span> -->
+          <mat-icon id="applogout" title="Logout" class="icon-mat-exit_to_app cs-user-sel-option-icon cs-cur" (click)="logoutAction()"></mat-icon>
+        </mat-card-actions>
+
+      </mat-card>
+    </mde-popover>
+
+
+    <!-- <ion-content class="cs-user-info" *ngIf="userInfoActive">
+      <ion-avatar title ="Profile Image" class="cs-popover-avatar">
+        <img alt="" src="{{ appUtils.profilePicSrc }}" onerror="this.src='assets/img/user_icon.png'">
+      </ion-avatar>
+ 
+      <h6 class="cs-user-name">{{loggedUserDetail['first_name']}}</h6>
+
+      <p class="cs-user-mailid">{{loggedUserDetail['email_id']}}</p>
+      <div class="cs-user-borderset"></div>
+      <p class="cs-user-manage">This account is manages by</p>
+      <ion-row class="cs-user-manage-logo">
+        <img alt="" src="assets/img/chainsys_logo.png">
+      </ion-row>
+      <ion-row class="cs-user-sel-option">
+        <ion-icon  id="appsettings" title ="Settings"  class="icon-mat-settings cs-user-sel-option-icon cs-cur"(click) = "openSettingPage()"></ion-icon>
+        <span class="cs-user-sel-option-icon-divider"></span>
+        <ion-icon id="applogout" title ="Logout" class="icon-mat-exit_to_app cs-user-sel-option-icon cs-cur"(click) = "logoutAction()"></ion-icon>
+      </ion-row>
+    </ion-content> -->
+
+    <ion-app [ngClass]="!appUtils.isMobileResolution && appUtils.isAppSyncCompleted ? 'cs-tool-web-mov-top' : ''">
+      <ion-router-outlet main [swipeGesture]="false" class="styleLight">
+        <div class="validation-announcement" style="z-index:999;position:absolute;" (click)="AnouncementAction()">
+          <ion-item *ngIf="announcementList.length>0 && appUtils.isMobileResolution">
+            <ion-icon class="icon-mat-notifications"></ion-icon>
+            <ion-label >{{announcementList_length}}</ion-label>
+          </ion-item>
+        </div>
+      </ion-router-outlet>
+    </ion-app>
+    <div class="cs-validate-announce" [hidden]="!isValidateOption">
+
+      <ion-list class="cs-va-block cs-pr">
+        <div class="cs-va-metatitle">
+          <ion-title>Meta Validation Announcement</ion-title>
+          <ion-label class="cs-pa cs-am-close">
+            <ion-icon class="cs-cur" name="close" (click)="AnnouncementCloseButton()"></ion-icon>
+
+          </ion-label>
+
+          <ion-row class="ion-padding-horizontal cs-va-ver-nd-applist">
+
+
+            <ion-col *ngFor="let object of announcementList let i= index" class="main-list-items" class="new-version" size="12" sizeMd="6"
+              sizeLg="4" sizeXl="3">
+              <div no-padding class="new-ver-block">
+                <ion-label *ngIf="object['annoucementType']=='newVersion'">
+
+
+                  New Version {{ object['newVersion']}}
+                </ion-label>
+                <ion-label *ngIf="object['annoucementType']=='newApp'">
+
+
+                  New app available
+                </ion-label>
+                <div class="new-ver-detail new-ver-vis-img">
+                  <p class="ver-name">{{object['appName']}}</p>
+                  <p *ngIf="object['annoucementType']=='newVersion'" class="ver-info"> {{object['oldVersion']}}</p>
+                  <ion-img [src]="imagesrc" (ionImgDidLoad)="setApplicationDefaultImage($event,object)"></ion-img>
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+          <ion-row class="announce-sync">
+            <ion-button expand="block" (click)="callSyncAction()">{{callSyncActionButton}}</ion-button>
+          </ion-row>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</div>

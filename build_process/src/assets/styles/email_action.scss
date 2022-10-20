@@ -1,0 +1,62 @@
+.cs-mail-option-imgandlabel{
+    padding: 10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    .cs-diffmail-select{
+      display: flex;
+      padding: 10px 16px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      .cs-diffmail-select-content{
+          align-items: center;
+      }
+      .cs-diffmail-select-label{
+          margin-top: 3px;
+          mat-label{
+              font-size: 13px;
+              color: $grey_base_primary !important;
+          }
+      }
+      &:hover{
+          background: $slickgrid_row_hover_bg;
+          border-radius: 6px;
+      }
+    }
+}
+.cs-mail-option-imgandlabelalt,.cs-mail-option-labelonlyalt{
+  padding: 6px 0px;
+  .cs-diffmail-select{
+    display: flex;
+    padding: 10px 16px;
+    cursor: pointer;
+    align-items: center;
+    .cs-diffmail-select-content{
+        display: flex;
+        align-items: center;
+    }
+    .cs-diffmail-select-label{
+        mat-label{
+            font-size: 14px;
+            color: $grey_base_primary !important;
+            margin-left: 11px;
+        }
+        &.cs-labelonly{
+          mat-label{
+            margin-left: 0px !important;
+            font-size: 13px;
+          }
+        }
+    }
+    &:hover{
+      background: $slickgrid_row_hover_bg;
+    }
+    &.cs-diffmail-select-labelonly{
+      padding: 7px 16px;
+    }
+  }
+}
+.cs-email-popover{
+  min-width: 180px;
+}

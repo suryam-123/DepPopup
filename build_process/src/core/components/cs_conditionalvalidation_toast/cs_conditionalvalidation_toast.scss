@@ -1,0 +1,66 @@
+
+.cs-cv-toast-p{
+  .cs-toast-body{
+    height: 48px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0px 10px;
+    .cs-indicater-icon{
+      font-size: 18px;
+      padding-right: 5px;
+    }
+    .cs-toast-label{
+      font-size: 14px;
+      padding-right: 15px;
+    }
+    &.cs-info-toast{
+      background: #e9f4fe;
+      .cs-indicater-icon{
+        color: #39a0f4;
+      }
+      .cs-toast-label{
+        color: #2c5070;
+      }
+    }
+    &.cs-warning-toast{
+      background: #fff4e5;
+      .cs-indicater-icon{
+        color: #fda100;
+      }
+      .cs-toast-label{
+        color: #663c00;
+      }
+    }
+    &.cs-error-toast{
+      background: #fdeceb;
+      .cs-indicater-icon{
+        color: #f44336;
+      }
+      .cs-toast-label{
+        color: #611a15;
+      }
+    }
+
+  }
+  .cs-close-toast{
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    background: transparent;
+    button{
+      background: transparent;
+    }
+    em{
+      background: transparent;
+      color: #4d4d4d;
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.cs-temp-searchbar{
+    .searchbar-input-container{
+        width: 100%;
+        margin: 5px 28px;
+    }
+}
+.cs-temp-list{
+    ngx-datatable{
+        height: auto;
+        min-height: 40px;
+        margin: 15px 27px 30px 27px;
+        box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.12)!important;
+        .datatable-header{
+            //padding: 0px 10px 0px 10px!important;
+            border-bottom:2px solid #22a7f0!important;
+            //width: calc(100% - 20px)!important;
+        }
+    }
+}
+
+.cs-progress{
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    justify-content:center;
+    .cs-progress-block{
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        width: 200px;
+        height: 100px;
+        margin: 0px 10px 0px 10px;
+        ion-label{
+            background: #dbdbdb !important; 
+            color: #333 !important;
+            font-size: 14px;
+            height: 50px;
+            border-bottom: 1px solid #dcdcdc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.cs-success{
+                background:#77eb9b !important;
+            }
+            &.cs-progess{
+                background: #3880ff !important;
+                color: #fff !important;
+            }
+        }
+        p{
+            font-size: 15px;
+            margin: 0px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+
+
+

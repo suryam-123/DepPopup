@@ -1,0 +1,185 @@
+
+
+// @media screen and (min-width: 410px) and (max-width: 736px){
+//     .cs-scroll-height-dockerstate{
+//         height:calc(100% - 350px) !important;
+//     }
+// }
+// @media screen and (min-width: 360px) and (max-width: 640px){
+//     .cs-scroll-height-dockerstate{
+//         height:calc(100% - 303px) !important;
+//     }
+// }
+// @media screen and (min-width: 375px) and (max-width: 812px){
+//     .cs-scroll-height-dockerstate{
+//         height:calc(100% - 389px) !important;
+//     }
+// }
+// // @media screen and (min-width: 360px) and (max-width: 640px){
+// //     .cs-scroll-height-dockerstate{
+// //         height:calc(100% - 320px) !important;
+// //     }
+// // }
+// @media screen and (min-width: 360px) and (max-width: 640px){
+//     .cs-scroll-height-minimumstate{
+//         height:calc(100% - 93px) !important;
+//     }
+// }
+// @media screen and (min-width: 410px) and (max-width: 736px){
+//     .cs-scroll-height-minimumstate{
+//         height:calc(100% - 92px) !important;
+//     }
+// }
+// @media screen and (min-width: 375px) and (max-width: 812px){
+//     .cs-scroll-height-minimumstate{
+//         height:calc(100% - 93px) !important;
+//     }
+// }
+
+// @media screen and (min-width:1024){
+//     .cs-scroll-height-dockerstate{
+//         height: calc(100% - 400px) !important;
+//     }
+// }
+// @media screen and (min-width:800) and (max-width:1024){
+//     .cs-scroll-height-dockerstate{
+//         height:calc(100% - 243px) !important;
+//     }
+// }
+// @media screen and(max-width:800){
+//     .cs-scroll-height-dockerstate{
+//         height:42%;
+//     }
+// }
+// @media screen and (min-width:1024){
+//     .cs-scroll-height-minimumstate{
+
+//     }
+// }
+// @media screen and (min-width:800) and (max-width:1024){
+//     .cs-scroll-height-minimumstate{
+//         height:calc(100% - 23px) !important;
+//     }
+// }
+// @media screen and(max-width:800){
+//     .cs-scroll-height-minimumstate{
+//         height:86%;
+//     }
+// }
+// .cs-scroll-height-dockerstate-detailpage{
+//     height:44% !important;
+// }
+// .cs-scroll-height-topstate-detailpage{
+//     height:74% !important;
+// }
+// .cs-scroll-height-dockerstate-hl_listpage{
+//     height:44% !important;
+// }
+// .cs-scroll-height-topstate-hl_listpage{
+//     height:calc(100% - 125px) !important;
+// }
+// .cs-scroll-height-dockerstate-hl_listpreviewpage{
+//     height:44% !important;
+// }
+// .cs-scroll-height-bottomstate-hl_listpreviewpage{
+//     height:94%;
+// }
+// @media screen  and (min-width: 1600px) and (max-width:1920px){
+//     .cs-scroll-height-topstate-hl_listpage{
+//         height:calc(100% - 136px) !important;
+//     }
+// }
+// @media screen  and (min-width: 1600px) and (max-width:1920px){
+//     .cs-scroll-height-topstate-hl_listpreviewpage{
+//         height:calc(100% - 136px) !important;
+//     }
+// }
+
+
+
+//new
+//Mobile
+@media screen and (max-width: 600px){
+    .cs-scroll-height-dockerstate{
+        height: 41% !important;
+    }
+}
+@media screen and (max-width: 600px){
+    .cs-scroll-height-minimumstate{
+        height: 84% !important;
+    }
+}
+//desktop
+.cs-scroll-height-dockerstate{
+    height: 45%;
+}
+.cs-scroll-height-dockerstatelistpreview{
+    height: 42%;
+}
+.cs-scroll-height-minimumstate{
+    height: 95%;
+}
+//Bottom scroll height   
+.cs-scroll-height-dockerstate-hl_listpage{
+    height:45%;
+}
+.cs-scroll-height-topstate-hl_listpage{
+    height:79%;
+}
+.cs-scroll-height-dockerstate-hl_listpreviewpage{
+    height:44%
+}
+.cs-scroll-height-topstate-hl_listpreviewpage{
+    height:74%;
+}
+.cs-scroll-height-dockerstate-detailpage{
+    height:45%;
+}
+.cs-scroll-height-topstate-detailpage{
+    height:79%;
+}
+
+@media screen and (max-width: 600px){
+.cs-scroll-height-dockerstate-hl_listpage {
+    height: 44%;
+    }
+}
+@media screen and (max-width: 600px){
+    .cs-scroll-height-topstate-hl_listpage {
+    height: 80%;
+    }
+}
+@media screen and (max-width: 600px){
+    .cs-scroll-height-dockerstate-hl_listpreviewpage {
+    height: 44%;
+    }
+}
+@media screen and (max-width: 600px){
+    .cs-scroll-height-topstate-hl_listpreviewpage {
+    height: 80%;
+    }
+}
+@media screen and (max-width: 600px){
+    .cs-scroll-height-dockerstate-detailpage{
+        height: 44%;
+        }
+    }
+@media screen and (max-width: 600px){
+    .cs-scroll-height-topstate-detailpage{
+    height: 80%;
+    }
+}
+
+.cs-preview-pts{
+    padding-top:5px
+}
+
+.cs-list_preview_bc{
+    width: 43%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    margin: 0px;      
+    padding: 3px 3px 3px 8px!important;
+    border-radius:10px!important
+} 

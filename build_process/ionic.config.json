@@ -1,0 +1,7 @@
+{
+  "name": "appBUILDER_Base_ionic_App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

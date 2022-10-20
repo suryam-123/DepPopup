@@ -1,0 +1,547 @@
+<div *ngIf="configStyle=='1'">
+      <div padding-bottom *ngIf="inputPageName=='view' && approverType=='approver' && 
+      selectedObject['systemAttributes']" class="statusworkflowv1-view cs-mode2">
+            <div class="swf-process" *ngIf="!allowApproveAction">{{approveActionMessage}}</div>
+            <div class="cs-workflow-view" (click)="showApproveRejectModel()">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+                  <div class="swf-select-txt cs-statusLabel">
+                        {{statusworkflow_fieldId[selectedObject[statusWorkFlowFieldId]]}}
+                  </div>
+            </div>
+      </div>
+
+
+
+      <div padding-bottom *ngIf="inputPageName=='view' && approverType=='non approver' && selectedStatus && 
+      selectedStatus['statusLabel'] && selectedObject['systemAttributes']
+     " class="statusworkflowv1-view cs-mode2">
+
+            <div class="swf-process" *ngIf="selectedObject['systemAttributes']  && 
+      selectedStatus['statusType'] && selectedStatus['statusType']!=='Reject' && selectedStatus['isApproveInitiateEnabled']=='Y'">{{approveActionMessage}}
+            </div>
+            <div class="cs-workflow-view">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+
+      </div>
+
+      <div class="statusworkflowv1-view" *ngIf="inputPageName=='view' && approverType=='' && selectedStatus && 
+      selectedStatus['statusLabel'] &&  selectedObject['systemAttributes']">
+            <div class="cs-workflow-view cs-mode2">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+                  selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+      </div>
+
+
+      <div class="statusworkflowv1-view cs-mode2"  *ngIf="inputPageName=='view' && selectedStatus && selectedStatus['statusLabel'] && 
+            selectedObject['systemAttributes'] == undefined">
+            <div class="cs-workflow-view ">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+      </div>
+
+
+      <ion-col *ngIf="inputPageName=='entry' && 
+      appUtilityConfig.isMobileResolution">
+            <div padding-bottom class="statusworkflowv1-view entry-mobile-view-v1 cs-mode2" (click)="showEntryPopup()">
+                  <div class="cs-workflow-view cs-swf-box">
+                        <div class="cs-labelvalue">
+                              <ion-label [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</ion-label>
+                        </div>
+                        <div class="swf-select-txt cs-rsmar cs-statusLabel">
+
+                              {{selectedStatus['statusLabel']}}
+                        </div>
+                        <span class="cs-down-icon cs-ts_28 icon-mat-arrow_drop_down"></span>
+
+                  </div>
+            </div>
+      </ion-col>
+
+      <div *ngIf="inputPageName=='entry' && 
+      !appUtilityConfig.isMobileResolution" class="statusworkflowv1 cs_web_pad cs-mode2">
+            <div class="" (click)="showEntryPopup()">
+                  <mat-list-item  class="cs_cust_theme" no-padding="" *ngIf="inputPageName=='entry'">
+                        <div class="cs_border-bottom"></div>
+                        <mat-label class="cs-tri_color cs-labelvalue" position="stacked">{{labelValue}}</mat-label>
+
+                        <div class="swf-select-txt cs-rsmar cs-statusLabel">
+                              {{selectedStatus['statusLabel']}}
+                        </div>
+                        <span class="cs-down-icon cs-ts_28 icon-mat-arrow_drop_down"></span>
+                  </mat-list-item>
+            </div>
+
+      </div>
+
+
+</div>
+
+<div *ngIf="configStyle=='2'">
+
+      <div padding-bottom  *ngIf="inputPageName=='view' && approverType=='approver' &&
+      selectedObject['systemAttributes']" class="statusworkflowv1-view cs-mode2">
+            <div class="swf-process" *ngIf="!allowApproveAction">{{approveActionMessage}}</div>
+            <div class="cs-workflow-view" (click)="showApproveRejectModel()">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+                  <div class="swf-select-txt cs-statusLabel">
+                        {{statusworkflow_fieldId[selectedObject[statusWorkFlowFieldId]]}}
+                  </div>
+            </div>
+      </div>
+
+
+      <div padding-bottom  *ngIf="inputPageName=='view' && approverType=='non approver' && selectedStatus && 
+      selectedStatus['statusLabel'] && selectedObject['systemAttributes']
+     " class="statusworkflowv1-view cs-mode2">
+
+            <div class="swf-process" *ngIf="selectedObject['systemAttributes']  && 
+      selectedStatus['statusType'] && selectedStatus['statusType']!=='Reject' && selectedStatus['isApproveInitiateEnabled']=='Y'">{{approveActionMessage}}
+            </div>
+            <div class="cs-workflow-view">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+
+      </div>
+
+
+      <div class="statusworkflowv1-view cs-mode2" *ngIf="inputPageName=='view' && approverType=='' && selectedStatus && 
+      selectedStatus['statusLabel'] &&  selectedObject['systemAttributes']">
+            <div class="cs-workflow-view">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+                  selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+      </div>
+
+      <div class="statusworkflowv1-view cs-mode2" *ngIf="inputPageName=='view' && selectedStatus && selectedStatus['statusLabel'] && 
+      selectedObject['systemAttributes'] == undefined">
+            <div class="cs-workflow-view">
+                  <div class="cs-labelvalue" [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                  <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Approved'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+            selectedStatus['statusType']=='Reject'">
+                        {{selectedStatus['statusLabel']}}
+                  </div>
+
+                  <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+            selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' " class="swf-select-txt">
+                        {{selectedStatus['statusLabel']}}</div>
+            </div>
+      </div>
+
+
+
+      <ion-col *ngIf="inputPageName=='entry' && 
+      appUtilityConfig.isMobileResolution">
+            <div padding-bottom class="statusworkflowv1-view entry-mobile-view-v1 cs-mode2" (click)="showEntryPopup()">
+                  <div class="cs-workflow-view cs-swf-box">
+                        <div class="cs-labelvalue">
+                              <ion-label [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</ion-label>
+                        </div>
+                        <div class="swf-select-txt cs-rsmar cs-statusLabel">
+
+                              {{selectedStatus['statusLabel']}}
+                        </div>
+                        <span class="cs-down-icon cs-ts_28 icon-mat-arrow_drop_down"></span>
+
+                  </div>
+            </div>
+      </ion-col>
+
+      <div *ngIf="inputPageName=='entry' && 
+      !appUtilityConfig.isMobileResolution" class="statusworkflowv1 cs_web_pad cs-mode2">
+            <div class="" (click)="showEntryPopup()">
+                  <mat-list-item lines="none" class="cs_cust_theme" no-padding="" *ngIf="inputPageName=='entry'">
+                        <div class="cs_border-bottom"></div>
+                        <mat-label class=" cs-tri_color cs-labelvalue" position="stacked">{{labelValue}}</mat-label>
+
+                        <div class="swf-select-txt cs-rsmar cs-statusLabel">
+                              {{selectedStatus['statusLabel']}}
+                        </div>
+                        <span class="cs-down-icon cs-ts_28 icon-mat-arrow_drop_down"></span>
+
+                  </mat-list-item>
+            </div>
+
+      </div>
+
+
+</div>
+
+<div *ngIf="configStyle=='3' && appUtilityConfig.isMobileResolution">
+
+      <div padding-bottom *ngIf="inputPageName=='view' && approverType=='approver' &&
+       selectedObject['systemAttributes']" class="statusworkflowv1-view cs-swf-webview-3 view-page-v3 cs-mode2">
+
+            <div class="swf-process" *ngIf="!allowApproveAction">{{approveActionMessage}}</div>
+
+            <div class="cs-workflow-view cs-swf-box" (click)="showApproveRejectModel()">
+
+                  <div no-padding="" >
+
+                        <div class="cs-pull-swleft cs-labelvalue cs-ts-16">{{labelValue}}</div>
+
+                        <div class="cs-pull-swright">
+                              <span class="cs-imgwithtxt">
+                                    <img alt="" src="assets/img/workflow-img.png">
+                              </span>
+                              <div class="swf-select-txt cs-statusLabel">
+                                    {{statusworkflow_fieldId[selectedObject[statusWorkFlowFieldId]]}}
+                              </div>
+                        </div>
+
+                  </div>
+            </div>
+      </div>
+
+    
+
+
+      <div *ngIf="inputPageName=='view' &&  approverType=='non approver' && selectedStatus && 
+      selectedStatus['statusLabel'] && selectedObject['systemAttributes']
+     " class="statusworkflowv1-view cs-swf-webview-3 view-page-v3 cs-mode2">
+            <div class="swf-process"
+                  *ngIf="selectedStatus['statusType'] && selectedStatus['statusType']!=='Reject' && selectedStatus['isApproveInitiateEnabled']=='Y'">
+                  {{approveActionMessage}}
+            </div>
+            <div class="cs-workflow-view cs-swf-box">
+                  <div no-padding="">
+
+                        <div class="cs-pull-swleft cs-labelvalue"
+                              [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                        <div class="cs-pull-swright">
+                              <span class="cs-imgwithtxt">
+                                    <img alt="" src="assets/img/workflow-img.png">
+                              </span>
+
+
+
+                              <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+           selectedStatus['statusType']=='Approved'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+           selectedStatus['statusType']=='Reject'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+           selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' "
+                                    class="swf-select-txt">
+                                    {{selectedStatus['statusLabel']}}</div>
+                        </div>
+
+
+                  </div>
+            </div>
+      </div>
+     
+
+      <div *ngIf="inputPageName=='view'  && approverType=='' && selectedStatus && 
+      selectedStatus['statusLabel'] &&  selectedObject['systemAttributes'] "
+            class="statusworkflowv1-view cs-swf-webview-3 view-page-v3 cs-mode2">
+            <div class="cs-workflow-view cs-swf-box">
+                  <div no-padding="">
+
+                        <div class="cs-pull-swleft cs-labelvalue">{{labelValue}}</div>
+
+                        <div class="cs-pull-swright">
+                              <span class="cs-imgwithtxt">
+                                    <img alt="" src="assets/img/workflow-img.png">
+                              </span>
+
+
+                              <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                            selectedStatus['statusType']=='Approved'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                            selectedStatus['statusType']=='Reject'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div *ngIf="selectedStatus['statusType'] && 
+                            selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' "
+                                    class="swf-select-txt cs-statusLabel">
+                                    {{selectedStatus['statusLabel']}}</div>
+                        </div>
+
+
+                  </div>
+            </div>
+      </div>
+
+      
+
+      <div *ngIf="inputPageName=='view'  &&  selectedStatus && selectedStatus['statusLabel'] && selectedObject['systemAttributes'] == undefined"
+            class="statusworkflowv1-view cs-swf-webview-3 view-page-v3 cs-mode2">
+            <div class="cs-workflow-view cs-swf-box">
+                  <div no-padding="">
+
+                        <div class="cs-pull-swleft cs-labelvalue"
+                              [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                        <div class="cs-pull-swright">
+                              <span class="cs-imgwithtxt">
+                                    <img alt="" src="assets/img/workflow-img.png">
+                              </span>
+
+
+                              <div class="swf-select-txt  approve cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                selectedStatus['statusType']=='Approved'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div class="swf-select-txt  reject cs-statusLabel" *ngIf="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                selectedStatus['statusType']=='Reject'">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+
+                              <div class="swf-select-txt cs-statusLabel" *ngIf="selectedStatus['statusType'] && 
+                selectedStatus['statusType'] !=='Reject' &&  selectedStatus['statusType'] !=='Approved' ">
+                                    {{selectedStatus['statusLabel']}}</div>
+                        </div>
+
+
+                  </div>
+            </div>
+      </div>
+     
+
+
+      <ion-col *ngIf="inputPageName=='entry'" class="statusworkflowv1-view cs-swf-webview-3 cs-mode2">
+            <div class="cs-workflow-view cs-swf-box" (click)="showEntryPopup()">
+                  <div no-padding="" *ngIf="inputPageName=='entry'">
+                        <div class="cs-pull-swleft cs-labelvalue"
+                              [ngClass]="appUtilityConfig.isMobileResolution ? 'cs-ts-16' : ''">{{labelValue}}</div>
+
+                        <div class="cs-pull-swright">
+
+                              <span class="cs-imgwithtxt">
+                                    <img alt="" src="assets/img/workflow-img.png">
+                              </span>
+                              <div class="swf-select-txt cs-statusLabel">
+                                    {{selectedStatus['statusLabel']}}
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+      </ion-col>
+
+
+      <div *ngIf="inputPageName=='entry' && !appUtilityConfig.isMobileResolution" class="cs-status-workflow-field">
+
+            <mat-label>{{labelValue}}</mat-label>
+            <div class="cs-tmar-4">
+                  <img alt="" src="assets/img/workflow-img-white.png" class="cs-status-img cs-status-img-open">
+                  <input matInput type="text" [readonly]="true"
+                        value="{{selectedStatus['statusLabel']}}" class="cs-status-open">
+
+                  <button class="cs-mat-icononly" (click)="showEntryPopup()">
+                        <em class="icon-mat-search"></em>
+                  </button>
+            </div>
+      </div>
+
+
+
+</div>
+
+<div *ngIf="configStyle=='3' && !appUtilityConfig.isMobileResolution">
+      <div padding-bottom *ngIf="inputPageName=='view'   &&  approverType=='approver' &&
+      selectedObject['systemAttributes']"  class="cs-status-workflow-field">
+      
+            <div class="clearfix cs-sw-history">
+                  <mat-label>{{labelValue}}</mat-label>
+            <div class="cs-label-icon-div" *ngIf="historyEnabled"(click)="callHistory()">
+                  <em class="icon-mat-update" id="{{'action_'+objectname+'_'+workflowFieldName+'_historyicon'}}" [attr.data-cs-dropdown]="dripDownAttribute" ></em>
+      </div>
+</div>
+        
+
+            <div class="cs-tmar-4" (click)="showApproveRejectModel()">
+                  <img alt="" src="assets/img/workflow-img-white.png" [ngClass]="selectedObject['systemAttributes']['workFlowExecID']==''? 'cs-status-img-initiated cs-status-img' : 'cs-status-img-waiting cs-status-img'">
+                  <input matInput type="text" [readonly]="true" id="{{'action_'+objectname+'_'+workflowFieldName+'_input_view_'+selectedStatus['statusValue']}}" 
+                        value=" {{selectedStatus['statusLabel']}}" 
+                        class="cs-lspad" [ngClass]="selectedObject['systemAttributes']['workFlowExecID']==''? 'cs-status-initiated' : 
+                        'cs-status-waiting'">
+                  <div>
+                        <mat-label> {{approveActionMessage}} </mat-label>
+                  </div>
+                    </div>
+      </div>
+
+      <div *ngIf="inputPageName=='view' && approverType=='non approver' && selectedStatus && 
+      selectedStatus['statusLabel'] && selectedObject['systemAttributes']
+     "  class="cs-status-workflow-field">
+
+            <div class="clearfix cs-sw-history">
+                  <mat-label>{{labelValue}}</mat-label>
+        <div  class="cs-label-icon-div" *ngIf="historyEnabled" (click)="callHistory()">
+          <em  [ngClass]="isHistoryIcon" id="{{'action_'+objectname+'_'+workflowFieldName+'_historyicon'}}" [attr.data-cs-dropdown]="dripDownAttribute" ></em>
+       </div>
+</div>
+           
+
+             <div class="cs-tmar-4">
+            <img alt="" src="assets/img/workflow-img-white.png" class="cs-status-img-initiated cs-status-img">
+            <input matInput class="cs-lspad cs-status-initiated" type="text" [readonly]="true" id="{{'action_'+objectname+'_'+workflowFieldName+'_input_view_'+selectedStatus['statusValue']}}" 
+            value="{{selectedStatus['statusLabel']}}">
+            <div>
+                  <mat-label> {{approveActionMessage}} </mat-label>
+            </div>
+       </div>
+      </div>
+
+      <div *ngIf="inputPageName=='view' && approverType=='' && selectedStatus && 
+      selectedStatus['statusLabel'] &&  selectedObject['systemAttributes'] " 
+      class="cs-status-workflow-field">
+
+            <div class="clearfix cs-sw-history">
+                  <mat-label>{{labelValue}}</mat-label>
+            <div class="cs-label-icon-div" *ngIf="historyEnabled" (click)="callHistory()">
+                  <em class="icon-mat-update" id="{{'action_'+objectname+'_'+workflowFieldName+'_historyicon'}}" [attr.data-cs-dropdown]="dripDownAttribute" ></em>
+            </div>
+</div>
+            <div class="cs-tmar-4">
+                  <img alt="" src="assets/img/workflow-img-white.png"   [ngClass]="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Approved' ? 'cs-status-img-approved cs-status-img' : 'cs-status-img-open cs-status-img'">
+                  <input matInput class="cs-lspad" type="text" [readonly]="true" id="{{'action_'+objectname+'_'+workflowFieldName+'_input_view_'+selectedStatus['statusValue']}}"
+                        value=" {{selectedStatus['statusLabel']}}" class="cs-lspad"  [ngClass]="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                        selectedStatus['statusType']=='Approved' ? 'cs-status-approved' : 'cs-status-open'">
+                 
+            </div>
+          
+           </div>
+
+       <div
+            *ngIf="inputPageName=='view'  && selectedStatus && selectedStatus['statusLabel'] && selectedObject && selectedObject['systemAttributes'] == undefined" 
+            class="cs-status-workflow-field">
+
+            <div class="clearfix cs-sw-history">
+                  <mat-label>{{labelValue}}</mat-label>
+                  <div class="cs-label-icon-div" *ngIf="historyEnabled" (click)="callHistory()">
+                        <em class="icon-mat-update" id="{{'action_'+objectname+'_'+workflowFieldName+'_historyicon'}}" [attr.data-cs-dropdown]="dripDownAttribute" ></em>
+            </div>
+      </div>
+
+            <div class="cs-tmar10">
+                  <img alt="" src="assets/img/workflow-img-white.png"   [ngClass]="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                  selectedStatus['statusType']=='Approved' ? 'cs-status-img-approved cs-status-img' : 'cs-status-img-open cs-status-img'">
+                  <input matInput class="cs-lspad" type="text" [readonly]="true" id="{{'action_'+objectname+'_'+workflowFieldName+'_input_view_'+selectedStatus['statusValue']}}"
+                        value="{{selectedStatus['statusLabel']}}" class="cs-lspad"  [ngClass]="selectedStatus['statusType'] && selectedStatus['statusType'] && 
+                        selectedStatus['statusType']=='Approved' ? 'cs-status-approved' : 'cs-status-open'">
+                 
+            </div>
+           
+
+
+      </div>
+      <div
+      *ngIf="inputPageName=='view'  && selectedStatus && selectedStatus['statusLabel'] && !selectedObject" class="cs-status-workflow-field">
+
+      <div class="clearfix cs-sw-history">
+            <mat-label>{{labelValue}}</mat-label>
+      </div>
+     
+</div>
+      <div *ngIf="inputPageName=='entry'" class="cs-status-workflow-field">
+                  <div class="clearfix cs-sw-history">
+                              <mat-label>{{labelValue}}</mat-label>
+                        </div>
+                        
+               <div class="cs-tmar10">
+                  <img alt="" src="assets/img/workflow-img-white.png" class="cs-status-img cs-status-img-open">
+                  <input matInput type="text" [readonly]="true" id="{{'action_'+objectname+'_'+workflowFieldName+'_input_entry_'+selectedStatus['statusValue']}}"
+                        value="{{selectedStatus['statusLabel']}}" class="cs-status-open">
+
+                  <button  id="{{'action_'+objectname+'_'+workflowFieldName+'_showworkflowalert'}}" class="cs-mat-icononly" (click)="showEntryPopup()">
+                        <em class="icon-mat-search"></em>
+                  </button>
+            </div>
+      </div>
+      
+
+
+</div>

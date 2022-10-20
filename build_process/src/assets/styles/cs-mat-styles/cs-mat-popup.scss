@@ -1,0 +1,82 @@
+.cs-list-popup {
+    min-width: 230px;
+    max-width: 250px;
+
+    mat-list-item {
+        ngx-skeleton-loader {
+            span:focus {
+                outline: none !important;
+            }
+        }
+
+        img { 
+            outline: none !important;
+
+            &:focus {
+                outline: none !important;
+            } 
+        }
+
+        .cs-list-popup-header {
+            color: $grey_base_primary;
+            font-size: 16px;
+            padding-left: 16px;
+            line-height: 30px;
+            margin-top: 4px !important;
+        }
+
+        .cs-list-popup-subheader {
+            color: $grey_base_secondary !important;
+            font-size: 12px;
+            padding-left: 16px;
+            margin: 0;
+            line-height: 15px;
+        }
+
+        .mat-list-text {
+            p {
+                color: #808080;
+                font-size: 14px !important;
+            }
+
+            h3 {
+                color: #333;
+                font-size: 16px !important;
+            }
+
+            h2 {
+                color: #333;
+                font-size: 12px !important;
+                margin: 1px 0px;
+            }
+        }
+
+        button {
+            height: 30px;
+            width: 100px;
+            background-color: #3498eb;
+            margin: 0 auto !important;
+            color: #fff;
+
+            &:focus {
+                outline: none !important;
+            }
+        }
+    }
+}
+
+.cs-no-pad {
+    padding: 0px !important;
+}
+
+.cs-non-slick-popup {
+    padding: 0px !important;
+    border-radius: 0px !important;
+    box-shadow: 0px 0px 10px #ddd !important;
+}
+
+.cs-slick-popup {
+    background: white;
+    border-radius: 0px;
+    box-shadow: 0 0 10px #ddd;
+}

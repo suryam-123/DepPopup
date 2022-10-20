@@ -1,0 +1,64 @@
+<ion-content class="cs-l-main cs-l-start">
+  <div *ngIf="isSyncPageHide || isSyncFailed">
+    <div class="cs-l-img cs-l-img-start"></div>
+    <div class="cs-l-img cs-l-img-load"></div>
+    <div class="cs-l-img cs-l-img-end"></div>
+
+    <div class="cs-l-head">{{applicationDetail[0]['appDisplayName']}}</div>
+
+    <ion-list *ngIf="isSyncFailed" class="cs-centerposition cs-syncfail" style="margin-top: 50px!important"
+      lines="none">
+      <ion-list-header>
+        <h2>{{syncFailureMessage}}</h2>
+      </ion-list-header>
+      <ion-item>
+        <h2>
+          <ion-button color="success" (click)="reStartSync()">Retry</ion-button>
+          <ion-button color="danger" (click)="gotoApplist()">Exit</ion-button>
+        </h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-card *ngIf="syncStatusArray.length && !isSyncFailed"
+      style="width: 100%; height: auto; top: 16%;box-shadow: none;text-align: right;margin:0px;">
+      <div class="cs-l-stage-main">
+        <ion-list *ngFor="let syncStatus of syncStatusArray" lines="none" class="cs-r-list">
+
+          <div *ngIf="syncStatus.status === 'running'">
+            <div class="cs-load-rocket">
+              <img alt="" src="assets/img/r-load.png" class="cs-l-r-img" />
+              <p class="cs-r-tim">{{syncRunningCount}}</p>
+              <ion-spinner name="crescent" class="cs-r-tg"></ion-spinner>
+            </div>
+          </div>
+          <div *ngIf="syncStatus.status === 'completed'">
+            <img alt="" src="assets/img/r-complete.png" class="cs-l-r-img" />
+            <h2 class="cs-r-stg">{{syncStatus.stagename}}</h2>
+            <p class="cs-r-tim">{{syncStatus.synctime}}</p>
+          </div>
+        </ion-list>
+      </div>
+    </ion-card>
+
+
+    <div class="cs-r-gs-main">
+      <div *ngIf="syncCompletedStatus" (click)="getStartedAction()" class="cs-r-gs">
+        <div class="cs-r-gs-com">Get Started</div>
+        <div class="cs-r-gs-com cs-r-gs-arr">
+          <ion-icon class="icon-mat-arrow_forward"></ion-icon>
+        </div>
+      </div>
+      <div margin-end margin-top>
+        Performance metrics analysis ...
+      </div>
+    </div>
+  </div>
+  <div *ngIf="syncCompletedStatus && !isGetStartedCalled">{{getStartedAction()}}</div>
+
+</ion-content>
+<div *ngIf="!isSyncPageHide && !isSyncFailed" (dblclick)="syncPageHide()"
+  style="width: 100%;height: 100%;text-align: center;vertical-align: middle;display: inline-flex;align-items: center;justify-content: center;">
+  <img src="assets/img/dataloading.gif"
+    style="display: inline-flex;align-items: center;justify-content: center;vertical-align: middle;text-align: center;"
+    alt="animated" />
+</div>

@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="cs-lookuptheme">
+  <mat-label>Associate Object Info</mat-label>
+
+  <span class="example-spacer"></span>
+
+  <button color="primary" id="cspfm_webassociation_lookup_done_btn"
+    *ngIf="recordAssociationObject['selectionType'] == 'multiple'" title="Done" (click)="done()"
+    class="cs-mat-icononly cs-filter-option">
+    <em class="icon-mat-done"></em>
+  </button>
+
+  <button color="primary" id="cspfm_webassociation_lookup_filter_icon" *ngIf="!this.appUtilityConfig.isMobile"
+    title="Toggle Filter Row" (click)="toggleGridSearchRow()" class="cs-mat-icononly cs-filter-option">
+    <em
+      [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em>
+  </button>
+
+
+  <button [disabled]="isDisableManualclose" id="cspfm_webassociation_lookup_close_btn" mat-icon-button
+    class="cs-mat-icononly cs-mat-noshadow" title="Close" (click)="closeButtonClick()">
+    <em class="icon-mat-close"></em>
+  </button>
+
+</mat-toolbar>
+
+<mat-dialog-content class="cs-mat-popup-sizeset" *ngIf="!this.appUtilityConfig.isMobile">
+  <div id="cs-dropdown-{{layoutId}}" class="cs-dropdown cs-custom-scroll"></div>
+  <div class="cs-lookup-norecord cs-mat-parent-slick ">
+    <div id="{{gridContainerId}}" class="clearfix cs-mat-slickgrid cs-mat-slick-hw">
+      <mat-progress-bar *ngIf="isLoading" mode="indeterminate">
+      </mat-progress-bar>
+      <mat-card *ngIf="!isLoading && criteriaDisplayFields.length>0">
+        <div *ngFor="let appliedFilterField of criteriaDisplayFields" class="cs-display-inlineblock">
+          <div class="cs-org-filter-form-field">
+            <div class="cs-pr">
+              <mat-label class="cs-org-filter-form-label">
+                {{appliedFilterField['fieldDisplayName'] | translate}}
+              </mat-label>
+            </div>
+            <div>
+              <div class="cs-fullwidth">
+                <div class="cs-org-filter-form-subl">
+                  <p id="one" class="cs-org-filter-form-sublabel">{{appliedFilterField['value']}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <angular-slickgrid gridId="{{gridId}}" [columnDefinitions]="columnDefinitions" [gridOptions]="gridOptions"
+        [dataset]="allItems" (sgOnClick)="onGridItemClick($event)" (onAngularGridCreated)="angularGridReady($event)"
+        (sgOnCellChange)="onCellChanged($event.detail.eventData, $event.detail.args)">
+      </angular-slickgrid>
+    </div>
+
+    <div *ngIf="((allItems && allItems.length === 0) || (angularGrid && angularGrid.dataView.getLength() == 0))"
+      class="cs_no_record_center" [ngClass]="{'cs-noimage_pos_add': showFilter}">
+      <img alt="" src='assets/img/no_record_found.png'>
+    </div>
+  </div>
+</mat-dialog-content>

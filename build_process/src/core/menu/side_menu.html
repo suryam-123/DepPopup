@@ -1,0 +1,90 @@
+<ion-menu contentId="main" [swipeGesture]="false"
+  *ngIf="!appUtilityConfig.isEmbeddingEnabled && !appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == false"
+  class="cs-bg-whitemenu" id="side_menu">
+
+  <div class="cs-custom-scroll menu-content cs-sidemenu">
+    <mat-list *ngFor="let group of menuService.assignedMenuGroups;index as i">
+      <mat-list-item id="{{group.menugroupName + '_side_menu'}}"
+        [ngClass]="group['expand'] == true ? 'menu-list-header fadeIn animated' : 'menu-list-header fadeIn animated'"
+        color="light" *ngIf="group.menuGroupDisplayName.length && group.menuItems.web.length > 0"
+        (click)='group.menuItems.web.length == 1 && openPage(group.menuItems.web[0]); closeMenu($event,group, i);'
+        title="{{(group.menuItems.web.length == 1 ? group.menuItems.web[0].title : group.menuGroupDisplayName) | translate}}">
+        <!-- <mat-icon style="color: hsl(207, 94%, 49%)!important;font-size: 24px" *ngIf="group['icon']" class="{{group['icon']}}"></mat-icon> -->
+        <button mat-icon-button *ngIf="group['icon']" class="cs-mat-icononly cs-parenticon" color="primary">
+          <em *ngIf="group.menuItems.web.length > 1" class="{{group['icon']}}"></em>
+          <em *ngIf="group.menuItems.web.length == 1" class="{{group.menuItems.web[0].icon}}"></em>
+        </button>
+        <mat-label *ngIf="group.menuItems.web.length > 1" class="cs-parentlabel cs-toppopwrdbrk">
+          {{group.menuGroupDisplayName | translate}}</mat-label>
+        <mat-label *ngIf="group.menuItems.web.length == 1" class="cs-parentlabel cs-toppopwrdbrk">
+          {{group.menuItems.web[0].title | translate}}</mat-label>
+        <span class="right-align"></span>
+        <!-- <mat-icon *ngIf="group['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_up"></mat-icon>
+          <mat-icon *ngIf="!group['expand']" style="font-size: 22px" class="icon-mat-keyboard_arrow_down"></mat-icon> -->
+        <button title="Collapse" mat-icon-button id="{{group.menugroupName + '_Collapse'}}"
+          *ngIf="group.menuItems.web.length != 1 && group['expand']" class="cs-mat-icononly" color="primary">
+          <em class="icon-mat-keyboard_arrow_up"></em>
+        </button>
+        <button title="Expand" mat-icon-button id="{{group.menugroupName + '_Expand'}}"
+          *ngIf="group.menuItems.web.length != 1 && !group['expand']" class="cs-mat-icononly" color="primary">
+          <em class="icon-mat-keyboard_arrow_down"></em>
+        </button>
+      </mat-list-item>
+      <div *ngIf="group.menuItems.web.length != 1">
+        <ion-menu-toggle class="menu-list-item" auto-hide="false" *ngFor="let p of group.menuItems.web;">
+          <mat-list
+            [ngClass]="group['expand'] == true ? 'menu-content-list fadeIn animated' : 'menu-content-list fadeIn animated'"
+            *ngIf="this.activeMenuGroups.indexOf(group.menuGroupId)>-1 && group['expand']" menuClose
+            (click)="openPage(p)">
+            <mat-list-item title="{{p.title | translate}}" expand="full" id="{{ p.menuitemid }}" lines="none"
+              style="cursor: pointer;padding-left: 15px">
+              <!-- <mat-icon slot="start" style="color: hsl(207, 94%, 49%)!important;font-size: 22px" class="sidemenu-fontsize {{p.icon}}"></mat-icon> -->
+              <button slot="start" title="{{p.title | translate}}" mat-icon-button class="cs-mat-icononly"
+                color="primary">
+                <em class="sidemenu-fontsize {{p.icon}}"></em>
+              </button>
+              <span class="cs-truncate-sidemenu cs-toppopwrdbrk">
+                {{p.title | translate}}
+              </span>
+            </mat-list-item>
+          </mat-list>
+        </ion-menu-toggle>
+      </div>
+    </mat-list>
+
+  </div>
+</ion-menu>
+<div
+  *ngIf="!appUtilityConfig.isMobileResolution && appConfig.configuration.isGridMenuEnabled == true  && appConfig.configuration.isGridMenuEnabled == true"
+  id="cs-box-menu" class="cs-box-menu">
+  <mat-list class="cs-bx-mul">
+    <div *ngFor="let group of menuService.assignedMenuGroups; index as menucolorindex"
+      class="cs-bx-m-each {{menuClasses[menucolorindex]}}">
+      <mat-list>
+        <mat-list-item *ngIf="group.menuGroupDisplayName.length > 0 && group.menuItems.web.length > 0"
+          id="{{group.menugroupName + '_side_menu'}}">
+          <div class="cs-bx-m-hico">
+            <button mat-icon-button>
+              <em *ngIf="group['icon']" class="{{group['icon']}}"></em>
+            </button>
+          </div>
+          <mat-label title="{{group.menuGroupDisplayName | translate}}">{{group.menuGroupDisplayName | translate}}
+          </mat-label>
+        </mat-list-item>
+        <div class="cs-bx-m-sub-m cs-cur cs-custom-scroll">
+          <div class="cs-bx-m-subl" *ngFor="let p of group.menuItems.web;" id="{{ p.menuitemid }}"
+            (click)="openPage(p)">
+            <div>
+              <button mat-icon-button>
+                <em class="{{p.icon}}"></em>
+              </button>
+            </div>
+            <mat-label title="{{p.title | translate}}">{{p.title | translate}}</mat-label>
+          </div>
+        </div>
+      </mat-list>
+    </div>
+  </mat-list>
+</div>
+
+<ion-router-outlet *ngIf="!appUtilityConfig.isMobileResolution" id="main"></ion-router-outlet>

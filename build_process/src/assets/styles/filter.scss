@@ -1,0 +1,330 @@
+.plt-mobile{
+    .cs-title-filter-mb{
+        &.title-md{
+            padding-inline-start: 25px!important; 
+            padding-inline-end: 5px!important; 
+        }
+        &.title-ios{
+            padding-inline-start: 25px!important; 
+            padding-inline-end: 135px!important; 
+        }
+    }
+    .cs-ts-20-mb{
+        font-size: 20px!important;
+    }
+
+    
+    .cs-ani-alert-org{
+        padding: 0px;
+        border-radius: 10px;
+        width: 90%;
+        text-align: center;
+        position: fixed;
+        left: 5%;
+        top: 30%;
+        background: #fff;
+        z-index: 10000;
+        overflow: scroll;
+        // p{
+        //     font-size: 24px;            
+        // }
+        ion-item{
+            --border-color: transparent;
+        }
+        ion-label{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .cs-headingheight{
+            ion-item {
+                --padding-start: 0;
+            }
+            .list-ios{
+                margin-bottom: 0;
+            }
+        }
+        &::before {
+            background: rgba(0, 0, 0, 0.38);
+            position: fixed;
+            content: "";
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .ion-color-light {
+            --ion-color-base: #c2c3c5 !important;
+        }
+        .cs-popclose{
+            margin-top: 5px !important;
+            margin-bottom: 0px !important;
+        }
+    }
+.cs-info-alert-org{
+    .cs-popsecmain{
+        --padding-start: 5px;
+        --border-color: transparent;
+        --padding-bottom: 10px;
+        .item-native{
+            padding-inline-start:0px !important;
+        }
+        .cs-poplistmain {
+            margin-bottom: 0px;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 5px;
+        }
+    }
+    .ion-activatable{
+        background: #fff;
+        box-shadow: 1px 3px 9px -2px rgba(0, 0, 0, 0.22);
+    }
+}
+.cs-org-filter-form{
+    input{
+        --padding-end: 14px;
+    }
+    .cs-entry-item-disabled{
+        --border-style:none;
+        --background:#f4f5f8;
+        --border-radius:6px;
+        ion-label{
+            padding-left:10px;
+            color:#858587;
+            margin-top: 10px;
+            opacity: 1;
+            ion-label{
+                margin-top: 0px;
+                color: #000;
+                padding: 8px 0;
+                font-size:17px;
+            }
+        }
+        ion-input{
+            margin-left:20px;
+        }
+    }
+    .cs-inputfieldclear{
+        right: 0px;
+        top: 37px;
+        position: absolute;
+        border: 0;
+        background-color: #e3e3e3;
+        visibility: hidden;
+        border-radius: 100px;
+        font-size: 20px;
+        padding: 1px;
+    }
+    .cs-twocol-clear{
+        .cs-inputfieldclear{
+            top: 10px;
+            right: 12px;
+            position: absolute;
+        }
+        .cs-twocol-clear{
+            .cs-inputfieldclear{
+                top: 10px;
+                right: 12px;
+                position: absolute;
+            }
+            .native-input {
+                padding-top: 6px;
+                padding-bottom: 6px;
+                --padding-top: 6px;
+                --padding-bottom: 6px;
+            }
+        }
+    }
+    ion-item.item-has-focus{
+        --highlight-color-valid: transparent;
+        .cs-inputfieldclear{
+            visibility: visible;
+        }
+    }
+    .ion-dirty{
+        .cs-inputfieldclear{
+            visibility: visible;
+        } 
+    }
+    .cs-filter-formcheckbox{
+        ion-checkbox{
+            --size: 20px;
+            margin-right: 8px;
+            --margin-top: 0px;
+            --margin-bottom: 0px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+
+        }
+        ion-item{
+            --border-color: transparent;
+            --padding-bottom: var(--ion-padding, 4px);
+            padding-bottom: var(--ion-padding, 4px);
+            --padding-start: 0px;
+        }
+        .checkbox-checked {
+            --checkmark-color: #fff;
+        }
+    }
+    .cs-rowflex{
+        .cs-org-number{
+            -webkit-padding-end: var(--ion-padding, 10px);
+            padding-inline-end: var(--ion-padding, 10px);
+        }
+
+        .cs-org-numberto{
+            -webkit-padding-start: var(--ion-padding, 10px);
+            padding-inline-start: var(--ion-padding, 10px);
+        }
+        
+        .cs-to-item{
+            position: absolute;
+            right: -5px;
+            top: 35%;
+            &::before{
+                content: '';
+                width: 10px;
+                height: 10px;
+                background: #fff;
+                position: absolute;
+                top: 15px;
+                left: -5px;
+            }
+        }
+        .cs-pr{
+            position: relative;
+        }
+        .cs-filter-to{
+            --background: #00a651 !important;
+            --border-radius: 50px;
+            top: 4px;
+            position: relative;
+            height: 20px;
+            width: 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            --padding-start: 5px;
+            text-align: center;
+            --padding-end: 5px;
+            color: #fff;
+            padding: 4px;
+        }
+        
+        .cs-org-filter-calicon{
+            position: absolute;
+            top: 8px;
+            right: 25px;
+            font-size: 12px;
+        }
+    }
+    ion-list-header {
+        background: #F5F7F8;
+
+        h6 {
+            text-transform: capitalize;
+            letter-spacing: 0.5pt;
+            padding-left: 6px;
+            margin-bottom: 14px;
+            font-size: 18px;
+        }
+    }
+    ion-datetime{
+        --padding-top: 5px;
+        --padding-end: 0;
+        --padding-bottom: 5px;
+        --padding-start: 0px;    
+    }
+    .cs-org-checklable{
+     width: 100%;   
+    }
+    .cs-inlistbnomargin{
+        margin-bottom: 0px;
+        ion-chip {
+            background: #fff;
+            box-shadow: 0px 3px 6px rgba(6, 6, 6, 0.1);
+        }
+    }
+    .cs-noboarder{
+        --border-color: transparent;
+        --padding-start: 0px;
+        --padding-end: 0px;
+        margin-bottom: 2px;
+        --inner-padding-end: 0px;
+    }
+    .cs-lable-seprate{
+        width: 100%;
+        margin-top: 10px !important;
+        margin-left: 15px;
+    }
+    .ion-color-success {
+        --ion-color-base: #00a651 !important;
+        --ion-color-base-rgb: var(--ion-color-success-rgb, 16,220,96) !important;
+        --ion-color-contrast: var(--ion-color-success-contrast, #fff) !important;
+        --ion-color-contrast-rgb: var(--ion-color-success-contrast-rgb, 255,255,255) !important;
+        --ion-color-shade: #00a651 !important;
+        --ion-color-tint: #00a651 !important;
+    }
+    .cs-locationclose{
+        color: #c0c0c0;
+    }
+    .cs-closeicon {
+        background: #e3e3e3;
+        border-radius: 100px;
+        font-size: 20px;
+        color: #fff;
+        position: absolute;
+        right: 0;
+    }
+    .cs-side-icon {
+        font-size: 14px;
+    }
+    .datetime-text{
+        font-size: 15px;
+    }
+    .cs-locationrow-height{
+        ion-item{
+            --min-height: 20px;
+        }
+    }
+    ion-item{
+        --heighlight-color-valid: none !important;
+        --min-height: 30px;
+    }
+    [padding-bottom] {
+        --padding-bottom: var(--ion-padding, 10px) !important;
+        padding-bottom: var(--ion-padding, 10px) !important;
+    }
+    .cs-no-paadingstart{
+        --padding-start: 2px;
+    }
+
+    .md-arrow-dropdown{
+        margin-top: 4px;
+        margin-bottom: 4px;
+        --margin-top: 4px;
+        --margin-bottom: 4px;
+        position: absolute;
+        right: 0;
+        --padding-end: 0;
+        padding-right: 0;
+        margin-right: 0;
+        --padding-bottom: 4px;
+        padding-bottom: 5px;
+        color: #c3c3c3;
+        font-size: 22px;
+    }
+    .cs-searchicon{
+        font-size: 20px;
+        right: 0;
+        position: absolute;
+        --padding-bottom: 5px;
+        padding-bottom: 5px;
+    }
+    // .cs-tw-weight{
+    //     font-size: 14px;
+    // }
+    .label-stacked {
+        font-size: 15px; 
+    }
+    }
+} 

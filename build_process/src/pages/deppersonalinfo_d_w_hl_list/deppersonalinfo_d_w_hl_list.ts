@@ -360,11 +360,11 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         "objectType": "PRIMARY",
         "childObject": [{
             "objectId": "71655",
-            "fieldId": "967507",
+            "fieldId": "930602",
             "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
+            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
@@ -387,6 +387,17 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
             }],
             "childObject": []
         }, {
+            "objectId": "5",
+            "fieldId": "967712",
+            "objectName": "COR_USERS",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 71658,
+            "rootPath": "deppersonalinfo_DUMMY$$COR_USERS_depcoruser",
+            "isStandardObject": "Y",
+            "relationShipType": "",
+            "includeFields": true,
+            "childObject": []
+        }, {
             "objectId": "71655",
             "fieldId": "964453",
             "objectName": "depemployee",
@@ -401,23 +412,12 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
             }],
             "childObject": []
         }, {
-            "objectId": "5",
-            "fieldId": "967712",
-            "objectName": "COR_USERS",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$COR_USERS_depcoruser",
-            "isStandardObject": "Y",
-            "relationShipType": "",
-            "includeFields": true,
-            "childObject": []
-        }, {
             "objectId": "71655",
-            "fieldId": "930602",
+            "fieldId": "967507",
             "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
@@ -522,13 +522,13 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
     };
     public redirectUrl = "/";
     objDisplayName = {
-        "pfm71658": {
-            "objectName": "deppersonalinfo",
-            "objectDisplayName": "Dep_PersonalInfo"
-        },
         "pfm74408": {
             "objectName": "depchildinfo",
             "objectDisplayName": "Dep_childInfo"
+        },
+        "pfm71658": {
+            "objectName": "deppersonalinfo",
+            "objectDisplayName": "Dep_PersonalInfo"
         }
     };
     public showNavigationHistoryPopUp = false;
@@ -549,31 +549,16 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
     private dataPaths: Array < {
         traversalPath: string;requiredTemp: boolean
     } > = [{
-        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
+        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup',
         requiredTemp: false
     }, {
         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup3',
         requiredTemp: false
     }, {
-        traversalPath: 'deppersonalinfo_DUMMY',
-        requiredTemp: false
-    }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4',
-        requiredTemp: false
-    }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3',
-        requiredTemp: false
-    }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2',
-        requiredTemp: false
-    }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
+        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1',
         requiredTemp: false
     }, {
         traversalPath: 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1',
         requiredTemp: false
     }, {
         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
@@ -582,7 +567,22 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser',
         requiredTemp: false
     }, {
-        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup',
+        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
+        requiredTemp: false
+    }, {
+        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4',
+        requiredTemp: false
+    }, {
+        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2',
+        requiredTemp: false
+    }, {
+        traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
+        requiredTemp: false
+    }, {
+        traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3',
+        requiredTemp: false
+    }, {
+        traversalPath: 'deppersonalinfo_DUMMY',
         requiredTemp: false
     }, ]
     public expandParentObjectData: 'C' | 'HO' | 'FO' = 'FO';
@@ -612,11 +612,11 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
             }],
             "childObject": [{
                 "objectId": "71655",
-                "fieldId": "967516",
+                "fieldId": "965870",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 74408,
-                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
+                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
@@ -625,12 +625,23 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                 }],
                 "childObject": []
             }, {
+                "objectId": "5",
+                "fieldId": "967510",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 74408,
+                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
+                "isStandardObject": "Y",
+                "relationShipType": "",
+                "includeFields": true,
+                "childObject": []
+            }, {
                 "objectId": "71655",
-                "fieldId": "967514",
+                "fieldId": "967516",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 74408,
-                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
+                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
@@ -654,28 +665,17 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                 "childObject": []
             }, {
                 "objectId": "71655",
-                "fieldId": "965870",
+                "fieldId": "967514",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 74408,
-                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1",
+                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
                 "formulaField": [{
                     "fieldName": "depformulan"
                 }],
-                "childObject": []
-            }, {
-                "objectId": "5",
-                "fieldId": "967510",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 74408,
-                "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
-                "isStandardObject": "Y",
-                "relationShipType": "",
-                "includeFields": true,
                 "childObject": []
             }]
         }
@@ -1144,16 +1144,16 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         }
     };
 
-    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
-    public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
-    public __depclookup4$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup4'];
-    public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
-    public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
-    public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
-    public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
-    public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
-    public __depcoruser$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depcoruser'];
     public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
+    public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
+    public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
+    public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
+    public __depcoruser$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depcoruser'];
+    public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
+    public __depclookup4$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup4'];
+    public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
+    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
+    public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
     public paginationConfigInfo = {
         "pfm74408": {
             "currentPageWithRecord": "true",

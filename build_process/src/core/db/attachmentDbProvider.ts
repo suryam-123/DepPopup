@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: attachmentDbProvider.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { cspfmObservableListenerUtils } from 'src/core/dynapageutils/cspfmObservableListenerUtils';
 import PouchDB from 'pouchdb';
@@ -141,7 +150,7 @@ export class attachmentDbProvider {
 
     // Pouch Database change listener callback
     private onDatabaseChange = (change) => {
-        console.log('change', change);
+        
         const parsedId = this.db.rel.parseDocID(change.id);
         change['dataProvider'] = 'PouchDB';
         this.observableListenerUtils.emit(parsedId.type, change);
@@ -266,7 +275,7 @@ export class attachmentDbProvider {
         let isLiveSyncRunning = false;
         const numbers = timer(0, 60000);
         numbers.subscribe(x => {
-            console.log(x)
+           
             if(!isLiveSyncRunning){
                 isLiveSyncRunning = true;
                 const options = {
@@ -277,7 +286,7 @@ export class attachmentDbProvider {
                     auth: this.appUtilityObj.addCredentialforMobile('AUTH', this.attachmentDbConfigurationObj)
                 }
                 this.db.replicate.from(this.remote, options).then(res=>{
-                    console.log("res=====>",res)
+                    
                     isLiveSyncRunning = false;
                 })
             }
@@ -1024,7 +1033,7 @@ export class attachmentDbProvider {
     // Find docs by selector
     private findDocsWithSelector(options) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+           
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options).then(res => {
                     return res;
@@ -1743,7 +1752,7 @@ export class attachmentDbProvider {
                 if (response['ok']) {
                     return Promise.resolve(true);
                 } else {
-                    console.log('Attachment object set insert failed');
+                   
                     return Promise.resolve(false);
                 }
             }).catch(err => {

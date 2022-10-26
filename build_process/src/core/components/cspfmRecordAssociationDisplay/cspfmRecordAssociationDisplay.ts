@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmRecordAssociationDisplay.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -271,7 +273,7 @@ export class cspfmRecordAssociationDisplay implements OnInit {
         }
 
         var slickgridHeaderMenu = document.getElementsByClassName("slick-header-menubutton");
-        console.log("slickgridHeaderMenu", slickgridHeaderMenu);
+        
 
         if (slickgridHeaderMenu && slickgridHeaderMenu.length > 0) {
             for (let i = 0; i < slickgridHeaderMenu.length; i++) {
@@ -279,7 +281,8 @@ export class cspfmRecordAssociationDisplay implements OnInit {
             }
         }
 
-        angularGrid.filterService.onSearchChange.subscribe((input) => { console.log("input :", input) });
+        angularGrid.filterService.onSearchChange.subscribe((input) => {
+              });
         selectedObject['gridObj'] = angularGrid.slickGrid;
         selectedObject['gridObj'].setHeaderRowVisibility(false);
         selectedObject['gridObj']['cspfm_grid_custom_data'] = {
@@ -396,9 +399,9 @@ export class cspfmRecordAssociationDisplay implements OnInit {
 
         var slick_grid_cls = document.getElementsByClassName('slick-gridmenu');
         Array.prototype.forEach.call(slick_grid_cls, function (el) {
-            console.log(el);
+           
             if (el.style.display !== 'none') {
-                console.log(el.classList);
+               
                 let top = posit.top + 27
                 let left = posit.left
                 let maxHeight = (window_height - (posit.top + 30)) - 50
@@ -426,7 +429,7 @@ export class cspfmRecordAssociationDisplay implements OnInit {
             console.log("Error in handling chips")
         } else {
             var fieldWidth = document.getElementById(associationFieldNameId).offsetWidth
-            console.log("Field Width", fieldWidth);
+           
             this.primaryChipArray[associationConfig['fieldName']] = []
             this.secondaryChipArray[associationConfig['fieldName']] = []
 

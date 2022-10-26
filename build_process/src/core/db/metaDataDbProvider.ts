@@ -219,7 +219,7 @@ export class metaDataDbProvider {
     }
     public metaValidation(changesType) {
         metaDataDbProvider.isValidationRunnig = true;
-        console.log("meta validation triggered");
+       
 
         this.metaDbValidation.metaValidations(this, false, changesType).then(result => {
             metaDataDbProvider.isValidationRunnig = false;
@@ -346,7 +346,7 @@ export class metaDataDbProvider {
     }
     // Live replication from couch server
     liveDataReplicationFromServer(dataFilter, params) {
-        console.log('DBReplicationFromServer started');
+        
         return this.oneTimeReplicationFromServerWithFilter(dataFilter, params).then(res => {
             
             if (res.status === 'complete') {
@@ -682,7 +682,7 @@ export class metaDataDbProvider {
     // Find docs by selector
     private findDocsWithSelector(options) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+            
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options).then(res => {
                     return res;
@@ -1101,7 +1101,7 @@ export class metaDataDbProvider {
         });
     }
     fetchMetaDataObjects(metaOneTimeSelector) {
-        console.log("fetchMetaDataObjects started=========>");
+        
 
         const couchdb = new PouchDB(this.remote, {
             auth: this.appUtilityObj.addCredentialforMobile('AUTH', this.metaDataConfigObj)
@@ -1151,8 +1151,7 @@ export class metaDataDbProvider {
 
 
     fetchRecordsByView(viewDocName, couchdb, queryOptions) {
-        console.log("queryOptions...." + new Date().toLocaleTimeString() + "   ", JSON.stringify(queryOptions))
-        console.log("viewDocName............", viewDocName);
+       
 
         return couchdb.query(viewDocName, queryOptions)
             .then(result => {

@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmWebFilter.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -56,10 +58,7 @@ export class cspfmWebFilter implements OnInit {
 
     ngOnChanges() { }
 
-    writeLog(test?) {
-        console.log("filterSectionDetail", this.filterSectionDetail);
-        console.log("test", test);
-    }
+   
 
     valueChange(fieldKey, event: Event, betweenKey?: "from" | "to", indexForBool?) {
         if (event && event["target"] && event["target"]["value"] && (this.filterSectionDetail["filterFields"][fieldKey]["fieldType"] === "NUMBER" || this.filterSectionDetail["filterFields"][fieldKey]["fieldType"] === "DECIMAL"
@@ -231,7 +230,7 @@ export class cspfmWebFilter implements OnInit {
     showLookup(event, fieldKey: string) {
         this.selectedCurrentEvent = event;
         let lookupFilterField: LookupFilterField = this.filterSectionDetail["filterFields"][fieldKey] as LookupFilterField;
-        console.log("lookupFilterField", lookupFilterField);
+       
         if (!lookupFilterField["displayInfo"]["layoutId"]) {
             this.appUtilityObject.showAlert(this, "Lookup configuration not available");
             return;
@@ -337,11 +336,11 @@ export class cspfmWebFilter implements OnInit {
 
     applyAction() {
         this.onFilterChange.emit(true);
-        this.writeLog(true);
+       
     }
 
     clearAction() {
-        this.writeLog(true);
+        
         this.onFilterChange.emit(false);
     }
     lookupResponse(objectname, selectedValue) {

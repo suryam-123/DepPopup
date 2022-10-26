@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: cspfmAttachementUploadDbProvider.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import PouchDB from 'pouchdb';
 import { dbConfiguration } from './dbConfiguration';
@@ -111,27 +120,27 @@ export class cspfmAttachementUploadDbProvider {
                 } else {
                   const url = this.appUtilityObj.appBuilderURL;
                   const path = url + '/filemanage/upload';
-                  console.log('path', path);
+                  
                   const formData = new FormData();
                   formData.append("image", imageToUpload);
-                  console.log('formData', formData);
+                  
                   return this.postRequest(path, formData, this.docToUpload, result.id,
                      uploadedFileType, this.pouchSaveDoc).then(postResponse => {
-                    console.log("postRequest ==> ", postResponse);
+                   
                     if (postResponse["status"] === this.success) {
                       return Promise.resolve(postResponse)
                     } else {
                       const pouchSaveDocument = postResponse["pouchDocument"]
-                      console.log("pouchSaveDocument => ", pouchSaveDocument);
+                      
                       return serviceObject.save(this.docToUpload.pouchParentType, pouchSaveDocument).then(updateResult => {
-                        console.log("updateResult==>", updateResult);
+                        
                         return Promise.resolve(postResponse)
                       })
                     }
                   }).catch(err => {
                     console.log("postRequest ==> ", err);
                     return serviceObject.save(this.docToUpload.pouchParentType, this.pouchSaveDoc).then(updateResult => {
-                      console.log("updateResult==>", updateResult);
+                      
                       return Promise.resolve(err)
                     })
 
@@ -178,9 +187,9 @@ export class cspfmAttachementUploadDbProvider {
         const blobData = this.convertBase64ToBlob(entry);
         const formData = new FormData();
         formData.append("image", blobData, doc.file_name);
-        console.log('formData', formData);
+        
         const path = url + '/filemanage/upload';
-        console.log('path', path);
+   
         this.postRequest(path, formData, doc, id, fileType)
       }).catch(err => {
         console.log('Error while reading file.', err);

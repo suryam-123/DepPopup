@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: initialSyncProcess.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { appConstant } from 'src/core/utils/appConstant';
 import PouchDB from 'pouchdb';
@@ -444,7 +453,7 @@ export class initialSyncProcess {
       if (response['ok']) {
         return Promise.resolve(true);
       } else {
-        console.log('last sequence insert failed');
+        
         return Promise.resolve(false);
       }
     }).catch(err => {
@@ -510,8 +519,6 @@ export class initialSyncProcess {
       console.info("%c%s%c%s", "background: #3493eb; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px; color: white;", this.constructor.name, "padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px; color: green;", "success", ...message)
     } else if (type === 'Failure') {
       console.info("%c%s%c%s", "background: #eb4034; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px; color: white;", this.constructor.name, "padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px; color: red;", "failure", ...message)
-    } else {
-      console.log("%c%s", "background: #3493eb; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px; color: white;", this.constructor.name, ...message)
-    }
+    } 
   }
 }

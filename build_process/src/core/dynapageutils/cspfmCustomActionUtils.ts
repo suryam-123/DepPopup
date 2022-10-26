@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: cspfmCustomActionUtils.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { appUtility } from 'src/core/utils/appUtility';
@@ -65,12 +74,12 @@ export class cspfmCustomActionUtils {
             };
             dialogConfig.autoFocus = false;
             setTimeout(()=>{
-                console.log('im in progress')
+                
                 if($(parentElement).hasClass('cs-clicked-inp-dropdown')){
                     this.secondHideDropdownHide();
                 } else {
                     $(parentElement).addClass('cs-clicked-inp-dropdown');
-                    console.log('parentElement',parentElement)
+                    
                     $(document).find('.cs-clicked-inp-dropdown').attr('data-cs-dropdown',`#cs-dropdown-${parentPage.layoutId}`)
                     this.slickgridPopoverService.appendComponentToElement(`cs-dropdown-${parentPage.layoutId}`, cspfmCustomActionPopover,recordInfo, actionConfig);
                     window.$(".cs-clicked-inp-dropdown").jqDropdown("show", [".cs-dropdown"]);
@@ -125,9 +134,9 @@ export class cspfmCustomActionUtils {
                     inProgressActionDocs.push(trackingInfo);
                 }
             }
-            console.log('*************** CLOSE ***************')
+            
             let bulkDoc = this.cspfmExecutionCouchDbProviderObj.prepareBulkDoc('cspfmactiontracking', inProgressActionDocs)
-            console.log('bulkDoc: ', JSON.stringify(bulkDoc))
+          
             if (isAllBackgroundProcessRunning) {
                 event.preventDefault();
                 event.returnValue = '';
@@ -137,21 +146,21 @@ export class cspfmCustomActionUtils {
     }
 
     endAction(isAllBackgroundProcessRunning, bulkDoc) {
-        console.log('*************** endAction *************** ' + isAllBackgroundProcessRunning + ' ***************')
+        
         if (isAllBackgroundProcessRunning) {
             /* Browser window/tab close */
             window.addEventListener('unload', () => {
-                console.log('*************** unload ', JSON.stringify(bulkDoc), ' ***************')
+                
                 this.cspfmExecutionCouchDbProviderObj.updateBulkDoc(bulkDoc);
             });
             /* Browser reload */
             window.addEventListener('load', () => {
-                console.log('*************** load ', JSON.stringify(bulkDoc), ' ***************')
+               
                 this.cspfmExecutionCouchDbProviderObj.updateBulkDoc(bulkDoc);
             });
             /* Browser back button */
             window.addEventListener('hashchange', () => {
-                console.log('*************** hashchange ', JSON.stringify(bulkDoc), ' ***************')
+                
                 this.cspfmExecutionCouchDbProviderObj.updateBulkDoc(bulkDoc);
             })
         } else {

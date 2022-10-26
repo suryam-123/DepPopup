@@ -1180,7 +1180,7 @@ export class cspfmExecutionCouchDbProvider {
     // Find docs by selector
     private findDocsWithSelector(options, isSingleBatchFetch, arrayList?) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+            
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options, isSingleBatchFetch, arrayList).then(res => {
                     return res;
@@ -1623,7 +1623,7 @@ export class cspfmExecutionCouchDbProvider {
     }
 
     private catchBlockError(error) {
-        console.log("Error", error);
+       
         return Promise.resolve({
             status: this.failed,
             message: error.message,
@@ -4160,7 +4160,7 @@ export class cspfmExecutionCouchDbProvider {
             const relid = this.db.rel.makeDocID({ 'type': type, 'id': id });
             reldoc['_id'] = relid;
             reldoc['data'] = updatedDoc;
-            console.log("RelDoc:", reldoc);
+            
             bulkDoc.push(reldoc);
         });
         return bulkDoc;
@@ -4168,7 +4168,7 @@ export class cspfmExecutionCouchDbProvider {
 
     updateBulkDoc(bulkDoc) {
         return this.db.validatingBulkDocs(bulkDoc).then(res => {
-            console.log("Response:", res);
+           
             return Promise.resolve({ status: this.success, message: res });
         }).catch(error => {
             return Promise.resolve({ status: this.failed, message: error.message });

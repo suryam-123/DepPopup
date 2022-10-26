@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import * as $ from "jquery";
+import { MdePopoverTrigger } from '@material-extended/mde';
+import { cspfmObservableListenerUtils } from 'src/core/dynapageutils/cspfmObservableListenerUtils';
 declare const window: any;
 @Component({
   selector: 'app-popover',
@@ -16,11 +18,16 @@ export class popoverpage {
   dayDisplay;
   displayMessage;
   dateTimeVal;
-  dripDownAttribute='';
+  dripDownAttribute = '';
   parentPage;
-  constructor(public modalController: ModalController) {
+  public balloonLayoutInfo: any;
+  public balloonEventType: any;
+  @ViewChildren(MdePopoverTrigger) queryTrigger: QueryList<MdePopoverTrigger>;
+  @ViewChild(MdePopoverTrigger, { static: false }) trigger: MdePopoverTrigger;
+  @ViewChild('targetelement', { static: false }) targetelement: MdePopoverTrigger;
+  constructor(public observableListenerUtils: cspfmObservableListenerUtils, public modalController: ModalController) {
     this.dripDownAttribute = "#cs-dropdown-custom"
-    console.log('date val', this.dateVal,this.items);
+    console.log('date val', this.dateVal, this.items);
   }
   @Input() set setdateDisplay(type) {
     this.dateVal = type;
@@ -31,32 +38,59 @@ export class popoverpage {
   @Input() set setdisplayMessage(type) {
     this.displayMessage = type;
   }
-  @Input() set setitems(type){
+  @Input() set setitems(type) {
     this.items = type;
   }
-  @Input() set setdateToDisplay(type){
+  @Input() set setdateToDisplay(type) {
     this.dateVal = type;
   }
-  @Input() set seteventLayoutInfo(type){
+  @Input() set seteventLayoutInfo(type) {
     this.eventLayout = type;
   }
-  @Input() set setParentpage(type){
+  @Input() set setParentpage(type) {
     this.parentPage = type;
   }
-  ngOnInit(){
+  ngOnInit() {
     console.log("ngOnInit")
-      setTimeout(()=>{
-        window.$(".cs-dropdown-open").jqDropdown("show", [".cs-dropdown"]);
-      },100)
-    }
+    this.observableListenerUtils.subscribe('balloonCloseAfterActionClick', () => {
+      this.closePopover();
+    });
+    setTimeout(() => {
+      window.$(".cs-dropdown-open").jqDropdown("show", [".cs-dropdown"]);
+    }, 100)
+  }
 
-  onItemPressed(item) {
-      this.parentPage.popUpResponse(item, this.dateVal)
-    }
+  closePopover() {
+    this.queryTrigger.toArray().forEach(
+      closePopoverElement => {
+        closePopoverElement.closePopover();
+      }
+    );
+  }
+
+
+
+  showBalloonLayoutOnHover(event: any, eventType: any, mouseEvent) {
+    this.parentPage.showBalloonLayoutOnHover(event, eventType, mouseEvent);
+  }
+
+  onItemPressed(item, event) {
+    this.parentPage.closePopover();
+    event.stopPropagation()
+    this.parentPage.popUpResponse(item, this.dateVal, event, this.items)
+    let balloonhtmlElement = document.getElementById('cs-dropdown-calendarpage');
+    if (balloonhtmlElement)
+      balloonhtmlElement.innerHTML = ""
+  }
   closeButtonPressed() {
     window.$(".cs-dropdown-open").jqDropdown("hide", [".cs-dropdown"]);
+    let getDropdown = document.getElementsByClassName('cs-dropdown')[0];
+    getDropdown.classList.remove('cs-stop-scroll-hide');
+    let balloonhtmlElement = document.getElementById('cs-dropdown-calendarpage');
+    if (balloonhtmlElement)
+      balloonhtmlElement.innerHTML = ""
   }
-  onCreatePressed(eventInfo){
-    this.parentPage.popUpResponseForCreate(eventInfo, this.dateVal) 
-   }
+  onCreatePressed(eventInfo) {
+    this.parentPage.popUpResponseForCreate(eventInfo, this.dateVal)
+  }
 }

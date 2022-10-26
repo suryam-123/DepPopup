@@ -361,13 +361,6 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         "object": "",
         "searchKey": ""
     };
-    public obj_pfm71655_930602: any = {};
-    public pfm71655_930602 = {
-        "id": "",
-        "label": "",
-        "object": "",
-        "searchKey": ""
-    };
     public obj_pfm71655_967507: any = {};
     public pfm71655_967507 = {
         "id": "",
@@ -375,15 +368,22 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         "object": "",
         "searchKey": ""
     };
-    public obj_pfm71655_964453: any = {};
-    public pfm71655_964453 = {
+    public obj_pfm71655_967505: any = {};
+    public pfm71655_967505 = {
         "id": "",
         "label": "",
         "object": "",
         "searchKey": ""
     };
-    public obj_pfm71655_967505: any = {};
-    public pfm71655_967505 = {
+    public obj_pfm71655_930602: any = {};
+    public pfm71655_930602 = {
+        "id": "",
+        "label": "",
+        "object": "",
+        "searchKey": ""
+    };
+    public obj_pfm71655_964453: any = {};
+    public pfm71655_964453 = {
         "id": "",
         "label": "",
         "object": "",
@@ -488,128 +488,6 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         filterPanelExpanded: false,
         filterAppliedFields: [],
         reverseHierarchy: {
-            "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser",
-                "relationShipType": "",
-                "childObject": [{
-                    "objectId": "71655",
-                    "fieldId": "967507",
-                    "objectName": "depemployee",
-                    "objectType": "LOOKUP",
-                    "referenceObjectId": 71658,
-                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
-                    "relationShipType": "",
-                    "childObject": [{
-                        "objectId": "71658",
-                        "fieldId": "0",
-                        "objectName": "deppersonalinfo",
-                        "objectType": "PRIMARY",
-                        "referenceObjectId": 0,
-                        "rootPath": "deppersonalinfo_DUMMY",
-                        "relationShipType": "",
-                        "childObject": []
-                    }]
-                }]
-            },
-            "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser": {
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser",
-                "relationShipType": "",
-                "childObject": [{
-                    "objectId": "71655",
-                    "fieldId": "930602",
-                    "objectName": "depemployee",
-                    "objectType": "LOOKUP",
-                    "referenceObjectId": 71658,
-                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
-                    "relationShipType": "",
-                    "childObject": [{
-                        "objectId": "71658",
-                        "fieldId": "0",
-                        "objectName": "deppersonalinfo",
-                        "objectType": "PRIMARY",
-                        "referenceObjectId": 0,
-                        "rootPath": "deppersonalinfo_DUMMY",
-                        "relationShipType": "",
-                        "childObject": []
-                    }]
-                }]
-            },
-            "deppersonalinfo_DUMMY$$depemployee_deplookup": {
-                "objectId": "71655",
-                "fieldId": "930602",
-                "objectName": "depemployee",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71658,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
-                "relationShipType": "",
-                "childObject": [{
-                    "objectId": "71658",
-                    "fieldId": "0",
-                    "objectName": "deppersonalinfo",
-                    "objectType": "PRIMARY",
-                    "referenceObjectId": 0,
-                    "rootPath": "deppersonalinfo_DUMMY",
-                    "relationShipType": "",
-                    "childObject": []
-                }]
-            },
-            "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
-                "objectId": "71655",
-                "fieldId": "967507",
-                "objectName": "depemployee",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71658,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
-                "relationShipType": "",
-                "childObject": [{
-                    "objectId": "71658",
-                    "fieldId": "0",
-                    "objectName": "deppersonalinfo",
-                    "objectType": "PRIMARY",
-                    "referenceObjectId": 0,
-                    "rootPath": "deppersonalinfo_DUMMY",
-                    "relationShipType": "",
-                    "childObject": []
-                }]
-            },
-            "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser": {
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser",
-                "relationShipType": "",
-                "childObject": [{
-                    "objectId": "71655",
-                    "fieldId": "967505",
-                    "objectName": "depemployee",
-                    "objectType": "LOOKUP",
-                    "referenceObjectId": 71658,
-                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
-                    "relationShipType": "",
-                    "childObject": [{
-                        "objectId": "71658",
-                        "fieldId": "0",
-                        "objectName": "deppersonalinfo",
-                        "objectType": "PRIMARY",
-                        "referenceObjectId": 0,
-                        "rootPath": "deppersonalinfo_DUMMY",
-                        "relationShipType": "",
-                        "childObject": []
-                    }]
-                }]
-            },
             "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
                 "objectId": "5",
                 "fieldId": "967712",
@@ -629,13 +507,13 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                     "childObject": []
                 }]
             },
-            "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
+            "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
                 "objectId": "71655",
-                "fieldId": "964453",
+                "fieldId": "967507",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71658,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup2",
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
                 "relationShipType": "",
                 "childObject": [{
                     "objectId": "71658",
@@ -676,15 +554,33 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                     }]
                 }]
             },
-            "deppersonalinfo_DUMMY": {
-                "objectId": "71658",
-                "fieldId": "0",
-                "objectName": "deppersonalinfo",
-                "objectType": "PRIMARY",
-                "referenceObjectId": 0,
-                "rootPath": "deppersonalinfo_DUMMY",
+            "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
+                "objectId": "5",
+                "fieldId": "967501",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71655,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser",
                 "relationShipType": "",
-                "childObject": []
+                "childObject": [{
+                    "objectId": "71655",
+                    "fieldId": "967507",
+                    "objectName": "depemployee",
+                    "objectType": "LOOKUP",
+                    "referenceObjectId": 71658,
+                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup4",
+                    "relationShipType": "",
+                    "childObject": [{
+                        "objectId": "71658",
+                        "fieldId": "0",
+                        "objectName": "deppersonalinfo",
+                        "objectType": "PRIMARY",
+                        "referenceObjectId": 0,
+                        "rootPath": "deppersonalinfo_DUMMY",
+                        "relationShipType": "",
+                        "childObject": []
+                    }]
+                }]
             },
             "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
                 "objectId": "71655",
@@ -704,6 +600,110 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                     "relationShipType": "",
                     "childObject": []
                 }]
+            },
+            "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser": {
+                "objectId": "5",
+                "fieldId": "967501",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71655,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser",
+                "relationShipType": "",
+                "childObject": [{
+                    "objectId": "71655",
+                    "fieldId": "967505",
+                    "objectName": "depemployee",
+                    "objectType": "LOOKUP",
+                    "referenceObjectId": 71658,
+                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
+                    "relationShipType": "",
+                    "childObject": [{
+                        "objectId": "71658",
+                        "fieldId": "0",
+                        "objectName": "deppersonalinfo",
+                        "objectType": "PRIMARY",
+                        "referenceObjectId": 0,
+                        "rootPath": "deppersonalinfo_DUMMY",
+                        "relationShipType": "",
+                        "childObject": []
+                    }]
+                }]
+            },
+            "deppersonalinfo_DUMMY$$depemployee_deplookup": {
+                "objectId": "71655",
+                "fieldId": "930602",
+                "objectName": "depemployee",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71658,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+                "relationShipType": "",
+                "childObject": [{
+                    "objectId": "71658",
+                    "fieldId": "0",
+                    "objectName": "deppersonalinfo",
+                    "objectType": "PRIMARY",
+                    "referenceObjectId": 0,
+                    "rootPath": "deppersonalinfo_DUMMY",
+                    "relationShipType": "",
+                    "childObject": []
+                }]
+            },
+            "deppersonalinfo_DUMMY": {
+                "objectId": "71658",
+                "fieldId": "0",
+                "objectName": "deppersonalinfo",
+                "objectType": "PRIMARY",
+                "referenceObjectId": 0,
+                "rootPath": "deppersonalinfo_DUMMY",
+                "relationShipType": "",
+                "childObject": []
+            },
+            "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
+                "objectId": "71655",
+                "fieldId": "964453",
+                "objectName": "depemployee",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71658,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup2",
+                "relationShipType": "",
+                "childObject": [{
+                    "objectId": "71658",
+                    "fieldId": "0",
+                    "objectName": "deppersonalinfo",
+                    "objectType": "PRIMARY",
+                    "referenceObjectId": 0,
+                    "rootPath": "deppersonalinfo_DUMMY",
+                    "relationShipType": "",
+                    "childObject": []
+                }]
+            },
+            "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser": {
+                "objectId": "5",
+                "fieldId": "967501",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71655,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser",
+                "relationShipType": "",
+                "childObject": [{
+                    "objectId": "71655",
+                    "fieldId": "930602",
+                    "objectName": "depemployee",
+                    "objectType": "LOOKUP",
+                    "referenceObjectId": 71658,
+                    "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+                    "relationShipType": "",
+                    "childObject": [{
+                        "objectId": "71658",
+                        "fieldId": "0",
+                        "objectName": "deppersonalinfo",
+                        "objectType": "PRIMARY",
+                        "referenceObjectId": 0,
+                        "rootPath": "deppersonalinfo_DUMMY",
+                        "relationShipType": "",
+                        "childObject": []
+                    }]
+                }]
             }
         },
         isAllRequiredFieldFilled: true,
@@ -718,28 +718,28 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                 "object": "pfm5_967712",
                 "searchKey": ""
             },
-            "pfm71655_930602": {
-                "id": "",
-                "label": "",
-                "object": "pfm71655_930602",
-                "searchKey": ""
-            },
             "pfm71655_967507": {
                 "id": "",
                 "label": "",
                 "object": "pfm71655_967507",
                 "searchKey": ""
             },
-            "pfm71655_964453": {
-                "id": "",
-                "label": "",
-                "object": "pfm71655_964453",
-                "searchKey": ""
-            },
             "pfm71655_967505": {
                 "id": "",
                 "label": "",
                 "object": "pfm71655_967505",
+                "searchKey": ""
+            },
+            "pfm71655_930602": {
+                "id": "",
+                "label": "",
+                "object": "pfm71655_930602",
+                "searchKey": ""
+            },
+            "pfm71655_964453": {
+                "id": "",
+                "label": "",
+                "object": "pfm71655_964453",
                 "searchKey": ""
             },
             "team": {
@@ -806,30 +806,16 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
         "relationShipType": "null",
         "objectType": "PRIMARY",
         "childObject": [{
-            "objectId": "71655",
-            "fieldId": "930602",
-            "objectName": "depemployee",
+            "objectId": "5",
+            "fieldId": "967712",
+            "objectName": "COR_USERS",
             "objectType": "LOOKUP",
             "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
-            "isStandardObject": "N",
+            "rootPath": "deppersonalinfo_DUMMY$$COR_USERS_depcoruser",
+            "isStandardObject": "Y",
             "relationShipType": "",
             "includeFields": false,
-            "formulaField": [{
-                "fieldName": "depformulan"
-            }],
-            "childObject": [{
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser",
-                "isStandardObject": "Y",
-                "relationShipType": "",
-                "includeFields": false,
-                "childObject": []
-            }]
+            "childObject": []
         }, {
             "objectId": "71655",
             "fieldId": "967507",
@@ -856,16 +842,55 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                 "childObject": []
             }]
         }, {
-            "objectId": "5",
-            "fieldId": "967712",
-            "objectName": "COR_USERS",
+            "objectId": "71655",
+            "fieldId": "967505",
+            "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$COR_USERS_depcoruser",
-            "isStandardObject": "Y",
+            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
+            "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": false,
-            "childObject": []
+            "formulaField": [{
+                "fieldName": "depformulan"
+            }],
+            "childObject": [{
+                "objectId": "5",
+                "fieldId": "967501",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71655,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser",
+                "isStandardObject": "Y",
+                "relationShipType": "",
+                "includeFields": false,
+                "childObject": []
+            }]
+        }, {
+            "objectId": "71655",
+            "fieldId": "930602",
+            "objectName": "depemployee",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 71658,
+            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+            "isStandardObject": "N",
+            "relationShipType": "",
+            "includeFields": false,
+            "formulaField": [{
+                "fieldName": "depformulan"
+            }],
+            "childObject": [{
+                "objectId": "5",
+                "fieldId": "967501",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71655,
+                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser",
+                "isStandardObject": "Y",
+                "relationShipType": "",
+                "includeFields": false,
+                "childObject": []
+            }]
         }, {
             "objectId": "71655",
             "fieldId": "964453",
@@ -886,31 +911,6 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71655,
                 "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup2$$COR_USERS_depcoruser",
-                "isStandardObject": "Y",
-                "relationShipType": "",
-                "includeFields": false,
-                "childObject": []
-            }]
-        }, {
-            "objectId": "71655",
-            "fieldId": "967505",
-            "objectName": "depemployee",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 71658,
-            "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
-            "isStandardObject": "N",
-            "relationShipType": "",
-            "includeFields": false,
-            "formulaField": [{
-                "fieldName": "depformulan"
-            }],
-            "childObject": [{
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser",
                 "isStandardObject": "Y",
                 "relationShipType": "",
                 "includeFields": false,
@@ -967,12 +967,12 @@ declare function userAssignment(layoutId, userAssignService, metaDbProvider, met
     public __depemployee$tableName = this.objectTableMappingObject.mappingDetail['depemployee'];
     public team_930594_7774827 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['team'];
     public team_930594_7774824 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['team'];
-    public __depcoruser$lookupIndepemployee = this.lookupFieldMapping.mappingDetail[this.__depemployee$tableName]['depcoruser'];
-    public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
-    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
     public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
-    public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
+    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
+    public __depcoruser$lookupIndepemployee = this.lookupFieldMapping.mappingDetail[this.__depemployee$tableName]['depcoruser'];
     public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
+    public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
+    public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
     public associationConfiguration = {};
     public hiddenColumnsIds = {}
     public associationTableColumnInfo: {

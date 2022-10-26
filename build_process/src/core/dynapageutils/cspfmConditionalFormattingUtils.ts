@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: cspfmConditionalFormattingUtils.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { appUtility } from '../utils/appUtility';
 import { dataProvider } from '../utils/dataProvider';
@@ -671,7 +680,7 @@ export class cspfmConditionalFormattingUtils {
             objectFieldName = element['fieldName'] + '__r';
         } else if (fieldType === 'LOOKUP' || fieldType === 'HEADER' || fieldType === 'MASTERDETAIL') {
             lookupFieldName = this.getFieldNameForLookupAndMasterdetail(element)
-            console.log(lookupFieldName)
+           
             objectFieldName = element['fieldName'];
         } else {
             objectFieldName = element['fieldName'];

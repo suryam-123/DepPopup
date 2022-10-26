@@ -190,7 +190,7 @@ export class syncpage implements OnInit {
         }
 
         this.isSyncFailed = false;
-        console.log('Success');
+      
         stage2.synctime = this.syncRunningCount
         stage2.status = "completed"
         this.startSyncCount()
@@ -222,7 +222,7 @@ export class syncpage implements OnInit {
 
     // Live replication to couch server
     liveDataReplicationToServer(dataFilter, params) {
-        console.log('DBReplicationToServer started');
+        
         return this.dbprovider.oneTimeReplicationToServerWithFilter(dataFilter, params).then(res => {
             
             if (res.status === 'complete') {
@@ -238,7 +238,7 @@ export class syncpage implements OnInit {
 
     // Live replication from couch server
     liveDataReplicationFromServer(dataFilter, params) {
-        console.log('DBReplicationFromServer started');
+        
         return this.dbprovider.oneTimeReplicationFromServerWithFilter(dataFilter, params).then(res => {
             
             if (res.status === 'complete') {
@@ -279,7 +279,9 @@ export class syncpage implements OnInit {
             if (this.dbConfigurationObj.configuration.
                 couchDBSyncEnabledObjectSelectors.length > 0) {
                 finalStage.status = "running"
-                this.onlineIndxCreation.callBuilderForIndexingApi();//This method commented for guide running purpose
+                //this.onlineIndxCreation.callBuilderForIndexingApi();
+				this.onlineIndxCreation.isAllSearchIndexCompleted = true;
+				this.onlineIndxCreation.isGlobalSearchIndexCompleted = true;//This method commented for guide running purpose
             } else {
                 if (this.indexObj.isIndexCreated || this.dbConfigurationObj.configuration.pouchDBSyncEnabledObjectSelectors.length === 0) {
                     finalStage.synctime = "0s"
@@ -346,7 +348,7 @@ export class syncpage implements OnInit {
         this.router.navigate(['menu'], { skipLocationChange: true });
         if (this.intervalId) {
             clearInterval(this.intervalId)
-            console.log("clear interval called");
+           
 
         }
     }
@@ -504,12 +506,12 @@ export class syncpage implements OnInit {
                 var finalSelector = this.metaDbProvider.makeSelectorForMetaDataSyncArray(appIdListToFetch, true);
                 this.metaDataReplicateFromServerWithSelector(finalSelector).then(response => {
                     if (response && response === 'Success') {
-                        console.log("Meta one time sync succes")
+                        
                         this.metaDbValidation.metaValidations(this.metaDbProvider, true).then(res => {
                             if (res) {
                                 // check all meta validation success
                                 if (res.status === 'success') {
-                                    console.log("meta validation succes")
+                                    
                                     const stage1 = this.syncStatusArray[0]
                                     stage1.synctime = this.syncRunningCount
                                     stage1.status = "completed"
@@ -567,7 +569,7 @@ export class syncpage implements OnInit {
             if (res) {
                 // check all meta validation success
                 if (res.status === 'success') {
-                    console.log("meta validation succes")
+                   
                     const stage1 = this.syncStatusArray[0]
                     stage1.synctime = this.syncRunningCount
                     stage1.status = "completed"
@@ -894,7 +896,7 @@ export class syncpage implements OnInit {
 
                         for (let i = 0; i < result.records.length; i++) {
                             const statusWFConfigId = result.records[i]["status_wf_config_id"]
-                            console.log("pfm" + result.records[i]["object_id"]);
+                            
                             
                             if (assignedObjectListInPouch.indexOf("pfm" + result.records[i]["object_id"]) > -1){
                                 this.statusWFConfigIdArray.push(statusWFConfigId)

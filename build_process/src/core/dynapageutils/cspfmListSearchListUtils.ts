@@ -1,4 +1,13 @@
 
+
+/*   
+ *   File: cspfmListSearchListUtils.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
+
 import {
     Injectable
 } from '@angular/core';
@@ -108,8 +117,6 @@ export class cspfmListSearchListUtils {
         if (flatpickrInstance) {
             if ((flatpickrInstance.element.getBoundingClientRect()['bottom'] <= document.getElementById(layoutId).getBoundingClientRect()['bottom']) ||
                 (flatpickrInstance.element.getBoundingClientRect()['top'] >= document.body.getBoundingClientRect()['bottom'])) {
-                console.log("top : ", flatpickrInstance.element.getBoundingClientRect()['top'], document.getElementById(layoutId).getBoundingClientRect()['bottom'])
-                console.log("bottom : ", flatpickrInstance.element.getBoundingClientRect()['bottom'], document.body.getBoundingClientRect()['bottom'])
                 flatpickrInstance.close()
             } else {
                 flatpickrInstance._positionCalendar(flatpickrInstance.element)
@@ -153,13 +160,15 @@ export class cspfmListSearchListUtils {
       }
 
     reverseHierarchySetForInerLevel(hierarchyJson, objId) {
-        const typeWithoutPfm = objId.replace('pfm', '')
-        if (hierarchyJson["objectId"] === typeWithoutPfm) {
-            return { 'hierarchyJson': hierarchyJson, 'objectType': hierarchyJson['objectType'] }
-        } else if (hierarchyJson['childObject'] !== '') {
-            return this.reverseHierarchySetForInerLevel(hierarchyJson['childObject'][0], objId)
-        } else {
-            return {}
+        if (!(objId.includes('staticreport') || objId.includes('rollup') || objId.includes('formula'))) {
+            const typeWithoutPfm = objId.replace('pfm', '')
+            if (hierarchyJson["objectId"] === typeWithoutPfm) {
+                return { 'hierarchyJson': hierarchyJson, 'objectType': hierarchyJson['objectType'] }
+            } else if (hierarchyJson['childObject'] !== '') {
+                return this.reverseHierarchySetForInerLevel(hierarchyJson['childObject'][0], objId)
+            } else {
+                return {}
+            }
         }
     }
 }

@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import { dbConfiguration } from 'src/core/db/dbConfiguration';
+import {
+    Injectable
+} from '@angular/core';
+import {
+    dbConfiguration
+} from 'src/core/db/dbConfiguration';
 
 @Injectable({
     providedIn: 'root'
@@ -8,17 +12,17 @@ export class metaDbConfiguration {
     public SUCCESS = "success";
     public FAILURE = "failure";
 
-    public corUsersObject = '';
+    public corUsersObject = 'pfm5';
     public applicationAssignmentObject = 'CORUSERAPPA';
     public applicationPublishInfoObject = 'PFMAPPPUBLISHINFO';
-    public corMenuGroup = '';
+    public corMenuGroup = 'pfm8';
     public corUSerMenuGroupAssignemt = 'CORUSRMENUGRPA';
     public corRoleMenuGroupAssignemt = 'CORROLEMENUGROUPA';
-    public corApplications = '';
+    public corApplications = 'pfm7';
     public corLoginDetails = 'CORLOGINDETAILS';
     public corMobileApps = 'CORMOBILEAPPS'
     public pfmApproveValueUserObject = 'PFMAPPROVALUSERA';
-    public corRoles = ''
+    public corRoles = 'pfm4'
     public userGroup = 'CORUSERGROUPS'
     public corUserGroupAssignment = 'CORUSERUSERGROUPA'
     public userResponsibility = 'CORRESPONSIBILITIES'
@@ -37,104 +41,78 @@ export class metaDbConfiguration {
     public metaPageTitle = "Chainsys Mobile Device Management"
     public fetchError = "fetchError";
     public applicationInActive = "Application InActive";
-    public corUserHierarchy  = 'CORUSERSHIERARCHY';
+    public corUserHierarchy = 'CORUSERSHIERARCHY';
     constructor(public dbConfigurationObj: dbConfiguration) {
 
     }
     public configuration = {
-        databaseName: '',
+        databaseName: 'pfm_15_meta_info',
         schema: [{
-            "singular": "CORUSERS",
-            "plural": "CORUSERSS",
+                "singular": "CORUSERS",
+                "plural": "CORUSERSS",
 
-            "relations": {
-                "CORLOGINDETAILSs": {
-                    "hasMany": {
-                        "type": "CORLOGINDETAILS",
-                        "options": {
-                            "queryInverse": "CORUSERS"
+                "relations": {
+                    "CORLOGINDETAILSs": {
+                        "hasMany": {
+                            "type": "CORLOGINDETAILS",
+                            "options": {
+                                "queryInverse": "CORUSERS"
+                            }
                         }
                     }
-                }
 
-            }
-        },
-        {
-            "singular": "CORUSERS_only",
-            "plural": "CORUSERSS",
-            "documentType": "CORUSERS"
-        },
-        {
-            "singular": "CORLOGINDETAILS",
-            "plural": "CORLOGINDETAILSs",
-            "relations": {
-                "corusers": {
-                    "belongsTo": {
-                        "type": "CORUSERS",
-                        "options": {
-                            "async": true
+                }
+            },
+            {
+                "singular": "CORUSERS_only",
+                "plural": "CORUSERSS",
+                "documentType": "CORUSERS"
+            },
+            {
+                "singular": "CORLOGINDETAILS",
+                "plural": "CORLOGINDETAILSs",
+                "relations": {
+                    "corusers": {
+                        "belongsTo": {
+                            "type": "CORUSERS",
+                            "options": {
+                                "async": true
+                            }
                         }
                     }
-                }
 
-            }
-        },
-        {
-            "singular": "CORLOGINDETAILS_only",
-            "plural": "CORLOGINDETAILSs",
-            "documentType": "CORLOGINDETAILS"
-        },
-        {
-            "singular": "CORAPPLICATIONS",
-            "plural": "CORAPPLICATIONSs",
-            "relations": {
-                "PFMAPPPUBLISHINFOs": {
-                    "hasMany": {
-                        "type": "PFMAPPPUBLISHINFO",
-                        "options": {
-                            "queryInverse": "CORAPPLICATIONS"
+                }
+            },
+            {
+                "singular": "CORLOGINDETAILS_only",
+                "plural": "CORLOGINDETAILSs",
+                "documentType": "CORLOGINDETAILS"
+            },
+            {
+                "singular": "CORAPPLICATIONS",
+                "plural": "CORAPPLICATIONSs",
+                "relations": {
+                    "PFMAPPPUBLISHINFOs": {
+                        "hasMany": {
+                            "type": "PFMAPPPUBLISHINFO",
+                            "options": {
+                                "queryInverse": "CORAPPLICATIONS"
+                            }
                         }
                     }
+
                 }
 
-            }
+            },
+            {
+                "singular": "CORAPPLICATIONS_only",
+                "plural": "CORAPPLICATIONSs",
+                "documentType": "CORAPPLICATIONS"
 
-        },
-        {
-            "singular": "CORAPPLICATIONS_only",
-            "plural": "CORAPPLICATIONSs",
-            "documentType": "CORAPPLICATIONS"
-
-        },
-        {
-            "singular": "PFMAPPPUBLISHINFO",
-            "plural": "PFMAPPPUBLISHINFOs",
-            "CORAPPLICATIONS": {
-                "belongsTo": {
-                    "type": "CORAPPLICATIONS",
-                    "options": {
-                        "async": true
-                    }
-                }
-            }
-        },
-        {
-            "singular": "PFMAPPPUBLISHINFO_only",
-            "plural": "PFMAPPPUBLISHINFOs",
-            "documentType": "PFMAPPPUBLISHINFO"
-        },
-        {
-            "singular": "CORUSERAPPA",
-            "plural": "CORUSERAPPAs",
-            "relations": {
-                "CORUSERS": {
-                    "belongsTo": {
-                        "type": "CORUSERS",
-                        "options": {
-                            "async": true
-                        }
-                    }
-                },
+            },
+            {
+                "singular": "PFMAPPPUBLISHINFO",
+                "plural": "PFMAPPPUBLISHINFOs",
                 "CORAPPLICATIONS": {
                     "belongsTo": {
                         "type": "CORAPPLICATIONS",
@@ -143,101 +121,148 @@ export class metaDbConfiguration {
                         }
                     }
                 }
-
-
-            }
-
-
-        },
-        {
-            "singular": "CORUSERAPPA_only",
-            "plural": "CORUSERAPPAs",
-            "documentType": "CORUSERAPPA"
-        },
-        {
-
-            "singular": "CORMENUGROUPS",
-            "plural": "CORMENUGROUPSs",
-            "relations": {
-                "CORAPPLICATIONS": {
-                    "belongsTo": {
-                        "type": "CORAPPLICATIONS",
-                        "options": {
-                            "async": true
+            },
+            {
+                "singular": "PFMAPPPUBLISHINFO_only",
+                "plural": "PFMAPPPUBLISHINFOs",
+                "documentType": "PFMAPPPUBLISHINFO"
+            },
+            {
+                "singular": "CORUSERAPPA",
+                "plural": "CORUSERAPPAs",
+                "relations": {
+                    "CORUSERS": {
+                        "belongsTo": {
+                            "type": "CORUSERS",
+                            "options": {
+                                "async": true
+                            }
+                        }
+                    },
+                    "CORAPPLICATIONS": {
+                        "belongsTo": {
+                            "type": "CORAPPLICATIONS",
+                            "options": {
+                                "async": true
+                            }
                         }
                     }
-                }
 
-            }
-        },
-        {
-            "singular": "CORMENUGROUPS_only",
-            "plural": "CORMENUGROUPSs",
-            "documentType": "CORMENUGROUPS"
-        },
-        {
 
-            "singular": "CORUSRMENUGRPA",
-            "plural": "CORUSRMENUGRPAs",
-            "relations": {
-                "CORUSERS": {
-                    "belongsTo": {
-                        "type": "CORUSERS",
-                        "options": {
-                            "async": true
-                        }
-                    }
-                },
-                "CORMENUGROUPS": {
-                    "belongsTo": {
-                        "type": "CORMENUGROUPS",
-                        "options": {
-                            "async": true
-                        }
-                    }
                 }
 
 
-            }
-        },
+            },
+            {
+                "singular": "CORUSERAPPA_only",
+                "plural": "CORUSERAPPAs",
+                "documentType": "CORUSERAPPA"
+            },
+            {
 
-        {
-            "singular": "CORUSRMENUGRPA_only",
-            "plural": "CORUSRMENUGRPAs",
-            "documentType": "CORUSRMENUGRPA"
-        },
-        {
-            "singular": "CORROLEMENUGROUPA",
-            "plural": "CORROLEMENUGROUPAs",
-            "relations": {
-                "CORUSERS": {
-                    "belongsTo": {
-                        "type": "CORUSERS",
-                        "options": {
-                            "async": true
+                "singular": "CORMENUGROUPS",
+                "plural": "CORMENUGROUPSs",
+                "relations": {
+                    "CORAPPLICATIONS": {
+                        "belongsTo": {
+                            "type": "CORAPPLICATIONS",
+                            "options": {
+                                "async": true
+                            }
                         }
                     }
-                },
-                "CORMENUGROUPS": {
-                    "belongsTo": {
-                        "type": "CORMENUGROUPS",
-                        "options": {
-                            "async": true
-                        }
-                    }
+
                 }
+            },
+            {
+                "singular": "CORMENUGROUPS_only",
+                "plural": "CORMENUGROUPSs",
+                "documentType": "CORMENUGROUPS"
+            },
+            {
+
+                "singular": "CORUSRMENUGRPA",
+                "plural": "CORUSRMENUGRPAs",
+                "relations": {
+                    "CORUSERS": {
+                        "belongsTo": {
+                            "type": "CORUSERS",
+                            "options": {
+                                "async": true
+                            }
+                        }
+                    },
+                    "CORMENUGROUPS": {
+                        "belongsTo": {
+                            "type": "CORMENUGROUPS",
+                            "options": {
+                                "async": true
+                            }
+                        }
+                    }
 
 
+                }
+            },
+
+            {
+                "singular": "CORUSRMENUGRPA_only",
+                "plural": "CORUSRMENUGRPAs",
+                "documentType": "CORUSRMENUGRPA"
+            },
+            {
+                "singular": "CORROLEMENUGROUPA",
+                "plural": "CORROLEMENUGROUPAs",
+                "relations": {
+                    "CORUSERS": {
+                        "belongsTo": {
+                            "type": "CORUSERS",
+                            "options": {
+                                "async": true
+                            }
+                        }
+                    },
+                    "CORMENUGROUPS": {
+                        "belongsTo": {
+                            "type": "CORMENUGROUPS",
+                            "options": {
+                                "async": true
+                            }
+                        }
+                    }
+
+
+                }
+            },
+            {
+                "singular": "CORROLEMENUGROUPA_only",
+                "plural": "CORROLEMENUGROUPAs",
+                "documentType": "CORROLEMENUGROUPA"
             }
-        },
-        {
-            "singular": "CORROLEMENUGROUPA_only",
-            "plural": "CORROLEMENUGROUPAs",
-            "documentType": "CORROLEMENUGROUPA"
-        }
 
         ],
-        tableStructure: {}
+        tableStructure: {
+            "pfm5": {
+                "display_name": null,
+                "password_reset_flag": null,
+                "password_expired_date": null,
+                "manager_user_id": null,
+                "created_by": null,
+                "created_on": null,
+                "last_modified_by": null,
+                "last_modified_on": null,
+                "user_id": null,
+                "organization_id": null,
+                "guid": null,
+                "password": null,
+                "username": null,
+                "first_name": null,
+                "last_name": null,
+                "email_id": null,
+                "title": null,
+                "upn": null
+            }
+        }
     }
 
     private _proxyPassURL: string;
@@ -256,4 +281,3 @@ export class metaDbConfiguration {
         this._proxyPassURL = proxyPass;
     }
 }
-

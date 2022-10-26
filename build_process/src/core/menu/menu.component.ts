@@ -1,57 +1,142 @@
-import { Component ,Injector} from '@angular/core';
-import { appConfiguration } from '../utils/appConfiguration';
-import { appUtility } from '../utils/appUtility';
-import { MenuController, Platform, AlertController, NavController } from '@ionic/angular';
-import { Broadcaster } from '@awesome-cordova-plugins/broadcaster/ngx';
-import { File } from '@awesome-cordova-plugins/file/ngx';
-import { mapBridge } from '../nativebridges/mapBridge';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { AppPreferences } from '@awesome-cordova-plugins/app-preferences/ngx';
-import { metaDbConfiguration } from 'src/core/db/metaDbConfiguration';
-import { metaDataDbProvider } from 'src/core/db/metaDataDbProvider';
+import {
+    Component,
+    Injector
+} from '@angular/core';
+import {
+    appConfiguration
+} from '../utils/appConfiguration';
+import {
+    appUtility
+} from '../utils/appUtility';
+import {
+    MenuController,
+    Platform,
+    AlertController,
+    NavController
+} from '@ionic/angular';
+import {
+    Broadcaster
+} from '@awesome-cordova-plugins/broadcaster/ngx';
+import {
+    File
+} from '@awesome-cordova-plugins/file/ngx';
+import {
+    mapBridge
+} from '../nativebridges/mapBridge';
+import {
+    Router,
+    ActivatedRoute
+} from '@angular/router';
+import {
+    Location
+} from '@angular/common';
+import {
+    AppPreferences
+} from '@awesome-cordova-plugins/app-preferences/ngx';
+import {
+    metaDbConfiguration
+} from 'src/core/db/metaDbConfiguration';
+import {
+    metaDataDbProvider
+} from 'src/core/db/metaDataDbProvider';
 import * as lodash from 'lodash';
-import { menuService } from '../services/menuService.service';
-import { cspfmMetaCouchDbProvider } from 'src/core/db/cspfmMetaCouchDbProvider';
-import { NgxMasonryOptions } from 'ngx-masonry';
+import {
+    menuService
+} from '../services/menuService.service';
+import {
+    cspfmMetaCouchDbProvider
+} from 'src/core/db/cspfmMetaCouchDbProvider';
+import {
+    NgxMasonryOptions
+} from 'ngx-masonry';
 
 
 
 @Component({
     selector: 'app-menu',
-    templateUrl: './menu.component.html',
+    templateUrl: './top_horizontal_menu.html',
     styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
     isRequiredToShowComponent: boolean;
     activeMenuGroups = [0];
     singleMenuArray: any;
-    allMenuGroups: Array<{
-        menuGroupId: number, menugroupName: string, menuGroupDisplayName: string, icon: string,
+    allMenuGroups: Array < {
+        menuGroupId: number,
+        menugroupName: string,
+        menuGroupDisplayName: string,
+        icon: string,
         menuItems: {
-            web: Array<{ title: string, url: string, icon: string, menuitemid: string, type: any, applicationId: number, MenuType: string }>,
-            mobile: Array<{ title: string, url: string, icon: string, menuitemid: string, type: any, applicationId: number, MenuType: string }>
+            web: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string,
+                type: any,
+                applicationId: number,
+                MenuType: string
+            } > ,
+            mobile: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string,
+                type: any,
+                applicationId: number,
+                MenuType: string
+            } >
         }
-    }>;
+    } > ;
     defaultGroupObj = {};
     loggedUserDetail = {};
     calendarGroupObj = {};
     mapGroupObj = {};
 
-    map: Array<{
-        menuGroupId: number, menugroupName: string, menuGroupDisplayName: string, icon: string,
+    map: Array < {
+        menuGroupId: number,
+        menugroupName: string,
+        menuGroupDisplayName: string,
+        icon: string,
         menuItems: {
-            web: Array<{ title: string, url: string, icon: string, menuitemid: string }>,
-            mobile: Array<{ title: string, url: string, icon: string, menuitemid: string }>
+            web: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string
+            } > ,
+            mobile: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string
+            } >
         }
-    }>;
-    calender: Array<{
-        menuGroupId: number, menugroupName: string, menuGroupDisplayName: string, icon: string,
+    } > ;
+    calender: Array < {
+        menuGroupId: number,
+        menugroupName: string,
+        menuGroupDisplayName: string,
+        icon: string,
         menuItems: {
-            web: Array<{ title: string, url: string, icon: string, menuitemid: string }>,
-            mobile: Array<{ title: string, url: string, icon: string, menuitemid: string }>
+            web: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string
+            } > ,
+            mobile: Array < {
+                title: string,
+                url: string,
+                icon: string,
+                menuitemid: string
+            } >
         }
-    }>; defaultMenu: Array<{ title: string, url: any, icon: string }>;
+    } > ;
+    defaultMenu: Array < {
+        title: string,
+        url: any,
+        icon: string
+    } > ;
     public menuButtonBackgroundColor = ["cs-btnclr-one", "cs-btnclr-two", "cs-btnclr-three", "cs-btnclr-four", "cs-btnclr-five"]
     public menuButtonColor = ["cs-top-menu-one", "cs-top-menu-two", "cs-top-menu-three", "cs-top-menu-four", "cs-top-menu-five", "cs-top-menu-six"]
     public menuClasses = ["cs-menu-c-one", "cs-menu-c-two", "cs-menu-c-three", "cs-menu-c-four", "cs-menu-c-five", "cs-menu-c-six", "cs-menu-c-seven", "cs-menu-c-eight", "cs-menu-c-nine"]
@@ -59,8 +144,8 @@ export class MenuComponent {
     // public mobileProfilePic = "";
 
     public masonryOptions: NgxMasonryOptions = {
-        gutter:20,
-        columnWidth:250
+        gutter: 20,
+        columnWidth: 250
     }
     constructor(public appConfig: appConfiguration,
         public file: File, private menuCtl: MenuController,
@@ -78,68 +163,140 @@ export class MenuComponent {
         // Predefined menu
 
         this.isRequiredToShowComponent = true;
-        this.defaultMenu = [
-            { title: 'Settings', url: '/menu/cspfmSettings', icon: 'icon-mat-settings' }
-        ];
+        this.defaultMenu = [{
+            title: 'Settings',
+            url: '/menu/cspfmSettings',
+            icon: 'icon-mat-settings'
+        }];
 
 
         // Map menu
-        this.map = [
-            {
-                "menuGroupId": 0,
-                "menugroupName": "mapmenugroup",
-                "menuGroupDisplayName": "Map",
-                "icon": "icon-mat-language",
-                "menuItems": {
-                    "web": [
-                        {
-                            "title": "Map",
-                            "url": "/menu/homepage",
-                            "icon": "icon-mat-language",
-                            "menuitemid": "webMap"
-                        }
-                    ],
-                    "mobile": [
-                        {
-                            "title": "Map",
-                            "url": "/menu/homepage",
-                            "icon": "icon-mat-language",
-                            "menuitemid": "mobmap"
-                        }
-                    ]
-                }
+        this.map = [{
+            "menuGroupId": 0,
+            "menugroupName": "mapmenugroup",
+            "menuGroupDisplayName": "Map",
+            "icon": "icon-mat-language",
+            "menuItems": {
+                "web": [{
+                    "title": "Map",
+                    "url": "/menu/homepage",
+                    "icon": "icon-mat-language",
+                    "menuitemid": "webMap"
+                }],
+                "mobile": [{
+                    "title": "Map",
+                    "url": "/menu/homepage",
+                    "icon": "icon-mat-language",
+                    "menuitemid": "mobmap"
+                }]
             }
-        ];
+        }];
         // Calender menu
-        this.calender = [
-            {
-                "menuGroupId": 0,
-                "menugroupName": "calendarmenugroup",
-                "menuGroupDisplayName": "Calendar",
-                "icon": "icon-mat-calendar_today",
-                "menuItems": {
-                    "web": [
-                        {
-                            "title": "Calendar",
-                            "url": "/menu/cspfmCalendarPage",
-                            "icon": "icon-mat-calendar_today",
-                            "menuitemid": "webcalendar"
-                        }
-                    ],
-                    "mobile": [
-                        {
-                            "title": "Calendar",
-                            "url": "/menu/homepage",
-                            "icon": "icon-mat-calendar_today",
-                            "menuitemid": "mobcalendar"
-                        }
-                    ]
-                }
+        this.calender = [{
+            "menuGroupId": 0,
+            "menugroupName": "calendarmenugroup",
+            "menuGroupDisplayName": "Calendar",
+            "icon": "icon-mat-calendar_today",
+            "menuItems": {
+                "web": [{
+                    "title": "Calendar",
+                    "url": "/menu/cspfmCalendarPage",
+                    "icon": "icon-mat-calendar_today",
+                    "menuitemid": "webcalendar"
+                }],
+                "mobile": [{
+                    "title": "Calendar",
+                    "url": "/menu/homepage",
+                    "icon": "icon-mat-calendar_today",
+                    "menuitemid": "mobcalendar"
+                }]
             }
-        ];
+        }];
 
         // Dynamic menu entry start here
-        this.allMenuGroups ;
+        this.allMenuGroups = [{
+            "menuGroupId": 0,
+            "menuGroupDisplayName": "HOME",
+            "menugroupName": "HOME_MENU",
+            "icon": "icon-mat-home",
+            "menuItems": {
+                "web": [{
+                    "title": "Home",
+                    "url": "/menu/homepage",
+                    "icon": "icon-mat-home",
+                    "menuitemid": "WEB_HOME",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }],
+                "mobile": [{
+                    "title": "Home",
+                    "url": "/menu/homepage",
+                    "icon": "icon-mat-home",
+                    "menuitemid": "MOBILE_HOME",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }]
+            }
+        }, {
+            "menuGroupId": 6552,
+            "menugroupName": "MG_MENU",
+            "menuGroupDisplayName": "MenuGroup.Id_6552",
+            "icon": "icon-mat-dehaze",
+            "menuItems": {
+                "mobile": [{
+                    "title": "MenuItem.Id_89249",
+                    "url": "/menu/depchildinfo_d_m_entry",
+                    "menuitemid": "MI_MENU_depchildinfo_Entry",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }],
+                "web": [{
+                    "title": "MenuItem.Id_84992",
+                    "url": "/menu/depemployee_d_w_list",
+                    "menuitemid": "MI_MENU_depemployee_Web_List",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }, {
+                    "title": "MenuItem.Id_85001",
+                    "url": "/menu/deppersonalinfo_d_w_list",
+                    "menuitemid": "MI_MENU_deppersonalinfo_Web_List",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }, {
+                    "title": "MenuItem.Id_89250",
+                    "url": "/menu/depchildinfo_Entry_Web",
+                    "menuitemid": "MI_MENU_depchildinfo_Entry",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }, {
+                    "title": "MenuItem.Id_92503",
+                    "url": "/menu/DepPerson_MultiLine_Entry_WEB_Grid_with_List",
+                    "menuitemid": "MI_MENU_DepPerson_MultiLine_Entry",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }, {
+                    "title": "MenuItem.Id_93343",
+                    "url": "/menu/DepPersonInfoList_WEB_List",
+                    "menuitemid": "MI_MENU_DepPersonInfoList",
+                    "icon": "icon-mat-dehaze",
+                    "type": "",
+                    "applicationId": 0,
+                    "MenuType": ""
+                }]
+            }
+        }]
 
         this.addMenuGroupExpandableFlag();
         if (!this.appUtilityConfig.isEmbeddingEnabled) {
@@ -160,7 +317,7 @@ export class MenuComponent {
     getActiveMenuGroup() {
 
 
-        if (this.appUtilityConfig.isMobile/*  && !this.appUtilityConfig.isEmbeddingEnabled */) {
+        if (this.appUtilityConfig.isMobile /*  && !this.appUtilityConfig.isEmbeddingEnabled */ ) {
             // For device
             this.getActiveMenuGroupFromJson();
         } else {
@@ -183,7 +340,7 @@ export class MenuComponent {
     }
     ngOnInit() {
         if (document.getElementById("box_menu")) {
-            this.singleMenuArray = this.allMenuGroups.filter(function (element) {
+            this.singleMenuArray = this.allMenuGroups.filter(function(element) {
                 return element["menuItems"]["web"].length === 1;
             });
             if (this.appConfig.configuration.defaultMenu.isCalendarEnable &&
@@ -196,7 +353,7 @@ export class MenuComponent {
                 const mapObject = this.map[0]
                 this.singleMenuArray.push(mapObject)
             }
-            var groupMenuArray = this.allMenuGroups.filter(function (element) {
+            var groupMenuArray = this.allMenuGroups.filter(function(element) {
                 return element["menuItems"]["web"].length > 1;
             });
 
@@ -211,8 +368,9 @@ export class MenuComponent {
                         }
                     );
                     singleMenuArrayElement
-                        ? Object.assign(singleMenuArrayElement, groupMenuArrayElement)
-                        : singleMenuArray.push(groupMenuArrayElement);
+                        ?
+                        Object.assign(singleMenuArrayElement, groupMenuArrayElement) :
+                        singleMenuArray.push(groupMenuArrayElement);
                 });
             };
             mergeBothMenu(this.singleMenuArray, groupMenuArray);
@@ -277,7 +435,7 @@ export class MenuComponent {
     }
 
     addMenuGroupExpandableFlag() {
-     
+
 
         for (let i = 0; i < this.allMenuGroups.length; i++) {
             this.allMenuGroups[i]['expand'] = false;
@@ -355,25 +513,25 @@ export class MenuComponent {
 
         return this.appPreferences.fetch('login_response').then(res => {
 
-            if (res && res !== ''){
+            if (res && res !== '') {
                 return true
-            }
-                
-            else{
+            } else {
                 return false
             }
-               
+
 
         }).catch(err => {
             return false
         })
     }
 
-    openPage(page, event?) {
+    openPage(page, event ? ) {
         const pageValue = JSON.stringify(page);
         const pageResultObj = JSON.parse(pageValue);
         const pageTitle = pageResultObj['title'];
-        const queryParamsRouting = { "isFromMenu": true }
+        const queryParamsRouting = {
+            "isFromMenu": true
+        }
         if (this.menuService.isMenuOpen) {
             if (document.getElementById("top_horizontal_menu")) {
                 event.stopPropagation()
@@ -390,20 +548,28 @@ export class MenuComponent {
         } else if (pageTitle === 'Exit') {
             this.showExitAlertView(page);
         } else if (page['url'] === '/menu/homepage') {
-            this.navController.navigateBack([this.appUtilityConfig.landingPageInfo.path], { queryParams: queryParamsRouting, skipLocationChange: true });
+            this.navController.navigateBack([this.appUtilityConfig.landingPageInfo.path], {
+                queryParams: queryParamsRouting,
+                skipLocationChange: true
+            });
         } else {
-            console.log("navigate url=> " + page['url']);
+
             if (page['type'] === 'standardApp') {
                 let emUrl = `${this.appUtilityConfig["platformWebNodeHostName"]}/${this.appUtilityConfig["contextName"]}/core/login/applicationswitcher?menuUrl=${page['url']}&applicationId=${page.applicationId}&chainsysSessionGuid=${this.appUtilityConfig["chainsysSessionId"]}&MenuType=${page['MenuType']}`;
                 if (page['MenuType'] === 'EMBED') {
                     this.router.navigate(['/menu/embedded'], {
-                        queryParams: { emUrl }
+                        queryParams: {
+                            emUrl
+                        }
                     });
                 } else {
                     window.location.href = emUrl;
                 }
             } else {
-                this.navController.navigateBack([page['url']], { queryParams: queryParamsRouting, skipLocationChange: true });
+                this.navController.navigateBack([page['url']], {
+                    queryParams: queryParamsRouting,
+                    skipLocationChange: true
+                });
             }
         }
         if (this.appConfig.configuration.isGridMenuEnabled) {
@@ -412,16 +578,18 @@ export class MenuComponent {
         }
     }
     openComponentPage(page) {
-        this.navController.navigateBack([page['url']], { skipLocationChange: true });
+        this.navController.navigateBack([page['url']], {
+            skipLocationChange: true
+        });
         if (this.appUtilityConfig.isMobile) {
             if (page.title === 'Calender') {
                 const calendarBridgeClass = 'calendarBridge'
                 import(`../nativebridges/${calendarBridgeClass}`).then(calendarInstance => {
                     if (calendarInstance['calendarBridge']) {
                         calendarInstance = this.injector.get(calendarInstance['calendarBridge'])
-                        calendarInstance.startObserver();                        
+                        calendarInstance.startObserver();
                         this.callNotificationBroadcastPlugin(page);
-                    }else {
+                    } else {
                         console.error('calendarBridge file is missing')
                     }
                 }).catch(err => {
@@ -431,11 +599,13 @@ export class MenuComponent {
             } else if (page.title === 'Map') {
                 this.nativeBridgeMap.startObserver();
                 this.callNotificationBroadcastPlugin(page);
-         }
+            }
         }
     }
     callNotificationBroadcastPlugin(page) {
-        this.broadcaster.fireNativeEvent('ionicNativeBroadcast', { action: page.title })
+        this.broadcaster.fireNativeEvent('ionicNativeBroadcast', {
+                action: page.title
+            })
             .then(() => console.log('Success'))
             .catch(() => console.log('Error'));
     }
@@ -443,8 +613,7 @@ export class MenuComponent {
         const confirm = await this.alertCtrl.create({
             header: 'Exit',
             message: 'Are you sure want to exit ?',
-            buttons: [
-                {
+            buttons: [{
                     text: 'Cancel'
                 },
                 {
@@ -480,7 +649,7 @@ export class MenuComponent {
     }
 
 
-    closeMenu(event, group, index?) {
+    closeMenu(event, group, index ? ) {
         event.stopPropagation()
         // setTimeout(() => {
         if (document.getElementById("top_horizontal_menu")) {
@@ -513,7 +682,7 @@ export class MenuComponent {
             this.menuService.showLeftVerticalMenuPopUp(index)
         }
 
-        console.log('this ==', this.menuService.assignedMenuGroups);
+
         if (
             document.getElementById("side_menu") &&
             group["menuItems"]["web"].length === 1
@@ -546,13 +715,13 @@ export class MenuComponent {
             const query = "type: " + this.metaDbConfig.corUsersObject + " AND " + "user_id: " + Number(this.appUtilityConfig.userId);
             return this.cspfmMetaCouchDbProvider.fetchRecordsBySearchFilterPhrases(query,
                 this.corUsersObjectHierarchyJSON).then(corUserResult => {
-                    if (corUserResult.status === 'SUCCESS') {
-                        const userInfo = JSON.parse(JSON.stringify(corUserResult['records']))
-                        this.loggedUserDetail = userInfo[0];
-                    }
-                }).catch(err => {
-                    console.log('Menu Componenet - Exception Received in core user fetching method')
-                });
+                if (corUserResult.status === 'SUCCESS') {
+                    const userInfo = JSON.parse(JSON.stringify(corUserResult['records']))
+                    this.loggedUserDetail = userInfo[0];
+                }
+            }).catch(err => {
+                console.log('Menu Componenet - Exception Received in core user fetching method')
+            });
         } else {
             const options = {};
             const selector = {}
@@ -618,7 +787,7 @@ export class MenuComponent {
         if ((submenuheight + menuitemtop) > window.innerHeight) {
             submenu['style']['bottom'] = '0' + 'px';
             submenu['style']['right'] = submenuwidth + 'px';
-        }else {
+        } else {
             submenu['style']['top'] = '0' + 'px';
             submenu['style']['right'] = submenuwidth + 'px';
         }
@@ -634,7 +803,7 @@ export class MenuComponent {
                 document.getElementsByClassName("cs-top-horizontal-menu-more-btn")[0]['style']['display'] = 'block';
                 if (i >= this.menuService.assignedMenuGroups.length) {
                     this.menuService.popupitems.push(this.menuService.assignedMenuGroups.pop());
-                }else {
+                } else {
                     this.menuService.popupitems.push(this.menuService.assignedMenuGroups[i])
                     this.menuService.assignedMenuGroups.splice(i, 1);
                 }

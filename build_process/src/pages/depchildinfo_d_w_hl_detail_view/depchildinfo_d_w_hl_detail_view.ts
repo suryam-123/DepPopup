@@ -346,6 +346,20 @@ import {
         "relationShipType": "null",
         "objectType": "PRIMARY",
         "childObject": [{
+            "objectId": "71655",
+            "fieldId": "967516",
+            "objectName": "depemployee",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 74408,
+            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
+            "isStandardObject": "N",
+            "relationShipType": "",
+            "includeFields": true,
+            "formulaField": [{
+                "fieldName": "depformulan"
+            }],
+            "childObject": []
+        }, {
             "objectId": "71658",
             "fieldId": "965874",
             "objectName": "deppersonalinfo",
@@ -365,31 +379,6 @@ import {
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71658,
                 "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup",
-                "isStandardObject": "N",
-                "relationShipType": "",
-                "includeFields": true,
-                "formulaField": [{
-                    "fieldName": "depformulan"
-                }],
-                "childObject": []
-            }, {
-                "objectId": "5",
-                "fieldId": "967712",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71658,
-                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser",
-                "isStandardObject": "Y",
-                "relationShipType": "",
-                "includeFields": true,
-                "childObject": []
-            }, {
-                "objectId": "71655",
-                "fieldId": "967507",
-                "objectName": "depemployee",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71658,
-                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
@@ -425,7 +414,43 @@ import {
                     "fieldName": "depformulan"
                 }],
                 "childObject": []
+            }, {
+                "objectId": "71655",
+                "fieldId": "967507",
+                "objectName": "depemployee",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71658,
+                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4",
+                "isStandardObject": "N",
+                "relationShipType": "",
+                "includeFields": true,
+                "formulaField": [{
+                    "fieldName": "depformulan"
+                }],
+                "childObject": []
+            }, {
+                "objectId": "5",
+                "fieldId": "967712",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71658,
+                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser",
+                "isStandardObject": "Y",
+                "relationShipType": "",
+                "includeFields": true,
+                "childObject": []
             }]
+        }, {
+            "objectId": "5",
+            "fieldId": "967510",
+            "objectName": "COR_USERS",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 74408,
+            "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
+            "isStandardObject": "Y",
+            "relationShipType": "",
+            "includeFields": true,
+            "childObject": []
         }, {
             "objectId": "71655",
             "fieldId": "965870",
@@ -442,28 +467,17 @@ import {
             "childObject": []
         }, {
             "objectId": "71655",
-            "fieldId": "967516",
+            "fieldId": "967514",
             "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
+            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
             "formulaField": [{
                 "fieldName": "depformulan"
             }],
-            "childObject": []
-        }, {
-            "objectId": "5",
-            "fieldId": "967510",
-            "objectName": "COR_USERS",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
-            "isStandardObject": "Y",
-            "relationShipType": "",
-            "includeFields": true,
             "childObject": []
         }, {
             "objectId": "71655",
@@ -472,20 +486,6 @@ import {
             "objectType": "LOOKUP",
             "referenceObjectId": 74408,
             "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
-            "isStandardObject": "N",
-            "relationShipType": "",
-            "includeFields": true,
-            "formulaField": [{
-                "fieldName": "depformulan"
-            }],
-            "childObject": []
-        }, {
-            "objectId": "71655",
-            "fieldId": "967514",
-            "objectName": "depemployee",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
@@ -569,40 +569,40 @@ import {
     private dataPaths: Array < {
         traversalPath: string;requiredTemp: boolean
     } > = [{
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
         requiredTemp: false
     }, {
         traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
         requiredTemp: false
     }, {
-        traversalPath: 'depchildinfo_DUMMY',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
-        requiredTemp: false
-    }, {
         traversalPath: 'depchildinfo_DUMMY$$COR_USERS_depcoruser',
         requiredTemp: false
     }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
         requiredTemp: false
     }, {
         traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
         requiredTemp: false
     }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY',
+        requiredTemp: false
+    }, {
         traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser',
         requiredTemp: false
     }, ]
     public expandParentObjectData: 'C' | 'HO' | 'FO' = 'FO';

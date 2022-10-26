@@ -106,7 +106,7 @@ export class approotpage implements OnInit {
     return new Promise(function (resolve) {
       let dbReq = indexedDB.open("CheckIncongito");
       dbReq.onsuccess = function (event) {
-        console.log("DbReq", dbReq)
+       
         resolve('SUCCESS');
       }
       dbReq.onerror = function (event) {
@@ -131,7 +131,7 @@ export class approotpage implements OnInit {
   initialSetup() {
     this.appUtilityObj.initialSetup().then(res => {
       if (res === 'Success') {
-        console.log('initialSetup approot page');
+        
         this.syncPageSubscribe();
         if (this.embedingRoute) {
           let embedingparam = { 'params': this.embedingRouteParams }

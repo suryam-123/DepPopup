@@ -8,6 +8,7 @@ import { IonicModule, PopoverController } from '@ionic/angular';
 import { popoverpage } from './popoverpage';
 import { cspfmamdModule } from 'src/app/cspfmamd.module';
 import { SharedModule } from 'src/core/utils/shared.module';
+import { cspfmBalloonComponentmodule } from 'src/core/components/cspfmBalloonComponent/cspfmBalloonComponent.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     IonicModule,
     cspfmamdModule,
     SharedModule,
+    cspfmBalloonComponentmodule,
     RouterModule.forChild(routes)
   ],
   declarations: [popoverpage]

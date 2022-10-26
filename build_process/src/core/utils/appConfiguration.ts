@@ -6,9 +6,9 @@ import { Injectable } from "@angular/core";
 export class appConfiguration {
 
   public configuration = {
-    "appId": "",
-    "languageList": [],
-    "defaultLanguage": "",
+    "appId": 14477,
+    "languageList": [{"code":"en","displayName":"English"}],
+    "defaultLanguage": {"code":"en","displayName":"English"},
     "defaultMenu": {
       "isMapEnable": false,
       "isCalendarEnable": false,
@@ -16,11 +16,11 @@ export class appConfiguration {
     },
     "layoutLevelDataFetching": "",
     "isGridMenuEnabled": false,
-    "nodeGUID": "",
+    "nodeGUID": "FUqUKRGhWTyKeGK",
     "isGlobalSearchEnabled": false,
-    "associationDbConfigInfo" : {},
-    "userAssignmentDbConfigInfo" : {},
+    "associationDbConfigInfo" : {"associationConfigDbName" :"pfm_15_formula"},
+    "userAssignmentDbConfigInfo" : {"userAssignmentConfigDbName" :"pfm_15_formula"},
     "globalSearchConfigInfo":[],
-    "appBuilderTimeZone": "",
+    "appBuilderTimeZone": "Asia/Calcutta",
   };
 }

@@ -31,6 +31,7 @@ export class cspfmLookupService {
             isOnlySubordinates: this.lookupFieldInfo[lookupInputConfig['lookupFieldId']]['isOnlySubordinates'],
             isStandardObject: this.lookupFieldInfo[lookupInputConfig['lookupFieldId']]['isStandardObject']
         }
+
         const lookupInput = {}
         let getFieldName = lookupColumns[0]["fieldName"];
         let regexQuery = '';
@@ -43,6 +44,7 @@ export class cspfmLookupService {
         // works when criteria lookup call
         if (lookupInputConfig['lookupCriteriaQueryConfig'][lookupInputConfig['lookupFieldId']]) {
             let result = this.makeQueryForCriteriaLookup(lookupInputConfig['criteriaDataObject'], this.cspfmLookupCriteriaUtils, lookupInputConfig['formGroup'], lookupInputConfig['dataObject'], lookupInputConfig['lookupCriteriaValidationFields'], lookupInputConfig['lookupFieldId'], lookupInputConfig['lookupCriteriaQueryConfig'], objectId);
+
             if (result['criteriaRestriction']) {
                 return result;
             } else {
@@ -64,6 +66,7 @@ export class cspfmLookupService {
         } else {
             lookupHierarchyJson['query'] = queryString
         }
+
         // works when coruser lookup call
         lookupHierarchyJson['query'] = additionalData['isOnlySubordinates'] ? this.makeQueryForCoruserSubordinates(lookupHierarchyJson, lookupInputConfig['loggedUserCorHeirarchyDetail']) : lookupHierarchyJson['query']
         lookupInput['lookupColumnDetails'] = lookupColumns;
@@ -98,7 +101,7 @@ export class cspfmLookupService {
         for(let i = 0; i < argumentColumns.length; i++ ){
             let element = argumentColumns[i]
             const sourceColumnRootPath = element['rootPath']
-            console.log("element", element)
+            
 
             if(element['sourceColumnFieldType'] === 'ROLLUPSUMMARY'){
                 
@@ -154,7 +157,7 @@ export class cspfmLookupService {
             let query = queryString  + rollupField  
             let designDocName = "pfm" + lookupHierarchyJson['objectId'] + "rollup_search"
             return  this.dataProvider.fetchFormulaRollupForDependentLookup(query, designDocName, type).then(response => {
-                console.log("result", response)
+                
                 const res = {
                     'referenceId': response
                 }
@@ -169,7 +172,7 @@ export class cspfmLookupService {
             let query = queryString + formulaField  
             let designDocName = "pfm" + lookupHierarchyJson['objectId'] + "formula_search"
             return  this.dataProvider.fetchFormulaRollupForDependentLookup(query, designDocName, type).then(response => {
-                console.log("result", response)
+                
                 const res = {
                     'referenceId': response
                 }
@@ -208,6 +211,7 @@ export class cspfmLookupService {
         }
         let criteriaFieldCheckResut = cspfmLookupCriteriaUtils.checkCriteriaEntryFieldsAvailable(lookupCriteriaValidationFields[lookupFieldId], criteriaDataObject, dataObject)
         lookupCriteriaValidationFields[lookupFieldId] = JSON.parse(JSON.stringify(criteriaFieldCheckResut['criteriaFields']))
+
         const criteriaConfig = {
             'lookupCriteriaQueryConfig': lookupCriteriaQueryConfig[lookupFieldId],
             'criteriaDataObject': criteriaDataObject[objectId],

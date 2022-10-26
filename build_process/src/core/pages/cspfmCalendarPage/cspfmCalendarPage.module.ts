@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +8,7 @@ import { cspfmCalendarPage } from './cspfmCalendarPage';
 import { SharedModule } from 'src/core/utils/shared.module';
 import { registerLocaleData } from '@angular/common';
 import { cspfmamdModule } from 'src/app/cspfmamd.module';
+import { cspfmBalloonComponentmodule } from 'src/core/components/cspfmBalloonComponent/cspfmBalloonComponent.module';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 
@@ -24,10 +25,11 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     cspfmamdModule,
-    IonicModule,CalendarModule,
+    IonicModule, CalendarModule,
+    cspfmBalloonComponentmodule,
     RouterModule.forChild(routes)
   ],
   declarations: [cspfmCalendarPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class cspfmCalendarPageModule {}
+export class cspfmCalendarPageModule { }

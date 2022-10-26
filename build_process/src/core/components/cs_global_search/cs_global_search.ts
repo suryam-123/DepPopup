@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cs_global_search.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -140,7 +142,7 @@ export class cs_global_search implements OnInit {
       }
     })
     this.addIconPopoverControl.valueChanges.subscribe(userInput => {
-      console.log("Global search onChange", userInput)
+      
 
       if(this.currentFilterField == 'objectName') {
         this.filteredResult['objectName'] = this.result['objectName'].filter(option => option['objectDisplayName'].toLowerCase().includes(userInput.toLowerCase()));
@@ -283,7 +285,7 @@ export class cs_global_search implements OnInit {
       // let searchDocName = "globalsearch_test" //+ String(this.appConfig.configuration.appId)
       let searchDocName = "globalsearch_" + String(this.appConfig.configuration.appId)
 
-      console.log("Global search called for =>", this.globalSearchValue)
+      
       this.dbService.fetchGlobalSearchRecords(globalSearchQuery, searchDocName, this.globalSearchValue).then(res => {
         if(this.globalSearchValue == '' && this.isFetching) {
           this.isFetching = false

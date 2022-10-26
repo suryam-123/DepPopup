@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmUserAssignment.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -324,14 +326,14 @@ ngOnDestroy(){
         topPos =topPos;
         if (topPos +ddhei > winhei) {
           topPos= topPos-ddhei-$(e.currentTarget).closest('.cs-userinfoblock-header').height()+5;
-          console.log("ififtop2winif topPos", topPos)
+          
         }
          }
         else{
         let forPopUpWindow = (winwid - popWinWidth) / 2;
         leftPost =leftPost+forPopUpWindow+60;
         if (leftPost+ddwid > winwid) {
-          console.log("popupwindowif")
+          
           leftPost =  leftPost-ddwid;  
         }
         topPos=$(e.currentTarget).closest('.cs-userassign-click').offset().top;
@@ -347,7 +349,7 @@ ngOnDestroy(){
     leftPost = leftPost+40;
       if (leftPost + ddwid > winwid) {
         leftPost = leftPost - ddwid + (e.currentTarget.offsetWidth / 2);
-        console.log("1stelsePostdia",leftPost);
+        
       }
       topPos = topPos + 65;
       if (topPos +ddhei > winhei) {
@@ -464,7 +466,7 @@ ngOnDestroy(){
         leftPost = $(e.currentTarget).closest('.cs-userassign-click').position().left - ($(e.currentTarget).closest('.cs-userinfoblock').width()-20- pos.left);
         let forPopUpWindow = (winwid - popWinWidth) / 2;
         if (leftPost+forPopUpWindow+ddwid > winwid) {
-          console.log("popupwindowif")
+          
           leftPost =  leftPost-ddwid+forPopUpWindow+40; //btnwidth   
         } else {
           leftPost =leftPost+forPopUpWindow+15; //padding
@@ -645,11 +647,11 @@ ngOnDestroy(){
     }
     
     if (this.corGroupDataTempList.length > 0) {
-      console.log("corGroupDataTempList length..",this.corGroupDataTempList.length);
+      
                       
       let idList = []
       this.userAssignmentDataList['Group'].map(el =>  idList.push(el['user_group_id']))
-      console.log("idList length..",idList);
+     
       if (this.searchKey === '') {
    
         for(let i =0;i<this.corGroupDataTempList.length;i++){
@@ -1740,7 +1742,7 @@ for (let i = 0; i < this.corUserDataTempList.length; i++) {
 
   @HostListener('document:click', ['$event', '$event.target'])
   onClick(event: MouseEvent, targetElement: HTMLElement): void {
-      console.log("General Click");
+      
     $("#selectUser").addClass("cs-display-none");
     $("#selectUser").removeClass("cs-display-block");
     $("#selectedUser").addClass("cs-display-block");
@@ -1933,7 +1935,7 @@ for (let i = 0; i < this.corUserDataTempList.length; i++) {
       $('.cs-userassignment-tabs').find('.tabs__tab:nth-child(1)').trigger('click');
       var ulWidth:HTMLElement = document.getElementsByClassName("tabs__tab-bar")[0] as HTMLElement;
         var uloffsetWidth = ulWidth.offsetWidth;
-        console.log(uloffsetWidth);
+        
         var widthTop = document.getElementsByClassName("cs-userassign-userprofile")[0] as HTMLElement;
         widthTop.style.maxWidth = uloffsetWidth + 'px';
         var widthBottom: any = document.getElementsByClassName('cs-tab-back-none');

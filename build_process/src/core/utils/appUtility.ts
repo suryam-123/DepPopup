@@ -2,7 +2,7 @@ import { Injectable, NgZone, Injector } from '@angular/core';
 import { AppPreferences } from '@awesome-cordova-plugins/app-preferences/ngx';
 import { dbConfiguration } from '../db/dbConfiguration';
 import { appConfiguration } from './appConfiguration';
-import { ToastController, PopoverController, NavController,ToastOptions } from '@ionic/angular';
+import { ToastController, PopoverController, NavController, ToastOptions } from '@ionic/angular';
 import * as moment from 'moment';
 import * as lodash from 'lodash';
 import 'moment-timezone';
@@ -63,8 +63,8 @@ export class appUtility {
     private _chainsysSessionId;
     private _platformWebNodeHostName;
     private _designerNodeHostName;
-    private _contextName:string;
-    private _assignedApps:any;
+    private _contextName: string;
+    private _assignedApps: any;
     // private _versionNumber: Number;
     private platformJsonPath = './platform.json';
     private _sessionId;
@@ -109,8 +109,8 @@ export class appUtility {
     private maxCouchServerCheckCount = 3;
     public profilePicSrc;
 
-    constructor(public notificationObj: cspfmNotificationService,public attachmentdbConfiguration: attachmentDbConfiguration, public formuladbConfiguration: formulaDbConfiguration, public cspfmexecutionPouchdbConfiguration: cspfmExecutionPouchDbConfiguration, public appPreferences: AppPreferences,
-        public popoverController: PopoverController, private dbConfiguration: dbConfiguration, private appConfig: appConfiguration,private httpClient:HttpClient,
+    constructor(public notificationObj: cspfmNotificationService, public attachmentdbConfiguration: attachmentDbConfiguration, public formuladbConfiguration: formulaDbConfiguration, public cspfmexecutionPouchdbConfiguration: cspfmExecutionPouchDbConfiguration, public appPreferences: AppPreferences,
+        public popoverController: PopoverController, private dbConfiguration: dbConfiguration, private appConfig: appConfiguration, private httpClient: HttpClient,
         public toastCtrl: ToastController, public datePipe: DatePipe, public theme: themeChanger, public statusBar: StatusBar, public metaDbConfig: metaDbConfiguration, public navCtrl: NavController,
         public router: Router, public translateService: TranslateService, public matDialog: MatDialog, public snackBar: MatSnackBar, private zone: NgZone,
         private dialog: MatDialog, private slickgridPopoverService: SlickgridPopoverService, public injector: Injector,) {
@@ -121,42 +121,42 @@ export class appUtility {
         return this._orgTimeZone;
     }
 
-    set orgTimeZone(orgTimezone: string){
+    set orgTimeZone(orgTimezone: string) {
         this._orgTimeZone = orgTimezone;
     }
     get chainsysSessionId(): string {
         return this._chainsysSessionId;
     }
 
-    set chainsysSessionId(chainsysSessionId: string){
+    set chainsysSessionId(chainsysSessionId: string) {
         this._chainsysSessionId = chainsysSessionId;
     }
     get platformWebNodeHostName(): string {
         return this._platformWebNodeHostName;
     }
 
-    set platformWebNodeHostName(platformWebNodeHostName: string){
+    set platformWebNodeHostName(platformWebNodeHostName: string) {
         this._platformWebNodeHostName = platformWebNodeHostName;
     }
     get designerNodeHostName(): string {
         return this._designerNodeHostName;
     }
 
-    set designerNodeHostName(designerNodeHostName: string){
+    set designerNodeHostName(designerNodeHostName: string) {
         this._designerNodeHostName = designerNodeHostName;
     }
     get contextName(): string {
         return this._contextName;
     }
 
-    set contextName(contextName: string){
+    set contextName(contextName: string) {
         this._contextName = contextName;
     }
     get assignedApps(): any {
         return this._assignedApps;
     }
 
-    set assignedApps(assignedApps: any){
+    set assignedApps(assignedApps: any) {
         this._assignedApps = assignedApps;
     }
 
@@ -266,7 +266,7 @@ export class appUtility {
         return this._userGroups;
     }
 
-    set userGroups(userGroupsInfo){
+    set userGroups(userGroupsInfo) {
         this._userGroups = userGroupsInfo;
     }
 
@@ -274,7 +274,7 @@ export class appUtility {
         return this._userResponsibilities;
     }
 
-    set userResponsibilities(userResponsibilitiesInfo){
+    set userResponsibilities(userResponsibilitiesInfo) {
         this._userResponsibilities = userResponsibilitiesInfo;
     }
 
@@ -282,7 +282,7 @@ export class appUtility {
         return this._loggedUserInfo;
     }
 
-    set loggedUserInfo(loggedUserInfo){
+    set loggedUserInfo(loggedUserInfo) {
         this._loggedUserInfo = loggedUserInfo;
     }
 
@@ -315,6 +315,23 @@ export class appUtility {
 
     // isMobile checking using platform.json file
             initialSetup() {
+            this.isMobile = false;
+            this.getDeviceResolution()
+            const taskList = [];
+            taskList.push(this.fetchUserIdAndOrgIdFromPreference().then(userIdOrgIdRes => {
+                return Promise.resolve(userIdOrgIdRes);
+            }));
+
+            const routes: Routes = this.router.config;
+            taskList.push(this.setLandingPage(routes).then(res => {
+                return res;
+            }));
+            return Promise.all(taskList).then(allRes => {
+                return Promise.resolve(allRes[0]);
+            })
+            }
+            
+            /*initialSetup() {
         return this.httpClient.get(this.platformJsonPath).toPromise()
             .then((response) => {
                 const resValue = response;
@@ -344,7 +361,7 @@ export class appUtility {
                 return Promise.resolve('Invalid session');
             });
     }
-    //isMobileResolution checking for list refresh for web using change listener
+    */ //isMobileResolution checking for list refresh for web using change listener
     getDeviceResolution() {
         const mediaQuery = window.matchMedia("(max-device-width: 480px)");
         if (mediaQuery.matches) {
@@ -382,8 +399,7 @@ export class appUtility {
     fetchSelectedTheme() {
         if (this.isMobile) {
             this.appPreferences.fetch('selectedTheme').then((PreferenceFetchRes) => {
-                console.log("selectedTheme fetch = ", PreferenceFetchRes);
-                console.log("selectedTheme fetch JSON = ", JSON.stringify(PreferenceFetchRes));
+
                 if (PreferenceFetchRes) {
                     const theme = JSON.parse(PreferenceFetchRes)
                     const primary = theme['primary'];
@@ -394,7 +410,7 @@ export class appUtility {
                     this.statusBar.backgroundColorByHexString('#dabc56');
                     this.theme.changeTheme(JSON.stringify(defaultTheme));
                     this.appPreferences.store('selectedTheme', JSON.stringify(defaultTheme)).then(PreferenceStoreRes => {
-                        console.log("selectedTheme success =", PreferenceStoreRes);
+                        
                     })
                 }
 
@@ -503,7 +519,7 @@ export class appUtility {
 
                 this.appPreferences.fetch('login_response').then(res => {
                     const assignedApps = JSON.parse(res);
-                    if(assignedApps.length > 0) {
+                    if (assignedApps.length > 0) {
                         const currentAppId = this.appConfig.configuration.appId;
                         let currentObject = assignedApps.filter(app => app.appId === currentAppId);
                         this.applicationName = currentObject[0]['appDisplayName'];
@@ -529,8 +545,8 @@ export class appUtility {
             this.makeDateTimePickerFormatAndZoneValues();
 
             this.assignedApps = this.simpleCrypto.decryptObject(localStorage.getItem("assignedAppArray"))['assignedApps'];
-             this.assignedApps= Array.isArray(this.assignedApps)?this.assignedApps:JSON.parse(this.assignedApps);
-            if(this.assignedApps.length > 0) {
+             this.assignedApps = Array.isArray(this.assignedApps) ? this.assignedApps : JSON.parse(this.assignedApps);
+            if (this.assignedApps.length > 0) {
                 const currentAppId = this.appConfig.configuration.appId;
                 let currentObject = this.assignedApps.filter(app => app.appId === currentAppId);
                 this.applicationName = currentObject[0]['appDisplayName'];
@@ -542,7 +558,29 @@ export class appUtility {
                 return Promise.resolve(this.getAdditionalInfo(this.orgId, this.userId, this.sessionId));
             }
             // Note : Do not remove the below mentioned commentted line, used in builder source.
-            // else {
+            
+            else {
+                this.dbConfiguration.remoteDbUrl = 'http://172.26.3.88:5984/';
+                this.dbConfiguration["credentials"] = 'YXBwZGF0YXVzZXI6NGdLclFOQUhMNXVZMkRrRmQ2SEQ=';
+                
+                //attachment dbconfiguration assignment
+                this.attachmentdbConfiguration.remoteDbUrl = 'http://172.26.3.88:5984/';
+                this.attachmentdbConfiguration["credentials"] = 'YXBwZGF0YXVzZXI6NGdLclFOQUhMNXVZMkRrRmQ2SEQ=';
+
+                //cspfm execution dbconfiguration assignment
+                this.cspfmexecutionPouchdbConfiguration.remoteDbUrl = 'http://172.26.3.88:5984/';
+                this.cspfmexecutionPouchdbConfiguration["credentials"] = 'YXBwZGF0YXVzZXI6NGdLclFOQUhMNXVZMkRrRmQ2SEQ=';
+
+                //formula dbconfiguration assignment
+                this.formuladbConfiguration.remoteDbUrl = 'http://172.26.3.88:5984/';
+                this.formuladbConfiguration["credentials"] = 'YXBwZGF0YXVzZXI6NGdLclFOQUhMNXVZMkRrRmQ2SEQ=';
+
+                //metadata dbconfiguration assignment
+                this.metaDbConfig.remoteDbUrl = 'http://172.26.3.88:5984/';
+                this.metaDbConfig["credentials"] = 'YXBwZGF0YXVzZXI6NGdLclFOQUhMNXVZMkRrRmQ2SEQ=';
+                return Promise.resolve(this.checkAppId(this.isMobile));
+            }
+            
            //     // Note : If sessionid is there for all the platform(CSPFM,JWT). Need to remove this else part and if condition.
             //     this.dbConfiguration.databaseName = this.dbConfiguration.configuration.databaseName;
             //     this.dbConfiguration.remoteDbUrl = this.dbConfiguration.configuration.remoteDbUrl;
@@ -595,12 +633,12 @@ export class appUtility {
 
         const serviceURl = '/apps/additionalInfoService';
         return this.httpClient
-            .post(serviceURl,postData).toPromise()
+            .post(serviceURl, postData).toPromise()
             .then(res => {
                 const response = res;
                 if (response['status'] === 'SUCCESS') {
                     const simpleCrypto = new SimpleCrypto(postData.inputparams['sessionToken']);
-                    let credentials_proxy:any = simpleCrypto.decrypt(response["couchInfo"]);
+                    let credentials_proxy: any = simpleCrypto.decrypt(response["couchInfo"]);
                     credentials_proxy = JSON.parse(credentials_proxy);
                     //Socket server url
                     this.socketServerURL = response['socketServerUrl']
@@ -625,15 +663,15 @@ export class appUtility {
                     this.initNotification();
                     return Promise.resolve(this.checkAppId(this.isMobile));
                 } else {
-                    if(response['status'] === 'Upgrade Required'){
+                    if (response['status'] === 'Upgrade Required') {
                         let buttonInfo = [{
-                            "name":"OK",
-                            handler: ()=>{
+                            "name": "OK",
+                            handler: () => {
                                 window.location.replace('/apps');
                             }
                         }];
-                        this.showInfoAlert(response["message"],buttonInfo,true);
-                        return Promise.resolve(response['status']);
+                        this.showInfoAlert(response["message"], buttonInfo, true);
+                        return Promise.resolve(response['status'])
                     } else if (response === "Session Expired") {
                         this.presentToast("Session Expired");
                         setTimeout(() => {
@@ -777,12 +815,12 @@ export class appUtility {
             window.open(weburl, '_system');
         }
     }
-    presentToast(message,toastDuration?:number): MatSnackBarRef<SimpleSnackBar> {
+    presentToast(message, toastDuration?: number): MatSnackBarRef<SimpleSnackBar> {
        
         return this.zone.run(() => {
-            if(toastDuration){
+            if (toastDuration) {
                 return this.snackBar.open(message, '', { duration: toastDuration });
-            }else{
+            } else {
                 return this.snackBar.open(message, '', { duration: 2000 });
             }
         
@@ -841,7 +879,7 @@ export class appUtility {
             .then(data => {
                 let responseBody = data;
                 let status = responseBody['status'];
-                console.log("Status : " + JSON.stringify(status));
+
             }, error => {
                 console.log("Error : " + JSON.stringify(error));
             });
@@ -864,7 +902,7 @@ export class appUtility {
                 }
             } else {
                 options['selector']['data.createdby'] = userIDs[0]
-                console.log(options);
+                
             }
         } else {
             console.log("User Id restriction is not set and objectType is : ", referenceDetail['objectType'].toUpperCase());
@@ -929,7 +967,7 @@ export class appUtility {
             this.eventSubscriptionObject[dataSource][tableName] = {};
             this.eventSubscriptionObject[dataSource][tableName][layoutId] = "";
         }
-        console.log("Set EventSubscriptionlayoutIds : ", this.eventSubscriptionObject)
+        
     }
     getEventSubscriptionlayoutIds(dataSource, tableName) {
         if (this.eventSubscriptionObject[dataSource]) {
@@ -957,10 +995,10 @@ export class appUtility {
             tempObject = this.getObject(tempObject, pathArray[i], modifiedRecordWithConversion)            
             if (tempObject) {
                 if (i === pathArray.length - 1) {
-                    if(providerType){
+                    if (providerType) {
                         let isValueChanged = this.checkFormulaOrRollupColumnValuesChanged(modified, tempObject, formulaAndRollupFieldInfo)
                         return type + "_2_" + tempObject['id'] === modified['id'] && isValueChanged
-                    }else{
+                    } else {
                         return type + "_2_" + tempObject['id'] === modified['id']
                     }
                 }
@@ -986,7 +1024,7 @@ export class appUtility {
             } else {
                 if (Object.keys(object[key]).length > 0) {
                     return object[key]
-                } else if(modifiedRecordWithConversion!= null && modifiedRecordWithConversion[object['type']] === object['id']){
+                } else if (modifiedRecordWithConversion != null && modifiedRecordWithConversion[object['type']] === object['id']) {
                     return modifiedRecordWithConversion
                 } else {
                     return false
@@ -1046,15 +1084,15 @@ export class appUtility {
         return queryValue.replace(/[!-/:-@[-`{-~]/g, '?').toLowerCase().split(' ').join('?');
     }
 
-    checkFormulaOrRollupColumnValuesChanged(modified, object, formulaAndRollupFieldInfo){
+    checkFormulaOrRollupColumnValuesChanged(modified, object, formulaAndRollupFieldInfo) {
         let isChangesOccurred = false;
         let objectType = modified['doc']['data']['type']
-        if(formulaAndRollupFieldInfo[objectType] && formulaAndRollupFieldInfo[objectType].length > 0){
+        if (formulaAndRollupFieldInfo[objectType] && formulaAndRollupFieldInfo[objectType].length > 0) {
             formulaAndRollupFieldInfo[objectType].forEach(element => {
                 let splittedField = element.split("__")
                 let finalField = splittedField[0]
-                if(modified['doc']['data'][finalField]){
-                    if(object[element] !== modified['doc']['data'][finalField]){
+                if (modified['doc']['data'][finalField]) {
+                    if (object[element] !== modified['doc']['data'][finalField]) {
                         isChangesOccurred = true;
                     }
                 }
@@ -1064,7 +1102,7 @@ export class appUtility {
     }
 
     webServiceCallForFieldTracking(data, fields?) {
-        const serviceUrl = this.appBuilderURL + '/appmBuilderMapping';
+        const serviceUrl = this.appBuilderURL + '/appmBuilderMapping'
 
         const params = {
             "session_id": this.sessionId,
@@ -1072,13 +1110,13 @@ export class appUtility {
             "org_id": this.orgId,
             "object_id": data['type'].replace('pfm', ''),
             "_id": data['type'] + '_' + 2 + '_' + data['id'],
-            "contextName":this.contextName,
-            "userProfileZone":this.userTimeZone,
-            "userDateTimeFormat":this.userDatePickerFormat,
-            "field_name":fields
+            "contextName": this.contextName,
+            "userProfileZone": this.userTimeZone,
+            "userDateTimeFormat": this.userDatePickerFormat,
+            "field_name": fields
         }
 
-        console.log("Params:", params, serviceUrl);
+
         var dialogData;
         if (navigator.onLine) {
             return this.httpClient.post(serviceUrl, params).toPromise()
@@ -1086,7 +1124,7 @@ export class appUtility {
                     let res = response
                     if (res['status'] === 'Success') {
                         res['message'] = res['message'].replace(/'\'/g, '')
-                        console.log('URL:', res['message']);
+
                         dialogData = {
                             url: res['message'],
                             type: "Audit",
@@ -1166,7 +1204,7 @@ export class appUtility {
             case "Button":
                 return this.calculateButtonLength(actionInfo)
             case "IconandButton":
-                return this.calculateButtonLength(actionInfo)+50
+                return this.calculateButtonLength(actionInfo) + 50
             case "Icon":
                 return 50
             default:
@@ -1188,7 +1226,7 @@ export class appUtility {
     }
 
       initNotification() {
-        if(!this.isEmbeddingEnabled){
+        if (!this.isEmbeddingEnabled) {
             this.notificationObj.initsocket(this.socketServerURL, {
                 transports: ['websocket', 'xhr-polling'],
                 'reconnection delay': 2000,
@@ -1205,14 +1243,14 @@ export class appUtility {
             .subscribe((notification: string) => {
                 if (notification) {
                     var notifyArray = JSON.parse(notification);
-                    if(notifyArray.constructor === Array && notifyArray.length > 0){
+                    if (notifyArray.constructor === Array && notifyArray.length > 0) {
                         notifyArray.forEach(element => {
-                            if(element['notificationRecipients']){
+                            if (element['notificationRecipients']) {
                                 var notificationRecipients = element['notificationRecipients']
                                 var loggeduserNotifyDetail = notificationRecipients.find(recipient => {
                                     return recipient.userId === this.userId
                                 })
-                                if(loggeduserNotifyDetail && loggeduserNotifyDetail['isSeen'] === 'N'){
+                                if (loggeduserNotifyDetail && loggeduserNotifyDetail['isSeen'] === 'N') {
                                     this.notifications.push(element)
                                 }
                             }
@@ -1285,8 +1323,8 @@ export class appUtility {
     checkCouchConnection() {
         const header = this.addCredentialforMobile('AJAX', this.dbConfiguration)
         let url = this.dbConfiguration.remoteDbUrl + '_up'
-        console.log("couch connection check started");
-        this.httpClient.get(url,header).toPromise()
+
+        this.httpClient.get(url, header).toPromise()
         .then(res => {
             const jsonObj = res
                 if (jsonObj['status'] === 'ok') {
@@ -1303,9 +1341,9 @@ export class appUtility {
                         this.showListenerStopAlert('Database connection interrupted due to some technical issue. Application needs to reload')
                     }
                 }
-            }).catch(err => {
+            }, error => {
                 this.couchServerCheckedCount += 1;
-                console.log("couch connection up check error :", err);
+                console.log("couch connection up check error :", error);
                 if (this.couchServerCheckedCount < this.maxCouchServerCheckCount) {
                     this.checkCouchConnection()
                 } else {
@@ -1325,7 +1363,7 @@ export class appUtility {
         }
     }
     getDependentObjectId(data, relationalObjectInfo) {
-        if (relationalObjectInfo['fieldType'] === "MASTERDETAIL" ) {
+        if (relationalObjectInfo['fieldType'] === "MASTERDETAIL") {
             if (data[relationalObjectInfo['relationalObjectId']] && data[relationalObjectInfo['relationalObjectId']].length > 0) {
                 if (relationalObjectInfo['child'] === "") {
                     return data[relationalObjectInfo["relationalObjectId"]][0]['id'];
@@ -1333,26 +1371,26 @@ export class appUtility {
                     return this.getDependentObjectId(data[relationalObjectInfo["relationalObjectId"]][0], relationalObjectInfo["child"]);
                 }
             }
-        }else if (relationalObjectInfo['fieldType'] === "HEADER" || relationalObjectInfo['fieldType'] === "LOOKUP") {
+        } else if (relationalObjectInfo['fieldType'] === "HEADER" || relationalObjectInfo['fieldType'] === "LOOKUP") {
             if (data[relationalObjectInfo['relationalObjectId']]) {
                 if (relationalObjectInfo['child'] === "") {
-                    return data[relationalObjectInfo["relationalObjectId"]]['id'] ?  data[relationalObjectInfo["relationalObjectId"]]['id'] :  data[relationalObjectInfo["relationalObjectId"]];                
+                    return data[relationalObjectInfo["relationalObjectId"]]['id'] ? data[relationalObjectInfo["relationalObjectId"]]['id'] : data[relationalObjectInfo["relationalObjectId"]];                
                 }
-            } else{
+            } else {
                 return this.getDependentObjectId(data[relationalObjectInfo["relationalObjectId"]], relationalObjectInfo["child"]);
             }
         }
     }
-    async showInfoAlert(info:string,buttonInfo?:Array<any>,disableClose?:boolean) {
+    async showInfoAlert(info: string, buttonInfo?: Array<any>, disableClose?: boolean) {
         const dialogConfig = new MatDialogConfig()
-        if(!buttonInfo) {
+        if (!buttonInfo) {
             buttonInfo = [
                 {
                     "name": "OK"
                 }
             ]
         }
-        if(disableClose){
+        if (disableClose) {
             disableClose = disableClose;
         } else {
             disableClose = false;
@@ -1369,12 +1407,12 @@ export class appUtility {
 
         this.matDialog.open(cspfmAlertDialog, dialogConfig);
     }
-    showInfoAlertForErrorHandling(title,info) {
+    showInfoAlertForErrorHandling(title, info) {
         const dialogConfig = new MatDialogConfig()
 
         dialogConfig.data = {
             title: title,
-            description :info,
+            description: info,
             buttonInfo: [{
                 "name": "OK"
             }],
@@ -1387,7 +1425,7 @@ export class appUtility {
          this.dialog.open(cspfmAlertDialog, dialogConfig);
     }
     navigationToComponent(actionInfo, dependantObjectId, redirectUrlForNav?) {
-        let action = actionInfo['actionType'] === "EDIT" ? "Edit" : "View";
+        let action = actionInfo['actionType'].toLowerCase() === "edit" ? "Edit" : "View";
         redirectUrlForNav = redirectUrlForNav ? redirectUrlForNav : '/menu/' + actionInfo['navigationInfo']['redirectUrl'];
         let navigationParameters = {
             action: action,
@@ -1416,7 +1454,7 @@ export class appUtility {
                     workFlowFields = objectConfiguration[type]["workflow"]
                     Object.keys(workFlowFields).forEach(workFlowField => { 
                         if (workFlowFields[workFlowField]["fieldId"] === fieldId) {
-                            workFlowMapping[fieldId]= workFlowFields[workFlowField]["fieldLabel"]
+                            workFlowMapping[fieldId] = workFlowFields[workFlowField]["fieldLabel"]
                         }
                     })
                     this.fetchLockedUserDetail(data, workFlowMapping, cspfmMetaCouchDbProvider)
@@ -1444,15 +1482,15 @@ export class appUtility {
             corUsersObjectHierarchyJSON).then(corUserResult => {
                 if (corUserResult.status !== "SUCCESS" || (corUserResult.status === "SUCCESS" && corUserResult["records"].length === 0)) {
                     this.showInfoAlert(userId + "  has locked for " + workFlowMapping[dataObject["systemAttributes"]["fieldId"]] + " on " +
-                        this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat,this.userZoneOffsetValue));
+                        this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat, this.userZoneOffsetValue));
                     return;
                 }
                 this.showInfoAlert(corUserResult["records"][0]["first_name"] + "  has locked for " +
                     workFlowMapping[dataObject["systemAttributes"]["fieldId"]] + " on " +
-                    this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat,this.userZoneOffsetValue));
+                    this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat, this.userZoneOffsetValue));
             }).catch(err => {
                 this.showInfoAlert(userId + "  has locked for " + workFlowMapping[dataObject
-                ["systemAttributes"]["fieldId"]] + " on " + this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat,this.userZoneOffsetValue));
+                ["systemAttributes"]["fieldId"]] + " on " + this.datePipe.transform(utcMilliseconds, this.userDateTimeFormat, this.userZoneOffsetValue));
             });
     }   
 
@@ -1497,7 +1535,7 @@ export class appUtility {
         this.zone.run(() => {
             const snackBar = this.presentToast("No internet connection. Please check your internet connection and try again.");
             snackBar.afterDismissed().subscribe(observer => {
-                if(parent['refreshData']) {
+                if (parent['refreshData']) {
                     parent['refreshData']();
                 }
             });
@@ -1584,7 +1622,7 @@ export class appUtility {
         return this.dialog.open(cspfmAlertDialog, dialogConfig);
     }
     getValueInfoforWebservice(relationalObjectInfo, data, element) {
-        if (relationalObjectInfo['fieldType'] === "MASTERDETAIL" ) {
+        if (relationalObjectInfo['fieldType'] === "MASTERDETAIL") {
             if (data[relationalObjectInfo['relationalObjectId']] && data[relationalObjectInfo['relationalObjectId']].length > 0) {
                 if (relationalObjectInfo['child'] === "") {
                     return data[relationalObjectInfo["relationalObjectId"]][0][element['fieldName']];
@@ -1594,10 +1632,10 @@ export class appUtility {
             } else {
                 return data[element['fieldName']];
             }
-        }else if (relationalObjectInfo['fieldType'] === "HEADER") {
+        } else if (relationalObjectInfo['fieldType'] === "HEADER") {
             if (data[relationalObjectInfo['relationalObjectId']]) {
                 if (relationalObjectInfo['child'] === "") {
-                    return  data[relationalObjectInfo["relationalObjectId"]]['id'] ?  data[relationalObjectInfo["relationalObjectId"]]['id'] :  data[relationalObjectInfo["relationalObjectId"]];             
+                    return data[relationalObjectInfo["relationalObjectId"]]['id'] ? data[relationalObjectInfo["relationalObjectId"]]['id'] : data[relationalObjectInfo["relationalObjectId"]];             
                    }
             }
         }
@@ -1641,7 +1679,7 @@ export class appUtility {
         urlConfig['fieldInfo'] = urlConfig['fieldInfo'] || [];
         outputResponse['records'] = outputResponse['records'] || [];
         let urlData: any = "";
-        let displayFieldName, urlFieldName,displayFieldValue, urlFieldValue, objectId, childObject;
+        let displayFieldName, urlFieldName, displayFieldValue, urlFieldValue, objectId, childObject;
         if (outputResponse['records'].length === 0) {
             this.presentToast('No record found');
             return;
@@ -1652,11 +1690,11 @@ export class appUtility {
                 let fieldConfig = {
                     "fieldName": urlConfig['fieldInfo'][0]["fieldName"],
                     "fieldType": "URL",
-                    "from":"webService"
+                    "from": "webService"
                 }
                 let record = this.getRecordInfo(outputResponse['records'], urlConfig['fieldInfo'][0]);
                 displayFieldName = fieldConfig['fieldName'];
-                if(!Array.isArray(record)) {
+                if (!Array.isArray(record)) {
                     let tempRecord = record;
                     record = [];
                     record.push(tempRecord);
@@ -1691,7 +1729,7 @@ export class appUtility {
                 for (let object of urlConfig['fieldInfo']) {
                     if (object['urlFieldType'] === 'D') {
                         displayrecord = this.getRecordInfo(outputResponse['records'], object);
-                        if(!Array.isArray(displayrecord)) {
+                        if (!Array.isArray(displayrecord)) {
                             let tempRecord = displayrecord;
                             displayrecord = [];
                             displayrecord.push(tempRecord);
@@ -1700,7 +1738,7 @@ export class appUtility {
                     }
                     if (object['urlFieldType'] === 'V') {
                         valueRecord = this.getRecordInfo(outputResponse['records'], object);
-                        if(!Array.isArray(valueRecord)) {
+                        if (!Array.isArray(valueRecord)) {
                             let tempRecord = valueRecord;
                             valueRecord = [];
                             valueRecord.push(tempRecord);
@@ -1708,9 +1746,9 @@ export class appUtility {
                         urlFieldName = object["fieldName"];
                     }
                 }
-                if (displayFieldName && urlFieldName && displayrecord.length === valueRecord.length ) {
+                if (displayFieldName && urlFieldName && displayrecord.length === valueRecord.length) {
                     let data = [], urlType = '';
-                    for (let i = 0;i<displayrecord.length; i++) {
+                    for (let i = 0; i < displayrecord.length; i++) {
                         data.push({
                             displayValue: displayrecord[i][displayFieldName],
                             urlValue: valueRecord[i][urlFieldName]
@@ -1734,9 +1772,9 @@ export class appUtility {
             htmlElement.innerHTML = "";
         }
         const urlPopoverClassName = 'cspfmUrlPopover';
-        import(`../components/cspfmUrlPopover/${urlPopoverClassName}.ts`).then(urlPopoverInstance =>{
-            if(urlPopoverInstance && urlPopoverInstance[urlPopoverClassName]){
-                this.slickgridPopoverService.appendComponentToElement_View('cs-dropdown-' + layoutId,urlPopoverInstance[urlPopoverClassName] , {
+        import(`../components/cspfmUrlPopover/${urlPopoverClassName}.ts`).then(urlPopoverInstance => {
+            if (urlPopoverInstance && urlPopoverInstance[urlPopoverClassName]) {
+                this.slickgridPopoverService.appendComponentToElement_View('cs-dropdown-' + layoutId, urlPopoverInstance[urlPopoverClassName], {
                     isMultipleUrlField: false,
                     fieldName: displayFieldName,
                     inputType: "slickgrid-view",
@@ -1747,13 +1785,13 @@ export class appUtility {
                     enableCloseButton: true,
                     urlArray: urlData['urlDBValue'] || "",
                     layoutId: layoutId,
-                    isTooltipVisible:urlConfig['isTooltipVisible']
+                    isTooltipVisible: urlConfig['isTooltipVisible']
                 })
-            } else{
+            } else {
                 console.error('cspfmurlPopover component file is missing')
             }
-        }).catch(error=>{
-            console.error('cspfmurlPopover component file is missing',error)
+        }).catch(error => {
+            console.error('cspfmurlPopover component file is missing', error)
 
         })
     }
@@ -1771,7 +1809,7 @@ export class appUtility {
                     this.getRecordInfo(childArray, fieldInfo['child'])
                 }
             }
-            if(childArray.length === 0) {
+            if (childArray.length === 0) {
                 return objectArray
             }
             return childArray
@@ -1793,15 +1831,15 @@ export class appUtility {
         return actionInfo_View;
     }
     async presentToastController(message: string, showCloseButton?: boolean, closeButtonText?: string) {
-        let options:ToastOptions = {
+        let options: ToastOptions = {
             message: message,
-            duration:2000
+            duration: 2000
         }
-        if(showCloseButton){
-           options['buttons'] =  [
+        if (showCloseButton) {
+           options['buttons'] = [
                {
                  side: 'end',
-                 text:  closeButtonText ? closeButtonText : '',
+                 text: closeButtonText ? closeButtonText : '',
                  handler: () => {
                    toast.dismiss();
                  }
@@ -1830,7 +1868,7 @@ export class appUtility {
                 this.isMobile = false;
             });
     }
-    showFileManagementPopUp(actionInfo, primaryObjects, objectIds, prominetDataMapping, fileAttachmentInfo, dataProviderObject,dataObject, cspfmDataDisplay) {
+    showFileManagementPopUp(actionInfo, primaryObjects, objectIds, prominetDataMapping, fileAttachmentInfo, dataProviderObject, dataObject, cspfmDataDisplay) {
         const prominentFieldArray = []
         objectIds.forEach(objectId => {
             let tempObjectId;
@@ -1889,7 +1927,7 @@ export class appUtility {
                     "isRecordAvailable": true,
                     "recordId": primaryObject[tempObjectId.replace("pfm", "pfm_") + "_id"]
                 })
-            }else {
+            } else {
                 prominentFieldArray.push({
                     "parentDisplayName": fileAttachmentInfo[tempObjectId]['objectDisplayName'],
                     "isRecordAvailable": false
@@ -1897,7 +1935,7 @@ export class appUtility {
             }
         })
         
-        console.log("prominentFieldArray ==> ", prominentFieldArray);
+
 
         var recordAvailableList = prominentFieldArray.filter(item => item.isRecordAvailable === true);
         if (recordAvailableList.length === 0) {
@@ -1924,28 +1962,28 @@ export class appUtility {
             this.presentToast("Records not available for this object. So you can't able to access file manage")
         }
     }
-    addCredentialforMobile(request, provider){
+    addCredentialforMobile(request, provider) {
         let returnAuthValue = undefined;
         let mobile = true;
-        if(request === 'AJAX' && mobile){
+        if (request === 'AJAX' && mobile) {
             returnAuthValue = {
                 headers: {
                     Authorization: 'Basic ' + provider["credentials"]
                 }
             }
-        } else if (request === 'AUTH' && mobile){
+        } else if (request === 'AUTH' && mobile) {
             returnAuthValue = {
                 "username": window.atob(provider["credentials"]).split(":")[0], 
                 "password": window.atob(provider["credentials"]).split(":")[1]
             }
-        } else if (request === 'HEADER' && mobile){
+        } else if (request === 'HEADER' && mobile) {
             returnAuthValue = new Headers();
             returnAuthValue.append('Authorization', 'Basic ' + provider["credentials"]);
         }
         return returnAuthValue
     }
-    getUtcTimeZoneMillsecondsFromDateTimeString(dateString: string, givenTimeZone:  'user' | 'system', format?) {
-        let dateFormat = format ? format +' '+ this.hoursFormat: this.userDateTimePickerFormat
+    getUtcTimeZoneMillsecondsFromDateTimeString(dateString: string, givenTimeZone: 'user' | 'system', format?) {
+        let dateFormat = format ? format + ' ' + this.hoursFormat : this.userDateTimePickerFormat
         let offSetValue
         let givenTimeZoneMilliSeconds
         let utcTimeZoneMilliSeconds
@@ -1953,11 +1991,11 @@ export class appUtility {
         let systemOffSetValue = moment.tz(systemTimeZone).utcOffset()
         let givenTimeZoneValue = givenTimeZone === 'user' ? this.userTimeZone : systemTimeZone 
         offSetValue = givenTimeZoneValue && moment.tz(givenTimeZoneValue).utcOffset()
-        givenTimeZoneMilliSeconds = dateString && (moment(dateString,dateFormat).toDate()).getTime()
+        givenTimeZoneMilliSeconds = dateString && (moment(dateString, dateFormat).toDate()).getTime()
         utcTimeZoneMilliSeconds = givenTimeZoneMilliSeconds && givenTimeZoneMilliSeconds - (offSetValue * 60 * 1000) + (systemOffSetValue * 60 * 1000)
         return utcTimeZoneMilliSeconds
     }
-    getDateTimeStringFromUtcMilliseconds(utcTimeZoneMilliseconds: number, requiredTimeZone:  'user' | 'system') {
+    getDateTimeStringFromUtcMilliseconds(utcTimeZoneMilliseconds: number, requiredTimeZone: 'user' | 'system') {
         let offSetValue
         let requiredTimeZoneMilliSeconds
         let requiredTimeZoneDateString = 'No Date Found'
@@ -1969,15 +2007,15 @@ export class appUtility {
         requiredTimeZoneDateString = requiredTimeZoneMilliSeconds && moment(requiredTimeZoneMilliSeconds).format(this.userDateTimePickerFormat)
         return requiredTimeZoneDateString
     }  
-    getUtcMillisecondsFromGivenTimeZoneMilliSeconds(givenTimeZoneMilliSeconds: number, requiredTimeZone:  'user' | 'system') {
+    getUtcMillisecondsFromGivenTimeZoneMilliSeconds(givenTimeZoneMilliSeconds: number, requiredTimeZone: 'user' | 'system') {
         let systemTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         let systemOffSetValue = moment.tz(systemTimeZone).utcOffset()
-        let requiredTimeZoneValue = requiredTimeZone === 'user' ? this.userTimeZone :  systemTimeZone
+        let requiredTimeZoneValue = requiredTimeZone === 'user' ? this.userTimeZone : systemTimeZone
         let offSetValue = requiredTimeZoneValue && moment.tz(requiredTimeZoneValue).utcOffset()
         const utcTimeZoneMilliseconds = givenTimeZoneMilliSeconds - (offSetValue * 60 * 1000) + (systemOffSetValue * 60 * 1000)
         return utcTimeZoneMilliseconds
     }
-    getUserTimeZoneMillisecondsFromUtcTimeZoneMilliSeconds(utcTimeZoneMilliSeconds: number, requiredTimeZone:  'user' | 'system') {
+    getUserTimeZoneMillisecondsFromUtcTimeZoneMilliSeconds(utcTimeZoneMilliSeconds: number, requiredTimeZone: 'user' | 'system') {
         let systemTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         let systemOffSetValue = moment.tz(systemTimeZone).utcOffset()
         let requiredTimeZoneValue = requiredTimeZone === 'user' ? this.userTimeZone : systemTimeZone
@@ -2182,7 +2220,7 @@ pasteCallback(event: any) {
         if (classContext["expandParentObjectData"] === 'C' || classContext["expandParentObjectData"] === 'FO') {
             classContext["previousGridState"] = classContext["expandParentObjectData"];
             classContext["expandParentObjectData"] = "HO";
-        }else {
+        } else {
             if (classContext["previousGridState"]) {
                 classContext["expandParentObjectData"] = classContext["previousGridState"] === 'C' ? 'FO' : (classContext["previousGridState"] === 'HO' ? 'FO' : 'C');
             } else {
@@ -2240,14 +2278,14 @@ pasteCallback(event: any) {
         };
         dialogConfig.panelClass = 'custom-dialog-container'
         const cloneActionClassName = 'cspfmCloneMappingInfo';
-         import(`../pages/cspfmCloneMappingInfo/${cloneActionClassName}.ts`).then(cloneActionInstance =>{
-            if(cloneActionInstance[cloneActionClassName]){
+         import(`../pages/cspfmCloneMappingInfo/${cloneActionClassName}.ts`).then(cloneActionInstance => {
+            if (cloneActionInstance[cloneActionClassName]) {
                 this.dialog.open(cloneActionInstance[cloneActionClassName], dialogConfig);
-            }else{
+            } else {
                 console.error('cspfmCloneMappingInfo component file is missing')
             }
-        }).catch(error=>{
-            console.error('cspfmCloneMappingInfo component file is missing',error)
+        }).catch(error => {
+            console.error('cspfmCloneMappingInfo component file is missing', error)
         })
 
     }
@@ -2398,17 +2436,17 @@ pasteCallback(event: any) {
             }
         }
     }
-    focusAgainstConditionalValidationFields(validationFields,conditionalValidationJson?){
+    focusAgainstConditionalValidationFields(validationFields, conditionalValidationJson?) {
         return new Promise(async (resolve, reject) => {
             setTimeout(() => {
                 validationFields['involvedFields'].forEach(validateField => {
                     let validationFieldFieldname
                     let objectId 
-                    if(validateField['objectType']=== 'LOOKUP'){
-                        validationFieldFieldname = 'pfm' + validateField['objectId'] +'_'+validateField['referenceFieldId'] + "_searchKey";
+                    if (validateField['objectType'] === 'LOOKUP') {
+                        validationFieldFieldname = 'pfm' + validateField['objectId'] + '_' + validateField['referenceFieldId'] + "_searchKey";
                         objectId = 'pfm' + conditionalValidationJson['objectHierarchy']['objectId'];
 
-                    }else{
+                    } else {
                         validationFieldFieldname = validateField["fieldType"] === "LOOKUP" ? validateField["fieldName"] + "_searchKey" : validateField["fieldName"];
                         objectId = "pfm" + validateField['objectId']
                     } 

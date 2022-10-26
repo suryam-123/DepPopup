@@ -79,7 +79,7 @@ $(document).ready(function () {
         // if (isOpen || trigger.hasClass('cs-dropdown-disabled')) return;
         // Show it
         trigger.addClass("cs-dropdown-open");
-        console.log("Open>>>>>>>>>>>>>>>");
+       
         jqDropdown.data("cs-dropdown-trigger", trigger).show();
 
         // Position it
@@ -122,7 +122,7 @@ $(document).ready(function () {
         $(document).find(".cs-dropdown-open").removeClass("cs-dropdown-open");
       }
         // }
-        console.log("Close<<<<<<<<<<<<<<<<<<<<<<");
+       
       }
 
       function position() {

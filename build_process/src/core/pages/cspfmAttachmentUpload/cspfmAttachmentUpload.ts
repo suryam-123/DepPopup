@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: cspfmAttachmentUpload.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Component, ApplicationRef, OnInit } from '@angular/core';
 import { NavController, LoadingController,IonSlides,  NavParams, ModalController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -110,7 +119,8 @@ export class cspfmAttachmentUpload implements OnInit {
     reader.onabort = (err: any) => {
       console.log('onabort', err);
      };
-    reader.onloadend = () => { console.log('DONE', reader.readyState); }
+    reader.onloadend = () => { 
+      
     reader.readAsArrayBuffer(this.fileToWrite);
     }
     } else {

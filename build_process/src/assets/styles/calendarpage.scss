@@ -888,3 +888,17 @@
 .mat-menu-content:not(:empty){
   padding:0px !important;
 }
+
+.cs-balloon-for-calender{
+  display: flex;
+  z-index: 1100;
+  label{
+    font-size: 12px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+

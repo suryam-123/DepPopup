@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmRecordAssociation.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -250,7 +252,7 @@ export class cspfmRecordAssociation implements OnInit {
     }
 
     onActionCellClick(mouseEvent, args) {
-        console.log("Delete icon clicked")
+        
 
         let parentElement = mouseEvent && mouseEvent.target && mouseEvent.target['parentElement'] || undefined;
         let actionView = parentElement && parentElement.getAttribute('action-view') || undefined;
@@ -314,7 +316,7 @@ export class cspfmRecordAssociation implements OnInit {
         }
 
         var slickgridHeaderMenu = document.getElementsByClassName("slick-header-menubutton");
-        console.log("slickgridHeaderMenu", slickgridHeaderMenu);
+       
 
         if (slickgridHeaderMenu && slickgridHeaderMenu.length > 0) {
             for (let i = 0; i < slickgridHeaderMenu.length; i++) {
@@ -323,6 +325,8 @@ export class cspfmRecordAssociation implements OnInit {
         }
 
         angularGrid.filterService.onSearchChange.subscribe((input) => { console.log("input :", input) });
+
+          
         configObject['gridObj'] = angularGrid.slickGrid;
         configObject['gridObj'].setHeaderRowVisibility(false);
         configObject['gridObj']['cspfm_grid_custom_data'] = {
@@ -373,9 +377,9 @@ export class cspfmRecordAssociation implements OnInit {
 
         var slick_grid_cls = document.getElementsByClassName('slick-gridmenu');
         Array.prototype.forEach.call(slick_grid_cls, function (el) {
-            console.log(el);
+           
             if (el.style.display !== 'none') {
-                console.log(el.classList);
+                
                 let top = posit.top + 27
                 let left = posit.left
                 let maxHeight = (window_height - (posit.top + 30)) - 50
@@ -458,7 +462,7 @@ export class cspfmRecordAssociation implements OnInit {
                 return
             }
         }
-        console.log("lookupInput", result)
+       
 
         const dialogConfig = new MatDialogConfig()
         dialogConfig.data = {
@@ -1069,7 +1073,7 @@ export class cspfmRecordAssociation implements OnInit {
         var extraPaddingWidth = 35
         let associationFieldNameId = associationConfig['fieldName'] + '_' + objectId + '_' + layoutId + '_div'
         if (document.getElementById(associationFieldNameId) === null || document.getElementById(associationFieldNameId).offsetWidth === 0) {
-            console.log("Error in handling chips")
+           
         } else {
             this.primaryChipArray[associationConfig['fieldName']] = []
             this.secondaryChipArray[associationConfig['fieldName']] = []
@@ -1079,7 +1083,7 @@ export class cspfmRecordAssociation implements OnInit {
             }
 
             var fieldWidth = document.getElementById(associationFieldNameId).offsetWidth
-            console.log("Field Width", fieldWidth);
+            
             let moreButtonWidth = 35
             var valueWidth = 0 + moreButtonWidth
             selectedRecordsArray.forEach(selectedRec => {

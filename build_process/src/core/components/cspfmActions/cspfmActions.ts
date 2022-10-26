@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmActions.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -85,8 +87,8 @@ export class cspfmActions {
       body: this.actionData['body'],
       isHtml: true
     };
-    this.emailComposer.open(email).then(() => console.log('mail success'))
-      .catch(() => console.log('mail error'));
+    this.emailComposer.open(email).then(() => 
+    console.log('mail success')).catch(() => console.log('mail error'));
   }
 
 }

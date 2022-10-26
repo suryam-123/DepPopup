@@ -72,7 +72,7 @@ export class languagepage implements OnInit {
   }
 
   toggleChange(event, code) {
-    console.log(event);
+   
     if(!event.target.checked && this.selectedLanguageCode === code) {
         event.target.checked = true
     }

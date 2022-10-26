@@ -724,10 +724,11 @@ export class cspfmSlickgridUtils {
         topval = leftval = rightval = bottomval = undefined
       }
       if (topval >= $(this).scrollTop()) {
-        console.log("True ScrollTop => ", $(this).scrollTop())
+
         window.$('.cs-dropdown-open').jqDropdown('show', ['.cs-dropdown'])
       } else {
-        console.log("False ScrollTop => ", $(this).scrollTop())
+
+
         $('.cs-dropdown').empty()
         $('.cs-dropdown').removeClass('dontCloseInGloablClick cs-fabDropDown')
         window.$('.cs-dropdown-open').jqDropdown('hide', ['.cs-dropdown'])
@@ -1171,7 +1172,7 @@ export class cspfmSlickgridUtils {
     Array.prototype.forEach.call(slick_grid_cls, function (el) {
      
       if (el.style.display !== 'none') {
-        console.log(el.classList);
+        
         let top = posit.top + 27
         let left = posit.left
         let maxHeight = (window_height - (posit.top + 30)) - 50
@@ -1204,18 +1205,13 @@ export class cspfmSlickgridUtils {
      let dataObject = {}
      if (inlineLookupConfig.argumentColumns != undefined) {
        let dataPaths = this.layoutCongifuration['layoutConfiguration'][layoutId]['sectionObjectTraversal'][childObjName]['objectTraversal'];
-       console.log("datapaths", dataPaths)
+       
        Object.keys(dataPaths).forEach(dataPath => {
          let objectRoot = this.layoutCongifuration['layoutConfiguration'][layoutId]['sectionObjectTraversal'][childObjName]['objectTraversal'][dataPath];
          let result = {};
          result = this.cspfmDataTraversalUtilsObject.getDataObject(JSON.parse(JSON.stringify(dataContext)), objectRoot);
-         console.log(result)
          dataObject[dataPath] = JSON.parse(JSON.stringify(result))
        })
-       console.log("dataObject => ", dataObject);
- 
-       console.log("inlineLookupConfig.argumentColumns ==>", inlineLookupConfig.argumentColumns);      
- 
        for (const argumentColumns of inlineLookupConfig.argumentColumns) {
          const rootPath = argumentColumns["rootPath"]
          const sourceField = argumentColumns["sourceColumn"]
@@ -1294,7 +1290,7 @@ export class cspfmSlickgridUtils {
         rowCount = recordsCount
       }
       let rowCalc = rowCount * 40
-      console.log('rowCount => ', rowCount);
+
 
       if (!filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterApplied'] && filterSectionDetail['filterAppliedFields'].length > 0) {
         $('.cs_hightfix_by_script').css({
@@ -1326,7 +1322,7 @@ export class cspfmSlickgridUtils {
         }
       }else {
         angularGrid.paginationService.onPaginationChanged.subscribe((e) => {
-          console.log('Hight result => ', e);
+
           let dataTo = e.dataTo
           let dataFrom = e.dataFrom
           let rowscount = (dataTo - dataFrom) + 1
@@ -2562,7 +2558,7 @@ export class cspfmSlickgridUtils {
       }
       listenerName[childObjectName] = this.subscribeLazyLoading(sectionalObject['dataFetchMode'], layoutId + '_' + childObjectName, getAngularGrid, columns[childObjectName])
     })
-    console.log("listenerName", listenerName)
+
     return listenerName;
   }
 
@@ -2747,7 +2743,7 @@ export class cspfmSlickgridUtils {
           columnDefWidth += formattedTextWidthInPx;
           columnDefinitions[colIdx]['width']= (columnDefWidth > columnDef['titlewidth']) ? ((columnDefWidth > 350)? 350 : columnDefWidth) : ((columnDef['titlewidth'] > 250) ? 250 : columnDef['titlewidth'])
         }else {
-          console.log("type3",columnDef['params'],columnDef)
+          console.log("type3")
         }
       });
     }

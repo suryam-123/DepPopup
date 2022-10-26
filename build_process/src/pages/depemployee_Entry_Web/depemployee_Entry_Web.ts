@@ -303,9 +303,9 @@ import {
     public criteriaInvolvedFieldsList = {};
     public criteriaDataObject = {};
     public lookupCriteriaValidationFields = {};
+    private tableName_pfm71655 = 'pfm71655';
     public __COR_USERS$tableName = this.objectTableMapping.mappingDetail['COR_USERS'];
     private pfm5_967501_searchKey;
-    private tableName_pfm71655 = 'pfm71655';
     public team_930536mapping = this.pfmObjectConfig.objectConfiguration[this.__depemployee$tableName]['selectionFieldsMappingForEntry']['team'];
     public location_930537mapping = this.pfmObjectConfig.objectConfiguration[this.__depemployee$tableName]['selectionFieldsMappingForEntry']['location'];
     public depmultiselect_967499mapping = this.pfmObjectConfig.objectConfiguration[this.__depemployee$tableName]['selectionFieldsMappingForEntry']['depmultiselect'];
@@ -352,11 +352,11 @@ import {
     private dataPaths: Array < {
         traversalPath: string;requiredTemp: boolean
     } > = [{
-        traversalPath: 'depemployee_DUMMY$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
         traversalPath: 'depemployee_DUMMY',
         requiredTemp: true
+    }, {
+        traversalPath: 'depemployee_DUMMY$$COR_USERS_depcoruser',
+        requiredTemp: false
     }, ]
     private lookupPaths: {
         [lookupField: string]: Array < {

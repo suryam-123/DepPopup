@@ -1,3 +1,12 @@
+
+
+/*   
+ *    File: attachmentCouchDbProvider.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { cspfmObservableListenerUtils } from 'src/core/dynapageutils/cspfmObservableListenerUtils';
 import PouchDB from 'pouchdb';
@@ -174,7 +183,7 @@ export class attachmentCouchDbProvider {
     }
 
     private onDatabaseChange = (change) => {
-        console.log('change', change);
+        
         const parsedId = this.db.rel.parseDocID(change.id);
         change['dataProvider'] = 'CouchDB';
         this.observableListenerUtils.emit(parsedId.type, change);
@@ -256,7 +265,6 @@ export class attachmentCouchDbProvider {
                 return { status: this.failed, message: 'Save failed' };
             }).catch(error => {
                 if (error.status === 409) {
-                    console.log('Conflict');
                     return this.fetchDocWithoutRelationshipByTypeAndId(updatedDoc.type, id).then(response => {
                         if (response.status === 'SUCCESS') {
                             const document = this.replaceResponseWithUpdatedObject(updatedDoc, response.records[0]);
@@ -963,7 +971,7 @@ export class attachmentCouchDbProvider {
     // Find docs by selector
     private findDocsWithSelector(options, isSingleBatchFetch, arrayList?) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+            
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options, isSingleBatchFetch, arrayList).then(res => {
                     return res;

@@ -1,7 +1,8 @@
 <div [attr.data-cs-dropdown]="dripDownAttribute">
   <mat-toolbar class="cs-cal-toolbar">
     <span class="right-align"></span>
-    <button class="cs-mat-icononly cs-cal-cross" matTooltip="Close"  matTooltipPosition="above" matTooltipClass="calender-tooltip" id="ACT_calendar_popup_close">
+    <button class="cs-mat-icononly cs-cal-cross" matTooltip="Close" matTooltipPosition="above"
+      matTooltipClass="calender-tooltip" id="ACT_calendar_popup_close">
       <em class="icon-cs-reject-o" (click)="closeButtonPressed()"></em>
     </button>
   </mat-toolbar>
@@ -17,10 +18,13 @@
       <p class="cs-year-label">{{displayMessage}}</p>
     </mat-label>
   </div>
-  <mat-list class="cs-list-padding cs-cal-listscroll cs-custom-scroll" *ngIf="items && items.length != 0">
-    <mat-list-item *ngFor="let item of items" (click)="onItemPressed(item)"
-      [style.background-color]="item.color.primary" class="cs-event-chip cs-cursor-pointer"
-      matTooltip="{{item.title}}" matTooltipPosition="above" id="{{'ACT_calendar_popupevent_' + item.id}}">
+  <mat-list class="cs-list-padding cs-cal-listscroll cs-custom-scroll" *ngIf="items && items.length != 0"
+    #appToolbar="">
+    <mat-list-item *ngFor="let item of items" (click)="onItemPressed(item, $event)" mdePopoverTriggerOn="hover"
+      [mdePopoverTriggerFor]="appPopover" [mdePopoverTargetAt]="appToolbar"
+      (mouseenter)="showBalloonLayoutOnHover(item,'hover',$event)" [style.background-color]="item.color.primary"
+      class="cs-event-chip cs-cursor-pointer cs-balloon-for-calender" matTooltip="{{item.title}}"
+      matTooltipPosition="above" id="{{'ACT_calendar_popupevent_' + item.id}}">
       <em [ngClass]="[item.meta.calendarIcon, 'cs-meet-icon']"></em>
       <mat-label class="cs-ts-13 cs-meet-label">
         {{item.title}}
@@ -29,12 +33,20 @@
   </mat-list>
   <mat-list class="cs-list-padding cs-cal-listscroll cs-custom-scroll" *ngIf="eventLayout && eventLayout.length != 0">
     <mat-list-item *ngFor="let itemObj of eventLayout" (click)="onCreatePressed(itemObj)"
-      [style.background-color]="itemObj.calendarColor" class="cs-event-chip cs-cursor-pointer" matTooltip="{{itemObj.displayName | translate}}" matTooltipPosition="above" matTooltipClass="calender-tooltip-2"
+      [style.background-color]="itemObj.calendarColor" class="cs-event-chip cs-cursor-pointer"
+      matTooltip="{{itemObj.displayName | translate}}" matTooltipPosition="above" matTooltipClass="calender-tooltip-2"
       id="{{'ACT_calendar_popupcreate_' + itemObj.calendarName}}">
       <em [ngClass]="[itemObj.calendarIcon, 'cs-meet-icon']"></em>
       <mat-label class="cs-ts-13 cs-meet-label">
-        {{ itemObj.displayName | translate }}
+        {{itemObj.displayName | translate}}
       </mat-label>
     </mat-list-item>
   </mat-list>
+  <div>
+    <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false"
+      mdePopoverOffsetX="100">
+      <cspfmBalloonComponent *ngIf="balloonEventType === 'hover'" (closePopover)="closePopover()"
+        [balloonLayoutInfoFromView]="balloonLayoutInfo"></cspfmBalloonComponent>
+    </mde-popover>
+  </div>
 </div>

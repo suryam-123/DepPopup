@@ -135,7 +135,7 @@ export class metaDbValidation {
                 this.makeResultJson(this.metaDbConfig.SUCCESS, "");
                 return Promise.resolve(true);
             }
-            console.log("changesType.....", changesType);
+            
 
             if (changesType === this.metaDbConfig.corUsersObject) {
                 return this.userValidation().then(res => {
@@ -248,7 +248,7 @@ export class metaDbValidation {
 
     userValidation() {
 
-        console.log("userValidation..." + JSON.stringify(this.corUsersObjectHierarchyJSON));
+       
         if (navigator.onLine) {
             var query = "type:" + this.metaDbConfig.corUsersObject + " AND " + "user_id:" + Number(this.apputilityObject.userId)
             return this.metaDbProvider.fetchDocsUsingSearchApi(query, this.metaDbConfig.corUsersObject).then(res => {
@@ -306,7 +306,7 @@ export class metaDbValidation {
     appBaseValidation() {
         const currentAppId = this.appConfig.configuration.appId;
 
-        console.log("appBaseValidation..." + JSON.stringify(this.corApplicationHierarchyJSON));
+        
 
         if (navigator.onLine) {
             var query = "type:" + this.metaDbConfig.corApplications + " AND " + "application_id:" + currentAppId + " AND " + "is_active:_y"
@@ -368,7 +368,8 @@ export class metaDbValidation {
             selector['data.user_id_p'] = Number(this.apputilityObject.userId);
             options['selector'] = selector;
             this.aplicationAssignmentObjectHierarchyJSON['options'] = options;
-            console.log("appAssignmentValidation.......", JSON.stringify(options)); return this.metaDbProvider.fetchDataWithReference(this.aplicationAssignmentObjectHierarchyJSON).then(appAssignmentFetchResult => {
+          
+            return this.metaDbProvider.fetchDataWithReference(this.aplicationAssignmentObjectHierarchyJSON).then(appAssignmentFetchResult => {
 
                 return this.isAssignedAppsAreChanged(assignedAppsDetail, appAssignmentFetchResult)
 

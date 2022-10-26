@@ -1,0 +1,56 @@
+<mat-toolbar [id]=221659 class="cs-mat-pageheadtoolbar" color="primary"><button mat-button="" slot="start" *ngIf="appUtilityConfig.isMobileResolution">
+        <ion-menu-button></ion-menu-button>
+    </button>
+    <div class="cs-mat-toolbartitle"><span class="cs-mat-pageheadtitle">{{'DepPersonInfoList_WEB_List.Layout.DepPersonInfoList_WEB_List' | translate}}</span></div><span class="example-spacer"></span><button mat-stroked-button="" title="{{'DepPersonInfoList_WEB_List.Action.New_1' | translate}}" (click)="addButton_7956959_Onclick()" style="" class="cs-mat-iconandlabelonly cs-mat-pagehead-eachactions mat-flat-button" id="DepPersonInfoList_WEB_List_New_1"><em style="" class="icon-mat-add"></em><span style="" class="cs-mat-btnlabel">New</span></button>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading || sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['isLoading']" mode="indeterminate"></mat-progress-bar>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomFetchLoading">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src="assets/img/dataloading.gif" /></div>
+</div>
+<div class="cs-custom-scroll cs-scroll-body-height" (scroll)="onScroll($event)">
+    <div class="cs-mat-main-content">
+        <div id="SEC_DepPersonInfoList_WEB_List_dep_person_list" class="cs-mat-contentmain">
+            <div id="cs-dropdown-{{layoutId}}" class="cs-dropdown cs-custom-scroll"></div>
+            <mat-card class="cs-list-view cs-mat-parent-slick cs-fullpage-slickgrid">
+                <div class="cs-header-name cs-slick-title cs-pr">
+                    <mat-card-header class="cs-slickoption-btn"><button title="Menu" mat-icon-button="" class="cs-mat-icononly cs-ts-22 cs-rmar" id="cspfm_deppersonalinfo_slickgrid_menubtn" (click)="slickgridUtils.toggleGridMenu($event, angularGrid, sectionObjectDetails, __deppersonalinfo$tableName, matrixAngularGridInstance)"><em class="icon-mat-dehaze cs-tw-600"></em></button>
+                        <mat-card-title>Dep Person List<span class="cs-record-count-badge" *ngIf="paginationConfigInfo['currentPageWithRecord']==='false' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch')">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.totalItems}}</span><span class="cs-record-count-badge" *ngIf="paginationConfigInfo['currentPageWithRecord']==='false' && dataFetchMode === 'OnClickBatch'">{{pagination['total_rows']}}</span></mat-card-title>
+                    </mat-card-header>
+                    <div class="cs-mat-slickgrid cs-pull-right" [hidden]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['currentMode']=='matrix'"><span class="cs-custome-pagination" *ngIf="gridObj && gridObj['cspfm_grid_custom_data'] && gridObj['cspfm_grid_custom_data']['isPaginationEnabled'] && slickgridResultList && slickgridResultList.length > 0 && paginationConfigInfo['paginationPosition']==='TOP'">
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB')) ">
+                                <mat-label class="cs-ts-14">Items per page : </mat-label>
+                                <mat-select class="cs-ts-14" (selectionChange)="slickgridUtils.selectionChange($event, angularGrid)" [value]="angularGrid && angularGrid.paginationService && angularGrid.paginationService.itemsPerPage" [(ngModel)]="gridOptions['pagination']['pageSize']" (click)="appUtilityConfig.take_position($event,isLoading)">
+                                    <mat-option class="cs-ts-14" *ngFor="let itemPerPage of gridOptions['pagination']['pageSizes']" [value]="itemPerPage">{{itemPerPage}}</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['currentPageWithRecord']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.dataFrom}}</mat-label>
+                                <mat-label class="cs-ts-14 cs-grey"> - {{angularGrid && angularGrid.paginationService && angularGrid.paginationService.dataTo}}</mat-label>
+                                <mat-label class="cs-ts-14"><span> of </span>{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.totalItems}}</mat-label>
+                            </div>
+                            <div class="cs-rmar-15" *ngIf="paginationConfigInfo['numberOfPages']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch'  || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))">
+                                <mat-label class="cs-ts-14 cs-grey cs-tw-600">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber}} / </mat-label>
+                                <mat-label class="cs-ts-14 cs-grey">{{angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageCount}}<span> Page </span></mat-label>
+                            </div><button class="cs-mat-icononly cs-nomargin" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))" color="primary" mat-icon-buttonng-reflect-disable-ripple="true" title="Previous" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber === 1}" (click)="slickgridUtils.navigationChange('prev', angularGrid)"><em class="icon-mat-navigate_before"></em></button><button class="cs-mat-icononly cs-nomargin" *ngIf="paginationConfigInfo['itemPerPage']==='true' && (dataFetchMode === 'Full' || dataFetchMode === 'Batch' || (dataFetchMode === 'OnClickBatch' && dataSource === 'JsonDB'))" id="cspfm_deppersonalinfo_slickgrid_custpagination_next" color="primary" mat-icon-button ng-reflect-disable-ripple="true" title="Next" [ngClass]="{'cs-button-disabled': angularGrid && angularGrid.paginationService && angularGrid.paginationService.pageNumber === angularGrid.paginationService.pageCount}" (click)="slickgridUtils.navigationChange('next', angularGrid)"><em class="icon-mat-navigate_next"></em></button>
+                        </span><button title="Search" id="cspfm_deppersonalinfo_slickgrid_searchbtn" *ngIf="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['currentMode']==='list'" class="cs-mat-icononly cs-filter-option cs-pull-right" color="primary" mat-icon-button="" ng-reflect-disable-ripple="true" (click)="slickgridUtils.toggleGridSearchRow(isLoading, gridSearchRowToggle,gridObj, angularGrid,'SearchList')"><em [ngClass]="{'icon-mat-filter_list_alt': gridSearchRowToggle, 'icon-mat-not_filtered_list': !gridSearchRowToggle}"></em></button></div>
+                </div>
+                <div *ngIf="dataSource!=='JsonDB' && onlineIndxCreation.isAllSearchIndexCompleted && !fetchMethodCalled">{{fetchDataBycheckRunningIndexStatus()}}</div>
+                <div [hidden]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['currentMode']==='matrix'" id="{{gridContainerId}}" [ngClass]="{'cs-mouse-pointer-enable':sectionObjectDetails[__deppersonalinfo$tableName]['isRowClickDisabled']}" class="clearfix cs-mat-slickgrid cs-slickfull-height cs-filter-beside-pagination">
+                    <angular-slickgrid *ngIf="true" [ngClass]="{'cs-slick_filter_on': !expandFlag}" gridId="{{gridId}}" [columnDefinitions]="columnDefinitions[__deppersonalinfo$tableName]" [gridOptions]="gridOptions" (sgOnClick)="onGridItemClick($event)" (sgOnCellChange)="slickgridUtils.onCellChanged($event.detail.eventData, $event.detail.args)" (sgOnValidationError)="slickgridUtils.onCellValidation($event.detail.eventData, $event.detail.args)" [dataset]="[]" (onAngularGridCreated)="angularGridReady($event)" (sgOnSelectedRowsChanged)="appUtilityConfig.selectedRows($event.detail.args,this)"></angular-slickgrid>
+                </div>
+                <div *ngIf="sectionObjectDetails[__deppersonalinfo$tableName]['isMatrixEnabled']" [hidden]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['currentMode']==='list'" id="{{matrixGridContainerId}}" class="cs-matrix-enabled clearfix cs-mat-slickgrid cs-slickfull-height cs-filter-beside-pagination">
+                    <angular-slickgrid [ngClass]="{'cs-slick_filter_on': !expandFlag}" gridId="{{matrixGridId}}" [columnDefinitions]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['columns']" [gridOptions]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['gridOptions']" [dataset]="sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['dataset']" (onAngularGridCreated)="appUtilityConfig.matrixGridReady($event,this)"></angular-slickgrid>
+                </div>
+                <div *ngIf="((slickgridResultList && slickgridResultList.length === 0) || (angularGrid && angularGrid.dataView.getLength() === 0)) && (onlineIndxCreation.isAllSearchIndexCompleted || dataSource ==='JsonDB')" class="cs_no_record_center" [ngClass]="{'cs-noimage_pos_add': showFilter}"><img *ngIf='!isLoading' alt='' src='assets/img/no_record_found.png'> </div>
+                <div class="indexNotComplete" *ngIf="dataSource!=='JsonDB' && !onlineIndxCreation.isAllSearchIndexCompleted">
+                    <mat-label>
+                        <h3>Index process running</h3>
+                    </mat-label>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomActionProcessing">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'></div>
+</div>

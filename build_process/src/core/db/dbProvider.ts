@@ -1175,7 +1175,7 @@ export class dbProvider {
     // Find docs by selector
     private findDocsWithSelector(options) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+          
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options).then(res => {
                     return res;
@@ -1666,7 +1666,7 @@ export class dbProvider {
 
     private fetchdatawithRelationshipCatchBlock(error)
     {
-        console.log("Error", error);
+        
         return Promise.resolve({
             status: this.failed,
             message: error.message, records: [],
@@ -1798,7 +1798,7 @@ export class dbProvider {
     }
 
     private fetchRecursiveCatchBlock(error){
-        console.log("Error", error);
+        
         return Promise.resolve({
             status: this.failed,
             message: error.message,
@@ -2969,7 +2969,7 @@ export class dbProvider {
                 if (response['ok']) {
                     return Promise.resolve(true);
                 } else {
-                    console.log('Object set insert failed');
+                    
                     return Promise.resolve(false);
                 }
             }).catch(err => {

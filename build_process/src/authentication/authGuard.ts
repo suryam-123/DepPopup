@@ -10,7 +10,7 @@ export class authGuard implements CanActivate {
 
     }
 
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    /*canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.sessionvalidation.validateSession().then(res => {
             if (res === "Failure") {     
                 window.location.replace('/apps');
@@ -23,7 +23,11 @@ export class authGuard implements CanActivate {
         })
     }
 
-    async displayToast(message) {
+    */
+            canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+                return Promise.resolve(true)
+            }
+            async displayToast(message) {
         const toast = await this.toastCtrl.create({
             message: message,
             duration: 2500,

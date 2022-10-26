@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cs_status_workflow_history.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -290,7 +292,7 @@ export class cs_status_workflow_history  {
     var hours = Math.floor(res / 3600) % 24;
     var minutes = Math.floor(res / 60) % 60;
     var seconds = res % 60;
-    console.log(seconds);
+   
     if (format === 'day') {
       
       if (days > 1 && hours===0) {

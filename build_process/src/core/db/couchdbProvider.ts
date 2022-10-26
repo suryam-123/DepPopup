@@ -1465,7 +1465,7 @@ export class couchdbProvider {
     // Find docs by selector
     private findDocsWithSelector(options, isSingleBatchFetch, arrayList?) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options, isSingleBatchFetch, arrayList).then(res => {
                     return res;
@@ -3535,7 +3535,7 @@ export class couchdbProvider {
             queryOptions["startkey"] = referenceDetail["queryBatch"]["key"];
             queryOptions["skip"] = 1;
         }
-        console.log("Query :", queryOptions);
+       
 
         return this.executeQuery("masterdetail_createdby_docid_view", queryOptions, referenceDetail,isLazyLoadEnabled, listenerName,mainResult).then(res => {
             if (res && res.constructor == Array) {
@@ -3581,17 +3581,17 @@ export class couchdbProvider {
                 var key = "";
                 var viewDocName = "CompositeUniqueViewDoc";
                 let value = "";
-                singleCombination['compositeFields'].forEach(singlefield => {
-                    if(doc[singlefield['fieldName']]!==null){
-                        if(singlefield['fieldType'] == "TEXT" || singlefield['fieldType'] == "TEXTAREA" ||  
-                        singlefield['fieldType'] == "EMAIL"){
-                        value = value+'|'+ doc[singlefield['fieldName']].toLowerCase().trim();
-                        }else{
-                            value = value+'|'+ doc[singlefield['fieldName']];
-                        }
-                             } else {
-                                 value = value + '|' + null
-                       }
+                 singleCombination['compositeFields'].forEach(singlefield => {
+                   if(doc[singlefield['fieldName']]!==null){
+                    if(singlefield['fieldType'] == "TEXT" || singlefield['fieldType'] == "TEXTAREA" ||  
+                    singlefield['fieldType'] == "EMAIL"){
+                    value = value+'|'+ doc[singlefield['fieldName']].toLowerCase().trim();
+                    }else{
+                        value = value+'|'+ doc[singlefield['fieldName']];
+                    }
+                         } else {
+                             value = value + '|' + null
+                   }
 
                 });
 
@@ -3615,10 +3615,10 @@ export class couchdbProvider {
                         return {}
                     }));
             }
-            
+
         });
 
-return Promise.all(taskList).then(result => {
+        return Promise.all(taskList).then(result => {
             result.forEach(element => {
                 if (element['queryResult']['rows'].length > 0) {
                     if (action == 'Add') {
@@ -3648,9 +3648,9 @@ return Promise.all(taskList).then(result => {
                 let keyValue = "";
                 var key = "";
                 if(element['fieldType']){
-                    if(element['fieldType'] == "TEXT" || element['fieldType'] == "TEXTAREA" ||
-                        element['fieldType'] == "EMAIL" ||  element['fieldType'] == "URL"){
-                        key = type + element['fieldName'] + doc[element['fieldName']].toLowerCase()
+                    if(element['fieldType'] == "TEXT" || element['fieldType'] == "TEXTAREA" ||  
+                    element['fieldType'] == "EMAIL" ||  element['fieldType'] == "URL"){
+                    key = type + element['fieldName'] + doc[element['fieldName']].toLowerCase()
                     }else{
                         key = type + element['fieldName'] + doc[element['fieldName']]
 
@@ -3756,7 +3756,7 @@ return Promise.all(taskList).then(result => {
     querySingleFormulaDoc(referenceDetail: ReferenceDetail, docId: string) {
         const finalRes = {}
         return this.makeQueryForSingleFormulaDoc(referenceDetail, docId, finalRes).then(result => {
-
+            
             if (result["status"] === this.success) {
                 return Promise.resolve({
                     status: this.success,
@@ -4618,7 +4618,7 @@ return Promise.all(taskList).then(result => {
             postParam["bookmark"] = bookmark
         }
 
-        console.log("postParam :", postParam);
+       
 
         const headerstring = this.appUtilityObj.addCredentialforMobile('AJAX', this.dbConfiguration)
         

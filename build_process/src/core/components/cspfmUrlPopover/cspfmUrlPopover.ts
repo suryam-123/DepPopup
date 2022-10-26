@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmUrlPopover.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -73,7 +75,7 @@ export class cspfmUrlPopover implements OnInit {
         }
       });
     }
-    console.log('isMultipleUrlField:: ', this.isMultipleUrlField);
+    
     setTimeout(() => {
       window.$('.cs-dropdown-open').jqDropdown('show', ['.cs-dropdown']);
     }, 100);
@@ -123,9 +125,10 @@ export class cspfmUrlPopover implements OnInit {
           dbData: data,
           dataObjectPath: this.dataObjectPath
         });   
-      } else if (this.inputType !=='add-entry') {
-        this.initiateSubscription();
-      }
+      } 
+      // else if (this.inputType !=='add-entry') {
+      //   this.initiateSubscription();
+      // }
       this.flexLayoutValue=this.urlArray.length===1 ? '50%' :'46%'
       event.stopPropagation();
       this.closePopover(this.urlArray.length === 0);
@@ -266,6 +269,16 @@ export class cspfmUrlPopover implements OnInit {
       this.selectedRecordIndex = Number(this.selectedRecordIndex) + editedObjIndex;
       inputType='edit';
     }
+    let isValidURL = true;
+     for (let index = 0; index < data.length; index++) {
+       let result = this.isValidURLCheck(data[index]['urlValue'])
+       if (!result) {
+         isValidURL = false;
+         break;
+       }
+     }
+    
+    if (isValidURL) {
     this.slickgridpopoverservice._getChangedValue.next({
       fieldName: this.fieldName,
       inputType: inputType,
@@ -276,6 +289,7 @@ export class cspfmUrlPopover implements OnInit {
       dbData: data,
       dataObjectPath: this.dataObjectPath
     });
+  }
   }
   closePopover(condition: boolean) {
     if (this.previousInputType !== 'slickgrid-popover-edit') {

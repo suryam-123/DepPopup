@@ -356,12 +356,23 @@ import {
         "relationShipType": "null",
         "objectType": "PRIMARY",
         "childObject": [{
+            "objectId": "5",
+            "fieldId": "967510",
+            "objectName": "COR_USERS",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 74408,
+            "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
+            "isStandardObject": "Y",
+            "relationShipType": "",
+            "includeFields": true,
+            "childObject": []
+        }, {
             "objectId": "71655",
-            "fieldId": "965872",
+            "fieldId": "967516",
             "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
+            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
@@ -374,23 +385,12 @@ import {
                 "objectName": "COR_USERS",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71655,
-                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser",
+                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser",
                 "isStandardObject": "Y",
                 "relationShipType": "",
                 "includeFields": false,
                 "childObject": []
             }]
-        }, {
-            "objectId": "5",
-            "fieldId": "967510",
-            "objectName": "COR_USERS",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
-            "isStandardObject": "Y",
-            "relationShipType": "",
-            "includeFields": true,
-            "childObject": []
         }, {
             "objectId": "71658",
             "fieldId": "965874",
@@ -405,6 +405,17 @@ import {
                 "fieldName": "depformulan"
             }],
             "childObject": [{
+                "objectId": "5",
+                "fieldId": "967712",
+                "objectName": "COR_USERS",
+                "objectType": "LOOKUP",
+                "referenceObjectId": 71658,
+                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser",
+                "isStandardObject": "Y",
+                "relationShipType": "",
+                "includeFields": true,
+                "childObject": []
+            }, {
                 "objectId": "71655",
                 "fieldId": "967507",
                 "objectName": "depemployee",
@@ -420,11 +431,11 @@ import {
                 "childObject": []
             }, {
                 "objectId": "71655",
-                "fieldId": "930602",
+                "fieldId": "964453",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71658,
-                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup",
+                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
@@ -448,11 +459,11 @@ import {
                 "childObject": []
             }, {
                 "objectId": "71655",
-                "fieldId": "964453",
+                "fieldId": "930602",
                 "objectName": "depemployee",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71658,
-                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2",
+                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup",
                 "isStandardObject": "N",
                 "relationShipType": "",
                 "includeFields": true,
@@ -460,16 +471,30 @@ import {
                     "fieldName": "depformulan"
                 }],
                 "childObject": []
-            }, {
+            }]
+        }, {
+            "objectId": "71655",
+            "fieldId": "967514",
+            "objectName": "depemployee",
+            "objectType": "LOOKUP",
+            "referenceObjectId": 74408,
+            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
+            "isStandardObject": "N",
+            "relationShipType": "",
+            "includeFields": true,
+            "formulaField": [{
+                "fieldName": "depformulan"
+            }],
+            "childObject": [{
                 "objectId": "5",
-                "fieldId": "967712",
+                "fieldId": "967501",
                 "objectName": "COR_USERS",
                 "objectType": "LOOKUP",
-                "referenceObjectId": 71658,
-                "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser",
+                "referenceObjectId": 71655,
+                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser",
                 "isStandardObject": "Y",
                 "relationShipType": "",
-                "includeFields": true,
+                "includeFields": false,
                 "childObject": []
             }]
         }, {
@@ -499,11 +524,11 @@ import {
             }]
         }, {
             "objectId": "71655",
-            "fieldId": "967516",
+            "fieldId": "965872",
             "objectName": "depemployee",
             "objectType": "LOOKUP",
             "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
+            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
             "isStandardObject": "N",
             "relationShipType": "",
             "includeFields": true,
@@ -516,32 +541,7 @@ import {
                 "objectName": "COR_USERS",
                 "objectType": "LOOKUP",
                 "referenceObjectId": 71655,
-                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser",
-                "isStandardObject": "Y",
-                "relationShipType": "",
-                "includeFields": false,
-                "childObject": []
-            }]
-        }, {
-            "objectId": "71655",
-            "fieldId": "967514",
-            "objectName": "depemployee",
-            "objectType": "LOOKUP",
-            "referenceObjectId": 74408,
-            "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
-            "isStandardObject": "N",
-            "relationShipType": "",
-            "includeFields": true,
-            "formulaField": [{
-                "fieldName": "depformulan"
-            }],
-            "childObject": [{
-                "objectId": "5",
-                "fieldId": "967501",
-                "objectName": "COR_USERS",
-                "objectType": "LOOKUP",
-                "referenceObjectId": 71655,
-                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser",
+                "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser",
                 "isStandardObject": "Y",
                 "relationShipType": "",
                 "includeFields": false,
@@ -567,37 +567,37 @@ import {
     public criteriaDataObject = {};
     public lookupCriteriaValidationFields = {};
     public relationshipType = 'one_to_many';
+    public __COR_USERS$tableName = this.objectTableMapping.mappingDetail['COR_USERS'];
+    private pfm5_967510_searchKey;
+    private pfm5_967501_searchKey;
+    private pfm5_967712_searchKey;
     public __depemployee$tableName = this.objectTableMapping.mappingDetail['depemployee'];
     private pfm71655_967507_searchKey;
-    public __COR_USERS$tableName = this.objectTableMapping.mappingDetail['COR_USERS'];
-    private pfm5_967501_searchKey;
-    private tableName_pfm74408 = 'pfm74408';
-    private pfm71655_965872_searchKey;
-    private pfm5_967510_searchKey;
-    private tableName_pfm71658 = 'pfm71658';
-    private pfm71655_965870_searchKey;
-    private pfm71655_930602_searchKey;
     private pfm71655_967516_searchKey;
+    private tableName_pfm74408 = 'pfm74408';
+    private tableName_pfm71658 = 'pfm71658';
     private pfm71655_967514_searchKey;
-    private pfm71655_967505_searchKey;
+    private pfm71655_965870_searchKey;
     private pfm71655_964453_searchKey;
-    private pfm5_967712_searchKey;
+    private pfm71655_965872_searchKey;
+    private pfm71655_967505_searchKey;
+    private pfm71655_930602_searchKey;
     public depdropdownn_972310mapping = this.pfmObjectConfig.objectConfiguration[this.__depchildinfo$tableName]['selectionFieldsMappingForEntry']['depdropdownn'];
     public __deppersonalinfo$tableName = this.objectTableMapping.mappingDetail['deppersonalinfo'];
     public rollUpGridFieldInfo: {
         [elementKey: string]: FieldInfo
     } = {}
-    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
-    public __depcoruser$lookupIndepemployee = this.lookupFieldMapping.mappingDetail[this.__depemployee$tableName]['depcoruser'];
-    public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
     public __depcoruser$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depcoruser'];
-    public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
-    public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
+    public __depcoruser$lookupIndepemployee = this.lookupFieldMapping.mappingDetail[this.__depemployee$tableName]['depcoruser'];
+    public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
+    public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
     public __depclookup4$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup4'];
     public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
-    public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
+    public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
     public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
-    public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
+    public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
+    public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
+    public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
     public formulaConfigJSON: {
         [elementKey: string]: FormulaConfig
     } = {
@@ -628,43 +628,7 @@ import {
     private dataPaths: Array < {
         traversalPath: string;requiredTemp: boolean
     } > = [{
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY',
-        requiredTemp: true
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
-        requiredTemp: false
-    }, {
         traversalPath: 'depchildinfo_DUMMY$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
-        requiredTemp: false
-    }, {
-        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
         requiredTemp: false
     }, {
         traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser',
@@ -675,123 +639,50 @@ import {
     }, {
         traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser',
         requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY',
+        requiredTemp: true
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
+        requiredTemp: false
+    }, {
+        traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
+        requiredTemp: false
     }, ]
     private lookupPaths: {
         [lookupField: string]: Array < {
             traversalPath: string;requiredTemp: boolean
         } >
     } = {
-        [this.__deplookup4$lookupIndeppersonalinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }],
-        [this.__depcoruser$lookupIndepemployee]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }],
-        [this.__depclookup2$lookupIndepchildinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }],
         [this.__depcoruser$lookupIndepchildinfo]: [{
             traversalPath: 'depchildinfo_DUMMY$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }],
-        [this.__depclookup1$lookupIndepchildinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }],
-        [this.__deplookup$lookupIndeppersonalinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
-            requiredTemp: false
-        }],
-        [this.__depclookup4$lookupIndepchildinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }],
-        [this.__depcoruser$lookupIndepemployee]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }],
-        [this.__depclookup3$lookupIndepchildinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
-            requiredTemp: false
-        }],
-        [this.__deplookup3$lookupIndeppersonalinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY',
-            requiredTemp: false
-        }],
-        [this.__deplookup2$lookupIndeppersonalinfo]: [{
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
-            requiredTemp: false
-        }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
             requiredTemp: false
         }, {
             traversalPath: 'depchildinfo_DUMMY',
@@ -827,7 +718,100 @@ import {
             traversalPath: 'depchildinfo_DUMMY',
             requiredTemp: false
         }],
-        [this.__deppersonalinfo$tableName]: [{
+        [this.__deplookup4$lookupIndeppersonalinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }],
+        [this.__depclookup4$lookupIndepchildinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }],
+        [this.__depcoruser$lookupIndepemployee]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }],
+        [this.__depclookup3$lookupIndepchildinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }],
+        [this.__depclookup1$lookupIndepchildinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }],
+        [this.__deplookup2$lookupIndeppersonalinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }],
+        [this.__depclookup2$lookupIndepchildinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }],
+        [this.__deplookup3$lookupIndeppersonalinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }],
+        [this.__depcoruser$lookupIndepemployee]: [{
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$depemployee_depclookup2',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }],
+        [this.__deplookup$lookupIndeppersonalinfo]: [{
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
+            requiredTemp: false
+        }, {
             traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
             requiredTemp: false
         }, {
@@ -837,16 +821,32 @@ import {
             traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
             requiredTemp: false
         }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
             requiredTemp: false
         }, {
             traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
+            requiredTemp: false
+        }],
+        [this.__deppersonalinfo$tableName]: [{
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
             requiredTemp: false
         }, {
             traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
             requiredTemp: false
         }, {
-            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser',
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
+            requiredTemp: false
+        }, {
+            traversalPath: 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
             requiredTemp: false
         }]
     }
@@ -1639,37 +1639,37 @@ import {
     initializeObjects(tableStructure) {
         this.dataObject['depchildinfo_DUMMY'] = JSON.parse(JSON.stringify(tableStructure[this.__depchildinfo$tableName]));
         this.dataObject['depchildinfo_DUMMY_Temp'] = JSON.parse(JSON.stringify(tableStructure[this.__depchildinfo$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         this.dataObject['depchildinfo_DUMMY$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
         this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
         this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser'] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup'] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         //For lookupCriteria
         this.dataObject[this.__depchildinfo$tableName] = JSON.parse(JSON.stringify(tableStructure[this.__depchildinfo$tableName]));
         this.dataObject[this.__depchildinfo$tableName + "Temp"] = JSON.parse(JSON.stringify(tableStructure[this.__depchildinfo$tableName]));
-        this.dataObject[this.__deplookup4$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject[this.__depclookup2$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         this.dataObject[this.__depcoruser$lookupIndepchildinfo] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject[this.__depclookup1$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__deplookup$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__depclookup4$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
-        this.dataObject[this.__depclookup3$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__deplookup3$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
-        this.dataObject[this.__deplookup2$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
         this.dataObject[this.__depcoruser$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
         this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject[this.__deplookup4$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__depclookup4$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject[this.__depclookup3$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__depclookup1$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__deplookup2$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__depclookup2$lookupIndepchildinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__deplookup3$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
+        this.dataObject[this.__depcoruser$lookupIndepemployee] = JSON.parse(JSON.stringify(this.metaDbConfig.configuration.tableStructure[this.__COR_USERS$tableName]));
+        this.dataObject[this.__deplookup$lookupIndeppersonalinfo] = JSON.parse(JSON.stringify(tableStructure[this.__depemployee$tableName]));
         if (this.formGroup) {
             this.formGroup.patchValue({
                 [this.__depchildinfo$tableName]: this.dataObject['depchildinfo_DUMMY']
@@ -1849,50 +1849,50 @@ import {
         }
         this.formulaObject = {}
         this.dataObject['depchildinfo_DUMMY_Temp'] = JSON.parse(JSON.stringify(this.dataProvider.tableStructure()[this.__depchildinfo$tableName]));
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4'] = "";
-        this.pfm71655_967507_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser'] = "";
-        this.pfm5_967501_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2'] = "";
-        this.pfm71655_965872_searchKey = '';
         this.dataObject['depchildinfo_DUMMY$$COR_USERS_depcoruser'] = "";
         this.pfm5_967510_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1'] = "";
-        this.pfm71655_965870_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup'] = "";
-        this.pfm71655_930602_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4'] = "";
-        this.pfm71655_967516_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser'] = "";
-        this.pfm5_967501_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3'] = "";
-        this.pfm71655_967514_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3'] = "";
-        this.pfm71655_967505_searchKey = '';
-        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2'] = "";
-        this.pfm71655_964453_searchKey = '';
         this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser'] = "";
         this.pfm5_967501_searchKey = '';
         this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser'] = "";
         this.pfm5_967712_searchKey = '';
         this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser'] = "";
         this.pfm5_967501_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4'] = "";
+        this.pfm71655_967507_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup4'] = "";
+        this.pfm71655_967516_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser'] = "";
+        this.pfm5_967501_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup3'] = "";
+        this.pfm71655_967514_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup1'] = "";
+        this.pfm71655_965870_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2'] = "";
+        this.pfm71655_964453_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2'] = "";
+        this.pfm71655_965872_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3'] = "";
+        this.pfm71655_967505_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser'] = "";
+        this.pfm5_967501_searchKey = '';
+        this.dataObject['depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup'] = "";
+        this.pfm71655_930602_searchKey = '';
         this.dataObject[this.__depchildinfo$tableName] = JSON.parse(JSON.stringify(this.dataProvider.tableStructure()[this.__depchildinfo$tableName]));
         this.dataObject[this.__depchildinfo$tableName + "Temp"] = JSON.parse(JSON.stringify(this.dataProvider.tableStructure()[this.__depchildinfo$tableName]));
-        this.dataObject[this.__deplookup4$lookupIndeppersonalinfo] = ""
-        this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
-        this.dataObject[this.__depclookup2$lookupIndepchildinfo] = ""
         this.dataObject[this.__depcoruser$lookupIndepchildinfo] = "";
-        this.dataObject[this.__depclookup1$lookupIndepchildinfo] = ""
-        this.dataObject[this.__deplookup$lookupIndeppersonalinfo] = ""
-        this.dataObject[this.__depclookup4$lookupIndepchildinfo] = ""
-        this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
-        this.dataObject[this.__depclookup3$lookupIndepchildinfo] = ""
-        this.dataObject[this.__deplookup3$lookupIndeppersonalinfo] = ""
-        this.dataObject[this.__deplookup2$lookupIndeppersonalinfo] = ""
         this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
         this.dataObject[this.__depcoruser$lookupIndeppersonalinfo] = "";
         this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
+        this.dataObject[this.__deplookup4$lookupIndeppersonalinfo] = ""
+        this.dataObject[this.__depclookup4$lookupIndepchildinfo] = ""
+        this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
+        this.dataObject[this.__depclookup3$lookupIndepchildinfo] = ""
+        this.dataObject[this.__depclookup1$lookupIndepchildinfo] = ""
+        this.dataObject[this.__deplookup2$lookupIndeppersonalinfo] = ""
+        this.dataObject[this.__depclookup2$lookupIndepchildinfo] = ""
+        this.dataObject[this.__deplookup3$lookupIndeppersonalinfo] = ""
+        this.dataObject[this.__depcoruser$lookupIndepemployee] = "";
+        this.dataObject[this.__deplookup$lookupIndeppersonalinfo] = ""
         this.associateDoc = {};
         this.action = "Add";
         this.appUtilityConfig.updateFormulaData(this);

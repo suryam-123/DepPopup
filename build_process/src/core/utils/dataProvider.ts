@@ -171,7 +171,7 @@ export class dataProvider {
         dataObjects.forEach(dataObject => {
           if (autoNumField !== "") {
             if (dataObject[autoNumField]) {
-              console.log(dataObject[autoNumField]);
+
             } else {
               dataObject[autoNumField] = ""
             }
@@ -1040,7 +1040,7 @@ async showInfoAlert(info) {
     if (userAssignTypes.includes("groups") || userAssignTypes.includes("responsibilities")) {
       var query = "type:" + this.metaDbConfig.corUserHierarchy + " AND " + "user_id:" + Number(this.appUtilityObj.userId)
       awaitFun.push(this.metaDataDbProvider.fetchDocsUsingSearchApi(query, this.metaDbConfig.corUserHierarchy).then(res => {
-        console.log(res["records"][0]["userGroupsId"])
+        
         if (userAssignTypes.includes("groups")) {
           let groupids = res["records"][0]["userGroupsId"];
           groupids.forEach(element => {
@@ -1090,7 +1090,7 @@ async showInfoAlert(info) {
   }
   fetchFormulaRollupForDependentLookup(query:string, designDocName:string, type){
     return this.formulaCouchDbProvider.callSearchDesignDocs(query, designDocName, 'ASC').then(response => {
-      console.log("response", response)
+      
       return response['rows'].map(value=> type +'_2_' + value['fields']['reference_id'])
     } )
   }
@@ -1144,7 +1144,7 @@ async showInfoAlert(info) {
 
 
 
-          console.log("Search Query :", query);
+          
 
           const hierarchyJSON = dataFetchingInput["objectHierarchyJSON"]
           // For online data fetching for table with pagination
@@ -1219,7 +1219,7 @@ async showInfoAlert(info) {
         useridArray = useridArray.concat(userHierarchyRecord[type + (i + 1)])
       }
     }
-    console.log("final Array : ", useridArray);
+    
     return useridArray;
   }
 
@@ -1773,7 +1773,7 @@ async showInfoAlert(info) {
 
 
   vaidateUniqueField(type, doc, dataSorce, uniqueField, action) {
-    console.log("its only for mobile");
+    
     if (dataSorce === appConstant.couchDBStaticName) {
       return this.couchDBProvider.vaidateUniqueField(type, doc, uniqueField, action);
     }
@@ -1942,7 +1942,7 @@ async showInfoAlert(info) {
     trackingInfo['recordid'] = actionTrackingInfo['recordId'];
     trackingInfo['status'] = processingState === 'start' ? 'processing' : 'completed';
     return this.cspfmexecutionCouchDBProvider.save("cspfmactiontracking", trackingInfo).then(result => {
-      console.log(result);
+      
     }).catch(err => {
       console.log(err);
     });

@@ -1,3 +1,12 @@
+
+
+/* 
+ *   File: settingpage.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Component, OnInit } from '@angular/core';
 import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 import {   Platform } from '@ionic/angular';

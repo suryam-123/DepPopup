@@ -52,7 +52,7 @@ export class cspfmObservableListenerUtils {
     }
 
     let subscriptionId = uuid.v4();
-    console.log('subscriptionId', subscriptionId);
+   
     let observable = new Observable((subscriber: Subscriber<any>) => {
       this.listeners[listenerName][subscriptionId] = subscriber;
     });

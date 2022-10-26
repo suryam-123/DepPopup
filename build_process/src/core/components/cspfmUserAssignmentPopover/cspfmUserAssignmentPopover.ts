@@ -1,3 +1,5 @@
+
+
 /* 
  *   File: cspfmUserAssignmentPopover.ts 
  *   Copyright(c) 2022 Chain-Sys Corporation Inc.
@@ -100,7 +102,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
     ngOnInit() {
       setTimeout(function () {
         var userAssignSaveBtn = document.getElementsByClassName("cs-userassign-save-btn");
-        console.log(userAssignSaveBtn);
+        
         if (userAssignSaveBtn) {
               userAssignSaveBtn[0].addEventListener('click', function (e: Event) {
               document.getElementsByClassName('cdk-overlay-container')[0].classList.add('cs-userassign-overlay');
@@ -256,11 +258,11 @@ response['records'].map(el=>{ el['UserImage'] = this.appUtilityConfig.getUserIma
       }
       
       if (this.corGroupDataTempList.length > 0) {
-        console.log("corGroupDataTempList length..",this.corGroupDataTempList.length);
+       
                         
         let idList = []
         this.userAssignmentDataList['Group'].map(el =>  idList.push(el['user_group_id']))
-        console.log("idList length..",idList);
+       
         if (this.searchKey === '') {
      
           for(let i =0;i<this.corGroupDataTempList.length;i++){
@@ -1180,7 +1182,7 @@ response['records'].map(el=>{ el['UserImage'] = this.appUtilityConfig.getUserIma
     
     @HostListener('document:click', ['$event', '$event.target'])
     onClick(event: MouseEvent, targetElement: HTMLElement): void {
-      console.log("General Click");
+     
       $("#selectUser").addClass("cs-display-none");
       $("#selectUser").removeClass("cs-display-block");
       $("#selectedUser").addClass("cs-display-block");

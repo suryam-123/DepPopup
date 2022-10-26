@@ -293,7 +293,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                 this.columnDefinitions.push(objectVal);
             });
             this.columnDefinitions = [...this.columnDefinitions]
-            console.log('columnDefinitions', this.columnDefinitions, this.lookupColumnDetails)
+
         }
 
         this.lookupTitle = this.lookupInput.title;
@@ -331,7 +331,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                         let value = lodash.chunk(configObject['relationalObjectsResult'][key], this.batchIdLimit);
                         idArray.push(value)
                     }
-                    console.log("idArray", idArray)
+                    
                     let result = this.getCombinationIds(idArray);
 
                     for (let ids of result) {
@@ -395,7 +395,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
         this.isComponentDestroyed = true;
         this.slickgridUtils.flatpickerAddRemove(this.layoutId,'remove')
         this.angularGrid.destroy()
-        console.log("Destroy");
+        
     }
 
     onFilterChange(isApplyAction: Boolean) {
@@ -568,7 +568,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                 {
                     "name": "Yes",
                     "handler": () => {
-                        console.log("Handler called")
+
                         // this.isValidationRequired = false;
                         this.listFilterUtils.clearAllFilter(this.filterSectionDetail)
                         // this.filterSectionDetailTemp = JSON.parse(JSON.stringify(this.filterSectionDetail))
@@ -597,8 +597,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
 
     angularGridReady(angularGrid: AngularGridInstance) {
         this.angularGrid = angularGrid;
-        console.log("angularGrid :", angularGrid);
-        console.log("angularGrid :", angularGrid.dataView.getItems());
+
 
         this.gridObj = angularGrid.slickGrid;
         this.gridObj.setHeaderRowVisibility(false);
@@ -607,7 +606,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
             "isPaginationEnabled": this.gridOptions['enablePagination']
         }
         this.gridObj.onColumnsResized.subscribe((event, args) => {
-            console.log("onColumnsResized")
+
             this.gridObj.reRenderColumns(true)
             /* to refresh the data in slickgrid */
             this.gridObj.invalidate();
@@ -787,7 +786,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                 this.paginationInfo['bookmark'] = res['bookmark'];
                 let consolidatedItems = [...this.allItems, ...res['records']]
                 this.allItems = lodash.uniqBy(consolidatedItems, "id");
-                console.log("in", this.allItems.length);
+
                 if (this.allItems.length === 1 && !this.lookupInput['multiSelectionEnabled']) {
                     this.itemClick(this.allItems[0])
                     this.paginationInfo['bookmark'] = ""
@@ -814,7 +813,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                     this.handleFetchResult(result);
                 })
             } else {
-                console.log("end");
+              
                 if (this.appUtilityConfig.isMobile) {
                     this.setFilteredItems();
                 } else {
@@ -825,7 +824,7 @@ export class cspfmweblookuppage implements OnInit,OnDestroy {
                 this.isSkeletonLoading=false
                 this.isDisableManualclose = false;
                 this.angularGrid.dataView.reSort();
-                console.log('fetchDataWithReference in lookup list.ts is failed', res['message']);
+
             }
     }
 

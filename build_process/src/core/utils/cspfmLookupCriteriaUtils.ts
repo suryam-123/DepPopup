@@ -48,7 +48,7 @@ export class cspfmLookupCriteriaUtils {
         } else if (configObject['listCriteriaDataObject']) {
             result = this.evaluateExpression(criteriaQueryConfig, configObject['listCriteriaDataObject'], 'list')
         }
-        console.log("this.booleanFormulaResult", result)
+        
         this.relationalObjectResults = [...[]]
         return result;
     }
@@ -560,7 +560,7 @@ export class cspfmLookupCriteriaUtils {
     }
 
     evaluateOpertorAction(operator, operands, dataObject, entryOrfilter) {
-        console.log("evaluateOpertorAction : ", operator + "---" + JSON.stringify(operands))
+        
         let eachOperandResultArray = []
         operands.forEach(operand => {
             eachOperandResultArray.push(this.evaluateExpression(operand, dataObject, entryOrfilter, operator))

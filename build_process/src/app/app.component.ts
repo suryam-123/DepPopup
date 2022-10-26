@@ -1,3 +1,13 @@
+
+
+/*   
+ *   File: app.component.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */ 
+
 import { Component,ViewChild,QueryList,ViewChildren,AfterViewInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
@@ -66,6 +76,21 @@ export class AppComponent implements AfterViewInit  {
       }
     }
     platform.ready().then(() => {
+                    const localStore = {
+                        "userId": undefined,
+                        "orgId": 15,
+                        "roleId": undefined,
+                        "userTimeZone": 'undefined',
+                        "userDateFormat": 'undefined',
+                        "appBuilderURL": "http://localhost:1337/appbuilder",
+                        "userGroupsId": JSON.stringify([]),
+                        "userResponsibilitiesId": JSON.stringify([]),
+                      };
+                      const assignedAppArray = {
+                        "assignedApps":[{ "assignedMenuGroups": [6552], "appName": "DepPopup", "appDisplayName": "undefined", "appId": 14477, "versionNumber":0.15,"landingPage": "cspfm_default_landing_page" }]
+                      }
+                      localStorage.setItem('localStore', this.appUtils.simpleCrypto.encryptObject(localStore));
+                      localStorage.setItem('assignedAppArray', this.appUtils.simpleCrypto.encryptObject(assignedAppArray));
       window.fetch = fetchPolyfill;
 
       statusBar.backgroundColorByHexString('#ffffff');
@@ -242,9 +267,10 @@ export class AppComponent implements AfterViewInit  {
     );     
     }
   errorHandler(event,status) {
+                    if (location.hostname !== "localhost") {
     console.debug("from error handler",event);
     let selectedImage=status?'default':'deploy-image';
-    event.target.src = `${location.origin}/apps/images/${selectedImage}.png`;
+    event.target.src = `${location.origin}/apps/images/${selectedImage}.png `};
   }
   openApplication(pageUrl, appType, appId) {
     this.closePopover();
@@ -252,7 +278,7 @@ export class AppComponent implements AfterViewInit  {
     if (appType === "STANDARD") {
       window.location.href = `${this.appUtils["platformWebNodeHostName"]}/${this.appUtils["contextName"]}/core/login/applicationswitcher?applicationId=${appId}&chainsysSessionGuid=${this.appUtils["chainsysSessionId"]}`;
     } else {
-      console.log("pageurl typed",pageUrl);
+      
       if (protocol === "http:"){
         window.location.href = `http://${hostname}:${port}/${pageUrl}`;
       } else {
@@ -404,7 +430,7 @@ export class AppComponent implements AfterViewInit  {
     this.showAlert('Exit','Are you sure want to exit ?');
   }
   setApplicationDefaultImage(event, object) {
-    console.log(object)
+   
     let assignedApps:any = this.appUtils.simpleCrypto.decryptObject(localStorage.getItem("assignedAppArray"))['assignedApps'];
     assignedApps= Array.isArray(assignedApps)?assignedApps:JSON.parse(assignedApps);
     var imageUrl = '';

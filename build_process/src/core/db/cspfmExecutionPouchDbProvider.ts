@@ -1,3 +1,12 @@
+
+
+/*   
+ *   File: cspfmExecutionPouchDbProvider.ts
+ *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *   Duplication or distribution of this code in part or in whole by any media
+ *   without the express written permission of Chain-Sys Corporation or its agents is
+ *   strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { cspfmObservableListenerUtils } from 'src/core/dynapageutils/cspfmObservableListenerUtils';
 import PouchDB from 'pouchdb';
@@ -1023,7 +1032,7 @@ export class cspfmExecutionPouchDbProvider {
     // Find docs by selector
     private findDocsWithSelector(options) {
         if (options.fields) {
-            console.log(options.fields.indexOf('_id'));
+           
             if (options.fields.indexOf('_id') > -1) {
                 return this.checkSortFields(options).then(res => {
                     return res;
@@ -1588,7 +1597,7 @@ export class cspfmExecutionPouchDbProvider {
     }
 
     private fetchDataWithReferenceCatchBlock(error){
-        console.log("Error", error);
+        
         return Promise.resolve({
             status: this.failed,
             message: error.message, records: [],

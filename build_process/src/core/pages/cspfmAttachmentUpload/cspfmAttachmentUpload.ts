@@ -127,6 +127,7 @@ export class cspfmAttachmentUpload implements OnInit {
     selectImageUrl = "";
     }
   }
+}
   uploadButtonPressed() {
     if(!navigator.onLine){
       this.appUtilityConfig.presentToast("No internet connection. Please check your internet connection and try again.");

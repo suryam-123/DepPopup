@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: cspfmCalendarEventInfo.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { NavController, NavParams, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -38,13 +47,13 @@ export class cspfmCalendarEventInfo implements OnInit {
         public datePipe: DatePipe,    
                 public applicationRef: ApplicationRef,
     ) {
-        console.log("this.navParams ==> ", this.navParams);
+        
         this.serviceObject = this.navParams.get('serviceObject');
         this.dataSource = this.navParams.get('dataSource');
         this.objectRecordId = this.navParams.get('objectRecordId')
         this.calendarConfig = this.navParams.get('calendarConfig')
         this.dateDispay = this.navParams.get('dateDisplay')
-        console.log("this.calendarConfig ==> ", this.calendarConfig);
+        
         this.calendarName = this.calendarConfig["calendarDisplayName"]
         this.calendarIconColor = this.calendarConfig["calendarConfig"]["calendarColor"];
         this.calendarIcon = this.calendarConfig['calendarIcon'];

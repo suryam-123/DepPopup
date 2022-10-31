@@ -101,6 +101,7 @@ export class cspfmSlickgridUtils {
     private flatPickerConfig:cspfmFlatpickrConfig,
     private layoutCongifuration: cspfmLayoutConfiguration,
     private onDemendFeature : cspfmOnDemandFeature,
+    public lookupFieldMappingObject: lookupFieldMapping,
     private cspfmLookupServiceObject: cspfmLookupService
 ) { }
     public timeoutId:any
@@ -1290,7 +1291,7 @@ export class cspfmSlickgridUtils {
         rowCount = recordsCount
       }
       let rowCalc = rowCount * 40
-
+    
 
       if (!filterSectionDetail['filterPanelExpanded'] && filterSectionDetail['filterApplied'] && filterSectionDetail['filterAppliedFields'].length > 0) {
         $('.cs_hightfix_by_script').css({
@@ -1322,7 +1323,7 @@ export class cspfmSlickgridUtils {
         }
       }else {
         angularGrid.paginationService.onPaginationChanged.subscribe((e) => {
-
+         
           let dataTo = e.dataTo
           let dataFrom = e.dataFrom
           let rowscount = (dataTo - dataFrom) + 1

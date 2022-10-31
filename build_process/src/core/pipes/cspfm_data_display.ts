@@ -549,9 +549,9 @@ export const CspfmDataFormatter: Formatter = (
         outputTag += `<div class="cs-balloon-position" data-cs-dropdown="#cs-dropdown-${layoutId}">`
       }
       if (columnValue) {
-        outputTag += `<div style = "${styleFromJson}" id="r${row}_c${cell}_${columnDef["params"]["fieldInfo"]["traversalpath"]}"> ${columnValue}`;
+        outputTag += `<div style= "${styleFromJson}"  class="${cellCss} ${columnDef['params']['editable'] ? editorStyle : ''}"  id="r${row}_c${cell}_${columnDef['params']['fieldInfo']['traversalpath']}"> ${columnValue}`
       } else {
-        outputTag += `<div id="r${row}_c${cell}_${columnDef["params"]["fieldInfo"]["traversalpath"]}"> ${columnValue}`;
+        outputTag += `<div  class="${cellCss} ${columnDef['params']['editable'] ? editorStyle : ''}"  id="r${row}_c${cell}_${columnDef['params']['fieldInfo']['traversalpath']}"> ${columnValue}`
       }
       if (columnDef['params']['cspfmEditorType'] === 'BALLOONUI') {
         outputTag += `</div>`

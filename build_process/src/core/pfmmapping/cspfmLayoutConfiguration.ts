@@ -22,11 +22,6 @@ export class cspfmLayoutConfiguration {
 
 
             'objectTraversal': {
-                'depemployee_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
                 'depemployee_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -35,6 +30,11 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967501"
                     }
+                },
+                'depemployee_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
             }
 
@@ -149,11 +149,6 @@ export class cspfmLayoutConfiguration {
                 },
             },
             'objectTraversal': {
-                "depemployee_DUMMY": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
                 "depemployee_DUMMY$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -162,6 +157,11 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967501"
                     }
+                },
+                "depemployee_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 }
             },
             'associationConfiguration': {
@@ -237,11 +237,6 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'depemployee_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
                 'depemployee_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -250,6 +245,11 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967501"
                     }
+                },
+                'depemployee_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
             }
 
@@ -276,23 +276,28 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
+                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
+                        "prop": "pfm71655_964453"
                     }
                 },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
+                'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
+                        "prop": "pfm5_967712"
                     }
+                },
+                'deppersonalinfo_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1': {
                     "prop": "",
@@ -305,81 +310,6 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967712"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967510"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_967516"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_965872"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3': {
@@ -395,10 +325,80 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
-                'deppersonalinfo_DUMMY': {
+                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": ""
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967510"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967507"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_965872"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967516"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
                 },
             }
 
@@ -532,26 +532,13 @@ export class cspfmLayoutConfiguration {
                 },
             },
             'objectTraversal': {
-                "deppersonalinfo_DUMMY$$depemployee_deplookup2$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
+                        "prop": "pfm71655_967505"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser": {
@@ -567,18 +554,13 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_967505"
                     }
                 },
-                "deppersonalinfo_DUMMY": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
+                        "prop": "pfm71655_964453"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
@@ -590,7 +572,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_967507"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup2$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -600,7 +582,7 @@ export class cspfmLayoutConfiguration {
                             "prop": "pfm5_967501"
                         },
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
+                        "prop": "pfm71655_964453"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser": {
@@ -616,14 +598,19 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_930602"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
+                        "prop": "pfm71655_930602"
                     }
+                },
+                "deppersonalinfo_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
                 "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
                     "prop": "",
@@ -632,6 +619,19 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967712"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967507"
                     }
                 }
             },
@@ -1065,20 +1065,42 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967712"
-                    }
-                },
                 'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967507"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_964453"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967507"
                     }
@@ -1096,27 +1118,10 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_964453"
                     }
                 },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser': {
+                'deppersonalinfo_DUMMY': {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
-                    }
+                    "child": ""
                 },
                 'deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser': {
                     "prop": "",
@@ -1140,20 +1145,6 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_930602"
                     }
                 },
-                'deppersonalinfo_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
                 'deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1165,6 +1156,15 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_930602"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967712"
                     }
                 },
             }
@@ -1192,32 +1192,19 @@ export class cspfmLayoutConfiguration {
 
 
             'objectTraversal': {
-                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                'depchildinfo_DUMMY$$depemployee_depclookup3': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
+                        "prop": "pfm71655_967514"
                     }
                 },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster': {
+                'depchildinfo_DUMMY': {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                'depchildinfo_DUMMY$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967510"
-                    }
+                    "child": ""
                 },
                 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup': {
                     "prop": "",
@@ -1232,15 +1219,11 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2': {
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_964453"
-                        },
+                        "child": "",
                         "relationship": "HEADER",
                         "prop": "pfm71658"
                     }
@@ -1253,11 +1236,6 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965870"
                     }
-                },
-                'depchildinfo_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
                 },
                 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3': {
                     "prop": "",
@@ -1272,15 +1250,6 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                'depchildinfo_DUMMY$$depemployee_depclookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
-                    }
-                },
                 'depchildinfo_DUMMY$$depemployee_depclookup2': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1288,6 +1257,28 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965872"
+                    }
+                },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967712"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                'depchildinfo_DUMMY$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967510"
                     }
                 },
                 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4': {
@@ -1303,14 +1294,23 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser': {
+                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967516"
+                    }
+                },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": {
                             "child": "",
                             "relationship": "LOOKUP",
-                            "prop": "pfm5_967712"
+                            "prop": "pfm71655_964453"
                         },
                         "relationship": "HEADER",
                         "prop": "pfm71658"
@@ -1443,13 +1443,26 @@ export class cspfmLayoutConfiguration {
                 },
             },
             'objectTraversal': {
-                "depchildinfo_DUMMY$$COR_USERS_depcoruser": {
+                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_964453"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup4": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm5_967510"
+                        "prop": "pfm71655_967516"
                     }
                 },
                 "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser": {
@@ -1478,17 +1491,22 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                "depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser": {
+                "depchildinfo_DUMMY$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
+                        "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_965870"
+                        "prop": "pfm5_967510"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup3": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967514"
                     }
                 },
                 "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4": {
@@ -1504,51 +1522,6 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                "depchildinfo_DUMMY$$depemployee_depclookup4": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
-                    }
-                },
-                "depchildinfo_DUMMY": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
-                    }
-                },
-                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup3": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
-                    }
-                },
                 "depchildinfo_DUMMY$$depemployee_depclookup1": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1558,24 +1531,15 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_965870"
                     }
                 },
-                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2": {
+                "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": {
                             "child": "",
                             "relationship": "LOOKUP",
-                            "prop": "pfm71655_964453"
+                            "prop": "pfm5_967501"
                         },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup2": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965872"
                     }
@@ -1593,7 +1557,21 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser": {
+                "depchildinfo_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
+                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -1603,7 +1581,7 @@ export class cspfmLayoutConfiguration {
                             "prop": "pfm5_967501"
                         },
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
+                        "prop": "pfm71655_965870"
                     }
                 },
                 "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup": {
@@ -1617,6 +1595,28 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "HEADER",
                         "prop": "pfm71658"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967514"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup2": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
                     }
                 }
             },
@@ -2101,6 +2101,20 @@ export class cspfmLayoutConfiguration {
                             "fieldName": "depformulan"
                         }],
                         "childObject": [{
+                            "objectId": "71655",
+                            "fieldId": "964453",
+                            "objectName": "depemployee",
+                            "objectType": "LOOKUP",
+                            "referenceObjectId": 71658,
+                            "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2",
+                            "isStandardObject": "N",
+                            "relationShipType": "",
+                            "includeFields": true,
+                            "formulaField": [{
+                                "fieldName": "depformulan"
+                            }],
+                            "childObject": []
+                        }, {
                             "objectId": "5",
                             "fieldId": "967712",
                             "objectName": "COR_USERS",
@@ -2118,20 +2132,6 @@ export class cspfmLayoutConfiguration {
                             "objectType": "LOOKUP",
                             "referenceObjectId": 71658,
                             "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4",
-                            "isStandardObject": "N",
-                            "relationShipType": "",
-                            "includeFields": true,
-                            "formulaField": [{
-                                "fieldName": "depformulan"
-                            }],
-                            "childObject": []
-                        }, {
-                            "objectId": "71655",
-                            "fieldId": "964453",
-                            "objectName": "depemployee",
-                            "objectType": "LOOKUP",
-                            "referenceObjectId": 71658,
-                            "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2",
                             "isStandardObject": "N",
                             "relationShipType": "",
                             "includeFields": true,
@@ -2608,50 +2608,6 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
-                    }
-                },
-                'depchildinfo_DUMMY$$depemployee_depclookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
-                    }
-                },
-                'depchildinfo_DUMMY$$depemployee_depclookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
-                    }
-                },
-                'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965870"
-                    }
-                },
                 'depchildinfo_DUMMY$$depemployee_depclookup1': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -2666,7 +2622,7 @@ export class cspfmLayoutConfiguration {
                     "relationship": "PRIMARY",
                     "child": ""
                 },
-                'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser': {
+                'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -2675,6 +2631,37 @@ export class cspfmLayoutConfiguration {
                             "relationship": "LOOKUP",
                             "prop": "pfm5_967501"
                         },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965870"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967516"
                     }
@@ -2692,11 +2679,15 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_967514"
                     }
                 },
-                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
-                        "child": "",
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967516"
                     }
@@ -2708,6 +2699,15 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967510"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967514"
                     }
                 },
             }
@@ -2941,58 +2941,13 @@ export class cspfmLayoutConfiguration {
                 },
             },
             'objectTraversal': {
-                "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm5_967712"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_965872"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                "deppersonalinfo_DUMMY": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
+                        "prop": "pfm71655_967507"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser": {
@@ -3008,18 +2963,36 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3": {
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": {
                             "child": "",
                             "relationship": "LOOKUP",
-                            "prop": "pfm71655_967514"
+                            "prop": "pfm71655_965872"
                         },
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
                     }
+                },
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967516"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                "deppersonalinfo_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
                 "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1": {
                     "prop": "",
@@ -3043,26 +3016,53 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_964453"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": {
                             "child": "",
                             "relationship": "LOOKUP",
-                            "prop": "pfm71655_967516"
+                            "prop": "pfm71655_967514"
                         },
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967712"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
                     }
                 }
             },
@@ -4198,7 +4198,7 @@ export class cspfmLayoutConfiguration {
                     "dateFormat": "",
                     "mappingDetails": "",
                     "currencyDetails": "",
-                    "isEditable": true,
+                    "isEditable": false,
                     "conditionalValidationEnable": false
                 }]
             },
@@ -4253,6 +4253,17 @@ export class cspfmLayoutConfiguration {
                         "fieldName": "depcformula1"
                     }],
                     "childObject": [{
+                        "objectId": "5",
+                        "fieldId": "967510",
+                        "objectName": "COR_USERS",
+                        "objectType": "LOOKUP",
+                        "referenceObjectId": 74408,
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
+                        "isStandardObject": "Y",
+                        "relationShipType": "",
+                        "includeFields": true,
+                        "childObject": []
+                    }, {
                         "objectId": "71655",
                         "fieldId": "965872",
                         "objectName": "depemployee",
@@ -4267,23 +4278,12 @@ export class cspfmLayoutConfiguration {
                         }],
                         "childObject": []
                     }, {
-                        "objectId": "5",
-                        "fieldId": "967510",
-                        "objectName": "COR_USERS",
-                        "objectType": "LOOKUP",
-                        "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
-                        "isStandardObject": "Y",
-                        "relationShipType": "",
-                        "includeFields": true,
-                        "childObject": []
-                    }, {
                         "objectId": "71655",
-                        "fieldId": "967514",
+                        "fieldId": "967516",
                         "objectName": "depemployee",
                         "objectType": "LOOKUP",
                         "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
                         "isStandardObject": "N",
                         "relationShipType": "",
                         "includeFields": true,
@@ -4307,11 +4307,11 @@ export class cspfmLayoutConfiguration {
                         "childObject": []
                     }, {
                         "objectId": "71655",
-                        "fieldId": "967516",
+                        "fieldId": "967514",
                         "objectName": "depemployee",
                         "objectType": "LOOKUP",
                         "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
                         "isStandardObject": "N",
                         "relationShipType": "",
                         "includeFields": true,
@@ -4373,6 +4373,84 @@ export class cspfmLayoutConfiguration {
                             "prop": "",
                             "relationship": "PRIMARY",
                             "child": ""
+                        }
+                    }
+                },
+                "pfm74408": {
+                    'objectTraversal': {
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm71655_965872"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": "",
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm5_967510"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm71655_967514"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm71655_965870"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm71655_967516"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
                         }
                     }
                 }

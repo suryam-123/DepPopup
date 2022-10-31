@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: cspfmRecordAssociationUtils.ts
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Injectable } from "@angular/core";
 import * as lodash from "lodash";
 import { OnEventArgs } from "angular-slickgrid";
@@ -242,7 +251,7 @@ export class cspfmRecordAssociationUtils {
 
     makeQueryForCriteriaLookup(dataObject, criteriaValidationFields, criteriaQueryConfig) {
         let criteriaFieldCheckResut = this.checkCriteriaEntryFieldsAvailable(criteriaValidationFields, dataObject)
-        console.log(criteriaFieldCheckResut)
+        
         const criteriaConfig = {
             'criteriaQueryConfig': criteriaQueryConfig,
             'criteriaDataObject': dataObject,

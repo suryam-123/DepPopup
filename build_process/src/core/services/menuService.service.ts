@@ -64,9 +64,9 @@ export class menuService {
   registerMenuBodyClickListener() {
     if (!this.isDefaultMenu) {
       this.menuClickListeners = this.addEventListener(document.body, "click", (event) => {
-        console.log('++++listener trigger')
+       
         if (this.isMenuOpen && !document.getElementById("top_horizontal_menu")) {
-          console.log('++++body click')
+         
           this.assignedMenuGroups.forEach(menuGroup => {
             menuGroup['expand'] = false
           })
@@ -74,7 +74,7 @@ export class menuService {
           this.removeEventListener()
         } else if (document.getElementById("top_horizontal_menu")) {
           if (this.isMenuOpen) {
-            console.log('++++body top menu close')
+          
             this.assignedMenuGroups.forEach(menuGroup => {
               menuGroup['expand'] = false
             })
@@ -82,7 +82,7 @@ export class menuService {
             this.removeEventListener()
           }
           if (this.openmoremenu) {
-            console.log('++++body more menu close')
+            
             this.openmoremenu = false;
             this.removeEventListener()
           }

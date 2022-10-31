@@ -1,4 +1,13 @@
-import { NgModule } from '@angular/core';
+
+
+/* 
+        *   File: depemployee_d_w_view.module.ts
+        *   Copyright(c) 2022 Chain-Sys Corporation Inc.
+        *   Duplication or distribution of this code in part or in whole by any media
+        *   without the express written permission of Chain-Sys Corporation or its agents is
+        *   strictly prohibited.
+        */
+        import { NgModule } from '@angular/core';
         import { CommonModule } from '@angular/common';
         import { FormsModule } from '@angular/forms';
         import { Routes, RouterModule } from '@angular/router';

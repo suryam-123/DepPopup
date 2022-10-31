@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: cspfmWebAssociationPage.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -247,7 +256,7 @@ export class cspfmWebAssociationPage implements OnInit {
                 }
                 this.columnDefinitions.push(objectVal);
             });
-            console.log('columnDefinitions', this.columnDefinitions, this.lookupColumnDetails)
+            
         }
 
         const criteriaConfig = this.lookupInput['criteriaConfig']
@@ -284,9 +293,9 @@ export class cspfmWebAssociationPage implements OnInit {
                         let value = lodash.chunk(configObject['relationalObjectsResult'][key], this.batchIdLimit);
                         idArray.push(value)
                     }
-                    console.log("idArray", idArray)
+                    
                     let result = this.getCombinationIds(idArray);
-                    console.log("result", result)
+                    
 
                     for (let ids of result) {
                         
@@ -344,7 +353,7 @@ export class cspfmWebAssociationPage implements OnInit {
                         }
                     } else {
                         this.isDisableManualclose = false;
-                        console.log('fetchDataWithReference in lookup list.ts is failed', res['message']);
+                        
                     }
                 }).catch(error => {
                     this.isDisableManualclose = false;
@@ -385,11 +394,11 @@ export class cspfmWebAssociationPage implements OnInit {
                             }
                         } else {
                             this.isDisableManualclose = false;
-                            console.log('fetchDataWithReference...... no records found');
+                            
                         }
                     } else {
                         this.isDisableManualclose = false;
-                        console.log('fetchDataWithReference in lookup list.ts is failed', res['message']);
+                        
                     }
                     this.isLoading = false;
                 })
@@ -416,11 +425,11 @@ export class cspfmWebAssociationPage implements OnInit {
                             }
                         } else {
                             this.isDisableManualclose = false;
-                            console.log('fetchDocsWithoutRelationshipUsingFindOption...... no records found');
+                            
                         }
                     } else {
                         this.isDisableManualclose = false;
-                        console.log('fetchDocsWithoutRelationshipUsingFindOption in lookup list.ts is failed', res['message']);
+                        
                     }
                     this.isLoading = false;
                 })

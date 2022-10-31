@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: cspfmRecordAssignmentUtils.ts
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Injectable } from "@angular/core";
 import { objectTableMapping } from "../pfmmapping/objectTableMapping";
 import { cspfmCustomFieldProvider } from "../utils/cspfmCustomFieldProvider";
@@ -1484,7 +1493,7 @@ export class cspfmRecordAssignmentUtils {
     }
 
     private getAssignmentObjectWithPrimitiveType(assignmentObject: AssignmentObject): AssignmentObject {
-        console.log("getAssignmentObjectWithPrimitiveType clone, start");
+  
 
 
         let localAssignmentObject: AssignmentObject = {
@@ -1510,9 +1519,9 @@ export class cspfmRecordAssignmentUtils {
         return localAssignmentObject;
     }
     private async callWebWorker(recordAssignment: RecordAssignment, assignmentObject: AssignmentObject, event) {
-        console.log("presentLoading, start");
+        
         let loadingIndicator = await this.presentLoading('Preparing UI. Click save for permanent action.');
-        console.log("presentLoading, end");
+       
 
         let checkedIds = event['currentModification']['checked'];
         let uncheckedIds = event['currentModification']['unchecked'];
@@ -1525,7 +1534,7 @@ export class cspfmRecordAssignmentUtils {
 
         let localRecordAssignment: RecordAssignment;
         let secondaryObjectIndexMapping = {}
-        console.log("local variable, start");
+        
         if (recordAssignment['assignmentMode'] === 'ONE_TO_ONE') {
             localRecordAssignment = {
                 'assignmentMode': recordAssignment['assignmentMode'],
@@ -1562,9 +1571,9 @@ export class cspfmRecordAssignmentUtils {
                 }
             })
         }
-        console.log("local variable, end");
+      
 
-        console.log("secondaryObjectIndexMapping", secondaryObjectIndexMapping);
+     
 
         input['recordAssignment'] = localRecordAssignment;
         input['assignmentObject'] = localAssignmentObject;
@@ -1572,7 +1581,7 @@ export class cspfmRecordAssignmentUtils {
         input['primaryCheckedData'] = primaryCheckedData;
         input['data'] = [];
 
-        console.log("slickgrid data, start");
+        
         if (uncheckedIds.length > 0) {
             input['selection'] = 'unchecked';
             input['data'] = this.slickGridUtils.getDataByIds(assignmentObject['internalProcess']['angularGrid'], uncheckedIds);
@@ -1580,15 +1589,15 @@ export class cspfmRecordAssignmentUtils {
             input['selection'] = 'checked';
             input['data'] = this.slickGridUtils.getDataByIds(assignmentObject['internalProcess']['angularGrid'], checkedIds);
         }
-        console.log("slickgrid data, end");
+        
 
 
-        console.log("webWorker, start");
+       
         input['url'] = this.inputUrl;
         this.webWorker
             .run(START, input)
             .then((res) => {
-                console.log("webWorker, success");
+                
 
                 this.dismissLoading(loadingIndicator)
                 let secondaryData = res['results']['data'];
@@ -1632,7 +1641,7 @@ export class cspfmRecordAssignmentUtils {
                 console.log('err', err);
                 this.dismissLoading(loadingIndicator)
             });
-        console.log("webWorker, end");
+        
     }
 
     public selectionChange(event, assignmentObject) {

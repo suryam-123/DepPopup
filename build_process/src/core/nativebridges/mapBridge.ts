@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: mapBridge.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Injectable } from '@angular/core';
 import { dbProvider } from '../db/dbProvider';
 import { Platform } from '@ionic/angular';
@@ -18,7 +27,7 @@ export class mapBridge {
 
   startObserver() {
     this.subscription = this.broadcaster.addEventListener('FetchMapRecords').subscribe((userinfo) => {
-      console.log('userinfo = ', userinfo);
+      
 
       const syncDetail = JSON.parse(userinfo.syncInfo);
       if (syncDetail.syncType === 'StopObserver') {
@@ -110,7 +119,7 @@ export class mapBridge {
       const selector = { 'data.lastmodifiedon': { $gte: tabledata.lastmodifiedon }, 'data.type': tabledata.tableName };
       const options = {};
       options['selector'] = selector;
-      console.log('options = ', options);
+      
 
       this.serviceProvider.fetchDocsWithRelationshipUsingFindOption(options, false)
         .then(res => {
@@ -160,7 +169,7 @@ export class mapBridge {
   // Get directory path, if directory not available then create it
   getPath() {
     return this.appPreferences.fetch('selectedappId').then((res) => {
-      console.log('selectedappId base app= ', res);
+      
       return Promise.resolve(this.file.checkDir(this.file.dataDirectory, 'Dyna_UI/' + res + '/MapData/').then(
         (exists) => {
           return this.file.dataDirectory + 'Dyna_UI/' + res + '/MapData/';

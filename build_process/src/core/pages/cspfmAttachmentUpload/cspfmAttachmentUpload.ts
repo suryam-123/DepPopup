@@ -119,7 +119,7 @@ export class cspfmAttachmentUpload implements OnInit {
     reader.onabort = (err: any) => {
       console.log('onabort', err);
      };
-    reader.onloadend = () => { 
+    reader.onloadend = () => { }
       
     reader.readAsArrayBuffer(this.fileToWrite);
     }
@@ -127,7 +127,6 @@ export class cspfmAttachmentUpload implements OnInit {
     selectImageUrl = "";
     }
   }
-}
   uploadButtonPressed() {
     if(!navigator.onLine){
       this.appUtilityConfig.presentToast("No internet connection. Please check your internet connection and try again.");

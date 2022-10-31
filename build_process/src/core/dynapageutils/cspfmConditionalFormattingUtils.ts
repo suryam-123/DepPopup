@@ -487,10 +487,11 @@ export class cspfmConditionalFormattingUtils {
         let fl_hidden;
         let fl_defaultField;
         let fl_maskingField;
+        let fl_readonly;
         let fl_visible;
         if (fieldLevel) {
             fl_defaultValue = fieldLevel.filter(element => {
-                return element['attributeTypeIs'] === 'defaultvalue'
+                return element['attributeTypeIs'] === 'defaultvalue' && element ['isActive'] && conditionalFormatJson['layoutType']==='List';
             })
 
             fl_hidden = fieldLevel.filter((element) => {
@@ -500,6 +501,10 @@ export class cspfmConditionalFormattingUtils {
             fl_defaultField = fieldLevel.filter(element => {
                 return element['attributeTypeIs'] === 'defaultfield'
             })
+
+            fl_readonly = fieldLevel.filter(element=>{
+                return element['attributeTypeIs'] === 'readonly' && element ['isActive'] && conditionalFormatJson['layoutType']==='List';
+            });
 
             fl_maskingField = fieldLevel.filter(element => {
                 return element['attributeTypeIs'] === 'masking' && element['isActive'];
@@ -541,13 +546,23 @@ export class cspfmConditionalFormattingUtils {
         }
 
         if (fl_defaultValue && fl_defaultValue.length > 0) {
-            for (const elementValue of fl_defaultValue) {
-                const objectId = this.objectTableMappingObject.mappingDetail[elementValue['objectName']]
+            fl_defaultValue.forEach(element => {
+                const objectId = this.objectTableMappingObject.mappingDetail[element['objectName']]
                 if (criteriaResult) {
-                    conditionalFormatJson.dataObject[elementValue['traversalPath']][elementValue['fieldName']] = await this.getValuesBasedOnFieldType(conditionalFormatJson, elementValue)
-                    conditionalFormatJson.dataObject[elementValue['traversalPath']] = JSON.parse(JSON.stringify(conditionalFormatJson.dataObject[elementValue['traversalPath']]))
+                     setTimeout(() => {
+                        this.makeDefaultValueForFilterSection(conditionalFormatJson, element, criteriaResult)
+                    }, 100);
                 }
-            }
+            });
+        }
+
+        if (fl_readonly && fl_readonly.length > 0) {
+            fl_readonly.forEach(element => {
+                setTimeout(() => {
+                this.makeFieldReadOnlyForFilterSection(conditionalFormatJson, element, criteriaResult)
+            }, 100);
+
+            });
         }
 
         if (fl_defaultField && fl_defaultField.length > 0) {
@@ -685,7 +700,7 @@ export class cspfmConditionalFormattingUtils {
         } else {
             objectFieldName = element['fieldName'];
         }
-        if (conditionalFormatJson['layoutType'] === 'List' || element['isFieldDroppedInListSection']) {
+        if (element['isFieldDroppedInListSection']) {
             let columnDefinitions = conditionalFormatJson['parentPage'].columnDefinitions;
             let objectId;
             if (conditionalFormatJson['layoutType'] === 'List') {
@@ -724,6 +739,192 @@ export class cspfmConditionalFormattingUtils {
             if (document.getElementById(divId)) {
                 document.getElementById(divId)['hidden'] = criteriaResult;
             }
+        }
+    }
+
+    getLookupFieldName(element) {
+        let lookupFieldMappingValue = this.lookupFieldMappingObject.mappingDetail
+        if (element['fieldType'] === 'LOOKUP') {
+            let lookupObjectName = Object.keys(lookupFieldMappingValue)
+            for (let obj of lookupObjectName) {
+                let lookupColumns = Object.keys(lookupFieldMappingValue[obj])
+                for (let value of lookupColumns) {
+                    if (lookupFieldMappingValue[obj][value] === element['fieldName']) {
+                        return value;
+                    }
+                }
+            }
+        }
+    }
+
+    makeReadOnlyApplicableFields(conditionalFormatJson: ConditionalFormat, element, lookupFieldName, filterAppliedFields) {
+        let filterAppliedFieldSets: any = Object.values(filterAppliedFields).filter((filterFiledKeys) => {
+            if (element['fieldType'] !== 'LOOKUP') {
+                return (filterFiledKeys['fieldName'] === element['fieldName'] && filterFiledKeys['rootPath'] === element['traversalPath'])
+            } else {
+                return (filterFiledKeys['fieldName'] === lookupFieldName && filterFiledKeys['rootPath'] === element['traversalPath'])
+            }
+        })[0];
+        conditionalFormatJson['parentPage'].readonlyApplicableField.push(filterAppliedFieldSets);
+    }
+
+    makeDefaultValueForFilterSection(conditionalFormatJson: ConditionalFormat, element, criteriaResult) {
+        let lookupFieldNameValue = "";
+        if (element['fieldType'] === 'LOOKUP') {
+            lookupFieldNameValue = this.getLookupFieldName(element)
+        }
+         let filterAppliedFields = conditionalFormatJson['parentPage'].filterSectionDetailTemp.filterFields;
+         if (element['isReadonly']) {
+            this.makeReadOnlyApplicableFields(conditionalFormatJson, element, lookupFieldNameValue, filterAppliedFields)
+        }
+
+        Object.values(filterAppliedFields).forEach((filterFieldKeys) => {
+            if (element['fieldType'] !== 'LOOKUP') {
+                if (filterFieldKeys['fieldName'] === element['fieldName'] && filterFieldKeys['rootPath'] === element['traversalPath']) {
+                    if (element['fieldType'] === "CHECKBOX" || element['fieldType'] === "DROPDOWN" || element['fieldType'] === "RADIO" || element['fieldType'] === "MULTISELECT" || element['fieldType'] === "BOOLEAN") {
+                        let inputArray = filterFieldKeys['displayInfo'].input;
+                        let elementType = Array.isArray(element['value']);
+                        inputArray.forEach(inputValue => {
+                            if (elementType) {
+                                element['value'].forEach(elementValue => {
+                                    if (inputValue.value === elementValue) {
+                                        inputValue.isChecked = true;
+                                        filterFieldKeys['displayInfo'].selected.push(inputValue);
+                                        filterFieldKeys['fieldValue'].push(elementValue)
+                                    }
+                                })
+                            } else {
+                                if (inputValue.value === element['value']) {
+                                    inputValue.isChecked = true;
+                                    filterFieldKeys['displayInfo'].selected.push(inputValue);
+                                    filterFieldKeys['fieldValue'].push(element['value'])
+                                }
+                            }
+                        })
+                    } else if (element['fieldType'] === 'DATE' || element['fieldType'] === 'TIMESTAMP') {
+                        let date;
+                        if (element['valueType'] == 'Function') {
+                            let millis = new Date().getTime()
+                            if (element['value'] == 'Today') {
+                                filterFieldKeys['fieldValue'] = this.datePipe.transform(millis, this.appUtilityObject.userDateFormat, this.appUtilityObject.utcOffsetValue)
+                            } else {
+                                filterFieldKeys['fieldValue'] = this.datePipe.transform(millis, this.appUtilityObject.userDateTimeFormat, this.appUtilityObject.userZoneOffsetValue)
+                            }
+                        } else {
+                            if (element['fieldType'] === 'DATE') {
+                                date = this.appUtilityObject.getUtcMillisecondsFromDateString(element['value'], false, element['configuredDateFormat'])
+                                filterFieldKeys['fieldValue'] = this.datePipe.transform(date, this.appUtilityObject.userDateFormat, this.appUtilityObject.utcOffsetValue)
+                            } else {
+                                date = this.appUtilityObject.getUtcTimeZoneMillsecondsFromDateTimeString(element['value'], 'user', element['configuredDateFormat'])
+                                filterFieldKeys['fieldValue'] = this.datePipe.transform(date, this.appUtilityObject.userDateTimeFormat, this.appUtilityObject.userZoneOffsetValue)
+                            }
+                        }
+                    } else {
+                        filterFieldKeys['fieldValue'] = element['value'];
+                    }
+                }
+            } else {
+                if (filterFieldKeys['fieldName'] === lookupFieldNameValue && filterFieldKeys['rootPath'] === element['traversalPath']) {
+                    if (element['isStandardObject'] && element['isLoggedUser']) {
+                        filterFieldKeys[element['lookupTraversalPath']] = JSON.parse(JSON.stringify(this.appUtilityObject.loggedUserCorObject));
+                        filterFieldKeys['fieldValue'] = filterFieldKeys[element['lookupTraversalPath']]['id'];
+                        filterFieldKeys['displayInfo'].label = filterFieldKeys[element['lookupTraversalPath']]['display_name'];
+                        filterFieldKeys['displayInfo'].data = JSON.parse(JSON.stringify(this.appUtilityObject.loggedUserCorObject));
+                    } else {
+                        const queryParams = {
+                            id: [element['value']],
+                            dataSource: appConstant.couchDBStaticName,
+                            isStandardObject: element['isStandardObject']
+                        }
+                        this.dataProviderObject.fetchDocsUsingRecordIds(queryParams).then(result => {
+                            if (result['status'] == 'SUCCESS') {
+                                let response = result['response']
+                                filterFieldKeys[element['lookupTraversalPath']] = JSON.parse(JSON.stringify(response));
+                                filterFieldKeys['fieldValue'] = response['id'];
+                                filterFieldKeys['displayInfo'].label = response['display_name'];
+                                filterFieldKeys['displayInfo'].data = JSON.parse(JSON.stringify(response));
+                            }
+                        })
+                    }
+                }
+            }
+        })
+        if (element['isReadonly']) {
+            this.makeFieldReadOnlyForDeafultValue(conditionalFormatJson, element, criteriaResult);
+        }
+    }
+
+    makeFieldReadOnlyForDeafultValue(conditionalFormatJson: ConditionalFormat, element, criteriaResult) {
+        let pointerEventsValue = "";
+        if (criteriaResult) {
+            pointerEventsValue = "none"
+            if (element['isFieldDroppedInListSection'] === false && conditionalFormatJson['layoutType'] === 'List') {
+                if (element['fieldType'] === "CHECKBOX" || element['fieldType'] === "DROPDOWN" || element['fieldType'] === "RADIO" || element['fieldType'] === "MULTISELECT" || element['fieldType'] === "BOOLEAN") {
+                    var childElements = document.getElementById(element['fieldDivElementId']).getElementsByTagName('*');
+                    this.updateStylePropertyForReadOnly(childElements, criteriaResult, pointerEventsValue);
+                    document.getElementById(element['fieldDivElementId']).classList.add('cs-readonly');
+                } else {
+                    if (element['fieldType'] === 'LOOKUP') {
+                        let inputElementTag = document.getElementById(element['fieldInputElementId']) as HTMLInputElement | null
+                        this.updateStylePropertyForDefaultValue(inputElementTag, criteriaResult, pointerEventsValue);
+
+                        let lookupSearchButtonId = element['fieldInputElementId'].replace("FLD", "ACT") + '_search';
+                        let searchButtonTag = document.getElementById(lookupSearchButtonId) as HTMLButtonElement | null
+                        this.updateStylePropertyForDefaultValue(searchButtonTag, criteriaResult, pointerEventsValue);
+
+                        let lookupClearButtonId = element['fieldInputElementId'].replace("FLD", "ACT") + '_clear';
+                        let clearButtonTag = document.getElementById(lookupClearButtonId) as HTMLButtonElement | null
+                        this.updateStylePropertyForDefaultValue(clearButtonTag, criteriaResult, pointerEventsValue);
+                    } else if (element['fieldType'] === 'DATE' || element['fieldType'] === 'TIMESTAMP') {
+                        let inputElementTag = document.getElementById(element['fieldInputElementId']) as HTMLInputElement | null
+                        this.updateStylePropertyForDefaultValue(inputElementTag, criteriaResult, pointerEventsValue);
+
+                        let dateClearButtonId = element['fieldInputElementId'].replace("FLD", "ACT") + '_clear';
+                        let clearButtonTag = document.getElementById(dateClearButtonId) as HTMLButtonElement | null
+                        this.updateStylePropertyForDefaultValue(clearButtonTag, criteriaResult, pointerEventsValue);
+
+                        let calenderButtonId = element['fieldInputElementId'].replace("FLD", "ACT") + '_calender';
+                        let calenderButtonTag = document.getElementById(calenderButtonId) as HTMLInputElement | null
+                        this.updateStylePropertyForDefaultValue(calenderButtonTag, criteriaResult, pointerEventsValue);
+                    } else {
+                        let inputElementTag = document.getElementById(element['fieldInputElementId']) as HTMLInputElement | null
+                        this.updateStylePropertyForDefaultValue(inputElementTag, criteriaResult, pointerEventsValue);
+                    }
+                }
+            }
+        }
+    }
+
+    makeFieldReadOnlyForFilterSection(conditionalFormatJson: ConditionalFormat, element, criteriaResult) {
+        let pointerEventsValue = "";
+        let lookupFieldNameValue = "";
+        if (element['fieldType'] === 'LOOKUP') {
+            lookupFieldNameValue = this.getLookupFieldName(element)
+        }
+         let filterAppliedFields = conditionalFormatJson['parentPage'].filterSectionDetailTemp.filterFields;
+         this.makeReadOnlyApplicableFields(conditionalFormatJson, element, lookupFieldNameValue, filterAppliedFields)
+        if (criteriaResult) {
+            pointerEventsValue = "none"
+            if (element['isFieldDroppedInListSection'] === false && conditionalFormatJson['layoutType'] === 'List') {
+                var childElements = document.getElementById(element['fieldDivElementId']).getElementsByTagName('*');
+                this.updateStylePropertyForReadOnly(childElements, criteriaResult, pointerEventsValue);
+                document.getElementById(element['fieldDivElementId']).classList.add('cs-readonly');
+            }
+        }
+    }
+    updateStylePropertyForDefaultValue(inputElementId, criteriaResult, pointerEventsValue) {
+        if (inputElementId) {
+            inputElementId.disabled = criteriaResult;
+            inputElementId.style.pointerEvents = pointerEventsValue;
+            inputElementId.style.color = '#333333';
+            inputElementId.parentElement.classList.add('cs-readonly');
+        }
+    }
+    updateStylePropertyForReadOnly(childElements, criteriaResult, pointerEventsValue) {
+        for (var node of childElements) {
+            node.disabled = criteriaResult;
+            node.style.pointerEvents = pointerEventsValue;
+            node.style.color = '#333333';
         }
     }
 
@@ -1037,7 +1238,7 @@ export class cspfmConditionalFormattingUtils {
                     conditionalFormatJson.formGroup.get(objectId).get(element['fieldName']).setValue(this.datePipe.transform(millis, this.appUtilityObject.userDateFormat, this.appUtilityObject.utcOffsetValue))
                     return this.datePipe.transform(millis, this.appUtilityObject.userDateFormat, this.appUtilityObject.utcOffsetValue)
                 } else {
-                    conditionalFormatJson.formGroup.get(objectId).get(element['fieldName']).setValue(this.datePipe.transform(millis, this.appUtilityObject.userDateTimeFormat))
+                    conditionalFormatJson.formGroup.get(objectId).get(element['fieldName']).setValue(this.datePipe.transform(millis, this.appUtilityObject.userDateTimeFormat,this.appUtilityObject.userZoneOffsetValue))
                     return this.datePipe.transform(millis, this.appUtilityObject.userDateTimeFormat, this.appUtilityObject.userZoneOffsetValue)
                 }
             } else {
@@ -1102,7 +1303,7 @@ export class cspfmConditionalFormattingUtils {
                     dateValue = conditionalFormatJson.dataObject[sourceTraversalPath][element['sourceFieldName']]
                 } else {
                     let date = moment(new Date(conditionalFormatJson.dataObject[sourceTraversalPath][element['sourceFieldName']])).tz(this.appUtilityObject.orgTimeZone).toISOString();
-                    dateValue = this.datePipe.transform(date, this.appUtilityObject.userDateFormat)
+                    dateValue = this.datePipe.transform(date, this.appUtilityObject.userDateFormat, this.appUtilityObject.utcOffsetValue)
                 }
             }
 
@@ -1114,7 +1315,7 @@ export class cspfmConditionalFormattingUtils {
                 timeStampValue = conditionalFormatJson.dataObject[sourceTraversalPath][element['sourceFieldName']]
             } else {
                 let date = moment(new Date(conditionalFormatJson.dataObject[sourceTraversalPath][element['sourceFieldName']])).tz(this.appUtilityObject.userTimeZone).toISOString();
-                timeStampValue = this.datePipe.transform(date, this.appUtilityObject.userDateTimeFormat)
+                timeStampValue = this.datePipe.transform(date, this.appUtilityObject.userDateTimeFormat,this.appUtilityObject.userZoneOffsetValue)
             }
 
             conditionalFormatJson.formGroup.get(targetObjectId).get(element['fieldName']).setValue(timeStampValue);

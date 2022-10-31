@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: embedded.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Component,ViewChild, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -17,7 +26,7 @@ export class embedded implements OnInit {
     this.renderer.removeAttribute(this.pdf.nativeElement, "data");
     this.router.routerState.root.queryParams.subscribe(page=>{
       this.renderer.setAttribute(this.pdf.nativeElement,"data",page.emUrl)
-      console.log("params value",page);
+      
     })
   }
 

@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: popoverpage.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -27,7 +36,7 @@ export class popoverpage {
   @ViewChild('targetelement', { static: false }) targetelement: MdePopoverTrigger;
   constructor(public observableListenerUtils: cspfmObservableListenerUtils, public modalController: ModalController) {
     this.dripDownAttribute = "#cs-dropdown-custom"
-    console.log('date val', this.dateVal, this.items);
+    
   }
   @Input() set setdateDisplay(type) {
     this.dateVal = type;
@@ -51,7 +60,7 @@ export class popoverpage {
     this.parentPage = type;
   }
   ngOnInit() {
-    console.log("ngOnInit")
+    
     this.observableListenerUtils.subscribe('balloonCloseAfterActionClick', () => {
       this.closePopover();
     });

@@ -1,3 +1,12 @@
+
+
+/* 
+ *    File: cspfmGlobalSearchMoreActionPage.ts 
+ *    Copyright(c) 2022 Chain-Sys Corporation Inc.
+ *    Duplication or distribution of this code in part or in whole by any media
+ *    without the express written permission of Chain-Sys Corporation or its agents is
+ *    strictly prohibited.
+ */
 import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { appUtility } from 'src/core/utils/appUtility';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -98,7 +107,7 @@ export class cspfmGlobalSearchMoreActionPage {
     this.activatRoute.queryParams.subscribe(params => {
       if (Object.keys(params).length === 0 && params.constructor === Object) {
         this.appConfig.configuration.isGlobalSearchEnabled = false
-        console.log("list query params skipped");
+        
         return
       }
       document.body.click() //for closing the autocomplete pop up
@@ -158,7 +167,7 @@ export class cspfmGlobalSearchMoreActionPage {
     })
 
     this.addIconPopoverControl.valueChanges.subscribe(userInput => {
-      console.log("Global search onChange", userInput)
+      
 
       if (this.currentFilterField === 'objectName') {
         this.filteredResult['objectName'] = this.result['objectName'].filter(option => option['objectDisplayName'].toLowerCase().includes(userInput.toLowerCase()));
@@ -789,7 +798,7 @@ export class cspfmGlobalSearchMoreActionPage {
 
   ngOnDestroy() {
     this.appConfig.configuration.isGlobalSearchEnabled = true
-    console.log("destroy")
+    
   }
 
 

@@ -1512,3 +1512,6 @@ angular-slickgrid{
         width: calc(100% - 325px);
     }
 }
+.slickgrid-cell-error {
+     border-color: red !important;
+}

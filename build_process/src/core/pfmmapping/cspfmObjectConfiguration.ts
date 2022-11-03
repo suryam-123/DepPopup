@@ -26,16 +26,6 @@ export class cspfmObjectConfiguration {
         "pfm71655": {
             "compositeValidation": [],
             "selectionFieldsMapping": {
-                "location": {
-                    "CHE": "depemployee.location.Option.Chennai",
-                    "MDU": "depemployee.location.Option.Madurai",
-                    "CMB": "depemployee.location.Option.Kovai"
-                },
-                "team": {
-                    "IS": "depemployee.team.Option.Innovation Squad",
-                    "AC": "depemployee.team.Option.appConnect",
-                    "TE": "depemployee.team.Option.Testing"
-                },
                 "depcheckbox": {
                     "COption1": "depemployee.depcheckbox.Option.COption1",
                     "COption2": "depemployee.depcheckbox.Option.COption2",
@@ -47,6 +37,16 @@ export class cspfmObjectConfiguration {
                     "3": "depemployee.depdropdownn.Option.Three",
                     "4": "depemployee.depdropdownn.Option.Four"
                 },
+                "team": {
+                    "IS": "depemployee.team.Option.Innovation Squad",
+                    "AC": "depemployee.team.Option.appConnect",
+                    "TE": "depemployee.team.Option.Testing"
+                },
+                "location": {
+                    "CHE": "depemployee.location.Option.Chennai",
+                    "MDU": "depemployee.location.Option.Madurai",
+                    "CMB": "depemployee.location.Option.Kovai"
+                },
                 "depmultiselect": {
                     "MSelect1": "depemployee.depmultiselect.Option.MSelect1",
                     "MSelect2": "depemployee.depmultiselect.Option.MSelect2",
@@ -54,26 +54,6 @@ export class cspfmObjectConfiguration {
                 }
             },
             "selectionFieldsMappingForEntry": {
-                "location": [{
-                    "title": "depemployee.location.Option.Chennai",
-                    "value": "CHE"
-                }, {
-                    "title": "depemployee.location.Option.Madurai",
-                    "value": "MDU"
-                }, {
-                    "title": "depemployee.location.Option.Kovai",
-                    "value": "CMB"
-                }],
-                "team": [{
-                    "title": "depemployee.team.Option.Innovation Squad",
-                    "value": "IS"
-                }, {
-                    "title": "depemployee.team.Option.appConnect",
-                    "value": "AC"
-                }, {
-                    "title": "depemployee.team.Option.Testing",
-                    "value": "TE"
-                }],
                 "depcheckbox": [{
                     "title": "depemployee.depcheckbox.Option.COption1",
                     "value": "COption1"
@@ -96,6 +76,26 @@ export class cspfmObjectConfiguration {
                 }, {
                     "title": "depemployee.depdropdownn.Option.Four",
                     "value": "4"
+                }],
+                "team": [{
+                    "title": "depemployee.team.Option.Innovation Squad",
+                    "value": "IS"
+                }, {
+                    "title": "depemployee.team.Option.appConnect",
+                    "value": "AC"
+                }, {
+                    "title": "depemployee.team.Option.Testing",
+                    "value": "TE"
+                }],
+                "location": [{
+                    "title": "depemployee.location.Option.Chennai",
+                    "value": "CHE"
+                }, {
+                    "title": "depemployee.location.Option.Madurai",
+                    "value": "MDU"
+                }, {
+                    "title": "depemployee.location.Option.Kovai",
+                    "value": "CMB"
                 }],
                 "depmultiselect": [{
                     "title": "depemployee.depmultiselect.Option.MSelect1",
@@ -124,16 +124,6 @@ export class cspfmObjectConfiguration {
         "pfm71658": {
             "compositeValidation": [],
             "selectionFieldsMapping": {
-                "depcheckbox": {
-                    "COption1": "deppersonalinfo.depcheckbox.Option.COption1",
-                    "COption2": "deppersonalinfo.depcheckbox.Option.COption2",
-                    "COption3": "deppersonalinfo.depcheckbox.Option.COption3"
-                },
-                "depmultiselect": {
-                    "MSelect1": "deppersonalinfo.depmultiselect.Option.MSelect1",
-                    "MSelect2": "deppersonalinfo.depmultiselect.Option.MSelect2",
-                    "MSelect3": "deppersonalinfo.depmultiselect.Option.MSelect3"
-                },
                 "location": {
                     "CHE": "deppersonalinfo.location.Option.Chennai",
                     "MDU": "deppersonalinfo.location.Option.Madurai",
@@ -143,29 +133,19 @@ export class cspfmObjectConfiguration {
                     "IS": "deppersonalinfo.team.Option.Innovation Squad",
                     "AC": "deppersonalinfo.team.Option.appConnect",
                     "TE": "deppersonalinfo.team.Option.Testing"
+                },
+                "depmultiselect": {
+                    "MSelect1": "deppersonalinfo.depmultiselect.Option.MSelect1",
+                    "MSelect2": "deppersonalinfo.depmultiselect.Option.MSelect2",
+                    "MSelect3": "deppersonalinfo.depmultiselect.Option.MSelect3"
+                },
+                "depcheckbox": {
+                    "COption1": "deppersonalinfo.depcheckbox.Option.COption1",
+                    "COption2": "deppersonalinfo.depcheckbox.Option.COption2",
+                    "COption3": "deppersonalinfo.depcheckbox.Option.COption3"
                 }
             },
             "selectionFieldsMappingForEntry": {
-                "depcheckbox": [{
-                    "title": "deppersonalinfo.depcheckbox.Option.COption1",
-                    "value": "COption1"
-                }, {
-                    "title": "deppersonalinfo.depcheckbox.Option.COption2",
-                    "value": "COption2"
-                }, {
-                    "title": "deppersonalinfo.depcheckbox.Option.COption3",
-                    "value": "COption3"
-                }],
-                "depmultiselect": [{
-                    "title": "deppersonalinfo.depmultiselect.Option.MSelect1",
-                    "value": "MSelect1"
-                }, {
-                    "title": "deppersonalinfo.depmultiselect.Option.MSelect2",
-                    "value": "MSelect2"
-                }, {
-                    "title": "deppersonalinfo.depmultiselect.Option.MSelect3",
-                    "value": "MSelect3"
-                }],
                 "location": [{
                     "title": "deppersonalinfo.location.Option.Chennai",
                     "value": "CHE"
@@ -185,6 +165,26 @@ export class cspfmObjectConfiguration {
                 }, {
                     "title": "deppersonalinfo.team.Option.Testing",
                     "value": "TE"
+                }],
+                "depmultiselect": [{
+                    "title": "deppersonalinfo.depmultiselect.Option.MSelect1",
+                    "value": "MSelect1"
+                }, {
+                    "title": "deppersonalinfo.depmultiselect.Option.MSelect2",
+                    "value": "MSelect2"
+                }, {
+                    "title": "deppersonalinfo.depmultiselect.Option.MSelect3",
+                    "value": "MSelect3"
+                }],
+                "depcheckbox": [{
+                    "title": "deppersonalinfo.depcheckbox.Option.COption1",
+                    "value": "COption1"
+                }, {
+                    "title": "deppersonalinfo.depcheckbox.Option.COption2",
+                    "value": "COption2"
+                }, {
+                    "title": "deppersonalinfo.depcheckbox.Option.COption3",
+                    "value": "COption3"
                 }]
             },
             "uniqueValidation": [{
@@ -202,6 +202,22 @@ export class cspfmObjectConfiguration {
         },
         "pfm74408": {
             "compositeValidation": [],
+            "uniqueValidation": [{
+                "fieldName": "depcname",
+                "displayName": "depCname",
+                "fieldType": "TEXT",
+                "isDependentCheckRequired": false,
+                "dependentObjectID": "pfm74408"
+            }],
+            "requiredFieldsValidation": [{
+                "fieldName": "depcname",
+                "displayName": "depCname",
+                "fieldType": "TEXT"
+            }, {
+                "fieldName": "depcmaster",
+                "displayName": "DepC Master",
+                "fieldType": "MASTERDETAIL"
+            }],
             "selectionFieldsMapping": {
                 "depdropdownn": {
                     "1": "depchildinfo.depdropdownn.Option.One",
@@ -224,23 +240,80 @@ export class cspfmObjectConfiguration {
                     "title": "depchildinfo.depdropdownn.Option.Four",
                     "value": "4"
                 }]
-            },
+            }
+        },
+        "pfm77370": {
+            "compositeValidation": [],
             "uniqueValidation": [{
-                "fieldName": "depcname",
-                "displayName": "depCname",
-                "fieldType": "TEXT",
+                "fieldName": "mno",
+                "displayName": "M No",
+                "fieldType": "AUTONUMBER",
                 "isDependentCheckRequired": false,
-                "dependentObjectID": "pfm74408"
+                "dependentObjectID": "pfm77370"
             }],
             "requiredFieldsValidation": [{
-                "fieldName": "depcname",
-                "displayName": "depCname",
-                "fieldType": "TEXT"
-            }, {
-                "fieldName": "depcmaster",
-                "displayName": "DepC Master",
+                "fieldName": "depmmaster",
+                "displayName": "DepM Master",
                 "fieldType": "MASTERDETAIL"
-            }]
+            }],
+            "selectionFieldsMapping": {
+                "cities": {
+                    "CHN": "depmultiinfo.cities.Option.Chennai",
+                    "MDU": "depmultiinfo.cities.Option.Madurai",
+                    "KCI": "depmultiinfo.cities.Option.Kochi",
+                    "TVN": "depmultiinfo.cities.Option.Trivandrum",
+                    "TRI": "depmultiinfo.cities.Option.Tripathi",
+                    "CHT": "depmultiinfo.cities.Option.Chithoor",
+                    "BAN": "depmultiinfo.cities.Option.Bangalore",
+                    "MYS": "depmultiinfo.cities.Option.Mysore"
+                },
+                "state": {
+                    "TN": "depmultiinfo.state.Option.TamilNadu",
+                    "KL": "depmultiinfo.state.Option.Kerala",
+                    "KAR": "depmultiinfo.state.Option.Karnataka",
+                    "AP": "depmultiinfo.state.Option.Andhra"
+                }
+            },
+            "selectionFieldsMappingForEntry": {
+                "cities": [{
+                    "title": "depmultiinfo.cities.Option.Chennai",
+                    "value": "CHN"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Madurai",
+                    "value": "MDU"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Kochi",
+                    "value": "KCI"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Trivandrum",
+                    "value": "TVN"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Tripathi",
+                    "value": "TRI"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Chithoor",
+                    "value": "CHT"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Bangalore",
+                    "value": "BAN"
+                }, {
+                    "title": "depmultiinfo.cities.Option.Mysore",
+                    "value": "MYS"
+                }],
+                "state": [{
+                    "title": "depmultiinfo.state.Option.TamilNadu",
+                    "value": "TN"
+                }, {
+                    "title": "depmultiinfo.state.Option.Kerala",
+                    "value": "KL"
+                }, {
+                    "title": "depmultiinfo.state.Option.Karnataka",
+                    "value": "KAR"
+                }, {
+                    "title": "depmultiinfo.state.Option.Andhra",
+                    "value": "AP"
+                }]
+            }
         }
     };
 }

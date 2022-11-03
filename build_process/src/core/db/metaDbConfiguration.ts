@@ -243,24 +243,24 @@ export class metaDbConfiguration {
         ],
         tableStructure: {
             "pfm5": {
-                "display_name": null,
-                "password_reset_flag": null,
-                "password_expired_date": null,
-                "manager_user_id": null,
-                "created_by": null,
-                "created_on": null,
-                "last_modified_by": null,
                 "last_modified_on": null,
                 "user_id": null,
-                "organization_id": null,
-                "guid": null,
-                "password": null,
-                "username": null,
-                "first_name": null,
-                "last_name": null,
-                "email_id": null,
+                "created_on": null,
+                "created_by": null,
+                "manager_user_id": null,
+                "password_expired_date": null,
+                "upn": null,
+                "display_name": null,
+                "password_reset_flag": null,
                 "title": null,
-                "upn": null
+                "email_id": null,
+                "last_name": null,
+                "first_name": null,
+                "username": null,
+                "password": null,
+                "guid": null,
+                "organization_id": null,
+                "last_modified_by": null
             }
         }
     }

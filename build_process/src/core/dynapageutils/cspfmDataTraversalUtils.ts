@@ -124,6 +124,12 @@ export class cspfmDataTraversalUtils {
         } else {
           return {};
         }
+      } else if (traversal['relationship'] === 'ONE_TO_MANY') {
+        if (data) {
+          return this.getDataObject(data, traversal['child'])
+        } else {
+          return {};
+        }
       } else {
         return {};
       }

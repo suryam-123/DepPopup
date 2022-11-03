@@ -368,20 +368,6 @@
          "relationShipType": "null",
          "objectType": "PRIMARY",
          "childObject": [{
-             "objectId": "71655",
-             "fieldId": "964453",
-             "objectName": "depemployee",
-             "objectType": "LOOKUP",
-             "referenceObjectId": 71658,
-             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup2",
-             "isStandardObject": "N",
-             "relationShipType": "",
-             "includeFields": true,
-             "formulaField": [{
-                 "fieldName": "depformulan"
-             }],
-             "childObject": []
-         }, {
              "objectId": "5",
              "fieldId": "967712",
              "objectName": "COR_USERS",
@@ -394,11 +380,25 @@
              "childObject": []
          }, {
              "objectId": "71655",
-             "fieldId": "967505",
+             "fieldId": "930602",
              "objectName": "depemployee",
              "objectType": "LOOKUP",
              "referenceObjectId": 71658,
-             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
+             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+             "isStandardObject": "N",
+             "relationShipType": "",
+             "includeFields": true,
+             "formulaField": [{
+                 "fieldName": "depformulan"
+             }],
+             "childObject": []
+         }, {
+             "objectId": "71655",
+             "fieldId": "964453",
+             "objectName": "depemployee",
+             "objectType": "LOOKUP",
+             "referenceObjectId": 71658,
+             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup2",
              "isStandardObject": "N",
              "relationShipType": "",
              "includeFields": true,
@@ -422,11 +422,11 @@
              "childObject": []
          }, {
              "objectId": "71655",
-             "fieldId": "930602",
+             "fieldId": "967505",
              "objectName": "depemployee",
              "objectType": "LOOKUP",
              "referenceObjectId": 71658,
-             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup",
+             "rootPath": "deppersonalinfo_DUMMY$$depemployee_deplookup3",
              "isStandardObject": "N",
              "relationShipType": "",
              "includeFields": true,
@@ -450,16 +450,25 @@
      public sectionDependentObjectList: {
          [key: string]: DependentObjectListType
      } = {
+         "203868_pfm77370": {
+             "relationalObjects": {
+                 "pfm77370": []
+             },
+             "lookupObjects": {
+                 "pfm5": {},
+                 "pfm71655": {}
+             }
+         },
          "203868_pfm74408": {
              "relationalObjects": {
                  "pfm74408": []
              },
              "lookupObjects": {
-                 "pfm71655": {
-                     "pfm74408": ["pfm71655_967516"]
-                 },
                  "pfm5": {
                      "pfm74408": ["pfm5_967510"]
+                 },
+                 "pfm71655": {
+                     "pfm74408": ["pfm71655_967516"]
                  }
              }
          }
@@ -471,12 +480,13 @@
          },
          "lookupObjects": {
              "pfm71655": {
-                 "pfm74408": ["pfm74408", "pfm71655_967516"],
-                 "pfm71658": ["pfm71655_967507"]
+                 "pfm71658": ["pfm71655_967507"],
+                 "pfm74408": ["pfm74408", "pfm71655_967516"]
              },
              "pfm5": {
-                 "pfm74408": ["pfm74408", "pfm5_967510"],
-                 "pfm71658": ["pfm5_967712"]
+                 "pfm71658": ["pfm5_967712"],
+                 "pfm77370": ["pfm77370", "pfm5_1003748"],
+                 "pfm74408": ["pfm74408", "pfm5_967510"]
              }
          },
          "dataRestrictionInvolvedObjects": {}
@@ -531,13 +541,17 @@
      };
      public redirectUrl = "/";
      objDisplayName = {
+         "pfm74408": {
+             "objectName": "depchildinfo",
+             "objectDisplayName": "Dep_childInfo"
+         },
          "pfm71658": {
              "objectName": "deppersonalinfo",
              "objectDisplayName": "Dep_PersonalInfo"
          },
-         "pfm74408": {
-             "objectName": "depchildinfo",
-             "objectDisplayName": "Dep_childInfo"
+         "pfm77370": {
+             "objectName": "depmultiinfo",
+             "objectDisplayName": "Dep_MultiInfo"
          }
      };
      public showNavigationHistoryPopUp = false;
@@ -558,54 +572,85 @@
      private dataPaths: Array < {
          traversalPath: string;requiredTemp: boolean
      } > = [{
-         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
-         requiredTemp: false
-     }, {
          traversalPath: 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser',
-         requiredTemp: false
-     }, {
-         traversalPath: 'deppersonalinfo_DUMMY',
-         requiredTemp: false
-     }, {
-         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1',
-         requiredTemp: false
-     }, {
-         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3',
-         requiredTemp: false
-     }, {
-         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup3',
          requiredTemp: false
      }, {
          traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser',
          requiredTemp: false
      }, {
-         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
+         traversalPath: 'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser',
          requiredTemp: false
      }, {
          traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
          requiredTemp: false
      }, {
-         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup',
-         requiredTemp: false
-     }, {
          traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2',
          requiredTemp: false
      }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depemployee_deplookup3',
+         requiredTemp: false
+     }, {
          traversalPath: 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4',
+         requiredTemp: false
+     }, {
+         traversalPath: 'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster',
          requiredTemp: false
      }, ]
      public expandParentObjectData: 'C' | 'HO' | 'FO' = 'FO';
      public previousGridState;
      public pfm71658depformulanFormula = "square(deppersonalinfo.DepNumber)";
-     public childObjects = ["pfm74408"];
+     public childObjects = ["pfm77370", "pfm74408"];
      private objectNameMapping = {
          "pfm0s": "Dep_PersonalInfo",
+         "pfm77370s": "Dep_MultiInfo",
          "pfm74408s": "Dep_childInfo"
      };
      public objectRelationshipMapping = {
-         "pfm74408": "one_to_many"
+         "pfm74408": "one_to_many",
+         "pfm77370": "one_to_many"
      };
      public sectionObjectsHierarchy = {
+         "pfm77370": {
+             "objectId": "77370",
+             "fieldId": "1003750",
+             "objectName": "depmultiinfo",
+             "objectType": "MASTERDETAIL",
+             "referenceObjectId": 71658,
+             "rootPath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster",
+             "isStandardObject": "N",
+             "relationShipType": "one_to_many",
+             "includeFields": true,
+             "childObject": [{
+                 "objectId": "5",
+                 "fieldId": "1003748",
+                 "objectName": "COR_USERS",
+                 "objectType": "LOOKUP",
+                 "referenceObjectId": 77370,
+                 "rootPath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser",
+                 "isStandardObject": "Y",
+                 "relationShipType": "",
+                 "includeFields": true,
+                 "childObject": []
+             }]
+         },
          "pfm74408": {
              "objectId": "74408",
              "fieldId": "965874",
@@ -620,12 +665,23 @@
                  "fieldName": "depcformula1"
              }],
              "childObject": [{
+                 "objectId": "5",
+                 "fieldId": "967510",
+                 "objectName": "COR_USERS",
+                 "objectType": "LOOKUP",
+                 "referenceObjectId": 74408,
+                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
+                 "isStandardObject": "Y",
+                 "relationShipType": "",
+                 "includeFields": true,
+                 "childObject": []
+             }, {
                  "objectId": "71655",
-                 "fieldId": "965870",
+                 "fieldId": "965872",
                  "objectName": "depemployee",
                  "objectType": "LOOKUP",
                  "referenceObjectId": 74408,
-                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1",
+                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2",
                  "isStandardObject": "N",
                  "relationShipType": "",
                  "includeFields": true,
@@ -648,23 +704,12 @@
                  }],
                  "childObject": []
              }, {
-                 "objectId": "5",
-                 "fieldId": "967510",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
-                 "isStandardObject": "Y",
-                 "relationShipType": "",
-                 "includeFields": true,
-                 "childObject": []
-             }, {
                  "objectId": "71655",
-                 "fieldId": "965872",
+                 "fieldId": "965870",
                  "objectName": "depemployee",
                  "objectType": "LOOKUP",
                  "referenceObjectId": 74408,
-                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2",
+                 "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1",
                  "isStandardObject": "N",
                  "relationShipType": "",
                  "includeFields": true,
@@ -719,81 +764,84 @@
      public isAnyClickDone = false;
      public __deppersonalinfo$tableName = this.objectTableMapping.mappingDetail['deppersonalinfo'];
      public __depchildinfo$tableName = this.objectTableMapping.mappingDetail['depchildinfo'];
-     public __depemployee$tableName = this.objectTableMapping.mappingDetail['depemployee'];
+     public __depmultiinfo$tableName = this.objectTableMapping.mappingDetail['depmultiinfo'];
      public __COR_USERS$tableName = this.objectTableMapping.mappingDetail['COR_USERS'];
+     public __depemployee$tableName = this.objectTableMapping.mappingDetail['depemployee'];
      public lookupCriteriaQueryConfig = {}
-     public team_930594_7774718 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['team'];
-     public location_930595_7774719 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['location'];
-     public depmultiselect_967503_7774729 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['depmultiselect'];
-     public depcheckbox_967504_7774730 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['depcheckbox'];
-     public depdropdownn_972310_7774707 = this.pfmObjectConfig.objectConfiguration[this.__depchildinfo$tableName]['selectionFieldsMapping']['depdropdownn'];
+     public team_930594_8001405 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['team'];
+     public location_930595_8001406 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['location'];
+     public depmultiselect_967503_8001416 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['depmultiselect'];
+     public depcheckbox_967504_8001417 = this.pfmObjectConfig.objectConfiguration[this.__deppersonalinfo$tableName]['selectionFieldsMapping']['depcheckbox'];
+     public state_1003746_8001428 = this.pfmObjectConfig.objectConfiguration[this.__depmultiinfo$tableName]['selectionFieldsMapping']['state'];
+     public cities_1003747_8001429 = this.pfmObjectConfig.objectConfiguration[this.__depmultiinfo$tableName]['selectionFieldsMapping']['cities'];
+     public depdropdownn_972310_8001451 = this.pfmObjectConfig.objectConfiguration[this.__depchildinfo$tableName]['selectionFieldsMapping']['depdropdownn'];
      public gridFieldInfo: {
          [key: string]: FieldInfo
      } = {
-         "pfm71658_name_7774716": {
+         "pfm71658_name_8001403": {
              "id": "name",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$name.name",
              "fieldName": "name",
              "prop": "name",
              "fieldType": "TEXT",
              "objectName": "deppersonalinfo",
-             "elementid": 7774716,
+             "elementid": 8001403,
              "traversalpath": "deppersonalinfo_DUMMY$$name",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_employeename_7774717": {
+         "pfm71658_employeename_8001404": {
              "id": "employeename",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$employeename.employeename",
              "fieldName": "employeename",
              "prop": "employeename",
              "fieldType": "TEXT",
              "objectName": "deppersonalinfo",
-             "elementid": 7774717,
+             "elementid": 8001404,
              "traversalpath": "deppersonalinfo_DUMMY$$employeename",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_team_7774718": {
+         "pfm71658_team_8001405": {
              "id": "team",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$team.team",
              "fieldName": "team",
              "prop": "team",
              "fieldType": "DROPDOWN",
              "objectName": "deppersonalinfo",
-             "elementid": 7774718,
+             "elementid": 8001405,
              "traversalpath": "deppersonalinfo_DUMMY$$team",
              "child": "",
              "dateFormat": "",
-             "mappingDetails": this.team_930594_7774718,
+             "mappingDetails": this.team_930594_8001405,
              "currencyDetails": ""
          },
-         "pfm71658_location_7774719": {
+         "pfm71658_location_8001406": {
              "id": "location",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$location.location",
              "fieldName": "location",
              "prop": "location",
              "fieldType": "DROPDOWN",
              "objectName": "deppersonalinfo",
-             "elementid": 7774719,
+             "elementid": 8001406,
              "traversalpath": "deppersonalinfo_DUMMY$$location",
              "child": "",
              "dateFormat": "",
-             "mappingDetails": this.location_930595_7774719,
+             "mappingDetails": this.location_930595_8001406,
              "currencyDetails": ""
          },
-         "pfm71658_depcurrency_7774720": {
+         "pfm71658_depcurrency_8001407": {
              "id": "depcurrency",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depcurrency.depcurrency",
              "fieldName": "depcurrency",
              "prop": "depcurrency",
              "fieldType": "CURRENCY",
              "objectName": "deppersonalinfo",
-             "elementid": 7774720,
+             "elementid": 8001407,
              "traversalpath": "deppersonalinfo_DUMMY$$depcurrency",
              "child": "",
              "dateFormat": "",
@@ -805,84 +853,84 @@
                  "locale": "en-IN"
              }
          },
-         "pfm71658_deptimestamp_7774721": {
+         "pfm71658_deptimestamp_8001408": {
              "id": "deptimestamp",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$deptimestamp.deptimestamp",
              "fieldName": "deptimestamp",
              "prop": "deptimestamp",
              "fieldType": "TIMESTAMP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774721,
+             "elementid": 8001408,
              "traversalpath": "deppersonalinfo_DUMMY$$deptimestamp",
              "child": "",
              "dateFormat": this.appUtilityConfig.userDateTimeFormat,
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_depdate_7774722": {
+         "pfm71658_depdate_8001409": {
              "id": "depdate",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depdate.depdate",
              "fieldName": "depdate",
              "prop": "depdate",
              "fieldType": "DATE",
              "objectName": "deppersonalinfo",
-             "elementid": 7774722,
+             "elementid": 8001409,
              "traversalpath": "deppersonalinfo_DUMMY$$depdate",
              "child": "",
              "dateFormat": this.appUtilityConfig.userDateFormat,
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_depboolean_7774723": {
+         "pfm71658_depboolean_8001410": {
              "id": "depboolean",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depboolean.depboolean",
              "fieldName": "depboolean",
              "prop": "depboolean",
              "fieldType": "BOOLEAN",
              "objectName": "deppersonalinfo",
-             "elementid": 7774723,
+             "elementid": 8001410,
              "traversalpath": "deppersonalinfo_DUMMY$$depboolean",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_depnumber_7774724": {
+         "pfm71658_depnumber_8001411": {
              "id": "depnumber",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depnumber.depnumber",
              "fieldName": "depnumber",
              "prop": "depnumber",
              "fieldType": "NUMBER",
              "objectName": "deppersonalinfo",
-             "elementid": 7774724,
+             "elementid": 8001411,
              "traversalpath": "deppersonalinfo_DUMMY$$depnumber",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_depdecimal_7774725": {
+         "pfm71658_depdecimal_8001412": {
              "id": "depdecimal",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depdecimal.depdecimal",
              "fieldName": "depdecimal",
              "prop": "depdecimal",
              "fieldType": "DECIMAL",
              "objectName": "deppersonalinfo",
-             "elementid": 7774725,
+             "elementid": 8001412,
              "traversalpath": "deppersonalinfo_DUMMY$$depdecimal",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_deplookup_7774726": {
+         "pfm71658_deplookup_8001413": {
              "id": "pfm71655_930602_employeeid",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$deplookup.deplookup",
              "prop": "pfm71655_930602.employeeid",
              "fieldName": "pfm71655_930602",
              "fieldType": "LOOKUP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774726,
+             "elementid": 8001413,
              "traversalpath": "deppersonalinfo_DUMMY$$deplookup",
              "child": {
                  "child": "",
@@ -900,7 +948,7 @@
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71655_employeename_7774734": {
+         "pfm71655_employeename_8001421": {
              "child": {
                  "id": "employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup$$employeename.employeename",
@@ -908,7 +956,7 @@
                  "prop": "employeename",
                  "fieldType": "TEXT",
                  "objectName": "depemployee",
-                 "elementid": 7774734,
+                 "elementid": 8001421,
                  "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$employeename",
                  "child": "",
                  "dateFormat": "",
@@ -918,7 +966,7 @@
              "id": "pfm71655_930602_employeename",
              "prop": "pfm71655_930602.employeename",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup$$employeename.employeename",
-             "elementid": 7774734,
+             "elementid": 8001421,
              "mappingDetails": "",
              "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup$$employeename",
              "dateFormat": "",
@@ -927,7 +975,7 @@
              "fieldType": "LOOKUP",
              "objectName": "depemployee"
          },
-         "pfm71658_depformulan__f_7774727": {
+         "pfm71658_depformulan__f_8001414": {
              "id": "depformulan__f",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depformulan.depformulan",
              "fieldName": "depformulan__f",
@@ -935,21 +983,21 @@
              "fieldType": "FORMULA",
              "formulaType": "NUMBER",
              "objectName": "deppersonalinfo",
-             "elementid": 7774727,
+             "elementid": 8001414,
              "traversalpath": "deppersonalinfo_DUMMY$$depformulan",
              "child": "",
              "dateFormat": "",
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_deplookup2_7774728": {
+         "pfm71658_deplookup2_8001415": {
              "id": "pfm71655_964453_employeeid",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$deplookup2.deplookup2",
              "prop": "pfm71655_964453.employeeid",
              "fieldName": "pfm71655_964453",
              "fieldType": "LOOKUP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774728,
+             "elementid": 8001415,
              "traversalpath": "deppersonalinfo_DUMMY$$deplookup2",
              "child": {
                  "child": "",
@@ -967,7 +1015,7 @@
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71655_employeename_7774735": {
+         "pfm71655_employeename_8001422": {
              "child": {
                  "id": "employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup2$$employeename.employeename",
@@ -975,7 +1023,7 @@
                  "prop": "employeename",
                  "fieldType": "TEXT",
                  "objectName": "depemployee",
-                 "elementid": 7774735,
+                 "elementid": 8001422,
                  "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup2$$employeename",
                  "child": "",
                  "dateFormat": "",
@@ -985,7 +1033,7 @@
              "id": "pfm71655_964453_employeename",
              "prop": "pfm71655_964453.employeename",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup2$$employeename.employeename",
-             "elementid": 7774735,
+             "elementid": 8001422,
              "mappingDetails": "",
              "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup2$$employeename",
              "dateFormat": "",
@@ -994,42 +1042,42 @@
              "fieldType": "LOOKUP",
              "objectName": "depemployee"
          },
-         "pfm71658_depmultiselect_7774729": {
+         "pfm71658_depmultiselect_8001416": {
              "id": "depmultiselect",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiselect.depmultiselect",
              "fieldName": "depmultiselect",
              "prop": "depmultiselect",
              "fieldType": "MULTISELECT",
              "objectName": "deppersonalinfo",
-             "elementid": 7774729,
+             "elementid": 8001416,
              "traversalpath": "deppersonalinfo_DUMMY$$depmultiselect",
              "child": "",
              "dateFormat": "",
-             "mappingDetails": this.depmultiselect_967503_7774729,
+             "mappingDetails": this.depmultiselect_967503_8001416,
              "currencyDetails": ""
          },
-         "pfm71658_depcheckbox_7774730": {
+         "pfm71658_depcheckbox_8001417": {
              "id": "depcheckbox",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depcheckbox.depcheckbox",
              "fieldName": "depcheckbox",
              "prop": "depcheckbox",
              "fieldType": "CHECKBOX",
              "objectName": "deppersonalinfo",
-             "elementid": 7774730,
+             "elementid": 8001417,
              "traversalpath": "deppersonalinfo_DUMMY$$depcheckbox",
              "child": "",
              "dateFormat": "",
-             "mappingDetails": this.depcheckbox_967504_7774730,
+             "mappingDetails": this.depcheckbox_967504_8001417,
              "currencyDetails": ""
          },
-         "pfm71658_deplookup3_7774731": {
+         "pfm71658_deplookup3_8001418": {
              "id": "pfm71655_967505_employeeid",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$deplookup3.deplookup3",
              "prop": "pfm71655_967505.employeeid",
              "fieldName": "pfm71655_967505",
              "fieldType": "LOOKUP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774731,
+             "elementid": 8001418,
              "traversalpath": "deppersonalinfo_DUMMY$$deplookup3",
              "child": {
                  "child": "",
@@ -1047,14 +1095,14 @@
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71658_depcoruser_7774733": {
+         "pfm71658_depcoruser_8001420": {
              "id": "pfm5_967712_username",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depcoruser.depcoruser",
              "prop": "pfm5_967712.username",
              "fieldName": "pfm5_967712",
              "fieldType": "LOOKUP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774733,
+             "elementid": 8001420,
              "traversalpath": "deppersonalinfo_DUMMY$$depcoruser",
              "child": {
                  "child": "",
@@ -1072,7 +1120,7 @@
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71655_employeename_7774736": {
+         "pfm71655_employeename_8001423": {
              "child": {
                  "id": "employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup3$$employeename.employeename",
@@ -1080,7 +1128,7 @@
                  "prop": "employeename",
                  "fieldType": "TEXT",
                  "objectName": "depemployee",
-                 "elementid": 7774736,
+                 "elementid": 8001423,
                  "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$employeename",
                  "child": "",
                  "dateFormat": "",
@@ -1090,7 +1138,7 @@
              "id": "pfm71655_967505_employeename",
              "prop": "pfm71655_967505.employeename",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup3$$employeename.employeename",
-             "elementid": 7774736,
+             "elementid": 8001423,
              "mappingDetails": "",
              "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup3$$employeename",
              "dateFormat": "",
@@ -1099,14 +1147,14 @@
              "fieldType": "LOOKUP",
              "objectName": "depemployee"
          },
-         "pfm71658_deplookup4_7774732": {
+         "pfm71658_deplookup4_8001419": {
              "id": "pfm71655_967507_employeeid",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$deplookup4.deplookup4",
              "prop": "pfm71655_967507.employeeid",
              "fieldName": "pfm71655_967507",
              "fieldType": "LOOKUP",
              "objectName": "deppersonalinfo",
-             "elementid": 7774732,
+             "elementid": 8001419,
              "traversalpath": "deppersonalinfo_DUMMY$$deplookup4",
              "child": {
                  "child": "",
@@ -1124,7 +1172,7 @@
              "mappingDetails": "",
              "currencyDetails": ""
          },
-         "pfm71655_employeename_7774737": {
+         "pfm71655_employeename_8001424": {
              "child": {
                  "id": "employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup4$$employeename.employeename",
@@ -1132,7 +1180,7 @@
                  "prop": "employeename",
                  "fieldType": "TEXT",
                  "objectName": "depemployee",
-                 "elementid": 7774737,
+                 "elementid": 8001424,
                  "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup4$$employeename",
                  "child": "",
                  "dateFormat": "",
@@ -1142,7 +1190,7 @@
              "id": "pfm71655_967507_employeename",
              "prop": "pfm71655_967507.employeename",
              "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depemployee_deplookup4$$employeename.employeename",
-             "elementid": 7774737,
+             "elementid": 8001424,
              "mappingDetails": "",
              "traversalpath": "deppersonalinfo_DUMMY$$depemployee_deplookup4$$employeename",
              "dateFormat": "",
@@ -1153,17 +1201,25 @@
          }
      };
 
-     public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
      public __depcoruser$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['depcoruser'];
-     public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
-     public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
-     public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
      public __depcoruser$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depcoruser'];
-     public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
-     public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
+     public __depmcoruser$lookupIndepmultiinfo = this.lookupFieldMapping.mappingDetail[this.__depmultiinfo$tableName]['depmcoruser'];
      public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
+     public __deplookup$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup'];
+     public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
+     public __deplookup2$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup2'];
+     public __deplookup4$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup4'];
+     public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
+     public __deplookup3$lookupIndeppersonalinfo = this.lookupFieldMapping.mappingDetail[this.__deppersonalinfo$tableName]['deplookup3'];
      public __depclookup4$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup4'];
      public paginationConfigInfo = {
+         "pfm77370": {
+             "currentPageWithRecord": "true",
+             "itemPerPage": "true",
+             "numberOfPages": "true",
+             "paginationPosition": "TOP",
+             "noOfItemsPerPage": "50"
+         },
          "pfm74408": {
              "currentPageWithRecord": "true",
              "itemPerPage": "true",
@@ -1181,15 +1237,164 @@
          }
      } = {};
      public tableColumnInfo = {
+         [this.__depmultiinfo$tableName]: {
+             "pfm77370_mno_8001425": {
+                 "id": "mno",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$mno.mno",
+                 "fieldName": "mno",
+                 "prop": "mno",
+                 "fieldType": "AUTONUMBER",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001425,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$mno",
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": "",
+                 "currencyDetails": "",
+                 "boxStyle": "",
+                 "valueStyle": ""
+             },
+             "pfm77370_depmname1_8001426": {
+                 "id": "depmname1",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmname1.depmname1",
+                 "fieldName": "depmname1",
+                 "prop": "depmname1",
+                 "fieldType": "TEXT",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001426,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmname1",
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": "",
+                 "currencyDetails": "",
+                 "boxStyle": "",
+                 "valueStyle": ""
+             },
+             "pfm77370_depmaddress1_8001427": {
+                 "id": "depmaddress1",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmaddress1.depmaddress1",
+                 "fieldName": "depmaddress1",
+                 "prop": "depmaddress1",
+                 "fieldType": "TEXTAREA",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001427,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmaddress1",
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": "",
+                 "currencyDetails": "",
+                 "boxStyle": "",
+                 "valueStyle": ""
+             },
+             "pfm77370_state_8001428": {
+                 "id": "state",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$state.state",
+                 "fieldName": "state",
+                 "prop": "state",
+                 "fieldType": "DROPDOWN",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001428,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$state",
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": this.state_1003746_8001428,
+                 "currencyDetails": "",
+                 "boxStyle": "",
+                 "valueStyle": ""
+             },
+             "pfm77370_cities_8001429": {
+                 "id": "cities",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$cities.cities",
+                 "fieldName": "cities",
+                 "prop": "cities",
+                 "fieldType": "MULTISELECT",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001429,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$cities",
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": this.cities_1003747_8001429,
+                 "currencyDetails": "",
+                 "boxStyle": "",
+                 "valueStyle": ""
+             },
+             "pfm77370_depmcoruser_8001430": {
+                 "id": "pfm5_1003748_username",
+                 "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmcoruser.depmcoruser",
+                 "prop": "pfm5_1003748.username",
+                 "fieldName": "pfm5_1003748",
+                 "fieldType": "LOOKUP",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8001430,
+                 "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmcoruser",
+                 "child": {
+                     "child": "",
+                     "dateFormat": "",
+                     "mappingDetails": "",
+                     "currencyDetails": "",
+                     "boxStyle": "",
+                     "valueStyle": "",
+                     "id": "username",
+                     "label": "username",
+                     "prop": "username",
+                     "fieldName": "username",
+                     "fieldType": "TEXT",
+                     "objectName": "depmultiinfo"
+                 },
+                 "dateFormat": "",
+                 "mappingDetails": "",
+                 "currencyDetails": ""
+             },
+             "pfm77370_cspfmaction8001431": {
+                 "id": "cspfmaction8001431",
+                 "label": "deppersonalinfo_d_w_hl_list.Action.Edit_2",
+                 "fieldName": "cspfmaction8001431",
+                 "prop": "cspfmaction8001431",
+                 "fieldType": "ACTION",
+                 "elementid": 8001431,
+                 "child": "",
+                 "dateFormat": "",
+                 "mappingDetails": "",
+                 "currencyDetails": "",
+                 "actionInfo": [{
+                     "isHiddenEnabled": "N",
+                     "buttonCss": "cs-web-action-button",
+                     "actionIcon": "icon-mat-create",
+                     "actionName": "Edit_2",
+                     "actionLabel": "Edit",
+                     "actionType": "EDIT",
+                     "sourceId": "8001431",
+                     "traversalpath": "deppersonalinfo_d_w_hl_list_Edit_2",
+                     "actionDisplayType": "Icon",
+                     "objectName": "",
+                     "boxStyle": "",
+                     "labelStyle": "",
+                     "valueStyle": "",
+                     "navigationInfo": {
+                         "navigationUrl": "depmultiinfo_Entry_Web",
+                         "redirectUrl": "deppersonalinfo_d_w_hl_list",
+                         "uniqueKey": "id",
+                         "enablePopUp": false,
+                         "webserviceinfo": [],
+                         "relationalObjectInfo": {
+                             "relationalObjectName": "depmultiinfo",
+                             "relationalObjectId": "",
+                             "fieldType": "MASTERDETAIL",
+                             "child": ""
+                         }
+                     }
+                 }]
+             }
+         },
          [this.__depchildinfo$tableName]: {
-             "pfm74408_depcname_7774692": {
+             "pfm74408_depcname_8001436": {
                  "id": "depcname",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcname.depcname",
                  "fieldName": "depcname",
                  "prop": "depcname",
                  "fieldType": "TEXT",
                  "objectName": "depchildinfo",
-                 "elementid": 7774692,
+                 "elementid": 8001436,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcname",
                  "child": "",
                  "dateFormat": "",
@@ -1198,14 +1403,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcname1_7774693": {
+             "pfm74408_depcname1_8001437": {
                  "id": "depcname1",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcname1.depcname1",
                  "fieldName": "depcname1",
                  "prop": "depcname1",
                  "fieldType": "TEXT",
                  "objectName": "depchildinfo",
-                 "elementid": 7774693,
+                 "elementid": 8001437,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcname1",
                  "child": "",
                  "dateFormat": "",
@@ -1214,14 +1419,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcdate1_7774694": {
+             "pfm74408_depcdate1_8001438": {
                  "id": "depcdate1",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcdate1.depcdate1",
                  "fieldName": "depcdate1",
                  "prop": "depcdate1",
                  "fieldType": "DATE",
                  "objectName": "depchildinfo",
-                 "elementid": 7774694,
+                 "elementid": 8001438,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcdate1",
                  "child": "",
                  "dateFormat": this.appUtilityConfig.userDateFormat,
@@ -1230,14 +1435,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcnum1_7774695": {
+             "pfm74408_depcnum1_8001439": {
                  "id": "depcnum1",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcnum1.depcnum1",
                  "fieldName": "depcnum1",
                  "prop": "depcnum1",
                  "fieldType": "NUMBER",
                  "objectName": "depchildinfo",
-                 "elementid": 7774695,
+                 "elementid": 8001439,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcnum1",
                  "child": "",
                  "dateFormat": "",
@@ -1246,14 +1451,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depccurrency1_7774696": {
+             "pfm74408_depccurrency1_8001440": {
                  "id": "depccurrency1",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depccurrency1.depccurrency1",
                  "fieldName": "depccurrency1",
                  "prop": "depccurrency1",
                  "fieldType": "CURRENCY",
                  "objectName": "depchildinfo",
-                 "elementid": 7774696,
+                 "elementid": 8001440,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depccurrency1",
                  "child": "",
                  "dateFormat": "",
@@ -1267,14 +1472,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depboolean_7774697": {
+             "pfm74408_depboolean_8001441": {
                  "id": "depboolean",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depboolean.depboolean",
                  "fieldName": "depboolean",
                  "prop": "depboolean",
                  "fieldType": "BOOLEAN",
                  "objectName": "depchildinfo",
-                 "elementid": 7774697,
+                 "elementid": 8001441,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depboolean",
                  "child": "",
                  "dateFormat": "",
@@ -1283,14 +1488,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depnumber_7774698": {
+             "pfm74408_depnumber_8001442": {
                  "id": "depnumber",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depnumber.depnumber",
                  "fieldName": "depnumber",
                  "prop": "depnumber",
                  "fieldType": "NUMBER",
                  "objectName": "depchildinfo",
-                 "elementid": 7774698,
+                 "elementid": 8001442,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depnumber",
                  "child": "",
                  "dateFormat": "",
@@ -1299,7 +1504,7 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcformula1__f_7774699": {
+             "pfm74408_depcformula1__f_8001443": {
                  "id": "depcformula1__f",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcformula1.depcformula1",
                  "fieldName": "depcformula1__f",
@@ -1307,7 +1512,7 @@
                  "fieldType": "FORMULA",
                  "formulaType": "NUMBER",
                  "objectName": "depchildinfo",
-                 "elementid": 7774699,
+                 "elementid": 8001443,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcformula1",
                  "child": "",
                  "dateFormat": "",
@@ -1316,14 +1521,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depdate_7774700": {
+             "pfm74408_depdate_8001444": {
                  "id": "depdate",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdate.depdate",
                  "fieldName": "depdate",
                  "prop": "depdate",
                  "fieldType": "DATE",
                  "objectName": "depchildinfo",
-                 "elementid": 7774700,
+                 "elementid": 8001444,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdate",
                  "child": "",
                  "dateFormat": this.appUtilityConfig.userDateFormat,
@@ -1332,14 +1537,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depclookup1_7774701": {
+             "pfm74408_depclookup1_8001445": {
                  "id": "pfm71655_965870_employeeid",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup1.depclookup1",
                  "prop": "pfm71655_965870.employeeid",
                  "fieldName": "pfm71655_965870",
                  "fieldType": "LOOKUP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774701,
+                 "elementid": 8001445,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup1",
                  "child": {
                      "child": "",
@@ -1359,7 +1564,7 @@
                  "mappingDetails": "",
                  "currencyDetails": ""
              },
-             "pfm71655_employeename_7774709": {
+             "pfm71655_employeename_8001453": {
                  "child": {
                      "id": "employeename",
                      "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1$$employeename.employeename",
@@ -1367,7 +1572,7 @@
                      "prop": "employeename",
                      "fieldType": "TEXT",
                      "objectName": "depemployee",
-                     "elementid": 7774709,
+                     "elementid": 8001453,
                      "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1$$employeename",
                      "child": "",
                      "dateFormat": "",
@@ -1379,7 +1584,7 @@
                  "id": "pfm71655_965870_employeename",
                  "prop": "pfm71655_965870.employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1$$employeename.employeename",
-                 "elementid": 7774709,
+                 "elementid": 8001453,
                  "mappingDetails": "",
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1$$employeename",
                  "dateFormat": "",
@@ -1388,14 +1593,14 @@
                  "fieldType": "LOOKUP",
                  "objectName": "depemployee"
              },
-             "pfm74408_depclookup2_7774702": {
+             "pfm74408_depclookup2_8001446": {
                  "id": "pfm71655_965872_employeeid",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup2.depclookup2",
                  "prop": "pfm71655_965872.employeeid",
                  "fieldName": "pfm71655_965872",
                  "fieldType": "LOOKUP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774702,
+                 "elementid": 8001446,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup2",
                  "child": {
                      "child": "",
@@ -1415,14 +1620,14 @@
                  "mappingDetails": "",
                  "currencyDetails": ""
              },
-             "pfm74408_depcoruser_7774703": {
+             "pfm74408_depcoruser_8001447": {
                  "id": "pfm5_967510_username",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcoruser.depcoruser",
                  "prop": "pfm5_967510.username",
                  "fieldName": "pfm5_967510",
                  "fieldType": "LOOKUP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774703,
+                 "elementid": 8001447,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depcoruser",
                  "child": {
                      "child": "",
@@ -1442,14 +1647,14 @@
                  "mappingDetails": "",
                  "currencyDetails": ""
              },
-             "pfm74408_deptimestamp_7774704": {
+             "pfm74408_deptimestamp_8001448": {
                  "id": "deptimestamp",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$deptimestamp.deptimestamp",
                  "fieldName": "deptimestamp",
                  "prop": "deptimestamp",
                  "fieldType": "TIMESTAMP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774704,
+                 "elementid": 8001448,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$deptimestamp",
                  "child": "",
                  "dateFormat": this.appUtilityConfig.userDateTimeFormat,
@@ -1458,7 +1663,7 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm71655_employeename_7774710": {
+             "pfm71655_employeename_8001454": {
                  "child": {
                      "id": "employeename",
                      "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2$$employeename.employeename",
@@ -1466,7 +1671,7 @@
                      "prop": "employeename",
                      "fieldType": "TEXT",
                      "objectName": "depemployee",
-                     "elementid": 7774710,
+                     "elementid": 8001454,
                      "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2$$employeename",
                      "child": "",
                      "dateFormat": "",
@@ -1478,7 +1683,7 @@
                  "id": "pfm71655_965872_employeename",
                  "prop": "pfm71655_965872.employeename",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2$$employeename.employeename",
-                 "elementid": 7774710,
+                 "elementid": 8001454,
                  "mappingDetails": "",
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2$$employeename",
                  "dateFormat": "",
@@ -1487,14 +1692,14 @@
                  "fieldType": "LOOKUP",
                  "objectName": "depemployee"
              },
-             "pfm74408_depdecimal_7774705": {
+             "pfm74408_depdecimal_8001449": {
                  "id": "depdecimal",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdecimal.depdecimal",
                  "fieldName": "depdecimal",
                  "prop": "depdecimal",
                  "fieldType": "DECIMAL",
                  "objectName": "depchildinfo",
-                 "elementid": 7774705,
+                 "elementid": 8001449,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdecimal",
                  "child": "",
                  "dateFormat": "",
@@ -1503,14 +1708,14 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depclookup3_7774706": {
+             "pfm74408_depclookup3_8001450": {
                  "id": "pfm71655_967514_employeeid",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup3.depclookup3",
                  "prop": "pfm71655_967514.employeeid",
                  "fieldName": "pfm71655_967514",
                  "fieldType": "LOOKUP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774706,
+                 "elementid": 8001450,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup3",
                  "child": {
                      "child": "",
@@ -1530,30 +1735,30 @@
                  "mappingDetails": "",
                  "currencyDetails": ""
              },
-             "pfm74408_depdropdownn_7774707": {
+             "pfm74408_depdropdownn_8001451": {
                  "id": "depdropdownn",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdropdownn.depdropdownn",
                  "fieldName": "depdropdownn",
                  "prop": "depdropdownn",
                  "fieldType": "DROPDOWN",
                  "objectName": "depchildinfo",
-                 "elementid": 7774707,
+                 "elementid": 8001451,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depdropdownn",
                  "child": "",
                  "dateFormat": "",
-                 "mappingDetails": this.depdropdownn_972310_7774707,
+                 "mappingDetails": this.depdropdownn_972310_8001451,
                  "currencyDetails": "",
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depclookup4_7774708": {
+             "pfm74408_depclookup4_8001452": {
                  "id": "pfm71655_967516_employeeid",
                  "label": "deppersonalinfo_d_w_hl_list.Element.deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup4.depclookup4",
                  "prop": "pfm71655_967516.employeeid",
                  "fieldName": "pfm71655_967516",
                  "fieldType": "LOOKUP",
                  "objectName": "depchildinfo",
-                 "elementid": 7774708,
+                 "elementid": 8001452,
                  "traversalpath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depclookup4",
                  "child": {
                      "child": "",
@@ -1573,13 +1778,13 @@
                  "mappingDetails": "",
                  "currencyDetails": ""
              },
-             "pfm74408_cspfmaction7774711": {
-                 "id": "cspfmaction7774711",
-                 "label": "deppersonalinfo_d_w_hl_list.Action.Edit_2",
-                 "fieldName": "cspfmaction7774711",
-                 "prop": "cspfmaction7774711",
+             "pfm74408_cspfmaction8001455": {
+                 "id": "cspfmaction8001455",
+                 "label": "deppersonalinfo_d_w_hl_list.Action.Edit_3",
+                 "fieldName": "cspfmaction8001455",
+                 "prop": "cspfmaction8001455",
                  "fieldType": "ACTION",
-                 "elementid": 7774711,
+                 "elementid": 8001455,
                  "child": "",
                  "dateFormat": "",
                  "mappingDetails": "",
@@ -1588,11 +1793,11 @@
                      "isHiddenEnabled": "N",
                      "buttonCss": "cs-web-action-button",
                      "actionIcon": "icon-mat-create",
-                     "actionName": "Edit_2",
+                     "actionName": "Edit_3",
                      "actionLabel": "Edit",
                      "actionType": "EDIT",
-                     "sourceId": "7774711",
-                     "traversalpath": "deppersonalinfo_d_w_hl_list_Edit_2",
+                     "sourceId": "8001455",
+                     "traversalpath": "deppersonalinfo_d_w_hl_list_Edit_3",
                      "actionDisplayType": "Icon",
                      "objectName": "",
                      "boxStyle": "",
@@ -1620,6 +1825,45 @@
      public sectionObjectDetails: {
          [objectName: string]: SectionObjectDetail
      } = {
+         [this.__depmultiinfo$tableName]: {
+             'groupingColumns': [],
+             'isRowClickDisabled': false,
+             'dataFetchMode': 'Batch',
+             'isExpanded': 'E',
+             'isMatrixEnabled': false,
+             'isAutoFitEnable': true,
+             'sectionElementId': 'SEC_deppersonalinfo_d_w_hl_list_Dep_childInfo_WEB_LIST_SECTION_',
+             'sortByColumns': [{
+                 columnId: this.tableColumnInfo['pfm77370']['pfm77370_mno_8001425']['prop'],
+                 direction: 'ASC'
+             }],
+
+
+             'matrixConfig': {
+                 'matrixActionElementId': '',
+                 'objectHierarchy': null,
+                 'columnTitle': null,
+                 'rowValues': [],
+                 'selectionLimit': null,
+                 'displayInfo': {
+                     'currentMode': 'list',
+                     'gridOptions': this.cspfmSlickgridMatrix.getMatrixGridOptions(this.matrixGridContainerId, this.__depmultiinfo$tableName),
+                     'columns': [],
+                     'dataset': []
+                 }
+             },
+             'criteriaQueryConfig': {
+                 'queryConfig': {},
+                 "junctionDataObjects": {},
+                 "relationalObjectIds": [],
+                 "criteriaQuery": "",
+                 "modifiedSet": {
+                     "id": "",
+                     "type": ""
+                 }
+             },
+             "sectionUserDataRestrictionSet": []
+         },
          [this.__depchildinfo$tableName]: {
              'groupingColumns': [],
              'isRowClickDisabled': false,
@@ -1629,7 +1873,7 @@
              'isAutoFitEnable': true,
              'sectionElementId': 'SEC_deppersonalinfo_d_w_hl_list_Dep_childInfo_WEB_LIST_SECTION_',
              'sortByColumns': [{
-                 columnId: this.tableColumnInfo['pfm74408']['pfm74408_depcname_7774692']['prop'],
+                 columnId: this.tableColumnInfo['pfm74408']['pfm74408_depcname_8001436']['prop'],
                  direction: 'ASC'
              }],
 
@@ -1664,29 +1908,37 @@
      public childSectionHeaderActionConfig = {}
      public hiddenColumnsIds = {}
      private prominetDataMapping = {
+         "pfm77370": [null, "mno", "depmname1", "depmaddress1", "state", "cities", "depmcoruser"],
          "pfm74408": [null, "depcname", "depcname1", "depcdate1", "depcnum1", "depccurrency1", "depboolean", "depnumber", "depcformula1", "depdate", "depclookup1", null, "depcoruser", "deptimestamp", "depdecimal", "depclookup3", "depdropdownn", "depclookup4"],
          "pfm71655": [null, null, null, null, null, null, null, null, null, null, null, "employeename", "employeename", "employeename", null, "employeename", null, null, null, "employeename", null, "employeename"],
          "pfm71658": [null, "name", "employeename", "team", "location", "depcurrency", "deptimestamp", "depdate", "depboolean", "depnumber", "depdecimal", "deplookup", null, "depformulan", "deplookup2", null, "depmultiselect", "depcheckbox", "depcoruser", null, "deplookup4"]
      };
      private sectionalFetchMapping = {
+         "pfm77370": {},
          "pfm74408": {}
      };
      public navigationParamsForDetailViewPage = {
+         "pfm77370": [],
          "pfm74408": []
      };
      private batchWiseIdArray: any = {
+         "pfm77370": [],
          "pfm74408": []
      }
      private batchWiseIdArrayTemp: any = {
+         "pfm77370": [],
          "pfm74408": []
      }
      private resultCount: any = {
+         "pfm77370": 0,
          "pfm74408": 0
      }
      private totalRecords: any = {
+         "pfm77370": 0,
          "pfm74408": 0
      }
      public itemCount: any = {
+         "pfm77370": 0,
          "pfm74408": 0
      }
 
@@ -1694,11 +1946,11 @@
      public columnDefinitions: {
          [objectName: string]: Array < Column >
      } = {
-         [this.__depchildinfo$tableName]: [{
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['label']), 'fromEntity'),
+         [this.__depmultiinfo$tableName]: [{
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -1717,13 +1969,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425']['id']
                  },
                  collapsed: false
              },
@@ -1733,19 +1985,19 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 100,
-                 required: true,
+                 required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_7774692'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8001425'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -1764,13 +2016,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426']['id']
                  },
                  collapsed: false
              },
@@ -1782,255 +2034,17 @@
                  columnWidth: 30,
                  required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_7774693'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8001426'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.date,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
-             filterable: true,
-             filter: {
-
-                 operator: OperatorType.rangeInclusive,
-
-                 model: Filters.compoundDate
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_7774694'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.number,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInputNumber
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_7774695'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.number,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInputNumber
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_7774696'],
-                 layoutId: this.layoutId,
-                 precision: 2
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-                 collection: this.slickgridUtils.getLabelValue({
-                     true: "true",
-                     false: "false"
-                 }),
-
-
-                 model: Filters.multipleSelect
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 8,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_7774697'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.number,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInputNumber
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_7774698'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -2049,154 +2063,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_7774699'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.date,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
-             filterable: true,
-             filter: {
-
-                 operator: OperatorType.rangeInclusive,
-
-                 model: Filters.compoundDate
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_7774700'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_7774701'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427']['id']
                  },
                  collapsed: false
              },
@@ -2208,17 +2081,17 @@
                  columnWidth: 30,
                  required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774709'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8001427'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -2227,305 +2100,23 @@
 
              // minWidth: this.columnMinWidth,
              formatter: CspfmDataFormatter,
-
+             queryField: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
              filterable: true,
              filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_7774702'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_7774703'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.dateTime,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
-             filterable: true,
-             filter: {
-
-                 operator: OperatorType.rangeInclusive,
-
-                 model: Filters.compoundDate
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_7774704'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 30,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_7774710'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.number,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInputNumber
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_7774705'],
-                 layoutId: this.layoutId,
-                 precision: 2
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-
-             filterable: true,
-             filter: {
-
-
-
-                 model: Filters.compoundInput
-             },
-             grouping: < cspfmDataGrouping > {
-                 getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706'])
-                 },
-                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['label'])
-                 },
-                 params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706']['id']
-                 },
-                 collapsed: false
-             },
-             cssClass: 'left-align',
-
-
-             params: {
-                 isHiddenEnabled: 'N',
-                 columnWidth: 0,
-                 required: false,
-                 pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_7774706'],
-                 layoutId: this.layoutId
-
-
-             }
-
-         }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['label']), 'fromEntity'),
-             sortable: true,
-             type: FieldType.string,
-
-             exportCustomFormatter: CspfmDataExportFormatter,
-             exportWithFormatter: true,
-
-             // minWidth: this.columnMinWidth,
-             formatter: CspfmDataFormatter,
-             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
-             filterable: true,
-             filter: {
-                 collection: this.slickgridUtils.getLabelValue(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['mappingDetails']),
+                 collection: this.slickgridUtils.getLabelValue(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['mappingDetails']),
 
                  enableTranslateLabel: true,
                  model: Filters.multipleSelect
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428']['id']
                  },
                  collapsed: false
              },
@@ -2537,17 +2128,64 @@
                  columnWidth: 100,
                  required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_7774707'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_state_8001428'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+             queryField: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+             filterable: true,
+             filter: {
+                 collection: this.slickgridUtils.getLabelValue(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['mappingDetails']),
+                 operator: OperatorType.inContains,
+                 enableTranslateLabel: true,
+                 model: Filters.multipleSelect
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 1000,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cities_8001429'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -2566,13 +2204,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430']['id']
                  },
                  collapsed: false
              },
@@ -2584,17 +2222,17 @@
                  columnWidth: 0,
                  required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_7774708'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmcoruser_8001430'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction7774711']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction7774711']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction7774711']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction7774711']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8001431']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8001431']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8001431']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8001431']['label']), 'fromEntity'),
              sortable: false,
              type: FieldType.unknown,
 
@@ -2623,7 +2261,951 @@
                  columnWidth: 0,
                  component: cspfmactionweb,
                  angularUtilService: this.angularUtilService,
-                 actionInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction7774711']['actionInfo'],
+                 actionInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8001431']['actionInfo'],
+
+                 actionConfig: this.actionComponentJson[this.__depmultiinfo$tableName],
+                 excludeFromExport: true,
+                 excludeFromHeaderMenu: true,
+                 objectId: this.__depmultiinfo$tableName,
+             },
+             excludeFromExport: true,
+             excludeFromHeaderMenu: true,
+             headerCssClass: 'cs-headergroup',
+             onCellClick: (mouseEvent, args) => {
+                 this.onActionCellClick(mouseEvent, args, this.__depmultiinfo$tableName);
+             },
+
+         }],
+         [this.__depchildinfo$tableName]: [{
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 100,
+                 required: true,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8001436'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 30,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8001437'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.date,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+             filterable: true,
+             filter: {
+
+                 operator: OperatorType.rangeInclusive,
+
+                 model: Filters.compoundDate
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8001438'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.number,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInputNumber
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcnum1_8001439'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.number,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInputNumber
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depccurrency1_8001440'],
+                 layoutId: this.layoutId,
+                 precision: 2
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+                 collection: this.slickgridUtils.getLabelValue({
+                     true: "true",
+                     false: "false"
+                 }),
+
+
+                 model: Filters.multipleSelect
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 8,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depboolean_8001441'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.number,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInputNumber
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depnumber_8001442'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcformula1__f_8001443'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.date,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+             filterable: true,
+             filter: {
+
+                 operator: OperatorType.rangeInclusive,
+
+                 model: Filters.compoundDate
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdate_8001444'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup1_8001445'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 30,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001453'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup2_8001446'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcoruser_8001447'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.dateTime,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+             filterable: true,
+             filter: {
+
+                 operator: OperatorType.rangeInclusive,
+
+                 model: Filters.compoundDate
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_deptimestamp_8001448'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 30,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm71655_employeename_8001454'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.number,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInputNumber
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdecimal_8001449'],
+                 layoutId: this.layoutId,
+                 precision: 2
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup3_8001450'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+             filterable: true,
+             filter: {
+                 collection: this.slickgridUtils.getLabelValue(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['mappingDetails']),
+
+                 enableTranslateLabel: true,
+                 model: Filters.multipleSelect
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 100,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depdropdownn_8001451'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['label']), 'fromEntity'),
+             sortable: true,
+             type: FieldType.string,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+             exportWithFormatter: true,
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmDataFormatter,
+
+             filterable: true,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+             grouping: < cspfmDataGrouping > {
+                 getter: (data) => {
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452'])
+                 },
+                 formatter: (groupingFormatterItem: GroupingFormatterItem) => {
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['label'])
+                 },
+                 params: {
+                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452']['id']
+                 },
+                 collapsed: false
+             },
+             cssClass: 'left-align',
+
+
+             params: {
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 required: false,
+                 pipe: this.cspfmDataDisplay,
+                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depclookup4_8001452'],
+                 layoutId: this.layoutId
+
+
+             }
+
+         }, {
+             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8001455']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8001455']['label'])),
+             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8001455']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8001455']['label']), 'fromEntity'),
+             sortable: false,
+             type: FieldType.unknown,
+
+             exportCustomFormatter: CspfmDataExportFormatter,
+
+
+             // minWidth: this.columnMinWidth,
+             formatter: CspfmActionsFormatter,
+             columnGroupKey: 'deppersonalinfo_d_w_hl_list.Action.Edit_3',
+
+             filterable: false,
+             filter: {
+
+
+
+                 model: Filters.compoundInput
+             },
+
+             cssClass: 'cs-slickgrid-actionGroup',
+
+
+             params: {
+                 layoutId: this.layoutId,
+
+                 isHiddenEnabled: 'N',
+                 columnWidth: 0,
+                 component: cspfmactionweb,
+                 angularUtilService: this.angularUtilService,
+                 actionInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8001455']['actionInfo'],
 
                  actionConfig: this.actionComponentJson[this.__depchildinfo$tableName],
                  excludeFromExport: true,
@@ -3820,6 +4402,13 @@
      }
      @ViewChildren(MdePopoverTrigger, {}) sectionPopover: MdePopoverTrigger;
      navigateObjectDetailPage(objectName, itemTapNavigationParams) {
+         if (objectName === "pfm77370") {
+
+             this.router.navigate(["/menu/depmultiinfo_d_w_hl_detail_view"], {
+                 queryParams: itemTapNavigationParams,
+                 skipLocationChange: true
+             });
+         }
          if (objectName === "pfm74408") {
 
              this.router.navigate(["/menu/depchildinfo_d_w_hl_detail_view"], {
@@ -3836,6 +4425,40 @@
              redirectUrlForNav = this.redirectUrl;
          } else {
              redirectUrlForNav = '/menu/deppersonalinfo_d_w_hl_list';
+         }
+
+         if (this.objectRelationshipMapping[childObject['objectName']] === 'one_to_one' && this.dataObject['deppersonalinfo_DUMMY'][childObject['objectName'] + 's'].length > 0) {
+             this.appUtilityConfig.presentToast("Multiple Entry is prohibited as only one child should be against " + this.objectNameMapping['pfm0s'], 10000);
+             return
+         }
+         if (childObject['objectName'] === 'pfm77370') {
+             if (this.dataObject['deppersonalinfo_DUMMY'][this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldName']]) {
+                 let getFieldType = this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldType'];
+                 if (getFieldType === 'MULTISELECT' || getFieldType === 'RADIO' || getFieldType === 'CHECKBOX' || getFieldType === 'DROPDOWN') {
+                     this.parentValue = this.multiSelectAndCheckBoxValueMaking(this.dataObject['deppersonalinfo_DUMMY'][this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldName']], this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['mappingDetails'])
+                 } else if (getFieldType === 'DATE') {
+                     this.parentValue = moment(new Date(this.dataObject['deppersonalinfo_DUMMY'][this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldName']])).tz(this.appUtilityConfig.userTimeZone).format(this.appUtilityConfig.userDatePickerFormat);
+                 } else if (getFieldType === 'TIMESTAMP') {
+                     this.parentValue = moment(new Date(this.dataObject['deppersonalinfo_DUMMY'][this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldName']])).tz(this.appUtilityConfig.userTimeZone).format(this.appUtilityConfig.userDateTimePickerFormat);
+                 } else {
+                     this.parentValue = this.dataObject['deppersonalinfo_DUMMY'][this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['fieldName']]
+                 }
+             }
+
+             const navigationParameters = {
+                 action: "Add",
+                 parentId: this.id,
+                 parentObj: JSON.stringify(this.dataObject['deppersonalinfo_DUMMY']),
+                 parentFieldLabel: this.gridFieldInfo[Object.keys(this.gridFieldInfo)[0]]['label'],
+                 parentFieldValue: this.parentValue,
+                 parentName: this.tableName_pfm71658,
+                 redirectUrl: redirectUrlForNav
+             };
+             this.router.navigate(['/menu/depmultiinfo_Entry_Web'], {
+                 queryParams: navigationParameters,
+                 skipLocationChange: true
+             });
+
          }
 
          if (this.objectRelationshipMapping[childObject['objectName']] === 'one_to_one' && this.dataObject['deppersonalinfo_DUMMY'][childObject['objectName'] + 's'].length > 0) {
@@ -3908,7 +4531,7 @@
              this.slickgridUtils.commitCurrentEdit(childObject['gridObj'])
          }
      }
-     editButton_7774715_Onclick() {
+     editButton_8001435_Onclick() {
 
          if (this.isSkeletonLoading) {
              this.appUtilityConfig.presentToast("Another process is running, please wait");

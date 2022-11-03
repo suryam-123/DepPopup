@@ -1558,6 +1558,16 @@ export class cspfmMultiLineEntry implements OnInit {
             angularGridInstance.dataView.endUpdate();
             angularGridInstance.dataView.reSort();
         }
+        const fieldInfoObj = args['columnDef']['params']['fieldInfo'];
+        if (fieldInfoObj['fieldType'] === 'DATE') {
+            if (args.dataContext[fieldInfoObj.fieldName] instanceof Date) {
+                args.dataContext[fieldInfoObj.fieldName] = args.dataContext[fieldInfoObj.fieldName].getTime() + moment.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).utcOffset() * 60 * 1000;
+            }
+        } else if (fieldInfoObj['fieldType'] === 'TIMESTAMP') {
+            if (args.dataContext[fieldInfoObj.fieldName] instanceof Date) {
+                args.dataContext[fieldInfoObj.fieldName] = args.dataContext[fieldInfoObj.fieldName].getTime();
+            }
+        }
         // 08Jun2022#sudalaiyandi.a 
         // Conditional Validation
         const conditionalValidationEnable = args.columnDef.params.fieldInfo.conditionalValidationEnable
@@ -1570,15 +1580,6 @@ export class cspfmMultiLineEntry implements OnInit {
             if (args['columnDef']['params']['fieldInfo']['fieldType'] === 'LOOKUP') {
                 let fieldName = args['columnDef']['params']['fieldInfo']['fieldName'];
                 args.dataContext[fieldName] = mouseEvent['item'];
-            }
-            if (fieldInfoObj['fieldType'] === 'DATE') {
-                if (args.dataContext[fieldInfoObj.fieldName] instanceof Date) {
-                    args.dataContext[fieldInfoObj.fieldName] = args.dataContext[fieldInfoObj.fieldName].getTime() + moment.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).utcOffset() * 60 * 1000;
-                }
-            } else if (fieldInfoObj['fieldType'] === 'TIMESTAMP') {
-                if (args.dataContext[fieldInfoObj.fieldName] instanceof Date) {
-                    args.dataContext[fieldInfoObj.fieldName] = args.dataContext[fieldInfoObj.fieldName].getTime();
-                }
             }
             this.cspfmDataTraversalUtilsObject.seperateRelatioshipObjectsFromPrimaryDataSet(data, this.conditionalValidationJson[objectID], this.conditionalValidationJson[objectID].layoutId, sectionObjectId);
             this.handleConditionalValidatioOnChange(fieldDisplayName, data, objectID)

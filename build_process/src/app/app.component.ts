@@ -87,7 +87,7 @@ export class AppComponent implements AfterViewInit  {
                         "userResponsibilitiesId": JSON.stringify([]),
                       };
                       const assignedAppArray = {
-                        "assignedApps":[{ "assignedMenuGroups": [6552], "appName": "DepPopup", "appDisplayName": "DepPopup", "appId": 14477, "versionNumber":0.16,"landingPage": "cspfm_default_landing_page" }]
+                        "assignedApps":[{ "assignedMenuGroups": [6552], "appName": "DepPopup", "appDisplayName": "DepPopup", "appId": 14477, "versionNumber":0.17,"landingPage": "cspfm_default_landing_page" }]
                       }
                       localStorage.setItem('localStore', this.appUtils.simpleCrypto.encryptObject(localStore));
                       localStorage.setItem('assignedAppArray', this.appUtils.simpleCrypto.encryptObject(assignedAppArray));

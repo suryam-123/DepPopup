@@ -2520,7 +2520,7 @@ pasteCallback(event: any) {
             return undefined;
         }
     }
-        
+       
     // This method for verfiy the logged user in user assignment change listener
     verifyUser(modified) {
         switch (modified['id_type']) {

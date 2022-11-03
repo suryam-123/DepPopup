@@ -446,7 +446,7 @@ export class dataProvider {
       }
     })
 
-    if (getData != undefined && dataObject['internalComposite'].length > 0){
+    if (getData != undefined && dataObject['internalComposite'] && dataObject['internalComposite'].length > 0){
       checkValidationstatus = true;
       let internalCompositeError = {}
       internalCompositeError['objectId'] = type;
@@ -457,7 +457,7 @@ export class dataProvider {
       status['internalCompositeError'] = internalCompositeError;
     }
     
-    if (getData != undefined && dataObject['internalUnique'].length > 0) {
+    if (getData != undefined && dataObject['internalUnique'] && dataObject['internalUnique'].length > 0) {
       checkValidationstatus = true;
       let internalUniqueError = {}
       internalUniqueError['objectId'] = type;

@@ -22,6 +22,11 @@ export class cspfmLayoutConfiguration {
 
 
             'objectTraversal': {
+                'depemployee_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
                 'depemployee_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -30,11 +35,6 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967501"
                     }
-                },
-                'depemployee_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
                 },
             }
 
@@ -224,6 +224,7 @@ export class cspfmLayoutConfiguration {
                     'filterConfig': {},
 
                     'primaryRootPath': 'depemployee_DUMMY',
+                    'multiSelectionEnabled': false,
                     'isOnlySubordinates': false,
                     'isStandardObject': true,
                     'additionalDataHierarchyJson': undefined,
@@ -276,15 +277,6 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
                 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -292,46 +284,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967712"
-                    }
-                },
-                'deppersonalinfo_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_965870"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_967514"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser': {
@@ -347,13 +299,17 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
+                'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_1003748"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm77370s"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster': {
@@ -363,15 +319,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2': {
@@ -387,6 +334,73 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967514"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_964453"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967507"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_965870"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
+                    }
+                },
                 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -398,6 +412,15 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm77370s"
                     }
                 },
             }
@@ -532,6 +555,15 @@ export class cspfmLayoutConfiguration {
                 },
             },
             'objectTraversal': {
+                "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967712"
+                    }
+                },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -541,7 +573,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_967505"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -550,24 +582,6 @@ export class cspfmLayoutConfiguration {
                             "relationship": "LOOKUP",
                             "prop": "pfm5_967501"
                         },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967507"
                     }
@@ -585,6 +599,15 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_964453"
                     }
                 },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_964453"
+                    }
+                },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -598,30 +621,12 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_930602"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
-                    }
-                },
                 "deppersonalinfo_DUMMY": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": ""
                 },
-                "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967712"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -631,7 +636,25 @@ export class cspfmLayoutConfiguration {
                             "prop": "pfm5_967501"
                         },
                         "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
                         "prop": "pfm71655_967507"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
                     }
                 }
             },
@@ -714,11 +737,6 @@ export class cspfmLayoutConfiguration {
                         }]
                     },
                     'argumentColumns': [{
-                        "sourceColumn": "depnumber",
-                        "targetColumn": "depnumber",
-                        "sourceColumnFieldType": "NUMBER",
-                        "rootPath": "deppersonalinfo_DUMMY"
-                    }, {
                         "sourceColumn": "depformulan",
                         "targetColumn": "depformulan",
                         "sourceColumnFieldType": "FORMULA",
@@ -727,6 +745,11 @@ export class cspfmLayoutConfiguration {
                         "sourceColumn": "location",
                         "targetColumn": "location",
                         "sourceColumnFieldType": "DROPDOWN",
+                        "rootPath": "deppersonalinfo_DUMMY"
+                    }, {
+                        "sourceColumn": "depnumber",
+                        "targetColumn": "depnumber",
+                        "sourceColumnFieldType": "NUMBER",
                         "rootPath": "deppersonalinfo_DUMMY"
                     }],
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup',
@@ -737,6 +760,7 @@ export class cspfmLayoutConfiguration {
                     'filterConfig': {},
 
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'isOnlySubordinates': false,
                     'isStandardObject': false,
                     'additionalDataHierarchyJson': undefined,
@@ -756,6 +780,18 @@ export class cspfmLayoutConfiguration {
                         "mappingDetails": "",
                         "currencyDetails": ""
                     }, {
+                        "id": "employeename",
+                        "label": "Employee Name",
+                        "fieldName": "employeename",
+                        "prop": "employeename",
+                        "fieldType": "TEXT",
+                        "objectName": "depemployee",
+                        "traversalpath": "depemployee_DUMMY$$employeename",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }, {
                         "id": "team",
                         "label": "Team",
                         "fieldName": "team",
@@ -770,18 +806,6 @@ export class cspfmLayoutConfiguration {
                             "AC": "appConnect",
                             "TE": "Testing"
                         },
-                        "currencyDetails": ""
-                    }, {
-                        "id": "employeename",
-                        "label": "Employee Name",
-                        "fieldName": "employeename",
-                        "prop": "employeename",
-                        "fieldType": "TEXT",
-                        "objectName": "depemployee",
-                        "traversalpath": "depemployee_DUMMY$$employeename",
-                        "child": "",
-                        "dateFormat": "",
-                        "mappingDetails": "",
                         "currencyDetails": ""
                     }],
                     'lookupHierarchyJson': {
@@ -825,6 +849,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup2",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -849,6 +874,18 @@ export class cspfmLayoutConfiguration {
                         "mappingDetails": "",
                         "currencyDetails": ""
                     }, {
+                        "id": "employeename",
+                        "label": "Employee Name",
+                        "fieldName": "employeename",
+                        "prop": "employeename",
+                        "fieldType": "TEXT",
+                        "objectName": "depemployee",
+                        "traversalpath": "depemployee_DUMMY$$employeename",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }, {
                         "id": "team",
                         "label": "Team",
                         "fieldName": "team",
@@ -863,18 +900,6 @@ export class cspfmLayoutConfiguration {
                             "AC": "appConnect",
                             "TE": "Testing"
                         },
-                        "currencyDetails": ""
-                    }, {
-                        "id": "employeename",
-                        "label": "Employee Name",
-                        "fieldName": "employeename",
-                        "prop": "employeename",
-                        "fieldType": "TEXT",
-                        "objectName": "depemployee",
-                        "traversalpath": "depemployee_DUMMY$$employeename",
-                        "child": "",
-                        "dateFormat": "",
-                        "mappingDetails": "",
                         "currencyDetails": ""
                     }],
                     'lookupHierarchyJson': {
@@ -918,6 +943,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup3',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup3",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -969,6 +995,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser',
                     'label': 'COR_USERS',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "depcoruser",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -1047,6 +1074,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup4",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -1065,34 +1093,7 @@ export class cspfmLayoutConfiguration {
             "itemsPerPageConfigured": 50,
 
             'objectTraversal': {
-                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser': {
+                'deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -1102,7 +1103,16 @@ export class cspfmLayoutConfiguration {
                             "prop": "pfm5_967501"
                         },
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967507"
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depemployee_deplookup2$$COR_USERS_depcoruser': {
@@ -1118,12 +1128,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_964453"
                     }
                 },
-                'deppersonalinfo_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup3$$COR_USERS_depcoruser': {
+                'deppersonalinfo_DUMMY$$depemployee_deplookup4$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
@@ -1133,16 +1138,7 @@ export class cspfmLayoutConfiguration {
                             "prop": "pfm5_967501"
                         },
                         "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
-                    }
-                },
-                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
+                        "prop": "pfm71655_967507"
                     }
                 },
                 'deppersonalinfo_DUMMY$$depemployee_deplookup$$COR_USERS_depcoruser': {
@@ -1158,6 +1154,11 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_930602"
                     }
                 },
+                'deppersonalinfo_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
                 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1165,6 +1166,33 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967712"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_964453"
+                    }
+                },
+                'deppersonalinfo_DUMMY$$depemployee_deplookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967507"
                     }
                 },
             }
@@ -1192,42 +1220,6 @@ export class cspfmLayoutConfiguration {
 
 
             'objectTraversal': {
-                'depchildinfo_DUMMY$$depemployee_depclookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
-                    }
-                },
-                'depchildinfo_DUMMY': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_930602"
-                        },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
                 'depchildinfo_DUMMY$$depemployee_depclookup1': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1235,50 +1227,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965870"
-                    }
-                },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_967505"
-                        },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                'depchildinfo_DUMMY$$depemployee_depclookup2': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
-                    }
-                },
-                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967712"
-                        },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                'depchildinfo_DUMMY$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967510"
                     }
                 },
                 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4': {
@@ -1294,6 +1242,68 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup2': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
+                    }
+                },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_930602"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                'depchildinfo_DUMMY$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967510"
+                    }
+                },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967505"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967514"
+                    }
+                },
                 'depchildinfo_DUMMY$$depemployee_depclookup4': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1301,6 +1311,24 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967516"
+                    }
+                },
+                'depchildinfo_DUMMY': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
+                'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967712"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
                     }
                 },
                 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2': {
@@ -1456,50 +1484,6 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                "depchildinfo_DUMMY$$depemployee_depclookup4": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
-                    }
-                },
-                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967712"
-                        },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                "depchildinfo_DUMMY$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm5_967510"
-                    }
-                },
                 "depchildinfo_DUMMY$$depemployee_depclookup3": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -1507,41 +1491,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967514"
-                    }
-                },
-                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_967507"
-                        },
-                        "relationship": "HEADER",
-                        "prop": "pfm71658"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup1": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965870"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
                     }
                 },
                 "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3": {
@@ -1557,10 +1506,14 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71658"
                     }
                 },
-                "depchildinfo_DUMMY": {
+                "depchildinfo_DUMMY$$depemployee_depclookup4": {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": ""
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967516"
+                    }
                 },
                 "depchildinfo_DUMMY$$deppersonalinfo_depcmaster": {
                     "prop": "",
@@ -1583,6 +1536,90 @@ export class cspfmLayoutConfiguration {
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965870"
                     }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup2": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
+                    }
+                },
+                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967712"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967507"
+                        },
+                        "relationship": "HEADER",
+                        "prop": "pfm71658"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967516"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965872"
+                    }
+                },
+                "depchildinfo_DUMMY$$depemployee_depclookup1": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_965870"
+                    }
+                },
+                "depchildinfo_DUMMY$$COR_USERS_depcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm5_967510"
+                    }
+                },
+                "depchildinfo_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
                 },
                 "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup": {
                     "prop": "",
@@ -1608,15 +1645,6 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967514"
-                    }
-                },
-                "depchildinfo_DUMMY$$depemployee_depclookup2": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_965872"
                     }
                 }
             },
@@ -1699,11 +1727,6 @@ export class cspfmLayoutConfiguration {
                         }]
                     },
                     'argumentColumns': [{
-                        "sourceColumn": "depnumber",
-                        "targetColumn": "depnumber",
-                        "sourceColumnFieldType": "NUMBER",
-                        "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
-                    }, {
                         "sourceColumn": "depformulan",
                         "targetColumn": "depformulan",
                         "sourceColumnFieldType": "FORMULA",
@@ -1712,6 +1735,11 @@ export class cspfmLayoutConfiguration {
                         "sourceColumn": "location",
                         "targetColumn": "location",
                         "sourceColumnFieldType": "DROPDOWN",
+                        "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
+                    }, {
+                        "sourceColumn": "depnumber",
+                        "targetColumn": "depnumber",
+                        "sourceColumnFieldType": "NUMBER",
                         "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
                     }],
                     'objectRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup',
@@ -1722,6 +1750,7 @@ export class cspfmLayoutConfiguration {
                     'filterConfig': {},
 
                     'primaryRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'isOnlySubordinates': false,
                     'isStandardObject': false,
                     'additionalDataHierarchyJson': undefined,
@@ -1741,6 +1770,18 @@ export class cspfmLayoutConfiguration {
                         "mappingDetails": "",
                         "currencyDetails": ""
                     }, {
+                        "id": "employeename",
+                        "label": "Employee Name",
+                        "fieldName": "employeename",
+                        "prop": "employeename",
+                        "fieldType": "TEXT",
+                        "objectName": "depemployee",
+                        "traversalpath": "depemployee_DUMMY$$employeename",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }, {
                         "id": "team",
                         "label": "Team",
                         "fieldName": "team",
@@ -1755,18 +1796,6 @@ export class cspfmLayoutConfiguration {
                             "AC": "appConnect",
                             "TE": "Testing"
                         },
-                        "currencyDetails": ""
-                    }, {
-                        "id": "employeename",
-                        "label": "Employee Name",
-                        "fieldName": "employeename",
-                        "prop": "employeename",
-                        "fieldType": "TEXT",
-                        "objectName": "depemployee",
-                        "traversalpath": "depemployee_DUMMY$$employeename",
-                        "child": "",
-                        "dateFormat": "",
-                        "mappingDetails": "",
                         "currencyDetails": ""
                     }],
                     'lookupHierarchyJson': {
@@ -1810,6 +1839,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup2',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup2",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -1861,6 +1891,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$COR_USERS_depcoruser',
                     'label': 'COR_USERS',
                     'primaryRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "depcoruser",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -1885,6 +1916,18 @@ export class cspfmLayoutConfiguration {
                         "mappingDetails": "",
                         "currencyDetails": ""
                     }, {
+                        "id": "employeename",
+                        "label": "Employee Name",
+                        "fieldName": "employeename",
+                        "prop": "employeename",
+                        "fieldType": "TEXT",
+                        "objectName": "depemployee",
+                        "traversalpath": "depemployee_DUMMY$$employeename",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }, {
                         "id": "team",
                         "label": "Team",
                         "fieldName": "team",
@@ -1899,18 +1942,6 @@ export class cspfmLayoutConfiguration {
                             "AC": "appConnect",
                             "TE": "Testing"
                         },
-                        "currencyDetails": ""
-                    }, {
-                        "id": "employeename",
-                        "label": "Employee Name",
-                        "fieldName": "employeename",
-                        "prop": "employeename",
-                        "fieldType": "TEXT",
-                        "objectName": "depemployee",
-                        "traversalpath": "depemployee_DUMMY$$employeename",
-                        "child": "",
-                        "dateFormat": "",
-                        "mappingDetails": "",
                         "currencyDetails": ""
                     }],
                     'lookupHierarchyJson': {
@@ -1954,6 +1985,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup3",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2032,6 +2064,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY$$deppersonalinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup4",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2050,7 +2083,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "name",
                         "fieldType": "TEXT",
                         "objectName": "deppersonalinfo",
-                        "elementid": 7775052,
+                        "elementid": 8001108,
                         "traversalpath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$name",
                         "child": "",
                         "dateFormat": "",
@@ -2063,7 +2096,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "employeename",
                         "fieldType": "TEXT",
                         "objectName": "deppersonalinfo",
-                        "elementid": 7775061,
+                        "elementid": 8001112,
                         "traversalpath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$employeename",
                         "child": "",
                         "dateFormat": "",
@@ -2076,7 +2109,7 @@ export class cspfmLayoutConfiguration {
                         "prop": "team",
                         "fieldType": "DROPDOWN",
                         "objectName": "deppersonalinfo",
-                        "elementid": 7775067,
+                        "elementid": 8001113,
                         "traversalpath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$team",
                         "child": "",
                         "dateFormat": "",
@@ -2115,6 +2148,20 @@ export class cspfmLayoutConfiguration {
                             }],
                             "childObject": []
                         }, {
+                            "objectId": "71655",
+                            "fieldId": "967505",
+                            "objectName": "depemployee",
+                            "objectType": "LOOKUP",
+                            "referenceObjectId": 71658,
+                            "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3",
+                            "isStandardObject": "N",
+                            "relationShipType": "",
+                            "includeFields": true,
+                            "formulaField": [{
+                                "fieldName": "depformulan"
+                            }],
+                            "childObject": []
+                        }, {
                             "objectId": "5",
                             "fieldId": "967712",
                             "objectName": "COR_USERS",
@@ -2132,20 +2179,6 @@ export class cspfmLayoutConfiguration {
                             "objectType": "LOOKUP",
                             "referenceObjectId": 71658,
                             "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup4",
-                            "isStandardObject": "N",
-                            "relationShipType": "",
-                            "includeFields": true,
-                            "formulaField": [{
-                                "fieldName": "depformulan"
-                            }],
-                            "childObject": []
-                        }, {
-                            "objectId": "71655",
-                            "fieldId": "967505",
-                            "objectName": "depemployee",
-                            "objectType": "LOOKUP",
-                            "referenceObjectId": 71658,
-                            "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster$$depemployee_deplookup3",
                             "isStandardObject": "N",
                             "relationShipType": "",
                             "includeFields": true,
@@ -2247,11 +2280,6 @@ export class cspfmLayoutConfiguration {
                         }]
                     },
                     'argumentColumns': [{
-                        "sourceColumn": "team",
-                        "targetColumn": "team",
-                        "sourceColumnFieldType": "DROPDOWN",
-                        "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
-                    }, {
                         "sourceColumn": "depdate",
                         "targetColumn": "depdate",
                         "sourceColumnFieldType": "DATE",
@@ -2261,10 +2289,16 @@ export class cspfmLayoutConfiguration {
                         "targetColumn": "depcurrency",
                         "sourceColumnFieldType": "CURRENCY",
                         "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
+                    }, {
+                        "sourceColumn": "team",
+                        "targetColumn": "team",
+                        "sourceColumnFieldType": "DROPDOWN",
+                        "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
                     }],
                     'objectRootPath': 'depchildinfo_DUMMY$$depemployee_depclookup1',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepC Lookup1",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2345,19 +2379,20 @@ export class cspfmLayoutConfiguration {
                         "sourceColumnFieldType": "NUMBER",
                         "rootPath": "depchildinfo_DUMMY"
                     }, {
-                        "sourceColumn": "depboolean",
-                        "targetColumn": "depboolean",
-                        "sourceColumnFieldType": "BOOLEAN",
-                        "rootPath": "depchildinfo_DUMMY"
-                    }, {
                         "sourceColumn": "depdate",
                         "targetColumn": "depdate",
                         "sourceColumnFieldType": "DATE",
+                        "rootPath": "depchildinfo_DUMMY"
+                    }, {
+                        "sourceColumn": "depboolean",
+                        "targetColumn": "depboolean",
+                        "sourceColumnFieldType": "BOOLEAN",
                         "rootPath": "depchildinfo_DUMMY"
                     }],
                     'objectRootPath': 'depchildinfo_DUMMY$$depemployee_depclookup2',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepC Lookup2",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2409,6 +2444,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$COR_USERS_depcoruser',
                     'label': 'COR_USERS',
                     'primaryRootPath': 'depchildinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "depcoruser",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2484,29 +2520,30 @@ export class cspfmLayoutConfiguration {
                         }]
                     },
                     'argumentColumns': [{
-                        "sourceColumn": "depdecimal",
-                        "targetColumn": "depdecimal",
-                        "sourceColumnFieldType": "DECIMAL",
-                        "rootPath": "depchildinfo_DUMMY"
-                    }, {
-                        "sourceColumn": "depdropdownn",
-                        "targetColumn": "depdropdownn",
-                        "sourceColumnFieldType": "DROPDOWN",
-                        "rootPath": "depchildinfo_DUMMY"
-                    }, {
                         "sourceColumn": "depboolean",
                         "targetColumn": "depboolean",
                         "sourceColumnFieldType": "BOOLEAN",
+                        "rootPath": "depchildinfo_DUMMY"
+                    }, {
+                        "sourceColumn": "depdecimal",
+                        "targetColumn": "depdecimal",
+                        "sourceColumnFieldType": "DECIMAL",
                         "rootPath": "depchildinfo_DUMMY"
                     }, {
                         "sourceColumn": "depcheckbox",
                         "targetColumn": "depcheckbox",
                         "sourceColumnFieldType": "CHECKBOX",
                         "rootPath": "depchildinfo_DUMMY$$deppersonalinfo_depcmaster"
+                    }, {
+                        "sourceColumn": "depdropdownn",
+                        "targetColumn": "depdropdownn",
+                        "sourceColumnFieldType": "DROPDOWN",
+                        "rootPath": "depchildinfo_DUMMY"
                     }],
                     'objectRootPath': 'depchildinfo_DUMMY$$depemployee_depclookup3',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepC Lookup3",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2590,6 +2627,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'depchildinfo_DUMMY$$depemployee_depclookup4',
                     'label': 'depemployee',
                     'primaryRootPath': 'depchildinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepC Lookup4",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -2617,10 +2655,18 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_965870"
                     }
                 },
-                'depchildinfo_DUMMY': {
+                'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": ""
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_967501"
+                        },
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967516"
+                    }
                 },
                 'depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser': {
                     "prop": "",
@@ -2633,6 +2679,24 @@ export class cspfmLayoutConfiguration {
                         },
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_965870"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967516"
+                    }
+                },
+                'depchildinfo_DUMMY$$depemployee_depclookup3': {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967514"
                     }
                 },
                 'depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser': {
@@ -2657,14 +2721,10 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_965872"
                     }
                 },
-                'depchildinfo_DUMMY$$depemployee_depclookup4': {
+                'depchildinfo_DUMMY': {
                     "prop": "",
                     "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
-                    }
+                    "child": ""
                 },
                 'depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser': {
                     "prop": "",
@@ -2679,19 +2739,6 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm71655_967514"
                     }
                 },
-                'depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967501"
-                        },
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967516"
-                    }
-                },
                 'depchildinfo_DUMMY$$COR_USERS_depcoruser': {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -2699,15 +2746,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm5_967510"
-                    }
-                },
-                'depchildinfo_DUMMY$$depemployee_depclookup3': {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967514"
                     }
                 },
             }
@@ -2937,10 +2975,93 @@ export class cspfmLayoutConfiguration {
                         'validator': [],
                         'isRequired': false,
                         'fieldType': 'ACTION'
+                    },
+                    'add line_2': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'ACTION'
+                    }
+                },
+                'pfm77370': {
+                    'mno': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'AUTONUMBER'
+                    },
+                    'depmname1': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'TEXT'
+                    },
+                    'depmaddress1': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'TEXTAREA'
+                    },
+                    'state': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'DROPDOWN'
+                    },
+                    'cities': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'MULTISELECT'
+                    },
+                    'pfm5_1003748_searchKey': {
+                        'validator': [],
+                        'isRequired': false,
+                        'fieldType': 'LOOKUP',
+
                     }
                 },
             },
             'objectTraversal': {
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_967516"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_967505"
+                    }
+                },
+                "deppersonalinfo_DUMMY": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": ""
+                },
+                "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm77370s"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_930602"
+                    }
+                },
                 "deppersonalinfo_DUMMY$$depemployee_deplookup4": {
                     "prop": "",
                     "relationship": "PRIMARY",
@@ -2948,19 +3069,6 @@ export class cspfmLayoutConfiguration {
                         "child": "",
                         "relationship": "LOOKUP",
                         "prop": "pfm71655_967507"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm5_967510"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2": {
@@ -2976,53 +3084,17 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": {
                             "child": "",
                             "relationship": "LOOKUP",
-                            "prop": "pfm71655_967516"
+                            "prop": "pfm5_967510"
                         },
                         "relationship": "ONE_TO_MANY",
                         "prop": "pfm74408s"
-                    }
-                },
-                "deppersonalinfo_DUMMY": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": ""
-                },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": {
-                            "child": "",
-                            "relationship": "LOOKUP",
-                            "prop": "pfm71655_965870"
-                        },
-                        "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_964453"
-                    }
-                },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup": {
-                    "prop": "",
-                    "relationship": "PRIMARY",
-                    "child": {
-                        "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_930602"
                     }
                 },
                 "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3": {
@@ -3038,13 +3110,26 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm74408s"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depemployee_deplookup3": {
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
-                        "relationship": "LOOKUP",
-                        "prop": "pfm71655_967505"
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm71655_965870"
+                        },
+                        "relationship": "ONE_TO_MANY",
+                        "prop": "pfm74408s"
                     }
                 },
                 "deppersonalinfo_DUMMY$$COR_USERS_depcoruser": {
@@ -3056,13 +3141,26 @@ export class cspfmLayoutConfiguration {
                         "prop": "pfm5_967712"
                     }
                 },
-                "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
+                "deppersonalinfo_DUMMY$$depemployee_deplookup2": {
                     "prop": "",
                     "relationship": "PRIMARY",
                     "child": {
                         "child": "",
+                        "relationship": "LOOKUP",
+                        "prop": "pfm71655_964453"
+                    }
+                },
+                "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser": {
+                    "prop": "",
+                    "relationship": "PRIMARY",
+                    "child": {
+                        "child": {
+                            "child": "",
+                            "relationship": "LOOKUP",
+                            "prop": "pfm5_1003748"
+                        },
                         "relationship": "ONE_TO_MANY",
-                        "prop": "pfm74408s"
+                        "prop": "pfm77370s"
                     }
                 }
             },
@@ -3142,6 +3240,7 @@ export class cspfmLayoutConfiguration {
                     'filterConfig': {},
 
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'isOnlySubordinates': false,
                     'isStandardObject': false,
                     'additionalDataHierarchyJson': undefined,
@@ -3204,6 +3303,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup2',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup2",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3271,6 +3371,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup3',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup3",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3323,6 +3424,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depemployee_deplookup4',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepLookup4",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3375,6 +3477,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$COR_USERS_depcoruser',
                     'label': 'COR_USERS',
                     'primaryRootPath': 'deppersonalinfo_DUMMY',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepCorUser",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3442,6 +3545,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepCLookup1",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3509,6 +3613,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepCLookup2",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3581,6 +3686,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepCLookup3",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3638,6 +3744,7 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4',
                     'label': 'depemployee',
                     'primaryRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepCLookup4",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
@@ -3690,7 +3797,60 @@ export class cspfmLayoutConfiguration {
                     'objectRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser',
                     'label': 'COR_USERS',
                     'primaryRootPath': 'deppersonalinfo_DUMMY$$depchildinfo_depcmaster',
+                    'multiSelectionEnabled': false,
                     'lookupFieldDisplayName': "DepcCorUser",
+                    'isSearchFilterEnabled': false,
+                    'onLoadFetchEnabled': false,
+                    'filterConfig': {},
+
+                    'isOnlySubordinates': false,
+                    'isStandardObject': true,
+                    'additionalDataHierarchyJson': undefined,
+                    'objectId': 'pfm71658'
+                },
+                'pfm5_1003748': {
+                    'lookupColumns': [{
+                        "id": "username",
+                        "label": "USERNAME",
+                        "fieldName": "username",
+                        "prop": "username",
+                        "fieldType": "TEXT",
+                        "objectName": "COR_USERS",
+                        "traversalpath": "COR_USERS_DUMMY$$username",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }, {
+                        "id": "email_id",
+                        "label": "EMAIL ID",
+                        "fieldName": "email_id",
+                        "prop": "email_id",
+                        "fieldType": "EMAIL",
+                        "objectName": "COR_USERS",
+                        "traversalpath": "COR_USERS_DUMMY$$email_id",
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": ""
+                    }],
+                    'lookupHierarchyJson': {
+                        "objectName": "COR_USERS",
+                        "objectType": "PRIMARY",
+                        "relationShipType": "",
+                        "fieldId": 1003748,
+                        "objectId": "5",
+                        "childObject": [],
+                        "isStandardObject": "Y",
+                        "rootPath": "COR_USERS_DUMMY",
+                        "fieldName": "depmcoruser"
+                    },
+
+                    'objectRootPath': 'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser',
+                    'label': 'COR_USERS',
+                    'primaryRootPath': 'deppersonalinfo_DUMMY$$depmultiinfo_depmmaster',
+                    'multiSelectionEnabled': true,
+                    'lookupFieldDisplayName': "depmcoruser",
                     'isSearchFilterEnabled': false,
                     'onLoadFetchEnabled': false,
                     'filterConfig': {},
@@ -4200,11 +4360,177 @@ export class cspfmLayoutConfiguration {
                     "currencyDetails": "",
                     "isEditable": false,
                     "conditionalValidationEnable": false
+                }],
+                "pfm77370": [{
+                    "id": "mno",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$mno.mno",
+                    "fieldName": "mno",
+                    "prop": "mno",
+                    "fieldType": "AUTONUMBER",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003143,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$mno",
+                    "child": "",
+                    "dateFormat": "",
+                    "mappingDetails": "",
+                    "currencyDetails": "",
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
+                }, {
+                    "id": "depmname1",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmname1.depmname1",
+                    "fieldName": "depmname1",
+                    "prop": "depmname1",
+                    "fieldType": "TEXT",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003144,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmname1",
+                    "child": "",
+                    "dateFormat": "",
+                    "mappingDetails": "",
+                    "currencyDetails": "",
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
+                }, {
+                    "id": "depmaddress1",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmaddress1.depmaddress1",
+                    "fieldName": "depmaddress1",
+                    "prop": "depmaddress1",
+                    "fieldType": "TEXTAREA",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003145,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmaddress1",
+                    "child": "",
+                    "dateFormat": "",
+                    "mappingDetails": "",
+                    "currencyDetails": "",
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
+                }, {
+                    "id": "state",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$state.state",
+                    "fieldName": "state",
+                    "prop": "state",
+                    "fieldType": "DROPDOWN",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003146,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$state",
+                    "child": "",
+                    "dateFormat": "",
+                    "mappingDetails": {
+                        "TN": "TamilNadu",
+                        "KL": "Kerala",
+                        "KAR": "Karnataka",
+                        "AP": "Andhra"
+                    },
+                    "currencyDetails": "",
+                    "dependentPickList": {
+                        "pickListJson": [{
+                            "targetName": "cities",
+                            "targetType": "MULTISELECT",
+                            "condition": [{
+                                "choice": "TamilNadu",
+                                "choiceValue": "TN",
+                                "pickList": [{
+                                    "choice": "Chennai",
+                                    "choiceValue": "CHN"
+                                }, {
+                                    "choice": "Madurai",
+                                    "choiceValue": "MDU"
+                                }]
+                            }, {
+                                "choice": "Kerala",
+                                "choiceValue": "KL",
+                                "pickList": [{
+                                    "choice": "Kochi",
+                                    "choiceValue": "KCI"
+                                }, {
+                                    "choice": "Trivandrum",
+                                    "choiceValue": "TVN"
+                                }]
+                            }, {
+                                "choice": "Karnataka",
+                                "choiceValue": "KAR",
+                                "pickList": [{
+                                    "choice": "Bangalore",
+                                    "choiceValue": "BAN"
+                                }, {
+                                    "choice": "Mysore",
+                                    "choiceValue": "MYS"
+                                }]
+                            }, {
+                                "choice": "Andhra",
+                                "choiceValue": "AP",
+                                "pickList": [{
+                                    "choice": "Tripathi",
+                                    "choiceValue": "TRI"
+                                }, {
+                                    "choice": "Chithoor",
+                                    "choiceValue": "CHT"
+                                }]
+                            }]
+                        }],
+                        "changesApplyFields": ["cities"],
+                        "parent": ["state", "cities"]
+                    },
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
+                }, {
+                    "id": "cities",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$cities.cities",
+                    "fieldName": "cities",
+                    "prop": "cities",
+                    "fieldType": "MULTISELECT",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003147,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$cities",
+                    "child": "",
+                    "dateFormat": "",
+                    "mappingDetails": {
+                        "CHN": "Chennai",
+                        "MDU": "Madurai",
+                        "KCI": "Kochi",
+                        "TVN": "Trivandrum",
+                        "TRI": "Tripathi",
+                        "CHT": "Chithoor",
+                        "BAN": "Bangalore",
+                        "MYS": "Mysore"
+                    },
+                    "currencyDetails": "",
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
+                }, {
+                    "id": "pfm5_1003748_username",
+                    "label": "DepPerson_MultiLine_Entry_WEB_Grid_with_List.Element.deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmcoruser.depmcoruser",
+                    "prop": "pfm5_1003748.username",
+                    "fieldName": "pfm5_1003748",
+                    "fieldType": "LOOKUP",
+                    "objectName": "depmultiinfo",
+                    "elementid": 8003148,
+                    "traversalpath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$depmcoruser",
+                    "child": {
+                        "child": "",
+                        "dateFormat": "",
+                        "mappingDetails": "",
+                        "currencyDetails": "",
+                        "id": "username",
+                        "label": "username",
+                        "prop": "username",
+                        "fieldName": "username",
+                        "fieldType": "TEXT",
+                        "objectName": "depmultiinfo"
+                    },
+                    "dateFormat": "",
+                    "mappingDetails": "",
+                    "currencyDetails": "",
+                    "isEditable": true,
+                    "conditionalValidationEnable": false
                 }]
             },
             'objectDisplayMapping': {
                 "pfm0s": "DepPersonalInfo Entry",
-                "pfm74408s": "DepChild Entry"
+                "pfm74408s": "DepChild Entry",
+                "pfm77370s": "DepMultiInfo Entry"
             },
             'paginationConfig': {
                 "pfm74408": {
@@ -4213,10 +4539,18 @@ export class cspfmLayoutConfiguration {
                     "numberOfPages": "true",
                     "paginationPosition": "TOP",
                     "noOfItemsPerPage": "50"
+                },
+                "pfm77370": {
+                    "currentPageWithRecord": "true",
+                    "itemPerPage": "true",
+                    "numberOfPages": "true",
+                    "paginationPosition": "TOP",
+                    "noOfItemsPerPage": "50"
                 }
             },
             'relationShip': {
-                "pfm74408": "one_to_many"
+                "pfm74408": "one_to_many",
+                "pfm77370": "one_to_many"
             },
             'sectionObjectDetail': {
                 "pfm74408": {
@@ -4235,9 +4569,26 @@ export class cspfmLayoutConfiguration {
                         "criteriaQuery": ""
                     },
                     "sectionUserDataRestrictionSet": []
+                },
+                "pfm77370": {
+                    "groupingColumns": [],
+                    "isRowClickDisabled": false,
+                    "dataFetchMode": "Batch",
+                    "isExpanded": "E",
+                    "isMatrixEnabled": false,
+                    "sectionElementId": "SEC_DepPerson_MultiLine_Entry_WEB_Grid_with_List_depmultiinfo_entry",
+                    "sortByColumns": [],
+                    "matrixConfig": {},
+                    "criteriaQueryConfig": {
+                        "queryConfig": {},
+                        "junctionDataObjects": {},
+                        "relationalObjectIds": [],
+                        "criteriaQuery": ""
+                    },
+                    "sectionUserDataRestrictionSet": []
                 }
             },
-            'sectionObjects': ["pfm74408"],
+            'sectionObjects': ["pfm74408", "pfm77370"],
             'sectionObjectHierarchy': {
                 "pfm74408": {
                     "objectId": "74408",
@@ -4253,15 +4604,18 @@ export class cspfmLayoutConfiguration {
                         "fieldName": "depcformula1"
                     }],
                     "childObject": [{
-                        "objectId": "5",
-                        "fieldId": "967510",
-                        "objectName": "COR_USERS",
+                        "objectId": "71655",
+                        "fieldId": "967516",
+                        "objectName": "depemployee",
                         "objectType": "LOOKUP",
                         "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
-                        "isStandardObject": "Y",
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
+                        "isStandardObject": "N",
                         "relationShipType": "",
                         "includeFields": true,
+                        "formulaField": [{
+                            "fieldName": "depformulan"
+                        }],
                         "childObject": []
                     }, {
                         "objectId": "71655",
@@ -4278,12 +4632,23 @@ export class cspfmLayoutConfiguration {
                         }],
                         "childObject": []
                     }, {
+                        "objectId": "5",
+                        "fieldId": "967510",
+                        "objectName": "COR_USERS",
+                        "objectType": "LOOKUP",
+                        "referenceObjectId": 74408,
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$COR_USERS_depcoruser",
+                        "isStandardObject": "Y",
+                        "relationShipType": "",
+                        "includeFields": true,
+                        "childObject": []
+                    }, {
                         "objectId": "71655",
-                        "fieldId": "967516",
+                        "fieldId": "967514",
                         "objectName": "depemployee",
                         "objectType": "LOOKUP",
                         "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4",
+                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
                         "isStandardObject": "N",
                         "relationShipType": "",
                         "includeFields": true,
@@ -4305,25 +4670,35 @@ export class cspfmLayoutConfiguration {
                             "fieldName": "depformulan"
                         }],
                         "childObject": []
-                    }, {
-                        "objectId": "71655",
-                        "fieldId": "967514",
-                        "objectName": "depemployee",
+                    }]
+                },
+                "pfm77370": {
+                    "objectId": "77370",
+                    "fieldId": "1003750",
+                    "objectName": "depmultiinfo",
+                    "objectType": "MASTERDETAIL",
+                    "referenceObjectId": 71658,
+                    "rootPath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster",
+                    "isStandardObject": "N",
+                    "relationShipType": "one_to_many",
+                    "includeFields": true,
+                    "childObject": [{
+                        "objectId": "5",
+                        "fieldId": "1003748",
+                        "objectName": "COR_USERS",
                         "objectType": "LOOKUP",
-                        "referenceObjectId": 74408,
-                        "rootPath": "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup3",
-                        "isStandardObject": "N",
+                        "referenceObjectId": 77370,
+                        "rootPath": "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser",
+                        "isStandardObject": "Y",
                         "relationShipType": "",
                         "includeFields": true,
-                        "formulaField": [{
-                            "fieldName": "depformulan"
-                        }],
                         "childObject": []
                     }]
                 }
             },
             'conditionalValidation': {
-                "pfm74408": null
+                "pfm74408": null,
+                "pfm77370": null
             },
             'primaryRecordId': '',
             'primaryObjectName': 'pfm71658',
@@ -4349,9 +4724,20 @@ export class cspfmLayoutConfiguration {
                         "objectId": 74408,
                         "displayFormula": "depchildinfo.DepC Name1.length()"
                     }
-                }
+                },
+                "pfm77370": {}
             },
             'sectionDependentObjectList': {
+                "219815_pfm77370": {
+                    "relationalObjects": {
+                        "pfm77370": []
+                    },
+                    "lookupObjects": {
+                        "pfm5": {
+                            "pfm77370": ["pfm5_1003748"]
+                        }
+                    }
+                },
                 "219815_pfm74408": {
                     "relationalObjects": {
                         "pfm74408": []
@@ -4367,17 +4753,21 @@ export class cspfmLayoutConfiguration {
                 }
             },
             'sectionObjectTraversal': {
-                "pfm71658": {
+                "pfm74408": {
                     "objectTraversal": {
-                        "deppersonalinfo_DUMMY": {
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
                             "prop": "",
                             "relationship": "PRIMARY",
-                            "child": ""
-                        }
-                    }
-                },
-                "pfm74408": {
-                    'objectTraversal': {
+                            "child": {
+                                "child": {
+                                    "child": "",
+                                    "relationship": "LOOKUP",
+                                    "prop": "pfm71655_967516"
+                                },
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
                         "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup2": {
                             "prop": "",
                             "relationship": "PRIMARY",
@@ -4387,15 +4777,6 @@ export class cspfmLayoutConfiguration {
                                     "relationship": "LOOKUP",
                                     "prop": "pfm71655_965872"
                                 },
-                                "relationship": "ONE_TO_MANY",
-                                "prop": "pfm74408s"
-                            }
-                        },
-                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
-                            "prop": "",
-                            "relationship": "PRIMARY",
-                            "child": {
-                                "child": "",
                                 "relationship": "ONE_TO_MANY",
                                 "prop": "pfm74408s"
                             }
@@ -4426,6 +4807,15 @@ export class cspfmLayoutConfiguration {
                                 "prop": "pfm74408s"
                             }
                         },
+                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": "",
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm74408s"
+                            }
+                        },
                         "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup1": {
                             "prop": "",
                             "relationship": "PRIMARY",
@@ -4438,24 +4828,41 @@ export class cspfmLayoutConfiguration {
                                 "relationship": "ONE_TO_MANY",
                                 "prop": "pfm74408s"
                             }
+                        }
+                    }
+                },
+                "pfm77370": {
+                    "objectTraversal": {
+                        "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster": {
+                            "prop": "",
+                            "relationship": "PRIMARY",
+                            "child": {
+                                "child": "",
+                                "relationship": "ONE_TO_MANY",
+                                "prop": "pfm77370s"
+                            }
                         },
-                        "deppersonalinfo_DUMMY$$depchildinfo_depcmaster$$depemployee_depclookup4": {
+                        "deppersonalinfo_DUMMY$$depmultiinfo_depmmaster$$COR_USERS_depmcoruser": {
                             "prop": "",
                             "relationship": "PRIMARY",
                             "child": {
                                 "child": {
                                     "child": "",
                                     "relationship": "LOOKUP",
-                                    "prop": "pfm71655_967516"
+                                    "prop": "pfm5_1003748"
                                 },
                                 "relationship": "ONE_TO_MANY",
-                                "prop": "pfm74408s"
+                                "prop": "pfm77370s"
                             }
                         }
                     }
                 }
             },
-            'multiLineResultLookupConfiguration': {},
+            'multiLineResultLookupConfiguration': {
+                "pfm77370": {
+                    "resultLookupFieldId": "pfm5_1003748"
+                }
+            },
 
         },
         '221659': {

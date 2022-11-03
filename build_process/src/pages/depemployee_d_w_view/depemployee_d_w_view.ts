@@ -283,10 +283,10 @@
      private dataPaths: Array < {
          traversalPath: string;requiredTemp: boolean
      } > = [{
-         traversalPath: 'depemployee_DUMMY$$COR_USERS_depcoruser',
+         traversalPath: 'depemployee_DUMMY',
          requiredTemp: false
      }, {
-         traversalPath: 'depemployee_DUMMY',
+         traversalPath: 'depemployee_DUMMY$$COR_USERS_depcoruser',
          requiredTemp: false
      }, ]
      public layoutDataRestrictionSet = [];

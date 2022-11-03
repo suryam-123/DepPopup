@@ -78,6 +78,14 @@ export class dbConfiguration {
                         }
                     }
                 },
+                "pfm77370s": {
+                    "hasMany": {
+                        "type": "pfm77370",
+                        "options": {
+                            "queryInverse": "pfm71658"
+                        }
+                    }
+                },
                 "pfm74408s": {
                     "hasMany": {
                         "type": "pfm74408",
@@ -121,6 +129,31 @@ export class dbConfiguration {
                 }
             }
         }, {
+            "singular": "pfm77370_only",
+            "plural": "pfm77370s",
+            "documentType": "pfm77370"
+        }, {
+            "singular": "pfm77370",
+            "plural": "pfm77370s",
+            "relations": {
+                "pfm71658": {
+                    "belongsTo": {
+                        "type": "pfm71658",
+                        "options": {
+                            "async": true
+                        }
+                    }
+                },
+                "pfm5": {
+                    "belongsTo": {
+                        "type": "pfm5",
+                        "options": {
+                            "async": true
+                        }
+                    }
+                }
+            }
+        }, {
             "singular": "pfmstaticreport_only",
             "plural": "pfmstaticreports",
             "documentType": "pfmstaticreport"
@@ -130,14 +163,21 @@ export class dbConfiguration {
         }],
         tableStructure: {
             "pfm71655": {
-                "lastmodifiedby": null,
-                "createdon": null,
-                "createdby": null,
-                "pfm_71655_id": null,
-                "depformulan": null,
-                "depboolean": true,
-                "location": null,
+                "depcurrency": null,
+                "depdecimal": null,
+                "depcheckbox": null,
+                "pfm5_967501": null,
+                "pfm_5_967501_id": null,
+                "depdropdownn": null,
+                "employeename": null,
                 "team": null,
+                "location": null,
+                "depboolean": true,
+                "depformulan": null,
+                "pfm_71655_id": null,
+                "createdby": null,
+                "createdon": null,
+                "lastmodifiedby": null,
                 "lastmodifiedon": null,
                 "guid": null,
                 "employeeid": null,
@@ -147,52 +187,45 @@ export class dbConfiguration {
                 "depdate": null,
                 "deptimestamp": null,
                 "depnumber": null,
-                "depdecimal": null,
-                "depcurrency": null,
-                "employeename": null,
-                "depcheckbox": null,
-                "pfm5_967501": null,
-                "pfm_5_967501_id": null,
-                "depdropdownn": null,
                 "depmultiselect": null
             },
             "pfm71658": {
-                "pfm_71655_967507_id": null,
-                "pfm_5_967712_id": null,
-                "depdate": null,
-                "pfm71655_964453": null,
-                "pfm_71655_964453_id": null,
-                "pfm5_967712": null,
-                "pfm71655_967507": null,
-                "pfm_71655_967505_id": null,
-                "pfm71655_967505": null,
-                "depcheckbox": null,
-                "depmultiselect": null,
-                "couch_rev_id": null,
-                "couch_id": null,
-                "display_name": null,
-                "name": null,
-                "guid": null,
-                "lastmodifiedon": null,
-                "lastmodifiedby": null,
-                "createdon": null,
-                "createdby": null,
-                "pfm_71658_id": null,
-                "depformulan": null,
-                "pfm_71655_930602_id": null,
-                "pfm71655_930602": null,
-                "depdecimal": null,
                 "depnumber": null,
                 "depboolean": true,
                 "deptimestamp": null,
                 "depcurrency": null,
                 "location": null,
                 "team": null,
-                "employeename": null
+                "depdecimal": null,
+                "pfm71655_930602": null,
+                "pfm_71655_930602_id": null,
+                "depformulan": null,
+                "pfm_71658_id": null,
+                "createdby": null,
+                "createdon": null,
+                "lastmodifiedby": null,
+                "lastmodifiedon": null,
+                "guid": null,
+                "name": null,
+                "display_name": null,
+                "couch_id": null,
+                "couch_rev_id": null,
+                "depmultiselect": null,
+                "depcheckbox": null,
+                "pfm71655_967505": null,
+                "pfm_71655_967505_id": null,
+                "pfm71655_967507": null,
+                "pfm5_967712": null,
+                "pfm_71655_964453_id": null,
+                "employeename": null,
+                "depdate": null,
+                "pfm_5_967712_id": null,
+                "pfm_71655_967507_id": null,
+                "pfm71655_964453": null
             },
             "pfm74408": {
                 "createdby": null,
-                "depdropdownn": null,
+                "depnumber": null,
                 "depdate": null,
                 "depboolean": false,
                 "depcname": null,
@@ -223,7 +256,27 @@ export class dbConfiguration {
                 "pfm_5_967510_id": null,
                 "pfm5_967510": null,
                 "pfm_71655_967516_id": null,
-                "depnumber": null
+                "depdropdownn": null
+            },
+            "pfm77370": {
+                "couch_rev_id": null,
+                "depmname1": null,
+                "display_name": null,
+                "mno": null,
+                "guid": null,
+                "lastmodifiedon": null,
+                "lastmodifiedby": null,
+                "createdon": null,
+                "createdby": null,
+                "pfm_77370_id": null,
+                "pfm_71658_id": null,
+                "pfm71658": null,
+                "pfm_5_1003748_id": null,
+                "pfm5_1003748": null,
+                "cities": null,
+                "state": null,
+                "depmaddress1": null,
+                "couch_id": null
             },
             "pfmstaticreport": {
                 "reportId": null,
@@ -274,6 +327,8 @@ export class dbConfiguration {
         }, {
             "data.type": "pfm74408"
         }, {
+            "data.type": "pfm77370"
+        }, {
             "data.type": "pfm71658"
         }],
         couchDBSyncEnabledObjectSelectorsMobile: [],
@@ -284,6 +339,8 @@ export class dbConfiguration {
             "data.type": "pfm74408"
         }, {
             "data.type": "pfm71658"
+        }, {
+            "data.type": "pfm77370"
         }, {
             "data.type": "pfmstaticreport"
         }, {
@@ -311,7 +368,7 @@ export class dbConfiguration {
                 "_id": '_design/masterdetail_createdby_docid_view'
             }
         ],
-        indexingObject: ["pfm71655_967507", "pfm71655_967516", "pfm71655_967505", "pfm71655_967514", "pfm71655_965872", "pfm71655_964453", "pfm71655_930602", "pfm71655_965870", "pfm71655", "pfm5_967712", "pfm5_967501", "pfm5_967510", "pfm71658", "pfm74408"]
+        indexingObject: ["pfm71655_967507", "pfm71655_967505", "pfm71655_967516", "pfm71655_967514", "pfm71655_965872", "pfm71655_964453", "pfm5_1003748", "pfm71655_930602", "pfm77370", "pfm71655_965870", "pfm71655", "pfm5_967712", "pfm5_967501", "pfm5_967510", "pfm71658", "pfm74408"]
     };
 
     private _proxyPassURL: string;

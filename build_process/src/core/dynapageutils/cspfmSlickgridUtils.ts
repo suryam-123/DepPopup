@@ -1978,12 +1978,12 @@ export class cspfmSlickgridUtils {
         }
       }
     }
-    let dateEditor = () => {
+    let dateEditor = (enableTime) => {
       if (mainFieldInfo['isEditable']) {
         column['editor'] = {
           model: cspfmDateEditor,
           editorOptions: this.flatPickerConfig.getDateEditorOptions({
-            enableTime: false,
+            enableTime: enableTime,
             listeners: [],
             onOkButtonClick: (instance) => {
               const childObject = this.getChildObject(childObjName, childObjectsInfo)
@@ -2294,18 +2294,17 @@ export class cspfmSlickgridUtils {
         singleSelectEditor()
         queryParams();
         break;
-      case 'DATE':
-        dateFieldType();
-        dateFilter();
-        queryParams();
-        dateEditor();
-        break;
-      case 'TIMESTAMP':
-        dateTimeFieldType();
-        dateFilter();
-        queryParams();
-        dateEditor();
-        break;
+        case 'DATE':
+          dateFieldType();
+          dateFilter();
+          queryParams();
+          dateEditor(false);
+          break;
+        case 'TIMESTAMP':
+          dateTimeFieldType();
+          dateFilter();
+          queryParams();
+          dateEditor(true);
       case 'ACTION':
         unknownFieldType()
         break;

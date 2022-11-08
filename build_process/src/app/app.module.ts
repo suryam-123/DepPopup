@@ -32,6 +32,15 @@ import {
     DepPersonInfoList_WEB_Listmodule
 } from 'src/pages/DepPersonInfoList_WEB_List/DepPersonInfoList_WEB_List.module';
 import {
+    depmultiinfo_d_w_hl_detail_viewmodule
+} from 'src/pages/depmultiinfo_d_w_hl_detail_view/depmultiinfo_d_w_hl_detail_view.module';
+import {
+    depmultiinfo_Entry_Webmodule
+} from 'src/pages/depmultiinfo_Entry_Web/depmultiinfo_Entry_Web.module';
+import {
+    depmultiinfo_d_w_listmodule
+} from 'src/pages/depmultiinfo_d_w_list/depmultiinfo_d_w_list.module';
+import {
     NgModule
 } from '@angular/core';
 import {
@@ -477,6 +486,9 @@ declare module "@angular/core" {
         depchildinfo_d_w_listmodule,
         DepPerson_MultiLine_Entry_WEB_Grid_with_Listmodule,
         DepPersonInfoList_WEB_Listmodule,
+        depmultiinfo_d_w_hl_detail_viewmodule,
+        depmultiinfo_Entry_Webmodule,
+        depmultiinfo_d_w_listmodule,
 
         cspfmweblookuppageModule,
         cspfmCalendarEventInfoModule,

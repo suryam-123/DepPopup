@@ -327,9 +327,9 @@ export class dbConfiguration {
         }, {
             "data.type": "pfm74408"
         }, {
-            "data.type": "pfm77370"
-        }, {
             "data.type": "pfm71658"
+        }, {
+            "data.type": "pfm77370"
         }],
         couchDBSyncEnabledObjectSelectorsMobile: [],
         pouchDBSyncEnabledObjectSelectorsWeb: [],

@@ -2305,6 +2305,7 @@ export class cspfmSlickgridUtils {
           dateFilter();
           queryParams();
           dateEditor(true);
+          break;
       case 'ACTION':
         unknownFieldType()
         break;

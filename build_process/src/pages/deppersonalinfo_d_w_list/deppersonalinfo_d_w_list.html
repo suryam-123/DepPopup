@@ -1,7 +1,7 @@
 <mat-toolbar [id]=203871 class="cs-mat-pageheadtoolbar" color="primary"><button mat-button="" slot="start" *ngIf="appUtilityConfig.isMobileResolution">
         <ion-menu-button></ion-menu-button>
     </button>
-    <div class="cs-mat-toolbartitle"><span class="cs-mat-pageheadtitle">{{'deppersonalinfo_d_w_list.Layout.deppersonalinfo_d_w_list' | translate}}</span></div><span class="example-spacer"></span><button mat-mini-fab="" color="primary" title="{{'deppersonalinfo_d_w_list.Action.Search_1' | translate}}" (click)="filterAction()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" id="deppersonalinfo_d_w_list_Search_1"><em style="" class="icon-mat-search"></em></button><button color="primary" title="{{'deppersonalinfo_d_w_list.Action.New_1' | translate}}" (click)="addButton_8001511_Onclick()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" mat-icon-button="" id="deppersonalinfo_d_w_list_New_1"><em style="" class="icon-mat-add"></em></button>
+    <div class="cs-mat-toolbartitle"><span class="cs-mat-pageheadtitle">{{'deppersonalinfo_d_w_list.Layout.deppersonalinfo_d_w_list' | translate}}</span></div><span class="example-spacer"></span><button mat-mini-fab="" color="primary" title="{{'deppersonalinfo_d_w_list.Action.Search_1' | translate}}" (click)="filterAction()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" id="deppersonalinfo_d_w_list_Search_1"><em style="" class="icon-mat-search"></em></button><button color="primary" title="{{'deppersonalinfo_d_w_list.Action.New_1' | translate}}" (click)="addButton_8010229_Onclick()" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" mat-icon-button="" id="deppersonalinfo_d_w_list_New_1"><em style="" class="icon-mat-add"></em></button>
 </mat-toolbar>
 <mat-progress-bar *ngIf="isLoading || sectionObjectDetails[__deppersonalinfo$tableName]['matrixConfig']['displayInfo']['isLoading']" mode="indeterminate"></mat-progress-bar>
 <div class="mat-progress-spinner-overlay" *ngIf="isCustomFetchLoading">
@@ -19,18 +19,9 @@
                         <div class="cs-fullwidth cs-event-height" fxLayout="row wrap">
                             <div id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$name_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-mat-from-to cs-mat-formulafield">
                                 <mat-label>{{'deppersonalinfo_d_w_list.Element.deppersonalinfo_DUMMY$$name.name' | translate}}</mat-label>
-                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$name_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71658_name_8001510']['fieldValue']" />
-                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71658_name_8001510']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71658_name_8001510']['conditionalOperator']">
-                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71658_name_8001510']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'deppersonalinfo_name_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
-                                    </mat-select>
-                                    <mat-chip-list class="cs-mat-error"></mat-chip-list>
-                                </mat-form-field>
-                            </div>
-                            <div id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-mat-from-to cs-mat-formulafield">
-                                <mat-label>{{'deppersonalinfo_d_w_list.Element.deppersonalinfo_DUMMY$$employeename.employeename' | translate}}</mat-label>
-                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$employeename_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71658_employeename_8001509']['fieldValue']" />
-                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71658_employeename_8001509']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71658_employeename_8001509']['conditionalOperator']">
-                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71658_employeename_8001509']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'deppersonalinfo_employeename_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
+                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$name_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71658_name_8010239']['fieldValue']" />
+                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71658_name_8010239']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71658_name_8010239']['conditionalOperator']">
+                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71658_name_8010239']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'deppersonalinfo_name_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
                                     </mat-select>
                                     <mat-chip-list class="cs-mat-error"></mat-chip-list>
                                 </mat-form-field>
@@ -38,21 +29,30 @@
                             <div id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-chip-bpad">
                                 <mat-label>{{'deppersonalinfo_d_w_list.Element.deppersonalinfo_DUMMY$$team.team' | translate}}</mat-label>
                                 <div class="cs-tmar7">
-                                    <mat-chip-list *ngIf="filterSectionDetail['filterFields']['pfm71658_team_8001508']['displayInfo']['input'].length < 10">
-                                        <mat-chip id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_{{ item['label'] | translate}}" *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8001508']['displayInfo']['input']" [ngClass]="{'checked': item['isChecked']}" (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8001508'])">{{ item.label | translate}}</mat-chip>
+                                    <mat-chip-list *ngIf="filterSectionDetail['filterFields']['pfm71658_team_8010238']['displayInfo']['input'].length < 10">
+                                        <mat-chip id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_{{ item['label'] | translate}}" *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8010238']['displayInfo']['input']" [ngClass]="{'checked': item['isChecked']}" (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8010238'])">{{ item.label | translate}}</mat-chip>
                                     </mat-chip-list>
-                                    <mat-chip-list #chipList *ngIf="filterSectionDetail['filterFields']['pfm71658_team_8001508']['displayInfo']['input'].length >= 10"><input [matAutocomplete]="chip_pfm71658_team" [matChipInputFor]="chipList" />
-                                        <mat-chip *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8001508']['displayInfo']['selected']" [selectable]="selectable" [removable]="removable" id="{{'FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_' + item}}">{{item['label'] | translate}}<button mat-icon-button class="cs-mat-icononly" (click)="listServiceUtils.removeSelectedItem(item['label'],filterSectionDetail['filterFields']['pfm71658_team_8001508'])" *ngIf="removable"><em class="icon-mat-close"></em></button></mat-chip>
+                                    <mat-chip-list #chipList *ngIf="filterSectionDetail['filterFields']['pfm71658_team_8010238']['displayInfo']['input'].length >= 10"><input [matAutocomplete]="chip_pfm71658_team" [matChipInputFor]="chipList" />
+                                        <mat-chip *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8010238']['displayInfo']['selected']" [selectable]="selectable" [removable]="removable" id="{{'FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_' + item}}">{{item['label'] | translate}}<button mat-icon-button class="cs-mat-icononly" (click)="listServiceUtils.removeSelectedItem(item['label'],filterSectionDetail['filterFields']['pfm71658_team_8010238'])" *ngIf="removable"><em class="icon-mat-close"></em></button></mat-chip>
                                     </mat-chip-list>
                                     <mat-autocomplete #chip_pfm71658_team="">
-                                        <mat-option *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8001508']['displayInfo']['input']">
-                                            <div (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8001508'])">
-                                                <mat-checkbox [checked]="item.isChecked" (change)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8001508'])" (click)="$event.stopPropagation()" id="{{'FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_' + item['label']}}">{{ item['label']| translate}}</mat-checkbox>
+                                        <mat-option *ngFor="let item of filterSectionDetail['filterFields']['pfm71658_team_8010238']['displayInfo']['input']">
+                                            <div (click)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8010238'])">
+                                                <mat-checkbox [checked]="item.isChecked" (change)="listServiceUtils.toggleSelectedItem(item,filterSectionDetail['filterFields']['pfm71658_team_8010238'])" (click)="$event.stopPropagation()" id="{{'FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$team_input_' + item['label']}}">{{ item['label']| translate}}</mat-checkbox>
                                             </div>
                                         </mat-option>
                                     </mat-autocomplete>
                                 </div>
                                 <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                            </div>
+                            <div id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad cs-mat-from-to cs-mat-formulafield">
+                                <mat-label>{{'deppersonalinfo_d_w_list.Element.deppersonalinfo_DUMMY$$employeename.employeename' | translate}}</mat-label>
+                                <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-mat-labelset"><input id="FLD_deppersonalinfo_d_w_list_deppersonalinfo_DUMMY$$employeename_input" matInput="" type="text" placeholder="" class="cs-lspad" [(ngModel)]="filterSectionDetail['filterFields']['pfm71658_employeename_8010237']['fieldValue']" />
+                                    <mat-select (click)="cspfmListFilter.operatorStyle()" class="cs-matselectfield" matPrefix="" [ngClass]="{'cs-matselect-operator':filterSectionDetail['filterFields']['pfm71658_employeename_8010237']['conditionalOperator']}" [(value)]="filterSectionDetail['filterFields']['pfm71658_employeename_8010237']['conditionalOperator']">
+                                        <mat-option *ngFor="let item of filterFieldTypeAndOperator[filterSectionDetail['filterFields']['pfm71658_employeename_8010237']['fieldType']]" [value]="item['symbol']" [title]="item['displayName']" id="'{{'deppersonalinfo_employeename_operator_' + item['symbol']}}'">{{item['symbol']}}</mat-option>
+                                    </mat-select>
+                                    <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                                </mat-form-field>
                             </div>
                         </div>
                     </div>

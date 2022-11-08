@@ -1,7 +1,7 @@
 
 
  /* 
-  *   File: depchildinfo_d_w_list.ts
+  *   File: depmultiinfo_d_w_list.ts
   *   Copyright(c) 2022 Chain-Sys Corporation Inc.
   *   Duplication or distribution of this code in part or in whole by any media
   *   without the express written permission of Chain-Sys Corporation or its agents is
@@ -267,9 +267,9 @@
  } from 'src/core/components/cspfmBalloonComponent/cspfmBalloonComponent';
  declare function userAssignment(layoutId, userAssignService, metaDbProvider, metaDbConfig): any;
  @Component({
-     selector: 'depchildinfo_d_w_list',
-     templateUrl: 'depchildinfo_d_w_list.html'
- }) export class depchildinfo_d_w_list implements OnInit {
+     selector: 'depmultiinfo_d_w_list',
+     templateUrl: 'depmultiinfo_d_w_list.html'
+ }) export class depmultiinfo_d_w_list implements OnInit {
      isCustomFetchLoading = false;
      dripDownAttribute = '';
      constructor(public angularUtilService: AngularUtilService, public objMapping: objectTableMapping, public objectTableMappingObject: objectTableMapping, public gridIdConfig: cspfmGridsectionListIdConfiguration, public dialog: MatDialog, public observableListenerUtils: cspfmObservableListenerUtils,
@@ -278,7 +278,7 @@
          public alertCtrl: AlertController, public lookupFieldMapping: lookupFieldMapping, public cspfmDataDisplay: cspfm_data_display, public alerCtrl: AlertController, public datePipe: DatePipe, public cspfmLookupCriteriaUtils: cspfmLookupCriteriaUtils, public slickgridUtils: cspfmSlickgridUtils, public listServiceUtils: cspfmListSearchListUtils, public cspfmMetaCouchDbProvider: cspfmMetaCouchDbProvider, private cspfmConditionalFormattingUtils: cspfmConditionalFormattingUtils,
          public popoverController: PopoverController, public translateService: TranslateService, public cspfmCustomFieldProvider: cspfmCustomFieldProvider, private changeRef: ChangeDetectorRef, public cspfmFlatpickrConfig: cspfmFlatpickrConfig, private cspfmSlickgridMatrix: cspfmSlickgridMatrixService, public slickgridPopoverService: SlickgridPopoverService, private pfmObjectConfig: cspfmObjectConfiguration, public executionDbConfigObject: cspfmExecutionPouchDbConfiguration, private cspfmConditionalValidationUtils: cspfmConditionalValidationUtils,
          public cspfmLayoutConfig: cspfmLayoutConfiguration, public cspfmListFilter: cspfmListFilterUtils, public cspfmexecutionPouchDbProvider: cspfmExecutionPouchDbProvider, private zone: NgZone, private liveListenerHandlerUtils: cspfmLiveListenerHandlerUtils, private metaDbConfig: metaDbConfiguration, private cspfmReportGenerationService: CspfmReportGenerationService, private metaDbProvider: metaDataDbProvider, public customActionUtils: cspfmCustomActionUtils, private cspfmOnDemandFeature: cspfmOnDemandFeature) {
-         this.appUtilityConfig.initialHiddenColumns(this.columnDefinitions, this.__depchildinfo$tableName);
+         this.appUtilityConfig.initialHiddenColumns(this.columnDefinitions, this.__depmultiinfo$tableName);
          this.slickgridResultList = [];
          this.filteredResultList = [];
          this.filterFieldTypeAndOperator = filterConfig['default']['filterFieldTypeAndOperator'];
@@ -292,7 +292,7 @@
              this.dataFetchMode,
              this.layoutId,
              getAngularGrid,
-             this.columnDefinitions[this.__depchildinfo$tableName]
+             this.columnDefinitions[this.__depmultiinfo$tableName]
          );
          this.associationConfigurationAssignment();
          this.activatRoute.queryParams.subscribe(async params => {
@@ -304,7 +304,7 @@
 
          });
          this.filterSectionDetailTemp = JSON.parse(JSON.stringify(this.filterSectionDetail))
-         if (this.sectionObjectDetails[this.__depchildinfo$tableName]['isMatrixEnabled'] === true || this.upsertHeaderFlag === true || this.isMailActionAvailable === true || this.isWorkflowActionAvailable === true) {
+         if (this.sectionObjectDetails[this.__depmultiinfo$tableName]['isMatrixEnabled'] === true || this.upsertHeaderFlag === true || this.isMailActionAvailable === true || this.isWorkflowActionAvailable === true) {
              let rowSelectionOption = {
                  checkboxSelector: {
                      hideInFilterHeaderRow: false,
@@ -318,7 +318,7 @@
              }
              Object.assign(this.gridOptions, rowSelectionOption);
          }
-         this.appUtilityConfig.setColumnWidth(this.columnDefinitions[this.__depchildinfo$tableName]);
+         this.appUtilityConfig.setColumnWidth(this.columnDefinitions[this.__depmultiinfo$tableName]);
 
          if (this.dataFetchMode === 'Full' || this.dataFetchMode === 'Batch') {
              this.gridOptions['enablePagination'] = true;
@@ -363,36 +363,8 @@
 
 
      }
-     public obj_pfm5_967510: any = {};
-     public pfm5_967510 = {
-         "id": "",
-         "label": "",
-         "object": "",
-         "searchKey": ""
-     };
-     public obj_pfm71655_967516: any = {};
-     public pfm71655_967516 = {
-         "id": "",
-         "label": "",
-         "object": "",
-         "searchKey": ""
-     };
-     public obj_pfm71655_965870: any = {};
-     public pfm71655_965870 = {
-         "id": "",
-         "label": "",
-         "object": "",
-         "searchKey": ""
-     };
-     public obj_pfm71655_967514: any = {};
-     public pfm71655_967514 = {
-         "id": "",
-         "label": "",
-         "object": "",
-         "searchKey": ""
-     };
-     public obj_pfm71655_965872: any = {};
-     public pfm71655_965872 = {
+     public obj_pfm5_1003748: any = {};
+     public pfm5_1003748 = {
          "id": "",
          "label": "",
          "object": "",
@@ -438,270 +410,75 @@
      public readonlyApplicableField = [];
      public filterSectionDetail: FilterSectionDetail = {
          filterFields: {
-             "pfm74408_depcdate1_8010444": {
+             "pfm77370_mno_8009853": {
                  "isRequired": false,
                  "conditionalOperator": "",
-                 "fieldName": "depcdate1",
-                 "betweenflag": "Y",
-                 "objectName": "depchildinfo",
-                 "displayInfo": "",
-                 "rootPath": "depchildinfo_DUMMY",
-                 "betweenLabel": {
-                     "fromLabel": "depcdate1_from",
-                     "toLabel": "depcdate1_to"
-                 },
-                 "fieldType": "DATE",
-                 "fieldDisplayName": "DepC Date1",
-                 "fieldValue": {
-                     "from": "",
-                     "to": ""
-                 },
-                 "fieldId": 965867
-             },
-             "pfm74408_depcname_8010443": {
-                 "isRequired": false,
-                 "conditionalOperator": "",
-                 "fieldName": "depcname",
+                 "fieldName": "mno",
                  "betweenflag": "N",
-                 "objectName": "depchildinfo",
+                 "objectName": "depmultiinfo",
                  "displayInfo": "",
-                 "rootPath": "depchildinfo_DUMMY",
-                 "fieldType": "TEXT",
-                 "fieldDisplayName": "depCname",
+                 "rootPath": "depmultiinfo_DUMMY",
+                 "fieldType": "AUTONUMBER",
+                 "fieldDisplayName": "M No",
                  "fieldValue": "",
-                 "fieldId": 965883
+                 "fieldId": 1003758
              },
-             "pfm74408_depcname1_8010442": {
+             "pfm77370_depmaddress1_8009854": {
                  "isRequired": false,
                  "conditionalOperator": "",
-                 "fieldName": "depcname1",
+                 "fieldName": "depmaddress1",
                  "betweenflag": "N",
-                 "objectName": "depchildinfo",
+                 "objectName": "depmultiinfo",
                  "displayInfo": "",
-                 "rootPath": "depchildinfo_DUMMY",
-                 "fieldType": "TEXT",
-                 "fieldDisplayName": "DepC Name1",
+                 "rootPath": "depmultiinfo_DUMMY",
+                 "fieldType": "TEXTAREA",
+                 "fieldDisplayName": "DepM Address1",
                  "fieldValue": "",
-                 "fieldId": 965866
+                 "fieldId": 1003745
+             },
+             "pfm77370_depmname1_8009852": {
+                 "isRequired": false,
+                 "conditionalOperator": "",
+                 "fieldName": "depmname1",
+                 "betweenflag": "N",
+                 "objectName": "depmultiinfo",
+                 "displayInfo": "",
+                 "rootPath": "depmultiinfo_DUMMY",
+                 "fieldType": "TEXT",
+                 "fieldDisplayName": "DepM Name1",
+                 "fieldValue": "",
+                 "fieldId": 1003744
              }
          },
          filterApplied: false,
          filterPanelExpanded: false,
          filterAppliedFields: [],
          reverseHierarchy: {
-             "depchildinfo_DUMMY": {
-                 "objectId": "74408",
+             "depmultiinfo_DUMMY": {
+                 "objectId": "77370",
                  "fieldId": "0",
-                 "objectName": "depchildinfo",
+                 "objectName": "depmultiinfo",
                  "objectType": "PRIMARY",
                  "referenceObjectId": 0,
-                 "rootPath": "depchildinfo_DUMMY",
+                 "rootPath": "depmultiinfo_DUMMY",
                  "relationShipType": "",
                  "childObject": []
              },
-             "depchildinfo_DUMMY$$depemployee_depclookup4": {
-                 "objectId": "71655",
-                 "fieldId": "967516",
-                 "objectName": "depemployee",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "74408",
-                     "fieldId": "0",
-                     "objectName": "depchildinfo",
-                     "objectType": "PRIMARY",
-                     "referenceObjectId": 0,
-                     "rootPath": "depchildinfo_DUMMY",
-                     "relationShipType": "",
-                     "childObject": []
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup1": {
-                 "objectId": "71655",
-                 "fieldId": "965870",
-                 "objectName": "depemployee",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup1",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "74408",
-                     "fieldId": "0",
-                     "objectName": "depchildinfo",
-                     "objectType": "PRIMARY",
-                     "referenceObjectId": 0,
-                     "rootPath": "depchildinfo_DUMMY",
-                     "relationShipType": "",
-                     "childObject": []
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser": {
+             "depmultiinfo_DUMMY$$COR_USERS_depmcoruser": {
                  "objectId": "5",
-                 "fieldId": "967501",
+                 "fieldId": "1003748",
                  "objectName": "COR_USERS",
                  "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser",
+                 "referenceObjectId": 77370,
+                 "rootPath": "depmultiinfo_DUMMY$$COR_USERS_depmcoruser",
                  "relationShipType": "",
                  "childObject": [{
-                     "objectId": "71655",
-                     "fieldId": "967514",
-                     "objectName": "depemployee",
-                     "objectType": "LOOKUP",
-                     "referenceObjectId": 74408,
-                     "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
-                     "relationShipType": "",
-                     "childObject": [{
-                         "objectId": "74408",
-                         "fieldId": "0",
-                         "objectName": "depchildinfo",
-                         "objectType": "PRIMARY",
-                         "referenceObjectId": 0,
-                         "rootPath": "depchildinfo_DUMMY",
-                         "relationShipType": "",
-                         "childObject": []
-                     }]
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup3": {
-                 "objectId": "71655",
-                 "fieldId": "967514",
-                 "objectName": "depemployee",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "74408",
+                     "objectId": "77370",
                      "fieldId": "0",
-                     "objectName": "depchildinfo",
+                     "objectName": "depmultiinfo",
                      "objectType": "PRIMARY",
                      "referenceObjectId": 0,
-                     "rootPath": "depchildinfo_DUMMY",
-                     "relationShipType": "",
-                     "childObject": []
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser": {
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "71655",
-                     "fieldId": "965872",
-                     "objectName": "depemployee",
-                     "objectType": "LOOKUP",
-                     "referenceObjectId": 74408,
-                     "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
-                     "relationShipType": "",
-                     "childObject": [{
-                         "objectId": "74408",
-                         "fieldId": "0",
-                         "objectName": "depchildinfo",
-                         "objectType": "PRIMARY",
-                         "referenceObjectId": 0,
-                         "rootPath": "depchildinfo_DUMMY",
-                         "relationShipType": "",
-                         "childObject": []
-                     }]
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser": {
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "71655",
-                     "fieldId": "967516",
-                     "objectName": "depemployee",
-                     "objectType": "LOOKUP",
-                     "referenceObjectId": 74408,
-                     "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
-                     "relationShipType": "",
-                     "childObject": [{
-                         "objectId": "74408",
-                         "fieldId": "0",
-                         "objectName": "depchildinfo",
-                         "objectType": "PRIMARY",
-                         "referenceObjectId": 0,
-                         "rootPath": "depchildinfo_DUMMY",
-                         "relationShipType": "",
-                         "childObject": []
-                     }]
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser": {
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "71655",
-                     "fieldId": "965870",
-                     "objectName": "depemployee",
-                     "objectType": "LOOKUP",
-                     "referenceObjectId": 74408,
-                     "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup1",
-                     "relationShipType": "",
-                     "childObject": [{
-                         "objectId": "74408",
-                         "fieldId": "0",
-                         "objectName": "depchildinfo",
-                         "objectType": "PRIMARY",
-                         "referenceObjectId": 0,
-                         "rootPath": "depchildinfo_DUMMY",
-                         "relationShipType": "",
-                         "childObject": []
-                     }]
-                 }]
-             },
-             "depchildinfo_DUMMY$$depemployee_depclookup2": {
-                 "objectId": "71655",
-                 "fieldId": "965872",
-                 "objectName": "depemployee",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "74408",
-                     "fieldId": "0",
-                     "objectName": "depchildinfo",
-                     "objectType": "PRIMARY",
-                     "referenceObjectId": 0,
-                     "rootPath": "depchildinfo_DUMMY",
-                     "relationShipType": "",
-                     "childObject": []
-                 }]
-             },
-             "depchildinfo_DUMMY$$COR_USERS_depcoruser": {
-                 "objectId": "5",
-                 "fieldId": "967510",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 74408,
-                 "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
-                 "relationShipType": "",
-                 "childObject": [{
-                     "objectId": "74408",
-                     "fieldId": "0",
-                     "objectName": "depchildinfo",
-                     "objectType": "PRIMARY",
-                     "referenceObjectId": 0,
-                     "rootPath": "depchildinfo_DUMMY",
+                     "rootPath": "depmultiinfo_DUMMY",
                      "relationShipType": "",
                      "childObject": []
                  }]
@@ -712,35 +489,11 @@
      }
 
      private filterCustomFieldWithValues = {
-         "pfm74408": {
-             "pfm5_967510": {
+         "pfm77370": {
+             "pfm5_1003748": {
                  "id": "",
                  "label": "",
-                 "object": "pfm5_967510",
-                 "searchKey": ""
-             },
-             "pfm71655_967516": {
-                 "id": "",
-                 "label": "",
-                 "object": "pfm71655_967516",
-                 "searchKey": ""
-             },
-             "pfm71655_965870": {
-                 "id": "",
-                 "label": "",
-                 "object": "pfm71655_965870",
-                 "searchKey": ""
-             },
-             "pfm71655_967514": {
-                 "id": "",
-                 "label": "",
-                 "object": "pfm71655_967514",
-                 "searchKey": ""
-             },
-             "pfm71655_965872": {
-                 "id": "",
-                 "label": "",
-                 "object": "pfm71655_965872",
+                 "object": "pfm5_1003748",
                  "searchKey": ""
              }
          }
@@ -775,138 +528,35 @@
 
      public filteredEventTriggeredList = [];
      public parentValue;
-     private tableName_pfm74408 = 'pfm74408';
+     private tableName_pfm77370 = 'pfm77370';
      public errorMessageToDisplay = "No Records";
      public eventsTriggeredList: Array < any > = [];
      public objectHierarchyJSON: ObjectHierarchy = {
-         "objectId": "74408",
+         "objectId": "77370",
          "referenceObjectId": "0",
-         "objectName": "depchildinfo",
+         "objectName": "depmultiinfo",
          "isStandardObject": "N",
-         "rootPath": "depchildinfo_DUMMY",
+         "rootPath": "depmultiinfo_DUMMY",
          "fieldId": "0",
          "relationShipType": "null",
          "objectType": "PRIMARY",
          "childObject": [{
-             "objectId": "71655",
-             "fieldId": "967516",
-             "objectName": "depemployee",
-             "objectType": "LOOKUP",
-             "referenceObjectId": 74408,
-             "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4",
-             "isStandardObject": "N",
-             "relationShipType": "",
-             "includeFields": false,
-             "formulaField": [{
-                 "fieldName": "depformulan"
-             }],
-             "childObject": [{
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup4$$COR_USERS_depcoruser",
-                 "isStandardObject": "Y",
-                 "relationShipType": "",
-                 "includeFields": false,
-                 "childObject": []
-             }]
-         }, {
-             "objectId": "71655",
-             "fieldId": "965870",
-             "objectName": "depemployee",
-             "objectType": "LOOKUP",
-             "referenceObjectId": 74408,
-             "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup1",
-             "isStandardObject": "N",
-             "relationShipType": "",
-             "includeFields": false,
-             "formulaField": [{
-                 "fieldName": "depformulan"
-             }],
-             "childObject": [{
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup1$$COR_USERS_depcoruser",
-                 "isStandardObject": "Y",
-                 "relationShipType": "",
-                 "includeFields": false,
-                 "childObject": []
-             }]
-         }, {
-             "objectId": "71655",
-             "fieldId": "967514",
-             "objectName": "depemployee",
-             "objectType": "LOOKUP",
-             "referenceObjectId": 74408,
-             "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3",
-             "isStandardObject": "N",
-             "relationShipType": "",
-             "includeFields": false,
-             "formulaField": [{
-                 "fieldName": "depformulan"
-             }],
-             "childObject": [{
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup3$$COR_USERS_depcoruser",
-                 "isStandardObject": "Y",
-                 "relationShipType": "",
-                 "includeFields": false,
-                 "childObject": []
-             }]
-         }, {
-             "objectId": "71655",
-             "fieldId": "965872",
-             "objectName": "depemployee",
-             "objectType": "LOOKUP",
-             "referenceObjectId": 74408,
-             "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2",
-             "isStandardObject": "N",
-             "relationShipType": "",
-             "includeFields": false,
-             "formulaField": [{
-                 "fieldName": "depformulan"
-             }],
-             "childObject": [{
-                 "objectId": "5",
-                 "fieldId": "967501",
-                 "objectName": "COR_USERS",
-                 "objectType": "LOOKUP",
-                 "referenceObjectId": 71655,
-                 "rootPath": "depchildinfo_DUMMY$$depemployee_depclookup2$$COR_USERS_depcoruser",
-                 "isStandardObject": "Y",
-                 "relationShipType": "",
-                 "includeFields": false,
-                 "childObject": []
-             }]
-         }, {
              "objectId": "5",
-             "fieldId": "967510",
+             "fieldId": "1003748",
              "objectName": "COR_USERS",
              "objectType": "LOOKUP",
-             "referenceObjectId": 74408,
-             "rootPath": "depchildinfo_DUMMY$$COR_USERS_depcoruser",
+             "referenceObjectId": 77370,
+             "rootPath": "depmultiinfo_DUMMY$$COR_USERS_depmcoruser",
              "isStandardObject": "Y",
              "relationShipType": "",
              "includeFields": false,
              "childObject": []
-         }],
-         "formulaField": [{
-             "fieldName": "depcformula1"
          }]
      };
 
      public layoutDataRestrictionSet = [];
-     public layoutId = "213015";
-     public layoutName = "depchildinfo_d_w_list";
+     public layoutId = "222890";
+     public layoutName = "depmultiinfo_d_w_list";
      public dataSource = "CouchDB";
      public searchQueryForDesignDoc = "";
      customAlert: any;
@@ -917,7 +567,7 @@
      public tempColumnDefinitions = [];
      public dependentObjectList: DependentObjectListType = {
          "relationalObjects": {
-             "pfm74408": []
+             "pfm77370": []
          },
          "lookupObjects": {},
          "dataRestrictionInvolvedObjects": {}
@@ -940,20 +590,14 @@
      public isWorkflowActionAvailable = false;
      public itemCount: number;
      public upsertHeaderFlag = false
-     public __depchildinfo$tableName = this.objectTableMappingObject.mappingDetail['depchildinfo'];
-     public gridId = 'cspfm_grid_' + this.layoutId + '_' + this.__depchildinfo$tableName;
-     public gridContainerId = 'cspfm_grid_container_' + this.layoutId + '_' + this.__depchildinfo$tableName;
-     public matrixGridId = 'cspfm_matrix_grid_' + this.layoutId + '_' + this.__depchildinfo$tableName;
-     public matrixGridContainerId = 'cspfm_matrix_grid_container_' + this.layoutId + '_' + this.__depchildinfo$tableName;
-     public __depemployee$tableName = this.objectTableMappingObject.mappingDetail['depemployee'];
+     public __depmultiinfo$tableName = this.objectTableMappingObject.mappingDetail['depmultiinfo'];
+     public gridId = 'cspfm_grid_' + this.layoutId + '_' + this.__depmultiinfo$tableName;
+     public gridContainerId = 'cspfm_grid_container_' + this.layoutId + '_' + this.__depmultiinfo$tableName;
+     public matrixGridId = 'cspfm_matrix_grid_' + this.layoutId + '_' + this.__depmultiinfo$tableName;
+     public matrixGridContainerId = 'cspfm_matrix_grid_container_' + this.layoutId + '_' + this.__depmultiinfo$tableName;
      public __COR_USERS$tableName = this.objectTableMappingObject.mappingDetail['COR_USERS'];
 
-     public __depclookup4$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup4'];
-     public __depclookup1$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup1'];
-     public __depcoruser$lookupIndepemployee = this.lookupFieldMapping.mappingDetail[this.__depemployee$tableName]['depcoruser'];
-     public __depclookup3$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup3'];
-     public __depclookup2$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depclookup2'];
-     public __depcoruser$lookupIndepchildinfo = this.lookupFieldMapping.mappingDetail[this.__depchildinfo$tableName]['depcoruser'];
+     public __depmcoruser$lookupIndepmultiinfo = this.lookupFieldMapping.mappingDetail[this.__depmultiinfo$tableName]['depmcoruser'];
      public associationConfiguration = {};
      public hiddenColumnsIds = {}
      public associationTableColumnInfo: {
@@ -964,16 +608,16 @@
          }
      } = {};
      public tableColumnInfo = {
-         [this.__depchildinfo$tableName]: {
-             "pfm74408_depcname_8010435": {
-                 "id": "depcname",
-                 "label": "depchildinfo_d_w_list.Element.depchildinfo_DUMMY$$depcname.depcname",
-                 "fieldName": "depcname",
-                 "prop": "depcname",
-                 "fieldType": "TEXT",
-                 "objectName": "depchildinfo",
-                 "elementid": 8010435,
-                 "traversalpath": "depchildinfo_DUMMY$$depcname",
+         [this.__depmultiinfo$tableName]: {
+             "pfm77370_mno_8009858": {
+                 "id": "mno",
+                 "label": "depmultiinfo_d_w_list.Element.depmultiinfo_DUMMY$$mno.mno",
+                 "fieldName": "mno",
+                 "prop": "mno",
+                 "fieldType": "AUTONUMBER",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8009858,
+                 "traversalpath": "depmultiinfo_DUMMY$$mno",
                  "child": "",
                  "dateFormat": "",
                  "mappingDetails": "",
@@ -981,15 +625,15 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcname1_8010439": {
-                 "id": "depcname1",
-                 "label": "depchildinfo_d_w_list.Element.depchildinfo_DUMMY$$depcname1.depcname1",
-                 "fieldName": "depcname1",
-                 "prop": "depcname1",
+             "pfm77370_depmname1_8009859": {
+                 "id": "depmname1",
+                 "label": "depmultiinfo_d_w_list.Element.depmultiinfo_DUMMY$$depmname1.depmname1",
+                 "fieldName": "depmname1",
+                 "prop": "depmname1",
                  "fieldType": "TEXT",
-                 "objectName": "depchildinfo",
-                 "elementid": 8010439,
-                 "traversalpath": "depchildinfo_DUMMY$$depcname1",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8009859,
+                 "traversalpath": "depmultiinfo_DUMMY$$depmname1",
                  "child": "",
                  "dateFormat": "",
                  "mappingDetails": "",
@@ -997,28 +641,28 @@
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_depcdate1_8010434": {
-                 "id": "depcdate1",
-                 "label": "depchildinfo_d_w_list.Element.depchildinfo_DUMMY$$depcdate1.depcdate1",
-                 "fieldName": "depcdate1",
-                 "prop": "depcdate1",
-                 "fieldType": "DATE",
-                 "objectName": "depchildinfo",
-                 "elementid": 8010434,
-                 "traversalpath": "depchildinfo_DUMMY$$depcdate1",
+             "pfm77370_depmaddress1_8009857": {
+                 "id": "depmaddress1",
+                 "label": "depmultiinfo_d_w_list.Element.depmultiinfo_DUMMY$$depmaddress1.depmaddress1",
+                 "fieldName": "depmaddress1",
+                 "prop": "depmaddress1",
+                 "fieldType": "TEXTAREA",
+                 "objectName": "depmultiinfo",
+                 "elementid": 8009857,
+                 "traversalpath": "depmultiinfo_DUMMY$$depmaddress1",
                  "child": "",
-                 "dateFormat": this.appUtilityConfig.userDateFormat,
+                 "dateFormat": "",
                  "mappingDetails": "",
                  "currencyDetails": "",
                  "boxStyle": "",
                  "valueStyle": ""
              },
-             "pfm74408_cspfmaction8010438": {
-                 "id": "cspfmaction8010438",
-                 "label": "depchildinfo_d_w_list.Action.Edit_1",
-                 "fieldName": "cspfmaction8010438",
-                 "prop": "cspfmaction8010438",
-                 "elementid": 8010438,
+             "pfm77370_cspfmaction8009860": {
+                 "id": "cspfmaction8009860",
+                 "label": "depmultiinfo_d_w_list.Action.Edit_1",
+                 "fieldName": "cspfmaction8009860",
+                 "prop": "cspfmaction8009860",
+                 "elementid": 8009860,
                  "elementType": "ACTION",
                  "child": "",
                  "dateFormat": "",
@@ -1031,21 +675,21 @@
                      "actionName": "Edit_1",
                      "actionLabel": "Edit",
                      "actionType": "EDIT",
-                     "sourceId": "8010438",
-                     "traversalpath": "depchildinfo_d_w_list_Edit_1",
+                     "sourceId": "8009860",
+                     "traversalpath": "depmultiinfo_d_w_list_Edit_1",
                      "actionDisplayType": "Icon",
                      "objectName": "",
                      "boxStyle": "",
                      "labelStyle": "",
                      "valueStyle": "",
                      "navigationInfo": {
-                         "navigationUrl": "depchildinfo_Entry_Web",
-                         "redirectUrl": "depchildinfo_d_w_list",
+                         "navigationUrl": "depmultiinfo_Entry_Web",
+                         "redirectUrl": "depmultiinfo_d_w_list",
                          "uniqueKey": "id",
                          "enablePopUp": false,
                          "webserviceinfo": [],
                          "relationalObjectInfo": {
-                             "relationalObjectName": "depchildinfo",
+                             "relationalObjectName": "depmultiinfo",
                              "relationalObjectId": "",
                              "fieldType": "MASTERDETAIL",
                              "child": ""
@@ -1059,7 +703,7 @@
      public sectionObjectDetails: {
          [objectName: string]: SectionObjectDetail
      } = {
-         [this.__depchildinfo$tableName]: {
+         [this.__depmultiinfo$tableName]: {
              'groupingColumns': [],
              'isRowClickDisabled': false,
              'dataFetchMode': 'Batch',
@@ -1151,11 +795,11 @@
      public columnDefinitions: {
          [objectName: string]: Array < Column >
      } = {
-         [this.__depchildinfo$tableName]: [{
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['label']), 'fromEntity'),
+         [this.__depmultiinfo$tableName]: [{
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -1174,13 +818,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858']['id']
                  },
                  collapsed: false
              },
@@ -1190,19 +834,19 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 100,
-                 required: true,
+                 required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname_8010435'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_mno_8009858'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['label']), 'fromEntity'),
              sortable: true,
              type: FieldType.string,
 
@@ -1221,13 +865,13 @@
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859']['id']
                  },
                  collapsed: false
              },
@@ -1237,44 +881,44 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 30,
-                 required: true,
+                 required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcname1_8010439'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmname1_8009859'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['label']), 'fromEntity'),
              sortable: true,
-             type: FieldType.date,
+             type: FieldType.string,
 
              exportCustomFormatter: CspfmDataExportFormatter,
              exportWithFormatter: true,
 
              // minWidth: this.columnMinWidth,
              formatter: CspfmDataFormatter,
-             queryField: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['prop'] + appConstant['customFieldSuffix']['slickgrid'],
+
              filterable: true,
              filter: {
 
-                 operator: OperatorType.rangeInclusive,
 
-                 model: Filters.compoundDate
+
+                 model: Filters.compoundInput
              },
              grouping: < cspfmDataGrouping > {
                  getter: (data) => {
-                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434'])
+                     return this.slickgridUtils.getter(data, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857'])
                  },
                  formatter: (groupingFormatterItem: GroupingFormatterItem) => {
-                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['label'])
+                     return this.slickgridUtils.formatter(groupingFormatterItem, this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['label'])
                  },
                  params: {
-                     id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434']['id']
+                     id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857']['id']
                  },
                  collapsed: false
              },
@@ -1283,20 +927,20 @@
 
              params: {
                  isHiddenEnabled: 'N',
-                 columnWidth: 0,
+                 columnWidth: 30,
                  required: false,
                  pipe: this.cspfmDataDisplay,
-                 fieldInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_depcdate1_8010434'],
+                 fieldInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_depmaddress1_8009857'],
                  layoutId: this.layoutId
 
 
              }
 
          }, {
-             id: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8010438']['id'],
-             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8010438']['label'])),
-             field: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8010438']['prop'],
-             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8010438']['label']), 'fromEntity'),
+             id: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8009860']['id'],
+             nameKey: lodash.escape(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8009860']['label'])),
+             field: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8009860']['prop'],
+             toolTip: this.slickgridUtils.convertSplCharToEntities(this.translateService.instant(this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8009860']['label']), 'fromEntity'),
              sortable: false,
              type: FieldType.unknown,
 
@@ -1305,7 +949,7 @@
 
              // minWidth: this.columnMinWidth,
              formatter: CspfmActionsFormatter,
-             columnGroupKey: 'depchildinfo_d_w_list.Action.Edit_1',
+             columnGroupKey: 'depmultiinfo_d_w_list.Action.Edit_1',
 
              filterable: false,
              filter: {
@@ -1325,7 +969,7 @@
                  columnWidth: 0,
                  component: cspfmactionweb,
                  angularUtilService: this.angularUtilService,
-                 actionInfo: this.tableColumnInfo[this.__depchildinfo$tableName]['pfm74408_cspfmaction8010438']['actionInfo'],
+                 actionInfo: this.tableColumnInfo[this.__depmultiinfo$tableName]['pfm77370_cspfmaction8009860']['actionInfo'],
 
 
              },
@@ -1333,7 +977,7 @@
              excludeFromHeaderMenu: true,
              headerCssClass: 'cs-headergroup',
              onCellClick: (mouseEvent, args) => {
-                 this.onActionCellClick(mouseEvent, args, this.__depchildinfo$tableName);
+                 this.onActionCellClick(mouseEvent, args, this.__depmultiinfo$tableName);
              },
 
          }]
@@ -1441,7 +1085,7 @@
          },
          presets: {
              sorters: [{
-                 columnId: this.tableColumnInfo['pfm74408']['pfm74408_depcname_8010435']['prop'],
+                 columnId: this.tableColumnInfo['pfm77370']['pfm77370_mno_8009858']['prop'],
                  direction: 'ASC'
              }],
          },
@@ -1587,7 +1231,7 @@
              this.listServiceUtils.presentToast("Another process is running, please wait");
              return
          }
-         if (this.sectionObjectDetails[this.__depchildinfo$tableName]['matrixConfig']['displayInfo']['currentMode'] === 'matrix') {
+         if (this.sectionObjectDetails[this.__depmultiinfo$tableName]['matrixConfig']['displayInfo']['currentMode'] === 'matrix') {
              this.appUtilityConfig.showAlert(this, 'This action is disabled in matrix view mode')
              return
          }
@@ -1630,7 +1274,7 @@
                  if (this.dataSource === appConstant.pouchDBStaticName) {
                      this.makeQueryAndStartFetch();
                  } else {
-                     let query = "type:" + this.tableName_pfm74408
+                     let query = "type:" + this.tableName_pfm77370
                      this.searchQueryForDesignDoc = query;
                      this.makeQueryAndStartFetch(query);
                  }
@@ -1654,7 +1298,7 @@
                      "criteriaQueryConfig": this.layoutCriteriaQueryConfig,
                      "junctionDataObjects": {},
                      "searchQuery": "",
-                     "objectName": this.__depchildinfo$tableName
+                     "objectName": this.__depmultiinfo$tableName
                  }
                  this.cspfmLookupCriteriaUtils.dataRestrictionFetch(layoutDataRestrictionSet, "list").then(res => {
                      if (isRelationalObjectsInvolved) {
@@ -1712,7 +1356,7 @@
      }
 
      checkChangedListenerData(idArrayToFetch) {
-         const prefix = this.__depchildinfo$tableName + "_2_";
+         const prefix = this.__depmultiinfo$tableName + "_2_";
          let filteredResultListIds = this.angularGrid.dataView.getItems().map(getIds => prefix + getIds.id);
          if (idArrayToFetch === undefined || idArrayToFetch.length === 0) {
              const modifiedSetid = this.modifiedSet.map(getIds => getIds.id.includes(prefix) ? getIds.id : prefix + getIds.id)
@@ -1735,12 +1379,12 @@
          }
          let addNewIds = [];
          let removeOldIds = [];
-         const prefix = this.__depchildinfo$tableName + "_2_";
+         const prefix = this.__depmultiinfo$tableName + "_2_";
          this.filteredResultList.forEach(record => {
              let id = record.id.includes(prefix) ? record.id : prefix + record.id;
              idArrayToFetch.includes(id) ? addNewIds.push(id) : removeOldIds.push(id);
          });
-         if (removeOldIds.length > 0) this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depchildinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
+         if (removeOldIds.length > 0) this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depmultiinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
          if (idArrayToFetch.length > 0) this.addingChangeListerDataBasedOnFetchMode(idArrayToFetch);
      }
 
@@ -1767,11 +1411,11 @@
          if (this.isLoading === false && methodCalledBy === 'filter') {
              this.isLoading = true;
          }
-         if (reverseHierarchyKeys.length === 1 && reverseHierarchyKeys.indexOf('depchildinfo_DUMMY') > -1 && (!queryReverseHierarchy['depchildinfo_DUMMY']['options_rollup'])) {
+         if (reverseHierarchyKeys.length === 1 && reverseHierarchyKeys.indexOf('depmultiinfo_DUMMY') > -1 && (!queryReverseHierarchy['depmultiinfo_DUMMY']['options_rollup'])) {
              if (methodCalledBy === 'filter') {
                  if (this.batchWiseIdArray.length > 0 && ((this.layoutDataRestrictionSet.length > 0 && this.layoutDataRestrictionSet[0]['restrictionType'] === "userAssignment") || (this.layoutCriteriaQueryConfig['relationalObjects'] && this.layoutCriteriaQueryConfig['relationalObjects'].length > 0)) && this.dataFetchMode === 'OnClickBatch') {
                      let taskList = [];
-                     let searchListQuery = queryReverseHierarchy['depchildinfo_DUMMY']['options'];
+                     let searchListQuery = queryReverseHierarchy['depmultiinfo_DUMMY']['options'];
                      fetchParams['searchListQuery'] = searchListQuery;
                      this.batchWiseIdArray.forEach(idArray => {
                          if (Array.isArray(idArray)) {
@@ -1794,25 +1438,25 @@
                          this.isLoading = false;
                      });
                  } else if (this.batchWiseIdArray.length === 0 && ((this.layoutDataRestrictionSet.length > 0 && this.layoutDataRestrictionSet[0]['restrictionType'] === "userAssignment") || (this.layoutCriteriaQueryConfig['relationalObjects'] && this.layoutCriteriaQueryConfig['relationalObjects'].length > 0))) {
-                     this.filterResponse(queryReverseHierarchy['depchildinfo_DUMMY']['options'] + ' AND _id : ( null )');
+                     this.filterResponse(queryReverseHierarchy['depmultiinfo_DUMMY']['options'] + ' AND _id : ( null )');
                  } else {
-                     this.filterResponse(queryReverseHierarchy['depchildinfo_DUMMY']['options']);
+                     this.filterResponse(queryReverseHierarchy['depmultiinfo_DUMMY']['options']);
                  }
              } else if (methodCalledBy === 'listener') {
-                 fetchParams['searchListQuery'] = queryReverseHierarchy['depchildinfo_DUMMY']['options']
-                 if (queryReverseHierarchy['depchildinfo_DUMMY']['modifiedId']) {
-                     fetchParams['searchListQuery'] = fetchParams['searchListQuery'] + ' AND id:' + queryReverseHierarchy['depchildinfo_DUMMY']['modifiedId'];
+                 fetchParams['searchListQuery'] = queryReverseHierarchy['depmultiinfo_DUMMY']['options']
+                 if (queryReverseHierarchy['depmultiinfo_DUMMY']['modifiedId']) {
+                     fetchParams['searchListQuery'] = fetchParams['searchListQuery'] + ' AND id:' + queryReverseHierarchy['depmultiinfo_DUMMY']['modifiedId'];
                  }
                  this.handleListener(fetchParams, false)
              }
          } else {
-             this.dbService.getObjectIdsBasedOnFilterQuery(queryReverseHierarchy, this.__depchildinfo$tableName).then(result => {
+             this.dbService.getObjectIdsBasedOnFilterQuery(queryReverseHierarchy, this.__depmultiinfo$tableName).then(result => {
                  let searchListQuery = ""
                  if (Array.isArray(result) && result && result.length > 0) {
-                     if (reverseHierarchyKeys.indexOf('depchildinfo_DUMMY') > -1 && queryReverseHierarchy['depchildinfo_DUMMY'] && queryReverseHierarchy['depchildinfo_DUMMY']['options']) {
-                         searchListQuery = queryReverseHierarchy['depchildinfo_DUMMY']['options'];
+                     if (reverseHierarchyKeys.indexOf('depmultiinfo_DUMMY') > -1 && queryReverseHierarchy['depmultiinfo_DUMMY'] && queryReverseHierarchy['depmultiinfo_DUMMY']['options']) {
+                         searchListQuery = queryReverseHierarchy['depmultiinfo_DUMMY']['options'];
                      } else {
-                         searchListQuery = "type : " + this.__depchildinfo$tableName;
+                         searchListQuery = "type : " + this.__depmultiinfo$tableName;
                      }
                      let tempResult = [];
                      if (methodCalledBy === 'filter' && ((this.layoutDataRestrictionSet.length > 0 && this.layoutDataRestrictionSet[0]['restrictionType'] === "userAssignment") || (this.layoutCriteriaQueryConfig['relationalObjects'] && this.layoutCriteriaQueryConfig['relationalObjects'].length > 0))) {
@@ -1826,7 +1470,7 @@
                      } else if (methodCalledBy === 'listener') {
                          result = lodash.chunk(tempResult, this.batchIdLimit);
                      } else {
-                         searchListQuery = "type : " + this.__depchildinfo$tableName + " AND _id : ( null )";
+                         searchListQuery = "type : " + this.__depmultiinfo$tableName + " AND _id : ( null )";
                      }
                      if (this.dataFetchMode === 'OnClickBatch' || methodCalledBy === 'listener') {
                          var taskList = [];
@@ -1862,10 +1506,10 @@
                      if (methodCalledBy === 'filter') {
                          this.batchWiseIdArray = [];
                          this.batchWiseIdArrayTemp = [];
-                         if (reverseHierarchyKeys.indexOf('depchildinfo_DUMMY') > -1 && queryReverseHierarchy['depchildinfo_DUMMY'] && queryReverseHierarchy['depchildinfo_DUMMY']['options']) {
-                             searchListQuery = queryReverseHierarchy['depchildinfo_DUMMY']['options'] + "AND _id : ( null )";
+                         if (reverseHierarchyKeys.indexOf('depmultiinfo_DUMMY') > -1 && queryReverseHierarchy['depmultiinfo_DUMMY'] && queryReverseHierarchy['depmultiinfo_DUMMY']['options']) {
+                             searchListQuery = queryReverseHierarchy['depmultiinfo_DUMMY']['options'] + "AND _id : ( null )";
                          } else {
-                             searchListQuery = "type : " + this.__depchildinfo$tableName + "AND _id : (null)";
+                             searchListQuery = "type : " + this.__depmultiinfo$tableName + "AND _id : (null)";
                          }
                          this.filterResponse(searchListQuery);
                      } else if (methodCalledBy === 'listener') {
@@ -1954,18 +1598,18 @@
                          fetchParams['pagination']['bookmark'] = "";
                      } else {
                          if (this.resultCount === this.pagination['total_rows']) {
-                             fetchParams['searchListQuery'] = "type:" + this.__depchildinfo$tableName + " AND _id : ( " + this.batchWiseIdArray[0].join(" OR ") + " )"
+                             fetchParams['searchListQuery'] = "type:" + this.__depmultiinfo$tableName + " AND _id : ( " + this.batchWiseIdArray[0].join(" OR ") + " )"
                              this.resultCount = 0;
                              this.batchWiseIdArray.shift();
                              fetchParams['pagination']['bookmark'] = "";
                          } else {
-                             fetchParams['searchListQuery'] = "type:" + this.__depchildinfo$tableName + " AND _id : ( " + this.batchWiseIdArrayTemp[this.batchWiseIdArrayTemp.length - this.batchWiseIdArray.length - 1].join(" OR ") + " )"
+                             fetchParams['searchListQuery'] = "type:" + this.__depmultiinfo$tableName + " AND _id : ( " + this.batchWiseIdArrayTemp[this.batchWiseIdArrayTemp.length - this.batchWiseIdArray.length - 1].join(" OR ") + " )"
                          }
                      }
                  } else if (this.batchWiseIdArray.length === 0 && this.batchWiseIdArrayTemp.length > 0) {
-                     fetchParams['searchListQuery'] = "type:" + this.__depchildinfo$tableName + " AND _id : ( " + this.batchWiseIdArrayTemp[this.batchWiseIdArrayTemp.length - 1].join(" OR ") + " )"
+                     fetchParams['searchListQuery'] = "type:" + this.__depmultiinfo$tableName + " AND _id : ( " + this.batchWiseIdArrayTemp[this.batchWiseIdArrayTemp.length - 1].join(" OR ") + " )"
                  } else {
-                     fetchParams['searchListQuery'] = "type:" + this.__depchildinfo$tableName
+                     fetchParams['searchListQuery'] = "type:" + this.__depmultiinfo$tableName
                  }
              }
          }
@@ -2000,7 +1644,7 @@
                      } else {
                          this.pagination['nextBadgeDisabled'] = false;
                      }
-                     res['records'] = this.cspfmCustomFieldProvider.makeSlickGridCustomFields(res['records'], this.columnDefinitions[this.__depchildinfo$tableName])
+                     res['records'] = this.cspfmCustomFieldProvider.makeSlickGridCustomFields(res['records'], this.columnDefinitions[this.__depmultiinfo$tableName])
                      if (this.dataFetchMode === 'OnClickBatch') {
                          this.updateDataFetchStatus(false)
                          this.filteredResultList = [...res['records']]
@@ -2113,7 +1757,7 @@
              }
          } else {
 
-             this.slickgridUtils.onItemTap(data, "/menu/depchildinfo_d_w_hl_detail_view", "/menu/depchildinfo_d_w_list", false, [], this.inlineEditBoolObj);
+             this.slickgridUtils.onItemTap(data, "/menu/depmultiinfo_d_w_hl_detail_view", "/menu/depmultiinfo_d_w_list", false, [], this.inlineEditBoolObj);
          }
      }
      decidePopupOrNavigation(actionInfo, data) {
@@ -2191,7 +1835,7 @@
                  setTimeout(() => {
 
                      if (this.slickGridItemClickCount === 1) {
-                         this.slickgridUtils.onItemTap(data, "/menu/depchildinfo_d_w_hl_detail_view", "/menu/depchildinfo_d_w_list", false, [], this.inlineEditBoolObj)
+                         this.slickgridUtils.onItemTap(data, "/menu/depmultiinfo_d_w_hl_detail_view", "/menu/depmultiinfo_d_w_list", false, [], this.inlineEditBoolObj)
                      }
                      this.slickGridItemClickCount = 0;
                  }, 250);
@@ -2218,7 +1862,7 @@
              }
          })
          this.gridObj['cspfm_grid_custom_data'] = {
-             "page_title_key": "depchildinfo_d_w_list.Layout.depchildinfo_d_w_list",
+             "page_title_key": "depmultiinfo_d_w_list.Layout.depmultiinfo_d_w_list",
              "angular_grid_excel_export_service_instance": angularGrid.excelExportService,
              "angular_grid_export_service_instance": angularGrid.exportService,
              "isPaginationEnabled": this.gridOptions['enablePagination']
@@ -2246,7 +1890,7 @@
              })
          }
          if (this.groupingColumns.length > 0) {
-             this.slickgridUtils.setInitialGrouping(this.tableName_pfm74408, this.gridObj, this.groupingColumns, this.tableColumnInfo, this.draggableGroupingPlugin)
+             this.slickgridUtils.setInitialGrouping(this.tableName_pfm77370, this.gridObj, this.groupingColumns, this.tableColumnInfo, this.draggableGroupingPlugin)
              this.onGroupByEnabledObj.onGroupByEnabled = true
          }
 
@@ -2374,7 +2018,7 @@
                  "criteriaQueryConfig": this.layoutCriteriaQueryConfig,
                  "junctionDataObjects": {},
                  "searchQuery": "",
-                 "objectName": this.__depchildinfo$tableName
+                 "objectName": this.__depmultiinfo$tableName
              }
              this.cspfmLookupCriteriaUtils.dataRestrictionFetch(layoutDataRestrictionSet, "list").then(result => {
                  this.dataRestrictionIdSet = result;
@@ -2423,7 +2067,7 @@
          }
          if (this.batchWiseIdArray.length > 0 && this.dataFetchMode === 'OnClickBatch' && this.layoutCriteriaQuery !== '') {
              const fetchParams = {
-                 "objectName": this.__depchildinfo$tableName,
+                 "objectName": this.__depmultiinfo$tableName,
                  "searchListQuery": this.layoutCriteriaQuery
              }
              await this.dataProvider.primaryObjDataFetch(fetchParams, this.batchWiseIdArray).then((res => {
@@ -2454,7 +2098,7 @@
 
              this.slickgridResultList = this.filteredResultList;
              this.gridObj.reRenderColumns(true)
-             this.angularGrid["slickGrid"]['isAutoFitEnable'] = this.sectionObjectDetails[this.__depchildinfo$tableName].isAutoFitEnable
+             this.angularGrid["slickGrid"]['isAutoFitEnable'] = this.sectionObjectDetails[this.__depmultiinfo$tableName].isAutoFitEnable
              setTimeout(() => {
                  this.slickgridUtils.resizeColumnsByCellContent(this.angularGrid)
              }, 100);
@@ -2541,7 +2185,7 @@
                  offset: this.pagination['currentPageIndex'] * Number(this.pagination['view']['itemCount']),
                  bookmark: ""
              },
-             "searchListQuery": "type: " + this.__depchildinfo$tableName
+             "searchListQuery": "type: " + this.__depmultiinfo$tableName
          }
          if (modified["doc"]["data"]["type"].includes('userAssignment') && this.layoutDataRestrictionSet.length > 0 && this.layoutDataRestrictionSet[0]['restrictionType'] === 'userAssignment') {
              if (!this.appUtilityConfig.verifyUser(modified["doc"]["data"])) {
@@ -2550,7 +2194,7 @@
              if (this.batchWiseIdArray.includes(modified["doc"]["data"]['reference_id']) && !modified["doc"]["data"]['isActive']) {
                  const removeOldIds = [modified["doc"]["data"]['reference_id']]
                  if (removeOldIds && removeOldIds.length > 0) {
-                     if (removeOldIds.length > 0) this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depchildinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
+                     if (removeOldIds.length > 0) this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depmultiinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
                  }
              }
              if (!this.batchWiseIdArray.includes(modified["doc"]["data"]['reference_id']) && modified["doc"]["data"]['isActive']) {
@@ -2587,12 +2231,12 @@
                          this.filterFetch('listener');
                      } else {
                          if (this.modifiedSet && this.modifiedSet.length > 0) {
-                             const prefix = this.__depchildinfo$tableName + "_2_";
+                             const prefix = this.__depmultiinfo$tableName + "_2_";
                              const queryModifiedIds = this.modifiedSet.map(getIds => getIds.id.includes(prefix) ? getIds.id : prefix + getIds.id)
-                             fetchParams['searchListQuery'] = "type: " + this.__depchildinfo$tableName + " AND _id : ( " + queryModifiedIds.join(" OR ") + " ) "
+                             fetchParams['searchListQuery'] = "type: " + this.__depmultiinfo$tableName + " AND _id : ( " + queryModifiedIds.join(" OR ") + " ) "
                          } else if (modifiedObjectType['objectType'] === 'PRIMARY') {
                              if (!(modified['doc']['_id'].includes('rollup') || modified['doc']['_id'].includes('formula'))) {
-                                 fetchParams['searchListQuery'] = "type: " + this.__depchildinfo$tableName + " AND _id: " + modified['doc']['_id'];
+                                 fetchParams['searchListQuery'] = "type: " + this.__depmultiinfo$tableName + " AND _id: " + modified['doc']['_id'];
                              }
                          }
                          this.handleListener(fetchParams, false)
@@ -2600,12 +2244,12 @@
                  }
              } else if (idArrayToFetch.length > 0) {
                  if (this.modifiedSet && this.modifiedSet.length > 0) {
-                     const prefix = this.__depchildinfo$tableName + "_2_";
+                     const prefix = this.__depmultiinfo$tableName + "_2_";
                      const queryModifiedIds = this.modifiedSet.map(getIds => getIds.id.includes(prefix) ? getIds.id : prefix + getIds.id)
-                     fetchParams['searchListQuery'] = "type: " + this.__depchildinfo$tableName + " AND _id : ( " + queryModifiedIds.join(" OR ") + " ) "
+                     fetchParams['searchListQuery'] = "type: " + this.__depmultiinfo$tableName + " AND _id : ( " + queryModifiedIds.join(" OR ") + " ) "
                  } else if (modifiedObjectType['objectType'] === 'PRIMARY') {
                      if (!(modified['doc']['_id'].includes('rollup') || modified['doc']['_id'].includes('formula'))) {
-                         fetchParams['searchListQuery'] = "type: " + this.__depchildinfo$tableName + " AND _id: " + modified['doc']['_id'];
+                         fetchParams['searchListQuery'] = "type: " + this.__depmultiinfo$tableName + " AND _id: " + modified['doc']['_id'];
                      }
                  }
                  if (Object.keys(this.layoutCriteriaQueryConfig).length > 0 && this.layoutCriteriaQueryConfig['operands']) {
@@ -2630,7 +2274,7 @@
          let addNewIds;
          let removeOldIds;
          let updateIds;
-         const prefix = this.__depchildinfo$tableName + "_2_";
+         const prefix = this.__depmultiinfo$tableName + "_2_";
          if (this.batchWiseIdArray && this.batchWiseIdArray.length > 0) {
              if (formattedId.length > 0) {
                  addNewIds = lodash.difference(formattedId, this.batchWiseIdArray);
@@ -2682,7 +2326,7 @@
                  this.batchWiseIdArrayTemp = lodash.chunk(lodash.flatten(this.batchWiseIdArray), this.batchIdLimit);
              }
              if (removeOldIds && removeOldIds.length > 0) {
-                 this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depchildinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
+                 this.liveListenerHandlerUtils.modifiedBulkDocs(removeOldIds, this.angularGrid, this.__depmultiinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
              } else if (addNewIds && addNewIds.length > 0) {
                  if (addNewIds.length === 1) {
                      this.fetchModifiedRec(addNewIds[0]);
@@ -2716,7 +2360,7 @@
              result.forEach(element => {
                  finalResult = [...finalResult, ...element]
              });
-             this.liveListenerHandlerUtils.upsertModifiedData(finalResult, this.angularGrid, this.columnDefinitions, this.__depchildinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
+             this.liveListenerHandlerUtils.upsertModifiedData(finalResult, this.angularGrid, this.columnDefinitions, this.__depmultiinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
          })
      }
      recursiveMethodForModifiedRecord(idArrayToFetch, fetchParams, taskList) {
@@ -2734,13 +2378,13 @@
              if (id.includes("pfm")) {
                  return id;
              } else {
-                 return this.tableName_pfm74408 + "_2_" + id;
+                 return this.tableName_pfm77370 + "_2_" + id;
              }
          }).join(" ");
          if (this.searchQueryForDesignDoc) {
              queryParam['searchListQuery'] = this.searchQueryForDesignDoc + " AND id:" + "(" + formattedId + ")";
          } else {
-             queryParam['searchListQuery'] = "type:" + this.tableName_pfm74408 + " AND id:" + "(" + formattedId + ")";
+             queryParam['searchListQuery'] = "type:" + this.tableName_pfm77370 + " AND id:" + "(" + formattedId + ")";
          }
          return this.dataProvider.fetchDataFromDataSource(queryParam).then(result => {
              if (result["status"] !== "SUCCESS") {
@@ -2748,10 +2392,10 @@
                  return;
              }
              if (result['records'].length === 0) {
-                 this.liveListenerHandlerUtils.modifiedBulkDocs(idArrayToFetch, this.angularGrid, this.__depchildinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
+                 this.liveListenerHandlerUtils.modifiedBulkDocs(idArrayToFetch, this.angularGrid, this.__depmultiinfo$tableName, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail)
                  return
              }
-             this.liveListenerHandlerUtils.upsertModifiedData(result['records'], this.angularGrid, this.columnDefinitions, this.__depchildinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
+             this.liveListenerHandlerUtils.upsertModifiedData(result['records'], this.angularGrid, this.columnDefinitions, this.__depmultiinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
              return result['records'];
          }).catch(error => {
              console.log(error)
@@ -2807,11 +2451,11 @@
              'layoutDataRestrictionSet': this.layoutDataRestrictionSet,
              'dataSource': this.dataSource
          }
-         modifiedDataId = modifiedDataId.includes(this.tableName_pfm74408 + "_2_") ? modifiedDataId : this.tableName_pfm74408 + "_2_" + modifiedDataId
+         modifiedDataId = modifiedDataId.includes(this.tableName_pfm77370 + "_2_") ? modifiedDataId : this.tableName_pfm77370 + "_2_" + modifiedDataId
          if (this.searchQueryForDesignDoc) {
              fetchParams['searchListQuery'] = this.searchQueryForDesignDoc + " AND id:" + modifiedDataId;
          } else {
-             fetchParams['searchListQuery'] = "type:" + this.tableName_pfm74408 + " AND id:" + modifiedDataId;
+             fetchParams['searchListQuery'] = "type:" + this.tableName_pfm77370 + " AND id:" + modifiedDataId;
          }
          this.dataProvider.fetchDataFromDataSource(fetchParams).then(result => {
              if (result["status"] !== "SUCCESS") {
@@ -2819,10 +2463,10 @@
                  return;
              }
              if (result['records'].length === 0) {
-                 this.liveListenerHandlerUtils.modifiedDataSet(this.angularGrid, modifiedDataId, this.__depchildinfo$tableName, this.filteredResultList, this.gridSearchRowToggle)
+                 this.liveListenerHandlerUtils.modifiedDataSet(this.angularGrid, modifiedDataId, this.__depmultiinfo$tableName, this.filteredResultList, this.gridSearchRowToggle)
                  return
              }
-             this.liveListenerHandlerUtils.upsertModifiedData(result['records'], this.angularGrid, this.columnDefinitions, this.__depchildinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
+             this.liveListenerHandlerUtils.upsertModifiedData(result['records'], this.angularGrid, this.columnDefinitions, this.__depmultiinfo$tableName, this.sectionObjectDetails, this.isLoading, this.dataSource, this.filteredResultList, this.gridSearchRowToggle, this.filterSectionDetail);
          }).catch(error => {
              console.log(error)
          })
@@ -2841,23 +2485,23 @@
 
          setTimeout(() => {
              const slickgridHeaderColumn = document.getElementsByClassName('slick-header-column')
-             this.gridIdConfig.setSlickGridPaginationId(slickgridHeaderColumn, this.gridId, "depchildinfo",
-                 this.columnDefinitions[this.__depchildinfo$tableName], document);
+             this.gridIdConfig.setSlickGridPaginationId(slickgridHeaderColumn, this.gridId, "depmultiinfo",
+                 this.columnDefinitions[this.__depmultiinfo$tableName], document);
              this.listServiceUtils.windowHeight(document);
          }, 100)
      }
      ionViewWillUnload() {
          console.log('unsubscribe in list')
-         this.observableListenerUtils.remove(this.tableName_pfm74408, '==');
+         this.observableListenerUtils.remove(this.tableName_pfm77370, '==');
      }
-     addButton_8010440_Onclick() {
+     addButton_8009861_Onclick() {
          const queryParamsRouting = {
              action: 'Add'
          };
-         if (!this.appUtilityConfig.checkPageAlreadyInStack("/menu/depchildinfo_Entry_Web")) {
-             queryParamsRouting['redirectUrl'] = "/menu/depchildinfo_d_w_list";
+         if (!this.appUtilityConfig.checkPageAlreadyInStack("/menu/depmultiinfo_Entry_Web")) {
+             queryParamsRouting['redirectUrl'] = "/menu/depmultiinfo_d_w_list";
          }
-         this.router.navigate(['/menu/depchildinfo_Entry_Web'], {
+         this.router.navigate(['/menu/depmultiinfo_Entry_Web'], {
              queryParams: queryParamsRouting,
              skipLocationChange: true
          });

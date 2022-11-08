@@ -151,13 +151,13 @@ export class cspfmMultiLineEntry implements OnInit {
             [key: string]: any
         }
     }> = [];
-
+    public itemsPerPageConfigured = '';
     public paginationInfo = {
         "pagination": {
             enabled: true,
             view: {
                 itemPerPage: ["10", "15", "20", "25", "50", "75", "100", "200", "1000", "2000"],
-                itemCount: "50"
+                itemCount: this.itemsPerPageConfigured.toString()
             },
             bookmark: {
                 0: ''
@@ -235,6 +235,8 @@ export class cspfmMultiLineEntry implements OnInit {
         if (!this.entryConfig) {
             return
         }
+        this.itemsPerPageConfigured = this.cspfmLayoutConfig['layoutConfiguration'][this.layoutId]["itemsPerPageConfigured"];
+        this.paginationInfo['pagination']['view']['itemCount'] = this.itemsPerPageConfigured;
         this.objectNameMapping = this.entryConfig['objectDisplayMapping'];
         this.childObjects = this.entryConfig['sectionObjects'];
         this.sectionObjectDetails = this.entryConfig['sectionObjectDetail'];
@@ -262,7 +264,7 @@ export class cspfmMultiLineEntry implements OnInit {
             this.resultCount[childObjectName] = []
 
             const pluralName = this.dataProvider.getPluralName(childObjectName);
-            var gridOption: GridOption = this.slickgridUtils.getGridOptions(childObjectName, this.childObjectsInfo, this.gridContainerId, this.sectionObjectDetails, this.layoutId);
+            var gridOption: GridOption = this.slickgridUtils.getGridOptions(childObjectName, this.childObjectsInfo, this.gridContainerId, this.sectionObjectDetails, this.layoutId,this.itemsPerPageConfigured);
             var paginationInfo = JSON.parse(JSON.stringify(this.paginationInfo));
             gridOption['autoEdit'] = true
             gridOption['gridMenu']['customItems'].push({

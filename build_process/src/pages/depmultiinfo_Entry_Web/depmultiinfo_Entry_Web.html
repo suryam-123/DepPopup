@@ -1,0 +1,318 @@
+<div [ngClass]="{'cs-mat-ui cs-mat-custom-theme': isPopUpEnabled}">
+    <mat-toolbar [id]=222888 class="cs-mat-pageheadtoolbar" color="primary">
+        <div class="cs-mat-toolbartitle"><button mat-icon-button="" title="Back" id="ACT_depmultiinfo_Entry_Web_backnavigation" *ngIf="!isFromMenu && !isPopUpEnabled" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="appUtilityConfig.backButtonOnclick(this, 'DrawerEntry', '/menu/depmultiinfo_Entry_Web' , '/menu/depmultiinfo_d_w_hl_detail_view')"><em class="icon-mat-keyboard_backspace"></em></button><span class="cs-mat-pageheadtitle">{{'depmultiinfo_Entry_Web.Layout.depmultiinfo_Entry_Web' | translate}}</span></div><span class="example-spacer"></span>
+        <div [hidden]="isSkeletonLoading"><button title="{{'depmultiinfo_Entry_Web.Action.List_1' | translate}}" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="listButton_8009851_Onclick()" mat-icon-button="" id="depmultiinfo_Entry_Web_List_1"><em style="" class="icon-mat-list"></em></button><button title="{{'depmultiinfo_Entry_Web.Action.Save_1' | translate}}" style="" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="saveButtonOnclick()" mat-icon-button="" id="depmultiinfo_Entry_Web_Save_1"><em style="" class="icon-mat-save"></em></button></div><button mat-mini-fab="" color="primary" *ngIf="!isSkeletonLoading && isPopUpEnabled" title="Close" class="cs-mat-pagehead-eachactions cs-mat-icononly" (click)="appUtilityConfig.backButtonOnclick(this, 'DrawerEntry', '/menu/depmultiinfo_Entry_Web' , '/menu/depmultiinfo_d_w_hl_detail_view')"><em class="icon-mat-close"></em></button>
+    </mat-toolbar>
+    <div class="mat-progress-spinner-overlay" *ngIf="saveButtonClicked || isCustomFetchLoading">
+        <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src="assets/img/dataloading.gif" /></div>
+    </div>
+    <div class="cs-custom-scroll cs-scroll-body-height cs-mat-main-content">
+        <div [hidden]="isSkeletonLoading">
+            <div class="cs-mat-contentmain cs-pr" *ngIf="isSkeletonLoading">
+                <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption">
+                    <div fxLayout="row-wrap">
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row-wrap" style="padding-top: 5%">
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="25%">
+                            <div>
+                                <ngx-skeleton-loader style="width: 10%" [theme]="{width: '100px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                            <div>
+                                <ngx-skeleton-loader style="width: 20%" [theme]="{width: '170px','border-radius': '0',height: '10px','margin-bottom': '10px'}" count="1"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div [hidden]="isSkeletonLoading">
+                <div class="cs-mat-contentmain">
+                    <div class="cs-pr" id="SEC_depmultiinfo_Entry_Web_PARENT_WEB_BODY_SECTION">
+                        <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption">
+                            <div class="cs-matcard-head-mn">
+                                <mat-card-header class="cs-header">
+                                    <mat-card-title>Dep_PersonalInfo</mat-card-title>
+                                </mat-card-header>
+                                <div class="cs-pull-right"><button mat-raised-button="" *ngIf="this.action !== 'Edit' && parentObjFromLookup" (click)="showLookup($event,'pfm71658_1003750')" color="primary" title="DepM Master" class="cs-mat-labelonly"><span class="cs-mat-btnlabel">Change DepM Master</span></button></div>
+                            </div>
+                            <div [hidden]="expandParentObjectData =='C'">
+                                <div fxLayout="row wrap" class="cs-event-height">
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$name_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                        <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_name_8009836']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                            <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$name_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_name_8009836']}}</div>
+                                        </div>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                        <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_employeename_8009838']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                            <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_employeename_8009838']}}</div>
+                                        </div>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$team_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                        <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_team_8009840']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                            <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_team']}}" matBadgeOverlap="false"></mat-label>
+                                            <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$team_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_team_8009840']}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div [hidden]="expandParentObjectData !=='FO'" class="cs-tmar">
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$location_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_location_8009830']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_location']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$location_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_location_8009830']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcurrency_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcurrency_8009849']['label'] | translate}} In INR<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_depcurrency']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcurrency_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcurrency_8009849']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deptimestamp_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deptimestamp_8009832']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deptimestamp_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deptimestamp_8009832']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depdate_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depdate_8009837']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depdate_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depdate_8009837']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depboolean_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depboolean_8009833']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depboolean_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depboolean_8009833']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depnumber_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depnumber_8009844']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_depnumber']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depnumber_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depnumber_8009844']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depdecimal_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depdecimal_8009846']['label'] | translate}}<span style="padding-left:5px;color:  rgb(219, 30, 30);">*</span></label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depdecimal_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depdecimal_8009846']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup_8009829']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_deplookup']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup_8009829']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_8009828']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_8009828']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depformulan_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid cs-mat-formulafield cs-pr" style="">
+                                                <mat-label style="" matBadge="{{dependentNumberCount['deppersonalinfo_depformulan']}}" matBadgeOverlap=false>{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depformulan.depformulan'| translate}}<img title="square(deppersonalinfo.DepNumber)" style="top: 0px;" src="assets/img/formulafield_icon.png" alt="" /></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depformulan_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depformulan__f_8009834']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup2_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup2_8009847']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_deplookup2']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup2_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup2_8009847']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup2$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_8009848']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup2$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_8009848']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depmultiselect_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depmultiselect_8009831']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_depmultiselect']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depmultiselect_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depmultiselect_8009831']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcheckbox_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcheckbox_8009845']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_depcheckbox']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcheckbox_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcheckbox_8009845']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcoruser_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_depcoruser_8009839']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depcoruser_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_depcoruser_8009839']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup3_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup3_8009842']['label'] | translate}}</label>
+                                                <mat-label matBadge="{{dependentNumberCount['deppersonalinfo_deplookup3']}}" matBadgeOverlap="false"></mat-label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup3_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup3_8009842']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup3$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_8009835']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup3$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_8009835']}}</div>
+                                            </div>
+                                        </div>
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup4_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71658_deplookup4_8009843']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$deplookup4_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71658_deplookup4_8009843']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="cs-event-height">
+                                        <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup4$$employeename_div" fxLayout="column" fxFlex="33.333333333333336%" class="cs-hpad">
+                                            <div class="cs-mat-view-grid" style=""><label style="">{{gridFieldInfo['pfm71655_employeename_8009841']['label'] | translate}}</label>
+                                                <div *ngIf="dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$deppersonalinfo_depmmaster$$depemployee_deplookup4$$employeename_input" class="cs-mat-vg-cont" style="">{{dataObject['depmultiinfo_DUMMY$$deppersonalinfo_depmmaster'] | cspfm_data_display : gridFieldInfo['pfm71655_employeename_8009841']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-card-footer align="center" class="cs-mat-togglearrowbtn cs-toggleoption_coll_exp cs-cur cs-bmar"><span [hidden]="expandParentObjectData !=='FO'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em class="icon-mat-keyboard_arrow_up"></em></button></span><span [hidden]="expandParentObjectData !=='HO'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em [ngClass]="previousGridState==='FO'?'icon-mat-keyboard_arrow_up':(previousGridState==='C'?'icon-mat-keyboard_arrow_down':'icon-mat-keyboard_arrow_down')"></em></button></span><span [hidden]="expandParentObjectData !=='C'" (click)="appUtilityConfig.expandAndCollapseParentObjectData(this)"><button class="cs-mat-icononly"><em class="icon-mat-keyboard_arrow_down"></em></button></span></mat-card-footer>
+                        </mat-card>
+                    </div>
+                    <div class="cs-pr" [hidden]="isSkeletonLoading">
+                        <mat-card class="cs-custom-scroll cs-parent_filter cs-mat-filteroption" id="SEC_depmultiinfo_Entry_Web_CHILD_WEB_BODY_SECTION">
+                            <form [formGroup]="formGroup" (keydown.enter)="$event.preventDefault()">
+                                <div class="cs-header-part">
+                                    <mat-card-header class="cs-header cs-pull-left">
+                                        <mat-card-title>Dep_MultiInfo</mat-card-title>
+                                    </mat-card-header>
+                                    <div class="cs-pull-right"></div>
+                                </div>
+                                <div fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$mno_div" fxLayout="column" class="entry-form-field-container" [ngClass]="" fxFlex="33.333333333333336%">
+                                        <mat-label>{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$mno.mno'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['mno']['isRequired']" class="cs-mat-required">*</span></mat-label>
+                                        <mat-form-field [floatLabel]="'always'" appearance="none" class="cs-readonly" formGroupName="pfm77370" id="pfm77370_mno"><input id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$mno_input" matInput="" readonly="" value="{{dataObject['depmultiinfo_DUMMY']['mno']}}" (change)="changeCallback('mno$$depmultiinfo');" />
+                                            <mat-chip-list class="cs-mat-error"></mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmname1_div" fxLayout="column" class="entry-form-field-container" [ngClass]="" fxFlex="33.333333333333336%">
+                                        <mat-label>{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$depmname1.depmname1'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['depmname1']['isRequired']" class="cs-mat-required">*</span><button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button" *ngIf="!!(isDataCloned && clonedFields[__depmultiinfo$tableName] && clonedFields[__depmultiinfo$tableName]['depmname1'] )" (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,'depmname1','depmultiinfo',false)"><span class="cs-mat-btnlabel">Clone</span></button></mat-label>
+                                        <mat-form-field [floatLabel]="'always'" appearance="none" formGroupName="pfm77370" id="pfm77370_depmname1"><input id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmname1_input" matInput="" class="cs-lspad" type="text" [(ngModel)]="dataObject['depmultiinfo_DUMMY']['depmname1']" formControlName="depmname1" (change)="changeCallback('depmname1$$depmultiinfo');" />
+                                            <mat-chip-list class="cs-mat-error">
+                                                <mat-error><span *ngIf="!formGroup.get(__depmultiinfo$tableName).get('depmname1').valid && !isValidFrom">Please enter DepM Name1</span></mat-error>
+                                            </mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmaddress1_div" fxLayout="column" class="entry-form-field-container" [ngClass]="" fxFlex="33.333333333333336%">
+                                        <mat-label>{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$depmaddress1.depmaddress1'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['depmaddress1']['isRequired']" class="cs-mat-required">*</span><button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button" *ngIf="!!(isDataCloned && clonedFields[__depmultiinfo$tableName] && clonedFields[__depmultiinfo$tableName]['depmaddress1'] )" (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,'depmaddress1','depmultiinfo',false)"><span class="cs-mat-btnlabel">Clone</span></button></mat-label>
+                                        <mat-form-field [floatLabel]="'always'" appearance="none" formGroupName="pfm77370" id="pfm77370_depmaddress1"><textarea id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmaddress1_input" matInput="" (keydown.enter)="$event.stopPropagation()" class="cs-lspad" [(ngModel)]="dataObject['depmultiinfo_DUMMY']['depmaddress1']" formControlName="depmaddress1" (change)="changeCallback('depmaddress1$$depmultiinfo');"></textarea>
+                                            <mat-chip-list class="cs-mat-error">
+                                                <mat-error><span *ngIf="!formGroup.get(__depmultiinfo$tableName).get('depmaddress1').valid && !isValidFrom">Please enter DepM Address1</span></mat-error>
+                                            </mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxLayout="row wrap" class="cs-fullwidth cs-event-height">
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$state_div" fxLayout="column" class="entry-form-field-container" [ngClass]="" fxFlex="33.333333333333336%">
+                                        <mat-label matBadge="{{dependentNumberCount['state']}}" matBadgeOverlap="false">{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$state.state'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['state']['isRequired']" class="cs-mat-required">*</span><button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button" *ngIf="!!(isDataCloned && clonedFields[__depmultiinfo$tableName] && clonedFields[__depmultiinfo$tableName]['state'] )" (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,'state','depmultiinfo',false)"><span class="cs-mat-btnlabel">Clone</span></button></mat-label>
+                                        <mat-form-field [floatLabel]="'always'" appearance="none" formGroupName="pfm77370" id="pfm77370_state">
+                                            <mat-select id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$state_input" [(ngModel)]="dataObject['depmultiinfo_DUMMY']['state']" formControlName="state" (selectionChange)="updateChildList(state_1003746,dataObject['depmultiinfo_DUMMY']['state'],false,__depmultiinfo$tableName,'state');changeCallback('state$$depmultiinfo');">
+                                                <mat-option *ngFor="let item of state_1003746mapping" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$state_input_{{item['title'] | translate}}" [value]="item.value">{{item['title'] | translate}}</mat-option>
+                                            </mat-select>
+                                            <mat-chip-list class="cs-mat-error">
+                                                <mat-error><span *ngIf="!formGroup.get(__depmultiinfo$tableName).get('state').valid && !isValidFrom">Please select State</span></mat-error>
+                                            </mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$cities_div" fxLayout="column" class="entry-form-field-container" [ngClass]="" fxFlex="33.333333333333336%">
+                                        <mat-label matBadge="{{dependentNumberCount['cities']}}" matBadgeOverlap="false">{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$cities.cities'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['cities']['isRequired']" class="cs-mat-required">*</span><button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button" *ngIf="!!(isDataCloned && clonedFields[__depmultiinfo$tableName] && clonedFields[__depmultiinfo$tableName]['cities'] )" (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,'cities','depmultiinfo',false)"><span class="cs-mat-btnlabel">Clone</span></button></mat-label>
+                                        <mat-form-field [floatLabel]="'always'" appearance="none" formGroupName="pfm77370" id="pfm77370_cities" (click)="checkIsParentSelected('State','cities',state_1003746,dataObject['depmultiinfo_DUMMY'],__depmultiinfo$tableName)">
+                                            <mat-select id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$cities_input" [(ngModel)]="dataObject['depmultiinfo_DUMMY']['cities']" formControlName="cities" multiple="" *ngIf="dataObject['depmultiinfo_DUMMY']['state'] && dataObject['depmultiinfo_DUMMY']['state'].length > 0" (selectionChange)="changeCallback('cities$$depmultiinfo');">
+                                                <mat-option *ngFor="let obj of pickListValues[__depmultiinfo$tableName]['cities']" id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$cities_input_{{obj.choice}}" [value]="obj.choiceValue">{{obj.choice}}</mat-option>
+                                            </mat-select>
+                                            <mat-chip-list style="outline: none;" *ngIf="!dataObject['depmultiinfo_DUMMY']['state'] || dataObject['depmultiinfo_DUMMY']['state'].length === 0"><span class="cs-lspad cs-choose-msg">Choose State to select this.</span></mat-chip-list>
+                                            <mat-chip-list class="cs-mat-error">
+                                                <mat-error><span *ngIf="!formGroup.get(__depmultiinfo$tableName).get('cities').valid && !isValidFrom">Please select Cities</span></mat-error>
+                                            </mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                    <div id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmcoruser_div" fxLayout="column" class="entry-form-field-container cs-hpad cs-lookup-bpad" fxFlex="33.333333333333336%">
+                                        <mat-label>{{'depmultiinfo_Entry_Web.Element.depmultiinfo_DUMMY$$depmcoruser.depmcoruser'| translate}}<span *ngIf="formgroupValidation[__depmultiinfo$tableName]['pfm5_1003748_searchKey']['isRequired']" class="cs-mat-required">*</span><button title="Clone" [attr.data-cs-dropdown]="" class="cs-mat-field-button" *ngIf="!!(isDataCloned && clonedFields[__depmultiinfo$tableName] && clonedFields[__depmultiinfo$tableName]['pfm5_1003748'] )" (click)="appUtilityConfig.showDataCloningMappingDetails(dataCloningInfo,'pfm5_1003748','depmultiinfo',true)"><span class="cs-mat-btnlabel">Clone</span></button></mat-label>
+                                        <mat-form-field class="cs-mat-searchandlookupmodel" [floatLabel]="'always'" appearance="none" formGroupName="pfm77370" id="pfm77370_pfm5_1003748_searchKey"><input id="FLD_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmcoruser_input" matInput="" class="cs-lspad" type="text" (dblclick)="(objResultMap.has(__depmultiinfo$tableName) && objResultMap.get(__depmultiinfo$tableName).status!=='SUCCESS') || objResultMap.size===0 ? showLookup($event,'pfm5_1003748',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username']): ''" [(ngModel)]="dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username']" formControlName="pfm5_1003748_searchKey" [readonly]="(dataObject['depmultiinfo_DUMMY'][__depmcoruser$lookupIndepmultiinfo] !== null && dataObject['depmultiinfo_DUMMY'][__depmcoruser$lookupIndepmultiinfo] !== '')" (keydown.enter)="showLookup($event,'pfm5_1003748',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'])" /><button title="Search" tabindex="-1" id="ACT_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmcoruser_input_search" class="cs-mat-icononly" [hidden]="dataObject['depmultiinfo_DUMMY'][__depmcoruser$lookupIndepmultiinfo] !== null" (click)="showLookup($event,'pfm5_1003748',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'])" (keydown.enter)="showLookup($event,'pfm5_1003748',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'])"><em class="icon-mat-search"></em></button><button title="Close" tabindex="-1" id="ACT_depmultiinfo_Entry_Web_depmultiinfo_DUMMY$$depmcoruser_input_clear" class="cs-mat-icononly" [hidden]="dataObject['depmultiinfo_DUMMY'][__depmcoruser$lookupIndepmultiinfo] === null" (click)="lookupClearAction('depmultiinfo_DUMMY',__depmcoruser$lookupIndepmultiinfo,dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser'],'username',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'],__COR_USERS$tableName,'depmultiinfo_DUMMY$$COR_USERS_depmcoruser',true)" (keydown.enter)="lookupClearAction('depmultiinfo_DUMMY',__depmcoruser$lookupIndepmultiinfo,dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser'],'username',dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'],__COR_USERS$tableName,'depmultiinfo_DUMMY$$COR_USERS_depmcoruser')"><em class="icon-mat-clear"></em></button>
+                                            <mat-chip-list class="cs-mat-error">
+                                                <mat-error><span *ngIf="formgroupValidation[__depmultiinfo$tableName]['pfm5_1003748_searchKey']['isRequired'] && !dataObject['depmultiinfo_DUMMY$$COR_USERS_depmcoruser']['username'] && !isValidFrom">Please enter DepM CorUser</span></mat-error>
+                                            </mat-chip-list>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="consolidateErrorData['showConsolidatePopup']">
+    <cs_conditionalvalidation_consolidate [actionConsolidateMessage]="this.consolidateErrorData['validationFailureJson']"></cs_conditionalvalidation_consolidate>
+</div>
+<div *ngIf="lookupCriteriaDependentField['showConsolidatePopup']|| associationCriteriaDependentField['showConsolidatePopup']">
+    <cs_conditionalvalidation_consolidate [actionConsolidateMessage]="associationCriteriaDependentField['showConsolidatePopup'] ? associationCriteriaDependentField:lookupCriteriaDependentField"></cs_conditionalvalidation_consolidate>
+</div>
+<div class="mat-progress-spinner-overlay" *ngIf="isCustomActionProcessing">
+    <div class="mat-progress-spinner-center"><img class="cs-loading-gif" alt="" src='assets/img/dataloading.gif'></div>
+</div>

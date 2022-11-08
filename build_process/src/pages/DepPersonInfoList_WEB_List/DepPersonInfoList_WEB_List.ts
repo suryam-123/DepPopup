@@ -820,7 +820,7 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 30,
-                 required: false,
+                 required: true,
                  pipe: this.cspfmDataDisplay,
                  fieldInfo: this.tableColumnInfo[this.__deppersonalinfo$tableName]['pfm71658_employeename_7956961'],
                  layoutId: this.layoutId
@@ -867,7 +867,7 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 100,
-                 required: false,
+                 required: true,
                  pipe: this.cspfmDataDisplay,
                  fieldInfo: this.tableColumnInfo[this.__deppersonalinfo$tableName]['pfm71658_team_7956962'],
                  layoutId: this.layoutId
@@ -924,7 +924,7 @@
              params: {
                  isHiddenEnabled: 'N',
                  columnWidth: 0,
-                 required: false,
+                 required: true,
                  pipe: this.cspfmDataDisplay,
                  fieldInfo: this.tableColumnInfo[this.__deppersonalinfo$tableName]['pfm71658_depdate_7956963'],
                  layoutId: this.layoutId

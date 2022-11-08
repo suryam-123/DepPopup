@@ -122,7 +122,56 @@ export class cspfmObjectConfiguration {
             }]
         },
         "pfm71658": {
-            "compositeValidation": [],
+            "compositeValidation": [{
+                "compositekey": "pfm_csp_71658_2_ck",
+                "compositeName": "Composite Group-2",
+                "compositeFields": [{
+                    "fieldName": "depdate",
+                    "fieldDisplayName": "DepDate",
+                    "fieldType": "DATE"
+                }, {
+                    "fieldName": "depnumber",
+                    "fieldDisplayName": "DepNumber",
+                    "fieldType": "NUMBER"
+                }]
+            }, {
+                "compositekey": "pfm_csp_71658_1_ck",
+                "compositeName": "Composite Group-1",
+                "compositeFields": [{
+                    "fieldName": "depdecimal",
+                    "fieldDisplayName": "DepDecimal",
+                    "fieldType": "DECIMAL"
+                }, {
+                    "fieldName": "pfm5_967712",
+                    "fieldDisplayName": "DepCorUser",
+                    "fieldType": "LOOKUP"
+                }]
+            }],
+            "requiredFieldsValidation": [{
+                "fieldName": "depcurrency",
+                "displayName": "DepCurrency",
+                "fieldType": "CURRENCY"
+            }, {
+                "fieldName": "team",
+                "displayName": "Team",
+                "fieldType": "DROPDOWN"
+            }, {
+                "fieldName": "depdecimal",
+                "displayName": "DepDecimal",
+                "fieldType": "DECIMAL"
+            }, {
+                "fieldName": "name",
+                "displayName": "name",
+                "fieldType": "TEXT"
+            }, {
+                "fieldName": "employeename",
+                "displayName": "Employee Name",
+                "fieldType": "TEXT"
+            }, {
+                "fieldName": "depdate",
+                "displayName": "DepDate",
+                "fieldType": "DATE"
+            }],
             "selectionFieldsMapping": {
                 "location": {
                     "CHE": "deppersonalinfo.location.Option.Chennai",
@@ -188,23 +237,54 @@ export class cspfmObjectConfiguration {
                 }]
             },
             "uniqueValidation": [{
+                "fieldName": "team",
+                "displayName": "Team",
+                "fieldType": "DROPDOWN"
+            }, {
+                "fieldName": "depdecimal",
+                "displayName": "DepDecimal",
+                "fieldType": "DECIMAL",
+                "isDependentCheckRequired": false,
+                "dependentObjectID": "pfm71658"
+            }, {
                 "fieldName": "name",
                 "displayName": "name",
                 "fieldType": "TEXT",
                 "isDependentCheckRequired": false,
                 "dependentObjectID": "pfm71658"
-            }],
-            "requiredFieldsValidation": [{
-                "fieldName": "name",
-                "displayName": "name",
+            }, {
+                "fieldName": "employeename",
+                "displayName": "Employee Name",
                 "fieldType": "TEXT"
             }]
         },
         "pfm74408": {
-            "compositeValidation": [],
+            "compositeValidation": [{
+                "compositekey": "pfm_csp_74408_1_ck",
+                "compositeName": "Composite Group-1",
+                "compositeFields": [{
+                    "fieldName": "depcname1",
+                    "fieldDisplayName": "DepC Name1",
+                    "fieldType": "TEXT"
+                }, {
+                    "fieldName": "depnumber",
+                    "fieldDisplayName": "DepNumber",
+                    "fieldType": "NUMBER"
+                }]
+            }],
             "uniqueValidation": [{
                 "fieldName": "depcname",
                 "displayName": "depCname",
+                "fieldType": "TEXT",
+                "isDependentCheckRequired": false,
+                "dependentObjectID": "pfm74408"
+            }, {
+                "fieldName": "depccurrency1",
+                "displayName": "DepC Currency1",
+                "fieldType": "CURRENCY"
+            }, {
+                "fieldName": "depcname1",
+                "displayName": "DepC Name1",
                 "fieldType": "TEXT",
                 "isDependentCheckRequired": false,
                 "dependentObjectID": "pfm74408"
@@ -217,6 +297,14 @@ export class cspfmObjectConfiguration {
                 "fieldName": "depcmaster",
                 "displayName": "DepC Master",
                 "fieldType": "MASTERDETAIL"
+            }, {
+                "fieldName": "depccurrency1",
+                "displayName": "DepC Currency1",
+                "fieldType": "CURRENCY"
+            }, {
+                "fieldName": "depcname1",
+                "displayName": "DepC Name1",
+                "fieldType": "TEXT"
             }],
             "selectionFieldsMapping": {
                 "depdropdownn": {
